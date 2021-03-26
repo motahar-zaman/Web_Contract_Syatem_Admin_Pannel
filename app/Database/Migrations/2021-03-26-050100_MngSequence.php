@@ -29,11 +29,11 @@ class MngSequence extends Migration
             ],
         ]);
         $this->forge->addKey('prefix', true);
-        $this->forge->createTable('mng_sequence');
+        $this->forge->createTable('MNG_SEQUENCE');
 	}
 
 	public function down()
 	{
-		$this->forge->dropTable('mng_sequence');
+		$this->forge->dropTable('MNG_SEQUENCE');
 	}
 }
