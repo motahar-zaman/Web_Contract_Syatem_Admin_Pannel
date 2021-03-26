@@ -56,7 +56,7 @@ class MstEmployee extends Migration
             ],
         ]);
         $this->forge->addKey('employee_id', true);
-        $this->forge->createTable('mst_employee');
+        $this->forge->createTable('MST_EMPLOYEE');
 	}
 
 	public function down()
