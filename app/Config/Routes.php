@@ -51,3 +51,7 @@ if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php'))
 {
 	require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }
+
+$routes->get('login', 'Authentication\AuthController');
+$routes->post('login', 'Authentication\AuthController::loginAction');
+$routes->get('home', 'Authentication\AuthController::home');
