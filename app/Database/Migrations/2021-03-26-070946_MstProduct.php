@@ -39,7 +39,7 @@ class MstProduct extends Migration
                 'null'   => false,
                 'comment'=> '商品概要 / Product Summary',
             ],
-            'Update_date' => [
+            'update_date' => [
                 'type'   => 'DATETIME',
                 'null'   => false,
                 'comment'=> '更新日 / Update Date',
