@@ -32,7 +32,7 @@ class AuthController extends BaseController{
                     'insertUserId' => $userInfo->insert_user_id
                 );
 
-                Services::session()->set($session_data);
+                session()->set($session_data);
 
                 return redirect()->to("/home");
             }
@@ -60,7 +60,7 @@ class AuthController extends BaseController{
                     'insertUserId' => $userInfo->insert_user_id
                 );
 
-                Services::session()->set($session_data);
+                session()->set($session_data);
 
                 return redirect()->to("/home");
             }
@@ -71,6 +71,11 @@ class AuthController extends BaseController{
         else{
             return redirect()->to('/login');
         }
+    }
+
+    public function logout(){
+        session()->destroy();
+        return redirect()->to('/login');
     }
 
     public function home(){
