@@ -7,8 +7,8 @@
     </head>
     <body>
         <div class="header">
-            <p>WEB契約システム  /  Web Contract System</p>
-            <h1>ログイン  / LogIn</h1>
+            <p>WEB契約システム</p>
+            <h1>ログイン</h1>
             <p class="mini">	[ユーザーID]：[ユーザー名]</p>
         </div>
 
