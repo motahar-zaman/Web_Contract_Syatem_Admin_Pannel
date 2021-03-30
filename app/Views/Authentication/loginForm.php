@@ -9,7 +9,7 @@
         <div class="header">
             <p>WEB契約システム</p>
             <h1>ログイン</h1>
-            <p class="mini">	[ユーザーID]：[ユーザー名]</p>
+            <p class="mini">[ユーザーID]：[ユーザー名]</p>
         </div>
 
         <form class="loginForm" action="/login" method="post">
