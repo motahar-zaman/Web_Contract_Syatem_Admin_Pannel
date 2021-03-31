@@ -4,12 +4,12 @@ namespace App\Controllers\Authentication;
 
 use App\Controllers\BaseController;
 use App\Models\Authentication\AuthModel;
-use CodeIgniter\HTTP\Request;
-use Config\Services;
+use App\Libraries\JwtToken;
 
 class AuthController extends BaseController{
+
     public function index()    {
-        return view("Authentication/loginForm");
+        return view("template/pages/Authentication/loginForm");
     }
 
     public function loginAction(){
@@ -18,6 +18,7 @@ class AuthController extends BaseController{
 
         $user = explode("_",$name);
         $auth = new AuthModel();
+        $jwt = new JwtToken();
 
         if ($user[0] == k1_employee_user_prefix){
             $userInfo = $auth->loginEmployee($name, $password);
@@ -29,12 +30,12 @@ class AuthController extends BaseController{
                     'employeeName' => $userInfo->employee_name,
                     'employeeNameKana' => $userInfo->employee_name_kana,
                     'updateUserId' => $userInfo->update_user_id,
-                    'insertUserId' => $userInfo->insert_user_id
+                    'insertUserId' => $userInfo->insert_user_id,
+                    'time' => date("Y-m-d H:i:s")
                 );
 
-                session()->set($session_data);
-
-                return redirect()->to("/home");
+                //return redirect()->to("/home");
+                return json_encode(["token" => $jwt->generateToken($session_data)]);
             }
             else{
                 return redirect()->to('/login');
@@ -57,12 +58,12 @@ class AuthController extends BaseController{
                     'mailAddress' => $userInfo->mail_address,
                     'typeContractor' => $userInfo->type_contractor,
                     'updateUserId' => $userInfo->update_user_id,
-                    'insertUserId' => $userInfo->insert_user_id
+                    'insertUserId' => $userInfo->insert_user_id,
+                    'time' => date("Y-m-d H:i:s")
                 );
 
-                session()->set($session_data);
-
-                return redirect()->to("/home");
+                return json_encode(["token" => $jwt->generateToken($session_data)]);
+                //return redirect()->to("/home");
             }
             else{
                 return redirect()->to('/login');
@@ -79,6 +80,8 @@ class AuthController extends BaseController{
     }
 
     public function home(){
-        return view('home');
+        $data = getallheaders();
+        $token = $data["token"];
+        return json_encode((new JwtToken())->decodeToken($token));
     }
 }
