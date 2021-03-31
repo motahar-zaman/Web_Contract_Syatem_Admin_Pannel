@@ -67,7 +67,6 @@ span.psw {
     margin-left: 20%;
     margin-right: 20%;
     margin-top: 2%;
-    height: 660px;
 }
 .spanItems1{
     padding-left: 10%;
@@ -183,7 +182,6 @@ tr {
         padding-top: 9%;
 
     }
-
 }
 @media screen and (max-width: 640px) {
     span.psw {
@@ -211,7 +209,6 @@ tr {
         padding-top: 5%;
 
     }
-
 }
 table, th, td {
     border: 1px solid black;
