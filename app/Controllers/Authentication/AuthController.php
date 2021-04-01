@@ -8,8 +8,8 @@ use Firebase\JWT\JWT;
 
 class AuthController extends BaseController{
 
-    public function index()    {
-        return view("template/pages/Authentication/loginForm");
+    public function index(){
+        return view("template/iframe");
     }
 
     public function loginAction(){
