@@ -4,7 +4,7 @@ namespace App\Controllers\Authentication;
 
 use App\Controllers\BaseController;
 use App\Models\Authentication\AuthModel;
-use App\Libraries\JwtToken;
+use Firebase\JWT\JWT;
 
 class AuthController extends BaseController{
 
@@ -18,7 +18,6 @@ class AuthController extends BaseController{
 
         $user = explode("_",$name);
         $auth = new AuthModel();
-        $jwt = new JwtToken();
 
         if ($user[0] == k1_employee_user_prefix){
             $userInfo = $auth->loginEmployee($name, $password);
@@ -31,11 +30,12 @@ class AuthController extends BaseController{
                     'employeeNameKana' => $userInfo->employee_name_kana,
                     'updateUserId' => $userInfo->update_user_id,
                     'insertUserId' => $userInfo->insert_user_id,
-                    'time' => date("Y-m-d H:i:s")
+                    'time' => date("Y-m-d H:i:s"),
+                    'exp' => time()+60
                 );
 
-                //return redirect()->to("/home");
-                return json_encode(["token" => $jwt->generateToken($session_data)]);
+                $token = JWT::encode($session_data, jwt_token_key, jwt_token_algorithm);
+                return json_encode(["token" => $token, "status" => "ok"]);
             }
             else{
                 return redirect()->to('/login');
@@ -59,11 +59,12 @@ class AuthController extends BaseController{
                     'typeContractor' => $userInfo->type_contractor,
                     'updateUserId' => $userInfo->update_user_id,
                     'insertUserId' => $userInfo->insert_user_id,
-                    'time' => date("Y-m-d H:i:s")
+                    'time' => date("Y-m-d H:i:s"),
+                    'exp' => time()+60
                 );
 
-                return json_encode(["token" => $jwt->generateToken($session_data)]);
-                //return redirect()->to("/home");
+                $token = JWT::encode($session_data, jwt_token_key, jwt_token_algorithm);
+                return json_encode(["token" => $token, "status" => "ok"]);
             }
             else{
                 return redirect()->to('/login');
@@ -82,6 +83,6 @@ class AuthController extends BaseController{
     public function home(){
         $data = getallheaders();
         $token = $data["token"];
-        return json_encode((new JwtToken())->decodeToken($token));
+        return json_encode(JWT::decode($token, jwt_token_key, array(jwt_token_algorithm)));
     }
 }
