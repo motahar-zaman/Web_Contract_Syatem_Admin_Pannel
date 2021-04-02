@@ -34,6 +34,7 @@ class AuthController extends BaseController{
                     'exp' => time()+60
                 );
 
+                session()->set($session_data);
                 $token = JWT::encode($session_data, jwt_token_key, jwt_token_algorithm);
                 return json_encode(["token" => $token, "status" => "ok"]);
             }
@@ -63,6 +64,7 @@ class AuthController extends BaseController{
                     'exp' => time()+60
                 );
 
+                session()->set($session_data);
                 $token = JWT::encode($session_data, jwt_token_key, jwt_token_algorithm);
                 return json_encode(["token" => $token, "status" => "ok"]);
             }
