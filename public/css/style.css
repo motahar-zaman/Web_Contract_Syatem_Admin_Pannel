@@ -1,32 +1,31 @@
 .loginFooter{
     text-align: right;
-    margin-top: auto;
     padding-right: 20px;
     box-sizing: border-box;
-    border: 1px solid black;
-    height: 100px;
-}
-.header {
-    font-size: 17px;
-    padding-left: 10px;
-    box-sizing: border-box;
-    border: 1px solid black;
-    height: 120px;
-}
-.mini{
-    text-align: right;
-    margin-top: -3%;
-    margin-right: 10px;
-}
-.footertext{
-    margin-top: 40px;
 }
 .login-box{
-    margin-top: 8%;
+    margin: auto;
+    padding-top: 2%;
+    padding-bottom: 8%;
+    width: 375px !important;
 }
 .menuTable{
     margin:auto;
 }
-.colorWheat{
-    background-color: wheat;
+.bgWheat{
+    background-color: #f5deb3;
+}
+.bgLightSilver{
+    background-color: #f4f6f9;
+}
+.underline {
+    height: 0px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #0A0A0A;
+}
+.button-primary{
+    color: #0e84b5;
+    border-radius: 5%;
+    background-color: #5cb85c;
 }
