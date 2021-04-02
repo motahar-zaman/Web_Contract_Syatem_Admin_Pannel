@@ -15,56 +15,60 @@
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
-  <body class="hold-transition login-page">
-    <div class="header container-fluid">
-      <p>WEB契約システム </p>
-      <h1>ログイン </h1>
-      <p class="mini">[ユーザーID]：[ユーザー名]</p>
-    </div>
-    <div class="login-box">
-      <div class="card">
-        <div class="card-body login-card-body">
-          <p class="login-box-msg"></p>
-          <form action="/login" method="post">
-            <div class="input-group mb-3">
-              <label for="name">ログインID(登録メールアドレス又は、任意のアカウント)</label>
-              <input name = "name" type="text" class="form-control" placeholder="">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-envelope"></span>
+  <body class="bgLightSilver">
+    <div class="container-fluid">
+      <div class="col-md-6 pt-2">
+        <span>WEB契約システム </span>
+        <span><h1 class="mb-0 pt-2">ログイン</h1></span>
+      </div>
+
+      <div class="underline mt-2"></div>
+      <div class="login-box mt-5 mb-5">
+        <div class="card mt-5">
+          <div class="card-body login-card-body">
+            <p class="login-box-msg"></p>
+            <form action="/login" method="post">
+              <div class="input-group mb-3">
+                <label class="mb-0" for="name">ログインID</label>
+                <span class="pb-1">(登録メールアドレス又は、任意のアカウント)</span>
+                <input name = "name" type="text" class="form-control" placeholder="">
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-envelope"></span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="input-group mb-3">
-              <label class="row col-md-12" for="password">パスワード</label>
-              <input type="password" class="form-control" name="password">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-lock"></span>
+              <div class="input-group mb-3">
+                <label class="row col-md-12" for="password">パスワード</label>
+                <input type="password" class="form-control" name="password">
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <span class="fas fa-lock"></span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-4">
-                <button type="submit" class="btn btn-primary btn-block">ログイン</button>
+              <div class="row">
+                <div class="col-4">
+                  <button type="submit" class="btn btn-primary btn-block">ログイン</button>
+                </div>
+                <span class="mt-4 ml-2">
+                  ＩＤとパスワードを忘れてしまった場合<br>下記へお問い合わせください。
+                </span>
+                <span class="mt-4 ml-2">
+                  <small>
+                    WEB契約運営事務局<br>ＴＥＬ03-5909-1178
+                  </small>
+                </span>
               </div>
-              <span class="mt-4 ml-2">
-                ＩＤとパスワードを忘れてしまった場合<br>下記へお問い合わせください。
-              </span>
-              <span class="mt-4 ml-2">
-                <small>
-                  WEB契約運営事務局<br>ＴＥＬ03-5909-1178
-                </small>
-              </span>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
+      <div class="underline"></div>
+      <div class="loginFooter">
+        <p class="pt-3">アクセス日時：<?= date("Y/m/d")?></p>
+      </div>
     </div>
-    <!-- /.login-box -->
-    <footer class="loginFooter container-fluid">
-      <p class="footertext">アクセス日時：<?= date("Y/m/d")?>	</p>
-    </footer>
 
     <!-- jQuery -->
     <script src="../../plugins/jquery/jquery.min.js"></script>
