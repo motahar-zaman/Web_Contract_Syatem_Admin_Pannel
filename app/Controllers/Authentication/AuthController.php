@@ -9,7 +9,17 @@ use Firebase\JWT\JWT;
 class AuthController extends BaseController{
 
     public function index(){
-        return view("template/iframe");
+        if( session() && session()->get('login') ){
+            return view("template/pages/tables/home");
+        }
+        else{
+            return redirect()->to("/login");
+        }
+
+    }
+
+    public function login(){
+        return view("template/pages/examples/login");
     }
 
     public function loginAction(){
@@ -25,8 +35,10 @@ class AuthController extends BaseController{
                 $userInfo = $userInfo[0];
 
                 $session_data = array(
-                    'employeeId' => $userInfo->employee_id,
-                    'employeeName' => $userInfo->employee_name,
+                    'login' => true,
+                    'user' => "employee",
+                    'userId' => $userInfo->employee_id,
+                    'userName' => $userInfo->employee_name,
                     'employeeNameKana' => $userInfo->employee_name_kana,
                     'updateUserId' => $userInfo->update_user_id,
                     'insertUserId' => $userInfo->insert_user_id,
@@ -36,7 +48,8 @@ class AuthController extends BaseController{
 
                 session()->set($session_data);
                 $token = JWT::encode($session_data, jwt_token_key, jwt_token_algorithm);
-                return json_encode(["token" => $token, "status" => "ok"]);
+
+                return redirect()->to('/');
             }
             else{
                 return redirect()->to('/login');
@@ -48,8 +61,10 @@ class AuthController extends BaseController{
                 $userInfo = $userInfo[0];
 
                 $session_data = array(
-                    'contractorId' => $userInfo->contractor_id,
-                    'contractorName' => $userInfo->contractor_name,
+                    'login' => true,
+                    'user' => "contractor",
+                    'userId' => $userInfo->contractor_id,
+                    'userName' => $userInfo->contractor_name,
                     'contractorNameKana' => $userInfo->contractor_name_kana,
                     'zipcode' => $userInfo->zipcode,
                     'address_01' => $userInfo->address_01,
@@ -66,7 +81,8 @@ class AuthController extends BaseController{
 
                 session()->set($session_data);
                 $token = JWT::encode($session_data, jwt_token_key, jwt_token_algorithm);
-                return json_encode(["token" => $token, "status" => "ok"]);
+
+                return redirect()->to('/');
             }
             else{
                 return redirect()->to('/login');
