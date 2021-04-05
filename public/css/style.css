@@ -1,12 +1,5 @@
-.loginFooter{
-    text-align: right;
-    padding-right: 20px;
-    box-sizing: border-box;
-}
 .login-box{
     margin: auto;
-    padding-top: 2%;
-    padding-bottom: 8%;
     width: 375px !important;
 }
 .menuTable{
@@ -14,9 +7,6 @@
 }
 .bgWheat{
     background-color: #f5deb3;
-}
-.bgLightSilver{
-    background-color: #f4f6f9;
 }
 .underline {
     height: 0px;
@@ -26,6 +16,15 @@
 }
 .button-primary{
     color: #0e84b5;
-    border-radius: 5%;
+    border-radius: 10%;
     background-color: #5cb85c;
+}
+.bg-light-sky {
+    background-color: #c5d6f2;
+}
+.bg-light-silver{
+    background-color: #f4f6f9;
+}
+.bg-dark-silver{
+    background-color: #C3C3C3;
 }
