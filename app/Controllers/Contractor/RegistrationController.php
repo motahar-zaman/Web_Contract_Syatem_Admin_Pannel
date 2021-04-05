@@ -7,10 +7,19 @@ use App\Controllers\BaseController;
 class RegistrationController extends BaseController
 {
     public function index(){
-        return view("template/pages/forms/contractor", ["title" => "Contractor Registration"]);
+        if( session() && session()->get('login') ){
+            return view("template/pages/forms/contractor", ["title" => "Contractor Registration"]);
+        }
+        else{
+            return redirect()->to("/login");
+        }
     }
 
     public function registrationAction(){
+        if( session() && session()->get('login') ){
+        }
+        else{
+            return redirect()->to("/login");
+        }
     }
-
 }
