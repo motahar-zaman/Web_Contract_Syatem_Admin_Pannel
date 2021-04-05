@@ -81,7 +81,7 @@
                     </tr>
                     <?php if(session()->get("user") == "employee"){ ?>
                       <tr>
-                        <td><a href="#">仮契約者更新(temp reg)</a></td>
+                        <td><a href="/temp-contractor-registration">仮契約者更新(temp reg)</a></td>
                         <td>契約者の仮登録を行います（社員のみ可能）</td>
                       </tr>
                     <?php }?>
