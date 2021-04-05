@@ -56,5 +56,7 @@ $routes->post('login', 'Authentication\AuthController::loginAction');
 $routes->get('logout', 'Authentication\AuthController::logout');
 $routes->get('home', 'Authentication\AuthController::home');
 
+$routes->get('contractor-registration', 'Contractor\RegistrationController::index');
+$routes->post('contractor-registration', 'Contractor\RegistrationController::registrationAction');
 $routes->get('temp-contractor-registration', 'Contractor\RegistrationController::tempRegistration');
 $routes->post('temp-contractor-registration', 'Contractor\RegistrationController::tempRegistrationAction');
