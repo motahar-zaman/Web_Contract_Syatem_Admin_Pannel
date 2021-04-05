@@ -72,7 +72,7 @@
                       <td>契約者情報の検索を行い、画面表示を行います	</td>
                     </tr>
                     <tr>
-                      <td><a href="#">契約者登録(reg)</a></td>
+                      <td><a href="/contractor-registration">契約者登録(reg)</a></td>
                       <td>契約者者の新規登録を行います	</td>
                     </tr>
                     <tr>
