@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
-  <body class="bgLightSilver">
+  <body class="bg-light-silver">
     <div class="wrapper">
       <div class="container-fluid">
         <div class="col-md-12 row">
@@ -94,7 +94,7 @@
           </div>
         </div>
         <div class="underline"></div>
-        <div class="loginFooter">
+        <div class="text-right pr-5">
           <p class="pt-3">アクセス日時：<?= date("Y/m/d")?>	</p>
         </div>
       </div>

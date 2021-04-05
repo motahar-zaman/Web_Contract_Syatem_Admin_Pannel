@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
-  <body class="bgLightSilver">
+  <body class="bg-light-silver">
     <div class="container-fluid">
       <div class="col-md-6 pt-2">
         <span>WEB契約システム </span>
@@ -23,8 +23,8 @@
       </div>
 
       <div class="underline mt-2"></div>
-      <div class="login-box mt-5 mb-5">
-        <div class="card mt-5">
+      <div class="login-box pt-5 pb-5">
+        <div class="card">
           <div class="card-body login-card-body">
             <p class="login-box-msg"></p>
             <form action="/login" method="post">
@@ -65,7 +65,7 @@
         </div>
       </div>
       <div class="underline"></div>
-      <div class="loginFooter">
+      <div class="text-right pr-5">
         <p class="pt-3">アクセス日時：<?= date("Y/m/d")?></p>
       </div>
     </div>
