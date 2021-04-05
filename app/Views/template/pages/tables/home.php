@@ -26,8 +26,8 @@
             <span class="mt-5">	[<?= session()->get("userId")?>]：[<?= session()->get("userName")?>]</span>
           </div>
         </div>
+        <div class="underline mt-2"></div>
         <div class="row">
-          <div class="underline mt-2"></div>
           <div class="menuTable col-5 mt-5 mb-5">
             <div class="card">
               <div class="card-body table-responsive p-0">
