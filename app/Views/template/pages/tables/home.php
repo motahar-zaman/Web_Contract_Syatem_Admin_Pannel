@@ -34,49 +34,57 @@
                 <table class="table table-hover text-nowrap">
                   <thead>
                   <tr class="bgWheat">
-                    <th>契約機能</th>
+                    <th>契約機能(contract)</th>
                     <th></th>
                   </tr>
                   </thead>
                   <tbody>
                   <tr>
-                    <td><a href="#">契約検索</a></td>
+                    <td><a href="#">契約検索(search)</a></td>
                     <td>契約情報の検索を行い、画面表示を行います
                   </tr>
-                  <tr>
-                    <td><a href="#">契約登録</a></td>
-                    <td>契約者の新規登録を行います</td>
-                  </tr>
-                  <tr>
-                    <td><a href="#">契約更新</a></td>
-                    <td>契約者の既存契約更新を行います</td>
-                  </tr>
-                  <tr>
-                    <td><a href="#">仮契約登録</a></td>
-                    <td>契約者の仮登録を行います（社員のみ可能）</td>
-                  </tr>
+                  <?php if(session()->get("user") == "employee"){ ?>
+                    <tr>
+                      <td><a href="#">契約登録(reg)</a></td>
+                      <td>契約者の新規登録を行います</td>
+                    </tr>
+                    <tr>
+                      <td><a href="#">契約更新(update)</a></td>
+                      <td>契約者の既存契約更新を行います</td>
+                    </tr>
+                    <tr>
+                      <td><a href="#">仮契約登録(temp reg)</a></td>
+                      <td>契約者の仮登録を行います（社員のみ可能）</td>
+                    </tr>
+                  <?php }?>
                   </tbody>
                 </table>
                 <table class="table table-hover text-nowrap">
                   <thead>
-                  <tr class="bgWheat">
-                    <th>契約者機能</th>
-                    <th></th>
-                  </tr>
+                    <tr class="bgWheat">
+                      <th>契約者機能(contractor)</th>
+                      <th></th>
+                    </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td><a href="#">契約者検索</a></td>
-                    <td>契約者情報の検索を行い、画面表示を行います	</td>
-                  </tr>
-                  <tr>
-                    <td><a href="#">契約者登録</a></td>
-                    <td>契約者者の新規登録を行います	</td>
-                  </tr>
-                  <tr>
-                    <td><a href="#">契約者更新</a></td>
-                    <td>契約者者の既存契約者更新を行います		</td>
-                  </tr>
+                    <tr>
+                      <td><a href="#">契約者検索(search)</a></td>
+                      <td>契約者情報の検索を行い、画面表示を行います	</td>
+                    </tr>
+                    <tr>
+                      <td><a href="#">契約者登録(reg)</a></td>
+                      <td>契約者者の新規登録を行います	</td>
+                    </tr>
+                    <tr>
+                      <td><a href="#">契約者更新(update)</a></td>
+                      <td>契約者者の既存契約者更新を行います		</td>
+                    </tr>
+                    <?php if(session()->get("user") == "employee"){ ?>
+                      <tr>
+                        <td><a href="#">仮契約者更新(temp reg)</a></td>
+                        <td>契約者の仮登録を行います（社員のみ可能）</td>
+                      </tr>
+                    <?php }?>
                   </tbody>
                 </table>
               </div>
