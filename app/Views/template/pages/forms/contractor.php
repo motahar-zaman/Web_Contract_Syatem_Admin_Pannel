@@ -15,77 +15,187 @@
   </head>
 
   <body class="hold-transition sidebar-mini">
-    <div class="wrapper">
-      <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-          <div class="container-fluid">
-            <div class="row mb-2">
-              <div class="col-sm-6">
-                <h1>Validation</h1>
-              </div>
-              <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active">Validation</li>
-                </ol>
-              </div>
-            </div>
-          </div><!-- /.container-fluid -->
-        </section>
-
-        <!-- Main content -->
-        <section class="content">
-          <div class="container-fluid">
-            <div class="row">
-              <!-- left column -->
-              <div class="col-md-12">
-                <!-- jquery validation -->
-                <div class="card card-primary">
-                  <div class="card-header">
-                    <h3 class="card-title">Quick Example <small>jQuery Validation</small></h3>
-                  </div>
-                  <!-- /.card-header -->
-                  <!-- form start -->
-                  <form id="quickForm">
-                    <div class="card-body">
-                      <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                      </div>
-                      <div class="form-group mb-0">
-                        <div class="custom-control custom-checkbox">
-                          <input type="checkbox" name="terms" class="custom-control-input" id="exampleCheck1">
-                          <label class="custom-control-label" for="exampleCheck1">I agree to the <a href="#">terms of service</a>.</label>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                      <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                  </form>
-                </div>
-                <!-- /.card -->
-              </div>
-              <!--/.col (left) -->
-              <!-- right column -->
-              <div class="col-md-6">
-
-              </div>
-              <!--/.col (right) -->
-            </div>
-            <!-- /.row -->
-          </div><!-- /.container-fluid -->
-        </section>
-        <!-- /.content -->
+    <div class="container-fluid">
+    <div class="row">
+      <div class="row col-md-12 pt-2 pl-4">
+        <span class="pl-2">WEB契約システム</span>
+      </div>
+      <div class="row col-md-12">
+        <div class="col-md-6">
+          <h1 class="mb-0 pt-2 pl-5">仮契約者情報登録</h1>
+        </div>
+        <div class="col-md-6 text-right pt-4 pr-5">
+            <span>
+              [<?= session()->get("userId")?>]：[<?= session()->get("userName")?>]
+            </span>
+        </div>
       </div>
     </div>
-    <!-- ./wrapper -->
+    <div class="underline mt-2"></div>
+    <div class="row pt-5">
+      <div class="col-md-6 pl-5">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">【契約者情報】</h3>
+          </div>
+          <div class="card-body">
+            <table class="table table-bordered">
+              <tbody>
+              <tr class="row ml-0">
+                <td class="col-2 bg-light-sky">契約者ID</td>
+                <td class="col-4"></td>
+                <td class="col-2 bg-dark-silver">契約者選択</td>
+                <td class="col-4"></td>
+              </tr>
+              <tr class="row ml-0">
+                <td class="col-2 bg-light-sky">契約者名</td>
+                <td class="col-4"></td>
+                <td class="col-2 bg-light-sky">契約者名カナ</td>
+                <td class="col-4"></td>
+              </tr>
+              <tr class="row ml-0">
+                <td class="col-2 bg-light-sky">郵便番号 </td>
+                <td class="col-4"></td>
+                <td class="col-2 bg-dark-silver">住所検索</td>
+              </tr>
+              <tr class="row ml-0">
+                <td class="col-2 bg-light-sky">住所１</td>
+                <td class="col-10"></td>
+              </tr>
+              <tr class="row ml-0">
+                <td class="col-2 bg-light-sky">住所２</td>
+                <td class="col-10"></td>
+              </tr>
+              <tr class="row ml-0">
+                <td class="col-2 bg-light-sky">電話番号</td>
+                <td class="col-10"></td>
+              </tr>
+              <tr class="row ml-0">
+                <td class="col-2 bg-light-sky">メールアドレス</td>
+                <td class="col-10"></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row pt-5">
+      <div class="col-md-6 pl-5">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">【契約者会社情報】</h3>
+          </div>
+          <div class="card-body">
+            <table class="table table-bordered">
+              <tbody>
+              <tr class="row ml-0">
+                <td class="col-2 bg-light-sky">会社ID</td>
+                <td class="col-4"></td>
+                <td class="col-2 bg-dark-silver">会社選択 </td>
+              </tr>
+              <tr class="row ml-0">
+                <td class="col-2 bg-light-sky">会社名</td>
+                <td class="col-4"></td>
+                <td class="col-2 bg-light-sky">会社名カナ</td>
+                <td class="col-4"></td>
+              </tr>
+              <tr class="row ml-0">
+                <td class="col-2 bg-light-sky">代表者名</td>
+                <td class="col-4"></td>
+                <td class="col-2 bg-light-sky">代表者名</td>
+                <td class="col-4"></td>
+              </tr>
+              <tr class="row ml-0">
+                <td class="col-2 bg-light-sky">郵便番号</td>
+                <td class="col-4"></td>
+                <td class="col-2 bg-dark-silver">住所検索 </td>
+              </tr>
+              <tr class="row ml-0">
+                <td class="col-2 bg-light-sky">住所１</td>
+                <td class="col-10"></td>
+              </tr>
+              <tr class="row ml-0">
+                <td class="col-2 bg-light-sky">住所２</td>
+                <td class="col-10"></td>
+              </tr>
+              <tr class="row ml-0">
+                <td class="col-2 bg-light-sky">電話番号</td>
+                <td class="col-10"></td>
+              </tr>
+              <tr class="row ml-0">
+                <td class="col-2 bg-light-sky">メールアドレス</td>
+                <td class="col-10"></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row pt-5">
+      <div class="col-md-6 pl-5">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">【グループ情報】</h3>
+          </div>
+          <div class="card-body">
+            <table class="table table-bordered">
+              <tbody>
+              <tr class="row ml-0">
+                <td class="col-2 bg-light-sky">グループID</td>
+                <td class="col-4"></td>
+                <td class="col-2 bg-dark-silver">グループ選択</td>
+              </tr>
+              <tr class="row ml-0">
+                <td class="col-2 bg-light-sky">グループ選択</td>
+                <td class="col-4"></td>
+                <td class="col-2 bg-light-sky">グループ名カナ </td>
+                <td class="col-4"></td>
+              </tr>
+              <tr class="row ml-0">
+                <td class="col-2 bg-light-sky">代表者名</td>
+                <td class="col-4"></td>
+                <td class="col-2 bg-light-sky">代表者名カナ </td>
+                <td class="col-4"></td>
+              </tr>
+              <tr class="row ml-0">
+                <td class="col-2 bg-light-sky">郵便番号</td>
+                <td class="col-4"></td>
+                <td class="col-2 bg-dark-silver">住所検索 </td>
+              </tr>
+              <tr class="row ml-0">
+                <td class="col-2 bg-light-sky">住所１</td>
+                <td class="col-10"></td>
+              </tr>
+              <tr class="row ml-0">
+                <td class="col-2 bg-light-sky">住所２</td>
+                <td class="col-10"></td>
+              </tr>
+              <tr class="row ml-0">
+                <td class="col-2 bg-light-sky">電話番号</td>
+                <td class="col-10"></td>
+              </tr>
+              <tr class="row ml-0">
+                <td class="col-2 bg-light-sky">メールアドレス</td>
+                <td class="col-10"></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="underline"></div>
+    <div class="row pt-3 pb-3">
+      <div class="col-md-6 text-left pl-5">
+        <button class="button-primary pl-3 pr-3 text-bold">登録</button>
+      </div>
+      <div class="col-md-6 text-right pr-5">
+        <span>アクセス日時：<?= date("Y/m/d")?>	</span>
+      </div>
+    </div>
+  </div>
 
     <!-- jQuery -->
     <script src="../../plugins/jquery/jquery.min.js"></script>
