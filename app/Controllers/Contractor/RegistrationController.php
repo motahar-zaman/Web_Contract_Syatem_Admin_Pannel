@@ -8,7 +8,7 @@ class RegistrationController extends BaseController
 {
     public function index(){
         if( session() && session()->get('login') ){
-            return view("template/pages/forms/temp_contractor", ["title" => "Temporary Contractor Registration"]);
+            return view("template/pages/forms/contractor", ["title" => "Contractor Registration"]);
         }
         else{
             return redirect()->to("/login");
@@ -25,7 +25,7 @@ class RegistrationController extends BaseController
 
     public function tempRegistration(){
         if( session() && session()->get('login') && session()->get('user') == "employee" ){
-            return view("template/pages/forms/contractor", ["title" => "Contractor Registration"]);
+            return view("template/pages/forms/temp_contractor", ["title" => "Temporary Contractor Registration"]);
         }
         else{
             return redirect()->to("/login");
