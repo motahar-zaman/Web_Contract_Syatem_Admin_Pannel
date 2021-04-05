@@ -50,8 +50,12 @@ if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php'))
 {
 	require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }
-$routes->get('/', 'Authentication\AuthController');
+
+$routes->get('/', 'Authentication\AuthController::index');
 $routes->get('login', 'Authentication\AuthController::login');
 $routes->post('login', 'Authentication\AuthController::loginAction');
 $routes->get('logout', 'Authentication\AuthController::logout');
 $routes->get('home', 'Authentication\AuthController::home');
+
+$routes->get('temp-contractor-registration', 'Contractor\RegistrationController::index');
+$routes->post('temp-contractor-registration', 'Contractor\RegistrationController::registrationAction');
