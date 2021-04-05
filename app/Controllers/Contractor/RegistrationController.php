@@ -24,7 +24,7 @@ class RegistrationController extends BaseController
     }
 
     public function tempRegistration(){
-        if( session() && session()->get('login') ){
+        if( session() && session()->get('login') && session()->get('user') == "employee" ){
             return view("template/pages/forms/contractor", ["title" => "Contractor Registration"]);
         }
         else{
@@ -33,7 +33,7 @@ class RegistrationController extends BaseController
     }
 
     public function tempRegistrationAction(){
-        if( session() && session()->get('login') ){
+        if( session() && session()->get('login') && session()->get('user') == "employee" ){
         }
         else{
             return redirect()->to("/login");
