@@ -10,7 +10,7 @@ class AuthController extends BaseController{
 
     public function index(){
         if( session() && session()->get('login') ){
-            return view("template/pages/tables/home");
+            return view("template/pages/tables/home", ["title" => "Home"]);
         }
         else{
             return redirect()->to("/login");
@@ -19,7 +19,7 @@ class AuthController extends BaseController{
     }
 
     public function login(){
-        return view("template/pages/examples/login");
+        return view("template/pages/examples/login", ["title" => "Login"]);
     }
 
     public function loginAction(){
