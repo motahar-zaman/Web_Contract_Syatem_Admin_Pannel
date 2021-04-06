@@ -27,6 +27,12 @@ class MstContractor extends Migration
                 'null'   => false,
                 'comment'=> '契約者名カナ / Contractor Name - Kana',
             ],
+            'password' => [
+                'type'   => 'VARCHAR',
+                'constraint'=> '200',
+                'null'   => false,
+                'comment'=> 'パスワード / password',
+            ],
             'zipcode'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '20',
