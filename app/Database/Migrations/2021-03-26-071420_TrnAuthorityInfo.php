@@ -9,11 +9,11 @@ class TrnAuthorityInfo extends Migration
 	public function up()
 	{
         $this->forge->addField([
-            'employee_id'          => [
+            'account_id'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '20',
                 'null'           => false,
-                'comment'        => '社員ID / Employee ID',
+                'comment'        => '社員ID / Account ID',
             ],
             'authority_id'       => [
                 'type'       => 'VARCHAR',
@@ -43,13 +43,13 @@ class TrnAuthorityInfo extends Migration
                 'null'   => false,
                 'comment'=> '作成者 / Create By',
             ],
-            'item_no' => [
+            'delete_flag' => [
                 'type'   => 'BOOLEAN',
                 'null'   => false,
-                'comment'=> '有効フラグ / Valid Flag',
+                'comment'=> '削除フラグ /  Delete Flag',
             ],
         ]);
-        $this->forge->addKey('employee_id', true);
+        $this->forge->addKey('account_id', true);
         $this->forge->addKey('authority_id', true);
         $this->forge->createTable('TRN_AUTHORITY_INFO');
 	}
