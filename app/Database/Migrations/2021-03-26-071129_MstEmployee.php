@@ -27,6 +27,12 @@ class MstEmployee extends Migration
                 'null'   => false,
                 'comment'=> '社員名カナ / Employee Name Kana',
             ],
+            'password' => [
+                'type'   => 'VARCHAR',
+                'constraint'=> '200',
+                'null'   => false,
+                'comment'=> 'パスワード / password',
+            ],
             'update_date' => [
                 'type'   => 'DATETIME',
                 'null'   => false,
@@ -61,6 +67,6 @@ class MstEmployee extends Migration
 
 	public function down()
 	{
-        $this->forge->dropTable('mst_employee');
+        $this->forge->dropTable('MST_EMPLOYEE');
 	}
 }
