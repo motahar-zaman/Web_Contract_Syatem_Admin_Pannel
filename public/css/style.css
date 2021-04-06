@@ -28,3 +28,13 @@
 .bg-dark-silver{
     background-color: #C3C3C3;
 }
+.contractor-form{
+    width: 1000px;
+}
+input {
+    border: none transparent;
+    outline: none;
+}
+.table td {
+    border: 1px solid #dee2e6 !important;
+}
