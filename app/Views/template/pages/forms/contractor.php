@@ -202,7 +202,7 @@
                 <tr class="row ml-0 mr-0">
                   <td class="col-2 bg-light-sky">代表者名(groupRepresentative)</td>
                   <td class="col-4">
-                    <input name="groupRepresentative" type="text" id="contractorId" value="<?php old('groupRepresentative')?>">
+                    <input name="groupRepresentative" type="text" id="groupRepresentative" value="<?php old('groupRepresentative')?>">
                   </td>
                   <td class="col-2 bg-light-sky">代表者名カナ(groupRepresentativeKana)</td>
                   <td class="col-4">
@@ -314,6 +314,51 @@
           }
         });
       });
+
+      $( document ).ready(function() {
+        console.log("Hii");
+        $("#ContractorRegistration").click(function (){
+          console.log("Hello");
+          var data = {};
+          data["contractorId"] = $("#contractorId").val();
+          data["contractorName"] = $("#contractorName").val();
+          data["contractorKana"] = $("#contractorKana").val();
+          data["contractorPostCode"] = $("#contractorPostCode").val();
+          data["contractorAddress1"] = $("#contractorAddress1").val();
+          data["contractorAddress2"] = $("#contractorAddress2").val();
+          data["contractorPhn"] = $("#contractorPhn").val();
+          data["contractorMail"] = $("#contractorMail").val();
+
+          data["companyId"] = $("#companyId").val();
+          data["companyName"] = $("#companyName").val();
+          data["companyKana"] = $("#companyKana").val();
+          data["companyRepresentative"] = $("#companyRepresentative").val();
+          data["companyRepresentativeKana"] = $("#companyRepresentativeKana").val();
+          data["companyPostCode"] = $("#companyPostCode").val();
+          data["companyAddress1"] = $("#companyAddress1").val();
+          data["companyAddress2"] = $("#companyAddress2").val();
+          data["companyPhn"] = $("#companyPhn").val();
+          data["companyMail"] = $("#companyMail").val();
+
+          data["groupId"] = $("#groupId").val();
+          data["groupName"] = $("#groupName").val();
+          data["groupKana"] = $("#groupKana").val();
+          data["groupRepresentative"] = $("#groupRepresentative").val();
+          data["groupRepresentativeKana"] = $("#groupRepresentativeKana").val();
+          data["groupPostCode"] = $("#groupPostCode").val();
+          data["groupAddress1"] = $("#groupAddress1").val();
+          data["groupAddress2"] = $("#groupAddress2").val();
+          data["groupPhn"] = $("#groupPhn").val();
+          data["groupMail"] = $("#groupMail").val();
+
+          for(let i = 0; i < data.length; i++){
+            Object.entries(data[i]).forEach(([key, value]) => {
+              console.log(key + ": " + value );
+            })
+          }
+        });
+      });
+
     </script>
   </body>
 </html>
