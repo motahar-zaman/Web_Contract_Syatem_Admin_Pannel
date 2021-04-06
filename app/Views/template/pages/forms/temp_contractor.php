@@ -55,24 +55,24 @@
                 <tr class="row ml-0 mr-0">
                   <td class="col-2 bg-light-sky">契約者名(contractorName)</td>
                   <td class="col-4">
-                    <input name="contractorName" type="text" id="contractorName" value="<?php old('contractorName')?>">
+                    <input name="contractorName" type="text" id="contractorName" value="<?php old('contractorName')?>" required>
                   </td>
                   <td class="col-2 bg-light-sky">契約者名カナ(contractorKana)</td>
                   <td class="col-4">
-                    <input name="contractorKana" type="text" id="contractorKana" value="<?php old('contractorKana')?>">
+                    <input name="contractorKana" type="text" id="contractorKana" value="<?php old('contractorKana')?>"required>
                   </td>
                 </tr>
                 <tr class="row ml-0 mr-0">
                   <td class="col-2 bg-light-sky">郵便番号(contractorPostCode)</td>
                   <td class="col-4">
-                    <input name="contractorPostCode" type="text" id="contractorPostCode" value="<?php old('contractorPostCode')?>">
+                    <input name="contractorPostCode" type="text" id="contractorPostCode" value="<?php old('contractorPostCode')?>" required>
                   </td>
                   <td id="contractorAddressSearch" class="col-2 bg-dark-silver">住所検索(contractorAddressSearch)</td>
                 </tr>
                 <tr class="row ml-0 mr-0">
                   <td class="col-2 bg-light-sky">住所１(contractorAddress1)</td>
                   <td class="col-10">
-                    <input name="contractorAddress1" type="text" id="contractorAddress1" value="<?php old('contractorAddress1')?>">
+                    <input name="contractorAddress1" type="text" id="contractorAddress1" value="<?php old('contractorAddress1')?>" required>
                   </td>
                 </tr>
                 <tr class="row ml-0 mr-0">
@@ -84,7 +84,7 @@
                 <tr class="row ml-0 mr-0">
                   <td class="col-2 bg-light-sky">電話番号(contractorPhn)</td>
                   <td class="col-10">
-                    <input name="contractorPhn" type="text" id="contractorPhn" value="<?php old('contractorPhn')?>">
+                    <input name="contractorPhn" type="text" id="contractorPhn" value="<?php old('contractorPhn')?>" required>
                   </td>
                 </tr>
                 <tr class="row ml-0 mr-0">
@@ -246,7 +246,7 @@
         </div>
       </div>
       <div class="underline"></div>
-      <div class="row pt-3 pb-3">
+      <div class="row pt-3 pb-3 pl-5">
         <div class="col-md-6 text-left pl-5">
           <button class="button-primary pl-3 pr-3 text-bold">登録</button>
         </div>
@@ -272,7 +272,7 @@
       $(function () {
         $.validator.setDefaults({
           submitHandler: function () {
-            alert( "Form successful submitted!" );
+            alert( "Form successfully submitted!" );
           }
         });
         $('#quickForm').validate({
