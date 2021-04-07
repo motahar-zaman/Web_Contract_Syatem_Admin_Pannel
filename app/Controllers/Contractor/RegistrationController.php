@@ -5,6 +5,7 @@ namespace App\Controllers\Contractor;
 use App\Controllers\BaseController;
 use App\Models\Contractor\Company;
 use App\Models\Contractor\Contractor;
+use App\Models\Contractor\Group;
 use App\Models\Contractor\RegistrationModel;
 
 class RegistrationController extends BaseController
@@ -23,6 +24,7 @@ class RegistrationController extends BaseController
             $register = new RegistrationModel();
             $contractor = new Contractor();
             $company = new Company();
+            $group = new Group();
 
             $contractor->setId($_POST['contractorId']);
             $contractor->setName($_POST['contractorName']);
@@ -56,8 +58,25 @@ class RegistrationController extends BaseController
             $company->setInsertUserId(session()->get('userId'));
             $company->setDeleteFlag(0);
 
+            $group->setId($_POST["groupId"]);
+            $group->setName($_POST["groupName"]);
+            $group->setNameKana($_POST["groupKana"]);
+            $group->setRepresentative($_POST["groupRepresentative"]);
+            $group->setRepresentativeKana($_POST["groupRepresentativeKana"]);
+            $group->setZipCode($_POST["groupPostCode"]);
+            $group->setAddress01($_POST["groupAddress1"]);
+            $group->setAddress02($_POST["groupAddress2"]);
+            $group->setTelNo($_POST["groupPhn"]);
+            $group->setMailAddress($_POST["groupMail"]);
+            $group->setUpdateDate(date("Y-m-d H:i:s"));
+            $group->setUpdateUserId(session()->get('userId'));
+            $group->setInsertDate(date("Y-m-d H:i:s"));
+            $group->setInsertUserId(session()->get('userId'));
+            $group->setDeleteFlag(0);
+
             $register->storeContractorData($contractor);
             $register->storeCompanyData($company);
+            $register->storeGroupData($group);
 
             return json_encode(['msg' => "Successful", 'status' => 1]);
         }
