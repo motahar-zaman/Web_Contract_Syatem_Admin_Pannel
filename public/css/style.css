@@ -38,3 +38,8 @@ input {
 .table td {
     border: 1px solid #dee2e6 !important;
 }
+.errormsg {
+    color: red;
+    background-color: yellow;
+    display: none;
+}
