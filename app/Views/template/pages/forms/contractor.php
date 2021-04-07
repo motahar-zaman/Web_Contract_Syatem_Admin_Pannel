@@ -45,11 +45,7 @@
                   <td class="col-2 bg-light-sky">契約者ID(contractorId)</td>
                   <td class="col-4">
                     <input name="contractorId" type="text" id="contractorId" value="<?php old('contractorId')?>abcd" readonly>
-                    <?php /*if ($errors->has('first_name')) { */?><!--
-                      <span class="help-block text-danger">
-                        <strong>{{ $errors->first('first_name') }}</strong>
-                      </span>
-                    --><?php /*} */?>
+                    <span class="errormsg" id="contractorNameError"></span>
                   </td>
                   <td id="contractorSelect" class="col-2 bg-dark-silver">契約者選択(contractorSelect)</td>
                 </tr>
@@ -57,16 +53,19 @@
                   <td class="col-2 bg-light-sky">契約者名(contractorName)</td>
                   <td class="col-4">
                     <input name="contractorName" type="text" id="contractorName" value="<?php old('contractorName')?>" required>
+                    <span class="errormsg" id="contractorNameError"></span>
                   </td>
                   <td class="col-2 bg-light-sky">契約者名カナ(contractorKana)</td>
                   <td class="col-4">
                     <input name="contractorKana" type="text" id="contractorKana" value="<?php old('contractorKana')?>" required>
+                    <span class="errormsg" id="contractorNameError"></span>
                   </td>
                 </tr>
                 <tr class="row ml-0 mr-0">
                   <td class="col-2 bg-light-sky">郵便番号(contractorPostCode)</td>
                   <td class="col-4">
                     <input name="contractorPostCode" type="text" id="contractorPostCode" value="<?php old('contractorPostCode')?>" required>
+                    <span class="errormsg" id="contractorNameError"></span>
                   </td>
                   <td id="contractorAddressSearch" class="col-2 bg-dark-silver">住所検索(contractorAddressSearch)</td>
                 </tr>
@@ -74,24 +73,28 @@
                   <td class="col-2 bg-light-sky">住所１(contractorAddress1)</td>
                   <td class="col-10">
                     <input name="contractorAddress1" type="text" id="contractorAddress1" value="<?php old('contractorAddress1')?>" required>
+                    <span class="errormsg" id="contractorNameError"></span>
                   </td>
                 </tr>
                 <tr class="row ml-0 mr-0">
                   <td class="col-2 bg-light-sky">住所２(contractorAddress2)</td>
                   <td class="col-10">
                     <input name="contractorAddress2" type="text" id="contractorAddress2" value="<?php old('contractorAddress2')?>">
+                    <span class="errormsg" id="contractorNameError"></span>
                   </td>
                 </tr>
                 <tr class="row ml-0 mr-0">
                   <td class="col-2 bg-light-sky">電話番号(contractorPhn)</td>
                   <td class="col-10">
                     <input name="contractorPhn" type="text" id="contractorPhn" value="<?php old('contractorPhn')?>" required>
+                    <span class="errormsg" id="contractorNameError"></span>
                   </td>
                 </tr>
                 <tr class="row ml-0 mr-0">
                   <td class="col-2 bg-light-sky">メールアドレス(contractorMail)</td>
                   <td class="col-10">
                     <input name="contractorMail" type="text" id="contractorMail" value="<?php old('contractorMail')?>">
+                    <span class="errormsg" id="contractorNameError"></span>
                   </td>
                 </tr>
               </tbody>
@@ -113,6 +116,7 @@
                   <td class="col-2 bg-light-sky">会社ID(companyId)</td>
                   <td class="col-4">
                     <input name="companyId" type="text" id="companyId" value="<?php old('companyId')?>">
+                    <span class="errormsg" id="contractorNameError"></span>
                   </td>
                   <td id="companySelect" class="col-2 bg-dark-silver">会社選択(companySelect)</td>
                 </tr>
@@ -120,26 +124,31 @@
                   <td class="col-2 bg-light-sky">会社名(companyName)</td>
                   <td class="col-4">
                     <input name="companyName" type="text" id="companyName" value="<?php old('companyName')?>">
+                    <span class="errormsg" id="contractorNameError"></span>
                   </td>
                   <td class="col-2 bg-light-sky">会社名カナ(companyKana)</td>
                   <td class="col-4">
                     <input name="companyKana" type="text" id="companyKana" value="<?php old('companyKana')?>">
+                    <span class="errormsg" id="contractorNameError"></span>
                   </td>
                 </tr>
                 <tr class="row ml-0 mr-0">
                   <td class="col-2 bg-light-sky">代表者名(companyRepresentative)</td>
                   <td class="col-4">
                     <input name="companyRepresentative" type="text" id="companyRepresentative" value="<?php old('companyRepresentative')?>">
+                    <span class="errormsg" id="contractorNameError"></span>
                   </td>
                   <td class="col-2 bg-light-sky">代表者名(companyRepresentativeKana)</td>
                   <td class="col-4">
                     <input name="companyRepresentativeKana" type="text" id="companyRepresentativeKana" value="<?php old('companyRepresentativeKana')?>">
+                    <span class="errormsg" id="contractorNameError"></span>
                   </td>
                 </tr>
                 <tr class="row ml-0 mr-0">
                   <td class="col-2 bg-light-sky">郵便番号(companyPostCode)</td>
                   <td class="col-4">
                     <input name="companyPostCode" type="text" id="companyPostCode" value="<?php old('companyPostCode')?>">
+                    <span class="errormsg" id="contractorNameError"></span>
                   </td>
                   <td id="companyAddressSearch" class="col-2 bg-dark-silver">住所検索(companyAddressSearch)</td>
                 </tr>
@@ -147,24 +156,28 @@
                   <td class="col-2 bg-light-sky">住所１(companyAddress1)</td>
                   <td class="col-10">
                     <input name="companyAddress1" type="text" id="companyAddress1" value="<?php old('companyAddress1')?>">
+                    <span class="errormsg" id="contractorNameError"></span>
                   </td>
                 </tr>
                 <tr class="row ml-0 mr-0">
                   <td class="col-2 bg-light-sky">住所２(companyAddress2)</td>
                   <td class="col-10">
                     <input name="companyAddress2" type="text" id="companyAddress2" value="<?php old('companyAddress2')?>">
+                    <span class="errormsg" id="contractorNameError"></span>
                   </td>
                 </tr>
                 <tr class="row ml-0 mr-0">
                   <td class="col-2 bg-light-sky">電話番号(companyPhn)</td>
                   <td class="col-10">
                     <input name="companyPhn" type="text" id="companyPhn" value="<?php old('companyPhn')?>">
+                    <span class="errormsg" id="contractorNameError"></span>
                   </td>
                 </tr>
                 <tr class="row ml-0 mr-0">
                   <td class="col-2 bg-light-sky">メールアドレス(companyMail)</td>
                   <td class="col-10">
                     <input name="companyMail" type="text" id="companyMail" value="<?php old('companyMail')?>">
+                    <span class="errormsg" id="contractorNameError"></span>
                   </td>
                 </tr>
               </tbody>
@@ -186,6 +199,7 @@
                   <td class="col-2 bg-light-sky">グループID(groupId)</td>
                   <td class="col-4">
                     <input name="groupId" type="text" id="groupId" value="<?php old('groupId')?>">
+                    <span class="errormsg" id="contractorNameError"></span>
                   </td>
                   <td id="groupSelect" class="col-2 bg-dark-silver">グループ選択(groupSelect)</td>
                 </tr>
@@ -193,26 +207,31 @@
                   <td class="col-2 bg-light-sky">グループ選択(groupName)</td>
                   <td class="col-4">
                     <input name="groupName" type="text" id="groupName" value="<?php old('groupName')?>">
+                    <span class="errormsg" id="contractorNameError"></span>
                   </td>
                   <td class="col-2 bg-light-sky">グループ名カナ(groupKana)</td>
                   <td class="col-4">
                     <input name="groupKana" type="text" id="groupKana" value="<?php old('groupKana')?>">
+                    <span class="errormsg" id="contractorNameError"></span>
                   </td>
                 </tr>
                 <tr class="row ml-0 mr-0">
                   <td class="col-2 bg-light-sky">代表者名(groupRepresentative)</td>
                   <td class="col-4">
                     <input name="groupRepresentative" type="text" id="groupRepresentative" value="<?php old('groupRepresentative')?>">
+                    <span class="errormsg" id="contractorNameError"></span>
                   </td>
                   <td class="col-2 bg-light-sky">代表者名カナ(groupRepresentativeKana)</td>
                   <td class="col-4">
                     <input name="groupRepresentativeKana" type="text" id="groupRepresentativeKana" value="<?php old('groupRepresentativeKana')?>">
+                    <span class="errormsg" id="contractorNameError"></span>
                   </td>
                 </tr>
                 <tr class="row ml-0 mr-0">
                   <td class="col-2 bg-light-sky">郵便番号(groupPostCode)</td>
                   <td class="col-4">
                     <input name="groupPostCode" type="text" id="groupPostCode" value="<?php old('groupPostCode')?>">
+                    <span class="errormsg" id="contractorNameError"></span>
                   </td>
                   <td id="groupAddressSearch" class="col-2 bg-dark-silver">住所検索(groupAddressSearch)</td>
                 </tr>
@@ -220,24 +239,28 @@
                   <td class="col-2 bg-light-sky">住所１(groupAddress1)</td>
                   <td class="col-10">
                     <input name="groupAddress1" type="text" id="groupAddress1" value="<?php old('groupAddress1')?>">
+                    <span class="errormsg" id="contractorNameError"></span>
                   </td>
                 </tr>
                 <tr class="row ml-0 mr-0">
                   <td class="col-2 bg-light-sky">住所２(groupAddress2)</td>
                   <td class="col-10">
                     <input name="groupAddress2" type="text" id="groupAddress2" value="<?php old('groupAddress2')?>">
+                    <span class="errormsg" id="contractorNameError"></span>
                   </td>
                 </tr>
                 <tr class="row ml-0 mr-0">
                   <td class="col-2 bg-light-sky">電話番号(groupPhn)</td>
                   <td class="col-10">
                     <input name="groupPhn" type="text" id="groupPhn" value="<?php old('groupPhn')?>">
+                    <span class="errormsg" id="contractorNameError"></span>
                   </td>
                 </tr>
                 <tr class="row ml-0 mr-0">
                   <td class="col-2 bg-light-sky">メールアドレス(groupMail)</td>
                   <td class="col-10">
                     <input name="groupMail" type="text" id="groupMail" value="<?php old('groupMail')?>">
+                    <span class="errormsg" id="contractorNameError"></span>
                   </td>
                 </tr>
               </tbody>
