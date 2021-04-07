@@ -6,6 +6,7 @@ class Contractor{
     private $id;
     private $name;
     private $nameKana;
+    private $password;
     private $zipCode;
     private $address_01;
     private $address_02;
@@ -65,6 +66,22 @@ class Contractor{
     public function setNameKana($nameKana): void
     {
         $this->nameKana = $nameKana;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param mixed $password
+     */
+    public function setPassword($password): void
+    {
+        $this->password = $password;
     }
 
     /**
