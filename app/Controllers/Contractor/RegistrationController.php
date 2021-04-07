@@ -3,6 +3,7 @@
 namespace App\Controllers\Contractor;
 
 use App\Controllers\BaseController;
+use App\Models\Contractor\Company;
 use App\Models\Contractor\Contractor;
 use App\Models\Contractor\RegistrationModel;
 
@@ -19,10 +20,14 @@ class RegistrationController extends BaseController
 
     public function registrationAction(){
         if( session() && session()->get('login') ){
+            $register = new RegistrationModel();
             $contractor = new Contractor();
+            $company = new Company();
+
             $contractor->setId($_POST['contractorId']);
             $contractor->setName($_POST['contractorName']);
             $contractor->setNameKana($_POST['contractorKana']);
+            $contractor->setPassword("abCde");              //set a default password
             $contractor->setZipCode($_POST['contractorPostCode']);
             $contractor->setAddress01($_POST['contractorAddress1']);
             $contractor->setAddress02($_POST['contractorAddress2']);
@@ -35,42 +40,26 @@ class RegistrationController extends BaseController
             $contractor->setInsertUserId(session()->get('userId'));
             $contractor->setDeleteFlag(0);
 
-            $companyId = $_POST["companyId"];
-            $companyName = $_POST["companyName"];
-            $companyKana = $_POST["companyKana"];
-            $companyRepresentative = $_POST["companyRepresentative"];
-            $companyRepresentativeKana = $_POST["companyRepresentativeKana"];
-            $companyPostCode = $_POST["companyPostCode"];
-            $companyAddress1 = $_POST["companyAddress1"];
-            $companyAddress2 = $_POST["companyAddress2"];
-            $companyPhn = $_POST["companyPhn"];
-            $companyMail = $_POST["companyMail"];
+            $company->setId($_POST["companyId"]);
+            $company->setName($_POST["companyName"]);
+            $company->setNameKana($_POST["companyKana"]);
+            $company->setRepresentative($_POST["companyRepresentative"]);
+            $company->setRepresentativeKana($_POST["companyRepresentativeKana"]);
+            $company->setZipCode($_POST["companyPostCode"]);
+            $company->setAddress01($_POST["companyAddress1"]);
+            $company->setAddress02($_POST["companyAddress2"]);
+            $company->setTelNo($_POST["companyPhn"]);
+            $company->setMailAddress($_POST["companyMail"]);
+            $company->setUpdateDate(date("Y-m-d H:i:s"));
+            $company->setUpdateUserId(session()->get('userId'));
+            $company->setInsertDate(date("Y-m-d H:i:s"));
+            $company->setInsertUserId(session()->get('userId'));
+            $company->setDeleteFlag(0);
 
-            $groupId = $_POST["groupId"];
-            $groupName = $_POST["groupName"];
-            $groupKana = $_POST["groupKana"];
-            $groupRepresentative = $_POST["groupRepresentative"];
-            $groupRepresentativeKana = $_POST["groupRepresentativeKana"];
-            $groupPostCode = $_POST["groupPostCode"];
-            $groupAddress1 = $_POST["groupAddress1"];
-            $groupAddress2 = $_POST["groupAddress2"];
-            $groupPhn = $_POST["groupPhn"];
-            $groupMail = $_POST["groupMail"];
-
-            (new RegistrationModel())->storeContractorData($contractor);
+            $register->storeContractorData($contractor);
+            $register->storeCompanyData($company);
 
             return json_encode(['msg' => "Successful", 'status' => 1]);
-
-            /*return json_encode([
-                'contractorId' => $contractor->getId(),
-                'contractorName' => $contractor->getName(),
-                'contractorKana' => $contractor->getNameKana(),
-                'contractorPostCode' => $contractor->getZipCode(),
-                'contractorAddress1' => $contractor->getAddress01(),
-                'contractorAddress2' => $contractor->getAddress02(),
-                'contractorPhn' => $contractor->getTelNo(),
-                'contractorMail' => $contractor->getMailAddress()
-            ]);*/
         }
         else{
             return redirect()->to("/login");
