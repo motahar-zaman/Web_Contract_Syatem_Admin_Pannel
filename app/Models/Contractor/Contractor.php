@@ -3,16 +3,16 @@
 namespace App\Models\Contractor;
 
 class Contractor{
-    private $contractorId;
-    private $contractorName;
-    private $contractorNameKana;
-    private $zipcode;
+    private $id;
+    private $name;
+    private $nameKana;
+    private $zipCode;
     private $address_01;
     private $address_02;
     private $telNo;
     private $faxNo;
     private $mailAddress;
-    private $typeContractor;
+    private $type;
     private $updateDate;
     private $updateUserId;
     private $insertDate;
@@ -22,65 +22,65 @@ class Contractor{
     /**
      * @return mixed
      */
-    public function getContractorId()
+    public function getId()
     {
-        return $this->contractorId;
+        return $this->id;
     }
 
     /**
-     * @param mixed $contractorId
+     * @param mixed $id
      */
-    public function setContractorId($contractorId): void
+    public function setId($id): void
     {
-        $this->contractorId = $contractorId;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getContractorName()
-    {
-        return $this->contractorName;
-    }
-
-    /**
-     * @param mixed $contractorName
-     */
-    public function setContractorName($contractorName): void
-    {
-        $this->contractorName = $contractorName;
+        $this->id = $id;
     }
 
     /**
      * @return mixed
      */
-    public function getContractorNameKana()
+    public function getName()
     {
-        return $this->contractorNameKana;
+        return $this->name;
     }
 
     /**
-     * @param mixed $contractorNameKana
+     * @param mixed $name
      */
-    public function setContractorNameKana($contractorNameKana): void
+    public function setName($name): void
     {
-        $this->contractorNameKana = $contractorNameKana;
+        $this->name = $name;
     }
 
     /**
      * @return mixed
      */
-    public function getZipcode()
+    public function getNameKana()
     {
-        return $this->zipcode;
+        return $this->nameKana;
     }
 
     /**
-     * @param mixed $zipcode
+     * @param mixed $nameKana
      */
-    public function setZipcode($zipcode): void
+    public function setNameKana($nameKana): void
     {
-        $this->zipcode = $zipcode;
+        $this->nameKana = $nameKana;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getZipCode()
+    {
+        return $this->zipCode;
+    }
+
+    /**
+     * @param mixed $zipCode
+     */
+    public function setZipCode($zipCode): void
+    {
+        $this->zipCode = $zipCode;
     }
 
     /**
@@ -166,17 +166,17 @@ class Contractor{
     /**
      * @return mixed
      */
-    public function getTypeContractor()
+    public function getType()
     {
-        return $this->typeContractor;
+        return $this->type;
     }
 
     /**
-     * @param mixed $typeContractor
+     * @param mixed $type
      */
-    public function setTypeContractor($typeContractor): void
+    public function setType($type): void
     {
-        $this->typeContractor = $typeContractor;
+        $this->type = $type;
     }
 
     /**
