@@ -39,12 +39,12 @@
             <h3 class="card-title">【契約者情報】</h3>
           </div>
           <div class="card-body">
-            <table class="table">
+            <table class="table" id="contractor-table">
               <tbody>
                 <tr class="row ml-0 mr-0">
                   <td class="col-2 bg-light-sky">契約者ID(contractorId)</td>
                   <td class="col-4">
-                    <input name="contractorId" type="text" id="contractorId" value="<?php old('contractorId')?>abc" readonly>
+                    <input name="contractorId" type="text" id="contractorId" value="<?php old('contractorId')?>abcd" readonly>
                     <?php /*if ($errors->has('first_name')) { */?><!--
                       <span class="help-block text-danger">
                         <strong>{{ $errors->first('first_name') }}</strong>
@@ -107,7 +107,7 @@
             <h3 class="card-title">【契約者会社情報】</h3>
           </div>
           <div class="card-body">
-            <table class="table">
+            <table class="table" id="company-table">
               <tbody>
                 <tr class="row ml-0 mr-0">
                   <td class="col-2 bg-light-sky">会社ID(companyId)</td>
@@ -180,7 +180,7 @@
             <h3 class="card-title">【グループ情報】</h3>
           </div>
           <div class="card-body">
-            <table class="table">
+            <table class="table" id="group-table">
               <tbody>
                 <tr class="row ml-0 mr-0">
                   <td class="col-2 bg-light-sky">グループID(groupId)</td>
@@ -270,55 +270,10 @@
     <script src="../../dist/js/demo.js"></script>
     <!-- Page specific script -->
     <script>
-      $(function () {
-        $.validator.setDefaults({
-          submitHandler: function () {
-            alert( "Form successfully submitted!" );
-          }
-        });
-        $('#quickForm').validate({
-          rules: {
-            email: {
-              required: true,
-              email: true,
-            },
-            password: {
-              required: true,
-              minlength: 5
-            },
-            terms: {
-              required: true
-            },
-          },
-          messages: {
-            email: {
-              required: "Please enter a email address",
-              email: "Please enter a vaild email address"
-            },
-            password: {
-              required: "Please provide a password",
-              minlength: "Your password must be at least 5 characters long"
-            },
-            terms: "Please accept our terms"
-          },
-          errorElement: 'span',
-          errorPlacement: function (error, element) {
-            error.addClass('invalid-feedback');
-            element.closest('.form-group').append(error);
-          },
-          highlight: function (element, errorClass, validClass) {
-            $(element).addClass('is-invalid');
-          },
-          unhighlight: function (element, errorClass, validClass) {
-            $(element).removeClass('is-invalid');
-          }
-        });
-      });
 
       $( document ).ready(function() {
-        console.log("Hii");
-        $("#ContractorRegistration").click(function (){
-          console.log("Hello");
+        var request;
+        $("#ContractorRegistration").click(function (event){
           var data = {};
           data["contractorId"] = $("#contractorId").val();
           data["contractorName"] = $("#contractorName").val();
@@ -351,13 +306,48 @@
           data["groupPhn"] = $("#groupPhn").val();
           data["groupMail"] = $("#groupMail").val();
 
-          for(let i = 0; i < data.length; i++){
-            Object.entries(data[i]).forEach(([key, value]) => {
-              console.log(key + ": " + value );
-            })
+          if(validateData(data)){
+            event.preventDefault();
+            if (request) {
+              request.abort();
+            }
+
+            request = $.ajax({
+              url: "/contractor-registration",
+              type: "POST",
+              data: data,
+              dataType:'JSON',
+
+              success: function(data){
+                console.log(data);
+
+              },
+              error: function (jqXHR, exception){
+                console.log("Error occured");
+              }
+            });
           }
         });
       });
+
+
+      function validateData(data) {
+        let is_valid = true;
+
+        /*if (fullNameCheck.value == "") {
+          document.getElementById("nameerrormsg").style.display = "inline";
+          is_valid = false;
+        }
+        if (addressCheck.value == "") {
+          document.getElementById("addrerrormsg").style.display = "inline";
+          is_valid = false;
+        }
+        if (quantityCheck.value == "") {
+          document.getElementById("qtyerrormsg").style.display = "inline";
+          is_valid = false;
+        }*/
+        return is_valid;
+      }
 
     </script>
   </body>
