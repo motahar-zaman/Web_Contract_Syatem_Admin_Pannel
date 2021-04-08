@@ -314,15 +314,93 @@
         <script src="../../dist/js/demo.js"></script>
         <!-- Page specific script -->
         <script>
-          $(function () {
-            //Initialize Select2 Elements
-            $('.select2').select2()
+            $(function () {
+                //Initialize Select2 Elements
+                $('.select2').select2()
 
-            //Initialize Select2 Elements
-            $('.select2bs4').select2({
-              theme: 'bootstrap4'
+                //Initialize Select2 Elements
+                $('.select2bs4').select2({
+                  theme: 'bootstrap4'
+                })
             })
-          })
+
+            $( document ).ready(function() {
+                var request;
+                $("#ContractorRegistration").click(function (event){
+                    var data = {};
+                    data["contractorId"] = $("#contractorId").val();
+                    data["contractorName"] = $("#contractorName").val();
+                    data["contractorKana"] = $("#contractorKana").val();
+                    data["contractorPostCode"] = $("#contractorPostCode").val();
+                    data["contractorAddress1"] = $("#contractorAddress1").val();
+                    data["contractorAddress2"] = $("#contractorAddress2").val();
+                    data["contractorPhn"] = $("#contractorPhn").val();
+                    data["contractorMail"] = $("#contractorMail").val();
+
+                    data["companyId"] = $("#companyId").val();
+                    data["companyName"] = $("#companyName").val();
+                    data["companyKana"] = $("#companyKana").val();
+                    data["companyRepresentative"] = $("#companyRepresentative").val();
+                    data["companyRepresentativeKana"] = $("#companyRepresentativeKana").val();
+                    data["companyPostCode"] = $("#companyPostCode").val();
+                    data["companyAddress1"] = $("#companyAddress1").val();
+                    data["companyAddress2"] = $("#companyAddress2").val();
+                    data["companyPhn"] = $("#companyPhn").val();
+                    data["companyMail"] = $("#companyMail").val();
+
+                    data["groupId"] = $("#groupId").val();
+                    data["groupName"] = $("#groupName").val();
+                    data["groupKana"] = $("#groupKana").val();
+                    data["groupRepresentative"] = $("#groupRepresentative").val();
+                    data["groupRepresentativeKana"] = $("#groupRepresentativeKana").val();
+                    data["groupPostCode"] = $("#groupPostCode").val();
+                    data["groupAddress1"] = $("#groupAddress1").val();
+                    data["groupAddress2"] = $("#groupAddress2").val();
+                    data["groupPhn"] = $("#groupPhn").val();
+                    data["groupMail"] = $("#groupMail").val();
+
+                    if(validateData(data)){
+                        event.preventDefault();
+                        if (request) {
+                            request.abort();
+                        }
+
+                        request = $.ajax({
+                            url: "/contractor-registration",
+                            type: "POST",
+                            data: data,
+                            dataType:'JSON',
+
+                            success: function(data){
+                                if(data.status === 1){
+                                  window.location.href = "/home";
+                                }
+                            },
+                            error: function (jqXHR, exception){
+                                console.log("Error occured");
+                            }
+                        });
+                    }
+                });
+            });
+
+            function validateData(data) {
+                let is_valid = true;
+
+                /*if (fullNameCheck.value == "") {
+                    document.getElementById("nameerrormsg").style.display = "inline";
+                    is_valid = false;
+                }
+                if (addressCheck.value == "") {
+                    document.getElementById("addrerrormsg").style.display = "inline";
+                    is_valid = false;
+                }
+                if (quantityCheck.value == "") {
+                    document.getElementById("qtyerrormsg").style.display = "inline";
+                    is_valid = false;
+                }*/
+                return is_valid;
+            }
         </script>
     </body>
 </html>
