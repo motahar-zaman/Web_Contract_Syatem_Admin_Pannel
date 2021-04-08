@@ -63,10 +63,9 @@
             </form>
           </div>
         </div>
-      </div>
-      <div class="underline"></div>
-      <div class="text-right pr-5">
-        <p class="pt-3">アクセス日時：<?= date("Y/m/d")?></p>
+        <div class="login-box pr-1 pb-5 text-right">
+          <small>アクセス日時：<?= date("Y/m/d")?></small>
+        </div>
       </div>
     </div>
 
