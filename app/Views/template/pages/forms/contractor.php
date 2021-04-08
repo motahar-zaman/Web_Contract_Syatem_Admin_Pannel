@@ -342,7 +342,9 @@
               dataType:'JSON',
 
               success: function(data){
-                console.log(data);
+                if(data.status === 1){
+                  window.location.href = "/home";
+                }
 
               },
               error: function (jqXHR, exception){
