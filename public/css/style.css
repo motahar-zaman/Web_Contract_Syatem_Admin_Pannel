@@ -31,13 +31,6 @@
 .contractor-form{
     width: 1000px;
 }
-input {
-    border: none transparent;
-    outline: none;
-}
-.table td {
-    border: 1px solid #dee2e6 !important;
-}
 .errormsg {
     color: red;
     background-color: yellow;
