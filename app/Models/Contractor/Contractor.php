@@ -19,6 +19,7 @@ class Contractor{
     private $insertDate;
     private $insertUserId;
     private $deleteFlag;
+    private $temporary;
 
     /**
      * @return mixed
@@ -274,5 +275,21 @@ class Contractor{
     public function setDeleteFlag($deleteFlag): void
     {
         $this->deleteFlag = $deleteFlag;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTemporary()
+    {
+        return $this->temporary;
+    }
+
+    /**
+     * @param mixed $temporary
+     */
+    public function setTemporary($temporary): void
+    {
+        $this->temporary = $temporary;
     }
 }
