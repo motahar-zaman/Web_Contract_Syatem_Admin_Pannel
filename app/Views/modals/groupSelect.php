@@ -10,11 +10,11 @@
             <div class="modal-body">
                 <form>
                     <div class="card-body">
-                        <div class="form-group">
+                        <div class="form-group col-md-4 pl-0">
                             <label for="exampleInputEmail1">商品ID（完全一致）</label>
                             <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-4 pl-0">
                             <label for="exampleInputPassword1">商品名（あいまい）</label>
                             <input type="text" class="form-control" id="exampleInputPassword1" placeholder="">
                         </div>
