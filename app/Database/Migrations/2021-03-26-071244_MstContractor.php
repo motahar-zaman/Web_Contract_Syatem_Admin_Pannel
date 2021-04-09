@@ -78,6 +78,7 @@ class MstContractor extends Migration
             'update_date'       => [
                 'type'       => 'DATETIME',
                 'null'       => false,
+                'on update' => 'NOW()',
                 'comment'    => '更新日 / Update Date',
             ],
             'update_user_id' => [
@@ -89,6 +90,7 @@ class MstContractor extends Migration
             'insert_date'          => [
                 'type'           => 'DATETIME',
                 'null'           => false,
+                'on update' => 'NOW()',
                 'comment'        => '作成日 / Create Date',
             ],
             'insert_user_id' => [
@@ -101,6 +103,12 @@ class MstContractor extends Migration
                 'type'   => 'BOOLEAN',
                 'null'   => false,
                 'comment'=> '削除フラグ / Delete Flag',
+            ],
+            'temporary' => [
+                'type'       => 'TINYINT',
+                'null'       => false,
+                'on update' => '1',
+                'comment'    => '1 = temporary, 0 = not/permanent',
             ],
         ]);
         $this->forge->addKey('contractor_id', true);
