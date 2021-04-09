@@ -142,14 +142,14 @@
                                         <div class="form-group">
                                             <label for="companySelect">会社選択(companySelect)</label>
                                             <select id="companySelect" class="form-control select2" style="width: 100%;">
-                                            <option selected="selected">Alabama</option>
-                                            <option>Alaska</option>
-                                            <option>California</option>
-                                            <option>Delaware</option>
-                                            <option>Tennessee</option>
-                                            <option>Texas</option>
-                                            <option>Washington</option>
-                                          </select>
+                                                <option selected="selected" value="Alabama">Alabama</option>
+                                                <option value="Alaska">Alaska</option>
+                                                <option value="California">California</option>
+                                                <option value="Delaware">Delaware</option>
+                                                <option value="Tennessee">Tennessee</option>
+                                                <option value="Texas">Texas</option>
+                                                <option value="Washington">Washington</option>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="companyKana">会社名カナ(companyKana)</label>
@@ -224,14 +224,14 @@
                                         <div class="form-group">
                                             <label for="groupSelect">グループ選択(groupSelect)</label>
                                             <select id="groupSelect" class="form-control select2" style="width: 100%;">
-                                            <option selected="selected">Alabama</option>
-                                            <option>Alaska</option>
-                                            <option>California</option>
-                                            <option>Delaware</option>
-                                            <option>Tennessee</option>
-                                            <option>Texas</option>
-                                            <option>Washington</option>
-                                          </select>
+                                                <option selected="selected" value="Alabama">Alabama</option>
+                                                <option value="Alaska">Alaska</option>
+                                                <option value="California">California</option>
+                                                <option value="Delaware">Delaware</option>
+                                                <option value="Tennessee">Tennessee</option>
+                                                <option value="Texas">Texas</option>
+                                                <option value="Washington">Washington</option>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="groupKana">グループ名カナ(groupKana)</label>
