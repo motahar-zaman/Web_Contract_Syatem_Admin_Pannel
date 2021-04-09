@@ -41,6 +41,12 @@ class RegistrationController extends BaseController
             $contractor->setInsertDate(date("Y-m-d H:i:s"));
             $contractor->setInsertUserId(session()->get('userId'));
             $contractor->setDeleteFlag(0);
+            if($_POST['temporary'] == "YES"){
+                $contractor->setTemporary(1);
+            }
+            else{
+                $contractor->setTemporary(0);
+            }
 
             $company->setId($_POST["companyId"]);
             $company->setName($_POST["companyName"]);
