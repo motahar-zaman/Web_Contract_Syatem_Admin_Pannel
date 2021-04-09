@@ -99,12 +99,4 @@ class RegistrationController extends BaseController
             return redirect()->to("/login");
         }
     }
-
-    public function tempRegistrationAction(){
-        if( session() && session()->get('login') && session()->get('user') == "employee" ){
-        }
-        else{
-            return redirect()->to("/login");
-        }
-    }
 }
