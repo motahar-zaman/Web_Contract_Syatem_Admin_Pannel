@@ -28,6 +28,9 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
+        <?= $this->include('modals\contractorSelect') ?>
+        <?= $this->include('modals\companySelect') ?>
+        <?= $this->include('modals\groupSelect') ?>
         <div class="wrapper">
             <section class="content">
                 <div class="container-fluid">
@@ -72,15 +75,11 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="contractorSelect">契約者選択(contractorSelect)</label>
-                                            <select id="contractorSelect" class="form-control select2" style="width: 100%;">
-                                                <option selected="selected" value="Alabama">Alabama</option>
-                                                <option value="Alaska">Alaska</option>
-                                                <option value="California">California</option>
-                                                <option value="Delaware">Delaware</option>
-                                                <option value="Tennessee">Tennessee</option>
-                                                <option value="Texas">Texas</option>
-                                                <option value="Washington">Washington</option>
-                                            </select>
+                                            <div class="select2-purple">
+                                                <button type="button" class="btn btn-primary pl-3 pr-3 text-bold" data-toggle="modal" data-target="#contractor-select-modal">
+                                                    契約者選択
+                                                </button>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="contractorKana">契約者名カナ(contractorKana)</label>
@@ -149,15 +148,11 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="companySelect">会社選択(companySelect)</label>
-                                            <select id="companySelect" class="form-control select2" style="width: 100%;">
-                                                <option selected="selected" value="Alabama">Alabama</option>
-                                                <option value="Alaska">Alaska</option>
-                                                <option value="California">California</option>
-                                                <option value="Delaware">Delaware</option>
-                                                <option value="Tennessee">Tennessee</option>
-                                                <option value="Texas">Texas</option>
-                                                <option value="Washington">Washington</option>
-                                            </select>
+                                            <div class="select2-purple">
+                                                <button type="button" class="btn btn-primary pl-3 pr-3 text-bold" data-toggle="modal" data-target="#company-select-modal">
+                                                    会社選択
+                                                </button>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="companyKana">会社名カナ(companyKana)</label>
@@ -231,15 +226,11 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="groupSelect">グループ選択(groupSelect)</label>
-                                            <select id="groupSelect" class="form-control select2" style="width: 100%;">
-                                                <option selected="selected" value="Alabama">Alabama</option>
-                                                <option value="Alaska">Alaska</option>
-                                                <option value="California">California</option>
-                                                <option value="Delaware">Delaware</option>
-                                                <option value="Tennessee">Tennessee</option>
-                                                <option value="Texas">Texas</option>
-                                                <option value="Washington">Washington</option>
-                                            </select>
+                                            <div class="select2-purple">
+                                              <button type="button" class="btn btn-primary pl-3 pr-3 text-bold" data-toggle="modal" data-target="#group-select-modal">
+                                                  グループ選択
+                                              </button>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="groupKana">グループ名カナ(groupKana)</label>
