@@ -337,6 +337,7 @@
                     data["contractorAddress2"] = $("#contractorAddress2").val();
                     data["contractorPhn"] = $("#contractorPhn").val();
                     data["contractorMail"] = $("#contractorMail").val();
+                    data["temporary"] = $("#temporary").val();
 
                     data["companyId"] = $("#companyId").val();
                     data["companyName"] = $("#companyName").val();
