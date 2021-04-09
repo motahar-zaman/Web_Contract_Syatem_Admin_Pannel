@@ -55,7 +55,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="contractorId">契約者ID(contractorId)</label>
-                                            <input class="form-control" type="text" name="contractorId" id="contractorId" value="<?php old('contractorId')?>abcd" readonly>
+                                            <input class="form-control" type="text" name="contractorId" id="contractorId" value="<?php old('contractorId')?>">
+                                            <input type="hidden" name="temporary" id="temporary" value="NO">
                                         </div>
                                         <div class="form-group">
                                             <label for="contractorName">契約者名(contractorName)</label>
