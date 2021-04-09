@@ -128,7 +128,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="companyId">会社ID(companyId)</label>
-                                            <input class="form-control" type="text" name="companyId" id="companyId" value="<?php old('companyId')?>abcd" readonly>
+                                            <input class="form-control" type="text" name="companyId" id="companyId" value="<?php old('companyId')?>">
                                         </div>
                                         <div class="form-group">
                                             <label for="companyName">会社名(companyName)</label>
@@ -210,7 +210,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="groupId">グループID(groupId)</label>
-                                            <input class="form-control" type="text" name="groupId" id="groupId" value="<?php old('groupId')?>abcd" readonly>
+                                            <input class="form-control" type="text" name="groupId" id="groupId" value="<?php old('groupId')?>">
                                         </div>
                                         <div class="form-group">
                                             <label for="groupName">グループ選択(groupName)</label>
