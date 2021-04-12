@@ -72,7 +72,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="contractorPostCode">郵便番号(contractorPostCode)</label>
-                                            <input class="form-control" type="number" name="contractorPostCode" id="contractorPostCode" maxlength="" value="<?php old('contractorPostCode')?>">
+                                            <input class="form-control" type="text" name="contractorPostCode" id="contractorPostCode" maxlength="7" value="<?php old('contractorPostCode')?>">
                                             <span class="errormsg" id="contractorPostCodeError"></span>
                                         </div>
                                     </div>
@@ -137,7 +137,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="companyPostCode">郵便番号(companyPostCode)</label>
-                                            <input class="form-control" name="companyPostCode" type="text" id="companyPostCode" value="<?php old('companyPostCode')?>">
+                                            <input class="form-control" name="companyPostCode" type="text" id="companyPostCode" maxlength="7" value="<?php old('companyPostCode')?>">
                                             <span class="errormsg" id="companyPostCodeError"></span>
                                         </div>
                                     </div>
@@ -215,7 +215,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="groupPostCode">郵便番号(groupPostCode)</label>
-                                            <input class="form-control" name="groupPostCode" type="text" id="groupPostCode" value="<?php old('groupPostCode')?>">
+                                            <input class="form-control" name="groupPostCode" type="text" id="groupPostCode" maxlength="7" value="<?php old('groupPostCode')?>">
                                             <span class="errormsg" id="groupPostCodeError"></span>
                                         </div>
                                     </div>
@@ -381,42 +381,48 @@
                 });
 
                 //for searching address from zip code
-                $("#search_btn").click(function () {
-                    var param = {zipcode: $('#zipcode').val()}
-                    var send_url = "http://zipcloud.ibsnet.co.jp/api/search";
-                    $.ajax({
-                        type: "GET",
-                        cache: false,
-                        data: param,
-                        url: send_url,
-                        dataType: "jsonp",
-                        success: function (res) {
-                            if (res.status == 200) {
-                                var html = '';
-                                for (var i = 0; i < res.results.length; i++) {
-                                    var result = res.results[i];
-                                    console.log(res.results);
-                                    html += '<h2>住所' + (i + 1) + '</h2>';
-                                    html += '<div>都道府県コード：' + result.prefcode + '</div>';
-                                    html += '<div>都道府県：' + result.address1 + '</div>';
-                                    html += '<div>市区町村：' + result.address2 + '</div>';
-                                    html += '<div>町域：' + result.address3 + '</div>';
-                                    html += '<div>都道府県(カナ)：' + result.kana1 + '</div>';
-                                    html += '<div>市区町村(カナ)：' + result.kana1 + '</div>';
-                                    html += '<div>町域(カナ)：' + result.kana1 + '</div>';
-                                }
-                                $('#zip_result').html(html);
-                            }
-                            else {
-                                $('#zip_result').html(res.message);
-                            }
-                        },
-                        error: function (XMLHttpRequest, textStatus, errorThrown) {
-                            console.log(XMLHttpRequest);
-                        }
-                    });
+                $("#contractorAddressSearch").click(function () {
+                    let zipCode = $('#contractorPostCode').val();
+                    getAddressFromZipCode(zipCode, "contractorAddress1");
+                });
+                $("#companyAddressSearch").click(function () {
+                  let zipCode = $('#companyPostCode').val();
+                  getAddressFromZipCode(zipCode, "companyAddress1");
+                });
+                $("#groupAddressSearch").click(function () {
+                  let zipCode = $('#groupPostCode').val();
+                  getAddressFromZipCode(zipCode, "groupAddress1");
                 });
             });
+
+            function getAddressFromZipCode(zipCode, setAddressId){
+                var param = {zipcode: zipCode}
+                var send_url = "http://zipcloud.ibsnet.co.jp/api/search";
+
+                $.ajax({
+                    type: "GET",
+                    cache: false,
+                    data: param,
+                    url: send_url,
+                    dataType: "jsonp",
+                    success: function (res) {
+                        if (res.status == 200) {
+                            if(res.results){
+                                $("#"+setAddressId).val(res.results[0].address1 + res.results[0].address2);
+                            }
+                            else{
+                              alert("Invalid Zip Code");
+                            }
+                        }
+                        else {
+                            alert(res.message);
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log(XMLHttpRequest);
+                    }
+                });
+            }
 
             function validateData(data) {
                 let is_valid = true;
