@@ -79,6 +79,6 @@ defined('EXIT__AUTO_MIN')      || define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      || define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 define('k1_employee_user_prefix', 'K1');
-define('contractor_user_prefix', 'CR');
+define('contractor_user_prefix', 'CONT');
 define('jwt_token_key', "k1_jwt_user_token");
 define('jwt_token_algorithm', "HS512");
