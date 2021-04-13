@@ -14,6 +14,8 @@ class Group
     private $zipCode;
     private $address_01;
     private $address_02;
+    private $areaId;
+    private $prefecture;
     private $telNo;
     private $faxNo;
     private $mailAddress;
@@ -149,6 +151,38 @@ class Group
     public function setAddress02($address_02): void
     {
         $this->address_02 = $address_02;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAreaId()
+    {
+        return $this->areaId;
+    }
+
+    /**
+     * @param mixed $areaId
+     */
+    public function setAreaId($areaId): void
+    {
+        $this->areaId = $areaId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrefecture()
+    {
+        return $this->prefecture;
+    }
+
+    /**
+     * @param mixed $prefecture
+     */
+    public function setPrefecture($prefecture): void
+    {
+        $this->prefecture = $prefecture;
     }
 
     /**
