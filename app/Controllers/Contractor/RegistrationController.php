@@ -14,7 +14,8 @@ class RegistrationController extends BaseController
 {
     public function index(){
         if( session() && session()->get('login') ){
-            return view("template/pages/forms/contractor", ["title" => "Contractor Registration"]);
+            $group = (new GroupModel())->getAllGroupData();
+            return view("template/pages/forms/contractor", ["title" => "Contractor Registration", "group" => $group]);
         }
         else{
             return redirect()->to("/login");
