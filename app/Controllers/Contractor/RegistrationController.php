@@ -3,10 +3,12 @@
 namespace App\Controllers\Contractor;
 
 use App\Controllers\BaseController;
-use App\Models\Contractor\Company;
+use App\Models\Company\Company;
+use App\Models\Company\CompanyModel;
 use App\Models\Contractor\Contractor;
-use App\Models\Contractor\Group;
-use App\Models\Contractor\RegistrationModel;
+use App\Models\Contractor\ContractorModel;
+use App\Models\Group\Group;
+use App\Models\Group\GroupModel;
 
 class RegistrationController extends BaseController
 {
@@ -21,7 +23,6 @@ class RegistrationController extends BaseController
 
     public function registrationAction(){
         if( session() && session()->get('login') ){
-            $register = new RegistrationModel();
             $contractor = new Contractor();
             $company = new Company();
             $group = new Group();
@@ -80,9 +81,9 @@ class RegistrationController extends BaseController
             $group->setInsertUserId(session()->get('userId'));
             $group->setDeleteFlag(0);
 
-            $register->storeContractorData($contractor);
-            $register->storeCompanyData($company);
-            $register->storeGroupData($group);
+            (new ContractorModel())->storeContractorData($contractor);
+            (new CompanyModel())->storeCompanyData($company);
+            (new GroupModel())->storeGroupData($group);
 
             return json_encode(['msg' => "Successful", 'status' => 1]);
         }
