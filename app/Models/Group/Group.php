@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Models\Contractor;
+namespace App\Models\Group;
 
 
 class Group
