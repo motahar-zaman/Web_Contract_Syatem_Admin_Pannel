@@ -383,7 +383,50 @@
                         });
                     }
                 });
+
+                //for searching address from zip code
+                $("#contractorAddressSearch").click(function () {
+                  let zipCode = $('#contractorPostCode').val();
+                  getAddressFromZipCode(zipCode, "contractorAddress1");
+                });
+                $("#companyAddressSearch").click(function () {
+                  let zipCode = $('#companyPostCode').val();
+                  getAddressFromZipCode(zipCode, "companyAddress1");
+                });
+                $("#groupAddressSearch").click(function () {
+                  let zipCode = $('#groupPostCode').val();
+                  getAddressFromZipCode(zipCode, "groupAddress1");
+                });
             });
+
+            function getAddressFromZipCode(zipCode, setAddressId){
+                var param = {zipcode: zipCode}
+                var send_url = "http://zipcloud.ibsnet.co.jp/api/search";
+
+                $.ajax({
+                    type: "GET",
+                    cache: false,
+                    data: param,
+                    url: send_url,
+                    dataType: "jsonp",
+                    success: function (res) {
+                        if (res.status == 200) {
+                            if(res.results){
+                                $("#"+setAddressId).val(res.results[0].address1 + res.results[0].address2);
+                            }
+                            else{
+                                alert("Invalid Zip Code");
+                            }
+                        }
+                        else {
+                            alert(res.message);
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        console.log(XMLHttpRequest);
+                    }
+                });
+            }
 
             function validateData(data) {
                 let is_valid = true;
