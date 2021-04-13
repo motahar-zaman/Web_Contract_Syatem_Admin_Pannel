@@ -11,44 +11,44 @@ class MstCompany extends Migration
         $this->forge->addField([
             'company_id'         => [
                 'type'           => 'VARCHAR',
-                'constraint'     => '20',
+                'constraint'     => '12',
                 'null'           => false,
                 'comment'        => '契約者ID / Company ID',
             ],
             'company_name'   => [
                 'type'       => 'VARCHAR',
-                'constraint' => '500',
+                'constraint' => '200',
                 'null'       => false,
                 'comment'    => '契約者名 / Company Name',
             ],
             'company_name_kana' => [
                 'type'          => 'VARCHAR',
-                'constraint'    => '500',
-                'null'          => false,
+                'constraint'    => '200',
+                'null'          => true,
                 'comment'       => '契約者名カナ / Company Name - Kana',
             ],
-            'representative'   => [
+            'daihyousha_name'   => [
                 'type'       => 'VARCHAR',
-                'constraint' => '500',
+                'constraint' => '200',
                 'null'       => false,
                 'comment'    => '契約者名 / Representative Name',
             ],
-            'representative_kana' => [
+            'daihyousha_name_kana' => [
                 'type'          => 'VARCHAR',
-                'constraint'    => '500',
-                'null'          => false,
+                'constraint'    => '200',
+                'null'          => true,
                 'comment'       => '契約者名カナ / Representative - Kana',
             ],
             'zipcode'          => [
                 'type'         => 'VARCHAR',
-                'constraint'   => '20',
-                'null'         => false,
+                'constraint'   => '8',
+                'null'         => true,
                 'comment'      => '郵便番号 / Postal Code',
             ],
             'address_01'     => [
                 'type'       => 'VARCHAR',
                 'constraint' => '500',
-                'null'       => false,
+                'null'       => true,
                 'comment'    => '住所０１ / Address 01',
             ],
             'address_02'    => [
@@ -60,7 +60,7 @@ class MstCompany extends Migration
             'tel_no'          => [
                 'type'        => 'VARCHAR',
                 'constraint'  => '13',
-                'null'        => false,
+                'null'        => true,
                 'comment'     => '電話番号 / Phone Number',
             ],
             'fax_no'        => [
@@ -71,7 +71,13 @@ class MstCompany extends Migration
             ],
             'mail_address'   => [
                 'type'       => 'VARCHAR',
-                'constraint' => '500',
+                'constraint' => '400',
+                'null'       => true,
+                'comment'    => 'メールアドレス / Mail Address',
+            ],
+            'site_url'   => [
+                'type'       => 'VARCHAR',
+                'constraint' => '400',
                 'null'       => true,
                 'comment'    => 'メールアドレス / Mail Address',
             ],
