@@ -27,55 +27,30 @@
                     <table class="table table-head-fixed text-nowrap ml-1">
                         <thead>
                             <tr>
-                                <th>選択</th>
-                                <th>契約者ID</th>
-                                <th>契約者名	</th>
-                                <th>住所</th>
-                                <th>電話番号</th>
-                                <th>メールアドレス</th>
+                                <th>選択(Select)</th>
+                                <th>契約者ID(Contractor Id)</th>
+                                <th>契約者名(Contractor Name)</th>
+                                <th>住所(Address)</th>
+                                <th>電話番号(Phn no)</th>
+                                <th>メールアドレス(Mail Address)</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php
+                                for($i = 0; $i < count($group); $i++){
+                                    $data = $group[$i];
+                            ?>
                             <tr>
-                                <td>選択	</td>
-                                <td>契約者ID</td>
-                                <td>契約者名	</td>
-                                <td>住所	</td>
-                                <td>電話番号	</td>
-                                <td>メールアドレス	</td>
+                                <td></td>
+                                <td><?php echo $data->getId() ?></td>
+                                <td><?php echo $data->getName() ?></td>
+                                <td><?php echo $data->getAddress01() ?></td>
+                                <td><?php echo $data->getTelNo() ?></td>
+                                <td><?php echo $data->getMailAddress() ?></td>
                             </tr>
-                            <tr>
-                                <td>選択	</td>
-                                <td>契約者ID</td>
-                                <td>契約者名	</td>
-                                <td>住所	</td>
-                                <td>電話番号	</td>
-                                <td>メールアドレス	</td>
-                            </tr>
-                            <tr>
-                                <td>選択	</td>
-                                <td>契約者ID</td>
-                                <td>契約者名	</td>
-                                <td>住所	</td>
-                                <td>電話番号	</td>
-                                <td>メールアドレス	</td>
-                            </tr>
-                            <tr>
-                                <td>選択	</td>
-                                <td>契約者ID</td>
-                                <td>契約者名	</td>
-                                <td>住所	</td>
-                                <td>電話番号	</td>
-                                <td>メールアドレス	</td>
-                            </tr>
-                            <tr>
-                                <td>選択	</td>
-                                <td>契約者ID</td>
-                                <td>契約者名	</td>
-                                <td>住所	</td>
-                                <td>電話番号	</td>
-                                <td>メールアドレス	</td>
-                            </tr>
+                            <?php
+                                }
+                            ?>
                         </tbody>
                     </table>
                 </div>
