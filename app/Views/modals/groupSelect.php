@@ -40,16 +40,16 @@
                                 if(isset($group) && count($group) > 0){
                                     for($i = 0; $i < count($group); $i++){
                                         $data = $group[$i];
-                            ?>
-                            <tr>
-                                <td></td>
-                                <td><?php echo $data->getId() ?></td>
-                                <td><?php echo $data->getName() ?></td>
-                                <td><?php echo $data->getAddress01() ?></td>
-                                <td><?php echo $data->getTelNo() ?></td>
-                                <td><?php echo $data->getMailAddress() ?></td>
-                            </tr>
-                            <?php
+                                        ?>
+                                        <tr>
+                                            <td></td>
+                                            <td><?php echo $data->getId() ?></td>
+                                            <td><?php echo $data->getName() ?></td>
+                                            <td><?php echo $data->getAddress01() ?></td>
+                                            <td><?php echo $data->getTelNo() ?></td>
+                                            <td><?php echo $data->getMailAddress() ?></td>
+                                        </tr>
+                                        <?php
                                     }
                                 }
                                 else{
