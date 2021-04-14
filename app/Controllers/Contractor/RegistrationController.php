@@ -15,7 +15,21 @@ class RegistrationController extends BaseController
     public function index(){
         if( session() && session()->get('login') ){
             $group = (new GroupModel())->getAllGroupData();
-            return view("template/pages/forms/contractor", ["title" => "Contractor Registration", "group" => $group]);
+            $company = (new CompanyModel())->getAllCompanyData();
+
+            return view("template/pages/forms/contractor", ["title" => "Contractor Registration", "group" => $group, "company" => $company]);
+        }
+        else{
+            return redirect()->to("/login");
+        }
+    }
+
+    public function tempRegistration(){
+        if( session() && session()->get('login') && session()->get('user') == "employee" ){
+            $group = (new GroupModel())->getAllGroupData();
+            $company = (new CompanyModel())->getAllCompanyData();
+
+            return view("template/pages/forms/temp_contractor", ["title" => "Temporary Contractor Registration", "group" => $group, "company" => $company]);
         }
         else{
             return redirect()->to("/login");
@@ -87,16 +101,6 @@ class RegistrationController extends BaseController
             (new GroupModel())->storeGroupData($group);
 
             return json_encode(['msg' => "Successful", 'status' => 1]);
-        }
-        else{
-            return redirect()->to("/login");
-        }
-    }
-
-    public function tempRegistration(){
-        if( session() && session()->get('login') && session()->get('user') == "employee" ){
-            $group = (new GroupModel())->getAllGroupData();
-            return view("template/pages/forms/temp_contractor", ["title" => "Temporary Contractor Registration", "group" => $group]);
         }
         else{
             return redirect()->to("/login");
