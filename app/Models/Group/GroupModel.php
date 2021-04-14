@@ -52,8 +52,8 @@ class GroupModel
 
         for($i = 0; $i < $length; $i++){
             $data = $datas[$i];
+            $group = new Group();
             if(isset($data)){
-                $group = new Group();
                 $group->setId($data->group_id ?? NULL);
                 $group->setName($data->group_name ?? NULL);
                 $group->setNameKana($data->group_name_kana ?? NULL);
