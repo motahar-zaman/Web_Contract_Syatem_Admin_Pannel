@@ -69,6 +69,12 @@ class MstContractor extends Migration
                 'null'      => true,
                 'comment'=> 'メールアドレス / Mail Address',
             ],
+            'temporary' => [
+                'type'       => 'TINYINT',
+                'null'       => false,
+                'on update' => '1',
+                'comment'    => '1 = temporary, 0 = not/permanent',
+            ],
             'type_contractor'   => [
                 'type'          => 'VARCHAR',
                 'constraint'    => '2',
@@ -103,12 +109,6 @@ class MstContractor extends Migration
                 'type'   => 'BOOLEAN',
                 'null'   => false,
                 'comment'=> '削除フラグ / Delete Flag',
-            ],
-            'temporary' => [
-                'type'       => 'TINYINT',
-                'null'       => false,
-                'on update' => '1',
-                'comment'    => '1 = temporary, 0 = not/permanent',
             ],
         ]);
         $this->forge->addKey('contractor_id', true);
