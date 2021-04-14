@@ -16,8 +16,9 @@ class RegistrationController extends BaseController
         if( session() && session()->get('login') ){
             $group = (new GroupModel())->getAllGroupData();
             $company = (new CompanyModel())->getAllCompanyData();
+            $contractor = (new ContractorModel())->getAllContractorData();
 
-            return view("template/pages/forms/contractor", ["title" => "Contractor Registration", "group" => $group, "company" => $company]);
+            return view("template/pages/forms/contractor", ["title" => "Contractor Registration", "group" => $group, "company" => $company, "contractor" => $contractor]);
         }
         else{
             return redirect()->to("/login");
@@ -28,8 +29,9 @@ class RegistrationController extends BaseController
         if( session() && session()->get('login') && session()->get('user') == "employee" ){
             $group = (new GroupModel())->getAllGroupData();
             $company = (new CompanyModel())->getAllCompanyData();
+            $contractor = (new ContractorModel())->getAllContractorData();
 
-            return view("template/pages/forms/temp_contractor", ["title" => "Temporary Contractor Registration", "group" => $group, "company" => $company]);
+            return view("template/pages/forms/temp_contractor", ["title" => "Temporary Contractor Registration", "group" => $group, "company" => $company, "contractor" => $contractor]);
         }
         else{
             return redirect()->to("/login");
