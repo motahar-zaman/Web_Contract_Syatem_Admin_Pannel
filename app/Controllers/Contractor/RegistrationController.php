@@ -95,7 +95,8 @@ class RegistrationController extends BaseController
 
     public function tempRegistration(){
         if( session() && session()->get('login') && session()->get('user') == "employee" ){
-            return view("template/pages/forms/temp_contractor", ["title" => "Temporary Contractor Registration"]);
+            $group = (new GroupModel())->getAllGroupData();
+            return view("template/pages/forms/temp_contractor", ["title" => "Temporary Contractor Registration", "group" => $group]);
         }
         else{
             return redirect()->to("/login");
