@@ -54,7 +54,7 @@ class GroupModel
             $data = $datas[$i];
             if(isset($data)){
                 $group = new Group();
-                $group->setId(isset($data->group_id) ? $data->group_id : NULL);
+                $group->setId($data->group_id ?? NULL);
                 $group->setName($data->group_name ?? NULL);
                 $group->setNameKana($data->group_name_kana ?? NULL);
                 $group->setRepresentative($data->daihyousha_name ?? NULL);
