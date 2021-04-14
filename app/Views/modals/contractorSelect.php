@@ -36,46 +36,26 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>選択	</td>
-                                <td>契約者ID</td>
-                                <td>契約者名	</td>
-                                <td>住所	</td>
-                                <td>電話番号	</td>
-                                <td>メールアドレス	</td>
-                            </tr>
-                            <tr>
-                                <td>選択	</td>
-                                <td>契約者ID</td>
-                                <td>契約者名	</td>
-                                <td>住所	</td>
-                                <td>電話番号	</td>
-                                <td>メールアドレス	</td>
-                            </tr>
-                            <tr>
-                                <td>選択	</td>
-                                <td>契約者ID</td>
-                                <td>契約者名	</td>
-                                <td>住所	</td>
-                                <td>電話番号	</td>
-                                <td>メールアドレス	</td>
-                            </tr>
-                            <tr>
-                                <td>選択	</td>
-                                <td>契約者ID</td>
-                                <td>契約者名	</td>
-                                <td>住所	</td>
-                                <td>電話番号	</td>
-                                <td>メールアドレス	</td>
-                            </tr>
-                            <tr>
-                                <td>選択	</td>
-                                <td>契約者ID</td>
-                                <td>契約者名	</td>
-                                <td>住所	</td>
-                                <td>電話番号	</td>
-                                <td>メールアドレス	</td>
-                            </tr>
+                            <?php
+                                if(isset($contractor) && count($contractor) > 0){
+                                    for($i = 0; $i < count($contractor); $i++){
+                                        $data = $contractor[$i];
+                                        ?>
+                                        <tr>
+                                            <td></td>
+                                            <td><?php echo $data->getId() ?></td>
+                                            <td><?php echo $data->getName() ?></td>
+                                            <td><?php echo $data->getAddress01() ?></td>
+                                            <td><?php echo $data->getTelNo() ?></td>
+                                            <td><?php echo $data->getMailAddress() ?></td>
+                                        </tr>
+                                        <?php
+                                    }
+                                }
+                                else{
+                                    echo "<h3>No data available</h3>";
+                                }
+                            ?>
                         </tbody>
                     </table>
                 </div>
