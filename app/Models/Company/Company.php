@@ -17,6 +17,7 @@ class Company
     private $telNo;
     private $faxNo;
     private $mailAddress;
+    private $siteUrl;
     private $updateDate;
     private $updateUserId;
     private $insertDate;
@@ -197,6 +198,22 @@ class Company
     public function setMailAddress($mailAddress): void
     {
         $this->mailAddress = $mailAddress;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSiteUrl()
+    {
+        return $this->siteUrl;
+    }
+
+    /**
+     * @param mixed $siteUrl
+     */
+    public function setSiteUrl($siteUrl): void
+    {
+        $this->siteUrl = $siteUrl;
     }
 
     /**
