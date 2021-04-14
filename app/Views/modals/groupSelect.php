@@ -37,8 +37,9 @@
                         </thead>
                         <tbody>
                             <?php
-                                for($i = 0; $i < count($group); $i++){
-                                    $data = $group[$i];
+                                if(isset($group) && count($group) > 0){
+                                    for($i = 0; $i < count($group); $i++){
+                                        $data = $group[$i];
                             ?>
                             <tr>
                                 <td></td>
@@ -49,6 +50,10 @@
                                 <td><?php echo $data->getMailAddress() ?></td>
                             </tr>
                             <?php
+                                    }
+                                }
+                                else{
+                                    echo "<h3>No data available</h3>";
                                 }
                             ?>
                         </tbody>
