@@ -42,13 +42,16 @@
                                         $data = $contractor[$i];
                                         ?>
                                         <tr>
-                                            <td></td>
-                                            <td><?php echo $data->getId() ?></td>
-                                            <td><?php echo $data->getName() ?></td>
-                                            <td><?php echo $data->getAddress01() ?></td>
-                                            <td><?php echo $data->getTelNo() ?></td>
-                                            <td><?php echo $data->getMailAddress() ?></td>
+                                            <td onclick="selectedContractor(<?php echo $i ?>)" id="selectedContractor<?php echo $data->getId() ?>">Select</td>
+                                            <td id="contractorId<?php echo $i ?>"><?php echo $data->getId() ?></td>
+                                            <td id="contractorName<?php echo $i ?>"><?php echo $data->getName() ?></td>
+                                            <td id="contractorAddress1<?php echo $i ?>"><?php echo $data->getAddress01() ?></td>
+                                            <td id="contractorPhn<?php echo $i ?>"><?php echo $data->getTelNo() ?></td>
+                                            <td id="contractorMail<?php echo $i ?>"><?php echo $data->getMailAddress() ?></td>
                                         </tr>
+                                        <input id="contractorNameKana<?php echo $i ?>" type="hidden" value="<?php echo $data->getNameKana() ?>">
+                                        <input id="contractorPostCode<?php echo $i ?>" type="hidden" value="<?php echo $data->getZipCode() ?>">
+                                        <input id="contractorAddress2<?php echo $i ?>" type="hidden" value="<?php echo $data->getAddress02() ?>">
                                         <?php
                                     }
                                 }
