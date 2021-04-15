@@ -441,6 +441,19 @@
                 }*/
                 return is_valid;
             }
+
+            function selectedGroup(data){
+                $("#groupId").val($("#groupId"+data).html());
+                $("#groupName").val($("#groupName"+data).html());
+                $("#groupKana").val($("#groupNameKana"+data).val());
+                $("#groupRepresentative").val($("#groupRepresentative"+data).val());
+                $("#groupRepresentativeKana").val($("#groupRepresentativeKana"+data).val());
+                $("#groupPostCode").val($("#groupPostCode"+data).val());
+                $("#groupAddress1").val($("#groupAddress1"+data).html());
+                $("#groupAddress2").val($("#groupAddress2"+data).val());
+                $("#groupPhn").val($("#groupPhn"+data).html());
+                $("#groupMail").val($("#groupMail"+data).html());
+            }
         </script>
     </body>
 </html>

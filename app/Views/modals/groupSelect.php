@@ -42,13 +42,18 @@
                                         $data = $group[$i];
                                         ?>
                                         <tr>
-                                            <td></td>
-                                            <td><?php echo $data->getId() ?></td>
-                                            <td><?php echo $data->getName() ?></td>
-                                            <td><?php echo $data->getAddress01() ?></td>
-                                            <td><?php echo $data->getTelNo() ?></td>
-                                            <td><?php echo $data->getMailAddress() ?></td>
+                                            <td onclick="selectedGroup(<?php echo $i ?>)" id="selectedGroup<?php echo $data->getId() ?>">Select</td>
+                                            <td id="groupId<?php echo $i ?>"><?php echo $data->getId() ?></td>
+                                            <td id="groupName<?php echo $i ?>"><?php echo $data->getName() ?></td>
+                                            <td id="groupAddress1<?php echo $i ?>"><?php echo $data->getAddress01() ?></td>
+                                            <td id="groupPhn<?php echo $i ?>"><?php echo $data->getTelNo() ?></td>
+                                            <td id="groupMail<?php echo $i ?>"><?php echo $data->getMailAddress() ?></td>
                                         </tr>
+                                        <input id="groupNameKana<?php echo $i ?>" type="hidden" value="<?php echo $data->getNameKana() ?>">
+                                        <input id="groupRepresentative<?php echo $i ?>" type="hidden" value="<?php echo $data->getRepresentative() ?>">
+                                        <input id="groupRepresentativeKana<?php echo $i ?>" type="hidden" value="<?php echo $data->getRepresentativeKana() ?>">
+                                        <input id="groupPostCode<?php echo $i ?>" type="hidden" value="<?php echo $data->getZipCode() ?>">
+                                        <input id="groupAddress2<?php echo $i ?>" type="hidden" value="<?php echo $data->getAddress02() ?>">
                                         <?php
                                     }
                                 }
