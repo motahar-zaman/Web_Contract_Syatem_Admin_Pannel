@@ -454,6 +454,19 @@
                 $("#groupPhn").val($("#groupPhn"+data).html());
                 $("#groupMail").val($("#groupMail"+data).html());
             }
+
+            function selectedCompany(data){
+              $("#companyId").val($("#companyId"+data).html());
+              $("#companyName").val($("#companyName"+data).html());
+              $("#companyKana").val($("#companyNameKana"+data).val());
+              $("#companyRepresentative").val($("#companyRepresentative"+data).val());
+              $("#companyRepresentativeKana").val($("#companyRepresentativeKana"+data).val());
+              $("#companyPostCode").val($("#companyPostCode"+data).val());
+              $("#companyAddress1").val($("#companyAddress1"+data).html());
+              $("#companyAddress2").val($("#companyAddress2"+data).val());
+              $("#companyPhn").val($("#companyPhn"+data).html());
+              $("#companyMail").val($("#companyMail"+data).html());
+            }
         </script>
     </body>
 </html>

@@ -42,13 +42,18 @@
                                         $data = $company[$i];
                                         ?>
                                         <tr>
-                                            <td></td>
-                                            <td><?php echo $data->getId() ?></td>
-                                            <td><?php echo $data->getName() ?></td>
-                                            <td><?php echo $data->getAddress01() ?></td>
-                                            <td><?php echo $data->getTelNo() ?></td>
-                                            <td><?php echo $data->getMailAddress() ?></td>
+                                            <td onclick="selectedCompany(<?php echo $i ?>)" id="selectedCompany<?php echo $data->getId() ?>">Select</td>
+                                            <td id="companyId<?php echo $i ?>"><?php echo $data->getId() ?></td>
+                                            <td id="companyName<?php echo $i ?>"><?php echo $data->getName() ?></td>
+                                            <td id="companyAddress1<?php echo $i ?>"><?php echo $data->getAddress01() ?></td>
+                                            <td id="companyPhn<?php echo $i ?>"><?php echo $data->getTelNo() ?></td>
+                                            <td id="companyMail<?php echo $i ?>"><?php echo $data->getMailAddress() ?></td>
                                         </tr>
+                                        <input id="companyNameKana<?php echo $i ?>" type="hidden" value="<?php echo $data->getNameKana() ?>">
+                                        <input id="companyRepresentative<?php echo $i ?>" type="hidden" value="<?php echo $data->getRepresentative() ?>">
+                                        <input id="companyRepresentativeKana<?php echo $i ?>" type="hidden" value="<?php echo $data->getRepresentativeKana() ?>">
+                                        <input id="companyPostCode<?php echo $i ?>" type="hidden" value="<?php echo $data->getZipCode() ?>">
+                                        <input id="companyAddress2<?php echo $i ?>" type="hidden" value="<?php echo $data->getAddress02() ?>">
                                         <?php
                                     }
                                 }
