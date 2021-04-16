@@ -12,6 +12,8 @@ use App\Models\Group\GroupModel;
 
 class RegistrationController extends BaseController
 {
+    private $db;
+
     public function index(){
         if( session() && session()->get('login') ){
             $group = (new GroupModel())->getAllGroupData();
@@ -98,9 +100,11 @@ class RegistrationController extends BaseController
             $group->setInsertUserId(session()->get('userId'));
             $group->setDeleteFlag(0);
 
-            (new ContractorModel())->storeContractorData($contractor);
-            (new CompanyModel())->storeCompanyData($company);
-            (new GroupModel())->storeGroupData($group);
+            $this->db->trans_start();
+                (new ContractorModel())->storeContractorData($contractor);
+                (new CompanyModel())->storeCompanyData($company);
+                (new GroupModel())->storeGroupData($group);
+            $this->db->trans_complete();
 
             return json_encode(['msg' => "Successful", 'status' => 1]);
         }
