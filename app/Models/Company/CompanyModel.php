@@ -30,7 +30,7 @@ class CompanyModel
                         tel_no, fax_no, mail_address, update_date, update_user_id, insert_date, insert_user_id, delete_flag) VALUES ('$id', '$name', '$kana', '$representative',
                         '$representativeKana', '$zip', '$address1', '$address2', '$phn', '$fax', '$mail', '$update', '$updateUser', '$insert', '$insertUser', '$delete')";
 
-        return (new Database())->queryExecution($queryString);
+        return (new Database())->writeQueryExecution($queryString);
     }
 
     public function getAllCompanyData(){
@@ -43,7 +43,7 @@ class CompanyModel
                         fax_no,mail_address, site_url, update_date, update_user_id, insert_date, insert_user_id, delete_flag FROM mst_company WHERE delete_flag = 0
                         ORDER BY update_date DESC";
 
-        return (new Database())->queryExecution($queryString);
+        return (new Database())->readQueryExecution($queryString);
     }
 
     public function mapData($datas = array()){
@@ -81,6 +81,6 @@ class CompanyModel
         $queryString = "DELETE FROM mst_company WHERE company_id = ?";
         $queryParameter = array($companyId);
 
-        return (new Database())->queryExecution($queryString, $queryParameter);
+        return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
 }

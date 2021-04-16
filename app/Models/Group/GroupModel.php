@@ -30,7 +30,7 @@ class GroupModel
                         fax_no,mail_address, update_date, update_user_id, insert_date, insert_user_id, delete_flag) VALUES ('$id', '$name', '$kana', '$representative',
                         '$representativeKana', '$zip', '$address1', '$address2', '$phn', '$fax', '$mail', '$update', '$updateUser', '$insert', '$insertUser', '$delete')";
 
-        return (new Database())->queryExecution($queryString);
+        return (new Database())->writeQueryExecution($queryString);
     }
 
     public function getAllGroupData(){
@@ -43,7 +43,7 @@ class GroupModel
                         fax_no,mail_address, update_date, update_user_id, insert_date, insert_user_id, delete_flag FROM mst_group WHERE delete_flag = 0
                         ORDER BY update_date DESC";
 
-        return (new Database())->queryExecution($queryString);
+        return (new Database())->readQueryExecution($queryString);
     }
 
     public function mapData($datas = array()){
@@ -82,6 +82,6 @@ class GroupModel
         $queryString = "DELETE FROM mst_group WHERE group_id = ?";
         $queryParameter = array($groupId);
 
-        return (new Database())->queryExecution($queryString, $queryParameter);
+        return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
 }

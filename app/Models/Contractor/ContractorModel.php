@@ -31,7 +31,7 @@ class ContractorModel
                         mail_address, type_contractor, update_date, update_user_id, insert_date, insert_user_id, delete_flag, temporary) VALUES ('$id', '$name', '$kana',
                         '$password', '$zip', '$address1', '$address2', '$phn', '$fax', '$mail', '$type', '$update', '$updateUser', '$insert', '$insertUser', '$delete', '$temp')";
 
-        return (new Database())->queryExecution($queryString);
+        return (new Database())->writeQueryExecution($queryString);
     }
 
     public function getAllContractorData(){
@@ -44,7 +44,7 @@ class ContractorModel
                         temporary, type_contractor, update_date, update_user_id, insert_date, insert_user_id, delete_flag FROM mst_contractor WHERE delete_flag = 0
                         ORDER BY update_date DESC";
 
-        return (new Database())->queryExecution($queryString);
+        return (new Database())->readQueryExecution($queryString);
     }
 
     public function mapData($datas = array()){
@@ -82,6 +82,6 @@ class ContractorModel
         $queryString = "DELETE FROM mst_contractor WHERE contractor_id = ?";
         $queryParameter = array($contractorId);
 
-        return (new Database())->queryExecution($queryString, $queryParameter);
+        return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
 }
