@@ -27,10 +27,10 @@ class GroupModel
         $delete = $group->getDeleteFlag();
 
         $queryString = "INSERT INTO mst_group(group_id , group_name, group_name_kana, daihyousha_name, daihyousha_name_kana, zipcode, address_01, address_02, tel_no,
-                        fax_no,mail_address, update_date, update_user_id, insert_date, insert_user_id, delete_flag) VALUES ('$id', '$name', '$kana', '$representative',
-                        '$representativeKana', '$zip', '$address1', '$address2', '$phn', '$fax', '$mail', '$update', '$updateUser', '$insert', '$insertUser', '$delete')";
+                        fax_no,mail_address, update_date, update_user_id, insert_date, insert_user_id, delete_flag) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $queryParameter = array($id, $name, $kana, $representative, $representativeKana, $zip, $address1, $address2, $phn, $fax, $mail, $update, $updateUser, $insert, $insertUser, $delete);
 
-        return (new Database())->writeQueryExecution($queryString);
+        return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
 
     public function getAllGroupData(){
@@ -39,11 +39,12 @@ class GroupModel
     }
 
     public function getAllData(){
-        $queryString = "SELECT group_id, group_name, group_name_kana, daihyousha_name, daihyousha_name_kana, zipcode, address_01, address_02, area_id, prefecture, tel_no,
-                        fax_no,mail_address, update_date, update_user_id, insert_date, insert_user_id, delete_flag FROM mst_group WHERE delete_flag = 0
-                        ORDER BY update_date DESC";
+        $queryString = "SELECT group_id, group_name, group_name_kana, daihyousha_name, daihyousha_name_kana, zipcode, address_01, address_02, area_id,
+                        prefecture, tel_no, fax_no,mail_address, update_date, update_user_id, insert_date, insert_user_id, delete_flag FROM mst_group
+                        WHERE delete_flag = ? ORDER BY update_date DESC";
+        $queryParameter = array(0);
 
-        return (new Database())->readQueryExecution($queryString);
+        return (new Database())->readQueryExecution($queryString, $queryParameter);
     }
 
     public function mapData($datas = array()){
