@@ -77,4 +77,11 @@ class GroupModel
         }
         return $mappedData;
     }
+
+    public function deleteData($groupId){
+        $queryString = "DELETE FROM mst_group WHERE group_id = ?";
+        $queryParameter = array($groupId);
+
+        return (new Database())->queryExecution($queryString, $queryParameter);
+    }
 }
