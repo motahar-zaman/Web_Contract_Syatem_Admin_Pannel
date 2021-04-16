@@ -77,4 +77,11 @@ class ContractorModel
         }
         return $mappedData;
     }
+
+    public function deleteData($contractorId){
+        $queryString = "DELETE FROM mst_contractor WHERE contractor_id = ?";
+        $queryParameter = array($contractorId);
+
+        return (new Database())->queryExecution($queryString, $queryParameter);
+    }
 }
