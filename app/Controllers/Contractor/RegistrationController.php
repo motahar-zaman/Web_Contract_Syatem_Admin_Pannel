@@ -99,11 +99,20 @@ class RegistrationController extends BaseController
                 $group->setInsertUserId(session()->get('userId'));
                 $group->setDeleteFlag(0);
 
-                $a = (new ContractorModel())->storeContractorData($contractor);
-                $b = (new CompanyModel())->storeCompanyData($company);
-                $c = (new GroupModel())->storeGroupData($group);
+                $insertContractor = (new ContractorModel())->storeContractorData($contractor);
+                $insertCompany = (new CompanyModel())->storeCompanyData($company);
+                $insertGroup = (new GroupModel())->storeGroupData($group);
 
-                return json_encode(['msg' => "Successful", 'status' => 1]);
+                if($insertContractor && $insertCompany && $insertGroup){
+                    return json_encode(['msg' => "Successful", 'status' => 1]);
+                }
+                else{
+                    $deleteContractor = (new ContractorModel())->deleteData($contractor->getId());
+                    $deleteCompany = (new CompanyModel())->deleteData($company->getId());
+                    $deleteGroup = (new GroupModel())->deleteData($group->getId());
+
+                    return json_encode(['msg' => "Something went wrong and rollback", 'status' => 0]);
+                }
             }
             else{
                 return json_encode(['msg' => "Not an ajax request", 'status' => 2]);
