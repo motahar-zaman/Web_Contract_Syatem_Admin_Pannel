@@ -76,4 +76,11 @@ class CompanyModel
         }
         return $mappedData;
     }
+
+    public function deleteData($companyId){
+        $queryString = "DELETE FROM mst_company WHERE company_id = ?";
+        $queryParameter = array($companyId);
+
+        return (new Database())->queryExecution($queryString, $queryParameter);
+    }
 }
