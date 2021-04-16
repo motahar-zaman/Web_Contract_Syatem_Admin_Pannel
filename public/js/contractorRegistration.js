@@ -53,10 +53,14 @@ function contractorRegistration(){
             type: "POST",
             data: data,
             dataType:'JSON',
+            headers: {'X-Requested-With': 'XMLHttpRequest'},
 
             success: function(data){
                 if(data.status === 1){
                     window.location.href = "/home";
+                }
+                else if(data.status === 3){
+                    window.location.href = "/login";
                 }
             },
             error: function (jqXHR, exception){
