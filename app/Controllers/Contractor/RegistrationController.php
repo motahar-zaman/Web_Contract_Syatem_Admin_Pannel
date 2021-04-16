@@ -12,8 +12,6 @@ use App\Models\Group\GroupModel;
 
 class RegistrationController extends BaseController
 {
-    private $db;
-
     public function index(){
         if( session() && session()->get('login') ){
             $group = (new GroupModel())->getAllGroupData();
@@ -42,74 +40,77 @@ class RegistrationController extends BaseController
 
     public function registrationAction(){
         if( session() && session()->get('login') ){
-            $contractor = new Contractor();
-            $company = new Company();
-            $group = new Group();
+            if($this->request->isAJAX()){
+                $contractor = new Contractor();
+                $company = new Company();
+                $group = new Group();
 
-            $contractor->setId($_POST['contractorId']);
-            $contractor->setName($_POST['contractorName']);
-            $contractor->setNameKana($_POST['contractorKana']);
-            $contractor->setPassword("abCde");              //set a default password
-            $contractor->setZipCode($_POST['contractorPostCode']);
-            $contractor->setAddress01($_POST['contractorAddress1']);
-            $contractor->setAddress02($_POST['contractorAddress2']);
-            $contractor->setTelNo($_POST['contractorPhn']);
-            $contractor->setMailAddress($_POST['contractorMail']);
-            $contractor->setType("01");
-            $contractor->setUpdateDate(date("Y-m-d H:i:s"));
-            $contractor->setUpdateUserId(session()->get('userId'));
-            $contractor->setInsertDate(date("Y-m-d H:i:s"));
-            $contractor->setInsertUserId(session()->get('userId'));
-            $contractor->setDeleteFlag(0);
-            if($_POST['temporary'] == "YES"){
-                $contractor->setTemporary(1);
+                $contractor->setId($_POST['contractorId']);
+                $contractor->setName($_POST['contractorName']);
+                $contractor->setNameKana($_POST['contractorKana']);
+                $contractor->setPassword("abCde");              //set a default password
+                $contractor->setZipCode($_POST['contractorPostCode']);
+                $contractor->setAddress01($_POST['contractorAddress1']);
+                $contractor->setAddress02($_POST['contractorAddress2']);
+                $contractor->setTelNo($_POST['contractorPhn']);
+                $contractor->setMailAddress($_POST['contractorMail']);
+                $contractor->setType("01");
+                $contractor->setUpdateDate(date("Y-m-d H:i:s"));
+                $contractor->setUpdateUserId(session()->get('userId'));
+                $contractor->setInsertDate(date("Y-m-d H:i:s"));
+                $contractor->setInsertUserId(session()->get('userId'));
+                $contractor->setDeleteFlag(0);
+                if($_POST['temporary'] == "YES"){
+                    $contractor->setTemporary(1);
+                }
+                else{
+                    $contractor->setTemporary(0);
+                }
+
+                $company->setId($_POST["companyId"]);
+                $company->setName($_POST["companyName"]);
+                $company->setNameKana($_POST["companyKana"]);
+                $company->setRepresentative($_POST["companyRepresentative"]);
+                $company->setRepresentativeKana($_POST["companyRepresentativeKana"]);
+                $company->setZipCode($_POST["companyPostCode"]);
+                $company->setAddress01($_POST["companyAddress1"]);
+                $company->setAddress02($_POST["companyAddress2"]);
+                $company->setTelNo($_POST["companyPhn"]);
+                $company->setMailAddress($_POST["companyMail"]);
+                $company->setUpdateDate(date("Y-m-d H:i:s"));
+                $company->setUpdateUserId(session()->get('userId'));
+                $company->setInsertDate(date("Y-m-d H:i:s"));
+                $company->setInsertUserId(session()->get('userId'));
+                $company->setDeleteFlag(0);
+
+                $group->setId($_POST["groupId"]);
+                $group->setName($_POST["groupName"]);
+                $group->setNameKana($_POST["groupKana"]);
+                $group->setRepresentative($_POST["groupRepresentative"]);
+                $group->setRepresentativeKana($_POST["groupRepresentativeKana"]);
+                $group->setZipCode($_POST["groupPostCode"]);
+                $group->setAddress01($_POST["groupAddress1"]);
+                $group->setAddress02($_POST["groupAddress2"]);
+                $group->setTelNo($_POST["groupPhn"]);
+                $group->setMailAddress($_POST["groupMail"]);
+                $group->setUpdateDate(date("Y-m-d H:i:s"));
+                $group->setUpdateUserId(session()->get('userId'));
+                $group->setInsertDate(date("Y-m-d H:i:s"));
+                $group->setInsertUserId(session()->get('userId'));
+                $group->setDeleteFlag(0);
+
+                $a = (new ContractorModel())->storeContractorData($contractor);
+                $b = (new CompanyModel())->storeCompanyData($company);
+                $c = (new GroupModel())->storeGroupData($group);
+
+                return json_encode(['msg' => "Successful", 'status' => 1]);
             }
             else{
-                $contractor->setTemporary(0);
+                return json_encode(['msg' => "Not an ajax request", 'status' => 2]);
             }
-
-            $company->setId($_POST["companyId"]);
-            $company->setName($_POST["companyName"]);
-            $company->setNameKana($_POST["companyKana"]);
-            $company->setRepresentative($_POST["companyRepresentative"]);
-            $company->setRepresentativeKana($_POST["companyRepresentativeKana"]);
-            $company->setZipCode($_POST["companyPostCode"]);
-            $company->setAddress01($_POST["companyAddress1"]);
-            $company->setAddress02($_POST["companyAddress2"]);
-            $company->setTelNo($_POST["companyPhn"]);
-            $company->setMailAddress($_POST["companyMail"]);
-            $company->setUpdateDate(date("Y-m-d H:i:s"));
-            $company->setUpdateUserId(session()->get('userId'));
-            $company->setInsertDate(date("Y-m-d H:i:s"));
-            $company->setInsertUserId(session()->get('userId'));
-            $company->setDeleteFlag(0);
-
-            $group->setId($_POST["groupId"]);
-            $group->setName($_POST["groupName"]);
-            $group->setNameKana($_POST["groupKana"]);
-            $group->setRepresentative($_POST["groupRepresentative"]);
-            $group->setRepresentativeKana($_POST["groupRepresentativeKana"]);
-            $group->setZipCode($_POST["groupPostCode"]);
-            $group->setAddress01($_POST["groupAddress1"]);
-            $group->setAddress02($_POST["groupAddress2"]);
-            $group->setTelNo($_POST["groupPhn"]);
-            $group->setMailAddress($_POST["groupMail"]);
-            $group->setUpdateDate(date("Y-m-d H:i:s"));
-            $group->setUpdateUserId(session()->get('userId'));
-            $group->setInsertDate(date("Y-m-d H:i:s"));
-            $group->setInsertUserId(session()->get('userId'));
-            $group->setDeleteFlag(0);
-
-            $this->db->trans_start();
-                (new ContractorModel())->storeContractorData($contractor);
-                (new CompanyModel())->storeCompanyData($company);
-                (new GroupModel())->storeGroupData($group);
-            $this->db->trans_complete();
-
-            return json_encode(['msg' => "Successful", 'status' => 1]);
         }
         else{
-            return redirect()->to("/login");
+            return json_encode(['msg' => "Not Logged in user", 'status' => 3]);
         }
     }
 }
