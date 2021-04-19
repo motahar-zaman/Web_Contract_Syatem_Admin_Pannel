@@ -68,7 +68,7 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td><a href="#">契約者検索(search)</a></td>
+                      <td><a href="/contractor-search">契約者検索(search)</a></td>
                       <td>契約者情報の検索を行い、画面表示を行います	</td>
                     </tr>
                     <tr>
@@ -76,7 +76,7 @@
                       <td>契約者者の新規登録を行います	</td>
                     </tr>
                     <tr>
-                      <td><a href="#">契約者更新(update)</a></td>
+                      <td><a href="/contractor-update">契約者更新(update)</a></td>
                       <td>契約者者の既存契約者更新を行います		</td>
                     </tr>
                     <?php if(session()->get("user") == "employee"){ ?>
