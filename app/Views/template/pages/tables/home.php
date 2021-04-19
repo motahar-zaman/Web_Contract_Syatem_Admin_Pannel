@@ -28,7 +28,7 @@
         </div>
         <div class="underline mt-2"></div>
         <div class="row">
-          <div class="menuTable col-5 mt-5 mb-5">
+          <div class="menuTable mt-5 mb-5">
             <div class="card mb-0">
               <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
