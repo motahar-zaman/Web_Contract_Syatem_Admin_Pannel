@@ -42,7 +42,7 @@
                                         $data = $group[$i];
                                         ?>
                                         <tr>
-                                            <td onclick="selectedGroup(<?php echo $i ?>)" id="selectedGroup<?php echo $data->getId() ?>">Select</td>
+                                            <td onclick="selectedGroup(<?php echo $i ?>)" id="selectedGroup<?php echo $data->getId() ?>"><a href="#">選択</a></td>
                                             <td id="groupId<?php echo $i ?>"><?php echo $data->getId() ?></td>
                                             <td id="groupName<?php echo $i ?>"><?php echo $data->getName() ?></td>
                                             <td id="groupAddress1<?php echo $i ?>"><?php echo $data->getAddress01() ?></td>
