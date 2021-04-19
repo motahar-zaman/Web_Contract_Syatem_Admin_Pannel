@@ -129,7 +129,16 @@ class RegistrationController extends BaseController
             $company = (new CompanyModel())->getAllCompanyData();
             $contractor = (new ContractorModel())->getAllContractorData();
 
-            return view("template/pages/forms/updateContractor", ["title" => "Update Contractor Information", "group" => $group, "company" => $company, "contractor" => $contractor]);
+            return view("template/pages/forms/updateContractor", ["title" => "Update Contractor Information", "group" => $group,
+                "company" => $company, "contractor" => $contractor]);
+        }
+        else{
+            return redirect()->to("/login");
+        }
+    }
+
+    public function updateAction(){
+        if( session() && session()->get('login') ){
         }
         else{
             return redirect()->to("/login");
