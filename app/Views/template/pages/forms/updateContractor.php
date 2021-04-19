@@ -59,7 +59,6 @@
                                         <div class="form-group">
                                             <label for="contractorId">契約者ID(contractorId)</label>
                                             <input class="form-control" type="text" name="contractorId" id="contractorId" value="<?php old('contractorId')?>">
-                                            <input type="hidden" name="temporary" id="temporary" value="NO">
                                         </div>
                                         <div class="form-group">
                                             <label for="contractorName">契約者名(contractorName)</label>
@@ -278,7 +277,7 @@
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-md-6 text-center">
-                                <button onclick="contractorRegistration()" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 text-bold">契約者更新</button>
+                                <button onclick="contractorUpdate()" id="contractorUpdate" class="btn btn-primary pl-3 pr-3 text-bold">契約者更新</button>
                             </div>
                             <div class="col-md-6 text-center">
                                 <span>アクセス日時：<?= date("Y/m/d")?>	</span>
@@ -289,7 +288,7 @@
             </section>
         </div>
 
-        <script type="text/javascript" src="../../js/contractorRegistration.js"></script>
+        <script type="text/javascript" src="../../js/contractorUpdate.js"></script>
         <!-- jQuery -->
         <script src="../../plugins/jquery/jquery.min.js"></script>
         <!-- Bootstrap 4 -->
