@@ -122,4 +122,17 @@ class RegistrationController extends BaseController
             return json_encode(['msg' => "Not Logged in user", 'status' => 3]);
         }
     }
+
+    public function update(){
+        if( session() && session()->get('login') ){
+            $group = (new GroupModel())->getAllGroupData();
+            $company = (new CompanyModel())->getAllCompanyData();
+            $contractor = (new ContractorModel())->getAllContractorData();
+
+            return view("template/pages/forms/updateContractor", ["title" => "Update Contractor Information", "group" => $group, "company" => $company, "contractor" => $contractor]);
+        }
+        else{
+            return redirect()->to("/login");
+        }
+    }
 }
