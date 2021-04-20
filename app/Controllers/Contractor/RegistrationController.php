@@ -14,7 +14,9 @@ use App\Models\Group\GroupModel;
 class RegistrationController extends BaseController
 {
     public function testMethod(){
-        (new SequenceModel())->getContractorSequence();
+        echo (new SequenceModel())->getEmployeeSequence();
+        echo "<br>";
+        echo (new SequenceModel())->getContractorSequence();
     }
     public function index(){
         if( session() && session()->get('login') ){
