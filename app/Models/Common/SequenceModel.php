@@ -6,6 +6,8 @@ namespace App\Models\Common;
 
 
 
+use App\Models\Database;
+
 class SequenceModel
 {
     public function getEmployeeSequence(){
@@ -21,5 +23,8 @@ class SequenceModel
     }
 
     public function getSequenceRules(){
+        $queryString = "SELECT prefix, sequence, increment FROM mng_sequence";
+
+        return (new Database())->readQueryExecution($queryString);
     }
 }
