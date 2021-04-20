@@ -13,6 +13,8 @@ class Contractor{
     private $telNo;
     private $faxNo;
     private $mailAddress;
+    private $companyId;
+    private $groupId;
     private $type;
     private $updateDate;
     private $updateUserId;
@@ -179,6 +181,38 @@ class Contractor{
     public function setMailAddress($mailAddress): void
     {
         $this->mailAddress = $mailAddress;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCompanyId()
+    {
+        return $this->companyId;
+    }
+
+    /**
+     * @param mixed $companyId
+     */
+    public function setCompanyId($companyId): void
+    {
+        $this->companyId = $companyId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGroupId()
+    {
+        return $this->groupId;
+    }
+
+    /**
+     * @param mixed $groupId
+     */
+    public function setGroupId($groupId): void
+    {
+        $this->groupId = $groupId;
     }
 
     /**
