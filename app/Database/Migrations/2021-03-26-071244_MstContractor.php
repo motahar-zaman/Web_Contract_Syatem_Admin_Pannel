@@ -69,6 +69,18 @@ class MstContractor extends Migration
                 'null'      => true,
                 'comment'=> 'メールアドレス / Mail Address',
             ],
+            'company_id'         => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '20',
+                'null'           => true,
+                'comment'        => '契約者ID / Company ID',
+            ],
+            'group_id'         => [
+                'type'         => 'VARCHAR',
+                'constraint'   => '20',
+                'null'         => true,
+                'comment'      => '契約者ID / Group ID',
+            ],
             'temporary' => [
                 'type'       => 'TINYINT',
                 'null'       => false,
