@@ -50,6 +50,8 @@ if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php'))
 {
 	require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }
+$routes->get('test', 'Contractor\RegistrationController::testMethod');
+
 $routes->get('/', 'Authentication\AuthController::index');
 $routes->get('login', 'Authentication\AuthController::login');
 $routes->post('login', 'Authentication\AuthController::loginAction');

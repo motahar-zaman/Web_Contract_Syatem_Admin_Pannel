@@ -3,6 +3,7 @@
 namespace App\Controllers\Contractor;
 
 use App\Controllers\BaseController;
+use App\Models\Common\SequenceModel;
 use App\Models\Company\Company;
 use App\Models\Company\CompanyModel;
 use App\Models\Contractor\Contractor;
@@ -12,6 +13,9 @@ use App\Models\Group\GroupModel;
 
 class RegistrationController extends BaseController
 {
+    public function testMethod(){
+        (new SequenceModel())->getContractorSequence();
+    }
     public function index(){
         if( session() && session()->get('login') ){
             $group = (new GroupModel())->getAllGroupData();
