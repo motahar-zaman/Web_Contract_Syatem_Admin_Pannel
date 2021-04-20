@@ -54,6 +54,8 @@ class RegistrationController extends BaseController
                 $contractor->setAddress02($_POST['contractorAddress2']);
                 $contractor->setTelNo($_POST['contractorPhn']);
                 $contractor->setMailAddress($_POST['contractorMail']);
+                $contractor->setCompanyId($_POST["companyId"]);
+                $contractor->setGroupId($_POST["groupId"]);
                 $contractor->setType("01");
                 $contractor->setUpdateDate(date("Y-m-d H:i:s"));
                 $contractor->setUpdateUserId(session()->get('userId'));
