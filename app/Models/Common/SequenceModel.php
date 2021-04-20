@@ -11,9 +11,17 @@ use App\Models\Database;
 class SequenceModel
 {
     public function getEmployeeSequence(){
-        $sequence = k1_employee_user_prefix;
+        $employeePrefix = k1_employee_user_prefix;
+        $employee = $this->getEmployeeLastSequence();
+        $employeeSequence = $this->getSequenceRules($employeePrefix);
+        $increment = $employeeSequence->increment;
+        $sequence = $employeeSequence->sequence;
+        $lastSequence = $employee->employee_id;
+        $user = explode("_",$lastSequence);
 
-        return $sequence;
+        $newSequence = $employeePrefix."_".($user[1]+$increment);
+
+        return $newSequence;;
     }
 
     public function getContractorSequence(){
