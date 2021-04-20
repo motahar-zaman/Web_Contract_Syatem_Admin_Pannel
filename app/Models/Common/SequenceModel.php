@@ -22,21 +22,27 @@ class SequenceModel
         return $sequence;
     }
 
-    public function getSequenceRules(){
-        $queryString = "SELECT prefix, sequence, increment FROM mng_sequence";
+    public function getSequenceRules($prefix){
+        $queryString = "SELECT prefix, sequence, increment FROM mng_sequence WHERE prefix = ?";
+        $parameter = array($prefix);
 
-        return (new Database())->readQueryExecution($queryString);
+        $data = (new Database())->readQueryExecution($queryString, $parameter);
+        return $data[0];
     }
 
     public function getContractorLastSequence(){
-        $queryString = "SELECT contractor_id, insert_date FROM mst_contractor ORDER BY insert_date DESC LIMIT 1";
+        $queryString = "SELECT contractor_id, insert_date FROM mst_contractor ORDER BY insert_date DESC LIMIT ?";
+        $parameter = array(1);
 
-        return (new Database())->readQueryExecution($queryString);
+        $data = (new Database())->readQueryExecution($queryString, $parameter);
+        return $data[0];
     }
 
     public function getEmployeeLastSequence(){
-        $queryString = "SELECT employee_id, insert_date FROM mst_employee ORDER BY insert_date DESC  LIMIT 1";
+        $queryString = "SELECT employee_id, insert_date FROM mst_employee ORDER BY insert_date DESC  LIMIT ?";
+        $parameter = array(1);
 
-        return (new Database())->readQueryExecution($queryString);
+        $data = (new Database())->readQueryExecution($queryString, $parameter);
+        return $data[0];
     }
 }
