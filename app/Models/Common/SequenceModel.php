@@ -28,8 +28,14 @@ class SequenceModel
         return (new Database())->readQueryExecution($queryString);
     }
 
-    public function getEmployeeLastSequence(){
+    public function getContractorLastSequence(){
         $queryString = "SELECT contractor_id, insert_date FROM mst_contractor ORDER BY insert_date DESC";
+
+        return (new Database())->readQueryExecution($queryString);
+    }
+
+    public function getEmployeeLastSequence(){
+        $queryString = "SELECT employee_id, insert_date FROM mst_employee ORDER BY insert_date DESC";
 
         return (new Database())->readQueryExecution($queryString);
     }
