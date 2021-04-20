@@ -19,6 +19,8 @@ class ContractorModel
         $phn = $contractor->getTelNo();
         $fax = $contractor->getFaxNo();
         $mail = $contractor->getMailAddress();
+        $company = $contractor->getCompanyId();
+        $group = $contractor->getGroupId();
         $type = $contractor->getType();
         $update = $contractor->getUpdateDate();
         $updateUser = $contractor->getUpdateUserId();
@@ -28,10 +30,10 @@ class ContractorModel
         $temp = $contractor->getTemporary();
 
         $queryString = "INSERT INTO mst_contractor(contractor_id, contractor_name, contractor_name_kana, password, zipcode, address_01, address_02,
-                        tel_no, fax_no, mail_address, type_contractor, update_date, update_user_id, insert_date, insert_user_id, delete_flag, temporary)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $queryParameter = array($id, $name, $kana, $password, $zip, $address1, $address2, $phn, $fax, $mail, $type, $update, $updateUser, $insert,
-            $insertUser, $delete, $temp);
+                        tel_no, fax_no, mail_address, company_id, group_id, temporary, type_contractor, update_date, update_user_id, insert_date,
+                        insert_user_id, delete_flag) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $queryParameter = array($id, $name, $kana, $password, $zip, $address1, $address2, $phn, $fax, $mail, $company, $group, $temp, $type,
+            $update, $updateUser, $insert, $insertUser, $delete);
 
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
@@ -42,9 +44,9 @@ class ContractorModel
     }
 
     public function getAllData(){
-        $queryString = "SELECT contractor_id, contractor_name, contractor_name_kana, password, zipcode, address_01, address_02, tel_no, fax_no, mail_address,
-                        temporary, type_contractor, update_date, update_user_id, insert_date, insert_user_id, delete_flag FROM mst_contractor WHERE delete_flag = ?
-                        ORDER BY update_date DESC";
+        $queryString = "SELECT contractor_id, contractor_name, contractor_name_kana, password, zipcode, address_01, address_02, tel_no, fax_no,
+                        mail_address, temporary, type_contractor, update_date, update_user_id, insert_date, insert_user_id, delete_flag FROM
+                        mst_contractor WHERE delete_flag = ? ORDER BY update_date DESC";
         $queryParameter = array(0);
 
         return (new Database())->readQueryExecution($queryString, $queryParameter);
