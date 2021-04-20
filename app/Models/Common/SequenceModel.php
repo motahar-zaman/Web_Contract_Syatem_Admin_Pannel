@@ -17,9 +17,17 @@ class SequenceModel
     }
 
     public function getContractorSequence(){
-        $sequence = contractor_user_prefix;
+        $contractorPrefix = contractor_user_prefix;
+        $contractor = $this->getContractorLastSequence();
+        $contractorSequence = $this->getSequenceRules($contractorPrefix);
+        $increment = $contractorSequence->increment;
+        $sequence = $contractorSequence->sequence;
+        $lastSequence = $contractor->contractor_id;
+        $user = explode("_",$lastSequence);
 
-        return $sequence;
+        $newSequence = $contractorPrefix."_".($user[1]+$increment);
+
+        return $newSequence;
     }
 
     public function getSequenceRules($prefix){
