@@ -78,7 +78,7 @@ defined('EXIT_DATABASE')       || define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      || define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      || define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
-define('k1_employee_user_prefix', 'K1');
-define('contractor_user_prefix', 'CONT');
-define('jwt_token_key', "k1_jwt_user_token");
-define('jwt_token_algorithm', "HS512");
+const k1_employee_user_prefix = 'K1';
+const contractor_user_prefix = 'CONT';
+const jwt_token_key = "k1_jwt_user_token";
+const jwt_token_algorithm = "HS512";
