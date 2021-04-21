@@ -50,34 +50,39 @@ class CompanyModel
     }
 
     public function mapData($datas = array()){
-        $length = count($datas);
-        $mappedData = array();
+        if(isset($datas) && is_array($datas)){
+            $length = count($datas);
+            $mappedData = array();
 
-        for($i = 0; $i < $length; $i++){
-            $data = $datas[$i];
-            $company = new Company();
-            if(isset($data)){
-                $company->setId($data->company_id ?? NULL);
-                $company->setName($data->company_name ?? NULL);
-                $company->setNameKana($data->company_name_kana ?? NULL);
-                $company->setRepresentative($data->daihyousha_name ?? NULL);
-                $company->setRepresentativeKana($data->daihyousha_name_kana ?? NULL);
-                $company->setZipCode($data->zipcode ?? NULL);
-                $company->setAddress01($data->address_01 ?? NULL);
-                $company->setAddress02($data->address_02 ?? NULL);
-                $company->setTelNo($data->tel_no ?? NULL);
-                $company->setFaxNo($data->fax_no ?? NULL);
-                $company->setMailAddress($data->mail_address ?? NULL);
-                $company->setSiteUrl($data->site_url ?? NULL);
-                $company->setUpdateDate($data->update_date ?? NULL);
-                $company->setUpdateUserId($data->update_user_id ?? NULL);
-                $company->setInsertDate($data->insert_date ?? NULL);
-                $company->setInsertUserId($data->insert_user_id ?? NULL);
-                $company->setDeleteFlag($data->delete_flag ?? NULL);
+            for($i = 0; $i < $length; $i++){
+                $data = $datas[$i];
+                $company = new Company();
+                if(isset($data)){
+                    $company->setId($data->company_id ?? NULL);
+                    $company->setName($data->company_name ?? NULL);
+                    $company->setNameKana($data->company_name_kana ?? NULL);
+                    $company->setRepresentative($data->daihyousha_name ?? NULL);
+                    $company->setRepresentativeKana($data->daihyousha_name_kana ?? NULL);
+                    $company->setZipCode($data->zipcode ?? NULL);
+                    $company->setAddress01($data->address_01 ?? NULL);
+                    $company->setAddress02($data->address_02 ?? NULL);
+                    $company->setTelNo($data->tel_no ?? NULL);
+                    $company->setFaxNo($data->fax_no ?? NULL);
+                    $company->setMailAddress($data->mail_address ?? NULL);
+                    $company->setSiteUrl($data->site_url ?? NULL);
+                    $company->setUpdateDate($data->update_date ?? NULL);
+                    $company->setUpdateUserId($data->update_user_id ?? NULL);
+                    $company->setInsertDate($data->insert_date ?? NULL);
+                    $company->setInsertUserId($data->insert_user_id ?? NULL);
+                    $company->setDeleteFlag($data->delete_flag ?? NULL);
+                }
+                array_push($mappedData, $company);
             }
-            array_push($mappedData, $company);
+            return $mappedData;
         }
-        return $mappedData;
+        else{
+            return $datas;
+        }
     }
 
     public function deleteData($companyId){

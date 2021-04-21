@@ -53,34 +53,39 @@ class ContractorModel
     }
 
     public function mapData($datas = array()){
-        $length = count($datas);
-        $mappedData = array();
+        if(isset($datas) && is_array($datas)){
+            $length = count($datas);
+            $mappedData = array();
 
-        for($i = 0; $i < $length; $i++){
-            $data = $datas[$i];
-            $contractor = new Contractor();
-            if(isset($data)){
-                $contractor->setId($data->contractor_id ?? NULL);
-                $contractor->setName($data->contractor_name ?? NULL);
-                $contractor->setNameKana($data->contractor_name_kana ?? NULL);
-                $contractor->setPassword($data->password ?? NULL);
-                $contractor->setZipCode($data->zipcode ?? NULL);
-                $contractor->setAddress01($data->address_01 ?? NULL);
-                $contractor->setAddress02($data->address_02 ?? NULL);
-                $contractor->setTelNo($data->tel_no ?? NULL);
-                $contractor->setFaxNo($data->fax_no ?? NULL);
-                $contractor->setMailAddress($data->mail_address ?? NULL);
-                $contractor->setTemporary($data->temporary ?? NULL);
-                $contractor->setType($data->type_contractor ?? NULL);
-                $contractor->setUpdateDate($data->update_date ?? NULL);
-                $contractor->setUpdateUserId($data->update_user_id ?? NULL);
-                $contractor->setInsertDate($data->insert_date ?? NULL);
-                $contractor->setInsertUserId($data->insert_user_id ?? NULL);
-                $contractor->setDeleteFlag($data->delete_flag ?? NULL);
+            for($i = 0; $i < $length; $i++){
+                $data = $datas[$i];
+                $contractor = new Contractor();
+                if(isset($data)){
+                    $contractor->setId($data->contractor_id ?? NULL);
+                    $contractor->setName($data->contractor_name ?? NULL);
+                    $contractor->setNameKana($data->contractor_name_kana ?? NULL);
+                    $contractor->setPassword($data->password ?? NULL);
+                    $contractor->setZipCode($data->zipcode ?? NULL);
+                    $contractor->setAddress01($data->address_01 ?? NULL);
+                    $contractor->setAddress02($data->address_02 ?? NULL);
+                    $contractor->setTelNo($data->tel_no ?? NULL);
+                    $contractor->setFaxNo($data->fax_no ?? NULL);
+                    $contractor->setMailAddress($data->mail_address ?? NULL);
+                    $contractor->setTemporary($data->temporary ?? NULL);
+                    $contractor->setType($data->type_contractor ?? NULL);
+                    $contractor->setUpdateDate($data->update_date ?? NULL);
+                    $contractor->setUpdateUserId($data->update_user_id ?? NULL);
+                    $contractor->setInsertDate($data->insert_date ?? NULL);
+                    $contractor->setInsertUserId($data->insert_user_id ?? NULL);
+                    $contractor->setDeleteFlag($data->delete_flag ?? NULL);
+                }
+                array_push($mappedData, $contractor);
             }
-            array_push($mappedData, $contractor);
+            return $mappedData;
         }
-        return $mappedData;
+        else{
+            return $datas;
+        }
     }
 
     public function deleteData($contractorId){

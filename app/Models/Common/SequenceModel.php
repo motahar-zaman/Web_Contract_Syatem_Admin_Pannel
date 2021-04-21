@@ -51,6 +51,18 @@ class SequenceModel
         return $newSequence;
     }
 
+    public function getGroupSequence(){
+        $prefix = date("Ymd");
+        $increment = 1;
+        $group = $this->getGroupLastSequence();
+        $lastSequence = $group->group_id;
+        $id = substr($lastSequence, -4);
+        $newId = sprintf("%04d", $id+$increment);
+        $newSequence = $prefix.$newId;
+
+        return $newSequence;
+    }
+
     public function getSequenceRules($prefix){
         $queryString = "SELECT prefix, sequence, increment FROM mng_sequence WHERE prefix = ?";
         $parameter = array($prefix);
@@ -77,6 +89,14 @@ class SequenceModel
 
     public function getCompanyLastSequence(){
         $queryString = "SELECT company_id, insert_date FROM mst_company ORDER BY insert_date DESC LIMIT ?";
+        $parameter = array(1);
+
+        $data = (new Database())->readQueryExecution($queryString, $parameter);
+        return $data[0];
+    }
+
+    public function getGroupLastSequence(){
+        $queryString = "SELECT group_id, insert_date FROM mst_group ORDER BY insert_date DESC LIMIT ?";
         $parameter = array(1);
 
         $data = (new Database())->readQueryExecution($queryString, $parameter);

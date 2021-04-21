@@ -48,35 +48,40 @@ class GroupModel
     }
 
     public function mapData($datas = array()){
-        $length = count($datas);
-        $mappedData = array();
+        if(isset($datas) && is_array($datas)){
+            $length = count($datas);
+            $mappedData = array();
 
-        for($i = 0; $i < $length; $i++){
-            $data = $datas[$i];
-            $group = new Group();
-            if(isset($data)){
-                $group->setId($data->group_id ?? NULL);
-                $group->setName($data->group_name ?? NULL);
-                $group->setNameKana($data->group_name_kana ?? NULL);
-                $group->setRepresentative($data->daihyousha_name ?? NULL);
-                $group->setRepresentativeKana($data->daihyousha_name_kana ?? NULL);
-                $group->setZipCode($data->zipcode ?? NULL);
-                $group->setAddress01($data->address_01 ?? NULL);
-                $group->setAddress02($data->address_02 ?? NULL);
-                $group->setAreaId($data->area_id ?? NULL);
-                $group->setPrefecture($data->prefecture ?? NULL);
-                $group->setTelNo($data->tel_no ?? NULL);
-                $group->setFaxNo($data->fax_no ?? NULL);
-                $group->setMailAddress($data->mail_address ?? NULL);
-                $group->setUpdateDate($data->update_date ?? NULL);
-                $group->setUpdateUserId($data->update_user_id ?? NULL);
-                $group->setInsertDate($data->insert_date ?? NULL);
-                $group->setInsertUserId($data->insert_user_id ?? NULL);
-                $group->setDeleteFlag($data->delete_flag ?? NULL);
+            for($i = 0; $i < $length; $i++){
+                $data = $datas[$i];
+                $group = new Group();
+                if(isset($data)){
+                    $group->setId($data->group_id ?? NULL);
+                    $group->setName($data->group_name ?? NULL);
+                    $group->setNameKana($data->group_name_kana ?? NULL);
+                    $group->setRepresentative($data->daihyousha_name ?? NULL);
+                    $group->setRepresentativeKana($data->daihyousha_name_kana ?? NULL);
+                    $group->setZipCode($data->zipcode ?? NULL);
+                    $group->setAddress01($data->address_01 ?? NULL);
+                    $group->setAddress02($data->address_02 ?? NULL);
+                    $group->setAreaId($data->area_id ?? NULL);
+                    $group->setPrefecture($data->prefecture ?? NULL);
+                    $group->setTelNo($data->tel_no ?? NULL);
+                    $group->setFaxNo($data->fax_no ?? NULL);
+                    $group->setMailAddress($data->mail_address ?? NULL);
+                    $group->setUpdateDate($data->update_date ?? NULL);
+                    $group->setUpdateUserId($data->update_user_id ?? NULL);
+                    $group->setInsertDate($data->insert_date ?? NULL);
+                    $group->setInsertUserId($data->insert_user_id ?? NULL);
+                    $group->setDeleteFlag($data->delete_flag ?? NULL);
+                }
+                array_push($mappedData, $group);
             }
-            array_push($mappedData, $group);
+            return $mappedData;
         }
-        return $mappedData;
+        else{
+            return $datas;
+        }
     }
 
     public function deleteData($groupId){
