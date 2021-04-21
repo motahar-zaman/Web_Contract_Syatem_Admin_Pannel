@@ -58,7 +58,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="contractorId">契約者ID(contractorId)</label>
-                                            <input class="form-control" type="text" name="contractorId" id="contractorId" value="<?php old('contractorId')?>">
+                                            <input class="form-control" type="text" name="contractorId" id="contractorId" value="<?php echo $contractorId ?>" readonly>
                                             <input type="hidden" name="temporary" id="temporary" value="NO">
                                         </div>
                                         <div class="form-group">
@@ -127,7 +127,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="companyId">会社ID(companyId)</label>
-                                            <input class="form-control" type="text" name="companyId" id="companyId" value="<?php old('companyId')?>">
+                                            <input class="form-control" type="text" name="companyId" id="companyId" value="<?php echo $companyId ?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label for="companyName">会社名(companyName)</label>
@@ -205,7 +205,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="groupId">グループID(groupId)</label>
-                                            <input class="form-control" type="text" name="groupId" id="groupId" value="<?php old('groupId')?>">
+                                            <input class="form-control" type="text" name="groupId" id="groupId" value="<?php echo $groupId ?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label for="groupName">グループ選択(groupName)</label>
