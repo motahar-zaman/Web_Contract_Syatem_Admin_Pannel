@@ -33,22 +33,14 @@ class MstEmployee extends Migration
                 'null'   => false,
                 'comment'=> 'パスワード / password',
             ],
-            'update_date' => [
-                'type'   => 'DATETIME',
-                'null'   => false,
-                'comment'=> '更新日 / Update Date',
-            ],
+            'update_date datetime NOT NULL default current_timestamp on update current_timestamp',
             'update_user_id' => [
                 'type'   => 'VARCHAR',
                 'constraint'=> '15',
                 'null'   => false,
                 'comment'=> '更新者 / Update By',
             ],
-            'insert_date' => [
-                'type'   => 'DATETIME',
-                'null'   => false,
-                'comment'=> '作成日 / Create Date',
-            ],
+            'insert_date datetime NOT NULL default current_timestamp',
             'insert_user_id' => [
                 'type'   => 'VARCHAR',
                 'constraint'=> '15',
