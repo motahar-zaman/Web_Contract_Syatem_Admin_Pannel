@@ -17,14 +17,23 @@ class RegistrationController extends BaseController
         echo (new SequenceModel())->getEmployeeSequence();
         echo "<br>";
         echo (new SequenceModel())->getContractorSequence();
+        echo "<br>";
+        echo (new SequenceModel())->getCompanySequence();
+        echo "<br>";
+        echo (new SequenceModel())->getGroupSequence();
     }
+
     public function index(){
         if( session() && session()->get('login') ){
             $group = (new GroupModel())->getAllGroupData();
             $company = (new CompanyModel())->getAllCompanyData();
             $contractor = (new ContractorModel())->getAllContractorData();
+            $contractorId = (new SequenceModel())->getContractorSequence();
+            $companyId = (new SequenceModel())->getCompanySequence();
+            $groupId = (new SequenceModel())->getGroupSequence();
 
-            return view("template/pages/forms/contractor", ["title" => "Contractor Registration", "group" => $group, "company" => $company, "contractor" => $contractor]);
+            return view("template/pages/forms/contractor", ["title" => "Contractor Registration", "group" => $group, "company" => $company,
+                "contractor" => $contractor, "contractorId" => $contractorId, "companyId" => $companyId, "groupId" => $groupId]);
         }
         else{
             return redirect()->to("/login");
@@ -36,8 +45,12 @@ class RegistrationController extends BaseController
             $group = (new GroupModel())->getAllGroupData();
             $company = (new CompanyModel())->getAllCompanyData();
             $contractor = (new ContractorModel())->getAllContractorData();
+            $contractorId = (new SequenceModel())->getContractorSequence();
+            $companyId = (new SequenceModel())->getCompanySequence();
+            $groupId = (new SequenceModel())->getGroupSequence();
 
-            return view("template/pages/forms/temp_contractor", ["title" => "Temporary Contractor Registration", "group" => $group, "company" => $company, "contractor" => $contractor]);
+            return view("template/pages/forms/temp_contractor", ["title" => "Temporary Contractor Registration", "group" => $group, "company"
+                => $company, "contractor" => $contractor, "contractorId" => $contractorId, "companyId" => $companyId, "groupId" => $groupId]);
         }
         else{
             return redirect()->to("/login");
