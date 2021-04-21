@@ -64,17 +64,14 @@ class RegistrationController extends BaseController
                 $company = new Company();
                 $group = new Group();
 
-                $contractor->setId($_POST['contractorId']);
                 $contractor->setName($_POST['contractorName']);
                 $contractor->setNameKana($_POST['contractorKana']);
-                $contractor->setPassword("abCde");              //set a default password
+                $contractor->setPassword("abcde");              //set a default password
                 $contractor->setZipCode($_POST['contractorPostCode']);
                 $contractor->setAddress01($_POST['contractorAddress1']);
                 $contractor->setAddress02($_POST['contractorAddress2']);
                 $contractor->setTelNo($_POST['contractorPhn']);
                 $contractor->setMailAddress($_POST['contractorMail']);
-                $contractor->setCompanyId($_POST["companyId"]);
-                $contractor->setGroupId($_POST["groupId"]);
                 $contractor->setType("01");
                 $contractor->setUpdateDate(date("Y-m-d H:i:s"));
                 $contractor->setUpdateUserId(session()->get('userId'));
@@ -88,7 +85,6 @@ class RegistrationController extends BaseController
                     $contractor->setTemporary(0);
                 }
 
-                $company->setId($_POST["companyId"]);
                 $company->setName($_POST["companyName"]);
                 $company->setNameKana($_POST["companyKana"]);
                 $company->setRepresentative($_POST["companyRepresentative"]);
@@ -104,7 +100,6 @@ class RegistrationController extends BaseController
                 $company->setInsertUserId(session()->get('userId'));
                 $company->setDeleteFlag(0);
 
-                $group->setId($_POST["groupId"]);
                 $group->setName($_POST["groupName"]);
                 $group->setNameKana($_POST["groupKana"]);
                 $group->setRepresentative($_POST["groupRepresentative"]);
@@ -120,9 +115,19 @@ class RegistrationController extends BaseController
                 $group->setInsertUserId(session()->get('userId'));
                 $group->setDeleteFlag(0);
 
-                $insertContractor = (new ContractorModel())->storeContractorData($contractor);
-                $insertCompany = (new CompanyModel())->storeCompanyData($company);
+                $latestGroupId = (new SequenceModel())->getGroupSequence();
+                $group->setId($latestGroupId);
                 $insertGroup = (new GroupModel())->storeGroupData($group);
+
+                $latestCompanyId = (new SequenceModel())->getCompanySequence();
+                $company->setId($latestCompanyId);
+                $insertCompany = (new CompanyModel())->storeCompanyData($company);
+
+                $latestContractorId = (new SequenceModel())->getContractorSequence();
+                $contractor->setId($latestContractorId);
+                $contractor->setCompanyId($latestCompanyId);
+                $contractor->setGroupId($latestGroupId);
+                $insertContractor = (new ContractorModel())->storeContractorData($contractor);
 
                 if($insertContractor && $insertCompany && $insertGroup){
                     return json_encode(['msg' => "Successful", 'status' => 1]);
