@@ -19,9 +19,9 @@ class SequenceModel
         $lastSequence = $employee->employee_id;
         $user = explode("_",$lastSequence);
 
-        $newSequence = $employeePrefix."_".($user[1]+$increment);
+        $newSequence = $employeePrefix."_0000".($user[1]+$increment);
 
-        return $newSequence;;
+        return $newSequence;
     }
 
     public function getContractorSequence(){
@@ -31,7 +31,7 @@ class SequenceModel
         $increment = $contractorSequence->increment;
         $sequence = $contractorSequence->sequence;
         $lastSequence = $contractor->contractor_id;
-        $user = explode("_",$lastSequence);
+        $user = explode("_0000",$lastSequence);
 
         $newSequence = $contractorPrefix."_".($user[1]+$increment);
 
