@@ -111,7 +111,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="contractorMail">メールアドレス(contractorMail)</label>
-                                            <input class="form-control"  name="contractorMail" type="text" id="contractorMail" value="<?php old('contractorMail')?>">
+                                            <input class="form-control" type="email"  name="contractorMail" id="contractorMail" value="<?php old('contractorMail')?>">
                                             <span class="errormsg" id="contractorMailError"></span>
                                         </div>
                                     </div>
@@ -189,7 +189,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="companyMail">メールアドレス(companyMail)</label>
-                                            <input class="form-control"  name="companyMail" type="text" id="companyMail" value="<?php old('companyMail')?>">
+                                            <input class="form-control" type="email"  name="companyMail" id="companyMail" value="<?php old('companyMail')?>">
                                             <span class="errormsg" id="companyMailError"></span>
                                         </div>
                                     </div>
@@ -267,7 +267,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="groupMail">メールアドレス(groupMail)</label>
-                                            <input class="form-control"  name="groupMail" type="text" id="groupMail" value="<?php old('groupMail')?>">
+                                            <input class="form-control" type="email" name="groupMail" id="groupMail" value="<?php old('groupMail')?>">
                                             <span class="errormsg" id="groupMailError"></span>
                                         </div>
                                     </div>
