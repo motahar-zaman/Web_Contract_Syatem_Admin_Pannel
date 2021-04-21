@@ -17,9 +17,10 @@ class SequenceModel
         $increment = $employeeSequence->increment;
         $sequence = $employeeSequence->sequence;
         $lastSequence = $employee->employee_id;
-        $user = explode("_",$lastSequence);
+        $id = explode("_",$lastSequence);
+        $newId = sprintf("%05d", $id[1]+$increment);
 
-        $newSequence = $employeePrefix."_0000".($user[1]+$increment);
+        $newSequence = $employeePrefix."_".$newId;
 
         return $newSequence;
     }
@@ -31,9 +32,21 @@ class SequenceModel
         $increment = $contractorSequence->increment;
         $sequence = $contractorSequence->sequence;
         $lastSequence = $contractor->contractor_id;
-        $user = explode("_0000",$lastSequence);
+        $id = explode("_",$lastSequence);
+        $newId = sprintf("%05d", $id[1]+$increment);
 
-        $newSequence = $contractorPrefix."_".($user[1]+$increment);
+        $newSequence = $contractorPrefix."_".$newId;
+        return $newSequence;
+    }
+
+    public function getCompanySequence(){
+        $prefix = date("Ymd");
+        $increment = 1;
+        $company = $this->getCompanyLastSequence();
+        $lastSequence = $company->company_id;
+        $id = substr($lastSequence, -4);
+        $newId = sprintf("%04d", $id+$increment);
+        $newSequence = $prefix.$newId;
 
         return $newSequence;
     }
@@ -56,6 +69,14 @@ class SequenceModel
 
     public function getEmployeeLastSequence(){
         $queryString = "SELECT employee_id, insert_date FROM mst_employee ORDER BY insert_date DESC  LIMIT ?";
+        $parameter = array(1);
+
+        $data = (new Database())->readQueryExecution($queryString, $parameter);
+        return $data[0];
+    }
+
+    public function getCompanyLastSequence(){
+        $queryString = "SELECT company_id, insert_date FROM mst_company ORDER BY insert_date DESC LIMIT ?";
         $parameter = array(1);
 
         $data = (new Database())->readQueryExecution($queryString, $parameter);
