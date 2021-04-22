@@ -61,6 +61,7 @@
                                         <div class="form-group col-md-6 pl-0">
                                             <label for="contractorId">契約者ID(contractorId)</label>
                                             <input class="form-control" type="text" name="contractorId" id="contractorId" value="<?php echo $contractorId ?>" readonly>
+                                            <input type="hidden" name="contractorInsert" id="contractorInsert" value="insert">
                                             <input type="hidden" name="temporary" id="temporary" value="YES">
                                         </div>
                                     </div>
@@ -124,6 +125,7 @@
                                         <div class="form-group">
                                             <label for="companyId">会社ID(companyId)</label>
                                             <input class="form-control" type="text" name="companyId" id="companyId" value="<?php echo $companyId ?>" readonly>
+                                            <input type="hidden" name="companyInsert" id="companyInsert" value="insert">
                                         </div>
                                         <div class="form-group">
                                             <label for="companyName">会社名(companyName)</label>
@@ -202,6 +204,7 @@
                                         <div class="form-group">
                                             <label for="groupId">グループID(groupId)</label>
                                             <input class="form-control" type="text" name="groupId" id="groupId" value="<?php echo $groupId ?>" readonly>
+                                            <input type="hidden" name="groupInsert" id="groupInsert" value="insert">
                                         </div>
                                         <div class="form-group">
                                             <label for="groupName">グループ選択(groupName)</label>
