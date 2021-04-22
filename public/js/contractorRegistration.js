@@ -19,6 +19,7 @@ function contractorRegistration(){
     data["contractorAddress2"] = $("#contractorAddress2").val();
     data["contractorPhn"] = $("#contractorPhn").val();
     data["contractorMail"] = $("#contractorMail").val();
+    data["contractorInsert"] = $("#contractorInsert").val();
     data["temporary"] = $("#temporary").val();
 
     data["companyId"] = $("#companyId").val();
@@ -31,6 +32,7 @@ function contractorRegistration(){
     data["companyAddress2"] = $("#companyAddress2").val();
     data["companyPhn"] = $("#companyPhn").val();
     data["companyMail"] = $("#companyMail").val();
+    data["companyInsert"] = $("#companyInsert").val();
 
     data["groupId"] = $("#groupId").val();
     data["groupName"] = $("#groupName").val();
@@ -42,6 +44,7 @@ function contractorRegistration(){
     data["groupAddress2"] = $("#groupAddress2").val();
     data["groupPhn"] = $("#groupPhn").val();
     data["groupMail"] = $("#groupMail").val();
+    data["groupInsert"] = $("#groupInsert").val();
 
     if(validateData(data)){
         if (request) {
@@ -75,10 +78,12 @@ function contractorAddressSearch () {
     let zipCode = $('#contractorPostCode').val();
     getAddressFromZipCode(zipCode, "contractorAddress1");
 }
+
 function companyAddressSearch() {
     let zipCode = $('#companyPostCode').val();
     getAddressFromZipCode(zipCode, "companyAddress1");
 }
+
 function groupAddressSearch() {
     let zipCode = $('#groupPostCode').val();
     getAddressFromZipCode(zipCode, "groupAddress1");
@@ -133,6 +138,7 @@ function validateData(data) {
 
 function selectedGroup(data){
     $("#groupId").val($("#groupId"+data).html());
+    $("#groupInsert").val("update");
     $("#groupName").val($("#groupName"+data).html());
     $("#groupKana").val($("#groupNameKana"+data).val());
     $("#groupRepresentative").val($("#groupRepresentative"+data).val());
@@ -146,6 +152,7 @@ function selectedGroup(data){
 
 function selectedCompany(data){
     $("#companyId").val($("#companyId"+data).html());
+    $("#companyInsert").val("update");
     $("#companyName").val($("#companyName"+data).html());
     $("#companyKana").val($("#companyNameKana"+data).val());
     $("#companyRepresentative").val($("#companyRepresentative"+data).val());
@@ -159,6 +166,7 @@ function selectedCompany(data){
 
 function selectedContractor(data){
     $("#contractorId").val($("#contractorId"+data).html());
+    $("#contractorInsert").val("update");
     $("#contractorName").val($("#contractorName"+data).html());
     $("#contractorKana").val($("#contractorNameKana"+data).val());
     $("#contractorPostCode").val($("#contractorPostCode"+data).val());
