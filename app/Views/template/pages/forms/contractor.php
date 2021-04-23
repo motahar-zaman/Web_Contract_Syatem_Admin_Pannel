@@ -58,7 +58,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="contractorId">契約者ID(contractorId)</label>
-                                            <input class="form-control" type="text" name="contractorId" id="contractorId" value="<?php old('contractorId')?>">
+                                            <input class="form-control" type="text" name="contractorId" id="contractorId" value="<?php echo $contractorId ?>" readonly>
+                                            <input type="hidden" name="contractorInsert" id="contractorInsert" value="insert">
                                             <input type="hidden" name="temporary" id="temporary" value="NO">
                                         </div>
                                         <div class="form-group">
@@ -111,7 +112,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="contractorMail">メールアドレス(contractorMail)</label>
-                                            <input class="form-control"  name="contractorMail" type="text" id="contractorMail" value="<?php old('contractorMail')?>">
+                                            <input class="form-control" type="email"  name="contractorMail" id="contractorMail" value="<?php old('contractorMail')?>">
                                             <span class="errormsg" id="contractorMailError"></span>
                                         </div>
                                     </div>
@@ -127,7 +128,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="companyId">会社ID(companyId)</label>
-                                            <input class="form-control" type="text" name="companyId" id="companyId" value="<?php old('companyId')?>">
+                                            <input class="form-control" type="text" name="companyId" id="companyId" value="<?php echo $companyId ?>" readonly>
+                                            <input type="hidden" name="companyInsert" id="companyInsert" value="insert">
                                         </div>
                                         <div class="form-group">
                                             <label for="companyName">会社名(companyName)</label>
@@ -189,7 +191,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="companyMail">メールアドレス(companyMail)</label>
-                                            <input class="form-control"  name="companyMail" type="text" id="companyMail" value="<?php old('companyMail')?>">
+                                            <input class="form-control" type="email"  name="companyMail" id="companyMail" value="<?php old('companyMail')?>">
                                             <span class="errormsg" id="companyMailError"></span>
                                         </div>
                                     </div>
@@ -205,7 +207,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="groupId">グループID(groupId)</label>
-                                            <input class="form-control" type="text" name="groupId" id="groupId" value="<?php old('groupId')?>">
+                                            <input class="form-control" type="text" name="groupId" id="groupId" value="<?php echo $groupId ?>" readonly>
+                                            <input type="hidden" name="groupInsert" id="groupInsert" value="insert">
                                         </div>
                                         <div class="form-group">
                                             <label for="groupName">グループ選択(groupName)</label>
@@ -267,7 +270,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="groupMail">メールアドレス(groupMail)</label>
-                                            <input class="form-control"  name="groupMail" type="text" id="groupMail" value="<?php old('groupMail')?>">
+                                            <input class="form-control" type="email" name="groupMail" id="groupMail" value="<?php old('groupMail')?>">
                                             <span class="errormsg" id="groupMailError"></span>
                                         </div>
                                     </div>

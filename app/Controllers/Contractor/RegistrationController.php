@@ -17,14 +17,23 @@ class RegistrationController extends BaseController
         echo (new SequenceModel())->getEmployeeSequence();
         echo "<br>";
         echo (new SequenceModel())->getContractorSequence();
+        echo "<br>";
+        echo (new SequenceModel())->getCompanySequence();
+        echo "<br>";
+        echo (new SequenceModel())->getGroupSequence();
     }
+
     public function index(){
         if( session() && session()->get('login') ){
             $group = (new GroupModel())->getAllGroupData();
             $company = (new CompanyModel())->getAllCompanyData();
             $contractor = (new ContractorModel())->getAllContractorData();
+            $contractorId = (new SequenceModel())->getContractorSequence();
+            $companyId = (new SequenceModel())->getCompanySequence();
+            $groupId = (new SequenceModel())->getGroupSequence();
 
-            return view("template/pages/forms/contractor", ["title" => "Contractor Registration", "group" => $group, "company" => $company, "contractor" => $contractor]);
+            return view("template/pages/forms/contractor", ["title" => "Contractor Registration", "group" => $group, "company" => $company,
+                "contractor" => $contractor, "contractorId" => $contractorId, "companyId" => $companyId, "groupId" => $groupId]);
         }
         else{
             return redirect()->to("/login");
@@ -36,8 +45,12 @@ class RegistrationController extends BaseController
             $group = (new GroupModel())->getAllGroupData();
             $company = (new CompanyModel())->getAllCompanyData();
             $contractor = (new ContractorModel())->getAllContractorData();
+            $contractorId = (new SequenceModel())->getContractorSequence();
+            $companyId = (new SequenceModel())->getCompanySequence();
+            $groupId = (new SequenceModel())->getGroupSequence();
 
-            return view("template/pages/forms/temp_contractor", ["title" => "Temporary Contractor Registration", "group" => $group, "company" => $company, "contractor" => $contractor]);
+            return view("template/pages/forms/temp_contractor", ["title" => "Temporary Contractor Registration", "group" => $group, "company"
+                => $company, "contractor" => $contractor, "contractorId" => $contractorId, "companyId" => $companyId, "groupId" => $groupId]);
         }
         else{
             return redirect()->to("/login");
@@ -51,17 +64,14 @@ class RegistrationController extends BaseController
                 $company = new Company();
                 $group = new Group();
 
-                $contractor->setId($_POST['contractorId']);
                 $contractor->setName($_POST['contractorName']);
                 $contractor->setNameKana($_POST['contractorKana']);
-                $contractor->setPassword("abCde");              //set a default password
+                $contractor->setPassword("abcde");              //set a default password
                 $contractor->setZipCode($_POST['contractorPostCode']);
                 $contractor->setAddress01($_POST['contractorAddress1']);
                 $contractor->setAddress02($_POST['contractorAddress2']);
                 $contractor->setTelNo($_POST['contractorPhn']);
                 $contractor->setMailAddress($_POST['contractorMail']);
-                $contractor->setCompanyId($_POST["companyId"]);
-                $contractor->setGroupId($_POST["groupId"]);
                 $contractor->setType("01");
                 $contractor->setUpdateDate(date("Y-m-d H:i:s"));
                 $contractor->setUpdateUserId(session()->get('userId'));
@@ -75,7 +85,6 @@ class RegistrationController extends BaseController
                     $contractor->setTemporary(0);
                 }
 
-                $company->setId($_POST["companyId"]);
                 $company->setName($_POST["companyName"]);
                 $company->setNameKana($_POST["companyKana"]);
                 $company->setRepresentative($_POST["companyRepresentative"]);
@@ -91,7 +100,6 @@ class RegistrationController extends BaseController
                 $company->setInsertUserId(session()->get('userId'));
                 $company->setDeleteFlag(0);
 
-                $group->setId($_POST["groupId"]);
                 $group->setName($_POST["groupName"]);
                 $group->setNameKana($_POST["groupKana"]);
                 $group->setRepresentative($_POST["groupRepresentative"]);
@@ -107,11 +115,43 @@ class RegistrationController extends BaseController
                 $group->setInsertUserId(session()->get('userId'));
                 $group->setDeleteFlag(0);
 
-                $insertContractor = (new ContractorModel())->storeContractorData($contractor);
-                $insertCompany = (new CompanyModel())->storeCompanyData($company);
-                $insertGroup = (new GroupModel())->storeGroupData($group);
+                $contractorInsert = $_POST["contractorInsert"];
+                $companyInsert = $_POST["companyInsert"];
+                $groupInsert = $_POST["groupInsert"];
 
-                if($insertContractor && $insertCompany && $insertGroup){
+                if($groupInsert == "insert"){
+                    $group->setId((new SequenceModel())->getGroupSequence());
+                    $storeGroup = (new GroupModel())->storeGroupData($group);
+                }
+                else{
+                    $group->setId($_POST["groupId"]);
+                    (new GroupModel())->updateGroupData($group);
+                    $storeGroup = true;
+                }
+
+                if($companyInsert == "insert"){
+                    $company->setId((new SequenceModel())->getCompanySequence());
+                    $storeCompany = (new CompanyModel())->storeCompanyData($company);
+                }
+                else{
+                    $company->setId($_POST["companyId"]);
+                    (new CompanyModel())->updateCompanyData($company);
+                    $storeCompany = true;
+                }
+
+                $contractor->setCompanyId($company->getId());
+                $contractor->setGroupId($group->getId());
+                if($contractorInsert == "insert"){
+                    $contractor->setId((new SequenceModel())->getContractorSequence());
+                    $storeContractor = (new ContractorModel())->storeContractorData($contractor);
+                }
+                else{
+                    $contractor->setId($_POST["contractorId"]);
+                    (new ContractorModel())->updateContractorData($contractor);
+                    $storeContractor = true;
+                }
+
+                if($storeContractor && $storeCompany && $storeGroup){
                     return json_encode(['msg' => "Successful", 'status' => 1]);
                 }
                 else{
