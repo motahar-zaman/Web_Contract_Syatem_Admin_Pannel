@@ -76,6 +76,13 @@ class CompanyModel
         return (new Database())->readQueryExecution($queryString, $queryParameter);
     }
 
+    public function deleteData($companyId){
+        $queryString = "DELETE FROM mst_company WHERE company_id = ?";
+        $queryParameter = array($companyId);
+
+        return (new Database())->writeQueryExecution($queryString, $queryParameter);
+    }
+
     public function mapData($datas = array()){
         if(isset($datas) && is_array($datas)){
             $length = count($datas);
@@ -112,10 +119,39 @@ class CompanyModel
         }
     }
 
-    public function deleteData($companyId){
-        $queryString = "DELETE FROM mst_company WHERE company_id = ?";
-        $queryParameter = array($companyId);
+    public function mapDataByKeyValue($datas = array()){
+        if(isset($datas) && is_array($datas)){
+            $length = count($datas);
+            $mappedDataWithKeyValue = array();
 
-        return (new Database())->writeQueryExecution($queryString, $queryParameter);
+            for($i = 0; $i < $length; $i++){
+                $data = $datas[$i];
+                $companyData = array();
+                if(isset($data)){
+                    $companyData["id"] = $data->getId();
+                    $companyData["name"] = $data->getName();
+                    $companyData["nameKana"] = $data->getNameKana();
+                    $companyData["representative"] = $data->getRepresentative();
+                    $companyData["representativeKana"] = $data->getRepresentativeKana();
+                    $companyData["zipCode"] = $data->getZipCode();
+                    $companyData["address01"] = $data->getAddress01();
+                    $companyData["address02"] = $data->getAddress02();
+                    $companyData["telNo"] = $data->getTelNo();
+                    $companyData["faxNo"] = $data->getFaxNo();
+                    $companyData["mailAddress"] = $data->getMailAddress();
+                    $companyData["siteUrl"] = $data->getSiteUrl();
+                    $companyData["updateDate"] = $data->getUpdateDate();
+                    $companyData["updateUserId"] = $data->getUpdateUserId();
+                    $companyData["insertDate"] = $data->getInsertDate();
+                    $companyData["insertUserId"] = $data->getInsertUserId();
+                    $companyData["deleteFlag"] = $data->getDeleteFlag();
+                }
+                $mappedDataWithKeyValue[$data->getId()] = $companyData;
+            }
+            return $mappedDataWithKeyValue;
+        }
+        else{
+            return $datas;
+        }
     }
 }
