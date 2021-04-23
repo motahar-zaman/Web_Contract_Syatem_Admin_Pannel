@@ -74,6 +74,13 @@ class GroupModel
         return (new Database())->readQueryExecution($queryString, $queryParameter);
     }
 
+    public function deleteData($groupId){
+        $queryString = "DELETE FROM mst_group WHERE group_id = ?";
+        $queryParameter = array($groupId);
+
+        return (new Database())->writeQueryExecution($queryString, $queryParameter);
+    }
+
     public function mapData($datas = array()){
         if(isset($datas) && is_array($datas)){
             $length = count($datas);
@@ -111,10 +118,40 @@ class GroupModel
         }
     }
 
-    public function deleteData($groupId){
-        $queryString = "DELETE FROM mst_group WHERE group_id = ?";
-        $queryParameter = array($groupId);
+    public function mapDataByKeyValue($datas = array()){
+        if(isset($datas) && is_array($datas)){
+            $length = count($datas);
+            $mappedDataWithKeyValue = array();
 
-        return (new Database())->writeQueryExecution($queryString, $queryParameter);
+            for($i = 0; $i < $length; $i++){
+                $data = $datas[$i];
+                $groupData = array();
+                if(isset($data)){
+                    $groupData["id"] = $data->getId();
+                    $groupData["name"] = $data->getName();
+                    $groupData["nameKana"] = $data->getNameKana();
+                    $groupData["representative"] = $data->getRepresentative();
+                    $groupData["representativeKana"] = $data->getRepresentativeKana();
+                    $groupData["zipCode"] = $data->getZipCode();
+                    $groupData["address01"] = $data->getAddress01();
+                    $groupData["address02"] = $data->getAddress02();
+                    $groupData["areaId"] = $data->getAreaId();
+                    $groupData["prefecture"] = $data->getPrefecture();
+                    $groupData["telNo"] = $data->getTelNo();
+                    $groupData["faxNo"] = $data->getFaxNo();
+                    $groupData["mailAddress"] = $data->getMailAddress();
+                    $groupData["updateDate"] = $data->getUpdateDate();
+                    $groupData["updateUserId"] = $data->getUpdateUserId();
+                    $groupData["insertDate"] = $data->getInsertDate();
+                    $groupData["insertUserId"] = $data->getInsertUserId();
+                    $groupData["deleteFlag"] = $data->getDeleteFlag();
+                }
+                $mappedDataWithKeyValue[$data->getId()] = $groupData;
+            }
+            return $mappedDataWithKeyValue;
+        }
+        else{
+            return $datas;
+        }
     }
 }
