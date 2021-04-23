@@ -75,8 +75,8 @@ class ContractorModel
 
     public function getAllData(){
         $queryString = "SELECT contractor_id, contractor_name, contractor_name_kana, password, zipcode, address_01, address_02, tel_no, fax_no,
-                        mail_address, temporary, type_contractor, update_date, update_user_id, insert_date, insert_user_id, delete_flag FROM
-                        mst_contractor WHERE delete_flag = ? ORDER BY update_date DESC";
+                        mail_address, company_id, group_id, temporary, type_contractor, update_date, update_user_id, insert_date, insert_user_id,
+                        delete_flag FROM mst_contractor WHERE delete_flag = ? ORDER BY update_date DESC";
         $queryParameter = array(0);
 
         return (new Database())->readQueryExecution($queryString, $queryParameter);
@@ -101,6 +101,8 @@ class ContractorModel
                     $contractor->setTelNo($data->tel_no ?? NULL);
                     $contractor->setFaxNo($data->fax_no ?? NULL);
                     $contractor->setMailAddress($data->mail_address ?? NULL);
+                    $contractor->setCompanyId($data->company_id ?? NULL);
+                    $contractor->setGroupId($data->group_id ?? NULL);
                     $contractor->setTemporary($data->temporary ?? NULL);
                     $contractor->setType($data->type_contractor ?? NULL);
                     $contractor->setUpdateDate($data->update_date ?? NULL);
