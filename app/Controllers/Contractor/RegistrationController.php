@@ -177,8 +177,11 @@ class RegistrationController extends BaseController
             $company = (new CompanyModel())->getAllCompanyData();
             $contractor = (new ContractorModel())->getAllContractorData();
 
+            $idMappedGroup = (new GroupModel())->mapDataByKeyValue($group);
+            $idMappedCompany = (new CompanyModel())->mapDataByKeyValue($company);
+
             return view("template/pages/forms/updateContractor", ["title" => "Update Contractor Information", "group" => $group,
-                "company" => $company, "contractor" => $contractor]);
+                "company" => $company, "contractor" => $contractor, "idMappedGroup" => $idMappedGroup, "idMappedCompany" => $idMappedCompany]);
         }
         else{
             return redirect()->to("/login");
