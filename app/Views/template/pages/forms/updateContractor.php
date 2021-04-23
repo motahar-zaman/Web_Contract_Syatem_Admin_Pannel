@@ -28,7 +28,7 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <?= $this->include('modals\contractorSelect') ?>
+        <?= $this->include('modals\updateContractorSelect') ?>
         <?= $this->include('modals\companySelect') ?>
         <?= $this->include('modals\groupSelect') ?>
         <div class="wrapper">
