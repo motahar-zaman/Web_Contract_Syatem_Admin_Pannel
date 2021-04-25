@@ -74,10 +74,12 @@ function contractorAddressSearch () {
     let zipCode = $('#contractorPostCode').val();
     getAddressFromZipCode(zipCode, "contractorAddress1");
 }
+
 function companyAddressSearch() {
     let zipCode = $('#companyPostCode').val();
     getAddressFromZipCode(zipCode, "companyAddress1");
 }
+
 function groupAddressSearch() {
     let zipCode = $('#groupPostCode').val();
     getAddressFromZipCode(zipCode, "groupAddress1");
