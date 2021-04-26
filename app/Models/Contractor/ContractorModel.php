@@ -119,6 +119,11 @@ class ContractorModel
     }
 
     public function getContractorById($contractorId){
+        $data = $this->getContractorDataById($contractorId);
+        return $this->mapData($data);
+    }
+
+    public function getContractorDataById($contractorId){
         $queryString = "SELECT contractor_id, contractor_name, contractor_name_kana, password, zipcode, address_01, address_02, tel_no, fax_no,
                         mail_address, company_id, group_id, temporary, type_contractor, update_date, update_user_id, insert_date, insert_user_id,
                         delete_flag FROM mst_contractor WHERE contractor_id = ? AND delete_flag = ?";
@@ -128,6 +133,11 @@ class ContractorModel
     }
 
     public function getContractorByName($contractorName){
+        $data = $this->getContractorDataByName($contractorName);
+        return $this->mapData($data);
+    }
+
+    public function getContractorDataByName($contractorName){
         $contractorName = "%".$contractorName."%";
         $queryString = "SELECT contractor_id, contractor_name, contractor_name_kana, password, zipcode, address_01, address_02, tel_no, fax_no,
                         mail_address, company_id, group_id, temporary, type_contractor, update_date, update_user_id, insert_date, insert_user_id,
