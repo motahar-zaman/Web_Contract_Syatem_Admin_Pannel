@@ -131,7 +131,7 @@ class ContractorModel
         $contractorName = "%".$contractorName."%";
         $queryString = "SELECT contractor_id, contractor_name, contractor_name_kana, password, zipcode, address_01, address_02, tel_no, fax_no,
                         mail_address, company_id, group_id, temporary, type_contractor, update_date, update_user_id, insert_date, insert_user_id,
-                        delete_flag FROM mst_contractor WHERE contractor_name LIKE ? AND delete_flag = ?";
+                        delete_flag FROM mst_contractor WHERE contractor_name LIKE ? AND delete_flag = ? ORDER BY insert_date DESC";
         $queryParameter = array($contractorName, 1);
 
         return (new Database())->readQueryExecution($queryString, $queryParameter);
