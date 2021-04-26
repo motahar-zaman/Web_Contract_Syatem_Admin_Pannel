@@ -74,10 +74,12 @@ function contractorAddressSearch () {
     let zipCode = $('#contractorPostCode').val();
     getAddressFromZipCode(zipCode, "contractorAddress1");
 }
+
 function companyAddressSearch() {
     let zipCode = $('#companyPostCode').val();
     getAddressFromZipCode(zipCode, "companyAddress1");
 }
+
 function groupAddressSearch() {
     let zipCode = $('#groupPostCode').val();
     getAddressFromZipCode(zipCode, "groupAddress1");
@@ -156,13 +158,43 @@ function selectedCompany(data){
     $("#companyMail").val($("#companyMail"+data).html());
 }
 
-function selectedContractor(data){
-    $("#contractorId").val($("#contractorId"+data).html());
-    $("#contractorName").val($("#contractorName"+data).html());
-    $("#contractorKana").val($("#contractorNameKana"+data).val());
-    $("#contractorPostCode").val($("#contractorPostCode"+data).val());
-    $("#contractorAddress1").val($("#contractorAddress1"+data).html());
-    $("#contractorAddress2").val($("#contractorAddress2"+data).val());
-    $("#contractorPhn").val($("#contractorPhn"+data).html());
-    $("#contractorMail").val($("#contractorMail"+data).html());
+function selectedContractorUpdate(id){
+    let contractorCompany = $("#contractorCompany"+id).val();
+    let contractorGroup = $("#contractorGroup"+id).val();
+    let contractorCompanyData = contractorCompany.split("=>");
+    let contractorGroupData = contractorGroup.split("=>");
+
+    //contractor data populate
+    $("#contractorId").val($("#contractorId"+id).html());
+    $("#contractorName").val($("#contractorName"+id).html());
+    $("#contractorKana").val($("#contractorNameKana"+id).val());
+    $("#contractorPostCode").val($("#contractorPostCode"+id).val());
+    $("#contractorAddress1").val($("#contractorAddress1"+id).html());
+    $("#contractorAddress2").val($("#contractorAddress2"+id).val());
+    $("#contractorPhn").val($("#contractorPhn"+id).html());
+    $("#contractorMail").val($("#contractorMail"+id).html());
+
+    //company data populate
+    $("#companyId").val(contractorCompanyData[0]);
+    $("#companyName").val(contractorCompanyData[1]);
+    $("#companyKana").val(contractorCompanyData[2]);
+    $("#companyRepresentative").val(contractorCompanyData[3]);
+    $("#companyRepresentativeKana").val(contractorCompanyData[4]);
+    $("#companyPostCode").val(contractorCompanyData[5]);
+    $("#companyAddress1").val(contractorCompanyData[6]);
+    $("#companyAddress2").val(contractorCompanyData[7]);
+    $("#companyPhn").val(contractorCompanyData[8]);
+    $("#companyMail").val(contractorCompanyData[10]);
+
+    //group data populate
+    $("#groupId").val(contractorGroupData[0]);
+    $("#groupName").val(contractorGroupData[1]);
+    $("#groupKana").val(contractorGroupData[2]);
+    $("#groupRepresentative").val(contractorGroupData[3]);
+    $("#groupRepresentativeKana").val(contractorGroupData[4]);
+    $("#groupPostCode").val(contractorGroupData[5]);
+    $("#groupAddress1").val(contractorGroupData[6]);
+    $("#groupAddress2").val(contractorGroupData[7]);
+    $("#groupPhn").val(contractorGroupData[10]);
+    $("#groupMail").val(contractorGroupData[12]);
 }

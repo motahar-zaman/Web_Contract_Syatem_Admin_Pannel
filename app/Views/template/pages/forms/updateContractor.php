@@ -28,7 +28,7 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <?= $this->include('modals\contractorSelect') ?>
+        <?= $this->include('modals\updateContractorSelect') ?>
         <?= $this->include('modals\companySelect') ?>
         <?= $this->include('modals\groupSelect') ?>
         <div class="wrapper">
@@ -58,7 +58,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="contractorId">契約者ID(contractorId)</label>
-                                            <input class="form-control" type="text" name="contractorId" id="contractorId" value="<?php old('contractorId')?>">
+                                            <input class="form-control" type="text" name="contractorId" id="contractorId" value="<?php old('contractorId')?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label for="contractorName">契約者名(contractorName)</label>
@@ -126,7 +126,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="companyId">会社ID(companyId)</label>
-                                            <input class="form-control" type="text" name="companyId" id="companyId" value="<?php old('companyId')?>">
+                                            <input class="form-control" type="text" name="companyId" id="companyId" value="<?php old('companyId')?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label for="companyName">会社名(companyName)</label>
@@ -204,7 +204,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="groupId">グループID(groupId)</label>
-                                            <input class="form-control" type="text" name="groupId" id="groupId" value="<?php old('groupId')?>">
+                                            <input class="form-control" type="text" name="groupId" id="groupId" value="<?php old('groupId')?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label for="groupName">グループ選択(groupName)</label>

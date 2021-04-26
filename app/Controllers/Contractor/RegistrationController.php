@@ -177,8 +177,11 @@ class RegistrationController extends BaseController
             $company = (new CompanyModel())->getAllCompanyData();
             $contractor = (new ContractorModel())->getAllContractorData();
 
+            $idMappedGroup = (new GroupModel())->mapDataByKeyValue($group);
+            $idMappedCompany = (new CompanyModel())->mapDataByKeyValue($company);
+
             return view("template/pages/forms/updateContractor", ["title" => "Update Contractor Information", "group" => $group,
-                "company" => $company, "contractor" => $contractor]);
+                "company" => $company, "contractor" => $contractor, "idMappedGroup" => $idMappedGroup, "idMappedCompany" => $idMappedCompany]);
         }
         else{
             return redirect()->to("/login");
@@ -187,9 +190,62 @@ class RegistrationController extends BaseController
 
     public function updateAction(){
         if( session() && session()->get('login') ){
+            if($this->request->isAJAX()){
+                $contractor = new Contractor();
+                $company = new Company();
+                $group = new Group();
+
+                $contractor->setId($_POST["contractorId"]);
+                $contractor->setName($_POST['contractorName']);
+                $contractor->setNameKana($_POST['contractorKana']);
+                $contractor->setZipCode($_POST['contractorPostCode']);
+                $contractor->setAddress01($_POST['contractorAddress1']);
+                $contractor->setAddress02($_POST['contractorAddress2']);
+                $contractor->setTelNo($_POST['contractorPhn']);
+                $contractor->setMailAddress($_POST['contractorMail']);
+                $contractor->setCompanyId($_POST["companyId"]);
+                $contractor->setGroupId($_POST["groupId"]);
+                $contractor->setUpdateDate(date("Y-m-d H:i:s"));
+                $contractor->setUpdateUserId(session()->get('userId'));
+
+                $company->setId($_POST["companyId"]);
+                $company->setName($_POST["companyName"]);
+                $company->setNameKana($_POST["companyKana"]);
+                $company->setRepresentative($_POST["companyRepresentative"]);
+                $company->setRepresentativeKana($_POST["companyRepresentativeKana"]);
+                $company->setZipCode($_POST["companyPostCode"]);
+                $company->setAddress01($_POST["companyAddress1"]);
+                $company->setAddress02($_POST["companyAddress2"]);
+                $company->setTelNo($_POST["companyPhn"]);
+                $company->setMailAddress($_POST["companyMail"]);
+                $company->setUpdateDate(date("Y-m-d H:i:s"));
+                $company->setUpdateUserId(session()->get('userId'));
+
+                $group->setId($_POST["groupId"]);
+                $group->setName($_POST["groupName"]);
+                $group->setNameKana($_POST["groupKana"]);
+                $group->setRepresentative($_POST["groupRepresentative"]);
+                $group->setRepresentativeKana($_POST["groupRepresentativeKana"]);
+                $group->setZipCode($_POST["groupPostCode"]);
+                $group->setAddress01($_POST["groupAddress1"]);
+                $group->setAddress02($_POST["groupAddress2"]);
+                $group->setTelNo($_POST["groupPhn"]);
+                $group->setMailAddress($_POST["groupMail"]);
+                $group->setUpdateDate(date("Y-m-d H:i:s"));
+                $group->setUpdateUserId(session()->get('userId'));
+
+                (new GroupModel())->updateGroupData($group);
+                (new CompanyModel())->updateCompanyData($company);
+                (new ContractorModel())->updateContractorData($contractor);
+
+                return json_encode(['msg' => "Successful", 'status' => 1]);
+            }
+            else{
+                return json_encode(['msg' => "Not an ajax request", 'status' => 2]);
+            }
         }
         else{
-            return redirect()->to("/login");
+            return json_encode(['msg' => "Not Logged in user", 'status' => 3]);
         }
     }
 }

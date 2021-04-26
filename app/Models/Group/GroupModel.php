@@ -43,19 +43,14 @@ class GroupModel
         $address1 = $group->getAddress01();
         $address2 = $group->getAddress02();
         $phn = $group->getTelNo();
-        $fax = $group->getFaxNo();
         $mail = $group->getMailAddress();
         $update = $group->getUpdateDate();
         $updateUser = $group->getUpdateUserId();
-        $insert = $group->getInsertDate();
-        $insertUser = $group->getInsertUserId();
-        $delete = $group->getDeleteFlag();
 
         $queryString = "UPDATE mst_group SET group_name = ?, group_name_kana = ?, daihyousha_name = ?, daihyousha_name_kana = ?, zipcode = ?,
-                        address_01 = ?, address_02 = ?, tel_no = ?, fax_no = ?, mail_address = ?, update_date = ?, update_user_id = ?,
-                        insert_date = ?, insert_user_id = ?, delete_flag = ? WHERE group_id = ?";
-        $queryParameter = array($name, $kana, $representative, $representativeKana, $zip, $address1, $address2, $phn, $fax, $mail, $update,
-            $updateUser, $insert, $insertUser, $delete, $id);
+                        address_01 = ?, address_02 = ?, tel_no = ?, mail_address = ?, update_date = ?, update_user_id = ? WHERE group_id = ?";
+        $queryParameter = array($name, $kana, $representative, $representativeKana, $zip, $address1, $address2, $phn, $mail, $update,
+            $updateUser, $id);
 
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
@@ -72,6 +67,13 @@ class GroupModel
         $queryParameter = array(0);
 
         return (new Database())->readQueryExecution($queryString, $queryParameter);
+    }
+
+    public function deleteData($groupId){
+        $queryString = "DELETE FROM mst_group WHERE group_id = ?";
+        $queryParameter = array($groupId);
+
+        return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
 
     public function mapData($datas = array()){
@@ -111,10 +113,40 @@ class GroupModel
         }
     }
 
-    public function deleteData($groupId){
-        $queryString = "DELETE FROM mst_group WHERE group_id = ?";
-        $queryParameter = array($groupId);
+    public function mapDataByKeyValue($datas = array()){
+        if(isset($datas) && is_array($datas)){
+            $length = count($datas);
+            $mappedDataWithKeyValue = array();
 
-        return (new Database())->writeQueryExecution($queryString, $queryParameter);
+            for($i = 0; $i < $length; $i++){
+                $data = $datas[$i];
+                $groupData = array();
+                if(isset($data)){
+                    $groupData["id"] = $data->getId();
+                    $groupData["name"] = $data->getName();
+                    $groupData["nameKana"] = $data->getNameKana();
+                    $groupData["representative"] = $data->getRepresentative();
+                    $groupData["representativeKana"] = $data->getRepresentativeKana();
+                    $groupData["zipCode"] = $data->getZipCode();
+                    $groupData["address01"] = $data->getAddress01();
+                    $groupData["address02"] = $data->getAddress02();
+                    $groupData["areaId"] = $data->getAreaId();
+                    $groupData["prefecture"] = $data->getPrefecture();
+                    $groupData["telNo"] = $data->getTelNo();
+                    $groupData["faxNo"] = $data->getFaxNo();
+                    $groupData["mailAddress"] = $data->getMailAddress();
+                    $groupData["updateDate"] = $data->getUpdateDate();
+                    $groupData["updateUserId"] = $data->getUpdateUserId();
+                    $groupData["insertDate"] = $data->getInsertDate();
+                    $groupData["insertUserId"] = $data->getInsertUserId();
+                    $groupData["deleteFlag"] = $data->getDeleteFlag();
+                }
+                $mappedDataWithKeyValue[$data->getId()] = $groupData;
+            }
+            return $mappedDataWithKeyValue;
+        }
+        else{
+            return $datas;
+        }
     }
 }
