@@ -45,7 +45,7 @@
                     </tr>
                     <?php if(session()->get("user") == "employee"){ ?>
                       <tr>
-                        <td><a href="#">契約登録(reg)</a></td>
+                        <td><a href="/contract-registration">契約登録(reg)</a></td>
                         <td>契約の新規登録を行います</td>
                       </tr>
                       <tr>
@@ -53,7 +53,7 @@
                         <td>契約の既存契約更新を行います</td>
                       </tr>
                       <tr>
-                        <td><a href="#">仮契約登録(temp reg)</a></td>
+                        <td><a href="/contract-registration">仮契約登録(temp reg)</a></td>
                         <td>契約の仮登録を行います（社員のみ可能）</td>
                       </tr>
                     <?php }?>
