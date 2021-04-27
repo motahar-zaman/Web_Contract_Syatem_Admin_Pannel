@@ -17,12 +17,9 @@ class RegistrationController extends BaseController
             $group = (new GroupModel())->getAllGroupData();
             $company = (new CompanyModel())->getAllCompanyData();
             $contractor = (new ContractorModel())->getAllContractorData();
-            $contractorId = (new SequenceModel())->getContractorSequence();
-            $companyId = (new SequenceModel())->getCompanySequence();
-            $groupId = (new SequenceModel())->getGroupSequence();
 
-            return view("Contract/contract", ["title" => "Contractor Registration", "group" => $group, "company" => $company,
-                "contractor" => $contractor, "contractorId" => $contractorId, "companyId" => $companyId, "groupId" => $groupId]);
+            return view("Contract/contract", ["title" => "Contract Registration", "group" => $group, "company" => $company,
+                "contractor" => $contractor]);
         }
         else{
             return redirect()->to("/login");
