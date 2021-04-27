@@ -67,7 +67,7 @@ class CompanyModel
         $queryString = "SELECT company_id, company_name, company_name_kana, daihyousha_name, daihyousha_name_kana, zipcode, address_01, address_02,
                         tel_no, fax_no,mail_address, site_url, update_date, update_user_id, insert_date, insert_user_id, delete_flag FROM mst_company
                         WHERE delete_flag = ? ORDER BY update_date DESC";
-        $queryParameter = array(0);
+        $queryParameter = array(1);
 
         return (new Database())->readQueryExecution($queryString, $queryParameter);
     }

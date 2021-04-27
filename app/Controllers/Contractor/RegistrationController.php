@@ -77,7 +77,7 @@ class RegistrationController extends BaseController
                 $contractor->setUpdateUserId(session()->get('userId'));
                 $contractor->setInsertDate(date("Y-m-d H:i:s"));
                 $contractor->setInsertUserId(session()->get('userId'));
-                $contractor->setDeleteFlag(0);
+                $contractor->setDeleteFlag(1);
                 if($_POST['temporary'] == "YES"){
                     $contractor->setTemporary(1);
                 }
@@ -98,7 +98,7 @@ class RegistrationController extends BaseController
                 $company->setUpdateUserId(session()->get('userId'));
                 $company->setInsertDate(date("Y-m-d H:i:s"));
                 $company->setInsertUserId(session()->get('userId'));
-                $company->setDeleteFlag(0);
+                $company->setDeleteFlag(1);
 
                 $group->setName($_POST["groupName"]);
                 $group->setNameKana($_POST["groupKana"]);
@@ -113,7 +113,7 @@ class RegistrationController extends BaseController
                 $group->setUpdateUserId(session()->get('userId'));
                 $group->setInsertDate(date("Y-m-d H:i:s"));
                 $group->setInsertUserId(session()->get('userId'));
-                $group->setDeleteFlag(0);
+                $group->setDeleteFlag(1);
 
                 $contractorInsert = $_POST["contractorInsert"];
                 $companyInsert = $_POST["companyInsert"];
