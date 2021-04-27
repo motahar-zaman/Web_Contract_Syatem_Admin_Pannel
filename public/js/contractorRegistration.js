@@ -141,7 +141,7 @@ function selectedGroup(data){
     $("#groupInsert").val("update");
     $("#groupName").val($("#groupName"+data).html());
     $("#groupKana").val($("#groupNameKana"+data).val());
-    $("#groupRepresentative").val($("#groupRepresentative"+data).val());
+    $("#groupRepresentative").val($("#groupRepresentative"+data).html());
     $("#groupRepresentativeKana").val($("#groupRepresentativeKana"+data).val());
     $("#groupPostCode").val($("#groupPostCode"+data).val());
     $("#groupAddress1").val($("#groupAddress1"+data).html());
@@ -155,7 +155,7 @@ function selectedCompany(data){
     $("#companyInsert").val("update");
     $("#companyName").val($("#companyName"+data).html());
     $("#companyKana").val($("#companyNameKana"+data).val());
-    $("#companyRepresentative").val($("#companyRepresentative"+data).val());
+    $("#companyRepresentative").val($("#companyRepresentative"+data).html());
     $("#companyRepresentativeKana").val($("#companyRepresentativeKana"+data).val());
     $("#companyPostCode").val($("#companyPostCode"+data).val());
     $("#companyAddress1").val($("#companyAddress1"+data).html());

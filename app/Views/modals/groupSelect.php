@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Group Select</h4>
+                <h4 class="modal-title">グループ選択</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -27,12 +27,13 @@
                     <table class="table table-head-fixed text-nowrap ml-1">
                         <thead>
                             <tr>
-                                <th>選択(Select)</th>
-                                <th>契約者ID(Contractor Id)</th>
-                                <th>契約者名(Contractor Name)</th>
-                                <th>住所(Address)</th>
-                                <th>電話番号(Phn no)</th>
-                                <th>メールアドレス(Mail Address)</th>
+                                <th>選択</th>
+                                <th>グループID</th>
+                                <th>グループ名</th>
+                                <th>代表者名</th>
+                                <th>住所</th>
+                                <th>電話番号</th>
+                                <th>メールアドレス</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -45,12 +46,12 @@
                                             <td onclick="selectedGroup(<?php echo $i ?>)" id="selectedGroup<?php echo $data->getId() ?>"><a href="#">選択</a></td>
                                             <td id="groupId<?php echo $i ?>"><?php echo $data->getId() ?></td>
                                             <td id="groupName<?php echo $i ?>"><?php echo $data->getName() ?></td>
+                                            <td id="groupRepresentative<?php echo $i ?>"><?php echo $data->getRepresentative() ?></td>
                                             <td id="groupAddress1<?php echo $i ?>"><?php echo $data->getAddress01() ?></td>
                                             <td id="groupPhn<?php echo $i ?>"><?php echo $data->getTelNo() ?></td>
                                             <td id="groupMail<?php echo $i ?>"><?php echo $data->getMailAddress() ?></td>
                                         </tr>
                                         <input id="groupNameKana<?php echo $i ?>" type="hidden" value="<?php echo $data->getNameKana() ?>">
-                                        <input id="groupRepresentative<?php echo $i ?>" type="hidden" value="<?php echo $data->getRepresentative() ?>">
                                         <input id="groupRepresentativeKana<?php echo $i ?>" type="hidden" value="<?php echo $data->getRepresentativeKana() ?>">
                                         <input id="groupPostCode<?php echo $i ?>" type="hidden" value="<?php echo $data->getZipCode() ?>">
                                         <input id="groupAddress2<?php echo $i ?>" type="hidden" value="<?php echo $data->getAddress02() ?>">
