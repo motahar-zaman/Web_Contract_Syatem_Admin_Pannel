@@ -33,4 +33,25 @@ class ProductModel
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
 
+    public function updateProductData(Product $product){
+        $id = $product->getId();
+        $name = $product->getName();
+        $official = $product->getNameOfficial();
+        $price = $product->getPrice();
+        $start = $product->getStartDate();
+        $end = $product->getEndDate();
+        $service = $product->getServiceType();
+        $type = $product->getProductType();
+        $shop = $product->getShopType();
+        $campaign = $product->getCampaignFlag();
+        $note = $product->getProductNote();
+        $update = $product->getUpdateDate();
+        $updateUser = $product->getUpdateUserId();
+
+        $queryString = "UPDATE mst_product SET product_name = ?, product_name_official = ?, price = ?, start_date = ?, end_date = ?, service_type = ?, product_type = ?,
+                        campaign_flag = ?, shop_type = ?, product_note = ?, update_date = ?, update_user_id = ? WHERE product_id = ?";
+        $queryParameter = array($name, $official, $price, $start, $end, $service, $type, $campaign, $shop, $note, $update, $updateUser, $id);
+
+        return (new Database())->writeQueryExecution($queryString, $queryParameter);
+    }
 }
