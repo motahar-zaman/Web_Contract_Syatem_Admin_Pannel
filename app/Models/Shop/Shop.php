@@ -8,6 +8,8 @@ class Shop
 {
     private $shopId ;
     private $shopName;
+    private $representative;
+    private $representativeKana;
     private $shopNameKana;
     private $zipcode;
     private $address01;
@@ -54,6 +56,38 @@ class Shop
     public function setShopName($shopName): void
     {
         $this->shopName = $shopName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRepresentative()
+    {
+        return $this->representative;
+    }
+
+    /**
+     * @param mixed $representative
+     */
+    public function setRepresentative($representative): void
+    {
+        $this->representative = $representative;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRepresentativeKana()
+    {
+        return $this->representativeKana;
+    }
+
+    /**
+     * @param mixed $representativeKana
+     */
+    public function setRepresentativeKana($representativeKana): void
+    {
+        $this->representativeKana = $representativeKana;
     }
 
     /**
