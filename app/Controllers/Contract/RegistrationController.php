@@ -5,20 +5,19 @@ namespace App\Controllers\Contract;
 
 
 use App\Controllers\BaseController;
-use App\Models\Company\CompanyModel;
 use App\Models\Contractor\ContractorModel;
-use App\Models\Group\GroupModel;
+use App\Models\Product\ProductModel;
+use App\Models\Shop\ShopModel;
 
 class RegistrationController extends BaseController
 {
     public function index(){
         if( session() && session()->get('login') ){
-            $group = (new GroupModel())->getAllGroupData();
-            $company = (new CompanyModel())->getAllCompanyData();
+            $shop = (new ShopModel())->getAllShopData();
+            $product = (new ProductModel())->getAllProductData();
             $contractor = (new ContractorModel())->getAllContractorData();
 
-            return view("Contract/contract", ["title" => "Contract Registration", "group" => $group, "company" => $company,
-                "contractor" => $contractor]);
+            return view("Contract/contract", ["title" => "Contract Registration", "shop" => $shop, "product" => $product, "contractor" => $contractor]);
         }
         else{
             return redirect()->to("/login");
@@ -27,12 +26,11 @@ class RegistrationController extends BaseController
 
     public function tempRegistration(){
         if( session() && session()->get('login') ){
-            $group = (new GroupModel())->getAllGroupData();
-            $company = (new CompanyModel())->getAllCompanyData();
+            $shop = (new ShopModel())->getAllShopData();
+            $product = (new ProductModel())->getAllProductData();
             $contractor = (new ContractorModel())->getAllContractorData();
 
-            return view("Contract/temp_contract", ["title" => "Temporary Contract Registration", "group" => $group, "company" => $company,
-                "contractor" => $contractor]);
+            return view("Contract/temp_contract", ["title" => "Contract Registration", "shop" => $shop, "product" => $product, "contractor" => $contractor]);
         }
         else{
             return redirect()->to("/login");
