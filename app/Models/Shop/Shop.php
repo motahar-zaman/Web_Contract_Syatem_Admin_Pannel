@@ -31,15 +31,15 @@ class Shop
      */
     public function getId()
     {
-        return $this->Id;
+        return $this->id;
     }
 
     /**
-     * @param mixed $Id
+     * @param mixed $id
      */
-    public function setId($Id): void
+    public function setId($id): void
     {
-        $this->Id = $Id;
+        $this->id = $id;
     }
 
     /**
@@ -47,15 +47,15 @@ class Shop
      */
     public function getName()
     {
-        return $this->Name;
+        return $this->name;
     }
 
     /**
-     * @param mixed $Name
+     * @param mixed $name
      */
-    public function setName($Name): void
+    public function setName($name): void
     {
-        $this->Name = $Name;
+        $this->name = $name;
     }
 
     /**
@@ -63,15 +63,15 @@ class Shop
      */
     public function getNameKana()
     {
-        return $this->NameKana;
+        return $this->nameKana;
     }
 
     /**
-     * @param mixed $NameKana
+     * @param mixed $nameKana
      */
-    public function setNameKana($NameKana): void
+    public function setNameKana($nameKana): void
     {
-        $this->NameKana = $NameKana;
+        $this->nameKana = $nameKana;
     }
 
     /**
