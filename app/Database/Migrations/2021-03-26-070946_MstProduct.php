@@ -33,6 +33,39 @@ class MstProduct extends Migration
                 'null'   => false,
                 'comment'=> '価格 / Price',
             ],
+            'start_date' => [
+                'type'   => 'DATETIME',
+                'null'   => false,
+                'comment'=> '摘要開始日 / start Date',
+            ],
+            'end_date' => [
+                'type'   => 'DATETIME',
+                'null'   => false,
+                'comment'=> '摘要終了日 / end Date',
+            ],
+            'service_type' => [
+                'type'   => 'VARCHAR',
+                'constraint'=> '20',
+                'null'   => false,
+                'comment'=> 'サービス種別 / Service Type',
+            ],
+            'product_type' => [
+                'type'   => 'VARCHAR',
+                'constraint'=> '20',
+                'null'   => false,
+                'comment'=> '商品種別 / product_type',
+            ],
+            'campaign_flag' => [
+                'type'   => 'BOOLEAN',
+                'null'   => false,
+                'comment'=> '削除フラグ /  campaign Flag',
+            ],
+            'shop_type' => [
+                'type'   => 'VARCHAR',
+                'constraint'=> '20',
+                'null'   => false,
+                'comment'=> '適用店舗種類 / Shop Type',
+            ],
             'product_note' => [
                 'type'   => 'VARCHAR',
                 'constraint'=> '1000',
