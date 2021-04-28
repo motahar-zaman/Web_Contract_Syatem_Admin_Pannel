@@ -43,248 +43,433 @@
                         <h1 class="mb-0 pt-2 pl-5">契約者情報登録</h1>
                     </div>
                     <div class="col-md-6 text-right pt-4 pr-5">
-                        <span>[<?= session()->get("userId")?>]：[<?= session()->get("userName")?>]</span>
+                        <span>[<?= session()->get("userId") ?>]：[<?= session()->get("userName") ?>]</span>
                     </div>
                 </div>
             </div>
             <div class="underline mt-2"></div>
+
+            <div class="gap-2 mx-auto text-center" style="max-width: 950px">
+
+                <div class="card mt-5 text-left">
+                    <div class="card-header">
+                        <h3 class="card-title text-center">【契約者登録】
+                            <br>
+                            Contractor Registration
+                        </h3>
+
+                        <div class="card-tools">
+                            <div class="input-group input-group-sm text-left">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-default">
+                                        契約者選択
+                                        <br>
+                                        Contractor Select
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-body table-responsive p-0">
+                            <table class="table text-center">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        契約者ID<br>
+                                        Contractor ID
+                                    </th>
+                                    <th>
+                                        契約者名<br>
+                                        Contractor Name
+                                    </th>
+                                    <th>
+                                        住所<br>
+                                        Address</th>
+                                    <th>電話番号<br>Phone Number</th>
+                                    <th>メールアドレス<br>Mail Address</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>契約者ID</td>
+                                    <td>契約者名</td>
+                                    <td>住所</td>
+                                    <td>09011112222</td>
+                                    <td>abc@egf.jp</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-5 text-left">
+                    <div class="card-header">
+                        <h3 class="card-title text-center">【商品登録】<br>Product Registration</h3>
+                        <div class="card-tools">
+                            <div class="input-group input-group-sm text-left">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-default">商品選択<br>Product Select</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-hover text-center">
+                                <thead>
+                                <tr>
+                                    <th>商品ID<br>Product ID</th>
+                                    <th>商品名<br>Product Name</th>
+                                    <th>商品概要<br>Product Summary</th>
+                                    <th>公開開始日<br>Period Start Date</th>
+                                    <th>公開終了日<br>Period End Date</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>商品ID</td>
+                                    <td>商品名</td>
+                                    <td>商品概要</td>
+                                    <td>YYYY年DD月</td>
+                                    <td>YYYY年DD月</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5 text-left">【対象店舗登録】<br>Target Shop Registration</div>
+                <div class="card mt-5 text-left">
+                    <div class="card-header">
+                        <h3 class="card-title text-center">〇既存店舗から選択 <br>Select From Existing Shop</h3>
+                        <div class="card-tools">
+                            <div class="input-group input-group-sm text-left">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-default">店舗選択<br>Shop Select</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-hover text-center">
+                                <thead>
+                                <tr>
+                                    <th>店舗ID<br>Shop ID</th>
+                                    <th>店舗名<br>Shop Name</th>
+                                    <th>代表者<br>Representative Name</th>
+                                    <th>都道府県<br>Prefecture</th>
+                                    <th>店舗住所<br>Shop Address</th>
+                                    <th>電話番号<br>Phone Number</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>店舗ID</td>
+                                    <td>商品名</td>
+                                    <td>対象店舗ID</td>
+                                    <td>都道府県</td>
+                                    <td>商品概要</td>
+                                    <td>09011112222</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+<!--                <div class="mt-5 text-left">〇店舗を新規登録 <br>Shop Registration</div>-->
+
+
+            </div>
+
             <div class="gap-2 mx-auto text-center" style="max-width: 950px">
                 <div class="card mt-5 text-left">
                     <div class="card-header">
-                        <h3 class="card-title">【契約者情報】</h3>
+                        <h3 class="card-title text-center">〇店舗を新規登録 <br>Shop Registration</h3>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="contractorId">契約者ID</label>
-                                    <input class="form-control" type="text" name="contractorId" id="contractorId" value="<?php echo $contractorId ?>" readonly>
-                                    <input type="hidden" name="contractorInsert" id="contractorInsert" value="insert">
-                                    <input type="hidden" name="temporary" id="temporary" value="NO">
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">店舗名</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="ShopName" placeholder="店舗名">
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="contractorName">契約者名</label>
-                                    <input class="form-control"  name="contractorName" type="text" id="contractorName" value="<?php old('contractorName')?>">
-                                    <span class="errormsg" id="contractorNameError"></span>
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">地域</label>
+                                    <div class="col-sm-9">
+                                        <select name="District" id="District" class="form-control">
+                                            <option>option 1</option>
+                                            <option>option 2</option>
+                                            <option>option 3</option>
+                                            <option>option 4</option>
+                                            <option>option 5</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="contractorPostCode">郵便番号</label>
-                                    <input class="form-control" name="contractorPostCode" type="text" id="contractorPostCode" value="<?php old('contractorPostCode')?>">
-                                    <span class="errormsg" id="contractorPostCodeError"></span>
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">大エリア</label>
+                                    <div class="col-sm-9">
+                                        <select name="AreaLarge" id="AreaLarge" class="form-control">
+                                            <option>option 1</option>
+                                            <option>option 2</option>
+                                            <option>option 3</option>
+                                            <option>option 4</option>
+                                            <option>option 5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">詳細エリア</label>
+                                    <div class="col-sm-9">
+                                        <select name="Area" id="Area" class="form-control">
+                                            <option>option 1</option>
+                                            <option>option 2</option>
+                                            <option>option 3</option>
+                                            <option>option 4</option>
+                                            <option>option 5</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">店舗名カナ</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="ShopNameKANA" placeholder="テンポメイカナ">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">都道府県</label>
+                                    <div class="col-sm-9">
+                                        <select name="Prefecture" id="Prefecture" class="form-control">
+                                            <option>option 1</option>
+                                            <option>option 2</option>
+                                            <option>option 3</option>
+                                            <option>option 4</option>
+                                            <option>option 5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">小エリア</label>
+                                    <div class="col-sm-9">
+                                        <select name="AreaSmall" id="AreaSmall" class="form-control">
+                                            <option>option 1</option>
+                                            <option>option 2</option>
+                                            <option>option 3</option>
+                                            <option>option 4</option>
+                                            <option>option 5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">郵便番号</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="PostCode" class="form-control" id="Post Code" placeholder="NNN-nnnn">
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="contractorSelect">契約者選択</label>
-                                    <div class="select2-purple">
-                                        <button type="button" class="btn btn-primary pl-3 pr-3 text-bold" data-toggle="modal" data-target="#contractor-select-modal">
-                                            契約者選択
-                                        </button>
+                                <button type="button" class="btn btn-primary pl-3 pr-3 text-bold"
+                                        data-toggle="modal" data-target="#company-select-modal">
+                                    住所検索
+                                </button>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-2 col-form-label">住所０１</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" name="Address1"
+                                               type="text" id="Address1"
+                                                placeholder="郵便番号で取得できる範囲の住所">
+                                        <span class="errormsg" id="Address1Error"></span>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="contractorKana">契約者名カナ</label>
-                                    <input class="form-control" name="contractorKana" type="text" id="contractorKana" value="<?php old('contractorKana')?>">
-                                    <span class="errormsg" id="contractorKanaError"></span>
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-2 col-form-label">住所０２</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" name="Address2"
+                                               type="text" id="Address2"
+                                               placeholder="住所０１以外の内容">
+                                        <span class="errormsg" id="Address2Error"></span>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="contractorAddressSearch">住所検索</label>
-                                    <div class="select2-purple">
-                                        <button onclick="contractorAddressSearch()" id="contractorAddressSearch" class="btn btn-primary pl-3 pr-3 text-bold">住所検索</button>
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-2 col-form-label">電話番号</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" name="PhoneNumber"
+                                               type="text" id="PhoneNumber">
+                                        <span class="errormsg" id="PhoneNumberError"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-2 col-form-label">メールアドレス</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" name="MailAddress"
+                                               type="text" id="MailAddress">
+                                        <span class="errormsg" id="MailAddressError"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">業態</label>
+                                    <div class="col-sm-9">
+                                        <select name="BusinessType" id="BusinessType" class="form-control">
+                                            <option>option 1</option>
+                                            <option>option 2</option>
+                                            <option>option 3</option>
+                                            <option>option 4</option>
+                                            <option>option 5</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="contractorAddress1">住所１</label>
-                                    <input class="form-control" name="contractorAddress1" type="text" id="contractorAddress1" value="<?php old('contractorAddress1')?>">
-                                    <span class="errormsg" id="contractorAddress1Error"></span>
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-2 col-form-label">届出書</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" name="NotificationLetter" class="custom-file-input" id="NotificationLetter" placeholder="ファイル名.pdf">
+                                        <label class="custom-file-label" for="NotificationLetter">ファイルを選択</label>
+                                        <span class="errormsg" id="MailAddressError"></span>
+                                    </div>
                                 </div>
+
                                 <div class="form-group">
-                                    <label for="contractorAddress2">住所２</label>
-                                    <input class="form-control" name="contractorAddress2" type="text" id="contractorAddress2" value="<?php old('contractorAddress2')?>">
-                                    <span class="errormsg" id="contractorAddress2Error"></span>
+                                    <label for="companySelect">登録商品備考<br>Product Registration Remark</label>
+                                    <textarea  class="form-control" name="ProductRegistrationRemark" type="text" id="ProductRegistrationRemark" rows="3"></textarea>
+                                    <span class="errormsg" id="ProductRegistrationRemarkError"></span>
                                 </div>
-                                <div class="form-group">
-                                    <label for="contractorPhn">電話番号</label>
-                                    <input class="form-control" type="number" name="contractorPhn" id="contractorPhn" value="<?php old('contractorPhn')?>">
-                                    <span class="errormsg" id="contractorPhnError"></span>
+                                <button onclick="" id="ProductRegistration"
+                                        class="btn btn-primary pl-3 pr-3 text-bold">商品登録<br>Product Registration
+                                </button>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gap-2 mx-auto text-center" style="max-width: 950px">
+                    <div class="card mt-5 text-left">
+                        <div class="card-header">
+                            <h3 class="card-title text-center">【商品情報】<br>Product Info</h3>
+
+                        </div>
+                        <div class="card-body">
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-hover text-center">
+                                    <thead>
+                                    <tr>
+                                        <th>商品ID<br>
+                                            Product ID</th>
+                                        <th>商品名<br>
+                                            Product Name</th>
+                                        <th>商品概要<br>
+                                            Product Summary</th>
+                                        <th>公開開始日<br>
+                                            Period Start Date</th>
+                                        <th>公開終了日<br>
+                                            Period End Date</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>商品ID</td>
+                                        <td>商品名</td>
+                                        <td>商品概要</td>
+                                        <td>公開開始日</td>
+                                        <td>公開終了日</td>
+                                    </tr>
+                                    <tr>
+                                        <td>商品ID</td>
+                                        <td>商品名</td>
+                                        <td>商品概要</td>
+                                        <td>公開開始日</td>
+                                        <td>公開終了日</td>
+                                    </tr>
+                                    <tr>
+                                        <td>商品ID</td>
+                                        <td>商品名</td>
+                                        <td>商品概要</td>
+                                        <td>公開開始日</td>
+                                        <td>公開終了日</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mt-5 text-left">
+                        <div class="card-header">
+                            <h3 class="card-title text-center">【適用割引サービス一覧】</h3>
+                            <div class="card-tools">
+                                <div class="input-group input-group-sm text-left">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-default">割引内容更新</button>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="contractorMail">メールアドレス</label>
-                                    <input class="form-control" type="email"  name="contractorMail" id="contractorMail" value="<?php old('contractorMail')?>">
-                                    <span class="errormsg" id="contractorMailError"></span>
-                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-hover text-center">
+                                    <thead>
+                                    <tr>
+                                        <th>対象商品<br>
+                                            Target Product</th>
+                                        <th>対象店舗<br>
+                                            Target Shop</th>
+                                        <th>割引率<br>
+                                            Discount Rate</th>
+                                        <th>割引名称<br>
+                                            Discount Name</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>123</td>
+                                        <td>123</td>
+                                        <td>123</td>
+                                        <td>123</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card mt-5 text-left">
-                    <div class="card-header">
-                        <h3 class="card-title">【契約者会社情報】</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="companyId">会社ID</label>
-                                    <input class="form-control" type="text" name="companyId" id="companyId" value="<?php echo $companyId ?>" readonly>
-                                    <input type="hidden" name="companyInsert" id="companyInsert" value="insert">
-                                </div>
-                                <div class="form-group">
-                                    <label for="companyName">会社名</label>
-                                    <input class="form-control"  name="companyName" type="text" id="companyName" value="<?php old('companyName')?>">
-                                    <span class="errormsg" id="companyNameError"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="companyRepresentative">代表者名</label>
-                                    <input class="form-control"  name="companyRepresentative" type="text" id="companyRepresentative" value="<?php old('companyRepresentative')?>">
-                                    <span class="errormsg" id="companyRepresentativeError"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="companyPostCode">郵便番号</label>
-                                    <input class="form-control" name="companyPostCode" type="text" id="companyPostCode" value="<?php old('companyPostCode')?>">
-                                    <span class="errormsg" id="companyPostCodeError"></span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="companySelect">会社選択</label>
-                                    <div class="select2-purple">
-                                        <button type="button" class="btn btn-primary pl-3 pr-3 text-bold" data-toggle="modal" data-target="#company-select-modal">
-                                            会社選択
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="companyKana">会社名カナ</label>
-                                    <input class="form-control" name="companyKana" type="text" id="companyKana" value="<?php old('companyKana')?>">
-                                    <span class="errormsg" id="companyKanaError"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="companyRepresentativeKana">代表者名</label>
-                                    <input class="form-control" name="companyRepresentativeKana" type="text" id="companyRepresentativeKana" value="<?php old('companyRepresentativeKana')?>">
-                                    <span class="errormsg" id="companyRepresentativeKanaError"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="companyAddressSearch">住所検索</label>
-                                    <div class="select2-purple">
-                                        <button onclick="companyAddressSearch()" id="companyAddressSearch" class="btn btn-primary pl-3 pr-3 text-bold">住所検索</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="companyAddress1">住所１</label>
-                                    <input class="form-control" name="companyAddress1" type="text" id="companyAddress1" value="<?php old('companyAddress1')?>">
-                                    <span class="errormsg" id="companyAddress1Error"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="companyAddress2">住所２</label>
-                                    <input class="form-control" name="companyAddress2" type="text" id="companyAddress2" value="<?php old('companyAddress2')?>">
-                                    <span class="errormsg" id="companyAddress2Error"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="companyPhn">電話番号</label>
-                                    <input class="form-control" type="number" name="companyPhn" id="companyPhn" value="<?php old('companyPhn')?>">
-                                    <span class="errormsg" id="companyPhnError"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="companyMail">メールアドレス</label>
-                                    <input class="form-control" type="email"  name="companyMail" id="companyMail" value="<?php old('companyMail')?>">
-                                    <span class="errormsg" id="companyMailError"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mt-5 text-left">
-                    <div class="card-header">
-                        <h3 class="card-title">【グループ情報】</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="groupId">グループID</label>
-                                    <input class="form-control" type="text" name="groupId" id="groupId" value="<?php echo $groupId ?>" readonly>
-                                    <input type="hidden" name="groupInsert" id="groupInsert" value="insert">
-                                </div>
-                                <div class="form-group">
-                                    <label for="groupName">グループ名</label>
-                                    <input class="form-control"  name="groupName" type="text" id="groupName" value="<?php old('groupName')?>">
-                                    <span class="errormsg" id="groupNameError"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="groupRepresentative">代表者名</label>
-                                    <input class="form-control"  name="groupRepresentative" type="text" id="groupRepresentative" value="<?php old('groupRepresentative')?>">
-                                    <span class="errormsg" id="groupRepresentativeError"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="groupPostCode">郵便番号</label>
-                                    <input class="form-control" name="groupPostCode" type="text" id="groupPostCode" value="<?php old('groupPostCode')?>">
-                                    <span class="errormsg" id="groupPostCodeError"></span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="groupSelect">グループ選択</label>
-                                    <div class="select2-purple">
-                                        <button type="button" class="btn btn-primary pl-3 pr-3 text-bold" data-toggle="modal" data-target="#group-select-modal">
-                                            グループ選択
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="groupKana">グループ名カナ</label>
-                                    <input class="form-control" name="groupKana" type="text" id="groupKana" value="<?php old('groupKana')?>">
-                                    <span class="errormsg" id="groupKanaError"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="groupRepresentativeKana">代表者名カナ</label>
-                                    <input class="form-control" name="groupRepresentativeKana" type="text" id="groupRepresentativeKana" value="<?php old('groupRepresentativeKana')?>">
-                                    <span class="errormsg" id="groupRepresentativeKanaError"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="groupAddressSearch">住所検索</label>
-                                    <div class="select2-purple">
-                                        <button onclick="groupAddressSearch()" id="groupAddressSearch" class="btn btn-primary pl-3 pr-3 text-bold">住所検索</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="groupAddress1">住所１</label>
-                                    <input class="form-control" name="groupAddress1" type="text" id="groupAddress1" value="<?php old('groupAddress1')?>">
-                                    <span class="errormsg" id="groupAddress1Error"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="groupAddress2">住所２</label>
-                                    <input class="form-control" name="groupAddress2" type="text" id="groupAddress2" value="<?php old('groupAddress2')?>">
-                                    <span class="errormsg" id="groupAddress2Error"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="groupPhn">電話番号</label>
-                                    <input class="form-control" type="number" name="groupPhn" id="groupPhn" value="<?php old('groupPhn')?>">
-                                    <span class="errormsg" id="groupPhnError"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="groupMail">メールアドレス</label>
-                                    <input class="form-control" type="email" name="groupMail" id="groupMail" value="<?php old('groupMail')?>">
-                                    <span class="errormsg" id="groupMailError"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+
             </div>
             <div class="card-footer">
                 <div class="row">
                     <div class="col-md-6 text-center">
-                        <button onclick="contractorRegistration()" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 text-bold">登録</button>
+                        <button onclick="contractorRegistration()" id="contractorRegistration"
+                                class="btn btn-primary pl-3 pr-3 text-bold">登録<br>
+                            Registration
+                        </button>
+                        <button onclick="contractorRegistration()" id="contractorRegistration"
+                                class="btn btn-primary pl-3 pr-3 text-bold">メニュー<br>
+                            Menu
+                        </button>
                     </div>
                     <div class="col-md-6 text-center">
-                        <span>アクセス日時：<?= date("Y/m/d")?>	</span>
+                        <span>アクセス日時：<?= date("Y/m/d") ?>	</span>
                     </div>
                 </div>
             </div>
