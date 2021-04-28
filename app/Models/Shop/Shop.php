@@ -6,11 +6,11 @@ namespace App\Models\Shop;
 
 class Shop
 {
-    private $shopId ;
-    private $shopName;
+    private $id ;
+    private $name;
+    private $nameKana;
     private $representative;
     private $representativeKana;
-    private $shopNameKana;
     private $zipcode;
     private $address01;
     private $address02;
@@ -29,33 +29,49 @@ class Shop
     /**
      * @return mixed
      */
-    public function getShopId()
+    public function getId()
     {
-        return $this->shopId;
+        return $this->Id;
     }
 
     /**
-     * @param mixed $shopId
+     * @param mixed $Id
      */
-    public function setShopId($shopId): void
+    public function setId($Id): void
     {
-        $this->shopId = $shopId;
+        $this->Id = $Id;
     }
 
     /**
      * @return mixed
      */
-    public function getShopName()
+    public function getName()
     {
-        return $this->shopName;
+        return $this->Name;
     }
 
     /**
-     * @param mixed $shopName
+     * @param mixed $Name
      */
-    public function setShopName($shopName): void
+    public function setName($Name): void
     {
-        $this->shopName = $shopName;
+        $this->Name = $Name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNameKana()
+    {
+        return $this->NameKana;
+    }
+
+    /**
+     * @param mixed $NameKana
+     */
+    public function setNameKana($NameKana): void
+    {
+        $this->NameKana = $NameKana;
     }
 
     /**
@@ -88,14 +104,6 @@ class Shop
     public function setRepresentativeKana($representativeKana): void
     {
         $this->representativeKana = $representativeKana;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getShopNameKana()
-    {
-        return $this->shopNameKana;
     }
 
     /**

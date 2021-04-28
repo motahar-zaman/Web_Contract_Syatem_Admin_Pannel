@@ -6,9 +6,9 @@ namespace App\Models\Product;
 
 class Product
 {
-    private $productId;
-    private $productName;
-    private $productNameOfficial;
+    private $id;
+    private $name;
+    private $nameOfficial;
     private $price;
     private $startDate;
     private $endDate;
@@ -26,49 +26,49 @@ class Product
     /**
      * @return mixed
      */
-    public function getProductId()
+    public function getId()
     {
-        return $this->productId;
+        return $this->id;
     }
 
     /**
-     * @param mixed $productId
+     * @param mixed $id
      */
-    public function setProductId($productId): void
+    public function setId($id): void
     {
-        $this->productId = $productId;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getProductName()
-    {
-        return $this->productName;
-    }
-
-    /**
-     * @param mixed $productName
-     */
-    public function setProductName($productName): void
-    {
-        $this->productName = $productName;
+        $this->id = $id;
     }
 
     /**
      * @return mixed
      */
-    public function getProductNameOfficial()
+    public function getName()
     {
-        return $this->productNameOfficial;
+        return $this->name;
     }
 
     /**
-     * @param mixed $productNameOfficial
+     * @param mixed $name
      */
-    public function setProductNameOfficial($productNameOfficial): void
+    public function setName($name): void
     {
-        $this->productNameOfficial = $productNameOfficial;
+        $this->name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNameOfficial()
+    {
+        return $this->nameOfficial;
+    }
+
+    /**
+     * @param mixed $nameOfficial
+     */
+    public function setNameOfficial($nameOfficial): void
+    {
+        $this->nameOfficial = $nameOfficial;
     }
 
     /**
