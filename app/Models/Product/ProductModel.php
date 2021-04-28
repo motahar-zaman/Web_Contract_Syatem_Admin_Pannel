@@ -69,6 +69,13 @@ class ProductModel
         return (new Database())->readQueryExecution($queryString, $queryParameter);
     }
 
+    public function deleteData($productId){
+        $queryString = "DELETE FROM mst_product WHERE product_id = ?";
+        $queryParameter = array($productId);
+
+        return (new Database())->writeQueryExecution($queryString, $queryParameter);
+    }
+
     public function mapData($datas = array()){
         if(isset($datas) && is_array($datas)){
             $length = count($datas);
