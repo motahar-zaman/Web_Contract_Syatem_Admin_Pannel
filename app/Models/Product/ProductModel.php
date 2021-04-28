@@ -54,4 +54,19 @@ class ProductModel
 
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
+
+    public function getAllProductData(){
+        $data = $this->getAllData();
+    }
+
+    public function getAllData(){
+        $queryString = "SELECT product_id, product_name, product_name_official, price, start_date, end_date, service_type, product_type, campaign_flag,
+                        shop_type, product_note, update_date, update_user_id, insert_date, insert_user_id, delete_flag FROM mst_product
+                        WHERE delete_flag = ? ORDER BY update_date DESC";
+        $queryParameter = array(1);
+
+        return (new Database())->readQueryExecution($queryString, $queryParameter);
+    }
+
+
 }
