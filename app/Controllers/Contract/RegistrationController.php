@@ -45,12 +45,35 @@ class RegistrationController extends BaseController
         if( session() && session()->get('login') ){
             if($this->request->isAJAX()){
                 $contract = new Contract();
-                $shop = new Shop();
+
+                if($_POST['shop']){
+                    $shop = new Shop();
+                    $shop->setId($_POST['shopId']);
+                    $shop->setName($_POST['shopName']);
+                    $shop->setNameKana($_POST['shopNameKana']);
+                    $shop->setRepresentative($_POST['shopRepresentative']);
+                    $shop->setRepresentativeKana($_POST['shopRepresentativeKana']);
+                    $shop->setZipcode($_POST['shopZip']);
+                    $shop->setAddress01($_POST['shopAddress01']);
+                    $shop->setAddress02($_POST['shopAddress02']);
+                    $shop->setAreaId($_POST['shopArea']);
+                    $shop->setPrefecture($_POST['shopPrefecture']);
+                    $shop->setTelNo($_POST['shopTel']);
+                    $shop->setMailAddress($_POST['shopMail']);
+                    $shop->setSiteUrl($_POST['shopSite']);
+                    $shop->setInsertDate(date("Y-m-d H:i:s"));
+                    $shop->setInsertUserId(session()->get('userId'));
+                    $shop->setUpdateDate(date("Y-m-d H:i:s"));
+                    $shop->setUpdateUserId(session()->get('userId'));
+                    $shop->setDeleteFlag(1);
+
+                    (new ShopModel())->storeShopData($shop);
+                }
 
                 $contract->setId((new SequenceModel())->getContractSequence());
                 $contract->setShopId($_POST['shopId']);
                 $contract->setContractorId($_POST['contractorName']);
-                $contract->setTantouId($_POST['tantouId']);
+                $contract->setTantouId("abcd");
                 $contract->setNote($_POST['note']);
                 $contract->setUpdateDate(date("Y-m-d H:i:s"));
                 $contract->setUpdateUserId(session()->get('userId'));
