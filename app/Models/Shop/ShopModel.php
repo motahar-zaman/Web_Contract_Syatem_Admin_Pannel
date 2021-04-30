@@ -8,6 +8,36 @@ use App\Models\Database;
 
 class ShopModel
 {
+    public function storeShopData(Shop $shop){
+        $id = $shop->getId();
+        $name = $shop->getName();
+        $nameKana = $shop->getNameKana();
+        $representative = $shop->getRepresentative();
+        $representativeKana = $shop->getRepresentativeKana();
+        $zip = $shop->getZipcode();
+        $address1 = $shop->getAddress01();
+        $address2 = $shop->getAddress02();
+        $area = $shop->getAreaId();
+        $prefecture = $shop->getPrefecture();
+        $phn = $shop->getTelNo();
+        $fax = $shop->getFaxNo();
+        $mail = $shop->getMailAddress();
+        $siteUrl = $shop->getSiteUrl();
+        $update = $shop->getUpdateDate();
+        $updateUser = $shop->getUpdateUserId();
+        $insert = $shop->getInsertDate();
+        $insertUser = $shop->getInsertUserId();
+        $delete = $shop->getDeleteFlag();
+
+        $queryString = "INSERT INTO mst_shop (shop_id, shop_name, shop_name_kana, daihyousha_name, daihyousha_name_kana, zipcode, address_01, address_02, area_id,
+                        prefecture, tel_no, fax_no, mail_address, site_url, update_date, update_user_id, insert_date, insert_user_id, delete_flag)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $queryParameter = array($id, $name, $nameKana, $representative, $representativeKana, $zip, $address1, $address2, $area, $prefecture, $phn, $fax, $mail,
+            $siteUrl, $update, $updateUser, $insert, $insertUser, $delete);
+
+        return (new Database())->writeQueryExecution($queryString, $queryParameter);
+    }
+
     public function getAllShopData(){
         $data = $this->getAllData();
         return $this->mapData($data);
