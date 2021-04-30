@@ -29,8 +29,6 @@
 </head>
 <body>
 <?= $this->include('modals\contractorSelect') ?>
-<?= $this->include('modals\companySelect') ?>
-<?= $this->include('modals\groupSelect') ?>
 <?= $this->include('modals\productSelect') ?>
 <?= $this->include('modals\shopSelect') ?>
 <div class="wrapper">

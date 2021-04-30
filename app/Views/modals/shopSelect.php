@@ -3,6 +3,9 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Shop Select</h4>
+                <?php
+                //                    var_dump($product); die();
+                ?>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -22,84 +25,35 @@
                         <button type="submit" class="btn btn-primary ml-2">条件クリア</button>
                     </div>
                 </form>
-                <br />
+                <br/>
                 <div class="card-body table-responsive p-0 ml-3" style="height: 300px;">
                     <table class="table table-head-fixed text-nowrap ml-3">
                         <thead>
-                            <tr>
-                                <th>選択</th>
-                                <th>商品ID</th>
-                                <th>商品名</th>
-                                <th>商品概要</th>
-                            </tr>
+                        <tr>
+                            <th>選択</th>
+                            <th>商品ID</th>
+                            <th>商品名</th>
+                            <th>商品概要</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>選択	</td>
-                                <td>商品ID</td>
-                                <td>商品名</td>
-                                <td>商品概要</td>
-                            </tr>
-                            <tr>
-                                <td>選択	</td>
-                                <td>商品ID</td>
-                                <td>商品名</td>
-                                <td>商品概要</td>
-                            </tr>
-                            <tr>
-                                <td>選択	</td>
-                                <td>商品ID</td>
-                                <td>商品名</td>
-                                <td>商品概要</td>
-                            </tr>
-                            <tr>
-                                <td>選択	</td>
-                                <td>商品ID</td>
-                                <td>商品名</td>
-                                <td>商品概要</td>
-                            </tr>
-                            <tr>
-                                <td>選択	</td>
-                                <td>商品ID</td>
-                                <td>商品名</td>
-                                <td>商品概要</td>
-                            </tr>
-                            <tr>
-                                <td>選択	</td>
-                                <td>商品ID</td>
-                                <td>商品名</td>
-                                <td>商品概要</td>
-                            </tr>
-                            <tr>
-                                <td>選択	</td>
-                                <td>商品ID</td>
-                                <td>商品名</td>
-                                <td>商品概要</td>
-                            </tr>
-                            <tr>
-                                <td>選択	</td>
-                                <td>商品ID</td>
-                                <td>商品名</td>
-                                <td>商品概要</td>
-                            </tr>
-                            <tr>
-                                <td>選択	</td>
-                                <td>商品ID</td>
-                                <td>商品名</td>
-                                <td>商品概要</td>
-                            </tr>
-                            <tr>
-                                <td>選択	</td>
-                                <td>商品ID</td>
-                                <td>商品名</td>
-                                <td>商品概要</td>
-                            </tr>
-                            <tr>
-                                <td>選択	</td>
-                                <td>商品ID</td>
-                                <td>商品名</td>
-                                <td>商品概要</td>
-                            </tr>
+                        <?php
+                        if (isset($shop) && count($shop) > 0) {
+                            for ($i = 0; $i < count($shop); $i++) {
+                                $data = $shop[$i];
+                                ?>
+                                <tr>
+                                    <td onclick="selectedShop(<?php echo $i ?>)" id="selectedShop<?php echo $data->getId() ?>"><a href="#">選択</a></td>
+                                    <td id="shopId<?php echo $i ?>"><?php echo $data->getId() ?></td>
+                                    <td id="shopName<?php echo $i ?>"><?php echo $data->getName() ?></td>
+                                    <td id="shopPrefecture<?php echo $i ?>"><?php echo $data->getPrefecture() ?></td>
+                                </tr>
+                                <?php
+                            }
+                        } else {
+                            echo "<h3>No data available</h3>";
+                        }
+                        ?>
                         </tbody>
                     </table>
                 </div>
