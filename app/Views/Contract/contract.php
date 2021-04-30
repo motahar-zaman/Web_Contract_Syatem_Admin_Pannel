@@ -31,6 +31,8 @@
 <?= $this->include('modals\contractorSelect') ?>
 <?= $this->include('modals\companySelect') ?>
 <?= $this->include('modals\groupSelect') ?>
+<?= $this->include('modals\productSelect') ?>
+<?= $this->include('modals\shopSelect') ?>
 <div class="wrapper">
     <section class="content">
         <div class="container-fluid">
@@ -61,10 +63,11 @@
                         <div class="card-tools">
                             <div class="input-group input-group-sm text-left">
                                 <div class="input-group-append">
-                                    <button type="submit" class="btn btn-default">
-                                        契約者選択
-                                        <br>
-                                        Contractor Select
+                                    <button type="button"
+                                            class="btn btn-default pl-3 pr-3"
+                                            data-toggle="modal"
+                                            data-target="#contractor-select-modal">
+                                        契約者選択<br>Contractor Select
                                     </button>
                                 </div>
                             </div>
@@ -110,7 +113,10 @@
                         <div class="card-tools">
                             <div class="input-group input-group-sm text-left">
                                 <div class="input-group-append">
-                                    <button type="submit" class="btn btn-default">商品選択<br>Product Select</button>
+                                    <button type="button"
+                                            class="btn btn-default pl-3 pr-3"
+                                            data-toggle="modal"
+                                            data-target="#product-select-modal">商品選択<br>Product Select</button>
                                 </div>
                             </div>
                         </div>
@@ -148,7 +154,10 @@
                         <div class="card-tools">
                             <div class="input-group input-group-sm text-left">
                                 <div class="input-group-append">
-                                    <button type="submit" class="btn btn-default">店舗選択<br>Shop Select</button>
+                                    <button type="button"
+                                            class="btn btn-default pl-3 pr-3"
+                                            data-toggle="modal"
+                                            data-target="#shop-select-modal">店舗選択<br>Shop Select</button>
                                 </div>
                             </div>
                         </div>
@@ -180,10 +189,6 @@
                         </div>
                     </div>
                 </div>
-
-<!--                <div class="mt-5 text-left">〇店舗を新規登録 <br>Shop Registration</div>-->
-
-
             </div>
 
             <div class="gap-2 mx-auto text-center" style="max-width: 950px">
@@ -194,197 +199,201 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">店舗名</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="ShopName" placeholder="店舗名">
-                                    </div>
+                                <div class="form-group">
+                                    <label for="inputEmail3" class=" col-form-label">店舗名 Shop Name</label>
+                                    <input type="text" class="form-control" name="shop_name" id="shop_name" placeholder="店舗名">
                                 </div>
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">地域</label>
-                                    <div class="col-sm-9">
-                                        <select name="District" id="District" class="form-control">
-                                            <option>option 1</option>
-                                            <option>option 2</option>
-                                            <option>option 3</option>
-                                            <option>option 4</option>
-                                            <option>option 5</option>
-                                        </select>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="inputEmail3" class=" col-form-label">地域 District</label>
+                                    <select name="district" id="district" class="form-control">
+                                        <option>option 1</option>
+                                        <option>option 2</option>
+                                        <option>option 3</option>
+                                        <option>option 4</option>
+                                        <option>option 5</option>
+                                    </select>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">大エリア</label>
-                                    <div class="col-sm-9">
-                                        <select name="AreaLarge" id="AreaLarge" class="form-control">
-                                            <option>option 1</option>
-                                            <option>option 2</option>
-                                            <option>option 3</option>
-                                            <option>option 4</option>
-                                            <option>option 5</option>
-                                        </select>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="inputEmail3" class=" col-form-label">大エリア Area Large</label>
+                                    <select name="area_large" id="area_large"  class="form-control">
+                                        <option>option 1</option>
+                                        <option>option 2</option>
+                                        <option>option 3</option>
+                                        <option>option 4</option>
+                                        <option>option 5</option>
+                                    </select>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">詳細エリア</label>
-                                    <div class="col-sm-9">
-                                        <select name="Area" id="Area" class="form-control">
-                                            <option>option 1</option>
-                                            <option>option 2</option>
-                                            <option>option 3</option>
-                                            <option>option 4</option>
-                                            <option>option 5</option>
-                                        </select>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="inputEmail3" class=" col-form-label">詳細エリア
+                                        Area</label>
+                                    <select name="area" id="area"  class="form-control">
+                                        <option>option 1</option>
+                                        <option>option 2</option>
+                                        <option>option 3</option>
+                                        <option>option 4</option>
+                                        <option>option 5</option>
+                                    </select>
                                 </div>
-
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">店舗名カナ</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="ShopNameKANA" placeholder="テンポメイカナ">
-                                    </div>
+                                <div class="form-group">
+                                    <label for="inputEmail3" class=" col-form-label">店舗名カナ</label>
+                                    <input type="text" class="form-control" name="shop_name_kana" id="shop_name_kana" placeholder="テンポメイカナ">
                                 </div>
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">都道府県</label>
-                                    <div class="col-sm-9">
-                                        <select name="Prefecture" id="Prefecture" class="form-control">
-                                            <option>option 1</option>
-                                            <option>option 2</option>
-                                            <option>option 3</option>
-                                            <option>option 4</option>
-                                            <option>option 5</option>
-                                        </select>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="inputEmail3" class=" col-form-label">都道府県
+                                        Prefecture</label>
+                                    <select name="prefecture" id="prefecture"  class="form-control">
+                                        <option>option 1</option>
+                                        <option>option 2</option>
+                                        <option>option 3</option>
+                                        <option>option 4</option>
+                                        <option>option 5</option>
+                                    </select>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">小エリア</label>
-                                    <div class="col-sm-9">
-                                        <select name="AreaSmall" id="AreaSmall" class="form-control">
-                                            <option>option 1</option>
-                                            <option>option 2</option>
-                                            <option>option 3</option>
-                                            <option>option 4</option>
-                                            <option>option 5</option>
-                                        </select>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-form-label">小エリア
+                                        Area Small</label>
+                                    <select name="area_small" id="area_small" class="form-control">
+                                        <option>option 1</option>
+                                        <option>option 2</option>
+                                        <option>option 3</option>
+                                        <option>option 4</option>
+                                        <option>option 5</option>
+                                    </select>
                                 </div>
                             </div>
 
 
                             <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">郵便番号</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" name="PostCode" class="form-control" id="Post Code" placeholder="NNN-nnnn">
-                                    </div>
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-form-label">郵便番号</label>
+                                    <input type="text" name="post_code" class="form-control" id="post_code" placeholder="NNN-nnnn">
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <button type="button" class="btn btn-primary pl-3 pr-3 text-bold"
-                                        data-toggle="modal" data-target="#company-select-modal">
-                                    住所検索
-                                </button>
+                                <div class="col-md-6">
+                                    <label for="inputEmail3" class="col-form-label">住所検索 Address Search</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-primary pl-3 pr-3 text-bold"
+                                            data-toggle="modal" data-target="#company-select-modal">
+                                        住所検索
+                                    </button>
+                                </div>
+
+
                             </div>
 
                             <div class="col-md-12">
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-2 col-form-label">住所０１</label>
-                                    <div class="col-sm-10">
-                                        <input class="form-control" name="Address1"
-                                               type="text" id="Address1"
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-form-label">住所０１
+                                        Address 1</label>
+                                        <input class="form-control" name="address1"
+                                               type="text" id="address1"
                                                 placeholder="郵便番号で取得できる範囲の住所">
                                         <span class="errormsg" id="Address1Error"></span>
-                                    </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-2 col-form-label">住所０２</label>
-                                    <div class="col-sm-10">
-                                        <input class="form-control" name="Address2"
-                                               type="text" id="Address2"
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-form-label">住所０２
+                                        Address 2</label>
+                                        <input class="form-control" name="address2"
+                                               type="text" id="address2"
                                                placeholder="住所０１以外の内容">
                                         <span class="errormsg" id="Address2Error"></span>
-                                    </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-2 col-form-label">電話番号</label>
-                                    <div class="col-sm-10">
-                                        <input class="form-control" name="PhoneNumber"
-                                               type="text" id="PhoneNumber">
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-form-label">電話番号
+                                        Phone Number</label>
+                                        <input class="form-control" name="phone_number"
+                                               type="text" id="phone_number">
                                         <span class="errormsg" id="PhoneNumberError"></span>
-                                    </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-2 col-form-label">メールアドレス</label>
-                                    <div class="col-sm-10">
-                                        <input class="form-control" name="MailAddress"
-                                               type="text" id="MailAddress">
-                                        <span class="errormsg" id="MailAddressError"></span>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-form-label">メールアドレス
+                                        Mail Address</label>
+                                    <input class="form-control" name="mail_address"
+                                           type="text" id="mail_address">
+                                    <span class="errormsg" id="PhoneNumberError"></span>
                                 </div>
-
                             </div>
 
                             <div class="col-md-6">
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">業態</label>
-                                    <div class="col-sm-9">
-                                        <select name="BusinessType" id="BusinessType" class="form-control">
-                                            <option>option 1</option>
-                                            <option>option 2</option>
-                                            <option>option 3</option>
-                                            <option>option 4</option>
-                                            <option>option 5</option>
-                                        </select>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-form-label">代表者名
+                                        Representative Name</label>
+                                    <input class="form-control" name="representative_name" type="text" id="representative_name">
+                                    <span class="errormsg" id="MailAddressError"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-form-label">代表者名カナ
+                                        Rep. Name KANA</label>
+                                    <input class="form-control" name="rep_name_kana" type="text" id="rep_name_kana">
+                                    <span class="errormsg" id="MailAddressError"></span>
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-2 col-form-label">届出書</label>
-                                    <div class="col-sm-10">
-                                        <input type="file" name="NotificationLetter" class="custom-file-input" id="NotificationLetter" placeholder="ファイル名.pdf">
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-form-label">店舗サイトURL
+                                        Shop Site URL</label>
+                                    <input class="form-control" name="shop_site_url" type="text" id="shop_site_url">
+                                    <span class="errormsg" id="MailAddressError"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-form-label">業態</label>
+                                    <select name="BusinessType" id="BusinessType" class="form-control">
+                                        <option>option 1</option>
+                                        <option>option 2</option>
+                                        <option>option 3</option>
+                                        <option>option 4</option>
+                                        <option>option 5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="inputEmail3" class=" col-form-label">届出書
+                                        Notification Letter</label>
+                                    <div class="col-sm-12">
+                                        <input type="file" name="notification_letter" class="custom-file-input" id="notification_letter" placeholder="ファイル名.pdf">
                                         <label class="custom-file-label" for="NotificationLetter">ファイルを選択</label>
                                         <span class="errormsg" id="MailAddressError"></span>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="companySelect">登録商品備考<br>Product Registration Remark</label>
-                                    <textarea  class="form-control" name="ProductRegistrationRemark" type="text" id="ProductRegistrationRemark" rows="3"></textarea>
+                                    <label for="companySelect">登録商品備考 Product Registration Remark</label>
+                                    <textarea  class="form-control" name="product_registration_remark" type="text" id="product_registration_remark" rows="3"></textarea>
                                     <span class="errormsg" id="ProductRegistrationRemarkError"></span>
                                 </div>
-                                <button onclick="" id="ProductRegistration"
-                                        class="btn btn-primary pl-3 pr-3 text-bold">商品登録<br>Product Registration
+                                <button onclick="" id="product_registration"class="btn btn-primary pl-3 pr-3 text-bold">商品登録 Product Registration
                                 </button>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
+            </div>
 
                 <div class="gap-2 mx-auto text-center" style="max-width: 950px">
                     <div class="card mt-5 text-left">
                         <div class="card-header">
                             <h3 class="card-title text-center">【商品情報】<br>Product Info</h3>
-
                         </div>
                         <div class="card-body">
                             <div class="card-body table-responsive p-0">
                                 <table class="table table-hover text-center">
                                     <thead>
                                     <tr>
-                                        <th>商品ID<br>
-                                            Product ID</th>
-                                        <th>商品名<br>
-                                            Product Name</th>
-                                        <th>商品概要<br>
-                                            Product Summary</th>
-                                        <th>公開開始日<br>
-                                            Period Start Date</th>
-                                        <th>公開終了日<br>
-                                            Period End Date</th>
+                                        <th>商品ID<br>Product ID</th>
+                                        <th>商品名<br>Product Name</th>
+                                        <th>商品概要<br>Product Summary</th>
+                                        <th>公開開始日<br>Period Start Date</th>
+                                        <th>公開終了日<br>Period End Date</th>
                                     </tr>
                                     </thead>
                                     <tbody>
