@@ -80,5 +80,6 @@ defined('EXIT__AUTO_MAX')      || define('EXIT__AUTO_MAX', 125); // highest auto
 
 const k1_employee_user_prefix = 'K1';
 const contractor_user_prefix = 'CONT';
+const contract_user_prefix = 'CNTR';
 const jwt_token_key = "k1_jwt_user_token";
 const jwt_token_algorithm = "HS512";
