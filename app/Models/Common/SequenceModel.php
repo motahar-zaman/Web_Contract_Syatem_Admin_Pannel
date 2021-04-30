@@ -16,8 +16,12 @@ class SequenceModel
         $employeeSequence = $this->getSequenceRules($employeePrefix);
         $increment = $employeeSequence->increment;
         $sequence = $employeeSequence->sequence;
-        $lastSequence = $employee->employee_id;
-        $id = explode("_",$lastSequence);
+        if($employee){
+            $id = explode("_",$employee->employee_id);
+        }
+        else{
+            $id[1] = 0;
+        }
         $newId = sprintf("%05d", $id[1]+$increment);
 
         $newSequence = $employeePrefix."_".$newId;
@@ -31,8 +35,12 @@ class SequenceModel
         $contractorSequence = $this->getSequenceRules($contractorPrefix);
         $increment = $contractorSequence->increment;
         $sequence = $contractorSequence->sequence;
-        $lastSequence = $contractor->contractor_id;
-        $id = explode("_",$lastSequence);
+        if($contractor){
+            $id = explode("_",$contractor->contractor_id);
+        }
+        else{
+            $id[1] = 0;
+        }
         $newId = sprintf("%05d", $id[1]+$increment);
 
         $newSequence = $contractorPrefix."_".$newId;
@@ -46,11 +54,9 @@ class SequenceModel
         $increment = $contractorSequence->increment;
         $sequence = $contractorSequence->sequence;
         if($contract){
-            $lastSequence = $contract->contractor_id;
-            $id = explode("_",$lastSequence);
+            $id = explode("_",$contract->contractor_id);
         }
         else{
-            $lastSequence = 0;
             $id[1] = 0;
         }
         $newId = sprintf("%05d", $id[1]+$increment);
@@ -63,8 +69,12 @@ class SequenceModel
         $prefix = date("Ymd");
         $increment = 1;
         $company = $this->getCompanyLastSequence();
-        $lastSequence = $company->company_id;
-        $id = substr($lastSequence, -4);
+        if($company){
+            $id = substr($company->company_id, -4);
+        }
+        else{
+            $id = 0;
+        }
         $newId = sprintf("%04d", $id+$increment);
         $newSequence = $prefix.$newId;
 
@@ -75,8 +85,12 @@ class SequenceModel
         $prefix = date("Ymd");
         $increment = 1;
         $group = $this->getGroupLastSequence();
-        $lastSequence = $group->group_id;
-        $id = substr($lastSequence, -4);
+        if($group){
+            $id = substr($group->group_id, -4);
+        }
+        else{
+            $id = 0;
+        }
         $newId = sprintf("%04d", $id+$increment);
         $newSequence = $prefix.$newId;
 
@@ -88,7 +102,12 @@ class SequenceModel
         $parameter = array($prefix);
 
         $data = (new Database())->readQueryExecution($queryString, $parameter);
-        return $data[0];
+        if($data){
+            return $data[0];
+        }
+        else{
+            return null;
+        }
     }
 
     public function getContractorLastSequence(){
@@ -96,7 +115,12 @@ class SequenceModel
         $parameter = array(1);
 
         $data = (new Database())->readQueryExecution($queryString, $parameter);
-        return $data[0];
+        if($data){
+            return $data[0];
+        }
+        else{
+            return null;
+        }
     }
 
     public function getEmployeeLastSequence(){
@@ -104,7 +128,12 @@ class SequenceModel
         $parameter = array(1);
 
         $data = (new Database())->readQueryExecution($queryString, $parameter);
-        return $data[0];
+        if($data){
+            return $data[0];
+        }
+        else{
+            return null;
+        }
     }
 
     public function getCompanyLastSequence(){
@@ -112,7 +141,12 @@ class SequenceModel
         $parameter = array(1);
 
         $data = (new Database())->readQueryExecution($queryString, $parameter);
-        return $data[0];
+        if($data){
+            return $data[0];
+        }
+        else{
+            return null;
+        }
     }
 
     public function getGroupLastSequence(){
@@ -120,7 +154,12 @@ class SequenceModel
         $parameter = array(1);
 
         $data = (new Database())->readQueryExecution($queryString, $parameter);
-        return $data[0];
+        if($data){
+            return $data[0];
+        }
+        else{
+            return null;
+        }
     }
 
     public function getContractLastSequence(){
@@ -131,7 +170,8 @@ class SequenceModel
         if($data){
             return $data[0];
         }
-        else
+        else{
             return null;
+        }
     }
 }
