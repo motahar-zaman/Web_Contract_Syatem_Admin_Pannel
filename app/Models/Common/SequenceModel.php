@@ -97,6 +97,22 @@ class SequenceModel
         return $newSequence;
     }
 
+    public function getShopSequence(){
+        $prefix = "Shop_";
+        $increment = 1;
+        $shop = $this->getShopLastSequence();
+        if($shop){
+            $id = substr($shop->shop_id, -5);
+        }
+        else{
+            $id = 0;
+        }
+        $newId = sprintf("%05d", $id+$increment);
+        $newSequence = $prefix.$newId;
+
+        return $newSequence;
+    }
+
     public function getSequenceRules($prefix){
         $queryString = "SELECT prefix, sequence, increment FROM mng_sequence WHERE prefix = ?";
         $parameter = array($prefix);
@@ -164,6 +180,19 @@ class SequenceModel
 
     public function getContractLastSequence(){
         $queryString = "SELECT contract_id, insert_date FROM trn_web_contract_base ORDER BY insert_date DESC LIMIT ?";
+        $parameter = array(1);
+
+        $data = (new Database())->readQueryExecution($queryString, $parameter);
+        if($data){
+            return $data[0];
+        }
+        else{
+            return null;
+        }
+    }
+
+    public function getShopLastSequence(){
+        $queryString = "SELECT shop_id, insert_date FROM mst_shop ORDER BY insert_date DESC LIMIT ?";
         $parameter = array(1);
 
         $data = (new Database())->readQueryExecution($queryString, $parameter);
