@@ -39,6 +39,26 @@ class SequenceModel
         return $newSequence;
     }
 
+    public function getContractSequence(){
+        $contractPrefix = contract_user_prefix;
+        $contract = $this->getContractLastSequence();
+        $contractorSequence = $this->getSequenceRules($contractPrefix);
+        $increment = $contractorSequence->increment;
+        $sequence = $contractorSequence->sequence;
+        if($contract){
+            $lastSequence = $contract->contractor_id;
+            $id = explode("_",$lastSequence);
+        }
+        else{
+            $lastSequence = 0;
+            $id[1] = 0;
+        }
+        $newId = sprintf("%05d", $id[1]+$increment);
+
+        $newSequence = $contractPrefix."_".$newId;
+        return $newSequence;
+    }
+
     public function getCompanySequence(){
         $prefix = date("Ymd");
         $increment = 1;
@@ -101,5 +121,17 @@ class SequenceModel
 
         $data = (new Database())->readQueryExecution($queryString, $parameter);
         return $data[0];
+    }
+
+    public function getContractLastSequence(){
+        $queryString = "SELECT contract_id, insert_date FROM trn_web_contract_base ORDER BY insert_date DESC LIMIT ?";
+        $parameter = array(1);
+
+        $data = (new Database())->readQueryExecution($queryString, $parameter);
+        if($data){
+            return $data[0];
+        }
+        else
+            return null;
     }
 }
