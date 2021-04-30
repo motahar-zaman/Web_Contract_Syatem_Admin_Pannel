@@ -31,6 +31,8 @@
                             <th>商品ID</th>
                             <th>商品名</th>
                             <th>商品概要</th>
+                            <th>公開開始日</th>
+                            <th>公開終了日</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -44,6 +46,8 @@
                                     <td id="productId<?php echo $i ?>"><?php echo $data->getId() ?></td>
                                     <td id="productName<?php echo $i ?>"><?php echo $data->getName() ?></td>
                                     <td id="productNote<?php echo $i ?>"><?php echo $data->getProductNote() ?></td>
+                                    <td id="productPeriodStartDate<?php echo $i ?>"><?php echo $data->getStartDate() ?></td>
+                                    <td id="productPeriodEndDate<?php echo $i ?>"><?php echo $data->getEndDate() ?></td>
                                 </tr>
                                 <?php
                             }

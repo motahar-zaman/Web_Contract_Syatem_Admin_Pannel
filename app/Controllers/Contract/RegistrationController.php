@@ -16,7 +16,7 @@ class RegistrationController extends BaseController
             $shop = (new ShopModel())->getAllShopData();
             $product = (new ProductModel())->getAllProductData();
             $contractor = (new ContractorModel())->getAllContractorData();
-//            dd($shop);
+//            dd($product);
 
             return view("Contract/contract", ["title" => "Contract Registration", "shop" => $shop, "product" => $product, "contractor" => $contractor]);
         }
