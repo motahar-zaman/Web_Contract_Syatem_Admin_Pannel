@@ -124,7 +124,7 @@
                     </div>
                     <div class="card-body">
                         <div class="card-body table-responsive p-0">
-                            <table class="table text-center">
+                            <table class="table text-center productSelectTable">
                                 <thead>
                                 <tr>
                                     <th>商品ID<br>Product ID</th>
@@ -136,11 +136,11 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td id="productId"></td>
-                                    <td id="productName"></td>
-                                    <td id="productNote"></td>
-                                    <td id="productPeriodStartDate"></td>
-                                    <td id="productPeriodEndDate"></td>
+                                    <td id="productSelectId"></td>
+                                    <td id="productSelectName"></td>
+                                    <td id="productSelectNote"></td>
+                                    <td id="productSelectPeriodStartDate"></td>
+                                    <td id="productSelectPeriodEndDate"></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -399,7 +399,7 @@
                     </div>
                     <div class="card-body">
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-hover text-center">
+                            <table class="table table-hover text-center productTable">
                                 <thead>
                                 <tr>
                                     <th>商品ID<br>Product ID</th>

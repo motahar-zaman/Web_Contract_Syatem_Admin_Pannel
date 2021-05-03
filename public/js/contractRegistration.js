@@ -16,11 +16,16 @@ function selectedContractor(data) {
 }
 
 function selectedProduct(data) {
-    $("#productId").html($("#productId" + data).html());
-    $("#productName").html($("#productName" + data).html());
-    $("#productNote").html($("#productNote" + data).html());
-    $("#productPeriodStartDate").html($("#productPeriodStartDate" + data).html());
-    $("#productPeriodEndDate").html($("#productPeriodEndDate" + data).html());
+    // Grab Data From Modal
+    let productId = $("#productId" + data).html();
+    let productName = $("#productName" + data).html();
+    let productNote = $("#productNote" + data).html();
+    let productPeriodStartDate = $("#productPeriodStartDate" + data).html();
+    let productPeriodEndDate = $("#productPeriodEndDate" + data).html();
+
+    //Push Data To the product contract table
+    var markup = "<tr><td>" + productId + "</td><td>" + productName + "</td><td>" + productNote + "</td><td>" + productPeriodStartDate + "</td><td>" + productPeriodEndDate + "</td><tr>";
+    $(".productSelectTable tbody").append(markup);
 }
 
 function selectedShop(data) {

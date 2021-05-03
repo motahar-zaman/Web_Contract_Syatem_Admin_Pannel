@@ -24,7 +24,7 @@
                 </form>
                 <br/>
                 <div class="card-body table-responsive p-0 ml-3" style="height: 300px;">
-                    <table class="table table-head-fixed text-nowrap ml-3">
+                    <table class="table table-head-fixed text-nowrap productTable ml-3">
                         <thead>
                         <tr>
                             <th>選択</th>
