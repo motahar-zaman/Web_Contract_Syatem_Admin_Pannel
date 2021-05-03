@@ -5,6 +5,7 @@ namespace App\Controllers\Contract;
 
 
 use App\Controllers\BaseController;
+use App\Models\Address\AddressModel;
 use App\Models\Common\SequenceModel;
 use App\Models\Contract\Contract;
 use App\Models\Contract\ContractModel;
@@ -20,8 +21,10 @@ class RegistrationController extends BaseController
             $shop = (new ShopModel())->getAllShopData();
             $product = (new ProductModel())->getAllProductData();
             $contractor = (new ContractorModel())->getAllContractorData();
+            $area = (new AddressModel())->getAllArea();
 
-            return view("Contract/contract", ["title" => "Contract Registration", "shop" => $shop, "product" => $product, "contractor" => $contractor]);
+            return view("Contract/contract", ["title" => "Contract Registration", "shop" => $shop, "product" => $product,
+                "contractor" => $contractor, "area" => $area]);
         }
         else{
             return redirect()->to("/login");
@@ -33,8 +36,10 @@ class RegistrationController extends BaseController
             $shop = (new ShopModel())->getAllShopData();
             $product = (new ProductModel())->getAllProductData();
             $contractor = (new ContractorModel())->getAllContractorData();
+            $area = (new AddressModel())->getAllArea();
 
-            return view("Contract/temp_contract", ["title" => "Contract Registration", "shop" => $shop, "product" => $product, "contractor" => $contractor]);
+            return view("Contract/temp_contract", ["title" => "Contract Registration", "shop" => $shop, "product" => $product,
+                "contractor" => $contractor, "area" => $area]);
         }
         else{
             return redirect()->to("/login");
