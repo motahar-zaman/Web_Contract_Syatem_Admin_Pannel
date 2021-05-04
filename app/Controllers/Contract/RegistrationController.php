@@ -25,9 +25,11 @@ class RegistrationController extends BaseController
             $district = (new AddressModel())->getAllDistrict();
             $prefecture = (new AddressModel())->getAllPrefecture();
             $areaLarge = (new AddressModel())->getAllAreaLarge();
+            $areaSmall = (new AddressModel())->getAllAreaSmall();
 
-            return view("Contract/contract", ["title" => "Contract Registration", "shop" => $shop, "product" => $product,
-                "contractor" => $contractor, "area" => $area, "district" => $district, "prefecture" => $prefecture, "areaLarge" => $areaLarge]);
+            return view("Contract/contract", ["title" => "Contract Registration", "shop" => $shop, "product" => $product, "contractor" =>
+                $contractor, "area" => $area, "district" => $district, "prefecture" => $prefecture, "areaLarge" => $areaLarge,
+                "areaSmall" => $areaSmall]);
         }
         else{
             return redirect()->to("/login");
@@ -43,9 +45,11 @@ class RegistrationController extends BaseController
             $district = (new AddressModel())->getAllDistrict();
             $prefecture = (new AddressModel())->getAllPrefecture();
             $areaLarge = (new AddressModel())->getAllAreaLarge();
+            $areaSmall = (new AddressModel())->getAllAreaSmall();
 
-            return view("Contract/temp_contract", ["title" => "Contract Registration", "shop" => $shop, "product" => $product,
-                "contractor" => $contractor, "area" => $area, "district" => $district, "prefecture" => $prefecture, "areaLarge" => $areaLarge]);
+            return view("Contract/temp_contract", ["title" => "Temporary Contract Registration", "shop" => $shop, "product" => $product, "contractor" =>
+                $contractor, "area" => $area, "district" => $district, "prefecture" => $prefecture, "areaLarge" => $areaLarge,
+                "areaSmall" => $areaSmall]);
         }
         else{
             return redirect()->to("/login");
