@@ -151,7 +151,7 @@
                 <div class="mt-5 text-left">【対象店舗登録】<br>Target Shop Registration</div>
                 <div class="card mt-5 text-left">
                     <div class="card-header">
-                        <h3 class="card-title text-center"><input name="shop" type="radio" value="0" /> 既存店舗から選択 <br>Select From Existing Shop</h3>
+                        <h3 class="card-title text-center"><input name="shop" id="shopCheck" type="radio" value="0" /> 既存店舗から選択 <br>Select From Existing Shop</h3>
                         <div class="card-tools">
                             <div class="input-group input-group-sm text-left">
                                 <div class="input-group-append">

@@ -43,3 +43,72 @@ function disable() {
 function enable() {
     document.getElementById("mySelect").disabled=false;
 }
+function postShopRegistrationdata() {
+    let data = {};
+    let shopCheck = $("#shopCheck").val();
+    if (shopCheck == 0 ){
+        data["shopCheck"] = 0;
+    }else {
+        data["shopCheck"] = 1;
+    }
+    data["shop_name"] = $("#shop_name").val();
+    data["shop_name_kana"] = $("#shop_name_kana").val();
+    data["district"] = $("#district").val();
+    data["area_large"] = $("#area_large").val();
+    data["area"] = $("#area").val();
+    data["prefecture"] = $("#prefecture").val();
+    data["area_small"] = $("#area_small").val();
+    data["address1"] = $("#address1").val();
+    data["address2"] = $("#address2").val();
+    data["phone_number"] = $("#phone_number").val();
+    data["mail_address"] = $("#mail_address").val();
+    data["representative_name"] = $("#representative_name").val();
+    data["rep_name_kana"] = $("#rep_name_kana").val();
+    data["shop_site_url"] = $("#shop_site_url").val();
+    data["BusinessType"] = $("#BusinessType").val();
+    data["product_registration_remark"] = $("#product_registration_remark").val();
+    data["notification_letter"] = 0;
+
+    if (validateData(data)) {
+        if (request) {
+            request.abort();
+        }
+
+        request = $.ajax({
+            url: "/contract-registration",
+            type: "POST",
+            data: data,
+            dataType: 'JSON',
+            headers: {'X-Requested-With': 'XMLHttpRequest'},
+
+            success: function (data) {
+                if (data.status === 1) {
+                    window.location.href = "/home";
+                } else if (data.status === 3) {
+                    window.location.href = "/login";
+                }
+            },
+            error: function (jqXHR, exception) {
+                alert("Error occurred");
+            }
+        });
+    }
+
+}
+function validateData(data) {
+    let is_valid = true;
+
+    /*if (fullNameCheck.value == "") {
+        document.getElementById("nameerrormsg").style.display = "inline";
+        is_valid = false;
+    }
+    if (addressCheck.value == "") {
+        document.getElementById("addrerrormsg").style.display = "inline";
+        is_valid = false;
+    }
+    if (quantityCheck.value == "") {
+        document.getElementById("qtyerrormsg").style.display = "inline";
+        is_valid = false;
+    }*/
+    return is_valid;
+}
