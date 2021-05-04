@@ -75,7 +75,7 @@ class AddressModel
                 $data = $datas[$i];
                 $district = new District();
                 if (isset($data)) {
-                    $district->setId($data->area_id ?? null);
+                    $district->setId($data->district_id ?? null);
                     $district->setAreaName($data->area_name ?? null);
                     $district->setAreaAreas($data->area_areas ?? null);
                     $district->setOrder($data->sort_order ?? null);
