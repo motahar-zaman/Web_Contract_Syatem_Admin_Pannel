@@ -38,12 +38,8 @@ function enable() {
 
 function postShopRegistrationdata() {
     let data = {};
-    let shopCheck = $("#shopCheck").val();
-    if (shopCheck == 0 ){
-        data["shopCheck"] = 0;
-    }else {
-        data["shopCheck"] = 1;
-    }
+    data["previousShop"] = $("#shopCheck").val();
+    data["newShop"] = $("#shopCheck2").val();
     data["shop_name"] = $("#shop_name").val();
     data["shop_name_kana"] = $("#shop_name_kana").val();
     data["district"] = $("#district").val();
