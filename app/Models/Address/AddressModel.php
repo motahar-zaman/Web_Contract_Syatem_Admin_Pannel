@@ -93,4 +93,46 @@ class AddressModel
             return $datas;
         }
     }
+
+    public function getAllPrefecture(){
+        $data = $this->getAllPrefectureData();
+        return $this->mapPrefectureData($data);
+    }
+
+    public function getAllPrefectureData(){
+        $queryString = "SELECT prefecture_id, district_id, area_name, area_areas, sort_order, update_date, update_user_id, insert_date, insert_user_id,
+                        delete_flag FROM mst_area_prefecture WHERE delete_flag = ?";
+        $parameter = array(1);
+
+        return (new Database())->readQueryExecution($queryString, $parameter);
+    }
+
+    public function mapPrefectureData($datas = array()){
+        if(isset($datas) && is_array($datas)) {
+            $length = count($datas);
+            $mappedData = array();
+
+            for ($i = 0; $i < $length; $i++) {
+                $data = $datas[$i];
+                $prefecture = new Prefecture();
+                if (isset($data)) {
+                    $prefecture->setId($data->area_id ?? null);
+                    $prefecture->setDistrict($data->district_id ?? null);
+                    $prefecture->setName($data->area_name ?? null);
+                    $prefecture->setAreas($data->area_areas ?? null);
+                    $prefecture->setOrder($data->sort_order ?? null);
+                    $prefecture->setUpdateDate($data->update_date ?? null);
+                    $prefecture->setUpdateUser($data->update_user_id ?? null);
+                    $prefecture->setInsertDate($data->insert_date ?? null);
+                    $prefecture->setInsertUser($data->insert_user_id ?? null);
+                    $prefecture->setDeleteFlag($data->delete_flag ?? null);
+                }
+                array_push($mappedData, $prefecture);
+            }
+            return $mappedData;
+        }
+        else{
+            return $datas;
+        }
+    }
 }
