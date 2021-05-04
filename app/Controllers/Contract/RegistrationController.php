@@ -27,7 +27,7 @@ class RegistrationController extends BaseController
             $areaLarge = (new AddressModel())->getAllAreaLarge();
             $areaSmall = (new AddressModel())->getAllAreaSmall();
 
-            return view("Contract/contract", ["title" => "Contract Registration", "shops" => $shop, "products" => $product, "contractors" =>
+            return view("Contract/contract", ["title" => "Contract Registration", "shop" => $shop, "product" => $product, "contractor" =>
                 $contractor, "areas" => $area, "districts" => $district, "prefectures" => $prefecture, "areaLarges" => $areaLarge,
                 "areaSmalls" => $areaSmall]);
         }
@@ -47,8 +47,8 @@ class RegistrationController extends BaseController
             $areaLarge = (new AddressModel())->getAllAreaLarge();
             $areaSmall = (new AddressModel())->getAllAreaSmall();
 
-            return view("Contract/temp_contract", ["title" => "Temporary Contract Registration", "shops" => $shop, "products" => $product,
-                "contractors" => $contractor, "areas" => $area, "districts" => $district, "prefectures" => $prefecture, "areaLarges" => $areaLarge,
+            return view("Contract/temp_contract", ["title" => "Temporary Contract Registration", "shop" => $shop, "product" => $product,
+                "contractor" => $contractor, "areas" => $area, "districts" => $district, "prefectures" => $prefecture, "areaLarges" => $areaLarge,
                 "areaSmalls" => $areaSmall]);
         }
         else{

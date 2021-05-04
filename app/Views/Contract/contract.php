@@ -266,22 +266,16 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-form-label">郵便番号</label>
-                                        <input type="text" name="post_code" class="form-control" id="post_code"
-                                               placeholder="NNN-nnnn">
+                                        <input type="text" name="post_code" class="form-control" id="post_code">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="col-md-6">
-                                        <label for="inputEmail3" class="col-form-label">住所検索 Address Search</label>
+                                        <label for="shopAddressSearch">住所検索 Address Search</label>
+                                        <div class="select2-purple">
+                                            <button onclick="shopAddressSearch()" id="shopAddressSearch" class="btn btn-primary pl-3 pr-3 text-bold">住所検索</button>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <button type="button" class="btn btn-primary pl-3 pr-3 text-bold"
-                                                data-toggle="modal" data-target="#company-select-modal">
-                                            住所検索
-                                        </button>
-                                    </div>
-
-
                                 </div>
 
                                 <div class="col-md-12">
