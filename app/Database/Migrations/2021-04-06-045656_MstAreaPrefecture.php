@@ -9,7 +9,7 @@ class MstAreaPrefecture extends Migration
 	public function up()
 	{
         $this->forge->addField([
-            'area_id'            => [
+            'prefecture_id'            => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '10',
                 'null'           => false,

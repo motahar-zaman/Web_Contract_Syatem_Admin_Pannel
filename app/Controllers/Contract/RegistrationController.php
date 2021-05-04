@@ -23,9 +23,13 @@ class RegistrationController extends BaseController
             $contractor = (new ContractorModel())->getAllContractorData();
             $area = (new AddressModel())->getAllArea();
             $district = (new AddressModel())->getAllDistrict();
+            $prefecture = (new AddressModel())->getAllPrefecture();
+            $areaLarge = (new AddressModel())->getAllAreaLarge();
+            $areaSmall = (new AddressModel())->getAllAreaSmall();
 
-            return view("Contract/contract", ["title" => "Contract Registration", "shop" => $shop, "product" => $product,
-                "contractor" => $contractor, "area" => $area, "district" => $district]);
+            return view("Contract/contract", ["title" => "Contract Registration", "shop" => $shop, "product" => $product, "contractor" =>
+                $contractor, "area" => $area, "district" => $district, "prefecture" => $prefecture, "areaLarge" => $areaLarge,
+                "areaSmall" => $areaSmall]);
         }
         else{
             return redirect()->to("/login");
@@ -39,9 +43,13 @@ class RegistrationController extends BaseController
             $contractor = (new ContractorModel())->getAllContractorData();
             $area = (new AddressModel())->getAllArea();
             $district = (new AddressModel())->getAllDistrict();
+            $prefecture = (new AddressModel())->getAllPrefecture();
+            $areaLarge = (new AddressModel())->getAllAreaLarge();
+            $areaSmall = (new AddressModel())->getAllAreaSmall();
 
-            return view("Contract/temp_contract", ["title" => "Contract Registration", "shop" => $shop, "product" => $product,
-                "contractor" => $contractor, "area" => $area, "district" => $district]);
+            return view("Contract/temp_contract", ["title" => "Temporary Contract Registration", "shop" => $shop, "product" => $product, "contractor" =>
+                $contractor, "area" => $area, "district" => $district, "prefecture" => $prefecture, "areaLarge" => $areaLarge,
+                "areaSmall" => $areaSmall]);
         }
         else{
             return redirect()->to("/login");
@@ -52,12 +60,35 @@ class RegistrationController extends BaseController
         if( session() && session()->get('login') ){
             if($this->request->isAJAX()){
                 $contract = new Contract();
-                $shop = new Shop();
+
+                if($_POST['shop']){
+                    $shop = new Shop();
+                    $shop->setId($_POST['shopId']);
+                    $shop->setName($_POST['shopName']);
+                    $shop->setNameKana($_POST['shopNameKana']);
+                    $shop->setRepresentative($_POST['shopRepresentative']);
+                    $shop->setRepresentativeKana($_POST['shopRepresentativeKana']);
+                    $shop->setZipcode($_POST['shopZip']);
+                    $shop->setAddress01($_POST['shopAddress01']);
+                    $shop->setAddress02($_POST['shopAddress02']);
+                    $shop->setAreaId($_POST['shopArea']);
+                    $shop->setPrefecture($_POST['shopPrefecture']);
+                    $shop->setTelNo($_POST['shopTel']);
+                    $shop->setMailAddress($_POST['shopMail']);
+                    $shop->setSiteUrl($_POST['shopSite']);
+                    $shop->setInsertDate(date("Y-m-d H:i:s"));
+                    $shop->setInsertUserId(session()->get('userId'));
+                    $shop->setUpdateDate(date("Y-m-d H:i:s"));
+                    $shop->setUpdateUserId(session()->get('userId'));
+                    $shop->setDeleteFlag(1);
+
+                    (new ShopModel())->storeShopData($shop);
+                }
 
                 $contract->setId((new SequenceModel())->getContractSequence());
                 $contract->setShopId($_POST['shopId']);
                 $contract->setContractorId($_POST['contractorName']);
-                $contract->setTantouId($_POST['tantouId']);
+                $contract->setTantouId("abcd");
                 $contract->setNote($_POST['note']);
                 $contract->setUpdateDate(date("Y-m-d H:i:s"));
                 $contract->setUpdateUserId(session()->get('userId'));

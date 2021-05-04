@@ -9,7 +9,7 @@ class MstAreaLarge extends Migration
 	public function up()
 	{
         $this->forge->addField([
-            'area_id'        => [
+            'large_area_id'        => [
                 'type'       => 'VARCHAR',
                 'constraint' => '10',
                 'null'       => false,
