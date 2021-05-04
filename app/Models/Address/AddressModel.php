@@ -59,7 +59,7 @@ class AddressModel
     }
 
     public function getAllDistrictData(){
-        $queryString = "SELECT area_id, area_name, area_areas, sort_order, update_date, update_user_id, insert_date, insert_user_id, delete_flag
+        $queryString = "SELECT district_id, area_name, area_areas, sort_order, update_date, update_user_id, insert_date, insert_user_id, delete_flag
                         FROM mst_area_district WHERE delete_flag = ?";
         $parameter = array(1);
 
@@ -75,7 +75,7 @@ class AddressModel
                 $data = $datas[$i];
                 $district = new District();
                 if (isset($data)) {
-                    $district->setAreaId($data->area_id ?? null);
+                    $district->setId($data->area_id ?? null);
                     $district->setAreaName($data->area_name ?? null);
                     $district->setAreaAreas($data->area_areas ?? null);
                     $district->setOrder($data->sort_order ?? null);
