@@ -16,6 +16,9 @@ class Shop
     private $address02;
     private $areaId;
     private $prefecture;
+    private $district;
+    private $areaLarge;
+    private $areaSmall;
     private $telNo;
     private $faxNo;
     private $mailAddress;
@@ -192,6 +195,54 @@ class Shop
     public function setPrefecture($prefecture): void
     {
         $this->prefecture = $prefecture;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDistrict()
+    {
+        return $this->district;
+    }
+
+    /**
+     * @param mixed $district
+     */
+    public function setDistrict($district): void
+    {
+        $this->district = $district;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAreaLarge()
+    {
+        return $this->areaLarge;
+    }
+
+    /**
+     * @param mixed $areaLarge
+     */
+    public function setAreaLarge($areaLarge): void
+    {
+        $this->areaLarge = $areaLarge;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAreaSmall()
+    {
+        return $this->areaSmall;
+    }
+
+    /**
+     * @param mixed $areaSmall
+     */
+    public function setAreaSmall($areaSmall): void
+    {
+        $this->areaSmall = $areaSmall;
     }
 
     /**
