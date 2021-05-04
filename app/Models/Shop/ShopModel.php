@@ -19,6 +19,9 @@ class ShopModel
         $address2 = $shop->getAddress02();
         $area = $shop->getAreaId();
         $prefecture = $shop->getPrefecture();
+        $district = $shop->getDistrict();
+        $areaLarge = $shop->getAreaLarge();
+        $areaSmall = $shop->getAreaSmall();
         $phn = $shop->getTelNo();
         $fax = $shop->getFaxNo();
         $mail = $shop->getMailAddress();
@@ -29,11 +32,11 @@ class ShopModel
         $insertUser = $shop->getInsertUserId();
         $delete = $shop->getDeleteFlag();
 
-        $queryString = "INSERT INTO mst_shop (shop_id, shop_name, shop_name_kana, daihyousha_name, daihyousha_name_kana, zipcode, address_01, address_02, area_id,
-                        prefecture, tel_no, fax_no, mail_address, site_url, update_date, update_user_id, insert_date, insert_user_id, delete_flag)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $queryParameter = array($id, $name, $nameKana, $representative, $representativeKana, $zip, $address1, $address2, $area, $prefecture, $phn, $fax, $mail,
-            $siteUrl, $update, $updateUser, $insert, $insertUser, $delete);
+        $queryString = "INSERT INTO mst_shop (shop_id, shop_name, shop_name_kana, daihyousha_name, daihyousha_name_kana, zipcode, address_01, address_02,
+                        area_id, prefecture, district_id, large_area_id, small_area_id, tel_no, fax_no, mail_address, site_url, update_date, update_user_id,
+                        insert_date, insert_user_id, delete_flag) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $queryParameter = array($id, $name, $nameKana, $representative, $representativeKana, $zip, $address1, $address2, $area, $prefecture, $district,
+            $areaLarge, $areaSmall, $phn, $fax, $mail, $siteUrl, $update, $updateUser, $insert, $insertUser, $delete);
 
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
@@ -45,8 +48,8 @@ class ShopModel
 
     public function getAllData(){
         $queryString = "SELECT shop_id, shop_name, shop_name_kana, daihyousha_name, daihyousha_name_kana, zipcode, address_01, address_02, area_id,
-                        prefecture, tel_no, fax_no, mail_address, site_url, update_date, update_user_id, insert_date, insert_user_id, delete_flag
-                        FROM mst_shop WHERE delete_flag = ? ORDER BY update_date DESC";
+                        prefecture, district_id, large_area_id, small_area_id, tel_no, fax_no, mail_address, site_url, update_date, update_user_id,
+                        insert_date, insert_user_id, delete_flag FROM mst_shop WHERE delete_flag = ? ORDER BY update_date DESC";
         $queryParameter = array(1);
 
         return (new Database())->readQueryExecution($queryString, $queryParameter);
@@ -71,6 +74,9 @@ class ShopModel
                     $shop->setAddress02($data->address_02 ?? NULL);
                     $shop->setAreaId($data->area_id ?? NULL);
                     $shop->setPrefecture($data->prefecture ?? NULL);
+                    $shop->setDistrict($data->district_id ?? NULL);
+                    $shop->setAreaLarge($data->large_area_id ?? NULL);
+                    $shop->setAreaSmall($data->small_area_id ?? NULL);
                     $shop->setTelNo($data->tel_no ?? NULL);
                     $shop->setFaxNo($data->fax_no ?? NULL);
                     $shop->setMailAddress($data->mail_address ?? NULL);
