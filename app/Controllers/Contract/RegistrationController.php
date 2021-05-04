@@ -23,9 +23,10 @@ class RegistrationController extends BaseController
             $contractor = (new ContractorModel())->getAllContractorData();
             $area = (new AddressModel())->getAllArea();
             $district = (new AddressModel())->getAllDistrict();
+            $prefecture = (new AddressModel())->getAllPrefecture();
 
             return view("Contract/contract", ["title" => "Contract Registration", "shop" => $shop, "product" => $product,
-                "contractor" => $contractor, "area" => $area, "district" => $district]);
+                "contractor" => $contractor, "area" => $area, "district" => $district, "prefecture" => $prefecture]);
         }
         else{
             return redirect()->to("/login");
@@ -39,9 +40,10 @@ class RegistrationController extends BaseController
             $contractor = (new ContractorModel())->getAllContractorData();
             $area = (new AddressModel())->getAllArea();
             $district = (new AddressModel())->getAllDistrict();
+            $prefecture = (new AddressModel())->getAllPrefecture();
 
             return view("Contract/temp_contract", ["title" => "Contract Registration", "shop" => $shop, "product" => $product,
-                "contractor" => $contractor, "area" => $area, "district" => $district]);
+                "contractor" => $contractor, "area" => $area, "district" => $district, "prefecture" => $prefecture]);
         }
         else{
             return redirect()->to("/login");
