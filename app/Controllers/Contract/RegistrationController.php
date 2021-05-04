@@ -5,6 +5,7 @@ namespace App\Controllers\Contract;
 
 
 use App\Controllers\BaseController;
+use App\Models\Address\AddressModel;
 use App\Models\Common\SequenceModel;
 use App\Models\Contract\Contract;
 use App\Models\Contract\ContractModel;
@@ -20,8 +21,15 @@ class RegistrationController extends BaseController
             $shop = (new ShopModel())->getAllShopData();
             $product = (new ProductModel())->getAllProductData();
             $contractor = (new ContractorModel())->getAllContractorData();
+            $area = (new AddressModel())->getAllArea();
+            $district = (new AddressModel())->getAllDistrict();
+            $prefecture = (new AddressModel())->getAllPrefecture();
+            $areaLarge = (new AddressModel())->getAllAreaLarge();
+            $areaSmall = (new AddressModel())->getAllAreaSmall();
 
-            return view("Contract/contract", ["title" => "Contract Registration", "shop" => $shop, "product" => $product, "contractor" => $contractor]);
+            return view("Contract/contract", ["title" => "Contract Registration", "shop" => $shop, "product" => $product, "contractor" =>
+                $contractor, "area" => $area, "district" => $district, "prefecture" => $prefecture, "areaLarge" => $areaLarge,
+                "areaSmall" => $areaSmall]);
         }
         else{
             return redirect()->to("/login");
@@ -33,8 +41,15 @@ class RegistrationController extends BaseController
             $shop = (new ShopModel())->getAllShopData();
             $product = (new ProductModel())->getAllProductData();
             $contractor = (new ContractorModel())->getAllContractorData();
+            $area = (new AddressModel())->getAllArea();
+            $district = (new AddressModel())->getAllDistrict();
+            $prefecture = (new AddressModel())->getAllPrefecture();
+            $areaLarge = (new AddressModel())->getAllAreaLarge();
+            $areaSmall = (new AddressModel())->getAllAreaSmall();
 
-            return view("Contract/temp_contract", ["title" => "Contract Registration", "shop" => $shop, "product" => $product, "contractor" => $contractor]);
+            return view("Contract/temp_contract", ["title" => "Temporary Contract Registration", "shop" => $shop, "product" => $product, "contractor" =>
+                $contractor, "area" => $area, "district" => $district, "prefecture" => $prefecture, "areaLarge" => $areaLarge,
+                "areaSmall" => $areaSmall]);
         }
         else{
             return redirect()->to("/login");
