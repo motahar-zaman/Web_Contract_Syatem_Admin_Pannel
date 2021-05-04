@@ -158,7 +158,7 @@ class AddressModel
                 $data = $datas[$i];
                 $areaLarge = new AreaLarge();
                 if (isset($data)) {
-                    $areaLarge->setId($data->area_id ?? null);
+                    $areaLarge->setId($data->large_area_id ?? null);
                     $areaLarge->setDistrict($data->district_id ?? null);
                     $areaLarge->setPrefecture($data->prefecture_id ?? null);
                     $areaLarge->setName($data->area_name ?? null);
@@ -171,6 +171,50 @@ class AddressModel
                     $areaLarge->setDeleteFlag($data->delete_flag ?? null);
                 }
                 array_push($mappedData, $areaLarge);
+            }
+            return $mappedData;
+        }
+        else{
+            return $datas;
+        }
+    }
+
+    public function getAllAreaSmall(){
+        $data = $this->getAllAreaSmallData();
+        return $this->mapAreaSmallData($data);
+    }
+
+    public function getAllAreaSmallData(){
+        $queryString = "SELECT small_area_id, district_id, prefecture_id, area_large_id, area_name, area_areas, sort_order, update_date, update_user_id,
+                         insert_date, insert_user_id, delete_flag FROM mst_area_small WHERE delete_flag = ?";
+        $parameter = array(1);
+
+        return (new Database())->readQueryExecution($queryString, $parameter);
+    }
+
+    public function mapAreaSmallData($datas = array()){
+        if(isset($datas) && is_array($datas)) {
+            $length = count($datas);
+            $mappedData = array();
+
+            for ($i = 0; $i < $length; $i++) {
+                $data = $datas[$i];
+                $areaSmall = new AreaSmall();
+                if (isset($data)) {
+                    $areaSmall->setId($data->small_area_id ?? null);
+                    $areaSmall->setDistrict($data->district_id ?? null);
+                    $areaSmall->setPrefecture($data->prefecture_id ?? null);
+                    $areaSmall->setLarge($data->area_large_id ?? null);
+                    $areaSmall->setName($data->area_name ?? null);
+                    $areaSmall->setAreas($data->area_areas ?? null);
+                    $areaSmall->setOrder($data->sort_order ?? null);
+                    $areaSmall->setUpdateDate($data->update_date ?? null);
+                    $areaSmall->setUpdateUser($data->update_user_id ?? null);
+                    $areaSmall->setInsertDate($data->insert_date ?? null);
+                    $areaSmall->setInsertUser($data->insert_user_id ?? null);
+                    $areaSmall->setDeleteFlag($data->delete_flag ?? null);
+                }
+                array_push($mappedData, $areaSmall);
             }
             return $mappedData;
         }
