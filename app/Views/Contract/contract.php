@@ -151,7 +151,7 @@
                 <div class="mt-5 text-left">【対象店舗登録】<br>Target Shop Registration</div>
                 <div class="card mt-5 text-left">
                     <div class="card-header">
-                        <h3 class="card-title text-center"><input name="shop" type="radio" value="0" onclick=disable() /> 既存店舗から選択 <br>Select From Existing Shop</h3>
+                        <h3 class="card-title text-center"><input name="shop" type="radio" value="0" /> 既存店舗から選択 <br>Select From Existing Shop</h3>
                         <div class="card-tools">
                             <div class="input-group input-group-sm text-left">
                                 <div class="input-group-append">
@@ -213,7 +213,7 @@
                                     <div class="form-group">
                                         <label for="inputEmail3" class=" col-form-label">地域 District</label>
                                         <select name="district" id="district" class="form-control">
-                                            <?php foreach ($district as $district) { ?>
+                                            <?php foreach ($districts as $district) { ?>
                                             <option value="<?php echo $district->getId() ?>"><?php echo $district->getareaName() ?></option>
                                             <?php } ?>
                                         </select>
@@ -221,7 +221,7 @@
                                     <div class="form-group">
                                         <label for="inputEmail3" class=" col-form-label">大エリア Area Large</label>
                                         <select name="area_large" id="area_large" class="form-control">
-                                            <?php foreach ($areaLarge as $areaLarge) { ?>
+                                            <?php foreach ($areaLarges as $areaLarge) { ?>
                                                 <option value="<?php echo $areaLarge->getId() ?>"><?php echo $areaLarge->getname() ?></option>
                                             <?php } ?>
                                         </select>
@@ -230,7 +230,7 @@
                                         <label for="inputEmail3" class=" col-form-label">詳細エリア
                                             Area</label>
                                         <select name="area" id="area" class="form-control">
-                                            <?php foreach ($area as $area) { ?>
+                                            <?php foreach ($areas as $area) { ?>
                                                 <option value="<?php echo $area->getId() ?>"><?php echo $area->getname() ?></option>
                                             <?php } ?>
                                         </select>
@@ -246,18 +246,16 @@
                                         <label for="inputEmail3" class=" col-form-label">都道府県
                                             Prefecture</label>
                                         <select name="prefecture" id="prefecture" class="form-control">
-                                            <option>option 1</option>
-                                            <option>option 2</option>
-                                            <option>option 3</option>
-                                            <option>option 4</option>
-                                            <option>option 5</option>
+                                            <?php foreach ($prefectures as $prefecture) { ?>
+                                                <option value="<?php echo $prefecture->getId() ?>"><?php echo $prefecture->getname() ?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-form-label">小エリア
                                             Area Small</label>
                                         <select name="area_small" id="area_small" class="form-control">
-                                            <?php foreach ($areaSmall as $areaSmall) { ?>
+                                            <?php foreach ($areaSmalls as $areaSmall) { ?>
                                                 <option value="<?php echo $areaSmall->getId() ?>"><?php echo $areaSmall->getname() ?></option>
                                             <?php } ?>
                                         </select>
@@ -375,7 +373,7 @@
                                                   id="product_registration_remark" rows="3"></textarea>
                                         <span class="errormsg" id="ProductRegistrationRemarkError"></span>
                                     </div>
-                                    <button onclick="" id="product_registration"
+                                    <button onclick="postShopRegistrationdata()" id="product_registration"
                                             class="btn btn-primary pl-3 pr-3 text-bold">商品登録 Product Registration
                                     </button>
                                 </div>
