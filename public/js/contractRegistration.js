@@ -15,7 +15,7 @@ function selectedProduct(data) {
     let productPeriodEndDate = $("#productPeriodEndDate" + data).html();
 
     //Push Data To the product contract table
-    var markup = "<tr><td>" + productId + "</td><td>" + productName + "</td><td>" + productNote + "</td><td>" + productPeriodStartDate + "</td><td>" + productPeriodEndDate + "</td><tr>";
+    var markup = "<tr><td id=\"productSelectId\">" + productId + "</td><td>" + productName + "</td><td>" + productNote + "</td><td>" + productPeriodStartDate + "</td><td>" + productPeriodEndDate + "</td></tr>";
     $(".productSelectTable tbody").append(markup);
 }
 
@@ -38,7 +38,19 @@ function enable() {
 
 function postShopRegistrationdata() {
     let data = {};
+    var data1 = Array();
+
+    $(".productSelectTable tr").each(function(i){
+        if (i == 0){
+            return;
+        }
+        $(this).children('#productSelectId').each(function(ii){
+            data1[i-1] = $(this).text();
+        });
+    })
+    data["productSelectId"] = data1;
     data["previousShop"] = $("#shopCheck").val();
+    data["shopId"] = $("#shopId").val();
     data["newShop"] = $("#shopCheck2").val();
     data["shopName"] = $("#shop_name").val();
     data["shopNameKana"] = $("#shop_name_kana").val();
