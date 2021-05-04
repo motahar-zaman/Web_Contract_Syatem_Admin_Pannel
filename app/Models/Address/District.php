@@ -6,7 +6,7 @@ namespace App\Models\Address;
 
 class District
 {
-    private $areaId;
+    private $id;
     private $areaName;
     private $areaAreas;
     private $order;
@@ -19,17 +19,17 @@ class District
     /**
      * @return mixed
      */
-    public function getAreaId()
+    public function getId()
     {
-        return $this->areaId;
+        return $this->id;
     }
 
     /**
-     * @param mixed $areaId
+     * @param mixed $id
      */
-    public function setAreaId($areaId): void
+    public function setId($id): void
     {
-        $this->areaId = $areaId;
+        $this->id = $id;
     }
 
     /**
