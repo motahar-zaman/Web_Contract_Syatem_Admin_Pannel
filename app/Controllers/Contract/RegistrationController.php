@@ -27,9 +27,9 @@ class RegistrationController extends BaseController
             $areaLarge = (new AddressModel())->getAllAreaLarge();
             $areaSmall = (new AddressModel())->getAllAreaSmall();
 
-            return view("Contract/contract", ["title" => "Contract Registration", "shop" => $shop, "product" => $product, "contractor" =>
-                $contractor, "area" => $area, "district" => $district, "prefecture" => $prefecture, "areaLarge" => $areaLarge,
-                "areaSmall" => $areaSmall]);
+            return view("Contract/contract", ["title" => "Contract Registration", "shops" => $shop, "products" => $product, "contractors" =>
+                $contractor, "areas" => $area, "districts" => $district, "prefectures" => $prefecture, "areaLarges" => $areaLarge,
+                "areaSmalls" => $areaSmall]);
         }
         else{
             return redirect()->to("/login");
@@ -47,9 +47,9 @@ class RegistrationController extends BaseController
             $areaLarge = (new AddressModel())->getAllAreaLarge();
             $areaSmall = (new AddressModel())->getAllAreaSmall();
 
-            return view("Contract/temp_contract", ["title" => "Temporary Contract Registration", "shop" => $shop, "product" => $product, "contractor" =>
-                $contractor, "area" => $area, "district" => $district, "prefecture" => $prefecture, "areaLarge" => $areaLarge,
-                "areaSmall" => $areaSmall]);
+            return view("Contract/temp_contract", ["title" => "Temporary Contract Registration", "shops" => $shop, "products" => $product,
+                "contractors" => $contractor, "areas" => $area, "districts" => $district, "prefectures" => $prefecture, "areaLarges" => $areaLarge,
+                "areaSmalls" => $areaSmall]);
         }
         else{
             return redirect()->to("/login");
@@ -63,7 +63,7 @@ class RegistrationController extends BaseController
 
                 if($_POST['shop']){
                     $shop = new Shop();
-                    $shop->setId($_POST['shopId']);
+                    $shop->setId((new SequenceModel())->getShopSequence());
                     $shop->setName($_POST['shopName']);
                     $shop->setNameKana($_POST['shopNameKana']);
                     $shop->setRepresentative($_POST['shopRepresentative']);
@@ -83,10 +83,13 @@ class RegistrationController extends BaseController
                     $shop->setDeleteFlag(1);
 
                     (new ShopModel())->storeShopData($shop);
+                    $contract->setShopId($shop->getId());
+                }
+                else{
+                    $contract->setShopId($_POST['shopId']);
                 }
 
                 $contract->setId((new SequenceModel())->getContractSequence());
-                $contract->setShopId($_POST['shopId']);
                 $contract->setContractorId($_POST['contractorName']);
                 $contract->setTantouId("abcd");
                 $contract->setNote($_POST['note']);
