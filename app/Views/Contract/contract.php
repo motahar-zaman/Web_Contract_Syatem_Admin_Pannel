@@ -197,7 +197,7 @@
                 <div class="gap-2 mx-auto text-center" style="max-width: 950px">
                     <div class="card mt-5 text-left">
                         <div class="card-header">
-                            <h3 class="card-title text-center">〇店舗を新規登録 <br>Shop Registration</h3>
+                            <h3 class="card-title text-center"><input name="shop" id="shopCheck2" type="radio" value="1" /><span class="d-none">〇</span> 店舗を新規登録 <br>Shop Registration</h3>
                         </div>
                         <div class="card-body">
                             <div class="row">
