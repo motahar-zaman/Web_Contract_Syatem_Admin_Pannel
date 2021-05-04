@@ -213,32 +213,26 @@
                                     <div class="form-group">
                                         <label for="inputEmail3" class=" col-form-label">地域 District</label>
                                         <select name="district" id="district" class="form-control">
-                                            <option>option 1</option>
-                                            <option>option 2</option>
-                                            <option>option 3</option>
-                                            <option>option 4</option>
-                                            <option>option 5</option>
+                                            <?php foreach ($district as $district) { ?>
+                                            <option value="<?php echo $district->getId() ?>"><?php echo $district->getareaName() ?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class=" col-form-label">大エリア Area Large</label>
                                         <select name="area_large" id="area_large" class="form-control">
-                                            <option>option 1</option>
-                                            <option>option 2</option>
-                                            <option>option 3</option>
-                                            <option>option 4</option>
-                                            <option>option 5</option>
+                                            <?php foreach ($areaLarge as $areaLarge) { ?>
+                                                <option value="<?php echo $areaLarge->getId() ?>"><?php echo $areaLarge->getname() ?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class=" col-form-label">詳細エリア
                                             Area</label>
                                         <select name="area" id="area" class="form-control">
-                                            <option>option 1</option>
-                                            <option>option 2</option>
-                                            <option>option 3</option>
-                                            <option>option 4</option>
-                                            <option>option 5</option>
+                                            <?php foreach ($area as $area) { ?>
+                                                <option value="<?php echo $area->getId() ?>"><?php echo $area->getname() ?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                 </div>
@@ -263,11 +257,9 @@
                                         <label for="inputEmail3" class="col-form-label">小エリア
                                             Area Small</label>
                                         <select name="area_small" id="area_small" class="form-control">
-                                            <option>option 1</option>
-                                            <option>option 2</option>
-                                            <option>option 3</option>
-                                            <option>option 4</option>
-                                            <option>option 5</option>
+                                            <?php foreach ($areaSmall as $areaSmall) { ?>
+                                                <option value="<?php echo $areaSmall->getId() ?>"><?php echo $areaSmall->getname() ?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                 </div>
