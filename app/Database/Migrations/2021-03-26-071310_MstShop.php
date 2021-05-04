@@ -65,9 +65,27 @@ class MstShop extends Migration
             ],
             'prefecture' => [
                 'type'   => 'VARCHAR',
-                'constraint'=> '15',
+                'constraint'=> '10',
                 'null'   => true,
                 'comment'=> '都道府県 / Prefecture',
+            ],
+            'district_id' => [
+                'type'   => 'VARCHAR',
+                'constraint'=> '10',
+                'null'   => true,
+                'comment'=> 'district_id',
+            ],
+            'large_area_id' => [
+                'type'   => 'VARCHAR',
+                'constraint'=> '10',
+                'null'   => true,
+                'comment'=> 'large_area_id',
+            ],
+            'small_area_id' => [
+                'type'   => 'VARCHAR',
+                'constraint'=> '10',
+                'null'   => true,
+                'comment'=> 'small_area_id',
             ],
             'tel_no'          => [
                 'type'        => 'VARCHAR',
