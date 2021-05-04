@@ -116,7 +116,7 @@ class AddressModel
                 $data = $datas[$i];
                 $prefecture = new Prefecture();
                 if (isset($data)) {
-                    $prefecture->setId($data->area_id ?? null);
+                    $prefecture->setId($data->prefecture_id ?? null);
                     $prefecture->setDistrict($data->district_id ?? null);
                     $prefecture->setName($data->area_name ?? null);
                     $prefecture->setAreas($data->area_areas ?? null);
