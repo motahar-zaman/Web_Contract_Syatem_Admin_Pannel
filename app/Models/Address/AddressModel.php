@@ -135,4 +135,47 @@ class AddressModel
             return $datas;
         }
     }
+
+    public function getAllAreaLarge(){
+        $data = $this->getAllAreaLargeData();
+        return $this->mapAreaLargeData($data);
+    }
+
+    public function getAllAreaLargeData(){
+        $queryString = "SELECT large_area_id, district_id, prefecture_id, area_name, area_areas, sort_order, update_date, update_user_id, insert_date,
+                        insert_user_id, delete_flag FROM mst_area_large WHERE delete_flag = ?";
+        $parameter = array(1);
+
+        return (new Database())->readQueryExecution($queryString, $parameter);
+    }
+
+    public function mapAreaLargeData($datas = array()){
+        if(isset($datas) && is_array($datas)) {
+            $length = count($datas);
+            $mappedData = array();
+
+            for ($i = 0; $i < $length; $i++) {
+                $data = $datas[$i];
+                $areaLarge = new AreaLarge();
+                if (isset($data)) {
+                    $areaLarge->setId($data->area_id ?? null);
+                    $areaLarge->setDistrict($data->district_id ?? null);
+                    $areaLarge->setPrefecture($data->prefecture_id ?? null);
+                    $areaLarge->setName($data->area_name ?? null);
+                    $areaLarge->setAreas($data->area_areas ?? null);
+                    $areaLarge->setOrder($data->sort_order ?? null);
+                    $areaLarge->setUpdateDate($data->update_date ?? null);
+                    $areaLarge->setUpdateUser($data->update_user_id ?? null);
+                    $areaLarge->setInsertDate($data->insert_date ?? null);
+                    $areaLarge->setInsertUser($data->insert_user_id ?? null);
+                    $areaLarge->setDeleteFlag($data->delete_flag ?? null);
+                }
+                array_push($mappedData, $areaLarge);
+            }
+            return $mappedData;
+        }
+        else{
+            return $datas;
+        }
+    }
 }
