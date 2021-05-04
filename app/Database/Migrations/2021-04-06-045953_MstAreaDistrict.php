@@ -9,7 +9,7 @@ class MstAreaDistrict extends Migration
 	public function up()
 	{
         $this->forge->addField([
-            'area_id'          => [
+            'district_id'        => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '10',
                 'null'           => false,
