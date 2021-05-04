@@ -90,7 +90,7 @@ class RegistrationController extends BaseController
                 }
 
                 $contract->setId((new SequenceModel())->getContractSequence());
-                $contract->setContractorId($_POST['contractorName']);
+                $contract->setContractorId($_POST['contractorId']);
                 $contract->setTantouId("abcd");
                 $contract->setNote($_POST['note']);
                 $contract->setUpdateDate(date("Y-m-d H:i:s"));
