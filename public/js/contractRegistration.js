@@ -1,12 +1,3 @@
-// $(function () {
-//     //Initialize Select2 Elements
-//     $('.select2').select2()
-//     //Initialize Select2 Elements
-//     $('.select2bs4').select2({
-//         theme: 'bootstrap4'
-//     })
-// })
-
 function selectedContractor(data) {
     $("#contractorId").html($("#contractorId" + data).html());
     $("#contractorName").html($("#contractorName" + data).html());
@@ -42,4 +33,33 @@ function disable() {
 }
 function enable() {
     document.getElementById("mySelect").disabled=false;
+}
+
+function shopAddressSearch() {
+    let zipCode = $('#post_code').val();
+    let setAddressId = "address1";
+    var param = {zipcode: zipCode};
+    var send_url = "http://zipcloud.ibsnet.co.jp/api/search";
+
+    $.ajax({
+        type: "GET",
+        cache: false,
+        data: param,
+        url: send_url,
+        dataType: "jsonp",
+        success: function (res) {
+            if (res.status == 200) {
+                if (res.results) {
+                    $("#" + setAddressId).val(res.results[0].address1 + res.results[0].address2);
+                } else {
+                    alert("Invalid Zip Code");
+                }
+            } else {
+                alert(res.message);
+            }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            console.log(XMLHttpRequest);
+        }
+    });
 }
