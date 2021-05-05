@@ -104,6 +104,33 @@ class RegistrationController extends BaseController
 
                 (new contractmodel())->storeContractData($contract);
 
+                $products = $_POST['productSelectId'];
+                $contractProduct = array();
+                $contractProduct['id'] = $contract->getId();
+                $contractProduct['contractStatus'] = 0;
+                $contractProduct['tantou'] = "tantou";
+                $contractProduct['update'] = date("Y-m-d H:i:s");
+                $contractProduct['updateUser'] = session()->get('userId');
+                $contractProduct['insert'] = date("Y-m-d H:i:s");
+                $contractProduct['insertUser'] = session()->get('userId');
+                $contractProduct['delete'] = 1;
+
+                for ($i = 0; $i < count($products); $i++){
+                    $product = $products[$i];
+                    $start = explode("-",$product[2]);
+                    $end = explode("-",$product[3]);
+
+                    $contractProduct['product'] = $product[0];
+                    $contractProduct['note'] = $product[1];
+                    $contractProduct['startYear'] = $start[0];
+                    $contractProduct['startMonth'] = $start[1];
+                    $contractProduct['endYear'] = $end[0];
+                    $contractProduct['endMonth'] = $end[1];
+                    $contractProduct['branch'] = strtotime(date("Y-m-d H:i:s")) + $i;
+
+                    (new ContractModel())->storeContractProductData($contractProduct);
+                }
+
                 return json_encode(['msg' => "Successful", 'status' => 1]);
             }
             else{
