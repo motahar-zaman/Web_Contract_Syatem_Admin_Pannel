@@ -465,7 +465,7 @@
         <div class="card-footer">
             <div class="row">
                 <div class="col-md-6 text-center">
-                    <button onclick="contractorRegistration()" id="contractorRegistration"
+                    <button onclick="contractRegistration()" id="contractorRegistration"
                             class="btn btn-primary pl-3 pr-3 text-bold">登録<br>
                         Registration
                     </button>

@@ -15,7 +15,7 @@ function selectedProduct(data) {
     let productPeriodEndDate = $("#productPeriodEndDate" + data).html();
 
     //Push Data To the product contract table
-    var markup = "<tr><td id=\"productSelectId\">" + productId + "</td><td>" + productName + "</td><td>" + productNote + "</td><td id=\"productSelectStartDate\">" + productPeriodStartDate + "</td><td id=\"productSelectEndDate\">" + productPeriodEndDate + "</td></tr>";
+    var markup = "<tr><td id=\"productSelectId\">" + productId + "</td><td>" + productName + "</td><td>" + productNote + "</td><td>" + productPeriodStartDate + "</td><td>" + productPeriodEndDate + "</td></tr>";
     $(".productSelectTable tbody").append(markup);
 }
 
@@ -36,11 +36,9 @@ function enable() {
     document.getElementById("mySelect").disabled=false;
 }
 
-function contractorRegistration() {
+function contractRegistration() {
     let data = {};
     var productSelectArr = Array();
-    var productSelectStartDateArr = Array();
-    var productSelectEndDateArr = Array();
 
     $(".productSelectTable tr").each(function(i){
         if (i == 0){
@@ -49,17 +47,9 @@ function contractorRegistration() {
         $(this).children('#productSelectId').each(function(ii){
             productSelectArr[i-1] = $(this).text();
         });
-        $(this).children('#productSelectStartDate').each(function(iii){
-            productSelectStartDateArr[i-1] = $(this).text();
-        });
-        $(this).children('#productSelectEndDate').each(function(iiii){
-            productSelectEndDateArr[i-1] = $(this).text();
-        });
     })
 
     data["productSelectId"] = productSelectArr;
-    data["productSelectStartDate"] = productSelectStartDateArr;
-    data["productSelectEndDate"] = productSelectEndDateArr;
     data["shop"] = $("input[type='radio'][name='shop']:checked").val();
     data["shopId"] = $("#shopId").html();
     data["shopName"] = $("#shop_name").val();
