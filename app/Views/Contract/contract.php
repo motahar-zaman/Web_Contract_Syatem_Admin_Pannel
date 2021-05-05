@@ -41,7 +41,7 @@
                 </div>
                 <div class="row col-md-12">
                     <div class="col-md-6">
-                        <h1 class="mb-0 pt-2 pl-5">契約者情報登録</h1>
+                        <h1 class="mb-0 pt-2 pl-5">契約商品情報登録</h1>
                     </div>
                     <div class="col-md-6 text-right pt-4 pr-5">
                         <span>[<?= session()->get("userId") ?>]：[<?= session()->get("userName") ?>]</span>
@@ -448,10 +448,12 @@
                             class="btn btn-primary pl-3 pr-3 text-bold">登録<br>
                         Registration
                     </button>
+                    <a style="color: #fff" href="/home">
                     <button onclick="" id="menu"
                             class="btn btn-primary pl-3 pr-3 text-bold">メニュー<br>
-                        <a style="color: #fff" href="/home"> Menu</a>
+                        Menu
                     </button>
+                    </a>
                 </div>
                 <div class="col-md-6 text-center">
                     <span>アクセス日時：<?= date("Y/m/d") ?>	</span>
