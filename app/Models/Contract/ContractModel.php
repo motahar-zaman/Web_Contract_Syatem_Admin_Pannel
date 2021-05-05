@@ -34,7 +34,7 @@ class ContractModel
                         end_date_year, end_date_month, tantou_id, note, update_date, update_user_id, insert_date, insert_user_id, delete_flag)
                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $queryParameter = array($d['id'], $d['branch'], $d['product'], $d['contractStatus'], $d['startYear'], $d['startMonth'], $d['endYear'],
-            $d['endMonth'], $d['$tantou'], $d['$note'], $d['$update'], $d['$updateUser'], $d['$insert'], $d['$insertUser'], $d['$delete']);
+            $d['endMonth'], $d['tantou'], $d['note'], $d['update'], $d['updateUser'], $d['insert'], $d['insertUser'], $d['delete']);
 
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
