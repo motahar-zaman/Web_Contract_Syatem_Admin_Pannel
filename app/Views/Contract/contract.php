@@ -444,7 +444,7 @@
         <div class="card-footer">
             <div class="row">
                 <div class="col-md-6 text-center">
-                    <button onclick="postShopRegistrationData()" id="contractorRegistration"
+                    <button onclick="contractRegistration()" id="contractorRegistration"
                             class="btn btn-primary pl-3 pr-3 text-bold">登録
                     </button>
                     <button onclick="contractorRegistration()" id="contractorRegistration"
