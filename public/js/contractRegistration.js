@@ -36,7 +36,7 @@ function enable() {
     document.getElementById("mySelect").disabled=false;
 }
 
-function postShopRegistrationdata() {
+function contractRegistration() {
     let data = {};
     var data1 = Array();
 
@@ -48,17 +48,18 @@ function postShopRegistrationdata() {
             data1[i-1] = $(this).text();
         });
     })
+
     data["productSelectId"] = data1;
-    data["previousShop"] = $("#shopCheck").val();
-    data["shopId"] = $("#shopId").val();
-    data["newShop"] = $("#shopCheck2").val();
+    data["shop"] = $("input[type='radio'][name='shop']:checked").val();
+    data["shopId"] = $("#shopId").html();
     data["shopName"] = $("#shop_name").val();
     data["shopNameKana"] = $("#shop_name_kana").val();
-    data["district"] = $("#district").val();
-    data["area_large"] = $("#area_large").val();
     data["shopArea"] = $("#area").val();
     data["shopPrefecture"] = $("#prefecture").val();
-    data["area_small"] = $("#area_small").val();
+    data["shopDistrict"] = $("#district").val();
+    data["shopAreaSmall"] = $("#areaSmall").val();
+    data["shopAreaLarge"] = $("#areaLarge").val();
+    data["shopZip"] = $("#postCode").val();
     data["shopAddress01"] = $("#address1").val();
     data["shopAddress02"] = $("#address2").val();
     data["shopTel"] = $("#phone_number").val();
@@ -67,17 +68,14 @@ function postShopRegistrationdata() {
     data["shopRepresentativeKana'"] = $("#rep_name_kana").val();
     data["shopSite"] = $("#shop_site_url").val();
     data["BusinessType"] = $("#BusinessType").val();
-    data["product_registration_remark"] = $("#product_registration_remark").val();
+    data["note"] = $("#product_registration_remark").val();
     data["notification_letter"] = 0;
     data["contractorId"] = $("#contractorId").html();
     console.log(data);
 
     if (validateData(data)) {
-        if (request) {
-            request.abort();
-        }
 
-        request = $.ajax({
+        $.ajax({
             url: "/contract-registration",
             type: "POST",
             data: data,
@@ -118,7 +116,7 @@ function validateData(data) {
 }
 
 function shopAddressSearch() {
-    let zipCode = $('#post_code').val();
+    let zipCode = $('#postCode').val();
     let setAddressId = "address1";
     var param = {zipcode: zipCode};
     var send_url = "http://zipcloud.ibsnet.co.jp/api/search";
