@@ -59,7 +59,7 @@ function contractorRegistration() {
 
     data["productSelectId"] = productSelectArr;
     data["productSelectStartDate"] = productSelectStartDateArr;
-    data["productSelectEndDateA"] = productSelectEndDateArr;
+    data["productSelectEndDate"] = productSelectEndDateArr;
     data["shop"] = $("input[type='radio'][name='shop']:checked").val();
     data["shopId"] = $("#shopId").html();
     data["shopName"] = $("#shop_name").val();
