@@ -469,7 +469,7 @@
                             class="btn btn-primary pl-3 pr-3 text-bold">登録<br>
                         Registration
                     </button>
-                    <button onclick="" id="contractorRegistration"
+                    <button onclick="" id="menu"
                             class="btn btn-primary pl-3 pr-3 text-bold">メニュー<br>
                         <a style="color: #fff" href="/home"> Menu</a>
                     </button>
