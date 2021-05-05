@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Shop Select</h4>
+                <h4 class="modal-title">店舗選択</h4>
                 <?php
                 //                    var_dump($product); die();
                 ?>
