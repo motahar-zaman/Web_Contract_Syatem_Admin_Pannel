@@ -31,6 +31,7 @@
 <?= $this->include('modals\contractorSelect') ?>
 <?= $this->include('modals\productSelect') ?>
 <?= $this->include('modals\shopSelect') ?>
+<?= $this->include('modals\productDiscountSelect') ?>
 <div class="wrapper">
     <section class="content">
         <div class="container-fluid">
@@ -379,7 +380,7 @@
                     </div>
                     <div class="card-body">
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-hover text-center productTable">
+                            <table class="table table-hover text-center productTable productInfoTable">
                                 <thead>
                                 <tr>
                                     <th>商品ID<br>Product ID</th>
@@ -390,27 +391,6 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>商品ID</td>
-                                    <td>商品名</td>
-                                    <td>商品概要</td>
-                                    <td>公開開始日</td>
-                                    <td>公開終了日</td>
-                                </tr>
-                                <tr>
-                                    <td>商品ID</td>
-                                    <td>商品名</td>
-                                    <td>商品概要</td>
-                                    <td>公開開始日</td>
-                                    <td>公開終了日</td>
-                                </tr>
-                                <tr>
-                                    <td>商品ID</td>
-                                    <td>商品名</td>
-                                    <td>商品概要</td>
-                                    <td>公開開始日</td>
-                                    <td>公開終了日</td>
-                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -422,14 +402,18 @@
                         <div class="card-tools">
                             <div class="input-group input-group-sm text-left">
                                 <div class="input-group-append">
-                                    <button class="btn btn-default">割引内容更新</button>
+                                    <button type="button"
+                                            class="btn btn-default pl-3 pr-3"
+                                            data-toggle="modal"
+                                            data-target="#product-discount-select-modal">割引内容更新
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-hover text-center">
+                            <table class="table table-hover text-center productDiscountTable">
                                 <thead>
                                 <tr>
                                     <th>対象商品<br>
@@ -447,12 +431,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>123</td>
-                                    <td>123</td>
-                                    <td>123</td>
-                                    <td>123</td>
-                                </tr>
+
                                 </tbody>
                             </table>
                         </div>
