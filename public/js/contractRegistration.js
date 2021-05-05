@@ -19,6 +19,32 @@ function selectedProduct(data) {
         + productNote + "</td><td id=\"productSelectStartDate\">" + productPeriodStartDate + "</td><td id=\"productSelectEndDate\">" + productPeriodEndDate +
         "</td></tr>";
     $(".productSelectTable tbody").append(markup);
+
+    //Push Data To the product info table
+    var markup = "<tr><td>" + productId + "</td><td>" + productName + "</td><td>" + productNote + "</td><td>" + productPeriodStartDate + "</td><td>" + productPeriodEndDate + "</td></tr>";
+    $(".productInfoTable tbody").append(markup);
+
+    //Push and Pass Data  To the product discount table
+    let datalen = data;
+    let productDiscountId = 'productDiscountId' + datalen;
+    let productDiscountNameId = 'productDiscountName' + datalen;
+    let productDiscountNoteId = 'productDiscountNote' + datalen;
+    let productDiscountStartDateId = 'productDiscountStartDate' + datalen;
+    let productDiscountEndDateId = 'productDiscountEndDate' + datalen;
+    var markup = "<tr><td onclick=\'productDiscount("+ datalen +")\'><a href='#'><p id='" + productDiscountId + "'>" + productId + "</p></a></td><td id='" + productDiscountNameId + "'>" + productName + "</td><td id='" + productDiscountNoteId + "'>" + productNote + "</td><td id='" + productDiscountStartDateId + "'>" + productPeriodStartDate + "</td><td id='" + productDiscountEndDateId + "'>" + productPeriodEndDate + "</td></tr>";
+    $(".productDiscountTableModal tbody").append(markup);
+}
+function productDiscount(data) {
+    let productDiscountId = $("#productDiscountId" + data).html();
+    let productDiscountName = $("#productDiscountName" + data).html();
+    let productDiscountNote = $("#productDiscountNote" + data).html();
+    let productDiscountStartDate = $("#productDiscountStartDate" + data).html();
+    let productDiscountEndDate = $("#productDiscountEndDate" + data).html();
+
+    //Push Data To the product discount table
+    var markup = "<tr><td>" + productDiscountId + "</td><td>" + productDiscountName + "</td><td>" + productDiscountNote + "</td><td>" + productDiscountStartDate + "</td><td>" + productDiscountEndDate + "</td></tr>";
+    $(".productDiscountTable tbody").append(markup);
+
 }
 
 function selectedShop(data) {
@@ -40,14 +66,14 @@ function enable() {
 
 function contractRegistration() {
     let data = {};
-    var data1 = Array();
-    var data2 = Array();
+    let data1 = Array();
 
     $(".productSelectTable tr").each(function(i){
         if (i == 0){
             return;
         }
         $(this).each(function(){
+            let data2 = Array();
             data2[0] = $(this).children('#productSelectId').text();
             data2[1] = $(this).children('#productSelectNote').text();
             data2[2] = $(this).children('#productSelectStartDate').text();
@@ -72,7 +98,7 @@ function contractRegistration() {
     data["shopTel"] = $("#phone_number").val();
     data["shopMail"] = $("#mail_address").val();
     data["shopRepresentative"] = $("#representative_name").val();
-    data["shopRepresentativeKana"] = $("#rep_name_kana").val();
+    data["shopRepresentativeKana'"] = $("#rep_name_kana").val();
     data["shopSite"] = $("#shop_site_url").val();
     data["BusinessType"] = $("#BusinessType").val();
     data["note"] = $("#product_registration_remark").val();
@@ -81,7 +107,6 @@ function contractRegistration() {
     console.log(data);
 
     if (validateData(data)) {
-
         $.ajax({
             url: "/contract-registration",
             type: "POST",
