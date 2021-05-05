@@ -26,4 +26,16 @@ class ContractModel
 
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
+
+    public function storeContractProductData($contractProduct = array()){
+        $d = $contractProduct;
+
+        $queryString = "INSERT INTO trn_contract_product (contract_id, branch_no, product_id, contract_status, start_date_year, start_date_month,
+                        end_date_year, end_date_month, tantou_id, note, update_date, update_user_id, insert_date, insert_user_id, delete_flag)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $queryParameter = array($d['id'], $d['branch'], $d['product'], $d['contractStatus'], $d['startYear'], $d['startMonth'], $d['endYear'],
+            $d['endMonth'], $d['$tantou'], $d['$note'], $d['$update'], $d['$updateUser'], $d['$insert'], $d['$insertUser'], $d['$delete']);
+
+        return (new Database())->writeQueryExecution($queryString, $queryParameter);
+    }
 }
