@@ -363,7 +363,7 @@
                                                   id="product_registration_remark" rows="3"></textarea>
                                         <span class="errormsg" id="ProductRegistrationRemarkError"></span>
                                     </div>
-                                    <button onclick="postShopRegistrationdata()" id="product_registration"
+                                    <button id="product_registration"
                                             class="btn btn-primary pl-3 pr-3 text-bold">商品登録 Product Registration
                                     </button>
                                 </div>
@@ -471,7 +471,7 @@
                     </button>
                     <button onclick="" id="contractorRegistration"
                             class="btn btn-primary pl-3 pr-3 text-bold">メニュー<br>
-                        Menu
+                        <a style="color: #fff" href="/home"> Menu</a>
                     </button>
                 </div>
                 <div class="col-md-6 text-center">
