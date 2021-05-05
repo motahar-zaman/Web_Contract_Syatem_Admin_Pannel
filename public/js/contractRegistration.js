@@ -65,7 +65,7 @@ function contractRegistration() {
     data["shopTel"] = $("#phone_number").val();
     data["shopMail"] = $("#mail_address").val();
     data["shopRepresentative"] = $("#representative_name").val();
-    data["shopRepresentativeKana'"] = $("#rep_name_kana").val();
+    data["shopRepresentativeKana"] = $("#rep_name_kana").val();
     data["shopSite"] = $("#shop_site_url").val();
     data["BusinessType"] = $("#BusinessType").val();
     data["note"] = $("#product_registration_remark").val();
