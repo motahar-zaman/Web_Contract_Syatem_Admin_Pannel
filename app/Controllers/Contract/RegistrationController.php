@@ -64,18 +64,21 @@ class RegistrationController extends BaseController
                 if($_POST['shop']){
                     $shop = new Shop();
                     $shop->setId((new SequenceModel())->getShopSequence());
-                    $shop->setName($_POST['shopName']);
-                    $shop->setNameKana($_POST['shopNameKana']);
-                    $shop->setRepresentative($_POST['shopRepresentative']);
-                    $shop->setRepresentativeKana($_POST['shopRepresentativeKana']);
-                    $shop->setZipcode($_POST['shopZip']);
-                    $shop->setAddress01($_POST['shopAddress01']);
-                    $shop->setAddress02($_POST['shopAddress02']);
-                    $shop->setAreaId($_POST['shopArea']);
-                    $shop->setPrefecture($_POST['shopPrefecture']);
-                    $shop->setTelNo($_POST['shopTel']);
-                    $shop->setMailAddress($_POST['shopMail']);
-                    $shop->setSiteUrl($_POST['shopSite']);
+                    $shop->setName($_POST['shopName'] ?? null);
+                    $shop->setNameKana($_POST['shopNameKana'] ?? null);
+                    $shop->setRepresentative($_POST['shopRepresentative'] ?? null);
+                    $shop->setRepresentativeKana($_POST['shopRepresentativeKana'] ?? null);
+                    $shop->setZipcode($_POST['shopZip'] ?? null);
+                    $shop->setAddress01($_POST['shopAddress01'] ?? null);
+                    $shop->setAddress02($_POST['shopAddress02'] ?? null);
+                    $shop->setAreaId($_POST['shopArea'] ?? null);
+                    $shop->setPrefecture($_POST['shopPrefecture'] ?? null);
+                    $shop->setDistrict($_POST['shopDistrict'] ?? null);
+                    $shop->setAreaLarge($_POST['shopAreaLarge'] ?? null);
+                    $shop->setAreaSmall($_POST['shopAreaSmall'] ?? null);
+                    $shop->setTelNo($_POST['shopTel'] ?? null);
+                    $shop->setMailAddress($_POST['shopMail'] ?? null);
+                    $shop->setSiteUrl($_POST['shopSite'] ?? null);
                     $shop->setInsertDate(date("Y-m-d H:i:s"));
                     $shop->setInsertUserId(session()->get('userId'));
                     $shop->setUpdateDate(date("Y-m-d H:i:s"));
@@ -90,9 +93,9 @@ class RegistrationController extends BaseController
                 }
 
                 $contract->setId((new SequenceModel())->getContractSequence());
-                $contract->setContractorId($_POST['contractorId']);
+                $contract->setContractorId($_POST['contractorId'] ?? null);
                 $contract->setTantouId("abcd");
-                $contract->setNote($_POST['note']);
+                $contract->setNote($_POST['note'] ?? null);
                 $contract->setUpdateDate(date("Y-m-d H:i:s"));
                 $contract->setUpdateUserId(session()->get('userId'));
                 $contract->setInsertDate(date("Y-m-d H:i:s"));
