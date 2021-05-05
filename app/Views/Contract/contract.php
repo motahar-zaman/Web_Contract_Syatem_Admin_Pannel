@@ -342,8 +342,7 @@
                                               id="product_registration_remark" rows="3"></textarea>
                                     <span class="errormsg" id="ProductRegistrationRemarkError"></span>
                                 </div>
-                                <button onclick="postShopRegistrationdata()" id="product_registration"
-                                        class="btn btn-primary pl-3 pr-3 text-bold">商品登録 Product Registration
+                                <button onclick="" id="product_registration" class="btn btn-primary pl-3 pr-3 text-bold">商品登録
                                 </button>
                             </div>
                         </div>
