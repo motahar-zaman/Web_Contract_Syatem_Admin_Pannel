@@ -52,7 +52,7 @@ class SequenceModel
         $increment = $contractorSequence->increment;
         $sequence = $contractorSequence->sequence;
         if($contract){
-            $id = explode("_",$contract->contractor_id);
+            $id = explode("_",$contract->contract_id);
         }
         else{
             $id[1] = 0;
