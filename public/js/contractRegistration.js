@@ -15,7 +15,9 @@ function selectedProduct(data) {
     let productPeriodEndDate = $("#productPeriodEndDate" + data).html();
 
     //Push Data To the product contract table
-    var markup = "<tr><td id=\"productSelectId\">" + productId + "</td><td>" + productName + "</td><td>" + productNote + "</td><td>" + productPeriodStartDate + "</td><td>" + productPeriodEndDate + "</td></tr>";
+    var markup = "<tr><td id=\"productSelectId\">" + productId + "</td><td id=\"productSelectName\">" + productName + "</td><td id=\"productSelectNote\">"
+        + productNote + "</td><td id=\"productSelectStartDate\">" + productPeriodStartDate + "</td><td id=\"productSelectEndDate\">" + productPeriodEndDate +
+        "</td></tr>";
     $(".productSelectTable tbody").append(markup);
 }
 
@@ -39,13 +41,18 @@ function enable() {
 function contractRegistration() {
     let data = {};
     var data1 = Array();
+    var data2 = Array();
 
     $(".productSelectTable tr").each(function(i){
         if (i == 0){
             return;
         }
-        $(this).children('#productSelectId').each(function(ii){
-            data1[i-1] = $(this).text();
+        $(this).each(function(){
+            data2[0] = $(this).children('#productSelectId').text();
+            data2[1] = $(this).children('#productSelectNote').text();
+            data2[2] = $(this).children('#productSelectStartDate').text();
+            data2[3] = $(this).children('#productSelectEndDate').text();
+            data1[i-1] = data2;
         });
     })
 
