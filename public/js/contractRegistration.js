@@ -38,17 +38,17 @@ function enable() {
 
 function postShopRegistrationdata() {
     let data = {};
-    var data1 = Array();
+    var productSelectArr = Array();
 
     $(".productSelectTable tr").each(function(i){
         if (i == 0){
             return;
         }
         $(this).children('#productSelectId').each(function(ii){
-            data1[i-1] = $(this).text();
+            productSelectArr[i-1] = $(this).text();
         });
     })
-    data["productSelectId"] = data1;
+    data["productSelectId"] = productSelectArr;
     data["previousShop"] = $("#shopCheck").val();
     data["shopId"] = $("#shopId").val();
     data["newShop"] = $("#shopCheck2").val();
