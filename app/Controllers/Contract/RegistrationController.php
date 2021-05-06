@@ -144,6 +144,7 @@ class RegistrationController extends BaseController
 
     public function update(){
         if( session() && session()->get('login') ){
+            $contractId = "CNTR_00005";//$_GET["contractId"];
             $shop = (new ShopModel())->getAllShopData();
             $product = (new ProductModel())->getAllProductData();
             $contractor = (new ContractorModel())->getAllContractorData();
@@ -152,11 +153,12 @@ class RegistrationController extends BaseController
             $prefecture = (new AddressModel())->getAllPrefecture();
             $areaLarge = (new AddressModel())->getAllAreaLarge();
             $areaSmall = (new AddressModel())->getAllAreaSmall();
-            $contract = (new ContractModel())->getAllContract();
+
+            $contract = (new ContractModel())->getContractById($contractId);
 
             return view("Contract/update", ["title" => "Contract Update", "shop" => $shop, "product" => $product, "contractor" =>
                 $contractor, "areas" => $area, "districts" => $district, "prefectures" => $prefecture, "areaLarges" => $areaLarge,
-                "areaSmalls" => $areaSmall, "contracts" => $contract]);
+                "areaSmalls" => $areaSmall, "contract" => $contract]);
         }
         else{
             return redirect()->to("/login");
