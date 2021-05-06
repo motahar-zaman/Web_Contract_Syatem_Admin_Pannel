@@ -343,9 +343,6 @@
                                                 <span class="errormsg" id="MailAddressError"></span>
                                             </div>
                                         </div>
-
-
-                                        <button id="product_registration" class="btn btn-primary pl-3 pr-3 text-bold">商品登録 Product Registration </button>
                                     </div>
                                 </div>
                             </div>
