@@ -36,13 +36,12 @@ function selectedProduct(data) {
 }
 function productDiscount(data) {
     let productDiscountId = $("#productDiscountId" + data).html();
-    let productDiscountName = $("#productDiscountName" + data).html();
-    let productDiscountNote = $("#productDiscountNote" + data).html();
-    let productDiscountStartDate = $("#productDiscountStartDate" + data).html();
-    let productDiscountEndDate = $("#productDiscountEndDate" + data).html();
+    let productDiscountShop = $("#productDiscountName" + data).html();
+    let productDiscountRate = '<input className="form-control" name="productDiscountRate" type="number" id="productDiscountRate">';
+    let productDiscountName = '<input className="form-control" name="productDiscountName" type="text" id="productDiscountName">';
 
     //Push Data To the product discount table
-    var markup = "<tr><td>" + productDiscountId + "</td><td>" + productDiscountName + "</td><td>" + productDiscountNote + "</td><td>" + productDiscountStartDate + "</td><td>" + productDiscountEndDate + "</td></tr>";
+    var markup = "<tr><td>" + productDiscountId + "</td><td>" + productDiscountShop + "</td><td>" + productDiscountRate + "</td><td>" + productDiscountName + "</td></tr>";
     $(".productDiscountTable tbody").append(markup);
 
 }
