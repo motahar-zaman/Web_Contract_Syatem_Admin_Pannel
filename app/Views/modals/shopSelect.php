@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Shop Select</h4>
+                <h4 class="modal-title">店舗選択</h4>
                 <?php
                 //                    var_dump($product); die();
                 ?>
@@ -14,11 +14,11 @@
                 <form>
                     <div class="card-body">
                         <div class="form-group col-md-4 pl-0">
-                            <label for="exampleInputEmail1">商品ID（完全一致）</label>
+                            <label for="exampleInputEmail1">店舗ID（完全一致）</label>
                             <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
                         </div>
                         <div class="form-group col-md-4 pl-0">
-                            <label for="exampleInputPassword1">商品名（あいまい）</label>
+                            <label for="exampleInputPassword1">店舗名（あいまい）</label>
                             <input type="text" class="form-control" id="exampleInputPassword1" placeholder="">
                         </div>
                         <button type="submit" class="btn btn-primary pl-4 pr-4">検索</button>
@@ -31,9 +31,9 @@
                         <thead>
                         <tr>
                             <th>選択</th>
-                            <th>商品ID</th>
-                            <th>商品名</th>
-                            <th>商品概要</th>
+                            <th>店舗ID</th>
+                            <th>店舗名</th>
+                            <th>住所</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -46,10 +46,10 @@
                                     <td onclick="selectedShop(<?php echo $i ?>)" id="selectedShop<?php echo $data->getId() ?>"><a href="#">選択</a></td>
                                     <td id="shopId<?php echo $i ?>"><?php echo $data->getId() ?></td>
                                     <td id="shopName<?php echo $i ?>"><?php echo $data->getName() ?></td>
-                                    <td id="shopRepresentativeName<?php echo $i ?>"><?php echo $data->getRepresentativeKana() ?></td>
-                                    <td id="shopPrefecture<?php echo $i ?>"><?php echo $data->getPrefecture() ?></td>
+                                    <td style="display: none" id="shopRepresentativeName<?php echo $i ?>"><?php echo $data->getRepresentativeKana() ?></td>
+                                    <td style="display: none" id="shopPrefecture<?php echo $i ?>"><?php echo $data->getPrefecture() ?></td>
                                     <td id="shopAddress<?php echo $i ?>"><?php echo $data->getAddress01() ?></td>
-                                    <td id="shopPhoneNumber<?php echo $i ?>"><?php echo $data->getTelNo() ?></td>
+                                    <td style="display: none" id="shopPhoneNumber<?php echo $i ?>"><?php echo $data->getTelNo() ?></td>
                                 </tr>
                                 <?php
                             }
