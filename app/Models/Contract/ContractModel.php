@@ -138,4 +138,15 @@ class ContractModel
 
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
+
+    public function getContractProductById($contractId, $contractProductId){
+
+        $queryString = "SELECT contract_id, branch_no, product_id, contract_status, start_date_year, start_date_month, end_date_year, end_date_month,
+            tantou_id, note, update_date, update_user_id, insert_date, insert_user_id, delete_flag FROM trn_contract_product  WHERE contract_id = ?
+            AND product_id = ?";
+
+        $queryParameter = array($contractId, $contractProductId);
+
+        return (new Database())->readQueryExecution($queryString, $queryParameter);
+    }
 }
