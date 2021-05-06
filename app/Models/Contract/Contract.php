@@ -15,6 +15,7 @@ class Contract
     private $insertDate;
     private $insertUserId;
     private $deleteFlag;
+    private $contractProduct = array();
 
     /**
      * @return mixed
@@ -174,5 +175,21 @@ class Contract
     public function setDeleteFlag($deleteFlag): void
     {
         $this->deleteFlag = $deleteFlag;
+    }
+
+    /**
+     * @return array
+     */
+    public function getContractProduct(): array
+    {
+        return $this->contractProduct;
+    }
+
+    /**
+     * @param array $contractProduct
+     */
+    public function setContractProduct(array $contractProduct): void
+    {
+        $this->contractProduct[] = $contractProduct;
     }
 }
