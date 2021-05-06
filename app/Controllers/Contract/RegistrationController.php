@@ -108,7 +108,7 @@ class RegistrationController extends BaseController
                 $contractProduct = array();
                 $contractProduct['id'] = $contract->getId();
                 $contractProduct['contractStatus'] = 0;
-                $contractProduct['tantou'] = "tantou";
+                $contractProduct['tantou'] = "abcd";
                 $contractProduct['update'] = date("Y-m-d H:i:s");
                 $contractProduct['updateUser'] = session()->get('userId');
                 $contractProduct['insert'] = date("Y-m-d H:i:s");
@@ -144,7 +144,19 @@ class RegistrationController extends BaseController
 
     public function update(){
         if( session() && session()->get('login') ){
-            echo "Hello, This section is under developing";
+            $shop = (new ShopModel())->getAllShopData();
+            $product = (new ProductModel())->getAllProductData();
+            $contractor = (new ContractorModel())->getAllContractorData();
+            $area = (new AddressModel())->getAllArea();
+            $district = (new AddressModel())->getAllDistrict();
+            $prefecture = (new AddressModel())->getAllPrefecture();
+            $areaLarge = (new AddressModel())->getAllAreaLarge();
+            $areaSmall = (new AddressModel())->getAllAreaSmall();
+            $contract = (new ContractModel())->getAllContract();
+
+            return view("Contract/update", ["title" => "Contract Update", "shop" => $shop, "product" => $product, "contractor" =>
+                $contractor, "areas" => $area, "districts" => $district, "prefectures" => $prefecture, "areaLarges" => $areaLarge,
+                "areaSmalls" => $areaSmall, "contracts" => $contract]);
         }
         else{
             return redirect()->to("/login");
