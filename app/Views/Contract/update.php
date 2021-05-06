@@ -343,24 +343,12 @@
                                                 <span class="errormsg" id="MailAddressError"></span>
                                             </div>
                                         </div>
-
-                                        <div class="form-group">
-                                            <label for="companySelect">登録商品備考 Product Registration Remark</label>
-                                            <textarea class="form-control" name="product_registration_remark" type="text" id="product_registration_remark" rows="3"></textarea>
-                                            <span class="errormsg" id="ProductRegistrationRemarkError"></span>
-                                        </div>
-                                        <button id="product_registration" class="btn btn-primary pl-3 pr-3 text-bold">商品登録 Product Registration </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="companySelect">登録商品備考 Product Registration Remark</label>
-                        <textarea class="form-control" name="product_registration_remark" type="text" id="product_registration_remark" rows="3"></textarea>
-                        <span class="errormsg" id="ProductRegistrationRemarkError"></span>
-                    </div>
-                    <button onclick="" id="product_registration" class="btn btn-primary pl-3 pr-3 text-bold">商品登録 </button>
+
                     <div class="gap-2 mx-auto text-center" style="max-width: 950px">
                         <div class="card mt-5 text-left">
                             <div class="card-header">
@@ -428,10 +416,10 @@
                     <div class="row">
                         <div class="col-md-6 text-center">
                             <button onclick="contractRegistration()" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 text-bold">
-                                登録 Registration
+                                登録
                             </button>
                             <button onclick="" id="menu" class="btn btn-primary pl-3 pr-3 text-bold">
-                                <a style="color: #fff" href="/home">メニュー Menu</a>
+                                <a style="color: #fff" href="/home">メニュー</a>
                             </button>
                         </div>
                         <div class="col-md-6 text-center">
