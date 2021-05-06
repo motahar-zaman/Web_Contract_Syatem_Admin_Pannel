@@ -6,6 +6,7 @@ namespace App\Models\Contract;
 
 use App\Models\Database;
 
+
 class ContractModel
 {
     public function storeContractData(Contract $contract){
@@ -39,6 +40,11 @@ class ContractModel
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
 
+    public function getAllContract(){
+        $data = $this->getAllContractData();
+        return $this->mapAllContractData($data);
+    }
+
     public function getAllContractData(){
         $queryString = "SELECT c.contract_id, shop_id, contractor_id, c.tantou_id, c.note, c.update_date, c.update_user_id, c.insert_date, c.insert_user_id,
             c.delete_flag, branch_no, product_id, contract_status, start_date_year, start_date_month, end_date_year, end_date_month, p.note AS
@@ -47,5 +53,56 @@ class ContractModel
         $queryParameter = array(1);
 
         return (new Database())->readQueryExecution($queryString, $queryParameter);
+    }
+
+    public function mapAllContractData($datas = array()){
+        if(isset($datas) && is_array($datas)){
+            $length = count($datas);
+            $mappedData = array();
+
+            for($i = 0; $i < $length; $i++){
+                $data = $datas[$i];
+                if(isset($data)){
+                    $contract = new Contract();
+                    if(isset($mappedData[$data->contract_id])) {
+                        $mappedData[$data->contract_id]->setContractProduct($this->mapContractProduct($data));
+                    }
+                    else{
+                        $contract->setId($data->contract_id ?? NULL);
+                        $contract->setContractorId($data->contractor_id ?? NULL);
+                        $contract->setShopId($data->shop_id ?? NULL);
+                        $contract->setTantouId($data->tantou_id ?? NULL);
+                        $contract->setNote($data->note ?? NULL);
+                        $contract->setUpdateDate($data->update_date ?? NULL);
+                        $contract->setUpdateUserId($data->update_user_id ?? NULL);
+                        $contract->setInsertDate($data->insert_date ?? NULL);
+                        $contract->setInsertUserId($data->insert_user_id ?? NULL);
+                        $contract->setDeleteFlag($data->delete_flag ?? NULL);
+                        $contract->setContractProduct($this->mapContractProduct($data));
+                    }
+                    $mappedData[$contract->getId()] = $contract;
+                }
+            }
+            return $mappedData;
+        }
+        else{
+            return $datas;
+        }
+    }
+
+    public function mapContractProduct($data){
+        $mapData = array();
+
+        $mapData["branchNo"] = $data->branch_no ?? NULL;
+        $mapData["productId"] = $data->product_id ?? NULL;
+        $mapData["contractStatus"] = $data->contract_status ?? NULL;
+        $mapData["startDateYear"] = $data->start_date_year ?? NULL;
+        $mapData["startDateMonth"] = $data->start_date_month ?? NULL;
+        $mapData["endDateYear"] = $data->end_date_year ?? NULL;
+        $mapData["endDate_Month"] = $data->end_date_month ?? NULL;
+        $mapData["tantouId"] = $data->tantou_id ?? NULL;
+        $mapData["note"] = $data->product_note ?? NULL;
+
+        return $mapData;
     }
 }
