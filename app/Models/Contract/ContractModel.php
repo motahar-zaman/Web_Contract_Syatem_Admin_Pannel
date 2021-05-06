@@ -122,4 +122,20 @@ class ContractModel
 
         return (new Database())->readQueryExecution($queryString, $queryParameter);
     }
+
+    public function updateContractData(Contract $contract){
+        $id = $contract->getId();
+        $shop = $contract->getShopId();
+        $contractor = $contract->getContractorId();
+        $tantou = $contract->getTantouId();
+        $note = $contract->getNote();
+        $update = $contract->getUpdateDate();
+        $updateUser = $contract->getUpdateUserId();
+
+        $queryString = "UPDATE trn_web_contract_base SET shop_id = ?, contractor_id = ?, tantou_id = ?, note = ?, update_date = ?,
+                        update_user_id = ? WHERE contract_id = ?";
+        $queryParameter = array($shop, $contractor, $tantou, $note, $update, $updateUser, $id);
+
+        return (new Database())->writeQueryExecution($queryString, $queryParameter);
+    }
 }
