@@ -348,13 +348,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group gap-2 mx-auto text-center" style="max-width: 950px">
-                        <div class="form-group">
+                    <div class="form-group gap-2 mx-auto" style="max-width: 950px">
+                        <div class="form-group mt-5">
                             <label for="companySelect">登録商品備考 Product Registration Remark</label>
                             <textarea class="form-control" name="product_registration_remark" type="text" id="product_registration_remark" rows="3"></textarea>
                             <span class="errormsg" id="ProductRegistrationRemarkError"></span>
                         </div>
-                        <button onclick="" id="product_registration" class="btn btn-primary pl-3 pr-3 text-bold">商品登録 </button>
+                        <button onclick="" id="product_registration" class="btn btn-primary text-bold">商品登録</button>
                     </div>
 
                     <div class="gap-2 mx-auto text-center" style="max-width: 950px">
@@ -398,17 +398,17 @@
                                     <table class="table table-hover text-center productDiscountTable">
                                         <thead>
                                             <tr>
-                                                <th>対象商品<br>
-                                                    Target Product
+                                                <th>
+                                                    対象商品 Target Product
                                                 </th>
-                                                <th>対象店舗<br>
-                                                    Target Shop
+                                                <th>
+                                                    対象店舗< Target Shop
                                                 </th>
-                                                <th>割引率<br>
-                                                    Discount Rate
+                                                <th>
+                                                    割引率 Discount Rate
                                                 </th>
-                                                <th>割引名称<br>
-                                                    Discount Name
+                                                <th>
+                                                    割引名称 Discount Name
                                                 </th>
                                             </tr>
                                         </thead>
