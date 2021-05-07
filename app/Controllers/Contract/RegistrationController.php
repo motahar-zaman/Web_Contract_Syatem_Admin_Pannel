@@ -177,8 +177,6 @@ class RegistrationController extends BaseController
                 $contract->setUpdateDate(date("Y-m-d H:i:s"));
                 $contract->setUpdateUserId(session()->get('userId'));
 
-                (new contractmodel())->updateContractData($contract);
-
                 if($_POST['shop']){
                     $shop = new Shop();
                     $shop->setId((new SequenceModel())->getShopSequence());
@@ -210,6 +208,8 @@ class RegistrationController extends BaseController
                     $contract->setShopId($_POST['shopId'] ?? null);
                 }
 
+                (new contractmodel())->updateContractData($contract);
+
                 $products = $_POST['productSelectId'];
                 $contractProduct = array();
                 $contractProduct['id'] = $contract->getId();
@@ -217,12 +217,18 @@ class RegistrationController extends BaseController
                 $contractProduct['tantou'] = "abcd";
                 $contractProduct['update'] = date("Y-m-d H:i:s");
                 $contractProduct['updateUser'] = session()->get('userId');
+                $contractProduct['insert'] = date("Y-m-d H:i:s");
+                $contractProduct['insertUser'] = session()->get('userId');
+                $contractProduct['delete'] = 1;
 
                 for ($i = 0; $i < count($products); $i++){
                     $product = $products[$i];
                     $productStore = (new ContractModel())->getContractProductById($contract->getId(), $product[0]);
 
-                    if(!isset($productStore) && count($productStore) >! 0){
+                    if(isset($productStore) && count($productStore) > 0) {
+                        continue;
+                    }
+                    else{
                         $start = explode("-",$product[2]);
                         $end = explode("-",$product[3]);
 
