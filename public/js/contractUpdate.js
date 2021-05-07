@@ -63,7 +63,7 @@ function enable() {
     document.getElementById("mySelect").disabled=false;
 }
 
-function contractRegistration() {
+function contractUpdate() {
     let data = {};
     let data1 = Array();
 
@@ -107,7 +107,7 @@ function contractRegistration() {
 
     if (validateData(data)) {
         $.ajax({
-            url: "/contract-registration",
+            url: "/contract-update",
             type: "POST",
             data: data,
             dataType: 'JSON',

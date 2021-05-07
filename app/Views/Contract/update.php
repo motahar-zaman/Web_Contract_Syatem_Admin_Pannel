@@ -388,13 +388,13 @@
                                 <div class="card-body table-responsive p-0">
                                     <table class="table table-hover text-center productTable productInfoTable">
                                         <thead>
-                                        <tr>
-                                            <th>商品ID Product ID</th>
-                                            <th>商品名 Product Name</th>
-                                            <th>商品概要 Product Summary</th>
-                                            <th>公開開始日 Period Start Date</th>
-                                            <th>公開終了日 Period End Date</th>
-                                        </tr>
+                                            <tr>
+                                                <th>商品ID Product ID</th>
+                                                <th>商品名 Product Name</th>
+                                                <th>商品概要 Product Summary</th>
+                                                <th>公開開始日 Period Start Date</th>
+                                                <th>公開終了日 Period End Date</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
                                         </tbody>
@@ -445,7 +445,7 @@
                 <div class="card-footer">
                     <div class="row">
                         <div class="col-md-6 text-center">
-                            <button onclick="contractRegistration()" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 text-bold">
+                            <button onclick="contractUpdate()" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 text-bold">
                                 登録
                             </button>
                             <button onclick="" id="menu" class="btn btn-primary pl-3 pr-3 text-bold">
