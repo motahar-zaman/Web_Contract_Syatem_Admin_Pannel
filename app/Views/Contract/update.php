@@ -430,7 +430,7 @@
             </section>
         </div>
 
-        <script type="text/javascript" src="../../js/contractRegistration.js"></script>
+        <script type="text/javascript" src="../../js/contractUpdate.js"></script>
         <!-- jQuery -->
         <script src="../../plugins/jquery/jquery.min.js"></script>
         <!-- Bootstrap 4 -->
