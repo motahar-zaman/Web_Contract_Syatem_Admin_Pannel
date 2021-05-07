@@ -90,13 +90,22 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td id="contractorId"></td>
-                                            <td id="contractorName"></td>
-                                            <td id="contractorAddress1"></td>
-                                            <td id="contractorPhn"></td>
-                                            <td id="contractorMail"></td>
-                                        </tr>
+                                            <tr>
+                                                <?php
+                                                    $contractorId = $contract->getContractorId();
+                                                    foreach ($contractor as $index => $data){
+                                                        if($data->getId() == $contractorId){
+                                                            ?>
+                                                            <td id="contractorId"><?= $data->getId() ?></td>
+                                                            <td id="contractorName"><?= $data->getName() ?></td>
+                                                            <td id="contractorAddress1"><?= $data->getAddress01() ?></td>
+                                                            <td id="contractorPhn"><?= $data->getTelNo() ?></td>
+                                                            <td id="contractorMail"><?= $data->getMailAddress() ?></td>
+                                                            <?php
+                                                        }
+                                                    }
+                                                ?>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
