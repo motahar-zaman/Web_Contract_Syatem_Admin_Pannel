@@ -32,6 +32,7 @@
         <?= $this->include('modals\productSelect') ?>
         <?= $this->include('modals\shopSelect') ?>
         <?= $this->include('modals\productDiscountSelect') ?>
+        <span class="d-none" id="contractId"><?= $contract->getId() ?></span>
         <div class="wrapper">
             <section class="content">
                 <div class="container-fluid">

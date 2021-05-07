@@ -103,6 +103,7 @@ function contractRegistration() {
     data["note"] = $("#product_registration_remark").val();
     data["notification_letter"] = 0;
     data["contractorId"] = $("#contractorId").html();
+    data["contractId"] = $("#contractId").html();
 
     if (validateData(data)) {
         $.ajax({
