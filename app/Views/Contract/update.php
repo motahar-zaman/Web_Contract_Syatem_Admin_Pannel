@@ -90,7 +90,7 @@
                                         </thead>
                                         <tbody>
                                         <tr>
-                                            <td id="contractorId"></td>
+                                            <td id="contractorId"><?php echo $contract->getContractorId() ?></td>
                                             <td id="contractorName"></td>
                                             <td id="contractorAddress1"></td>
                                             <td id="contractorPhn"></td>
@@ -128,6 +128,17 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        <?php
+                                        foreach ($contract->getContractProduct() as $product) {
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $product['productId'] ?></td>
+                                            <td><?php echo $product['name'] ?></td>
+                                            <td><?php echo $product['note'] ?></td>
+                                            <td><?php echo $product['startDateMonth'].'-'.$product['startDateYear']  ?></td>
+                                            <td><?php echo $product['endDate_Month'].'-'.$product['endDateYear'] ?></td>
+                                        </tr>
+                                        <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>
