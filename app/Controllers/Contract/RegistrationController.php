@@ -170,37 +170,6 @@ class RegistrationController extends BaseController
             if($this->request->isAJAX()){
                 $contract = new Contract();
 
-                if($_POST['shop']){
-                    $shop = new Shop();
-                    $shop->setId((new SequenceModel())->getShopSequence());
-                    $shop->setName($_POST['shopName'] ?? null);
-                    $shop->setNameKana($_POST['shopNameKana'] ?? null);
-                    $shop->setRepresentative($_POST['shopRepresentative'] ?? null);
-                    $shop->setRepresentativeKana($_POST['shopRepresentativeKana'] ?? null);
-                    $shop->setZipcode($_POST['shopZip'] ?? null);
-                    $shop->setAddress01($_POST['shopAddress01'] ?? null);
-                    $shop->setAddress02($_POST['shopAddress02'] ?? null);
-                    $shop->setAreaId($_POST['shopArea'] ?? null);
-                    $shop->setPrefecture($_POST['shopPrefecture'] ?? null);
-                    $shop->setDistrict($_POST['shopDistrict'] ?? null);
-                    $shop->setAreaLarge($_POST['shopAreaLarge'] ?? null);
-                    $shop->setAreaSmall($_POST['shopAreaSmall'] ?? null);
-                    $shop->setTelNo($_POST['shopTel'] ?? null);
-                    $shop->setMailAddress($_POST['shopMail'] ?? null);
-                    $shop->setSiteUrl($_POST['shopSite'] ?? null);
-                    $shop->setInsertDate(date("Y-m-d H:i:s"));
-                    $shop->setInsertUserId(session()->get('userId'));
-                    $shop->setUpdateDate(date("Y-m-d H:i:s"));
-                    $shop->setUpdateUserId(session()->get('userId'));
-                    $shop->setDeleteFlag(1);
-
-                    (new ShopModel())->storeShopData($shop);
-                    $contract->setShopId($shop->getId());
-                }
-                else{
-                    $contract->setShopId($_POST['shopId']);
-                }
-
                 $contract->setId($_POST['contractId']);
                 $contract->setContractorId($_POST['contractorId'] ?? null);
                 $contract->setTantouId("abcd");
