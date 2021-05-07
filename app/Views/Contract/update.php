@@ -129,13 +129,13 @@
                                 <div class="card-body table-responsive p-0">
                                     <table class="table text-center productSelectTable">
                                         <thead>
-                                        <tr>
-                                            <th>商品ID Product ID</th>
-                                            <th>商品名 Product Name</th>
-                                            <th>商品概要 Product Summary</th>
-                                            <th>公開開始日 Period Start Date</th>
-                                            <th>公開終了日 Period End Date</th>
-                                        </tr>
+                                            <tr>
+                                                <th>商品ID Product ID</th>
+                                                <th>商品名 Product Name</th>
+                                                <th>商品概要 Product Summary</th>
+                                                <th>公開開始日 Period Start Date</th>
+                                                <th>公開終了日 Period End Date</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
                                         </tbody>
@@ -165,24 +165,33 @@
                                 <div class="card-body table-responsive p-0">
                                     <table class="table text-center">
                                         <thead>
-                                        <tr>
-                                            <th>店舗ID Shop ID</th>
-                                            <th>店舗名 Shop Name</th>
-                                            <th>代表者 Representative Name</th>
-                                            <th>都道府県 Prefecture</th>
-                                            <th>店舗住所 Shop Address</th>
-                                            <th>電話番号 Phone Number</th>
-                                        </tr>
+                                            <tr>
+                                                <th>店舗ID Shop ID</th>
+                                                <th>店舗名 Shop Name</th>
+                                                <th>代表者 Representative Name</th>
+                                                <th>都道府県 Prefecture</th>
+                                                <th>店舗住所 Shop Address</th>
+                                                <th>電話番号 Phone Number</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td id="shopId"></td>
-                                            <td id="shopName"></td>
-                                            <td id="shopRepresentativeName"></td>
-                                            <td id="shopPrefecture"></td>
-                                            <td id="shopAddress"></td>
-                                            <td id="shopPhoneNumber"></td>
-                                        </tr>
+                                            <?php
+                                            $shopId = $contract->getShopId();
+                                            foreach ($shop as $index => $data){
+                                                if($data->getId() == $shopId){
+                                                    ?>
+                                                    <tr>
+                                                        <td id="shopId"><?= $data->getId() ?></td>
+                                                        <td id="shopName"><?= $data->getName() ?></td>
+                                                        <td id="shopRepresentativeName"><?= $data->getRepresentative() ?></td>
+                                                        <td id="shopPrefecture"><?= $data->getPrefecture() ?></td>
+                                                        <td id="shopAddress"><?= $data->getAddress01() ?></td>
+                                                        <td id="shopPhoneNumber"><?= $data->getTelNo() ?></td>
+                                                    </tr>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
