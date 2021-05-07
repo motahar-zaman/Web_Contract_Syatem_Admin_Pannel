@@ -158,7 +158,7 @@ class RegistrationController extends BaseController
 
             return view("Contract/update", ["title" => "Contract Update", "shop" => $shop, "product" => $product, "contractor" =>
                 $contractor, "areas" => $area, "districts" => $district, "prefectures" => $prefecture, "areaLarges" => $areaLarge,
-                "areaSmalls" => $areaSmall, "contract" => $contract]);
+                "areaSmalls" => $areaSmall, "contract" => $contract[$contractId]]);
         }
         else{
             return redirect()->to("/login");
