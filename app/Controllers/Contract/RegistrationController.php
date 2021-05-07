@@ -172,6 +172,7 @@ class RegistrationController extends BaseController
 
                 $contract->setId($_POST['contractId']);
                 $contract->setContractorId($_POST['contractorId'] ?? null);
+                $contract->setShopId($_POST['shopId'] ?? null);
                 $contract->setTantouId("abcd");
                 $contract->setNote($_POST['note'] ?? null);
                 $contract->setUpdateDate(date("Y-m-d H:i:s"));
