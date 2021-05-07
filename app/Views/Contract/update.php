@@ -129,13 +129,13 @@
                                 <div class="card-body table-responsive p-0">
                                     <table class="table text-center productSelectTable">
                                         <thead>
-                                        <tr>
-                                            <th>商品ID Product ID</th>
-                                            <th>商品名 Product Name</th>
-                                            <th>商品概要 Product Summary</th>
-                                            <th>公開開始日 Period Start Date</th>
-                                            <th>公開終了日 Period End Date</th>
-                                        </tr>
+                                            <tr>
+                                                <th>商品ID Product ID</th>
+                                                <th>商品名 Product Name</th>
+                                                <th>商品概要 Product Summary</th>
+                                                <th>公開開始日 Period Start Date</th>
+                                                <th>公開終了日 Period End Date</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
                                             <?php
