@@ -192,10 +192,7 @@ class RegistrationController extends BaseController
                     $product = $products[$i];
                     $productStore = (new ContractModel())->getContractProductById($contract->getId(), $product[0]);
 
-                    if(isset($productStore) && count($productStore) > 0){
-                        continue;
-                    }
-                    else{
+                    if(!isset($productStore) && count($productStore) >! 0){
                         $start = explode("-",$product[2]);
                         $end = explode("-",$product[3]);
 
