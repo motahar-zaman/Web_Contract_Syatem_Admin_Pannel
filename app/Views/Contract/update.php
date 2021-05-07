@@ -95,16 +95,18 @@
                                                     $contractorId = $contract->getContractorId();
                                                     foreach ($contractor as $index => $data){
                                                         if($data->getId() == $contractorId){
-                                                            ?>
-                                                            <td id="contractorId"><?= $data->getId() ?></td>
-                                                            <td id="contractorName"><?= $data->getName() ?></td>
-                                                            <td id="contractorAddress1"><?= $data->getAddress01() ?></td>
-                                                            <td id="contractorPhn"><?= $data->getTelNo() ?></td>
-                                                            <td id="contractorMail"><?= $data->getMailAddress() ?></td>
-                                                            <?php
+                                                            $cName = $data->getName();
+                                                            $cAddress = $data->getAddress01();
+                                                            $cPhn = $data->getTelNo();
+                                                            $cEmail = $data->getMailAddress();
                                                         }
                                                     }
                                                 ?>
+                                                <td id="contractorId"><?= $contractorId ?></td>
+                                                <td id="contractorName"><?= $cName ?></td>
+                                                <td id="contractorAddress1"><?= $cAddress ?></td>
+                                                <td id="contractorPhn"><?= $cPhn ?></td>
+                                                <td id="contractorMail"><?= $cEmail ?></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -142,11 +144,11 @@
                                             foreach ($contract->getContractProduct() as $product) {
                                                 ?>
                                                 <tr>
-                                                    <td><?php echo $product['productId'] ?></td>
-                                                    <td><?php echo $product['name'] ?></td>
-                                                    <td><?php echo $product['note'] ?></td>
-                                                    <td><?php echo $product['startDateMonth'].'-'.$product['startDateYear']  ?></td>
-                                                    <td><?php echo $product['endDate_Month'].'-'.$product['endDateYear'] ?></td>
+                                                    <td id = "productSelectId"><?php echo $product['productId'] ?></td>
+                                                    <td id = "productSelectName"><?php echo $product['name'] ?></td>
+                                                    <td id= "productSelectNote"><?php echo $product['note'] ?></td>
+                                                    <td id= "productSelectStartDate"><?php echo $product['startDateMonth'].'-'.$product['startDateYear']  ?></td>
+                                                    <td id= "productSelectEndDate"><?php echo $product['endDate_Month'].'-'.$product['endDateYear'] ?></td>
                                                 </tr>
                                             <?php } ?>
                                         </tbody>
@@ -186,23 +188,31 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php
-                                            $shopId = $contract->getShopId();
-                                            foreach ($shop as $index => $data){
-                                                if($data->getId() == $shopId){
-                                                    ?>
-                                                    <tr>
-                                                        <td id="shopId"><?= $data->getId() ?></td>
-                                                        <td id="shopName"><?= $data->getName() ?></td>
-                                                        <td id="shopRepresentativeName"><?= $data->getRepresentative() ?></td>
-                                                        <td id="shopPrefecture"><?= $data->getPrefecture() ?></td>
-                                                        <td id="shopAddress"><?= $data->getAddress01() ?></td>
-                                                        <td id="shopPhoneNumber"><?= $data->getTelNo() ?></td>
-                                                    </tr>
-                                                    <?php
+                                            <tr>
+                                                <?php
+                                                $name = "";
+                                                $representative = "";
+                                                $address = "";
+                                                $prefecture = "";
+                                                $phn = "";
+                                                $shopId = $contract->getShopId();
+                                                foreach ($shop as $index => $data){
+                                                    if($data->getId() == $shopId){
+                                                        $name = $data->getName();
+                                                        $representative = $data->getRepresentative();
+                                                        $address = $data->getAddress01();
+                                                        $prefecture = $data->getPrefecture();
+                                                        $phn = $data->getTelNo();
+                                                    }
                                                 }
-                                            }
-                                            ?>
+                                                ?>
+                                                <td id="shopId"><?= $shopId ?></td>
+                                                <td id="shopName"><?= $name ?></td>
+                                                <td id="shopRepresentativeName"><?= $representative ?></td>
+                                                <td id="shopPrefecture"><?= $prefecture ?></td>
+                                                <td id="shopAddress"><?= $address ?></td>
+                                                <td id="shopPhoneNumber"><?= $phn ?></td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -244,8 +254,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmail3">詳細エリア
-                                                Area</label>
+                                            <label for="inputEmail3">詳細エリア Area</label>
                                             <select name="area" id="area" class="form-control">
                                                 <?php foreach ($areas as $area) { ?>
                                                     <option value="<?php echo $area->getId() ?>"><?php echo $area->getname() ?></option>
@@ -260,8 +269,7 @@
                                                    id="shop_name_kana">
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmail3" >都道府県
-                                                Prefecture</label>
+                                            <label for="inputEmail3" >都道府県  Prefecture</label>
                                             <select name="prefecture" id="prefecture" class="form-control">
                                                 <?php foreach ($prefectures as $prefecture) { ?>
                                                     <option value="<?php echo $prefecture->getId() ?>"><?php echo $prefecture->getname() ?></option>
@@ -269,8 +277,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmail3" >小エリア
-                                                Area Small</label>
+                                            <label for="inputEmail3" >小エリア  Area Small</label>
                                             <select name="area_small" id="area_small" class="form-control">
                                                 <?php foreach ($areaSmalls as $areaSmall) { ?>
                                                     <option value="<?php echo $areaSmall->getId() ?>"><?php echo $areaSmall->getname() ?></option>
@@ -419,20 +426,20 @@
                                 <div class="card-body table-responsive p-0">
                                     <table class="table table-hover text-center productDiscountTable">
                                         <thead>
-                                        <tr>
-                                            <th>対象商品<br>
-                                                Target Product
-                                            </th>
-                                            <th>対象店舗<br>
-                                                Target Shop
-                                            </th>
-                                            <th>割引率<br>
-                                                Discount Rate
-                                            </th>
-                                            <th>割引名称<br>
-                                                Discount Name
-                                            </th>
-                                        </tr>
+                                            <tr>
+                                                <th>対象商品<br>
+                                                    Target Product
+                                                </th>
+                                                <th>対象店舗<br>
+                                                    Target Shop
+                                                </th>
+                                                <th>割引率<br>
+                                                    Discount Rate
+                                                </th>
+                                                <th>割引名称<br>
+                                                    Discount Name
+                                                </th>
+                                            </tr>
                                         </thead>
                                         <tbody>
                                         </tbody>
