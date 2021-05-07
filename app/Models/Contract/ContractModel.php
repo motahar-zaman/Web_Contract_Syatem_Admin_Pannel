@@ -103,6 +103,8 @@ class ContractModel
         $mapData["endDate_Month"] = $data->end_date_month ?? NULL;
         $mapData["tantouId"] = $data->tantou_id ?? NULL;
         $mapData["note"] = $data->product_note ?? NULL;
+        $mapData["name"] = $data->product_name ?? NULL;
+        $mapData["note"] = $data->product_note ?? NULL;
 
         return $mapData;
     }
@@ -114,9 +116,9 @@ class ContractModel
 
     public function getContractDataById($id){
         $queryString = "SELECT c.contract_id, shop_id, contractor_id, c.tantou_id, c.note, c.update_date, c.update_user_id, c.insert_date,
-            c.insert_user_id, c.delete_flag, branch_no, product_id, contract_status, start_date_year, start_date_month, end_date_year, end_date_month,
-            p.note AS product_note FROM trn_web_contract_base AS c LEFT JOIN trn_contract_product AS p ON c.contract_id = p.contract_id 
-            WHERE c.contract_id = ? AND c.delete_flag = ?";
+            c.insert_user_id, c.delete_flag, branch_no, p.product_id, contract_status, start_date_year, start_date_month, end_date_year, end_date_month,
+            p.note AS product_note, mp.product_name, mp.product_note FROM trn_web_contract_base AS c LEFT JOIN trn_contract_product AS p ON
+            c.contract_id = p.contract_id LEFT JOIN mst_product AS mp ON mp.product_id = p.product_id WHERE c.contract_id = ? AND c.delete_flag = ?";
 
         $queryParameter = array($id, 1);
 
