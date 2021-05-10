@@ -199,9 +199,9 @@ class Contract
     }
 
     /**
-     * @return string
+     * @return Shop
      */
-    public function getShopDetail(): string
+    public function getShopDetail(): Shop
     {
         return $this->shopDetail;
     }
@@ -215,9 +215,9 @@ class Contract
     }
 
     /**
-     * @return string
+     * @return Contractor
      */
-    public function getContractorDetail(): string
+    public function getContractorDetail(): Contractor
     {
         return $this->contractorDetail;
     }
