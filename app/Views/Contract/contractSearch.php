@@ -32,72 +32,123 @@
         <div class="wrapper">
             <section class="content">
                 <div class="container-fluid">
+
                     <div class="row">
                         <div class="row col-md-12 pt-2 pl-4">
-                            <span class="pl-2">WEB契約システム</span>
+                            <span class="pl-2">WEB契約システム   / WEB Contract System</span>
                         </div>
                         <div class="row col-md-12">
                             <div class="col-md-6">
-                                <h1 class="mb-0 pt-2 pl-5">契約者選択</h1>
+                                <h1 class="mb-0 pt-2 pl-5">契約検索・一覧</h1>
                             </div>
                             <div class="col-md-6 text-right pt-4 pr-5">
-                                <span>[<?= session()->get("userId")?>]：[<?= session()->get("userName")?>]</span>
+                                <span>[<?= session()->get("userId") ?>]：[<?= session()->get("userName") ?>]</span>
                             </div>
                         </div>
                     </div>
                     <div class="underline mt-2"></div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="card-body">
-                                <div class="form-group col-md-4 pl-0">
-                                    <label for="exampleInputEmail1">契約者ID（完全一致）</label>
-                                    <input type="text" class="form-control" id="searchById", name="searchById" placeholder="">
+
+                    <div class="gap-2 mx-auto " style="max-width: 950px !important;">
+                        <div class="card mt-5 text-left">
+                                <div class="card-header">
+                                    <h3 class="card-title text-center">
+                                        【検索条件】(Search Condition)
+                                    </h3>
                                 </div>
-                                <div class="form-group col-md-4 pl-0">
-                                    <label for="exampleInputPassword1">契約者名（あいまい）</label>
-                                    <input type="text" class="form-control" id="searchByName" name="searchByName" placeholder="">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group " >
+                                                <label>契約ID(Contract ID)</label>
+                                                <input type="text" class="form-control " name="contractIdSearch" id="contractIdSearch">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>契約者ID(Contractor ID)</label>
+                                                <input type="text" class="form-control " name="contractorIdSearch" id="contractorIdSearch">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>商品ID(Product ID)</label>
+                                                <input type="text" class="form-control " name="productIdSearch" id="productIdSearch">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group " >
+                                                <label>店舗ID(Shop ID)</label>
+                                                <input type="text" class="form-control " name="shopIdSearch" id="shopIdSearch">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>都道府県(Prefecture)</label>
+                                                <select name="prefectureSearch" id="prefectureSearch" class="form-control">
+                                                        <option value=""></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group " >
+                                                <label>契約者名(Contractor Name)</label>
+                                                <input type="text" class="form-control " name="contractorNameSearch" id="contractorNameSearch">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>商品名(Product Name)</label>
+                                                <input type="text" class="form-control " name="productNameSearch" id="productNameSearch">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>店舗名(Shop Name)</label>
+                                                <input type="text" class="form-control " name="shopNameSearch" id="shopNameSearch">
+                                            </div>
+                                        </div>
+
+                                    </div>
                                 </div>
-                                <button type="submit" id="contractorSearch" class="btn btn-primary pl-4 pr-4">検索</button>
-                                <button type="button" id="clearSearchText" class="btn btn-primary ml-2">条件クリア</button>
                             </div>
-                        </form>
-                        <br />
-                        <div class="card-body table-responsive p-0 ml-1">
-                            <table class="table table-head-fixed text-nowrap ml-1">
-                                <thead>
-                                <tr>
-                                    <th>選択</th>
-                                    <th>契約者ID</th>
-                                    <th>契約者名	</th>
-                                    <th>住所</th>
-                                    <th>電話番号</th>
-                                    <th>メールアドレス</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php
-                                if(isset($contract) && count($contract) > 0){
-                                    for($i = 0; $i < count($contract); $i++){
-                                        $data = $contract[$i];
-                                        ?>
+                        <button onclick="" id="contractSearchBtn" class="btn btn-primary text-bold text-left">検索(Search)</button>
+                        <button onclick="" id="contractClearBtn" class="btn btn-primary text-bold text-left">クリア(Clear)</button>
+                    </div>
+
+                    <div class="gap-2 mx-auto text-center" style="max-width: 950px">
+                        <div class="card mt-5 text-left">
+                            <div class="card-header">
+                                <h3 class="card-title text-center">【契約一覧】 (Search List)</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="card-body table-responsive p-0">
+                                    <table class="table table-hover text-center productTable productInfoTable">
+                                        <thead>
                                         <tr>
-                                            <td onclick="selectedContractor(<?php echo $i ?>)" id="selectedContractor<?php echo $data->getId() ?>"><a href="#">選択</a></td>
-                                            <td id="contractorId<?php echo $i ?>"><?php echo $data->getId() ?></td>
-                                            <td id="contractorName<?php echo $i ?>"><?php echo $data->getName() ?></td>
-                                            <td id="contractorAddress1<?php echo $i ?>"><?php echo $data->getAddress01() ?></td>
-                                            <td id="contractorPhn<?php echo $i ?>"><?php echo $data->getTelNo() ?></td>
-                                            <td id="contractorMail<?php echo $i ?>"><?php echo $data->getMailAddress() ?></td>
+                                            <th>契約ID (Contract ID)</th>
+                                            <th>サービス (Service)</th>
+                                            <th>店舗名 (Shop Name)</th>
+                                            <th>店舗住所 (Shop Address)</th>
+                                            <th>電話番号 (Phone Number)</th>
+                                            <th>メールアドレス (Mail Address)</th>
+                                            <th>業態 (Business Type)</th>
+                                            <th>代表者名 (Representative name)</th>
+                                            <th>契約日 (Contract Date)</th>
                                         </tr>
-                                        <?php
-                                    }
-                                }
-                                else{
-                                    echo "<h3>No data available</h3>";
-                                }
-                                ?>
-                                </tbody>
-                            </table>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>契約ID</td>
+                                            <td>ぴゅあらば</td>
+                                            <td>契約店舗名</td>
+                                            <td>住所</td>
+                                            <td>88888888888</td>
+                                            <td>abcdefg@xyz.co.jp</td>
+                                            <td>業態</td>
+                                            <td>代表者名</td>
+                                            <td>2021/01/01</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+
+                    <div class="gap-2 mx-auto mt-3 mb-4 " style="max-width: 950px !important;">
+                        <button onclick="" id="menu" class="btn btn-primary pl-3 pr-3 text-bold">
+                            <a style="color: #fff" href="/home">メニュー(Menu)</a>
+                        </button>
                     </div>
                 </div>
             </section>
