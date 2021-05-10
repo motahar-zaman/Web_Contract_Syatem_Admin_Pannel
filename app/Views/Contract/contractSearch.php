@@ -74,16 +74,17 @@
                                             <div class="form-group " >
                                                 <label>店舗ID(Shop ID)</label>
                                                 <input type="text" class="form-control " name="shopIdSearch" id="shopIdSearch">
-                                            </div>
+                                                <div class="form-group">
+                                                    <label>店舗名(Shop Name)</label>
+                                                    <input type="text" class="form-control " name="shopNameSearch" id="shopNameSearch">
+                                                </div>
                                             <div class="form-group">
                                                 <label>都道府県(Prefecture)</label>
                                                 <select name="prefectureSearch" id="prefectureSearch" class="form-control">
-                                                        <option value=""></option>
+                                                    <?php foreach ($prefectures as $prefecture) { ?>
+                                                        <option value="<?php echo $prefecture->getId() ?>"><?php echo $prefecture->getname() ?></option>
+                                                    <?php } ?>
                                                 </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>店舗名(Shop Name)</label>
-                                                <input type="text" class="form-control " name="shopNameSearch" id="shopNameSearch">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
