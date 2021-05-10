@@ -25,8 +25,9 @@ class ContractController extends BaseController
                 }
             }
             else{
-                $contract = null;//(new ContractModel())->getAllContractData();
-                return view("contract/contractSearch", ["title" => "Contract Search", "contract" => $contract]);
+                $contract = (new ContractModel())->getAllContract();
+
+                return view("contract/contractSearch", ["title" => "Contract Search", "contracts" => $contract]);
             }
         }
         else{
