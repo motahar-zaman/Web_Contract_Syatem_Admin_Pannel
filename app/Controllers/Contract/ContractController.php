@@ -5,6 +5,7 @@ namespace App\Controllers\Contract;
 
 
 use App\Controllers\BaseController;
+use App\Models\Common\AddressModel;
 use App\Models\Contract\ContractModel;
 
 class ContractController extends BaseController
@@ -17,7 +18,7 @@ class ContractController extends BaseController
                 if($searchId){
                     $contract = null;//(new ContractModel())->getContractDetailsById($searchId);
                     return "This Section is under Development";
-                    //return view("contract/contractDetail", ["title" => "Contract Details", "contract" => $contract]);
+                    //return view("Contract/contractDetail", ["title" => "Contract Details", "contract" => $contract]);
                 }
                 else{
                     $contract = null;//(new ContractModel())->getContractByName($searchName);
@@ -26,8 +27,9 @@ class ContractController extends BaseController
             }
             else{
                 $contract = (new ContractModel())->getAllContract();
+                $prefecture = (new AddressModel())->getAllPrefecture();
 
-                return view("Contract/contractSearch", ["title" => "Contract Search", "contracts" => $contract]);
+                return view("Contract/contractSearch", ["title" => "Contract Search", "contracts" => $contract, "prefectures" => $prefecture]);
             }
         }
         else{
