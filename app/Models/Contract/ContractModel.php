@@ -43,7 +43,6 @@ class ContractModel
 
     public function getAllContract(){
         $data = $this->getAllContractData();
-//        dd($data);
         return $this->mapContractData($data);
     }
 
