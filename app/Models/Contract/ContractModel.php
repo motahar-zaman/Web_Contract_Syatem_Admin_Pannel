@@ -84,7 +84,11 @@ class ContractModel
                         $contract->setContractProduct($this->mapContractProduct($data));
 
                         $shopData = (new ShopModel())->mapData(array($data));
-                        $contract->setShopDetail($shopData[0]);
+                        if(isset($shopData) && count($shopData) > 0) {
+                            if (is_object($shopData[0])) {
+                                $contract->setShopDetail($shopData[0]);
+                            }
+                        }
                     }
                     $mappedData[$contract->getId()] = $contract;
                 }
