@@ -21,13 +21,13 @@ class ContractController extends BaseController
                 }
                 else{
                     $contract = null;//(new ContractModel())->getContractByName($searchName);
-                    return view("contract/contractSearch", ["title" => "Contract Search", "contract" => $contract]);
+                    return view("Contract/contractSearch", ["title" => "Contract Search", "contract" => $contract]);
                 }
             }
             else{
                 $contract = (new ContractModel())->getAllContract();
 
-                return view("contract/contractSearch", ["title" => "Contract Search", "contracts" => $contract]);
+                return view("Contract/contractSearch", ["title" => "Contract Search", "contracts" => $contract]);
             }
         }
         else{

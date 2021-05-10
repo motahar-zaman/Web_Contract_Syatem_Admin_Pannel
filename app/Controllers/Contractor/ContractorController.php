@@ -21,12 +21,12 @@ class ContractorController extends BaseController
                 }
                 else{
                     $contractor = (new ContractorModel())->getContractorByName($searchName);
-                    return view("contractor/contractorSearch", ["title" => "Contractor Search", "contractor" => $contractor]);
+                    return view("Contractor/contractorSearch", ["title" => "Contractor Search", "contractor" => $contractor]);
                 }
             }
             else{
                 $contractor = (new ContractorModel())->getAllContractorData();
-                return view("contractor/contractorSearch", ["title" => "Contractor Search", "contractor" => $contractor]);
+                return view("Contractor/contractorSearch", ["title" => "Contractor Search", "contractor" => $contractor]);
             }
         }
         else{
