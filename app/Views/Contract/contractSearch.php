@@ -127,17 +127,17 @@
                                         </thead>
                                         <tbody>
                                         <?php foreach ($contracts as $contract) {
-                                            $shop = $contract->getShopDetail()
+                                            $shop = $contract->getShopDetail();
                                             ?>
                                             <tr>
                                                 <td><?php echo $contract->getId() ?></td>
                                                 <td>ぴゅあらば</td>
                                                 <td><?php echo $shop->getName() ?></td>
-                                                <td>住所</td>
-                                                <td>88888888888</td>
-                                                <td>abcdefg@xyz.co.jp</td>
+                                                <td><?php echo $shop->getAddress01() ?></td>
+                                                <td><?php echo $shop->getTelNo() ?></td>
+                                                <td><?php echo $shop->getMailAddress() ?></td>
                                                 <td>業態</td>
-                                                <td>代表者名</td>
+                                                <td><?php echo $shop->getRepresentative() ?></td>
                                                 <td>2021/01/01</td>
                                             </tr>
                                         <?php } ?>
