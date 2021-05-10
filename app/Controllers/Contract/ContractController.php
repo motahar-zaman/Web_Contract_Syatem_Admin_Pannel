@@ -4,9 +4,10 @@
 namespace App\Controllers\Contract;
 
 
+use App\Controllers\BaseController;
 use App\Models\Contract\ContractModel;
 
-class ContractController
+class ContractController extends BaseController
 {
     public function contractSearch(){
         if( session() && session()->get('login') ){
@@ -14,17 +15,17 @@ class ContractController
                 $searchId = $_GET['searchById'];
                 $searchName = $_GET['searchByName'];
                 if($searchId){
-                    $contract = (new ContractModel())->getContractDetailsById($searchId);
+                    $contract = null;//(new ContractModel())->getContractDetailsById($searchId);
                     return "This Section is under Development";
                     //return view("contract/contractDetail", ["title" => "Contract Details", "contract" => $contract]);
                 }
                 else{
-                    $contract = (new ContractModel())->getContractByName($searchName);
+                    $contract = null;//(new ContractModel())->getContractByName($searchName);
                     return view("contract/contractSearch", ["title" => "Contract Search", "contract" => $contract]);
                 }
             }
             else{
-                $contract = (new ContractModel())->getAllContractData();
+                $contract = null;//(new ContractModel())->getAllContractData();
                 return view("contract/contractSearch", ["title" => "Contract Search", "contract" => $contract]);
             }
         }
