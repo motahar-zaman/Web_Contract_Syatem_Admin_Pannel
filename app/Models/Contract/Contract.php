@@ -3,6 +3,9 @@
 namespace App\Models\Contract;
 
 
+use App\Models\Contractor\Contractor;
+use App\Models\Shop\Shop;
+
 class Contract
 {
     private $id;
@@ -16,6 +19,8 @@ class Contract
     private $insertUserId;
     private $deleteFlag;
     private $contractProduct = array();
+    private $shopDetail;
+    private $contractorDetail;
 
     /**
      * @return mixed
@@ -191,5 +196,37 @@ class Contract
     public function setContractProduct(array $contractProduct): void
     {
         $this->contractProduct[] = $contractProduct;
+    }
+
+    /**
+     * @return string
+     */
+    public function getShopDetail(): string
+    {
+        return $this->shopDetail;
+    }
+
+    /**
+     * @param Shop $shopDetail
+     */
+    public function setShopDetail(Shop $shopDetail): void
+    {
+        $this->shopDetail = $shopDetail;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContractorDetail(): string
+    {
+        return $this->contractorDetail;
+    }
+
+    /**
+     * @param Contractor $contractorDetail
+     */
+    public function setContractorDetail(Contractor $contractorDetail): void
+    {
+        $this->contractorDetail = $contractorDetail;
     }
 }
