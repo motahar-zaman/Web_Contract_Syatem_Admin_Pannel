@@ -76,9 +76,9 @@
                                 </thead>
                                 <tbody>
                                 <?php
-                                if(isset($contractor) && count($contractor) > 0){
-                                    for($i = 0; $i < count($contractor); $i++){
-                                        $data = $contractor[$i];
+                                if(isset($contract) && count($contract) > 0){
+                                    for($i = 0; $i < count($contract); $i++){
+                                        $data = $contract[$i];
                                         ?>
                                         <tr>
                                             <td onclick="selectedContractor(<?php echo $i ?>)" id="selectedContractor<?php echo $data->getId() ?>"><a href="#">選択</a></td>
