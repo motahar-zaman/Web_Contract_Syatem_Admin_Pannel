@@ -32,7 +32,6 @@
         <div class="wrapper">
             <section class="content">
                 <div class="container-fluid">
-
                     <div class="row">
                         <div class="row col-md-12 pt-2 pl-4">
                             <span class="pl-2">WEB契約システム   / WEB Contract System</span>
@@ -50,57 +49,56 @@
 
                     <div class="gap-2 mx-auto " style="max-width: 950px !important;">
                         <div class="card mt-5 text-left">
-                                <div class="card-header">
-                                    <h3 class="card-title text-center">
-                                        【検索条件】(Search Condition)
-                                    </h3>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group " >
-                                                <label>契約ID(Contract ID)</label>
-                                                <input type="text" class="form-control " name="contractIdSearch" id="contractIdSearch">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>契約者ID(Contractor ID)</label>
-                                                <input type="text" class="form-control " name="contractorIdSearch" id="contractorIdSearch">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>商品ID(Product ID)</label>
-                                                <input type="text" class="form-control " name="productIdSearch" id="productIdSearch">
-                                            </div>
+                            <div class="card-header">
+                                <h3 class="card-title text-center">
+                                    【検索条件】(Search Condition)
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group " >
+                                            <label>契約ID(Contract ID)</label>
+                                            <input type="text" class="form-control " name="contractIdSearch" id="contractIdSearch">
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group " >
-                                                <label>店舗ID(Shop ID)</label>
-                                                <input type="text" class="form-control " name="shopIdSearch" id="shopIdSearch">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>都道府県(Prefecture)</label>
-                                                <select name="prefectureSearch" id="prefectureSearch" class="form-control">
-                                                        <option value=""></option>
-                                                </select>
-                                            </div>
+                                        <div class="form-group">
+                                            <label>契約者ID(Contractor ID)</label>
+                                            <input type="text" class="form-control " name="contractorIdSearch" id="contractorIdSearch">
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group " >
-                                                <label>契約者名(Contractor Name)</label>
-                                                <input type="text" class="form-control " name="contractorNameSearch" id="contractorNameSearch">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>商品名(Product Name)</label>
-                                                <input type="text" class="form-control " name="productNameSearch" id="productNameSearch">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>店舗名(Shop Name)</label>
-                                                <input type="text" class="form-control " name="shopNameSearch" id="shopNameSearch">
-                                            </div>
+                                        <div class="form-group">
+                                            <label>商品ID(Product ID)</label>
+                                            <input type="text" class="form-control " name="productIdSearch" id="productIdSearch">
                                         </div>
-
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group " >
+                                            <label>店舗ID(Shop ID)</label>
+                                            <input type="text" class="form-control " name="shopIdSearch" id="shopIdSearch">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>都道府県(Prefecture)</label>
+                                            <select name="prefectureSearch" id="prefectureSearch" class="form-control">
+                                                    <option value=""></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group " >
+                                            <label>契約者名(Contractor Name)</label>
+                                            <input type="text" class="form-control " name="contractorNameSearch" id="contractorNameSearch">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>商品名(Product Name)</label>
+                                            <input type="text" class="form-control " name="productNameSearch" id="productNameSearch">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>店舗名(Shop Name)</label>
+                                            <input type="text" class="form-control " name="shopNameSearch" id="shopNameSearch">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
                         <button onclick="" id="contractSearchBtn" class="btn btn-primary text-bold text-left">検索(Search)</button>
                         <button onclick="" id="contractClearBtn" class="btn btn-primary text-bold text-left">クリア(Clear)</button>
                     </div>
@@ -114,30 +112,30 @@
                                 <div class="card-body table-responsive p-0">
                                     <table class="table table-hover text-center productTable productInfoTable">
                                         <thead>
-                                        <tr>
-                                            <th>契約ID (Contract ID)</th>
-                                            <th>サービス (Service)</th>
-                                            <th>店舗名 (Shop Name)</th>
-                                            <th>店舗住所 (Shop Address)</th>
-                                            <th>電話番号 (Phone Number)</th>
-                                            <th>メールアドレス (Mail Address)</th>
-                                            <th>業態 (Business Type)</th>
-                                            <th>代表者名 (Representative name)</th>
-                                            <th>契約日 (Contract Date)</th>
-                                        </tr>
+                                            <tr>
+                                                <th>契約ID (Contract ID)</th>
+                                                <th>サービス (Service)</th>
+                                                <th>店舗名 (Shop Name)</th>
+                                                <th>店舗住所 (Shop Address)</th>
+                                                <th>電話番号 (Phone Number)</th>
+                                                <th>メールアドレス (Mail Address)</th>
+                                                <th>業態 (Business Type)</th>
+                                                <th>代表者名 (Representative name)</th>
+                                                <th>契約日 (Contract Date)</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>契約ID</td>
-                                            <td>ぴゅあらば</td>
-                                            <td>契約店舗名</td>
-                                            <td>住所</td>
-                                            <td>88888888888</td>
-                                            <td>abcdefg@xyz.co.jp</td>
-                                            <td>業態</td>
-                                            <td>代表者名</td>
-                                            <td>2021/01/01</td>
-                                        </tr>
+                                            <tr>
+                                                <td>契約ID</td>
+                                                <td>ぴゅあらば</td>
+                                                <td>契約店舗名</td>
+                                                <td>住所</td>
+                                                <td>88888888888</td>
+                                                <td>abcdefg@xyz.co.jp</td>
+                                                <td>業態</td>
+                                                <td>代表者名</td>
+                                                <td>2021/01/01</td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>

@@ -17,16 +17,16 @@ class ContractorController extends BaseController
                 if($searchId){
                     $contractor = (new ContractorModel())->getContractorDetailsById($searchId);
                     return "This Section is under Development";
-                    //return view("contractor/contractorDetail", ["title" => "Contractor Detail", "contractor" => $contractor]);
+                    //return view("Contractor/contractorDetail", ["title" => "Contractor Detail", "contractor" => $contractor]);
                 }
                 else{
                     $contractor = (new ContractorModel())->getContractorByName($searchName);
-                    return view("contractor/contractorSearch", ["title" => "Contractor Search", "contractor" => $contractor]);
+                    return view("Contractor/contractorSearch", ["title" => "Contractor Search", "contractor" => $contractor]);
                 }
             }
             else{
                 $contractor = (new ContractorModel())->getAllContractorData();
-                return view("contractor/contractorSearch", ["title" => "Contractor Search", "contractor" => $contractor]);
+                return view("Contractor/contractorSearch", ["title" => "Contractor Search", "contractor" => $contractor]);
             }
         }
         else{
