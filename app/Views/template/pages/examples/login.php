@@ -23,7 +23,7 @@
       </div>
 
       <div class="underline mt-2"></div>
-      <div class="login-box pt-5 pb-5">
+      <div class="login-box pt-5 pb-5" style="width: 394px !important;">
         <div class="card">
           <div class="card-body login-card-body">
             <p class="login-box-msg"></p>
