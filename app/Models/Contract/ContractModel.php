@@ -124,10 +124,12 @@ class ContractModel
     }
 
     public function getContractDataById($id){
-        $queryString = "SELECT c.contract_id, shop_id, contractor_id, c.tantou_id, c.note, c.update_date, c.update_user_id, c.insert_date,
-            c.insert_user_id, c.delete_flag, branch_no, p.product_id, contract_status, start_date_year, start_date_month, end_date_year, end_date_month,
-            p.note AS product_note, mp.product_name, mp.product_note FROM trn_web_contract_base AS c LEFT JOIN trn_contract_product AS p ON
-            c.contract_id = p.contract_id LEFT JOIN mst_product AS mp ON mp.product_id = p.product_id WHERE c.contract_id = ? AND c.delete_flag = ?";
+        $queryString = "SELECT c.contract_id, c.shop_id, contractor_id, c.tantou_id, c.note, c.update_date, c.update_user_id, c.insert_date,
+            c.insert_user_id, c.delete_flag, branch_no, p.product_id, contract_status, start_date_year, start_date_month, end_date_year,
+            end_date_month, p.note AS product_note, mp.product_name, mp.product_note, s.shop_name, s.zipcode, s.daihyousha_name, s.address_01,
+            s.tel_no, s.mail_address FROM trn_web_contract_base AS c LEFT JOIN trn_contract_product AS p ON c.contract_id = p.contract_id
+            LEFT JOIN mst_product AS mp ON mp.product_id = p.product_id LEFT JOIN mst_shop AS s ON s.shop_id = c.shop_id WHERE c.contract_id =
+            ? AND c.delete_flag = ?";
 
         $queryParameter = array($id, 1);
 
@@ -157,6 +159,46 @@ class ContractModel
             AND product_id = ?";
 
         $queryParameter = array($contractId, $contractProductId);
+
+        return (new Database())->readQueryExecution($queryString, $queryParameter);
+    }
+
+    public function getContractBySearchOptions($contractorId, $contractorName, $productId, $productName, $shopId, $shopName, $prefecture){
+        $data = $this->getContractDataBySearchOptions($contractorId, $contractorName, $productId, $productName, $shopId, $shopName, $prefecture);
+        return $this->mapContractData($data);
+    }
+
+    public function getContractDataBySearchOptions($contractorId, $contractorName, $productId, $productName, $shopId, $shopName, $prefecture){
+        $where = " WHERE ";
+        if($contractorId != ""){
+            $where .= "c.contractor_id = '$contractorId' AND ";
+        }
+        if($contractorName != ""){
+            $where .= "cntr.contractor_name LIKE '%$contractorName%' AND ";
+        }
+        if($productId != ""){
+            $where .= "p.product_id = '$productId' AND ";
+        }
+        if($productName != ""){
+            $where .= "mp.product_name LIKE '%$productName%' AND ";
+        }
+        if($shopId != ""){
+            $where .= "c.shop_id = '$shopId' AND ";
+        }
+        if($shopName != ""){
+            $where .= "s.shop_name LIKE '%$shopName%' AND ";
+        }
+        if($prefecture != "0"){
+            $where .= "s.prefecture = '$prefecture' AND ";
+        }
+
+        $queryString = "SELECT c.contract_id, c.shop_id, c.contractor_id, c.tantou_id, c.note, c.update_date, c.update_user_id, c.insert_date,
+            c.insert_user_id, c.delete_flag, branch_no, p.product_id, contract_status, start_date_year, start_date_month, end_date_year,
+            end_date_month, p.note AS product_note, mp.product_name, mp.product_note, s.shop_name, s.zipcode, s.daihyousha_name, s.address_01,
+            s.tel_no, s.mail_address, cntr.contractor_name FROM trn_web_contract_base AS c LEFT JOIN trn_contract_product AS p ON
+            c.contract_id = p.contract_id LEFT JOIN mst_product AS mp ON mp.product_id = p.product_id LEFT JOIN mst_shop AS s ON s.shop_id = c.shop_id
+            LEFT JOIN mst_contractor AS cntr ON cntr.contractor_id = c.contractor_id".$where."c.delete_flag = ?";
+        $queryParameter = array(1);
 
         return (new Database())->readQueryExecution($queryString, $queryParameter);
     }
