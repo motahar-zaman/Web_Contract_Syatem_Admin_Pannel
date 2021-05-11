@@ -66,11 +66,11 @@ class ContractModel
             for($i = 0; $i < $length; $i++){
                 $data = $datas[$i];
                 if(isset($data)){
-                    $contract = new Contract();
                     if(isset($mappedData[$data->contract_id])) {
                         $mappedData[$data->contract_id]->setContractProduct($this->mapContractProduct($data));
                     }
                     else{
+                        $contract = new Contract();
                         $contract->setId($data->contract_id ?? NULL);
                         $contract->setContractorId($data->contractor_id ?? NULL);
                         $contract->setShopId($data->shop_id ?? NULL);
@@ -89,8 +89,8 @@ class ContractModel
                                 $contract->setShopDetail($shopData[0]);
                             }
                         }
+                        $mappedData[$contract->getId()] = $contract;
                     }
-                    $mappedData[$contract->getId()] = $contract;
                 }
             }
             return $mappedData;
