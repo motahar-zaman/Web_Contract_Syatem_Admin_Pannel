@@ -171,25 +171,25 @@ class ContractModel
     public function getContractDataBySearchOptions($contractorId, $contractorName, $productId, $productName, $shopId, $shopName, $prefecture){
         $where = " WHERE ";
         if($contractorId != ""){
-            $where .= "c.contractor_id = ".$contractorId." AND ";
+            $where .= "c.contractor_id = '$contractorId' AND ";
         }
         if($contractorName != ""){
-            $where .= "cntr.contractor_name LIKE %".$contractorName."% AND ";
+            $where .= "cntr.contractor_name LIKE '%$contractorName%' AND ";
         }
         if($productId != ""){
-            $where .= "p.product_id = ".$productId." AND ";
+            $where .= "p.product_id = '$productId' AND ";
         }
         if($productName != ""){
-            $where .= "mp.product_name LIKE %".$productName."% AND ";
+            $where .= "mp.product_name LIKE '%$productName%' AND ";
         }
         if($shopId != ""){
-            $where .= "c.shop_id = ".$shopId." AND ";
+            $where .= "c.shop_id = '$shopId' AND ";
         }
         if($shopName != ""){
-            $where .= "s.shop_name LIKE %".$shopName."% AND ";
+            $where .= "s.shop_name LIKE '%$shopName%' AND ";
         }
-        if($prefecture != 0){
-            $where .= "s.prefecture = ".$prefecture." AND ";
+        if($prefecture != "0"){
+            $where .= "s.prefecture = '$prefecture' AND ";
         }
 
         $queryString = "SELECT c.contract_id, c.shop_id, c.contractor_id, c.tantou_id, c.note, c.update_date, c.update_user_id, c.insert_date,
@@ -198,7 +198,6 @@ class ContractModel
             s.tel_no, s.mail_address, cntr.contractor_name FROM trn_web_contract_base AS c LEFT JOIN trn_contract_product AS p ON
             c.contract_id = p.contract_id LEFT JOIN mst_product AS mp ON mp.product_id = p.product_id LEFT JOIN mst_shop AS s ON s.shop_id = c.shop_id
             LEFT JOIN mst_contractor AS cntr ON cntr.contractor_id = c.contractor_id".$where."c.delete_flag = ?";
-
         $queryParameter = array(1);
 
         return (new Database())->readQueryExecution($queryString, $queryParameter);
