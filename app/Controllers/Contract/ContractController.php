@@ -23,11 +23,11 @@ class ContractController extends BaseController
                 $shopName = $_GET['shopNameSearch'];
                 $prefecture = $_GET['prefectureSearch'];
 
-                if($contractId){
+                if($contractId != ""){
                     $contract = (new ContractModel())->getContractById($contractId);
                     return view("Contract/contractSearch", ["title" => "Contract Details", "contracts" => $contract, "prefectures" => $prefectures]);
                 }
-                elseif($contractorId != "" || $contractorName != "" || $productId != "" || $productName != "" || $shopId != "" || $shopName != "" || $prefecture != 0){
+                elseif($contractorId != "" || $contractorName != "" || $productId != "" || $productName != "" || $shopId != "" || $shopName != "" || $prefecture != "0"){
                     $contract = (new ContractModel())->getContractBySearchOptions($contractorId, $contractorName, $productId, $productName, $shopId, $shopName, $prefecture);
                     return view("Contract/contractSearch", ["title" => "Contract Search", "contracts" => $contract, "prefectures" => $prefectures]);
                 }
