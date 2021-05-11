@@ -117,34 +117,41 @@
                                 <div class="card-body table-responsive p-0">
                                     <table class="table table-hover text-center productTable productInfoTable">
                                         <thead>
-                                        <tr>
-                                            <th>契約ID (Contract ID)</th>
-                                            <th>サービス (Service)</th>
-                                            <th>店舗名 (Shop Name)</th>
-                                            <th>店舗住所 (Shop Address)</th>
-                                            <th>電話番号 (Phone Number)</th>
-                                            <th>メールアドレス (Mail Address)</th>
-                                            <th>業態 (Business Type)</th>
-                                            <th>代表者名 (Representative name)</th>
-                                            <th>契約日 (Contract Date)</th>
-                                        </tr>
+                                            <tr>
+                                                <th>契約ID (Contract ID)</th>
+                                                <th>サービス (Service)</th>
+                                                <th>店舗名 (Shop Name)</th>
+                                                <th>店舗住所 (Shop Address)</th>
+                                                <th>電話番号 (Phone Number)</th>
+                                                <th>メールアドレス (Mail Address)</th>
+                                                <th>業態 (Business Type)</th>
+                                                <th>代表者名 (Representative name)</th>
+                                                <th>契約日 (Contract Date)</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                        <?php foreach ($contracts as $contract) {
-                                            $shop = $contract->getShopDetail();
+                                            <?php
+                                                if(count($contracts) > 0){
+                                                    foreach ($contracts as $contract) {
+                                                    $shop = $contract->getShopDetail();
+                                                    ?>
+                                                    <tr>
+                                                        <td><?php echo $contract->getId() ?></td>
+                                                        <td>ぴゅあらば</td>
+                                                        <td><?php echo $shop->getName() ?></td>
+                                                        <td><?php echo $shop->getAddress01() ?></td>
+                                                        <td><?php echo $shop->getTelNo() ?></td>
+                                                        <td><?php echo $shop->getMailAddress() ?></td>
+                                                        <td>業態</td>
+                                                        <td><?php echo $shop->getRepresentative() ?></td>
+                                                        <td>2021/01/01</td>
+                                                    </tr>
+                                            <?php }
+                                                }
+                                                else{
+                                                    echo "<tr><td>No data available</td></tr>";
+                                                }
                                             ?>
-                                            <tr>
-                                                <td><?php echo $contract->getId() ?></td>
-                                                <td>ぴゅあらば</td>
-                                                <td><?php echo $shop->getName() ?></td>
-                                                <td><?php echo $shop->getAddress01() ?></td>
-                                                <td><?php echo $shop->getTelNo() ?></td>
-                                                <td><?php echo $shop->getMailAddress() ?></td>
-                                                <td>業態</td>
-                                                <td><?php echo $shop->getRepresentative() ?></td>
-                                                <td>2021/01/01</td>
-                                            </tr>
-                                        <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>
