@@ -147,8 +147,8 @@
                                                     <td id = "productSelectId"><?php echo $product['productId'] ?></td>
                                                     <td id = "productSelectName"><?php echo $product['name'] ?></td>
                                                     <td id= "productSelectNote"><?php echo $product['note'] ?></td>
-                                                    <td id= "productSelectStartDate"><?php echo $product['startDateMonth'].'-'.$product['startDateYear']  ?></td>
-                                                    <td id= "productSelectEndDate"><?php echo $product['endDate_Month'].'-'.$product['endDateYear'] ?></td>
+                                                    <td id= "productSelectStartDate"><?php echo '01/'.$product['startDateMonth'].'/'.$product['startDateYear']  ?></td>
+                                                    <td id= "productSelectEndDate"><?php echo '01/'.$product['endDate_Month'].'/'.$product['endDateYear'] ?></td>
                                                 </tr>
                                             <?php } ?>
                                         </tbody>

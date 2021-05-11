@@ -40,14 +40,22 @@
                         if (isset($product) && count($product) > 0) {
                             for ($i = 0; $i < count($product); $i++) {
                                 $data = $product[$i];
+
+                                $getStartDate = $data->getStartDate();
+                                $repStartDate = str_replace('-"', '/', $getStartDate);
+                                $startDate = date("d/m/Y", strtotime($repStartDate));
+
+                                $getEndDate = $data->getEndDate();
+                                $repEndDDate = str_replace('-"', '/', $getEndDate);
+                                $endDate = date("d/m/Y", strtotime($repEndDDate));
                                 ?>
                                 <tr>
-                                    <td onclick="selectedProduct(<?php echo $i ?>)" id="selectedProduct<?php echo $data->getId() ?>"><a href="#">選択</a></td>
+                                    <td onclick="selectedProduct(<?php echo $i ?>);" id="selectedProduct<?php echo $data->getId() ?>"><a href="#" style="color: #0099FF">選択</a></td>
                                     <td id="productId<?php echo $i ?>"><?php echo $data->getId() ?></td>
                                     <td id="productName<?php echo $i ?>"><?php echo $data->getName() ?></td>
                                     <td id="productNote<?php echo $i ?>"><?php echo $data->getProductNote() ?></td>
-                                    <td id="productPeriodStartDate<?php echo $i ?>"><?php echo $data->getStartDate() ?></td>
-                                    <td id="productPeriodEndDate<?php echo $i ?>"><?php echo $data->getEndDate() ?></td>
+                                    <td id="productPeriodStartDate<?php echo $i ?>"><?php echo $startDate ?></td>
+                                    <td id="productPeriodEndDate<?php echo $i ?>"><?php echo $endDate ?></td>
                                 </tr>
                                 <?php
                             }
