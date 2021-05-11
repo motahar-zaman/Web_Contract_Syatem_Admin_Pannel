@@ -1,6 +1,12 @@
 $(document).ready(function(){
-    $("#clearSearchText").click(function (){
-        $("#searchById").val("");
-        $("#searchByName").val("");
+    $("#clearSearchFields").click(function (){
+        $("#contractIdSearch").val("");
+        $("#contractorIdSearch").val("");
+        $("#contractorNameSearch").val("");
+        $("#productIdSearch").val("");
+        $("#productNameSearch").val("");
+        $("#shopIdSearch").val("");
+        $("#shopNameSearch").val("");
+        $("#prefectureSearch").val("");
     });
 });

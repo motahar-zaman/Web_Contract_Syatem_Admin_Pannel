@@ -49,11 +49,12 @@
 
                     <div class="gap-2 mx-auto " style="max-width: 950px !important;">
                         <div class="card mt-5 text-left">
-                                <div class="card-header">
-                                    <h3 class="card-title text-center">
-                                        【検索条件】(Search Condition)
-                                    </h3>
-                                </div>
+                            <div class="card-header">
+                                <h3 class="card-title text-center">
+                                    【検索条件】(Search Condition)
+                                </h3>
+                            </div>
+                            <form>
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-4">
@@ -74,10 +75,11 @@
                                             <div class="form-group " >
                                                 <label>店舗ID(Shop ID)</label>
                                                 <input type="text" class="form-control " name="shopIdSearch" id="shopIdSearch">
-                                                <div class="form-group">
-                                                    <label>店舗名(Shop Name)</label>
-                                                    <input type="text" class="form-control " name="shopNameSearch" id="shopNameSearch">
-                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>店舗名(Shop Name)</label>
+                                                <input type="text" class="form-control " name="shopNameSearch" id="shopNameSearch">
+                                            </div>
                                             <div class="form-group">
                                                 <label>都道府県(Prefecture)</label>
                                                 <select name="prefectureSearch" id="prefectureSearch" class="form-control">
@@ -97,12 +99,12 @@
                                                 <input type="text" class="form-control " name="productNameSearch" id="productNameSearch">
                                             </div>
                                         </div>
-
                                     </div>
+                                    <button type="submit" id="contractSearchBtn" class="btn btn-primary text-bold text-left">検索(Search)</button>
+                                    <button type="button" id="clearSearchFields" class="btn btn-primary text-bold text-left">クリア(Clear)</button>
                                 </div>
-                            </div>
-                        <button onclick="" id="contractSearchBtn" class="btn btn-primary text-bold text-left">検索(Search)</button>
-                        <button onclick="" id="contractClearBtn" class="btn btn-primary text-bold text-left">クリア(Clear)</button>
+                            </form>
+                        </div>
                     </div>
 
                     <div class="gap-2 mx-auto text-center" style="max-width: 950px">
