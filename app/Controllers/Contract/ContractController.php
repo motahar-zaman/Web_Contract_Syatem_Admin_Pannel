@@ -12,24 +12,32 @@ class ContractController extends BaseController
 {
     public function contractSearch(){
         if( session() && session()->get('login') ){
+            $prefectures = (new AddressModel())->getAllPrefecture();
             if($_SERVER['QUERY_STRING']){
-                $searchId = $_GET['searchById'];
-                $searchName = $_GET['searchByName'];
-                if($searchId){
-                    $contract = null;//(new ContractModel())->getContractDetailsById($searchId);
-                    return "This Section is under Development";
-                    //return view("Contract/contractDetail", ["title" => "Contract Details", "contract" => $contract]);
+                $contractId = $_GET['contractIdSearch'];
+                $contractorId = $_GET['contractorIdSearch'];
+                $contractorName = $_GET['contractorNameSearch'];
+                $productId = $_GET['productIdSearch'];
+                $productName = $_GET['productNameSearch'];
+                $shopId = $_GET['shopIdSearch'];
+                $shopName = $_GET['shopNameSearch'];
+                $prefecture = $_GET['prefectureSearch'];
+
+                if($contractId){
+                    $contract = (new ContractModel())->getContractById($contractId);
+                    return view("Contract/contractSearch", ["title" => "Contract Details", "contracts" => $contract, "prefectures" => $prefectures]);
+                }
+                elseif($contractorId != "" || $contractorName != "" || $productId != "" || $productName != "" || $shopId != "" || $shopName != "" || $prefecture != 0){
+                    $contract = (new ContractModel())->getContractBySearchOptions($contractorId, $contractorName, $productId, $productName, $shopId, $shopName, $prefecture);
+                    return view("Contract/contractSearch", ["title" => "Contract Search", "contracts" => $contract, "prefectures" => $prefectures]);
                 }
                 else{
-                    $contract = null;//(new ContractModel())->getContractByName($searchName);
-                    return view("Contract/contractSearch", ["title" => "Contract Search", "contract" => $contract]);
+                    return view("Contract/contractSearch", ["title" => "Contract Search", "contracts" => array(), "prefectures" => $prefectures]);
                 }
             }
             else{
                 $contract = (new ContractModel())->getAllContract();
-                $prefecture = (new AddressModel())->getAllPrefecture();
-
-                return view("Contract/contractSearch", ["title" => "Contract Search", "contracts" => $contract, "prefectures" => $prefecture]);
+                return view("Contract/contractSearch", ["title" => "Contract Search", "contracts" => $contract, "prefectures" => $prefectures]);
             }
         }
         else{
