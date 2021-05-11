@@ -183,7 +183,7 @@ class ContractModel
             $where .= "mp.product_name LIKE '%$productName%' AND ";
         }
         if($shopId != ""){
-            $where .= "c.shop_id = '$shopId' AND ";
+            $where .= "s.shop_id = '$shopId' AND ";
         }
         if($shopName != ""){
             $where .= "s.shop_name LIKE '%$shopName%' AND ";
