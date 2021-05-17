@@ -173,3 +173,8 @@ function selectedContractor(data) {
     $("#contractorPhn").val($("#contractorPhn" + data).html());
     $("#contractorMail").val($("#contractorMail" + data).html());
 }
+
+function contractorSearchClear(){
+    $("#contractorId").val("");
+    $("#contractorName").val("");
+}
