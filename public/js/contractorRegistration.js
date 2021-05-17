@@ -183,3 +183,8 @@ function groupSearchClear(){
     $("#groupId").val("");
     $("#groupName").val("");
 }
+
+function companySearchClear(){
+    $("#companyId").val("");
+    $("#companyName").val("");
+}
