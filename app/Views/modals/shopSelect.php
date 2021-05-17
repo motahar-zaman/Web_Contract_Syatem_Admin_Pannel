@@ -3,9 +3,6 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">店舗選択</h4>
-                <?php
-                //                    var_dump($product); die();
-                ?>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -14,15 +11,15 @@
                 <form>
                     <div class="card-body">
                         <div class="form-group col-md-4 pl-0">
-                            <label for="exampleInputEmail1">店舗ID（完全一致）</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                            <label for="shopId">店舗ID（完全一致）</label>
+                            <input type="text" class="form-control" id="shopId" name="shopId" placeholder="" value="">
                         </div>
                         <div class="form-group col-md-4 pl-0">
-                            <label for="exampleInputPassword1">店舗名（あいまい）</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="">
+                            <label for="shopName">店舗名（あいまい）</label>
+                            <input type="text" class="form-control" id="shopName" placeholder="" name="shopName" value="">
                         </div>
-                        <button type="submit" class="btn btn-primary pl-4 pr-4">検索</button>
-                        <button type="submit" class="btn btn-primary ml-2">条件クリア</button>
+                        <span id="shopSearch" class="btn btn-primary pl-4 pr-4">検索</span>
+                        <span onclick="shopSearchClear()" class="btn btn-primary ml-2">条件クリア</span>
                     </div>
                 </form>
                 <br/>
