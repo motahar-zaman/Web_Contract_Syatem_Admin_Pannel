@@ -52,7 +52,6 @@
                     <div class="underline mt-2"></div>
 
                     <div class="gap-2 mx-auto text-center" style="max-width: 950px">
-
                         <div class="card mt-5 text-left">
                             <div class="card-header">
                                 <h3 class="card-title text-center">【契約者登録】 Contractor Registration </h3>
@@ -450,8 +449,8 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <div class="row">
-                        <div class="col-md-6 text-center">
+                    <div class="row mx-auto pb-3" style="max-width: 950px">
+                        <div class="col-md-6 pl-0">
                             <button onclick="contractUpdate()" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 text-bold">
                                 登録
                             </button>
@@ -459,7 +458,7 @@
                                 <a style="color: #fff" href="/home">メニュー</a>
                             </button>
                         </div>
-                        <div class="col-md-6 text-center">
+                        <div class="col-md-6 pr-0 text-right">
                             <span>アクセス日時：<?= date("Y/m/d") ?>	</span>
                         </div>
                     </div>

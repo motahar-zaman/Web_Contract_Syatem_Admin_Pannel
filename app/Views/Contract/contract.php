@@ -421,8 +421,8 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <div class="row">
-                        <div class="col-md-6 text-center">
+                    <div class="row mx-auto pb-3" style="max-width: 950px">
+                        <div class="col-md-6 pl-0">
                             <button onclick="contractRegistration()" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 text-bold">
                                 登録
                             </button>
@@ -430,7 +430,7 @@
                                 <a style="color: #fff" href="/home">メニュー</a>
                             </button>
                         </div>
-                        <div class="col-md-6 text-center">
+                        <div class="col-md-6 pr-0 text-right">
                             <span>アクセス日時：<?= date("Y/m/d") ?>	</span>
                         </div>
                     </div>
