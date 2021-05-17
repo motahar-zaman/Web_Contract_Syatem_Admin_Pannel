@@ -3,6 +3,11 @@ function shopSearchClear(){
     $("#shopName").val("");
 }
 
+function productSearchClear(){
+    $("#productId").val("");
+    $("#productName").val("");
+}
+
 function selectedContractor(data) {
     $("#contractorId").html($("#contractorId" + data).html());
     $("#contractorName").html($("#contractorName" + data).html());

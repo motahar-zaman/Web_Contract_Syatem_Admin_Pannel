@@ -11,15 +11,15 @@
                 <form>
                     <div class="card-body">
                         <div class="form-group col-md-4 pl-0">
-                            <label for="exampleInputEmail1">商品ID（完全一致）</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+                            <label for="productId">商品ID（完全一致）</label>
+                            <input type="text" class="form-control" id="productId" name="productId" placeholder="" value="">
                         </div>
                         <div class="form-group col-md-4 pl-0">
-                            <label for="exampleInputPassword1">商品名（あいまい）</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="">
+                            <label for="productName">商品名（あいまい）</label>
+                            <input type="text" class="form-control" id="productName" placeholder="" name="productName" value="">
                         </div>
-                        <button type="submit" class="btn btn-primary pl-4 pr-4">検索</button>
-                        <button type="submit" class="btn btn-primary ml-2">条件クリア</button>
+                        <span id="productSearch" class="btn btn-primary pl-4 pr-4">検索</span>
+                        <span onclick="productSearchClear()" class="btn btn-primary ml-2">条件クリア</span>
                     </div>
                 </form>
                 <br/>
