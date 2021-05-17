@@ -175,3 +175,18 @@ function shopAddressSearch() {
         }
     });
 }
+
+function shopSearchClear(){
+    $("#shopId").val("");
+    $("#shopName").val("");
+}
+
+function productSearchClear(){
+    $("#productId").val("");
+    $("#productName").val("");
+}
+
+function contractorSearchClear(){
+    $("#contractorId").val("");
+    $("#contractorName").val("");
+}
