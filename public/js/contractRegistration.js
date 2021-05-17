@@ -8,6 +8,11 @@ function productSearchClear(){
     $("#productName").val("");
 }
 
+function contractorSearchClear(){
+    $("#contractorId").val("");
+    $("#contractorName").val("");
+}
+
 function selectedContractor(data) {
     $("#contractorId").html($("#contractorId" + data).html());
     $("#contractorName").html($("#contractorName" + data).html());
