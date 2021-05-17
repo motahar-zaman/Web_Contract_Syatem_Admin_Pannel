@@ -315,13 +315,11 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="inputEmail3" >店舗サイトURL
-                                                Shop Site URL</label>
+                                            <label for="inputEmail3" >店舗サイトURL(Shop Site URL)</label>
                                             <input class="form-control" name="shop_site_url" type="text" id="shop_site_url">
                                             <span class="errormsg" id="MailAddressError"></span>
                                         </div>
                                     </div>
-
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="inputEmail3" >業態</label>
@@ -336,10 +334,9 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="inputEmail3">届出書 Notification Letter</label>
+                                            <label for="notification_letter">届出書 Notification Letter</label>
                                             <div class="col-sm-12">
-                                                <input type="file" name="notification_letter" class="custom-file-input" id="notification_letter">
-                                                <label class="custom-file-label" for="NotificationLetter">ファイルを選択</label>
+                                                <input class="form-control h-auto" type="file" id="notification_letter" name="notification_letter">
                                                 <span class="errormsg" id="MailAddressError"></span>
                                             </div>
                                         </div>
