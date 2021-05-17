@@ -178,3 +178,8 @@ function contractorSearchClear(){
     $("#contractorId").val("");
     $("#contractorName").val("");
 }
+
+function groupSearchClear(){
+    $("#groupId").val("");
+    $("#groupName").val("");
+}
