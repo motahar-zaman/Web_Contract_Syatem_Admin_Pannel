@@ -198,3 +198,18 @@ function selectedContractorUpdate(id){
     $("#groupPhn").val(contractorGroupData[10]);
     $("#groupMail").val(contractorGroupData[12]);
 }
+
+function contractorSearchClear(){
+    $("#contractorId").val("");
+    $("#contractorName").val("");
+}
+
+function companySearchClear(){
+    $("#companyId").val("");
+    $("#companyName").val("");
+}
+
+function groupSearchClear(){
+    $("#groupId").val("");
+    $("#groupName").val("");
+}

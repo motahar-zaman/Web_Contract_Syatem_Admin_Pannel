@@ -52,7 +52,6 @@
                     <div class="underline mt-2"></div>
 
                     <div class="gap-2 mx-auto text-center" style="max-width: 950px">
-
                         <div class="card mt-5 text-left">
                             <div class="card-header">
                                 <h3 class="card-title text-center">【契約者登録】 Contractor Registration </h3>
@@ -306,37 +305,30 @@
                                         <div class="form-group">
                                             <label for="inputEmail3" >住所０１
                                                 Address 1</label>
-                                            <input class="form-control" name="address1"
-                                                   type="text" id="address1">
+                                            <input class="form-control" name="address1" type="text" id="address1">
                                             <span class="errormsg" id="Address1Error"></span>
                                         </div>
                                         <div class="form-group">
                                             <label for="inputEmail3">住所０２
                                                 Address 2</label>
-                                            <input class="form-control" name="address2"
-                                                   type="text" id="address2">
+                                            <input class="form-control" name="address2" type="text" id="address2">
                                             <span class="errormsg" id="Address2Error"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmail3" >電話番号
-                                                Phone Number</label>
-                                            <input class="form-control" name="phone_number"
-                                                   type="text" id="phone_number">
+                                            <label for="inputEmail3" >電話番号</label>
+                                            <input class="form-control" name="phone_number" type="text" id="phone_number">
                                             <span class="errormsg" id="PhoneNumberError"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmail3" >メールアドレス
-                                                Mail Address</label>
-                                            <input class="form-control" name="mail_address"
-                                                   type="text" id="mail_address">
+                                            <label for="inputEmail3" >メールアドレス</label>
+                                            <input class="form-control" name="mail_address" type="text" id="mail_address">
                                             <span class="errormsg" id="PhoneNumberError"></span>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="inputEmail3">代表者名
-                                                Representative Name</label>
+                                            <label for="inputEmail3">代表者名</label>
                                             <input class="form-control" name="representative_name" type="text"
                                                    id="representative_name">
                                             <span class="errormsg" id="MailAddressError"></span>
@@ -344,16 +336,14 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="inputEmail3" >代表者名カナ
-                                                Rep. Name KANA</label>
+                                            <label for="inputEmail3" >代表者名カナ</label>
                                             <input class="form-control" name="rep_name_kana" type="text" id="rep_name_kana">
                                             <span class="errormsg" id="MailAddressError"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="inputEmail3" >店舗サイトURL
-                                                Shop Site URL</label>
+                                            <label for="inputEmail3" >店舗サイトURL</label>
                                             <input class="form-control" name="shop_site_url" type="text" id="shop_site_url">
                                             <span class="errormsg" id="MailAddressError"></span>
                                         </div>
@@ -373,10 +363,9 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="inputEmail3">届出書 Notification Letter</label>
+                                            <label for="inputEmail3">届出書</label>
                                             <div class="col-sm-12">
-                                                <input type="file" name="notification_letter" class="custom-file-input" id="notification_letter">
-                                                <label class="custom-file-label" for="NotificationLetter">ファイルを選択</label>
+                                                <input class="form-control h-auto" type="file" id="notification_letter" name="notification_letter">
                                                 <span class="errormsg" id="MailAddressError"></span>
                                             </div>
                                         </div>
@@ -450,8 +439,8 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <div class="row">
-                        <div class="col-md-6 text-center">
+                    <div class="row mx-auto pb-3" style="max-width: 950px">
+                        <div class="col-md-6 pl-0">
                             <button onclick="contractUpdate()" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 text-bold">
                                 登録
                             </button>
@@ -459,7 +448,7 @@
                                 <a style="color: #fff" href="/home">メニュー</a>
                             </button>
                         </div>
-                        <div class="col-md-6 text-center">
+                        <div class="col-md-6 pr-0 text-right">
                             <span>アクセス日時：<?= date("Y/m/d") ?>	</span>
                         </div>
                     </div>

@@ -183,7 +183,7 @@ class ContractModel
             $where .= "mp.product_name LIKE '%$productName%' AND ";
         }
         if($shopId != ""){
-            $where .= "c.shop_id = '$shopId' AND ";
+            $where .= "s.shop_id = '$shopId' AND ";
         }
         if($shopName != ""){
             $where .= "s.shop_name LIKE '%$shopName%' AND ";
@@ -192,9 +192,9 @@ class ContractModel
             $where .= "s.prefecture = '$prefecture' AND ";
         }
 
-        $queryString = "SELECT c.contract_id, c.shop_id, c.contractor_id, c.tantou_id, c.note, c.update_date, c.update_user_id, c.insert_date,
-            c.insert_user_id, c.delete_flag, branch_no, p.product_id, contract_status, start_date_year, start_date_month, end_date_year,
-            end_date_month, p.note AS product_note, mp.product_name, mp.product_note, s.shop_name, s.zipcode, s.daihyousha_name, s.address_01,
+        $queryString = "SELECT c.contract_id, s.shop_id, c.contractor_id, c.tantou_id, c.note, c.update_date, c.update_user_id, c.insert_date,
+            c.insert_user_id, c.delete_flag, p.branch_no, p.product_id, p.contract_status, p.start_date_year, p.start_date_month, p.end_date_year,
+            p.end_date_month, p.note AS product_note, mp.product_name, mp.product_note, s.shop_name, s.zipcode, s.daihyousha_name, s.address_01,
             s.tel_no, s.mail_address, cntr.contractor_name FROM trn_web_contract_base AS c LEFT JOIN trn_contract_product AS p ON
             c.contract_id = p.contract_id LEFT JOIN mst_product AS mp ON mp.product_id = p.product_id LEFT JOIN mst_shop AS s ON s.shop_id = c.shop_id
             LEFT JOIN mst_contractor AS cntr ON cntr.contractor_id = c.contractor_id".$where."c.delete_flag = ?";

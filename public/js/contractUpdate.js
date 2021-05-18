@@ -34,6 +34,7 @@ function selectedProduct(data) {
     var markup = "<tr><td onclick=\'productDiscount("+ datalen +")\'><a href='#'><p id='" + productDiscountId + "'>" + productId + "</p></a></td><td id='" + productDiscountNameId + "'>" + productName + "</td><td id='" + productDiscountNoteId + "'>" + productNote + "</td><td id='" + productDiscountStartDateId + "'>" + productPeriodStartDate + "</td><td id='" + productDiscountEndDateId + "'>" + productPeriodEndDate + "</td></tr>";
     $(".productDiscountTableModal tbody").append(markup);
 }
+
 function productDiscount(data) {
     let productDiscountId = $("#productDiscountId" + data).html();
     let productDiscountShop = $("#productDiscountName" + data).html();
@@ -173,4 +174,19 @@ function shopAddressSearch() {
             console.log(XMLHttpRequest);
         }
     });
+}
+
+function shopSearchClear(){
+    $("#shopId").val("");
+    $("#shopName").val("");
+}
+
+function productSearchClear(){
+    $("#productId").val("");
+    $("#productName").val("");
+}
+
+function contractorSearchClear(){
+    $("#contractorId").val("");
+    $("#contractorName").val("");
 }

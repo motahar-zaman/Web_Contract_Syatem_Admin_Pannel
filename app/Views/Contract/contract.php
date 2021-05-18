@@ -315,13 +315,11 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="inputEmail3" >店舗サイトURL
-                                                Shop Site URL</label>
+                                            <label for="inputEmail3" >店舗サイトURL(Shop Site URL)</label>
                                             <input class="form-control" name="shop_site_url" type="text" id="shop_site_url">
                                             <span class="errormsg" id="MailAddressError"></span>
                                         </div>
                                     </div>
-
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="inputEmail3" >業態</label>
@@ -336,10 +334,9 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="inputEmail3">届出書 Notification Letter</label>
+                                            <label for="notification_letter">届出書 Notification Letter</label>
                                             <div class="col-sm-12">
-                                                <input type="file" name="notification_letter" class="custom-file-input" id="notification_letter">
-                                                <label class="custom-file-label" for="NotificationLetter">ファイルを選択</label>
+                                                <input class="form-control h-auto" type="file" id="notification_letter" name="notification_letter">
                                                 <span class="errormsg" id="MailAddressError"></span>
                                             </div>
                                         </div>
@@ -421,8 +418,8 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <div class="row">
-                        <div class="col-md-6 text-center">
+                    <div class="row mx-auto pb-3" style="max-width: 950px">
+                        <div class="col-md-6 pl-0">
                             <button onclick="contractRegistration()" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 text-bold">
                                 登録
                             </button>
@@ -430,7 +427,7 @@
                                 <a style="color: #fff" href="/home">メニュー</a>
                             </button>
                         </div>
-                        <div class="col-md-6 text-center">
+                        <div class="col-md-6 pr-0 text-right">
                             <span>アクセス日時：<?= date("Y/m/d") ?>	</span>
                         </div>
                     </div>
