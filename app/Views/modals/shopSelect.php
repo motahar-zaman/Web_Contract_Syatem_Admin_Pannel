@@ -57,7 +57,7 @@
                         </tbody>
                     </table>
                 </div>
-                <button type="submit" class="btn btn-primary ml-3 mt-5 k1Btn"  data-dismiss="modal" aria-label="Close">選択反映</button>
+<!--                <button type="submit" class="btn btn-primary ml-3 mt-5 k1Btn"  data-dismiss="modal" aria-label="Close">選択反映</button>-->
             </div>
         </div>
     </div>
