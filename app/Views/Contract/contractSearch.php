@@ -34,7 +34,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="row col-md-12 pt-2 pl-4">
-                            <span class="pl-2">WEB契約システム   / WEB Contract System</span>
+                            <span class="pl-2">WEB契約システム</span>
                         </div>
                         <div class="row col-md-12">
                             <div class="col-md-6">
@@ -51,7 +51,7 @@
                         <div class="card mt-5 text-left">
                             <div class="card-header">
                                 <h3 class="card-title text-center">
-                                    【検索条件】(Search Condition)
+                                    【検索条件】
                                 </h3>
                             </div>
                             <form>
@@ -59,29 +59,29 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group " >
-                                                <label>契約ID(Contract ID)</label>
+                                                <label>契約ID</label>
                                                 <input type="text" class="form-control " name="contractIdSearch" id="contractIdSearch">
                                             </div>
                                             <div class="form-group">
-                                                <label>契約者ID(Contractor ID)</label>
+                                                <label>契約者ID</label>
                                                 <input type="text" class="form-control " name="contractorIdSearch" id="contractorIdSearch">
                                             </div>
                                             <div class="form-group">
-                                                <label>商品ID(Product ID)</label>
+                                                <label>商品ID</label>
                                                 <input type="text" class="form-control " name="productIdSearch" id="productIdSearch">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group " >
-                                                <label>店舗ID(Shop ID)</label>
+                                                <label>店舗ID</label>
                                                 <input type="text" class="form-control " name="shopIdSearch" id="shopIdSearch">
                                             </div>
                                             <div class="form-group">
-                                                <label>店舗名(Shop Name)</label>
+                                                <label>店舗名</label>
                                                 <input type="text" class="form-control " name="shopNameSearch" id="shopNameSearch">
                                             </div>
                                             <div class="form-group">
-                                                <label>都道府県(Prefecture)</label>
+                                                <label>都道府県</label>
                                                 <select name="prefectureSearch" id="prefectureSearch" class="form-control">
                                                     <option value="0">Select</option>
                                                     <?php foreach ($prefectures as $prefecture) { ?>
@@ -92,17 +92,17 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group " >
-                                                <label>契約者名(Contractor Name)</label>
+                                                <label>契約者名</label>
                                                 <input type="text" class="form-control " name="contractorNameSearch" id="contractorNameSearch">
                                             </div>
                                             <div class="form-group">
-                                                <label>商品名(Product Name)</label>
+                                                <label>商品名</label>
                                                 <input type="text" class="form-control " name="productNameSearch" id="productNameSearch">
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" id="contractSearchBtn" class="btn btn-primary text-bold text-left">検索(Search)</button>
-                                    <button type="button" id="clearSearchFields" class="btn btn-primary text-bold text-left">クリア(Clear)</button>
+                                    <button type="submit" id="contractSearchBtn" class="btn btn-primary text-bold text-left">検索</button>
+                                    <button type="button" id="clearSearchFields" class="btn btn-primary text-bold text-left">クリア</button>
                                 </div>
                             </form>
                         </div>
@@ -111,22 +111,22 @@
                     <div class="gap-2 mx-auto text-center" style="max-width: 950px">
                         <div class="card mt-5 text-left">
                             <div class="card-header">
-                                <h3 class="card-title text-center">【契約一覧】 (Search List)</h3>
+                                <h3 class="card-title text-center">【契約一覧】</h3>
                             </div>
                             <div class="card-body">
                                 <div class="card-body table-responsive p-0">
                                     <table class="table table-hover text-center productTable productInfoTable">
                                         <thead>
                                             <tr>
-                                                <th>契約ID (Contract ID)</th>
-                                                <th>サービス (Service)</th>
-                                                <th>店舗名 (Shop Name)</th>
-                                                <th>店舗住所 (Shop Address)</th>
-                                                <th>電話番号 (Phone Number)</th>
-                                                <th>メールアドレス (Mail Address)</th>
-                                                <th>業態 (Business Type)</th>
-                                                <th>代表者名 (Representative name)</th>
-                                                <th>契約日 (Contract Date)</th>
+                                                <th>契約ID</th>
+                                                <th>サービス</th>
+                                                <th>店舗名</th>
+                                                <th>店舗住所</th>
+                                                <th>電話番号</th>
+                                                <th>メールアドレス</th>
+                                                <th>業態</th>
+                                                <th>代表者名</th>
+                                                <th>契約日</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -149,7 +149,7 @@
                                             <?php }
                                                 }
                                                 else{
-                                                    echo "<tr><td>No data available</td></tr>";
+                                                    echo "<tr><td>データがありません！</td></tr>";
                                                 }
                                             ?>
                                         </tbody>
@@ -161,7 +161,7 @@
 
                     <div class="gap-2 mx-auto mt-3 mb-4 " style="max-width: 950px !important;">
                         <button onclick="" id="menu" class="btn btn-primary pl-3 pr-3 text-bold">
-                            <a style="color: #fff" href="/home">メニュー(Menu)</a>
+                            <a style="color: #fff" href="/home">メニュー</a>
                         </button>
                     </div>
                 </div>

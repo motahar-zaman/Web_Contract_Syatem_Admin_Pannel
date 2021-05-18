@@ -42,7 +42,7 @@
                         </div>
                         <div class="row col-md-12">
                             <div class="col-md-6">
-                                <h1 class="mb-0 pt-2 pl-5">契約者情報登録</h1>
+                                <h1 class="mb-0 pt-2 pl-5">契約商品情報更新</h1>
                             </div>
                             <div class="col-md-6 text-right pt-4 pr-5">
                                 <span>[<?= session()->get("userId") ?>]：[<?= session()->get("userName") ?>]</span>
@@ -54,12 +54,12 @@
                     <div class="gap-2 mx-auto text-center" style="max-width: 950px">
                         <div class="card mt-5 text-left">
                             <div class="card-header">
-                                <h3 class="card-title text-center">【契約者登録】 Contractor Registration </h3>
+                                <h3 class="card-title text-center">【契約者登録】</h3>
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm text-left">
                                         <div class="input-group-append">
                                             <button type="button" class="btn btn-default pl-3 pr-3" data-toggle="modal" data-target="#contractor-select-modal">
-                                                契約者選択 Contractor Select
+                                                契約者選択
                                             </button>
                                         </div>
                                     </div>
@@ -72,19 +72,19 @@
                                         <thead>
                                         <tr>
                                             <th>
-                                                契約者ID Contractor ID
+                                                契約者ID
                                             </th>
                                             <th>
-                                                契約者名 Contractor Name
+                                                契約者名
                                             </th>
                                             <th>
-                                                住所 Address
+                                                住所
                                             </th>
                                             <th>
-                                                電話番号 Phone Number
+                                                電話番号
                                             </th>
                                             <th>
-                                                メールアドレス Mail Address
+                                                メールアドレス
                                             </th>
                                         </tr>
                                         </thead>
@@ -115,12 +115,12 @@
 
                         <div class="card mt-5 text-left">
                             <div class="card-header">
-                                <h3 class="card-title text-center">【商品登録】 Product Registration</h3>
+                                <h3 class="card-title text-center">【商品登録】</h3>
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm text-left">
                                         <div class="input-group-append">
                                             <button type="button" class="btn btn-default pl-3 pr-3" data-toggle="modal" data-target="#product-select-modal">
-                                                商品選択 Product Select
+                                                商品選択
                                             </button>
                                         </div>
                                     </div>
@@ -131,11 +131,11 @@
                                     <table class="table text-center productSelectTable">
                                         <thead>
                                             <tr>
-                                                <th>商品ID Product ID</th>
-                                                <th>商品名 Product Name</th>
-                                                <th>商品概要 Product Summary</th>
-                                                <th>公開開始日 Period Start Date</th>
-                                                <th>公開終了日 Period End Date</th>
+                                                <th>商品ID</th>
+                                                <th>商品名</th>
+                                                <th>商品概要</th>
+                                                <th>公開開始日</th>
+                                                <th>公開終了日</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -156,18 +156,18 @@
                             </div>
                         </div>
 
-                        <div class="mt-5 text-left">【対象店舗登録】 Target Shop Registration</div>
+                        <div class="mt-5 text-left">【対象店舗登録】</div>
                         <div class="card mt-5 text-left">
                             <div class="card-header">
                                 <h3 class="card-title text-center">
                                     <input name="shop" id="shopCheck" type="radio" value="0"/>
-                                    既存店舗から選択 Select From Existing Shop
+                                    既存店舗から選択
                                 </h3>
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm text-left">
                                         <div class="input-group-append">
                                             <button type="button" id="mySelect" class="btn btn-default pl-3 pr-3" data-toggle="modal" data-target="#shop-select-modal">
-                                                店舗選択 Shop Select
+                                                店舗選択
                                             </button>
                                         </div>
                                     </div>
@@ -178,12 +178,12 @@
                                     <table class="table text-center">
                                         <thead>
                                             <tr>
-                                                <th>店舗ID Shop ID</th>
-                                                <th>店舗名 Shop Name</th>
-                                                <th>代表者 Representative Name</th>
-                                                <th>都道府県 Prefecture</th>
-                                                <th>店舗住所 Shop Address</th>
-                                                <th>電話番号 Phone Number</th>
+                                                <th>店舗ID</th>
+                                                <th>店舗名</th>
+                                                <th>代表者</th>
+                                                <th>都道府県</th>
+                                                <th>店舗住所</th>
+                                                <th>電話番号</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -224,7 +224,7 @@
                             <div class="card-header">
                                 <h3 class="card-title text-center">
                                     <input name="shop" id="shopCheck2" type="radio" value="1" />
-                                    店舗を新規登録 Shop Registration
+                                    店舗を新規登録
                                 </h3>
                             </div>
                             <div class="card-body">
@@ -232,12 +232,12 @@
                                     <div class="col-md-6">
                                         <div id="mySelect">
                                             <div class="form-group " >
-                                                <label for="inputEmail3">店舗名 Shop Name</label>
+                                                <label for="inputEmail3">店舗名</label>
                                                 <input type="text" class="form-control " name="shop_name" id="shop_name">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmail3" >地域 District</label>
+                                            <label for="inputEmail3" >地域</label>
                                             <select name="district" id="district" class="form-control">
                                                 <?php foreach ($districts as $district) { ?>
                                                     <option value="<?php echo $district->getId() ?>"><?php echo $district->getareaName() ?></option>
@@ -245,7 +245,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmail3" >大エリア Area Large</label>
+                                            <label for="inputEmail3" >大エリア</label>
                                             <select name="area_large" id="area_large" class="form-control">
                                                 <?php foreach ($areaLarges as $areaLarge) { ?>
                                                     <option value="<?php echo $areaLarge->getId() ?>"><?php echo $areaLarge->getname() ?></option>
@@ -253,7 +253,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmail3">詳細エリア Area</label>
+                                            <label for="inputEmail3">詳細エリア</label>
                                             <select name="area" id="area" class="form-control">
                                                 <?php foreach ($areas as $area) { ?>
                                                     <option value="<?php echo $area->getId() ?>"><?php echo $area->getname() ?></option>
@@ -268,7 +268,7 @@
                                                    id="shop_name_kana">
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmail3" >都道府県  Prefecture</label>
+                                            <label for="inputEmail3" >都道府県</label>
                                             <select name="prefecture" id="prefecture" class="form-control">
                                                 <?php foreach ($prefectures as $prefecture) { ?>
                                                     <option value="<?php echo $prefecture->getId() ?>"><?php echo $prefecture->getname() ?></option>
@@ -276,7 +276,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmail3" >小エリア  Area Small</label>
+                                            <label for="inputEmail3" >小エリア</label>
                                             <select name="area_small" id="area_small" class="form-control">
                                                 <?php foreach ($areaSmalls as $areaSmall) { ?>
                                                     <option value="<?php echo $areaSmall->getId() ?>"><?php echo $areaSmall->getname() ?></option>
@@ -294,7 +294,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col-md-6">
-                                            <label for="shopAddressSearch">住所検索 Address Search</label>
+                                            <label for="shopAddressSearch">住所検索</label>
                                             <div class="select2-purple">
                                                 <button onclick="shopAddressSearch()" id="shopAddressSearch" class="btn btn-primary pl-3 pr-3 text-bold">住所検索</button>
                                             </div>
@@ -303,14 +303,12 @@
 
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="inputEmail3" >住所０１
-                                                Address 1</label>
+                                            <label for="inputEmail3" >住所０１</label>
                                             <input class="form-control" name="address1" type="text" id="address1">
                                             <span class="errormsg" id="Address1Error"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmail3">住所０２
-                                                Address 2</label>
+                                            <label for="inputEmail3">住所０２</label>
                                             <input class="form-control" name="address2" type="text" id="address2">
                                             <span class="errormsg" id="Address2Error"></span>
                                         </div>
@@ -378,18 +376,18 @@
                     <div class="gap-2 mx-auto text-center" style="max-width: 950px">
                         <div class="card mt-5 text-left">
                             <div class="card-header">
-                                <h3 class="card-title text-center">【商品情報】 Product Info</h3>
+                                <h3 class="card-title text-center">【商品情報】</h3>
                             </div>
                             <div class="card-body">
                                 <div class="card-body table-responsive p-0">
                                     <table class="table table-hover text-center productTable productInfoTable">
                                         <thead>
                                             <tr>
-                                                <th>商品ID Product ID</th>
-                                                <th>商品名 Product Name</th>
-                                                <th>商品概要 Product Summary</th>
-                                                <th>公開開始日 Period Start Date</th>
-                                                <th>公開終了日 Period End Date</th>
+                                                <th>商品ID</th>
+                                                <th>商品名</th>
+                                                <th>商品概要</th>
+                                                <th>公開開始日</th>
+                                                <th>公開終了日</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -404,7 +402,7 @@
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm text-left">
                                         <div class="input-group-append">
-                                            <button type="button" class="btn btn-default pl-3 pr-3" data-toggle="modal" data-target="#product-discount-select-modal">
+                                            <button disabled type="button"  class="btn btn-default pl-3 pr-3" data-toggle="modal" data-target="#product-discount-select-modal-off">
                                                 割引内容更新
                                             </button>
                                         </div>
@@ -416,18 +414,10 @@
                                     <table class="table table-hover text-center productDiscountTable">
                                         <thead>
                                             <tr>
-                                                <th>対象商品<br>
-                                                    Target Product
-                                                </th>
-                                                <th>対象店舗<br>
-                                                    Target Shop
-                                                </th>
-                                                <th>割引率<br>
-                                                    Discount Rate
-                                                </th>
-                                                <th>割引名称<br>
-                                                    Discount Name
-                                                </th>
+                                                <th>対象商品</th>
+                                                <th>対象店舗</th>
+                                                <th>割引率</th>
+                                                <th>割引名称</th>
                                             </tr>
                                         </thead>
                                         <tbody>

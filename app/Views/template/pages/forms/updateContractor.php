@@ -57,23 +57,23 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="contractorId">契約者ID(contractorId)</label>
+                                            <label for="contractorId">契約者ID</label>
                                             <input class="form-control" type="text" name="contractorId" id="contractorId" value="<?php old('contractorId')?>" readonly>
                                         </div>
                                         <div class="form-group">
-                                            <label for="contractorName">契約者名(contractorName)</label>
+                                            <label for="contractorName">契約者名</label>
                                             <input class="form-control"  name="contractorName" type="text" id="contractorName" value="<?php old('contractorName')?>">
                                             <span class="errormsg" id="contractorNameError"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="contractorPostCode">郵便番号(contractorPostCode)</label>
+                                            <label for="contractorPostCode">郵便番号</label>
                                             <input class="form-control" name="contractorPostCode" type="text" id="contractorPostCode" value="<?php old('contractorPostCode')?>">
                                             <span class="errormsg" id="contractorPostCodeError"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="contractorSelect">契約者選択(contractorSelect)</label>
+                                            <label for="contractorSelect">契約者選択</label>
                                             <div class="select2-purple">
                                                 <button type="button" class="btn btn-primary pl-3 pr-3 text-bold" data-toggle="modal" data-target="#contractor-select-modal">
                                                     契約者選択
@@ -81,12 +81,12 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="contractorKana">契約者名カナ(contractorKana)</label>
+                                            <label for="contractorKana">契約者名カナ</label>
                                             <input class="form-control" name="contractorKana" type="text" id="contractorKana" value="<?php old('contractorKana')?>">
                                             <span class="errormsg" id="contractorKanaError"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="contractorAddressSearch">住所検索(contractorAddressSearch)</label>
+                                            <label for="contractorAddressSearch">住所検索</label>
                                             <div class="select2-purple">
                                                 <button onclick="contractorAddressSearch()" id="contractorAddressSearch" class="btn btn-primary pl-3 pr-3 text-bold">住所検索</button>
                                             </div>
@@ -94,22 +94,22 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="contractorAddress1">住所１(contractorAddress1)</label>
+                                            <label for="contractorAddress1">住所１</label>
                                             <input class="form-control" name="contractorAddress1" type="text" id="contractorAddress1" value="<?php old('contractorAddress1')?>">
                                             <span class="errormsg" id="contractorAddress1Error"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="contractorAddress2">住所２(contractorAddress2)</label>
+                                            <label for="contractorAddress2">住所２</label>
                                             <input class="form-control" name="contractorAddress2" type="text" id="contractorAddress2" value="<?php old('contractorAddress2')?>">
                                             <span class="errormsg" id="contractorAddress2Error"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="contractorPhn">電話番号(contractorPhn)</label>
+                                            <label for="contractorPhn">電話番号</label>
                                             <input class="form-control" type="number" name="contractorPhn" id="contractorPhn" value="<?php old('contractorPhn')?>">
                                             <span class="errormsg" id="contractorPhnError"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="contractorMail">メールアドレス(contractorMail)</label>
+                                            <label for="contractorMail">メールアドレス</label>
                                             <input class="form-control"  name="contractorMail" type="text" id="contractorMail" value="<?php old('contractorMail')?>">
                                             <span class="errormsg" id="contractorMailError"></span>
                                         </div>
@@ -125,28 +125,28 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="companyId">会社ID(companyId)</label>
+                                            <label for="companyId">会社ID</label>
                                             <input class="form-control" type="text" name="companyId" id="companyId" value="<?php old('companyId')?>" readonly>
                                         </div>
                                         <div class="form-group">
-                                            <label for="companyName">会社名(companyName)</label>
+                                            <label for="companyName">会社名</label>
                                             <input class="form-control"  name="companyName" type="text" id="companyName" value="<?php old('companyName')?>">
                                             <span class="errormsg" id="companyNameError"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="companyRepresentative">代表者名(companyRepresentative)</label>
+                                            <label for="companyRepresentative">代表者名</label>
                                             <input class="form-control"  name="companyRepresentative" type="text" id="companyRepresentative" value="<?php old('companyRepresentative')?>">
                                             <span class="errormsg" id="companyRepresentativeError"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="companyPostCode">郵便番号(companyPostCode)</label>
+                                            <label for="companyPostCode">郵便番号</label>
                                             <input class="form-control" name="companyPostCode" type="text" id="companyPostCode" value="<?php old('companyPostCode')?>">
                                             <span class="errormsg" id="companyPostCodeError"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="companySelect">会社選択(companySelect)</label>
+                                            <label for="companySelect">会社選択</label>
                                             <div class="select2-purple">
                                                 <button type="button" class="btn btn-primary pl-3 pr-3 text-bold" data-toggle="modal" data-target="#company-select-modal">
                                                     会社選択
@@ -154,17 +154,17 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="companyKana">会社名カナ(companyKana)</label>
+                                            <label for="companyKana">会社名カナ</label>
                                             <input class="form-control" name="companyKana" type="text" id="companyKana" value="<?php old('companyKana')?>">
                                             <span class="errormsg" id="companyKanaError"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="companyRepresentativeKana">代表者名(companyRepresentativeKana)</label>
+                                            <label for="companyRepresentativeKana">代表者名</label>
                                             <input class="form-control" name="companyRepresentativeKana" type="text" id="companyRepresentativeKana" value="<?php old('companyRepresentativeKana')?>">
                                             <span class="errormsg" id="companyRepresentativeKanaError"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="companyAddressSearch">住所検索(companyAddressSearch)</label>
+                                            <label for="companyAddressSearch">住所検索</label>
                                             <div class="select2-purple">
                                                 <button onclick="companyAddressSearch()" id="companyAddressSearch" class="btn btn-primary pl-3 pr-3 text-bold">住所検索</button>
                                             </div>
@@ -172,22 +172,22 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="companyAddress1">住所１(companyAddress1)</label>
+                                            <label for="companyAddress1">住所１</label>
                                             <input class="form-control" name="companyAddress1" type="text" id="companyAddress1" value="<?php old('companyAddress1')?>">
                                             <span class="errormsg" id="companyAddress1Error"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="companyAddress2">住所２(companyAddress2)</label>
+                                            <label for="companyAddress2">住所２</label>
                                             <input class="form-control" name="companyAddress2" type="text" id="companyAddress2" value="<?php old('companyAddress2')?>">
                                             <span class="errormsg" id="companyAddress2Error"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="companyPhn">電話番号(companyPhn)</label>
+                                            <label for="companyPhn">電話番号</label>
                                             <input class="form-control" type="number" name="companyPhn" id="companyPhn" value="<?php old('companyPhn')?>">
                                             <span class="errormsg" id="companyPhnError"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="companyMail">メールアドレス(companyMail)</label>
+                                            <label for="companyMail">メールアドレス</label>
                                             <input class="form-control"  name="companyMail" type="text" id="companyMail" value="<?php old('companyMail')?>">
                                             <span class="errormsg" id="companyMailError"></span>
                                         </div>
@@ -203,28 +203,28 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="groupId">グループID(groupId)</label>
+                                            <label for="groupId">グループID</label>
                                             <input class="form-control" type="text" name="groupId" id="groupId" value="<?php old('groupId')?>" readonly>
                                         </div>
                                         <div class="form-group">
-                                            <label for="groupName">グループ選択(groupName)</label>
+                                            <label for="groupName">グループ選択</label>
                                             <input class="form-control"  name="groupName" type="text" id="groupName" value="<?php old('groupName')?>">
                                             <span class="errormsg" id="groupNameError"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="groupRepresentative">代表者名(groupRepresentative)</label>
+                                            <label for="groupRepresentative">代表者名</label>
                                             <input class="form-control"  name="groupRepresentative" type="text" id="groupRepresentative" value="<?php old('groupRepresentative')?>">
                                             <span class="errormsg" id="groupRepresentativeError"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="groupPostCode">郵便番号(groupPostCode)</label>
+                                            <label for="groupPostCode">郵便番号</label>
                                             <input class="form-control" name="groupPostCode" type="text" id="groupPostCode" value="<?php old('groupPostCode')?>">
                                             <span class="errormsg" id="groupPostCodeError"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="groupSelect">グループ選択(groupSelect)</label>
+                                            <label for="groupSelect">グループ選択</label>
                                             <div class="select2-purple">
                                                 <button type="button" class="btn btn-primary pl-3 pr-3 text-bold" data-toggle="modal" data-target="#group-select-modal">
                                                     グループ選択
@@ -232,17 +232,17 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="groupKana">グループ名カナ(groupKana)</label>
+                                            <label for="groupKana">グループ名カナ</label>
                                             <input class="form-control" name="groupKana" type="text" id="groupKana" value="<?php old('groupKana')?>">
                                             <span class="errormsg" id="groupKanaError"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="groupRepresentativeKana">代表者名カナ(groupRepresentativeKana)</label>
+                                            <label for="groupRepresentativeKana">代表者名カナ</label>
                                             <input class="form-control" name="groupRepresentativeKana" type="text" id="groupRepresentativeKana" value="<?php old('groupRepresentativeKana')?>">
                                             <span class="errormsg" id="groupRepresentativeKanaError"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="groupAddressSearch">住所検索(groupAddressSearch)</label>
+                                            <label for="groupAddressSearch">住所検索</label>
                                             <div class="select2-purple">
                                                 <button onclick="groupAddressSearch()" id="groupAddressSearch" class="btn btn-primary pl-3 pr-3 text-bold">住所検索</button>
                                             </div>
@@ -250,22 +250,22 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="groupAddress1">住所１(groupAddress1)</label>
+                                            <label for="groupAddress1">住所１</label>
                                             <input class="form-control" name="groupAddress1" type="text" id="groupAddress1" value="<?php old('groupAddress1')?>">
                                             <span class="errormsg" id="groupAddress1Error"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="groupAddress2">住所２(groupAddress2)</label>
+                                            <label for="groupAddress2">住所２</label>
                                             <input class="form-control" name="groupAddress2" type="text" id="groupAddress2" value="<?php old('groupAddress2')?>">
                                             <span class="errormsg" id="groupAddress2Error"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="groupPhn">電話番号(groupPhn)</label>
+                                            <label for="groupPhn">電話番号</label>
                                             <input class="form-control" type="number" name="groupPhn" id="groupPhn" value="<?php old('groupPhn')?>">
                                             <span class="errormsg" id="groupPhnError"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="groupMail">メールアドレス(groupMail)</label>
+                                            <label for="groupMail">メールアドレス</label>
                                             <input class="form-control"  name="groupMail" type="text" id="groupMail" value="<?php old('groupMail')?>">
                                             <span class="errormsg" id="groupMailError"></span>
                                         </div>
