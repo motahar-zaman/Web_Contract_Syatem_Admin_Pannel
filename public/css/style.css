@@ -7,7 +7,8 @@
     width: 700px;
 }
 .bgWheat{
-    background-color: #f5deb3;
+    color: black;
+    background-color: #FFF2CC;
 }
 .underline {
     height: 0px;
@@ -44,3 +45,60 @@
 .mat-1{
     margin-top: 5px !important;
 }
+.k1Btn2{
+    color: black !important;
+    background-color: #D0CECE;
+    outline: none !important;
+    border-color: rgba(100, 100, 100, 0);
+}
+.k1Btn2:hover{
+    color: black !important;
+    background-color: #D0CECE !important;
+    outline: none !important;
+    border-color: rgba(100, 100, 100, 0);
+}
+.k1Btn2:focus, .k1Btn2:active:focus, .k1Btn2.active:focus{
+/*.k1Btn2:focus{*/
+    color: black !important;
+    background-color: #D0CECE !important;
+    outline: none !important;
+    border-color: rgba(100, 100, 100, 0);
+}
+.k1TableTitleBG{
+    background-color: #44546A !important;
+    color: white !important;
+}
+ .k1RegTableTitleBG{
+     color: black;
+    background-color:#FCE4D6;
+ }
+.custom-file-input{
+    opacity: 1 !important;
+}
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+    opacity: 1 !important;
+
+}
+.custom-file-input::before {
+    content: 'ファイルを選択';
+    display: inline-block;
+    background: #D0CECE;
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+}
+.custom-file-input:hover::before {
+    border-color: black;
+}
+.custom-file-input:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+

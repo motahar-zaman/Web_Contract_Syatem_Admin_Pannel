@@ -18,14 +18,14 @@
                             <label for="contractorName">契約者名（あいまい）</label>
                             <input type="text" class="form-control" id="contractorName" name="contractorName" placeholder="" value="">
                         </div>
-                        <span id="productSearch" class="btn btn-primary pl-4 pr-4 k1Btn mr-3">検索</span>
-                        <span onclick="contractorSearchClear()" class="btn btn-primary  k1Btn ">条件クリア</span>
+                        <span id="productSearch" class="btn btn-primary pl-4 pr-4 k1Btn k1Btn2 mr-3">検索</span>
+                        <span onclick="contractorSearchClear()" class="btn btn-primary  k1Btn k1Btn2">条件クリア</span>
                     </div>
                 </form>
                 <br />
                 <div class="card-body table-responsive p-0 ml-1" style="height: 300px;">
-                    <table class="table table-head-fixed text-nowrap ml-1">
-                        <thead>
+                    <table class="table text-nowrap ml-1">
+                        <thead class="k1TableTitleBG">
                             <tr>
                                 <th>選択</th>
                                 <th>契約者ID</th>

@@ -18,14 +18,14 @@
                             <label for="shopName">店舗名（あいまい）</label>
                             <input type="text" class="form-control" id="shopName" placeholder="" name="shopName" value="">
                         </div>
-                        <span id="shopSearch" class="btn btn-primary pl-4 pr-4 k1Btn mr-3">検索</span>
-                        <span onclick="shopSearchClear()" class="btn btn-primary k1Btn">条件クリア</span>
+                        <span id="shopSearch" class="btn btn-primary pl-4 pr-4 k1Btn k1Btn2 mr-3">検索</span>
+                        <span onclick="shopSearchClear()" class="btn btn-primary k1Btn k1Btn2 ">条件クリア</span>
                     </div>
                 </form>
                 <br/>
                 <div class="card-body table-responsive p-0 ml-3" style="height: 300px;">
-                    <table class="table table-head-fixed text-nowrap ml-3">
-                        <thead>
+                    <table class="table  text-nowrap ml-3">
+                        <thead class="k1TableTitleBG">
                         <tr>
                             <th>選択</th>
                             <th>店舗ID</th>
@@ -51,7 +51,6 @@
                                 <?php
                             }
                         } else {
-
                             echo "<h3>データがありません！</h3>";
                         }
                         ?>

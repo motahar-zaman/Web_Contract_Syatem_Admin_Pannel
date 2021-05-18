@@ -18,14 +18,14 @@
                             <label for="productName">商品名（あいまい）</label>
                             <input type="text" class="form-control" id="productName" placeholder="" name="productName" value="">
                         </div>
-                        <span id="productSearch" class="btn btn-primary pl-4 pr-4 k1Btn mr-3">検索</span>
-                        <span onclick="productSearchClear()" class="btn btn-primary k1Btn">条件クリア</span>
+                        <span id="productSearch" class="btn btn-primary pl-4 pr-4 k1Btn k1Btn2 mr-3">検索</span>
+                        <span onclick="productSearchClear()" class="btn btn-primary k1Btn k1Btn2">条件クリア</span>
                     </div>
                 </form>
                 <br/>
                 <div class="card-body table-responsive p-0 ml-3" style="height: 300px;">
-                    <table class="table table-head-fixed text-nowrap productTable ml-3">
-                        <thead>
+                    <table class="table text-nowrap productTable ml-3">
+                        <thead class="k1TableTitleBG">
                         <tr>
                             <th>選択</th>
                             <th>商品ID</th>
@@ -66,7 +66,7 @@
                         </tbody>
                     </table>
                 </div>
-                <button type="submit" class="btn btn-primary ml-3 mt-5 k1Btn" data-dismiss="modal" aria-label="Close">選択反映</button>
+                <button type="submit" class="btn btn-primary ml-3 mt-5 k1Btn k1Btn2" data-dismiss="modal" aria-label="Close">選択反映</button>
             </div>
         </div>
     </div>

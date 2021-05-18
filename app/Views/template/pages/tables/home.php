@@ -22,7 +22,7 @@
                         <span><h1 class="mb-0 pt-2">メニュー</h1></span>
                     </div>
                     <div class="col-md-6 text-right pt-2">
-                        <button class="fc-button mb-3"><a href="/logout">ログアウト</a></button><br>
+                        <button class="fc-button k1Btn1 k1Btn2 mb-3"><a class="k1Btn2" href="/logout">ログアウト</a></button><br>
                         <span class="mt-5">	[<?= session()->get("userId")?>]：[<?= session()->get("userName")?>]</span>
                     </div>
                 </div>

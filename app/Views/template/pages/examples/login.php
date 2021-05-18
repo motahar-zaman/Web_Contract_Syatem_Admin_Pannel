@@ -49,7 +49,7 @@
               </div>
               <div class="row">
                 <div class="col-4">
-                  <button type="submit" class="btn btn-primary btn-block">ログイン</button>
+                  <button type="submit" class="btn btn-primary btn-block k1Btn k1Btn2">ログイン</button>
                 </div>
                 <span class="mt-4 ml-2">
                   ＩＤとパスワードを忘れてしまった場合<br>下記へお問い合わせください。

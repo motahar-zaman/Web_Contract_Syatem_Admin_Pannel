@@ -58,7 +58,7 @@
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm text-left">
                                         <div class="input-group-append">
-                                            <button type="button" class="btn btn-primary pl-3 pr-3 k1Btn" data-toggle="modal" data-target="#contractor-select-modal">
+                                            <button type="button" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2" data-toggle="modal" data-target="#contractor-select-modal">
                                                 契約者選択
                                             </button>
                                         </div>
@@ -69,7 +69,7 @@
                             <div class="card-body">
                                 <div class="card-body table-responsive p-0">
                                     <table class="table text-center">
-                                        <thead>
+                                        <thead class="k1RegTableTitleBG">
                                         <tr>
                                             <th>契約者ID</th>
                                             <th>契約者名</th>
@@ -109,7 +109,7 @@
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm text-left">
                                         <div class="input-group-append">
-                                            <button type="button" class="btn btn-primary pl-3 pr-3 k1Btn" data-toggle="modal" data-target="#product-select-modal">
+                                            <button type="button" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2" data-toggle="modal" data-target="#product-select-modal">
                                                 商品選択
                                             </button>
                                         </div>
@@ -119,7 +119,7 @@
                             <div class="card-body">
                                 <div class="card-body table-responsive p-0">
                                     <table class="table text-center productSelectTable" >
-                                        <thead>
+                                        <thead class="k1RegTableTitleBG">
                                             <tr>
                                                 <th>商品ID</th>
                                                 <th>商品名</th>
@@ -156,7 +156,7 @@
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm text-left">
                                         <div class="input-group-append">
-                                            <button type="button" id="mySelect" class="btn btn-primary pl-3 pr-3 k1Btn" data-toggle="modal" data-target="#shop-select-modal">
+                                            <button type="button" id="mySelect" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2" data-toggle="modal" data-target="#shop-select-modal">
                                                 店舗選択
                                             </button>
                                         </div>
@@ -166,7 +166,7 @@
                             <div class="card-body">
                                 <div class="card-body table-responsive p-0">
                                     <table class="table text-center">
-                                        <thead>
+                                        <thead class="k1RegTableTitleBG">
                                             <tr>
                                                 <th>店舗ID</th>
                                                 <th>店舗名</th>
@@ -286,7 +286,7 @@
                                         <div class="col-md-6">
                                             <label for="shopAddressSearch">住所検索</label>
                                             <div class="select2-purple">
-                                                <button onclick="shopAddressSearch()" id="shopAddressSearch" class="btn btn-primary pl-3 pr-3 text-bold k1Btn">住所検索</button>
+                                                <button onclick="shopAddressSearch()" id="shopAddressSearch" class="btn btn-primary pl-3 pr-3 text-bold k1Btn k1Btn2">住所検索</button>
                                             </div>
                                         </div>
                                     </div>
@@ -371,7 +371,7 @@
                             <div class="card-body">
                                 <div class="card-body table-responsive p-0">
                                     <table class="table table-hover text-center productTable productInfoTable">
-                                        <thead>
+                                        <thead class="k1RegTableTitleBG">
                                             <tr>
                                                 <th>商品ID</th>
                                                 <th>商品名</th>
@@ -392,7 +392,8 @@
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm text-left">
                                         <div class="input-group-append">
-                                            <button disabled type="button"  class="btn btn-primary pl-3 pr-3 k1Btn" data-toggle="modal" data-target="#product-discount-select-modal-off">
+                                            <button disabled type="button"  class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2" data-toggle="modal" data-target="#product-discount-select-modal-off"
+                                                    style="color: black !important; background-color:#D0CECE !important;">
                                                 割引内容更新
                                             </button>
                                         </div>
@@ -402,7 +403,7 @@
                             <div class="card-body">
                                 <div class="card-body table-responsive p-0">
                                     <table class="table table-hover text-center productDiscountTable">
-                                        <thead>
+                                        <thead class="k1RegTableTitleBG">
                                             <tr>
                                                 <th>対象商品</th>
                                                 <th>対象店舗</th>
@@ -421,11 +422,11 @@
                 <div class="card-footer">
                     <div class="row mx-auto pb-3" style="max-width: 950px">
                         <div class="col-md-6 pl-0">
-                            <button onclick="contractUpdate()" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 text-bold k1Btn mr-3">
+                            <button onclick="contractUpdate()" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 text-bold k1Btn k1Btn2 mr-3">
                                 登録
                             </button>
-                            <button onclick="" id="menu" class="btn btn-primary pl-3 pr-3 text-bold k1Btn">
-                                <a style="color: #fff" href="/home">メニュー</a>
+                            <button onclick="" id="menu" class="btn btn-primary pl-3 pr-3 text-bold k1Btn k1Btn2">
+                                <a class="k1Btn2" href="/home">メニュー</a>
                             </button>
                         </div>
                         <div class="col-md-6 pr-0 text-right">
