@@ -393,7 +393,7 @@
                 <div class="card-footer">
                     <div class="row mx-auto pb-3" style="max-width: 950px">
                         <div class="col-md-6 pl-0">
-                            <button onclick="contractRegistration()" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 text-bold k1Btn mr-1">
+                            <button onclick="contractRegistration()" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 text-bold k1Btn mr-3">
                                 登録
                             </button>
                             <button onclick="" id="menu" class="btn btn-primary pl-3 pr-3 text-bold k1Btn">

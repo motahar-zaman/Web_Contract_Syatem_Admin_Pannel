@@ -101,7 +101,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" id="contractSearchBtn" class="btn btn-primary text-bold text-center k1Btn mr-1">検索</button>
+                                    <button type="submit" id="contractSearchBtn" class="btn btn-primary text-bold text-center k1Btn mr-3">検索</button>
                                     <button type="button" id="clearSearchFields" class="btn btn-primary text-bold text-center k1Btn">クリア</button>
                                 </div>
                             </form>

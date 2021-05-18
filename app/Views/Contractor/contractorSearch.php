@@ -57,7 +57,7 @@
                                     <label for="exampleInputPassword1">契約者名（あいまい）</label>
                                     <input type="text" class="form-control" id="searchByName" name="searchByName" placeholder="">
                                 </div>
-                                <button type="submit" id="contractorSearch" class="btn btn-primary pl-4 pr-4 k1Btn mr-1">検索</button>
+                                <button type="submit" id="contractorSearch" class="btn btn-primary pl-4 pr-4 k1Btn mr-2">検索</button>
                                 <button type="button" id="clearSearchText" class="btn btn-primary ml-2 k1Btn">条件クリア</button>
                             </div>
                         </form>
