@@ -118,12 +118,12 @@
                             </div>
                             <div class="card-body">
                                 <div class="card-body table-responsive p-0">
-                                    <table class="table text-center productSelectTable">
+                                    <table class="table text-center productSelectTable" >
                                         <thead>
                                             <tr>
                                                 <th>商品ID</th>
                                                 <th>商品名</th>
-                                                <th>商品概要</th>
+                                                <th style="width: 40%">商品概要</th>
                                                 <th>公開開始日</th>
                                                 <th>公開終了日</th>
                                             </tr>

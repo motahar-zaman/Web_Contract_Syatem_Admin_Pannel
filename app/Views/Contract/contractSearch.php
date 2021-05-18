@@ -115,7 +115,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="card-body table-responsive p-0">
-                                    <table class="table table-hover text-center productTable productInfoTable">
+                                    <table class="table table-hover text-center productTable productInfoTable" style="width: 130% !important;">
                                         <thead>
                                             <tr>
                                                 <th>契約ID</th>
