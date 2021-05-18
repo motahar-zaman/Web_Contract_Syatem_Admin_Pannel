@@ -86,7 +86,7 @@
                                         <div class="form-group">
                                             <label for="contractorAddressSearch">住所検索</label>
                                             <div class="select2-purple">
-                                                <button onclick="contractorAddressSearch()" id="contractorAddressSearch" class="btn btn-primary pl-3 pr-3 text-bold">住所検索</button>
+                                                <button onclick="contractorAddressSearch()" id="contractorAddressSearch" class="btn btn-primary pl-3 pr-3 text-bold k1Btn">住所検索</button>
                                             </div>
                                         </div>
                                     </div>
@@ -147,7 +147,7 @@
                                         <div class="form-group">
                                             <label for="companySelect">会社選択</label>
                                             <div class="select2-purple">
-                                                <button type="button" class="btn btn-primary pl-3 pr-3 text-bold" data-toggle="modal" data-target="#company-select-modal">
+                                                <button type="button" class="btn btn-primary pl-3 pr-3 text-bold k1Btn" data-toggle="modal" data-target="#company-select-modal">
                                                     会社選択
                                                 </button>
                                             </div>
@@ -165,7 +165,7 @@
                                         <div class="form-group">
                                             <label for="companyAddressSearch">住所検索</label>
                                             <div class="select2-purple">
-                                                <button  onclick="companyAddressSearch()" id="companyAddressSearch" class="btn btn-primary pl-3 pr-3 text-bold">住所検索</button>
+                                                <button  onclick="companyAddressSearch()" id="companyAddressSearch" class="btn btn-primary pl-3 pr-3 text-bold k1Btn">住所検索</button>
                                             </div>
                                         </div>
                                     </div>
@@ -226,7 +226,7 @@
                                         <div class="form-group">
                                             <label for="groupSelect">グループ選択</label>
                                             <div class="select2-purple">
-                                                <button type="button" class="btn btn-primary pl-3 pr-3 text-bold" data-toggle="modal" data-target="#group-select-modal">
+                                                <button type="button" class="btn btn-primary pl-3 pr-3 text-bold k1Btn" data-toggle="modal" data-target="#group-select-modal">
                                                     グループ選択
                                                 </button>
                                             </div>
@@ -244,7 +244,7 @@
                                         <div class="form-group">
                                             <label for="groupAddressSearch">住所検索</label>
                                             <div class="select2-purple">
-                                                <button onclick="groupAddressSearch()" id="groupAddressSearch" class="btn btn-primary pl-3 pr-3 text-bold">住所検索</button>
+                                                <button onclick="groupAddressSearch()" id="groupAddressSearch" class="btn btn-primary pl-3 pr-3 text-bold k1Btn">住所検索</button>
                                             </div>
                                         </div>
                                     </div>
@@ -274,17 +274,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-footer">
-                        <div class="row">
-                            <div class="col-md-6 text-center">
-                                <button onclick="contractorRegistration()" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 text-bold">登録</button>
-                            </div>
-                            <div class="col-md-6 text-center">
-                                <span>アクセス日時：<?= date("Y/m/d")?>	</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
+              <div class="card-footer">
+                <div class="row mx-auto pb-3" style="max-width: 950px">
+                  <div class="col-md-6 pl-0">
+                    <button onclick="contractorRegistration()" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 text-bold k1Btn mr-1">
+                      登録
+                    </button>
+                  </div>
+                  <div class="col-md-6 pr-0 text-right">
+                    <span>アクセス日時：<?= date("Y/m/d") ?>	</span>
+                  </div>
+                </div>
+              </div>
             </section>
         </div>
 

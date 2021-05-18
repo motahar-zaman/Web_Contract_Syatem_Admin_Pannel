@@ -54,11 +54,11 @@
 
                         <div class="card mt-5 text-left">
                             <div class="card-header">
-                                <h3 class="card-title text-center">【契約者登録】</h3>
+                                <h3 class="card-title text-center mat-1">【契約者登録】</h3>
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm text-left">
                                         <div class="input-group-append">
-                                            <button type="button" class="btn btn-default pl-3 pr-3" data-toggle="modal" data-target="#contractor-select-modal">
+                                            <button type="button" class="btn btn-primary pl-3 pr-3 k1Btn" data-toggle="modal" data-target="#contractor-select-modal">
                                                 契約者選択
                                             </button>
                                         </div>
@@ -94,11 +94,11 @@
 
                         <div class="card mt-5 text-left">
                             <div class="card-header">
-                                <h3 class="card-title text-center">【商品登録】</h3>
+                                <h3 class="card-title text-center mat-1">【商品登録】</h3>
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm text-left">
                                         <div class="input-group-append">
-                                            <button type="button" class="btn btn-default pl-3 pr-3" data-toggle="modal" data-target="#product-select-modal">
+                                            <button type="button" class="btn btn-primary pl-3 pr-3 k1Btn" data-toggle="modal" data-target="#product-select-modal">
                                                 商品選択
                                             </button>
                                         </div>
@@ -127,14 +127,14 @@
                         <div class="mt-5 text-left">【対象店舗登録】</div>
                         <div class="card mt-5 text-left">
                             <div class="card-header">
-                                <h3 class="card-title text-center">
+                                <h3 class="card-title text-center mat-1">
                                     <input name="shop" id="shopCheck" type="radio" value="0"/>
                                     既存店舗から選択
                                 </h3>
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm text-left">
                                         <div class="input-group-append">
-                                            <button type="button" id="mySelect" class="btn btn-default pl-3 pr-3" data-toggle="modal" data-target="#shop-select-modal">
+                                            <button type="button" id="mySelect" class="btn btn-primary pl-3 pr-3 k1Btn" data-toggle="modal" data-target="#shop-select-modal">
                                                 店舗選択
                                             </button>
                                         </div>
@@ -247,7 +247,7 @@
                                         <div class="col-md-6">
                                             <label for="shopAddressSearch">住所検索</label>
                                             <div class="select2-purple">
-                                                <button onclick="shopAddressSearch()" id="shopAddressSearch" class="btn btn-primary pl-3 pr-3 text-bold">住所検索</button>
+                                                <button onclick="shopAddressSearch()" id="shopAddressSearch" class="btn btn-primary pl-3 pr-3 text-bold k1Btn">住所検索</button>
                                             </div>
                                         </div>
                                     </div>
@@ -332,7 +332,7 @@
                             <textarea class="form-control" name="product_registration_remark" type="text" id="product_registration_remark" rows="3"></textarea>
                             <span class="errormsg" id="ProductRegistrationRemarkError"></span>
                         </div>
-                        <button onclick="" id="product_registration" class="btn btn-primary text-bold">商品登録</button>
+                        <button onclick="" id="product_registration" class="btn btn-primary text-bold k1Btn">商品登録</button>
                     </div>
 
                     <div class="gap-2 mx-auto text-center" style="max-width: 950px">
@@ -360,11 +360,11 @@
                         </div>
                         <div class="card mt-5 text-left">
                             <div class="card-header">
-                                <h3 class="card-title text-center">【適用割引サービス一覧】</h3>
+                                <h3 class="card-title text-center mat-1">【適用割引サービス一覧】</h3>
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm text-left">
                                         <div class="input-group-append">
-                                            <button disabled type="button" class="btn btn-default pl-3 pr-3" data-toggle="modal" data-target="#product-discount-select-modal-off">
+                                            <button disabled type="button" class="btn btn-primary pl-3 pr-3 k1Btn" data-toggle="modal" data-target="#product-discount-select-modal-off">
                                                 割引内容更新
                                             </button>
                                         </div>
@@ -393,10 +393,10 @@
                 <div class="card-footer">
                     <div class="row mx-auto pb-3" style="max-width: 950px">
                         <div class="col-md-6 pl-0">
-                            <button onclick="contractRegistration()" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 text-bold">
+                            <button onclick="contractRegistration()" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 text-bold k1Btn mr-1">
                                 登録
                             </button>
-                            <button onclick="" id="menu" class="btn btn-primary pl-3 pr-3 text-bold">
+                            <button onclick="" id="menu" class="btn btn-primary pl-3 pr-3 text-bold k1Btn">
                                 <a style="color: #fff" href="/home">メニュー</a>
                             </button>
                         </div>
