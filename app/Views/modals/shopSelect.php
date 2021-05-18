@@ -18,8 +18,8 @@
                             <label for="shopName">店舗名（あいまい）</label>
                             <input type="text" class="form-control" id="shopName" placeholder="" name="shopName" value="">
                         </div>
-                        <span id="shopSearch" class="btn btn-primary pl-4 pr-4">検索</span>
-                        <span onclick="shopSearchClear()" class="btn btn-primary ml-2">条件クリア</span>
+                        <span id="shopSearch" class="btn btn-primary pl-4 pr-4 k1Btn mr-3">検索</span>
+                        <span onclick="shopSearchClear()" class="btn btn-primary k1Btn">条件クリア</span>
                     </div>
                 </form>
                 <br/>
@@ -57,7 +57,7 @@
                         </tbody>
                     </table>
                 </div>
-                <button type="submit" class="btn btn-primary ml-3 mt-5">選択反映</button>
+                <button type="submit" class="btn btn-primary ml-3 mt-5 k1Btn">選択反映</button>
             </div>
         </div>
     </div>
