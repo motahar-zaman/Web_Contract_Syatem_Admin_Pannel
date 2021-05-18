@@ -71,7 +71,7 @@
                             }
                         }
                         else{
-                            echo "<h3>No data available</h3>";
+                            echo "<h3>データがありません！</h3>";
                         }
                         ?>
                         </tbody>

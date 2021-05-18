@@ -41,23 +41,23 @@
                                 ?>
                                 <tr>
                                     <td onclick="selectedShop(<?php echo $i ?>)" id="selectedShop<?php echo $data->getId() ?>"><a href="#">選択</a></td>
-                                    <td id="shopId<?php echo $i ?>"><?php echo $data->getId() ?></td>
-                                    <td id="shopName<?php echo $i ?>"><?php echo $data->getName() ?></td>
-                                    <td style="display: none" id="shopRepresentativeName<?php echo $i ?>"><?php echo $data->getRepresentativeKana() ?></td>
-                                    <td style="display: none" id="shopPrefecture<?php echo $i ?>"><?php echo $data->getPrefecture() ?></td>
-                                    <td id="shopAddress<?php echo $i ?>"><?php echo $data->getAddress01() ?></td>
-                                    <td style="display: none" id="shopPhoneNumber<?php echo $i ?>"><?php echo $data->getTelNo() ?></td>
+                                    <td id="shopIdM<?php echo $i ?>"><?php echo $data->getId() ?></td>
+                                    <td id="shopNameM<?php echo $i ?>"><?php echo $data->getName() ?></td>
+                                    <td style="display: none" id="shopRepresentativeNameM<?php echo $i ?>"><?php echo $data->getRepresentativeKana() ?></td>
+                                    <td style="display: none" id="shopPrefectureM<?php echo $i ?>"><?php echo $data->getPrefecture() ?></td>
+                                    <td id="shopAddressM<?php echo $i ?>"><?php echo $data->getAddress01() ?></td>
+                                    <td style="display: none" id="shopPhoneNumberM<?php echo $i ?>"><?php echo $data->getTelNo() ?></td>
                                 </tr>
                                 <?php
                             }
                         } else {
-                            echo "<h3>No data available</h3>";
+                            echo "<h3>データがありません！</h3>";
                         }
                         ?>
                         </tbody>
                     </table>
                 </div>
-                <button type="submit" class="btn btn-primary ml-3 mt-5 k1Btn">選択反映</button>
+                <button type="submit" class="btn btn-primary ml-3 mt-5 k1Btn"  data-dismiss="modal" aria-label="Close">選択反映</button>
             </div>
         </div>
     </div>

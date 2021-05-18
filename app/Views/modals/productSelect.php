@@ -60,13 +60,13 @@
                                 <?php
                             }
                         } else {
-                            echo "<h3>No data available</h3>";
+                            echo "<h3>データがありません！</h3>";
                         }
                         ?>
                         </tbody>
                     </table>
                 </div>
-                <button type="submit" class="btn btn-primary ml-3 mt-5 k1Btn">選択反映</button>
+                <button type="submit" class="btn btn-primary ml-3 mt-5 k1Btn" data-dismiss="modal" aria-label="Close">選択反映</button>
             </div>
         </div>
     </div>

@@ -68,7 +68,7 @@
 
                             <div class="card-body">
                                 <div class="card-body table-responsive p-0">
-                                    <table class="table text-center">
+                                    <table class="table text-center contractorSelectTable">
                                         <thead>
                                             <tr>
                                                 <th>契約者ID</th>
@@ -79,13 +79,13 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td id="contractorId"></td>
-                                                <td id="contractorName"></td>
-                                                <td id="contractorAddress1"></td>
-                                                <td id="contractorPhn"></td>
-                                                <td id="contractorMail"></td>
-                                            </tr>
+<!--                                            <tr>-->
+<!--                                                <td id="contractorId"></td>-->
+<!--                                                <td id="contractorName"></td>-->
+<!--                                                <td id="contractorAddress1"></td>-->
+<!--                                                <td id="contractorPhn"></td>-->
+<!--                                                <td id="contractorMail"></td>-->
+<!--                                            </tr>-->
                                         </tbody>
                                     </table>
                                 </div>
@@ -128,7 +128,7 @@
                         <div class="card mt-5 text-left">
                             <div class="card-header">
                                 <h3 class="card-title text-center mat-1">
-                                    <input name="shop" id="shopCheck" type="radio" value="0"/>
+                                    <input name="shop" id="shopCheck" type="radio" value="0" onchange="shopTypeCheck()"/>
                                     既存店舗から選択
                                 </h3>
                                 <div class="card-tools">
@@ -143,7 +143,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="card-body table-responsive p-0">
-                                    <table class="table text-center">
+                                    <table class="table text-center shopSelectTable">
                                         <thead>
                                             <tr>
                                                 <th>店舗ID</th>
@@ -155,14 +155,14 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td id="shopId"></td>
-                                                <td id="shopName"></td>
-                                                <td id="shopRepresentativeName"></td>
-                                                <td id="shopPrefecture"></td>
-                                                <td id="shopAddress"></td>
-                                                <td id="shopPhoneNumber"></td>
-                                            </tr>
+<!--                                            <tr>-->
+<!--                                                <td id="shopId"></td>-->
+<!--                                                <td id="shopName"></td>-->
+<!--                                                <td id="shopRepresentativeName"></td>-->
+<!--                                                <td id="shopPrefecture"></td>-->
+<!--                                                <td id="shopAddress"></td>-->
+<!--                                                <td id="shopPhoneNumber"></td>-->
+<!--                                            </tr>-->
                                         </tbody>
                                     </table>
                                 </div>
@@ -174,154 +174,149 @@
                         <div class="card mt-5 text-left">
                             <div class="card-header">
                                 <h3 class="card-title text-center">
-                                    <input name="shop" id="shopCheck2" type="radio" value="1" />
+                                    <input name="shop" id="shopCheck2" type="radio" value="1" onchange="shopTypeCheck()"/>
                                     店舗を新規登録
                                 </h3>
                             </div>
                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div id="mySelect">
-                                            <div class="form-group " >
-                                                <label for="inputEmail3">店舗名</label>
-                                                <input type="text" class="form-control " name="shop_name" id="shop_name">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputEmail3" >地域</label>
-                                            <select name="district" id="district" class="form-control">
-                                                <?php foreach ($districts as $district) { ?>
-                                                <option value="<?php echo $district->getId() ?>"><?php echo $district->getareaName() ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputEmail3" >大エリア</label>
-                                            <select name="area_large" id="area_large" class="form-control">
-                                                <?php foreach ($areaLarges as $areaLarge) { ?>
-                                                    <option value="<?php echo $areaLarge->getId() ?>"><?php echo $areaLarge->getname() ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputEmail3">詳細エリア</label>
-                                            <select name="area" id="area" class="form-control">
-                                                <?php foreach ($areas as $area) { ?>
-                                                    <option value="<?php echo $area->getId() ?>"><?php echo $area->getname() ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="inputEmail3" >店舗名カナ</label>
-                                            <input type="text" class="form-control" name="shop_name_kana"
-                                                   id="shop_name_kana">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputEmail3" >都道府県</label>
-                                            <select name="prefecture" id="prefecture" class="form-control">
-                                                <?php foreach ($prefectures as $prefecture) { ?>
-                                                    <option value="<?php echo $prefecture->getId() ?>"><?php echo $prefecture->getname() ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputEmail3" >小エリア</label>
-                                            <select name="area_small" id="area_small" class="form-control">
-                                                <?php foreach ($areaSmalls as $areaSmall) { ?>
-                                                    <option value="<?php echo $areaSmall->getId() ?>"><?php echo $areaSmall->getname() ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="inputEmail3" >郵便番号</label>
-                                            <input type="text" name="postCode" class="form-control" id="postCode">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
+                                <div class="row " id="shopInputFields">
                                         <div class="col-md-6">
-                                            <label for="shopAddressSearch">住所検索</label>
-                                            <div class="select2-purple">
-                                                <button onclick="shopAddressSearch()" id="shopAddressSearch" class="btn btn-primary pl-3 pr-3 text-bold k1Btn">住所検索</button>
+                                            <div id="mySelect">
+                                                <div class="form-group " >
+                                                    <label for="inputEmail3">店舗名</label>
+                                                    <input type="text" class="form-control " name="shop_name" id="shop_name">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail3" >地域</label>
+                                                <select name="district" id="district" class="form-control">
+                                                    <?php foreach ($districts as $district) { ?>
+                                                    <option value="<?php echo $district->getId() ?>"><?php echo $district->getareaName() ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail3" >大エリア</label>
+                                                <select name="area_large" id="area_large" class="form-control">
+                                                    <?php foreach ($areaLarges as $areaLarge) { ?>
+                                                        <option value="<?php echo $areaLarge->getId() ?>"><?php echo $areaLarge->getname() ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail3">詳細エリア</label>
+                                                <select name="area" id="area" class="form-control">
+                                                    <?php foreach ($areas as $area) { ?>
+                                                        <option value="<?php echo $area->getId() ?>"><?php echo $area->getname() ?></option>
+                                                    <?php } ?>
+                                                </select>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="inputEmail3" >住所０１</label>
-                                            <input class="form-control" name="address1"
-                                                   type="text" id="address1">
-                                            <span class="errormsg" id="Address1Error"></span>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="inputEmail3" >店舗名カナ</label>
+                                                <input type="text" class="form-control" name="shop_name_kana" id="shop_name_kana">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail3" >都道府県</label>
+                                                <select name="prefecture" id="prefecture" class="form-control">
+                                                    <?php foreach ($prefectures as $prefecture) { ?>
+                                                        <option value="<?php echo $prefecture->getId() ?>"><?php echo $prefecture->getname() ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail3" >小エリア</label>
+                                                <select name="area_small" id="area_small" class="form-control">
+                                                    <?php foreach ($areaSmalls as $areaSmall) { ?>
+                                                        <option value="<?php echo $areaSmall->getId() ?>"><?php echo $areaSmall->getname() ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="inputEmail3">住所０２</label>
-                                            <input class="form-control" name="address2"
-                                                   type="text" id="address2">
-                                            <span class="errormsg" id="Address2Error"></span>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="inputEmail3" >郵便番号</label>
+                                                <input type="text" name="postCode" class="form-control" id="postCode">
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="inputEmail3" >電話番号</label>
-                                            <input class="form-control" name="phone_number"
-                                                   type="text" id="phone_number">
-                                            <span class="errormsg" id="PhoneNumberError"></span>
+                                        <div class="col-md-6">
+                                            <div class="col-md-6">
+                                                <label for="shopAddressSearch">住所検索</label>
+                                                <div class="select2-purple">
+                                                    <button onclick="shopAddressSearch()" id="shopAddressSearch" class="btn btn-primary pl-3 pr-3 text-bold k1Btn">住所検索</button>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="inputEmail3" >メールアドレス</label>
-                                            <input class="form-control" name="mail_address"
-                                                   type="text" id="mail_address">
-                                            <span class="errormsg" id="PhoneNumberError"></span>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="inputEmail3" >住所０１</label>
+                                                <input class="form-control" name="address1"
+                                                       type="text" id="address1">
+                                                <span class="errormsg" id="Address1Error"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail3">住所０２</label>
+                                                <input class="form-control" name="address2"
+                                                       type="text" id="address2">
+                                                <span class="errormsg" id="Address2Error"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail3" >電話番号</label>
+                                                <input class="form-control" name="phone_number"
+                                                       type="text" id="phone_number">
+                                                <span class="errormsg" id="PhoneNumberError"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail3" >メールアドレス</label>
+                                                <input class="form-control" name="mail_address"
+                                                       type="text" id="mail_address">
+                                                <span class="errormsg" id="PhoneNumberError"></span>
+                                            </div>
                                         </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="inputEmail3">代表者名</label>
-                                            <input class="form-control" name="representative_name" type="text"
-                                                   id="representative_name">
-                                            <span class="errormsg" id="MailAddressError"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="inputEmail3" >代表者名カナ</label>
-                                            <input class="form-control" name="rep_name_kana" type="text" id="rep_name_kana">
-                                            <span class="errormsg" id="MailAddressError"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="inputEmail3" >店舗サイトURL</label>
-                                            <input class="form-control" name="shop_site_url" type="text" id="shop_site_url">
-                                            <span class="errormsg" id="MailAddressError"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="inputEmail3" >業態</label>
-                                            <select name="BusinessType" id="BusinessType" class="form-control">
-                                                <option>option 1</option>
-                                                <option>option 2</option>
-                                                <option>option 3</option>
-                                                <option>option 4</option>
-                                                <option>option 5</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="notification_letter">届出書</label>
-                                            <div class="col-sm-12">
-                                                <input class="form-control h-auto" type="file" id="notification_letter" name="notification_letter">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="inputEmail3">代表者名</label>
+                                                <input class="form-control" name="representative_name" type="text"
+                                                       id="representative_name">
                                                 <span class="errormsg" id="MailAddressError"></span>
                                             </div>
                                         </div>
-                                    </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="inputEmail3" >代表者名カナ</label>
+                                                <input class="form-control" name="rep_name_kana" type="text" id="rep_name_kana">
+                                                <span class="errormsg" id="MailAddressError"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="inputEmail3" >店舗サイトURL</label>
+                                                <input class="form-control" name="shop_site_url" type="text" id="shop_site_url">
+                                                <span class="errormsg" id="MailAddressError"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="inputEmail3" >業態</label>
+                                                <select name="BusinessType" id="BusinessType" class="form-control">
+                                                    <option>option 1</option>
+                                                    <option>option 2</option>
+                                                    <option>option 3</option>
+                                                    <option>option 4</option>
+                                                    <option>option 5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="notification_letter">届出書</label>
+                                                <div class="col-sm-12">
+                                                    <input class="form-control h-auto" type="file" id="notification_letter" name="notification_letter" style="margin-left: -5px;">
+                                                    <span class="errormsg" id="MailAddressError"></span>
+                                                </div>
+                                            </div>
+                                        </div>
                                 </div>
                             </div>
                         </div>
@@ -407,7 +402,9 @@
                 </div>
             </section>
         </div>
+        <script>
 
+        </script>
         <script type="text/javascript" src="../../js/contractRegistration.js"></script>
         <!-- jQuery -->
         <script src="../../plugins/jquery/jquery.min.js"></script>

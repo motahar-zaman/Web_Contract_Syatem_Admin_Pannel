@@ -43,11 +43,11 @@
                                         ?>
                                         <tr>
                                             <td onclick="selectedContractor(<?php echo $i ?>)" id="selectedContractor<?php echo $data->getId() ?>"><a href="#">選択</a></td>
-                                            <td id="contractorId<?php echo $i ?>"><?php echo $data->getId() ?></td>
-                                            <td id="contractorName<?php echo $i ?>"><?php echo $data->getName() ?></td>
-                                            <td id="contractorAddress1<?php echo $i ?>"><?php echo $data->getAddress01() ?></td>
-                                            <td id="contractorPhn<?php echo $i ?>"><?php echo $data->getTelNo() ?></td>
-                                            <td id="contractorMail<?php echo $i ?>"><?php echo $data->getMailAddress() ?></td>
+                                            <td id="contractorIdM<?php echo $i ?>"><?php echo $data->getId() ?></td>
+                                            <td id="contractorNameM<?php echo $i ?>"><?php echo $data->getName() ?></td>
+                                            <td id="contractorAddress1M<?php echo $i ?>"><?php echo $data->getAddress01() ?></td>
+                                            <td id="contractorPhnM<?php echo $i ?>"><?php echo $data->getTelNo() ?></td>
+                                            <td id="contractorMailM<?php echo $i ?>"><?php echo $data->getMailAddress() ?></td>
                                         </tr>
                                         <input id="contractorNameKana<?php echo $i ?>" type="hidden" value="<?php echo $data->getNameKana() ?>">
                                         <input id="contractorPostCode<?php echo $i ?>" type="hidden" value="<?php echo $data->getZipCode() ?>">
@@ -56,7 +56,7 @@
                                     }
                                 }
                                 else{
-                                    echo "<h3>No data available</h3>";
+                                    echo "<h3>データがありません！</h3>";
                                 }
                             ?>
                         </tbody>

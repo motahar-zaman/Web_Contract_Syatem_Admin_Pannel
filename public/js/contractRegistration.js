@@ -14,11 +14,24 @@ function contractorSearchClear(){
 }
 
 function selectedContractor(data) {
-    $("#contractorId").html($("#contractorId" + data).html());
-    $("#contractorName").html($("#contractorName" + data).html());
-    $("#contractorAddress1").html($("#contractorAddress1" + data).html());
-    $("#contractorPhn").html($("#contractorPhn" + data).html());
-    $("#contractorMail").html($("#contractorMail" + data).html());
+    let contractorId = $("#contractorIdM" + data).html();
+    let contractorName = $("#contractorNameM" + data).html();
+    let contractorAddress1 = $("#contractorAddress1M" + data).html();
+    let contractorPhn = $("#contractorPhnM" + data).html();
+    let contractorMail = $("#contractorMailM" + data).html();
+
+    //Push Data To the product contract table
+    var markup = "<tr><td id=\"contractorId\">" + contractorId + "</td><td id=\"contractorName\">" + contractorName + "</td><td id=\"contractorAddress1\">"
+        + contractorAddress1 + "</td><td id=\"contractorPhn\">" + contractorPhn + "</td><td id=\"contractorMail\">" + contractorMail +
+        "</td></tr>";
+    $(".contractorSelectTable tbody").html(markup);
+
+
+    // $("#contractorId").html($("#contractorIdM" + data).html());
+    // $("#contractorName").html($("#contractorNameM" + data).html());
+    // $("#contractorAddress1").html($("#contractorAddress1M" + data).html());
+    // $("#contractorPhn").html($("#contractorPhnM" + data).html());
+    // $("#contractorMail").html($("#contractorMailM" + data).html());
 }
 
 function selectedProduct(data) {
@@ -46,6 +59,7 @@ function selectedProduct(data) {
     let productDiscountNoteId = 'productDiscountNote' + datalen;
     let productDiscountStartDateId = 'productDiscountStartDate' + datalen;
     let productDiscountEndDateId = 'productDiscountEndDate' + datalen;
+
     var markup = "<tr><td onclick=\'productDiscount("+ datalen +")\'><a href='#'><p id='" + productDiscountId + "'>" + productId + "</p></a></td><td id='" + productDiscountNameId + "'>" + productName + "</td><td id='" + productDiscountNoteId + "'>" + productNote + "</td><td id='" + productDiscountStartDateId + "'>" + productPeriodStartDate + "</td><td id='" + productDiscountEndDateId + "'>" + productPeriodEndDate + "</td></tr>";
     $(".productDiscountTableModal tbody").append(markup);
 }
@@ -63,12 +77,25 @@ function productDiscount(data) {
 }
 
 function selectedShop(data) {
-    $("#shopId").html($("#shopId" + data).html());
-    $("#shopName").html($("#shopName" + data).html());
-    $("#shopRepresentativeName").html($("#shopRepresentativeName" + data).html());
-    $("#shopPrefecture").html($("#shopPrefecture" + data).html());
-    $("#shopAddress").html($("#shopAddress" + data).html());
-    $("#shopPhoneNumber").html($("#shopPhoneNumber" + data).html());
+    let shopId = $("#shopIdM" + data).html();
+    let shopName = $("#shopNameM" + data).html();
+    let shopRepresentativeName = $("#shopRepresentativeNameM" + data).html();
+    let shopPrefecture = $("#shopPrefectureM" + data).html();
+    let shopAddress = $("#shopAddressM" + data).html();
+    let shopPhoneNumber = $("#shopPhoneNumberM" + data).html();
+
+    //Push Data To the product contract table
+    var markup = "<tr><td id=\"shopId\">" + shopId + "</td><td id=\"shopName\">" + shopName + "</td><td id=\"shopRepresentativeName\">"
+        + shopRepresentativeName + "</td><td id=\"shopPrefecture\">" + shopPrefecture + "</td><td id=\"shopAddress\">" + shopAddress + "</td><td id=\"shopPhoneNumber\">" + shopPhoneNumber +
+        "</td></tr>";
+    $(".shopSelectTable tbody").html(markup);
+
+    // $("#shopId").html($("#shopId" + data).html());
+    // $("#shopName").html($("#shopName" + data).html());
+    // $("#shopRepresentativeName").html($("#shopRepresentativeName" + data).html());
+    // $("#shopPrefecture").html($("#shopPrefecture" + data).html());
+    // $("#shopAddress").html($("#shopAddress" + data).html());
+    // $("#shopPhoneNumber").html($("#shopPhoneNumber" + data).html());
 }
 
 function disable() {
@@ -189,4 +216,18 @@ function shopAddressSearch() {
             console.log(XMLHttpRequest);
         }
     });
+}
+function shopTypeCheck() {
+    var shopType = document.querySelector('input[name="shop"]:checked').value;
+    if (shopType == 0){
+        $('#shopInputFields :input').attr('disabled', true);
+        $('#shopInputFields :button').attr('disabled', true);
+        $('#mySelect').prop('disabled', false);
+
+    }
+    if (shopType == 1){
+        $('#shopInputFields :input').attr('disabled', false);
+        $('#shopInputFields :button').attr('disabled', false);
+        $('#mySelect').prop('disabled', true);
+    }
 }
