@@ -101,8 +101,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" id="contractSearchBtn" class="btn btn-primary text-bold text-center k1Btn k1Btn2 mr-3">検索</button>
-                                    <button type="button" id="clearSearchFields" class="btn btn-primary text-bold text-center k1Btn k1Btn2">クリア</button>
+                                    <button type="submit" id="contractSearchBtn" class="btn btn-primary text-center k1Btn k1Btn2 mr-3">検索</button>
+                                    <button type="button" id="clearSearchFields" class="btn btn-primary text-center k1Btn k1Btn2">クリア</button>
                                 </div>
                             </form>
                         </div>
@@ -160,7 +160,7 @@
                     </div>
 
                     <div class="gap-2 mx-auto mt-3 mb-4 " style="max-width: 950px !important;">
-                        <button onclick="" id="menu" class="btn btn-primary pl-3 pr-3 text-bold k1Btn k1Btn2">
+                        <button onclick="" id="menu" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2">
                             <a class="k1Btn2" href="/home">メニュー</a>
                         </button>
                     </div>

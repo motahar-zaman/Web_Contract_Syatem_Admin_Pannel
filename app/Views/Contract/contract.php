@@ -244,7 +244,7 @@
                                             <div class="col-md-6">
                                                 <label for="shopAddressSearch">住所検索</label>
                                                 <div class="select2-purple">
-                                                    <button onclick="shopAddressSearch()" id="shopAddressSearch" class="btn btn-primary pl-3 pr-3 text-bold k1Btn k1Btn2">住所検索</button>
+                                                    <button onclick="shopAddressSearch()" id="shopAddressSearch" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2">住所検索</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -327,7 +327,7 @@
                             <textarea class="form-control" name="product_registration_remark" type="text" id="product_registration_remark" rows="3"></textarea>
                             <span class="errormsg" id="ProductRegistrationRemarkError"></span>
                         </div>
-                        <button onclick="" id="product_registration" class="btn btn-primary text-bold k1Btn k1Btn2">商品登録</button>
+                        <button onclick="" id="product_registration" class="btn btn-primary k1Btn k1Btn2">商品登録</button>
                     </div>
 
                     <div class="gap-2 mx-auto text-center" style="max-width: 950px">
@@ -389,10 +389,10 @@
                 <div class="card-footer">
                     <div class="row mx-auto pb-3" style="max-width: 950px">
                         <div class="col-md-6 pl-0">
-                            <button onclick="contractRegistration()" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 text-bold k1Btn k1Btn2 mr-3">
+                            <button onclick="contractRegistration()" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3">
                                 登録
                             </button>
-                            <button onclick="" id="menu" class="btn btn-primary pl-3 pr-3 text-bold k1Btn k1Btn2">
+                            <button onclick="" id="menu" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2">
                                 <a class="k1Btn2" href="/home">メニュー</a>
                             </button>
                         </div>

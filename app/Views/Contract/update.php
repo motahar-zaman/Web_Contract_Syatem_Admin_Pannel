@@ -286,7 +286,7 @@
                                         <div class="col-md-6">
                                             <label for="shopAddressSearch">住所検索</label>
                                             <div class="select2-purple">
-                                                <button onclick="shopAddressSearch()" id="shopAddressSearch" class="btn btn-primary pl-3 pr-3 text-bold k1Btn k1Btn2">住所検索</button>
+                                                <button onclick="shopAddressSearch()" id="shopAddressSearch" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2">住所検索</button>
                                             </div>
                                         </div>
                                     </div>
@@ -353,7 +353,7 @@
                                         <div class="form-group">
                                             <label for="inputEmail3">届出書</label>
                                             <div class="col-sm-12">
-                                                <input class="form-control h-auto" type="file" id="notification_letter" name="notification_letter">
+                                                <input class="form-control h-auto custom-file-input" type="file" id="notification_letter" name="notification_letter">
                                                 <span class="errormsg" id="MailAddressError"></span>
                                             </div>
                                         </div>
@@ -422,10 +422,10 @@
                 <div class="card-footer">
                     <div class="row mx-auto pb-3" style="max-width: 950px">
                         <div class="col-md-6 pl-0">
-                            <button onclick="contractUpdate()" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 text-bold k1Btn k1Btn2 mr-3">
+                            <button onclick="contractUpdate()" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3">
                                 登録
                             </button>
-                            <button onclick="" id="menu" class="btn btn-primary pl-3 pr-3 text-bold k1Btn k1Btn2">
+                            <button onclick="" id="menu" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2">
                                 <a class="k1Btn2" href="/home">メニュー</a>
                             </button>
                         </div>

@@ -33,4 +33,10 @@ class ContractorController extends BaseController
             return redirect()->to("/login");
         }
     }
+    public function contractorDetails(){
+        if( session() && session()->get('login') ){
+
+            return view("Contractor/contractorDetails");
+        }
+    }
 }
