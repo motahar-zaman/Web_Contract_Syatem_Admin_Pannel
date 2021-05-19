@@ -136,7 +136,7 @@
                                                     $shop = $contract->getShopDetail();
                                                     ?>
                                                     <tr>
-                                                        <td><?php echo $contract->getId() ?></td>
+                                                        <td><a href='<?php echo base_url();?>/contract-details/<?php echo $contract->getId() ?>'><?php echo $contract->getId() ?></a></td>
                                                         <td>ぴゅあらば</td>
                                                         <td><?php echo $shop->getName() ?></td>
                                                         <td><?php echo $shop->getAddress01() ?></td>

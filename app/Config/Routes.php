@@ -72,4 +72,4 @@ $routes->post('contract-registration', 'Contract\RegistrationController::registr
 $routes->get('contract-update', 'Contract\RegistrationController::update');
 $routes->post('contract-update', 'Contract\RegistrationController::updateAction');
 $routes->get('contract-search', 'Contract\ContractController::contractSearch');
-$routes->get('contract-details', 'Contract\ContractController::contractDetails');
+$routes->get('contract-details/(:any)', 'Contract\ContractController::contractDetails/$1');
