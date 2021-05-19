@@ -44,4 +44,10 @@ class ContractController extends BaseController
             return redirect()->to("/login");
         }
     }
+    public function contractDetails(){
+        if( session() && session()->get('login') ){
+
+            return view("Contract/contractDetails", ["title" => "Contract Details"]);
+        }
+    }
 }
