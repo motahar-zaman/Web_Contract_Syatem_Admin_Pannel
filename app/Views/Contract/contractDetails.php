@@ -45,8 +45,7 @@
                 </div>
             </div>
             <div class="underline mt-2"></div>
-
-            <!--            Details Body Start-->
+            <!--Details Body Start-->
 
             <div class="gap-2 mx-auto text-center" style="max-width: 950px">
                 <div class="card mt-5 text-left">
@@ -274,13 +273,13 @@
                     </div>
                 </div>
             </div>
+
             <div class="form-group gap-2 mx-auto" style="max-width: 950px">
                 <button onclick="" id="product_registration" class="btn btn-primary k1Btn k1Btn2">契約修正</button>
             </div>
 
 
-            <!--            Details Body End-->
-
+            <!--Details Body End-->
         </div>
         <div class="card-footer">
             <div class="row mx-auto pb-3" style="max-width: 950px">
