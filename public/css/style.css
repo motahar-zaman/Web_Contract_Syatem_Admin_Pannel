@@ -58,7 +58,6 @@
     border-color: rgba(100, 100, 100, 0);
 }
 .k1Btn2:focus, .k1Btn2:active:focus, .k1Btn2.active:focus{
-/*.k1Btn2:focus{*/
     color: black !important;
     background-color: #D0CECE !important;
     outline: none !important;

@@ -36,7 +36,7 @@ class ContractorController extends BaseController
     public function contractorDetails(){
         if( session() && session()->get('login') ){
 
-            return view("Contractor/contractorDetails");
+            return view("Contractor/contractorDetails", ["title" => "Contract Details"]);
         }
     }
 }
