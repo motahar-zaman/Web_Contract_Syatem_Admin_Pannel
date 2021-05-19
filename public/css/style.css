@@ -108,4 +108,6 @@ input[type="text"]:read-only {
     background-color: #fff;
     color: black;
 }
-
+input[type=text]:focus {
+    border: 1px solid #ced4da;
+}

@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="../../plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <div class="wrapper">
@@ -60,40 +60,40 @@
                                 <div id="mySelect">
                                     <div class="form-group " >
                                         <label>契約者ID</label>
-                                        <input type="text" class="form-control " name="contractorDetailsId" id="contractorDetailsId">
+                                        <input type="text" class="form-control " name="contractorDetailsId" id="contractorDetailsId" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>契約者名</label>
-                                    <input type="text" name="contractorDetailsName" id="contractorDetailsName" class="form-control">
+                                    <input type="text" name="contractorDetailsName" id="contractorDetailsName" class="form-control" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>郵便番号</label>
-                                    <input type="text" name="contractorDetailsPostcode" id="contractorDetailsPostcode" class="form-control">
+                                    <input type="text" name="contractorDetailsPostcode" id="contractorDetailsPostcode" class="form-control" readonly>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>契約者名カナ</label>
-                                    <input type="text" class="form-control" name="contractorDetailsContractor" id="contractorDetailsContractor">
+                                    <input type="text" class="form-control" name="contractorDetailsContractor" id="contractorDetailsContractor" readonly>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>住所１</label>
-                                    <input class="form-control" name="contractorDetailsAddress1" type="text" id="contractorDetailsAddress1">
+                                    <input class="form-control" name="contractorDetailsAddress1" type="text" id="contractorDetailsAddress1" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>住所２</label>
-                                    <input class="form-control" name="contractorDetailsAddress2" type="text" id="contractorDetailsAddress2">
+                                    <input class="form-control" name="contractorDetailsAddress2" type="text" id="contractorDetailsAddress2" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>電話番号</label>
-                                    <input class="form-control" name="contractorDetailsPhoneNumber" type="text" id="contractorDetailsPhoneNumber">
+                                    <input class="form-control" name="contractorDetailsPhoneNumber" type="text" id="contractorDetailsPhoneNumber" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>メールアドレス</label>
-                                    <input class="form-control" name="contractorDetailsMailAddress" type="text" id="contractorDetailsMailAddress">
+                                    <input class="form-control" name="contractorDetailsMailAddress" type="text" id="contractorDetailsMailAddress" readonly>
                                 </div>
                             </div>
                             <button onclick="" id="contractorDetailsBtn" class="btn btn-primary ml-2 k1Btn k1Btn2">契約者修正</button>
@@ -115,48 +115,48 @@
                                 <div id="mySelect">
                                     <div class="form-group " >
                                         <label>会社ID</label>
-                                        <input type="text" class="form-control " name="contractorDetailsComId" id="contractorDetailsComId">
+                                        <input type="text" class="form-control " name="contractorDetailsComId" id="contractorDetailsComId" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>会社名</label>
-                                    <input type="text" name="contractorDetailsComName" id="contractorDetailsComName" class="form-control">
+                                    <input type="text" name="contractorDetailsComName" id="contractorDetailsComName" class="form-control" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>代表者名</label>
-                                    <input type="text" name="contractorDetailsComRepName" id="contractorDetailsComRepName" class="form-control">
+                                    <input type="text" name="contractorDetailsComRepName" id="contractorDetailsComRepName" class="form-control" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>郵便番号</label>
-                                    <input type="text" name="contractorDetailsComPostCode" id="contractorDetailsComPostCode" class="form-control">
+                                    <input type="text" name="contractorDetailsComPostCode" id="contractorDetailsComPostCode" class="form-control" readonly>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>会社名カナ</label>
-                                    <input type="text" class="form-control" name="contractorDetailsComName2" id="contractorDetailsComName2">
+                                    <input type="text" class="form-control" name="contractorDetailsComName2" id="contractorDetailsComName2" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>代表者名カナ</label>
-                                    <input type="text" class="form-control" name="contractorDetailsComRepName2" id="contractorDetailsComRepName2">
+                                    <input type="text" class="form-control" name="contractorDetailsComRepName2" id="contractorDetailsComRepName2" readonly>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>住所１</label>
-                                    <input class="form-control" name="contractorDetailsComAddress1" type="text" id="contractorDetailsComAddress1">
+                                    <input class="form-control" name="contractorDetailsComAddress1" type="text" id="contractorDetailsComAddress1" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>住所２</label>
-                                    <input class="form-control" name="contractorDetailsComAddress2" type="text" id="contractorDetailsComAddress2">
+                                    <input class="form-control" name="contractorDetailsComAddress2" type="text" id="contractorDetailsComAddress2" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>電話番号</label>
-                                    <input class="form-control" name="contractorDetailsComPhoneNumber" type="text" id="contractorDetailsComPhoneNumber">
+                                    <input class="form-control" name="contractorDetailsComPhoneNumber" type="text" id="contractorDetailsComPhoneNumber" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>メールアドレス</label>
-                                    <input class="form-control" name="contractorDetailsComMailAddress" type="text" id="contractorDetailsComMailAddress">
+                                    <input class="form-control" name="contractorDetailsComMailAddress" type="text" id="contractorDetailsComMailAddress" readonly>
                                 </div>
                             </div>
                             <button onclick="" id="contractorDetailsComUpdate" class="btn btn-primary ml-2 k1Btn k1Btn2">会社修正</button>
@@ -178,48 +178,48 @@
                                 <div id="mySelect">
                                     <div class="form-group " >
                                         <label>グループID</label>
-                                        <input type="text" class="form-control " name="contractorDetailsGrpId" id="contractorDetailsGrpId">
+                                        <input type="text" class="form-control " name="contractorDetailsGrpId" id="contractorDetailsGrpId" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>グループ名</label>
-                                    <input type="text" name="contractorDetailsGrpName" id="contractorDetailsGrpName" class="form-control">
+                                    <input type="text" name="contractorDetailsGrpName" id="contractorDetailsGrpName" class="form-control" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>代表者名</label>
-                                    <input type="text" name="contractorDetailsGrpRepName" id="contractorDetailsGrpRepName" class="form-control">
+                                    <input type="text" name="contractorDetailsGrpRepName" id="contractorDetailsGrpRepName" class="form-control" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>郵便番号</label>
-                                    <input type="text" name="contractorDetailsGrpPostCode" id="contractorDetailsGrpPostCode" class="form-control">
+                                    <input type="text" name="contractorDetailsGrpPostCode" id="contractorDetailsGrpPostCode" class="form-control" readonly>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>グループ名カナ</label>
-                                    <input type="text" class="form-control" name="contractorDetailsGrpName2" id="contractorDetailsGrpName2">
+                                    <input type="text" class="form-control" name="contractorDetailsGrpName2" id="contractorDetailsGrpName2" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>代表者名カナ</label>
-                                    <input type="text" class="form-control" name="contractorDetailsGrpRepName2" id="contractorDetailsGrpRepName2">
+                                    <input type="text" class="form-control" name="contractorDetailsGrpRepName2" id="contractorDetailsGrpRepName2" readonly>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>住所１</label>
-                                    <input class="form-control" name="contractorDetailsGrpAddress1" type="text" id="contractorDetailsGrpAddress1">
+                                    <input class="form-control" name="contractorDetailsGrpAddress1" type="text" id="contractorDetailsGrpAddress1" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>住所２</label>
-                                    <input class="form-control" name="contractorDetailsGrpAddress2" type="text" id="contractorDetailsGrpAddress2">
+                                    <input class="form-control" name="contractorDetailsGrpAddress2" type="text" id="contractorDetailsGrpAddress2" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>電話番号</label>
-                                    <input class="form-control" name="contractorDetailsGrpPhoneNumber" type="text" id="contractorDetailsGrpPhoneNumber">
+                                    <input class="form-control" name="contractorDetailsGrpPhoneNumber" type="text" id="contractorDetailsGrpPhoneNumber" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>メールアドレス</label>
-                                    <input class="form-control" name="contractorDetailsGrpMailAddress" type="text" id="contractorDetailsGrpMailAddress">
+                                    <input class="form-control" name="contractorDetailsGrpMailAddress" type="text" id="contractorDetailsGrpMailAddress" readonly>
                                 </div>
                             </div>
                             <button onclick="" id="contractorDetailsGrpUpdate" class="btn btn-primary ml-2 k1Btn k1Btn2">グループ修正</button>
