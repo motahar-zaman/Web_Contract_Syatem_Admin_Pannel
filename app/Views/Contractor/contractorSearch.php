@@ -66,7 +66,7 @@
                             <table class="table table-head-fixed text-nowrap ml-1">
                                 <thead>
                                 <tr>
-                                    <th>選択</th>
+                                    <th class="d-none">選択</th>
                                     <th>契約者ID</th>
                                     <th>契約者名	</th>
                                     <th>住所</th>
@@ -81,8 +81,8 @@
                                         $data = $contractor[$i];
                                         ?>
                                         <tr>
-                                            <td onclick="selectedContractor(<?php echo $i ?>)" id="selectedContractor<?php echo $data->getId() ?>"><a href="#">選択</a></td>
-                                            <td id="contractorId<?php echo $i ?>"><?php echo $data->getId() ?></td>
+                                            <td class="d-none" onclick="selectedContractor(<?php echo $i ?>)" id="selectedContractor<?php echo $data->getId() ?>"><a href="#">選択</a></td>
+                                            <td id="contractorId<?php echo $i ?>"><a href='<?php echo base_url();?>/contractor-details/<?php echo $data->getId() ?>'><?php echo $data->getId() ?></a></td>
                                             <td id="contractorName<?php echo $i ?>"><?php echo $data->getName() ?></td>
                                             <td id="contractorAddress1<?php echo $i ?>"><?php echo $data->getAddress01() ?></td>
                                             <td id="contractorPhn<?php echo $i ?>"><?php echo $data->getTelNo() ?></td>
