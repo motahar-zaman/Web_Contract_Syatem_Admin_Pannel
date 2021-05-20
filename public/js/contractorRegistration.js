@@ -73,7 +73,6 @@ function contractorRegistration() {
     }
 }
 
-//for searching address from zip code
 function contractorAddressSearch() {
     let zipCode = $('#contractorPostCode').val();
     getAddressFromZipCode(zipCode, "contractorAddress1");
