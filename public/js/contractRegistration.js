@@ -1,19 +1,19 @@
 function shopSearchClear(){
-    $("#shopId").val("");
-    $("#shopName").val("");
+    $("#searchShopId").val("");
+    $("#searchShopName").val("");
 }
 
 function productSearchClear(){
-    $("#productId").val("");
-    $("#productName").val("");
+    $("#searchProductId").val("");
+    $("#searchProductName").val("");
 }
 
 function contractorSearchClear(){
-    $("#contractorId").val("");
-    $("#contractorName").val("");
+    $("#searchContractorId").val("");
+    $("#searchContractorName").val("");
 }
 
-function selectedContractor(data) {
+function selectedContractor(data, td) {
     let contractorId = $("#contractorId" + data).html();
     let contractorName = $("#contractorName" + data).html();
     let contractorAddress1 = $("#contractorAddress1" + data).html();
@@ -25,9 +25,13 @@ function selectedContractor(data) {
         + contractorAddress1 + "</td><td id=\"contractorPhn\">" + contractorPhn + "</td><td id=\"contractorMail\">" + contractorMail +
         "</td></tr>";
     $(".contractorSelectTable tbody").html(markup);
+
+    $('#contractorSelectTable td').removeClass("bg-dark-silver");
+    $(td).addClass("bg-dark-silver");
+    $("#contractorModalClose").click();
 }
 
-function selectedProduct(data) {
+function selectedProduct(data, td) {
     // Grab Data From Modal
     let productId = $("#productId" + data).html();
     let productName = $("#productName" + data).html();
@@ -40,6 +44,8 @@ function selectedProduct(data) {
         + productNote + "</td><td id=\"productSelectStartDate\">" + productPeriodStartDate + "</td><td id=\"productSelectEndDate\">" + productPeriodEndDate +
         "</td></tr>";
     $(".productSelectTable tbody").append(markup);
+
+    $(td).addClass("bg-dark-silver");
 
     //Push Data To the product info table
     var markup = "<tr><td>" + productId + "</td><td>" + productName + "</td><td>" + productNote + "</td><td>" + productPeriodStartDate + "</td><td>" + productPeriodEndDate + "</td></tr>";
@@ -69,19 +75,23 @@ function productDiscount(data) {
 
 }
 
-function selectedShop(data) {
-    let shopId = $("#shopIdM" + data).html();
-    let shopName = $("#shopNameM" + data).html();
-    let shopRepresentativeName = $("#shopRepresentativeNameM" + data).html();
-    let shopPrefecture = $("#shopPrefectureM" + data).html();
-    let shopAddress = $("#shopAddressM" + data).html();
-    let shopPhoneNumber = $("#shopPhoneNumberM" + data).html();
+function selectedShop(data, td) {
+    let shopId = $("#shopId" + data).html();
+    let shopName = $("#shopName" + data).html();
+    let shopRepresentativeName = $("#shopRepresentativeName" + data).html();
+    let shopPrefecture = $("#shopPrefecture" + data).html();
+    let shopAddress = $("#shopAddress" + data).html();
+    let shopPhoneNumber = $("#shopPhoneNumber" + data).html();
 
     //Push Data To the product contract table
     var markup = "<tr><td id=\"shopId\">" + shopId + "</td><td id=\"shopName\">" + shopName + "</td><td id=\"shopRepresentativeName\">"
         + shopRepresentativeName + "</td><td id=\"shopPrefecture\">" + shopPrefecture + "</td><td id=\"shopAddress\">" + shopAddress + "</td><td id=\"shopPhoneNumber\">" + shopPhoneNumber +
         "</td></tr>";
     $(".shopSelectTable tbody").html(markup);
+
+    $('#shopSelectTable td').removeClass("bg-dark-silver");
+    $(td).addClass("bg-dark-silver");
+    $("#shopModalClose").click();
 }
 
 function disable() {

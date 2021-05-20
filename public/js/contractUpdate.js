@@ -1,12 +1,16 @@
-function selectedContractor(data) {
+function selectedContractor(data, td) {
     $("#contractorId").html($("#contractorId" + data).html());
     $("#contractorName").html($("#contractorName" + data).html());
     $("#contractorAddress1").html($("#contractorAddress1" + data).html());
     $("#contractorPhn").html($("#contractorPhn" + data).html());
     $("#contractorMail").html($("#contractorMail" + data).html());
+
+    $('#contractorSelectTable td').removeClass("bg-dark-silver");
+    $(td).addClass("bg-dark-silver");
+    $("#contractorModalClose").click();
 }
 
-function selectedProduct(data) {
+function selectedProduct(data, td) {
     // Grab Data From Modal
     let productId = $("#productId" + data).html();
     let productName = $("#productName" + data).html();
@@ -23,6 +27,8 @@ function selectedProduct(data) {
     //Push Data To the product info table
     var markup = "<tr><td>" + productId + "</td><td>" + productName + "</td><td>" + productNote + "</td><td>" + productPeriodStartDate + "</td><td>" + productPeriodEndDate + "</td></tr>";
     $(".productInfoTable tbody").append(markup);
+
+    $(td).addClass("bg-dark-silver");
 
     //Push and Pass Data  To the product discount table
     let datalen = data;
@@ -47,13 +53,17 @@ function productDiscount(data) {
 
 }
 
-function selectedShop(data) {
+function selectedShop(data, td) {
     $("#shopId").html($("#shopId" + data).html());
     $("#shopName").html($("#shopName" + data).html());
     $("#shopRepresentativeName").html($("#shopRepresentativeName" + data).html());
     $("#shopPrefecture").html($("#shopPrefecture" + data).html());
     $("#shopAddress").html($("#shopAddress" + data).html());
     $("#shopPhoneNumber").html($("#shopPhoneNumber" + data).html());
+
+    $('#shopSelectTable td').removeClass("bg-dark-silver");
+    $(td).addClass("bg-dark-silver");
+    $("#shopModalClose").click();
 }
 
 function disable() {
@@ -177,16 +187,16 @@ function shopAddressSearch() {
 }
 
 function shopSearchClear(){
-    $("#shopId").val("");
-    $("#shopName").val("");
+    $("#searchShopId").val("");
+    $("#searchShopName").val("");
 }
 
 function productSearchClear(){
-    $("#productId").val("");
-    $("#productName").val("");
+    $("#searchProductId").val("");
+    $("#searchProductName").val("");
 }
 
 function contractorSearchClear(){
-    $("#contractorId").val("");
-    $("#contractorName").val("");
+    $("#searchContractorId").val("");
+    $("#searchContractorName").val("");
 }
