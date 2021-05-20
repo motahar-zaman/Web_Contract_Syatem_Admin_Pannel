@@ -205,11 +205,11 @@ function contractorSearchClear(){
 }
 
 function companySearchClear(){
-    $("#companyId").val("");
-    $("#companyName").val("");
+    $("#searchCompanyId").val("");
+    $("#searchCompanyName").val("");
 }
 
 function groupSearchClear(){
-    $("#groupId").val("");
-    $("#groupName").val("");
+    $("#searchGroupId").val("");
+    $("#searchGroupName").val("");
 }

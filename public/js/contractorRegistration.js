@@ -180,11 +180,11 @@ function contractorSearchClear(){
 }
 
 function groupSearchClear(){
-    $("#groupId").val("");
-    $("#groupName").val("");
+    $("#searchGroupId").val("");
+    $("#searchGroupName").val("");
 }
 
 function companySearchClear(){
-    $("#companyId").val("");
-    $("#companyName").val("");
+    $("#searchCompanyId").val("");
+    $("#searchCompanyName").val("");
 }
