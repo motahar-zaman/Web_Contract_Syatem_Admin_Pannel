@@ -199,8 +199,8 @@ function selectedContractorUpdate(id){
 }
 
 function contractorSearchClear(){
-    $("#contractorId").val("");
-    $("#contractorName").val("");
+    $("#searchContractorId").val("");
+    $("#searchContractorName").val("");
 }
 
 function companySearchClear(){
