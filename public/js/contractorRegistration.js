@@ -133,7 +133,7 @@ function validateData(data) {
     return is_valid;
 }
 
-function selectedGroup(data) {
+function selectedGroup(data, td) {
     $("#groupId").val($("#groupId" + data).html());
     $("#groupInsert").val("update");
     $("#groupName").val($("#groupName" + data).html());
@@ -146,10 +146,12 @@ function selectedGroup(data) {
     $("#groupPhn").val($("#groupPhn" + data).html());
     $("#groupMail").val($("#groupMail" + data).html());
 
+    $('#groupSelectTable td').removeClass("bg-dark-silver");
+    $(td).addClass("bg-dark-silver");
     $("#groupModalClose").click();
 }
 
-function selectedCompany(data) {
+function selectedCompany(data, td) {
     $("#companyId").val($("#companyId" + data).html());
     $("#companyInsert").val("update");
     $("#companyName").val($("#companyName" + data).html());
@@ -162,10 +164,12 @@ function selectedCompany(data) {
     $("#companyPhn").val($("#companyPhn" + data).html());
     $("#companyMail").val($("#companyMail" + data).html());
 
+    $('#companySelectTable td').removeClass("bg-dark-silver");
+    $(td).addClass("bg-dark-silver");
     $("#companyModalClose").click();
 }
 
-function selectedContractor(data) {
+function selectedContractor(data, td) {
     $("#contractorId").val($("#contractorId" + data).html());
     $("#contractorInsert").val("update");
     $("#contractorName").val($("#contractorName" + data).html());
@@ -176,6 +180,8 @@ function selectedContractor(data) {
     $("#contractorPhn").val($("#contractorPhn" + data).html());
     $("#contractorMail").val($("#contractorMail" + data).html());
 
+    $('#contractorSelectTable td').removeClass("bg-dark-silver");
+    $(td).addClass("bg-dark-silver");
     $("#contractorModalClose").click();
 }
 

@@ -131,7 +131,7 @@ function validateData(data) {
     return is_valid;
 }
 
-function selectedGroup(data){
+function selectedGroup(data, td){
     $("#groupId").val($("#groupId"+data).html());
     $("#groupName").val($("#groupName"+data).html());
     $("#groupKana").val($("#groupNameKana"+data).val());
@@ -142,9 +142,13 @@ function selectedGroup(data){
     $("#groupAddress2").val($("#groupAddress2"+data).val());
     $("#groupPhn").val($("#groupPhn"+data).html());
     $("#groupMail").val($("#groupMail"+data).html());
+
+    $('#groupSelectTable td').removeClass("bg-dark-silver");
+    $(td).addClass("bg-dark-silver");
+    $("#groupModalClose").click();
 }
 
-function selectedCompany(data){
+function selectedCompany(data, td){
     $("#companyId").val($("#companyId"+data).html());
     $("#companyName").val($("#companyName"+data).html());
     $("#companyKana").val($("#companyNameKana"+data).val());
@@ -155,9 +159,13 @@ function selectedCompany(data){
     $("#companyAddress2").val($("#companyAddress2"+data).val());
     $("#companyPhn").val($("#companyPhn"+data).html());
     $("#companyMail").val($("#companyMail"+data).html());
+
+    $('#companySelectTable td').removeClass("bg-dark-silver");
+    $(td).addClass("bg-dark-silver");
+    $("#companyModalClose").click();
 }
 
-function selectedContractorUpdate(id){
+function selectedContractorUpdate(id, td){
     let contractorCompany = $("#contractorCompany"+id).val();
     let contractorGroup = $("#contractorGroup"+id).val();
     let contractorCompanyData = contractorCompany.split("=>");
@@ -172,6 +180,10 @@ function selectedContractorUpdate(id){
     $("#contractorAddress2").val($("#contractorAddress2"+id).val());
     $("#contractorPhn").val($("#contractorPhn"+id).html());
     $("#contractorMail").val($("#contractorMail"+id).html());
+
+    $('#updateContractorSelectTable td').removeClass("bg-dark-silver");
+    $(td).addClass("bg-dark-silver");
+    $("#groupModalClose").click();
 
     //company data populate
     $("#companyId").val(contractorCompanyData[0]);
