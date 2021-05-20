@@ -26,12 +26,12 @@
                 <div class="card-body table-responsive p-0 ml-3" style="height: 300px;">
                     <table class="table  text-nowrap ml-3">
                         <thead class="k1TableTitleBG">
-                        <tr>
-                            <th>選択</th>
-                            <th>店舗ID</th>
-                            <th>店舗名</th>
-                            <th>住所</th>
-                        </tr>
+                            <tr>
+                                <th>選択</th>
+                                <th>店舗ID</th>
+                                <th>店舗名</th>
+                                <th>住所</th>
+                            </tr>
                         </thead>
                         <tbody>
                         <?php
@@ -40,7 +40,7 @@
                                 $data = $shop[$i];
                                 ?>
                                 <tr>
-                                    <td class="" onclick="selectedShop(<?php echo $i ?>)" id="selectedShop<?php echo $data->getId() ?>"><a href="#">選択</a></td>
+                                    <td onclick="selectedShop(<?php echo $i ?>, this)" id="selectedShop<?php echo $data->getId() ?>"><a href="#">選択</a></td>
                                     <td id="shopIdM<?php echo $i ?>"><?php echo $data->getId() ?></td>
                                     <td id="shopNameM<?php echo $i ?>"><?php echo $data->getName() ?></td>
                                     <td style="display: none" id="shopRepresentativeNameM<?php echo $i ?>"><?php echo $data->getRepresentativeKana() ?></td>

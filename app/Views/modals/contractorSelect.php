@@ -18,13 +18,13 @@
                             <label for="contractorName">契約者名（あいまい）</label>
                             <input type="text" class="form-control" id="searchContractorName" name="contractorName" placeholder="" value="">
                         </div>
-                        <span id="productSearch" class="btn btn-primary pl-4 pr-4 k1Btn mr-3">検索</span>
-                        <span onclick="contractorSearchClear()" class="btn btn-primary  k1Btn">条件クリア</span>
+                        <span id="productSearch" class="btn btn-primary pl-4 pr-4 k1Btn k1Btn2 mr-3">検索</span>
+                        <span onclick="contractorSearchClear()" class="btn btn-primary  k1Btn k1Btn2">条件クリア</span>
                     </div>
                 </form>
                 <br />
                 <div class="card-body table-responsive p-0 ml-1" style="height: 300px;">
-                    <table class="table text-nowrap ml-1">
+                    <table class="table text-nowrap ml-1" id="contractorSelectTable">
                         <thead class="k1TableTitleBG">
                             <tr>
                                 <th>選択</th>
@@ -42,7 +42,7 @@
                                         $data = $contractor[$i];
                                         ?>
                                         <tr>
-                                            <td class="" onclick="selectedContractor(<?php echo $i ?>)" id="selectedContractor<?php echo $data->getId() ?>"><a href="#">選択</a></td>
+                                            <td onclick="selectedContractor(<?php echo $i ?>, this)" id="selectedContractor<?php echo $data->getId() ?>"><a href="#">選択</a></td>
                                             <td id="contractorIdM<?php echo $i ?>"><?php echo $data->getId() ?></td>
                                             <td id="contractorNameM<?php echo $i ?>"><?php echo $data->getName() ?></td>
                                             <td id="contractorAddress1M<?php echo $i ?>"><?php echo $data->getAddress01() ?></td>
