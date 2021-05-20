@@ -33,11 +33,12 @@ class ContractorController extends BaseController
             return redirect()->to("/login");
         }
     }
+
     public function contractorDetails($contractorId){
-        $dummyContractorId = "CONT_00007";
         if( session() && session()->get('login') ){
             if (isset($contractorId)){
-                $contractorDetails = (new ContractorModel())->getContractorDetailsDataById($dummyContractorId);
+                $contractorDetails = (new ContractorModel())->getContractorDetailsById($contractorId);
+
                 if ($contractorDetails > 0){
                     return view("Contractor/contractorDetails", ["title" => "Contractor Details","contractorDetails" => $contractorDetails[0]]);
                 }else{
