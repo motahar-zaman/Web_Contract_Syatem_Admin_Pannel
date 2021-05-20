@@ -12,11 +12,11 @@
                     <div class="card-body">
                         <div class="form-group col-md-4 pl-0">
                             <label for="groupId">商品ID（完全一致）</label>
-                            <input type="text" class="form-control" id="groupId" name="groupId" placeholder="" value="">
+                            <input type="text" class="form-control" id="searchGroupId" name="groupId" placeholder="" value="">
                         </div>
                         <div class="form-group col-md-4 pl-0">
                             <label for="groupName">商品名（あいまい）</label>
-                            <input type="text" class="form-control" id="groupName" placeholder="" name="groupName" value="">
+                            <input type="text" class="form-control" id="searchGroupName" placeholder="" name="groupName" value="">
                         </div>
                         <span id="productSearch" class="btn btn-primary pl-4 pr-4 k1Btn mr-3">検索</span>
                         <span onclick="groupSearchClear()" class="btn btn-primary k1Btn">条件クリア</span>
