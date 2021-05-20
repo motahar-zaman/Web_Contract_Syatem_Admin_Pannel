@@ -134,7 +134,7 @@ class ContractorModel
                         AS groupDaihyousha, grp.daihyousha_name_kana AS groupDaihyoushaKana, grp.zipcode AS groupZip, grp.address_01
                         AS groupAddress01, grp.address_02 AS groupAddress02, grp.tel_no AS groupPhn, grp.mail_address AS groupMail, grp.update_date
                         AS groupUpdateDate, grp.update_user_id AS groupUpdateUser, grp.insert_date AS groupInsertDate, grp.insert_user_id AS
-                        groupInsertUser FROM mst_contractor AS con INNER JOIN mst_company AS com ON con.company_id = com.company_id INNER JOIN
+                        groupInsertUser FROM mst_contractor AS con LEFT JOIN mst_company AS com ON con.company_id = com.company_id LEFT JOIN
                         mst_group AS grp ON con.group_id = grp.group_id WHERE con.contractor_id = ? AND con.delete_flag = ?";
         $queryParameter = array($contractorId, 1);
 
