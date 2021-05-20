@@ -183,7 +183,7 @@ function selectedContractorUpdate(id, td){
 
     $('#updateContractorSelectTable td').removeClass("bg-dark-silver");
     $(td).addClass("bg-dark-silver");
-    $("#groupModalClose").click();
+    $("#updateContractorModalClose").click();
 
     //company data populate
     $("#companyId").val(contractorCompanyData[0]);

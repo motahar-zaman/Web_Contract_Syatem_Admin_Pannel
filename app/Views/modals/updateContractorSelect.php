@@ -12,11 +12,11 @@
                     <div class="card-body">
                         <div class="form-group col-md-4 pl-0">
                             <label for="contractorId">契約者ID（完全一致）</label>
-                            <input type="text" class="form-control" id="contractorId" name="contractorId" placeholder="" value="">
+                            <input type="text" class="form-control" id="searchContractorId" name="contractorId" placeholder="" value="">
                         </div>
                         <div class="form-group col-md-4 pl-0">
                             <label for="contractorName">契約者名（あいまい）</label>
-                            <input type="text" class="form-control" id="contractorName" name="contractorName" placeholder="" value="">
+                            <input type="text" class="form-control" id="searchContractorName" name="contractorName" placeholder="" value="">
                         </div>
                         <span id="productSearch" class="btn btn-primary pl-4 pr-4 k1Btn k1Btn2 mr-3">検索</span>
                         <span onclick="contractorSearchClear()" class="btn btn-primary k1Btn k1Btn2">条件クリア</span>
@@ -26,14 +26,14 @@
                 <div class="card-body table-responsive p-0 ml-1" style="height: 300px;">
                     <table class="table table-head-fixed text-nowrap ml-1" id="updateContractorSelectTable">
                         <thead>
-                        <tr>
-                            <th>選択</th>
-                            <th>契約者ID</th>
-                            <th>契約者名	</th>
-                            <th>住所</th>
-                            <th>電話番号</th>
-                            <th>メールアドレス</th>
-                        </tr>
+                            <tr>
+                                <th>選択</th>
+                                <th>契約者ID</th>
+                                <th>契約者名	</th>
+                                <th>住所</th>
+                                <th>電話番号</th>
+                                <th>メールアドレス</th>
+                            </tr>
                         </thead>
                         <tbody>
                         <?php
