@@ -40,7 +40,7 @@
                                 $data = $shop[$i];
                                 ?>
                                 <tr>
-                                    <td onclick="selectedShop(<?php echo $i ?>)" id="selectedShop<?php echo $data->getId() ?>"><a href="#">選択</a></td>
+                                    <td class="" onclick="selectedShop(<?php echo $i ?>)" id="selectedShop<?php echo $data->getId() ?>"><a href="#">選択</a></td>
                                     <td id="shopIdM<?php echo $i ?>"><?php echo $data->getId() ?></td>
                                     <td id="shopNameM<?php echo $i ?>"><?php echo $data->getName() ?></td>
                                     <td style="display: none" id="shopRepresentativeNameM<?php echo $i ?>"><?php echo $data->getRepresentativeKana() ?></td>

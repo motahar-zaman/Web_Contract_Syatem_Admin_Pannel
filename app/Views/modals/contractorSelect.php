@@ -42,7 +42,7 @@
                                         $data = $contractor[$i];
                                         ?>
                                         <tr>
-                                            <td onclick="selectedContractor(<?php echo $i ?>)" id="selectedContractor<?php echo $data->getId() ?>"><a href="#">選択</a></td>
+                                            <td class="" onclick="selectedContractor(<?php echo $i ?>)" id="selectedContractor<?php echo $data->getId() ?>"><a href="#">選択</a></td>
                                             <td id="contractorIdM<?php echo $i ?>"><?php echo $data->getId() ?></td>
                                             <td id="contractorNameM<?php echo $i ?>"><?php echo $data->getName() ?></td>
                                             <td id="contractorAddress1M<?php echo $i ?>"><?php echo $data->getAddress01() ?></td>

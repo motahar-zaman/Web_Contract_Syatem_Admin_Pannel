@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">契約者選択</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button id="updateContractorModalClose" type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -55,7 +55,7 @@
                                 }
                                 ?>
                                 <tr>
-                                    <td onclick="selectedContractorUpdate(<?php echo $i; ?>)" id="selectedContractorUpdate<?php echo $data->getId(); ?>"><a href="#">選択</a></td>
+                                    <td class="" onclick="selectedContractorUpdate(<?php echo $i; ?>)" id="selectedContractorUpdate<?php echo $data->getId(); ?>"><a href="#">選択</a></td>
                                     <td id="contractorId<?php echo $i ?>"><?php echo $data->getId() ?></td>
                                     <td id="contractorName<?php echo $i ?>"><?php echo $data->getName() ?></td>
                                     <td id="contractorAddress1<?php echo $i ?>"><?php echo $data->getAddress01() ?></td>

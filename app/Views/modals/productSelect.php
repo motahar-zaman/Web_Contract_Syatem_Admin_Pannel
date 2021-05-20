@@ -50,7 +50,7 @@
                                 $endDate = date("d/m/Y", strtotime($repEndDDate));
                                 ?>
                                 <tr>
-                                    <td onclick="selectedProduct(<?php echo $i ?>); markProduct(<?php echo $i ?>);" id="selectedProduct<?php echo $data->getId() ?>"><a href="#" style="color: #0099FF">選択</a></td>
+                                    <td class="" onclick="selectedProduct(<?php echo $i ?>);" id="selectedProduct<?php echo $data->getId() ?>"><a href="#" style="color: #0099FF">選択</a></td>
                                     <td id="productId<?php echo $i ?>"><?php echo $data->getId() ?></td>
                                     <td id="productName<?php echo $i ?>"><?php echo $data->getName() ?></td>
                                     <td id="productNote<?php echo $i ?>"><?php echo $data->getProductNote() ?></td>
