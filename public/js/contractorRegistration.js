@@ -145,6 +145,8 @@ function selectedGroup(data) {
     $("#groupAddress2").val($("#groupAddress2" + data).val());
     $("#groupPhn").val($("#groupPhn" + data).html());
     $("#groupMail").val($("#groupMail" + data).html());
+
+    $("#groupModalClose").click();
 }
 
 function selectedCompany(data) {
@@ -159,6 +161,8 @@ function selectedCompany(data) {
     $("#companyAddress2").val($("#companyAddress2" + data).val());
     $("#companyPhn").val($("#companyPhn" + data).html());
     $("#companyMail").val($("#companyMail" + data).html());
+
+    $("#companyModalClose").click();
 }
 
 function selectedContractor(data) {
@@ -171,6 +175,8 @@ function selectedContractor(data) {
     $("#contractorAddress2").val($("#contractorAddress2" + data).val());
     $("#contractorPhn").val($("#contractorPhn" + data).html());
     $("#contractorMail").val($("#contractorMail" + data).html());
+
+    $("#contractorModalClose").click();
 }
 
 function contractorSearchClear(){
