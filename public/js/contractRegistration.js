@@ -203,6 +203,7 @@ function shopAddressSearch() {
         }
     });
 }
+
 function shopTypeCheck() {
     var shopType = document.querySelector('input[name="shop"]:checked').value;
     if (shopType == 0){
