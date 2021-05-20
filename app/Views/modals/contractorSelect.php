@@ -12,14 +12,14 @@
                     <div class="card-body">
                         <div class="form-group col-md-4 pl-0">
                             <label for="contractorId">契約者ID（完全一致）</label>
-                            <input type="text" class="form-control" id="contractorId" name="contractorId" placeholder="" value="">
+                            <input type="text" class="form-control" id="searchContractorId" name="contractorId" placeholder="" value="">
                         </div>
                         <div class="form-group col-md-4 pl-0">
                             <label for="contractorName">契約者名（あいまい）</label>
-                            <input type="text" class="form-control" id="contractorName" name="contractorName" placeholder="" value="">
+                            <input type="text" class="form-control" id="searchContractorName" name="contractorName" placeholder="" value="">
                         </div>
-                        <span id="productSearch" class="btn btn-primary pl-4 pr-4 k1Btn k1Btn2 mr-3">検索</span>
-                        <span onclick="contractorSearchClear()" class="btn btn-primary  k1Btn k1Btn2">条件クリア</span>
+                        <span id="productSearch" class="btn btn-primary pl-4 pr-4 k1Btn mr-3">検索</span>
+                        <span onclick="contractorSearchClear()" class="btn btn-primary  k1Btn">条件クリア</span>
                     </div>
                 </form>
                 <br />
