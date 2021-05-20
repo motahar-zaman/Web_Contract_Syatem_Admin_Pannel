@@ -12,11 +12,11 @@
                     <div class="card-body">
                         <div class="form-group col-md-4 pl-0">
                             <label for="shopId">店舗ID（完全一致）</label>
-                            <input type="text" class="form-control" id="shopId" name="shopId" placeholder="" value="">
+                            <input type="text" class="form-control" id="searchShopId" name="shopId" placeholder="" value="">
                         </div>
                         <div class="form-group col-md-4 pl-0">
                             <label for="shopName">店舗名（あいまい）</label>
-                            <input type="text" class="form-control" id="shopName" placeholder="" name="shopName" value="">
+                            <input type="text" class="form-control" id="searchShopName" placeholder="" name="shopName" value="">
                         </div>
                         <span id="shopSearch" class="btn btn-primary pl-4 pr-4 k1Btn k1Btn2 mr-3">検索</span>
                         <span onclick="shopSearchClear()" class="btn btn-primary k1Btn k1Btn2 ">条件クリア</span>
@@ -41,12 +41,12 @@
                                 ?>
                                 <tr>
                                     <td onclick="selectedShop(<?php echo $i ?>, this)" id="selectedShop<?php echo $data->getId() ?>"><a href="#">選択</a></td>
-                                    <td id="shopIdM<?php echo $i ?>"><?php echo $data->getId() ?></td>
-                                    <td id="shopNameM<?php echo $i ?>"><?php echo $data->getName() ?></td>
-                                    <td style="display: none" id="shopRepresentativeNameM<?php echo $i ?>"><?php echo $data->getRepresentativeKana() ?></td>
-                                    <td style="display: none" id="shopPrefectureM<?php echo $i ?>"><?php echo $data->getPrefecture() ?></td>
-                                    <td id="shopAddressM<?php echo $i ?>"><?php echo $data->getAddress01() ?></td>
-                                    <td style="display: none" id="shopPhoneNumberM<?php echo $i ?>"><?php echo $data->getTelNo() ?></td>
+                                    <td id="shopId<?php echo $i ?>"><?php echo $data->getId() ?></td>
+                                    <td id="shopName<?php echo $i ?>"><?php echo $data->getName() ?></td>
+                                    <td style="display: none" id="shopRepresentativeName<?php echo $i ?>"><?php echo $data->getRepresentativeKana() ?></td>
+                                    <td style="display: none" id="shopPrefecture<?php echo $i ?>"><?php echo $data->getPrefecture() ?></td>
+                                    <td id="shopAddress<?php echo $i ?>"><?php echo $data->getAddress01() ?></td>
+                                    <td style="display: none" id="shopPhoneNumber<?php echo $i ?>"><?php echo $data->getTelNo() ?></td>
                                 </tr>
                                 <?php
                             }
@@ -57,7 +57,6 @@
                         </tbody>
                     </table>
                 </div>
-<!--                <button type="submit" class="btn btn-primary ml-3 mt-5 k1Btn"  data-dismiss="modal" aria-label="Close">選択反映</button>-->
             </div>
         </div>
     </div>
