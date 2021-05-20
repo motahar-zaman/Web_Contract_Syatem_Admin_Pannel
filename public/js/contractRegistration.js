@@ -14,24 +14,17 @@ function contractorSearchClear(){
 }
 
 function selectedContractor(data) {
-    let contractorId = $("#contractorIdM" + data).html();
-    let contractorName = $("#contractorNameM" + data).html();
-    let contractorAddress1 = $("#contractorAddress1M" + data).html();
-    let contractorPhn = $("#contractorPhnM" + data).html();
-    let contractorMail = $("#contractorMailM" + data).html();
+    let contractorId = $("#contractorId" + data).html();
+    let contractorName = $("#contractorName" + data).html();
+    let contractorAddress1 = $("#contractorAddress1" + data).html();
+    let contractorPhn = $("#contractorPhn" + data).html();
+    let contractorMail = $("#contractorMail" + data).html();
 
     //Push Data To the product contract table
     var markup = "<tr><td id=\"contractorId\">" + contractorId + "</td><td id=\"contractorName\">" + contractorName + "</td><td id=\"contractorAddress1\">"
         + contractorAddress1 + "</td><td id=\"contractorPhn\">" + contractorPhn + "</td><td id=\"contractorMail\">" + contractorMail +
         "</td></tr>";
     $(".contractorSelectTable tbody").html(markup);
-
-
-    // $("#contractorId").html($("#contractorIdM" + data).html());
-    // $("#contractorName").html($("#contractorNameM" + data).html());
-    // $("#contractorAddress1").html($("#contractorAddress1M" + data).html());
-    // $("#contractorPhn").html($("#contractorPhnM" + data).html());
-    // $("#contractorMail").html($("#contractorMailM" + data).html());
 }
 
 function selectedProduct(data) {
@@ -89,13 +82,6 @@ function selectedShop(data) {
         + shopRepresentativeName + "</td><td id=\"shopPrefecture\">" + shopPrefecture + "</td><td id=\"shopAddress\">" + shopAddress + "</td><td id=\"shopPhoneNumber\">" + shopPhoneNumber +
         "</td></tr>";
     $(".shopSelectTable tbody").html(markup);
-
-    // $("#shopId").html($("#shopId" + data).html());
-    // $("#shopName").html($("#shopName" + data).html());
-    // $("#shopRepresentativeName").html($("#shopRepresentativeName" + data).html());
-    // $("#shopPrefecture").html($("#shopPrefecture" + data).html());
-    // $("#shopAddress").html($("#shopAddress" + data).html());
-    // $("#shopPhoneNumber").html($("#shopPhoneNumber" + data).html());
 }
 
 function disable() {
