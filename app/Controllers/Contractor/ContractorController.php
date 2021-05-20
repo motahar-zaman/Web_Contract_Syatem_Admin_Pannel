@@ -16,8 +16,7 @@ class ContractorController extends BaseController
                 $searchName = $_GET['searchByName'];
                 if($searchId){
                     $contractor = (new ContractorModel())->getContractorDetailsById($searchId);
-                    return "This Section is under Development";
-                    //return view("Contractor/contractorDetail", ["title" => "Contractor Detail", "contractor" => $contractor]);
+                    return view("Contractor/contractorDetails", ["title" => "Contractor Detail", "contractorDetails" => $contractor[0]]);
                 }
                 else{
                     $contractor = (new ContractorModel())->getContractorByName($searchName);
@@ -36,17 +35,11 @@ class ContractorController extends BaseController
 
     public function contractorDetails($contractorId){
         if( session() && session()->get('login') ){
-            if (isset($contractorId)){
-                $contractorDetails = (new ContractorModel())->getContractorDetailsById($contractorId);
-
-                if ($contractorDetails > 0){
-                    return view("Contractor/contractorDetails", ["title" => "Contractor Details","contractorDetails" => $contractorDetails[0]]);
-                }else{
-                    return view("Contractor/contractorDetails", ["title" => "Contractor Details"]);
-                }
-            }else{
-                return view("Contractor/contractorDetails", ["title" => "Contractor Details"]);
-            }
+            $contractorDetails = (new ContractorModel())->getContractorDetailsById($contractorId);
+            return view("Contractor/contractorDetails", ["title" => "Contractor Details", "contractorDetails" => $contractorDetails[0]]);
+        }
+        else{
+            return redirect()->to("/login");
         }
     }
 }
