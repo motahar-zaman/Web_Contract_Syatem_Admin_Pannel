@@ -154,7 +154,8 @@ function contractRegistration() {
 
             success: function (data) {
                 if (data.status === 1) {
-                    window.location.href = "/home";
+                    let id = data.contract;
+                    window.location.href = "/contract-details/"+id;
                 } else if (data.status === 3) {
                     window.location.href = "/login";
                 }
