@@ -237,15 +237,42 @@
                                 <div class="card-body table-responsive p-0">
                                     <table class="table table-hover text-center">
                                         <thead class="k1RegTableTitleBG">
-                                        <tr>
-                                            <th>商品ID</th>
-                                            <th>商品名</th>
-                                            <th>商品概要</th>
-                                            <th>対象店舗名</th>
-                                            <th>届出書有無</th>
-                                        </tr>
+                                            <tr>
+                                                <th>商品ID</th>
+                                                <th>商品名</th>
+                                                <th>商品概要</th>
+                                                <th>対象店舗名</th>
+                                                <th>届出書有無</th>
+                                                <!--<th>公開開始日</th>
+                                                <th>公開終了日</th>-->
+                                            </tr>
                                         </thead>
                                         <tbody>
+                                            <?php
+                                                $products = $contract->getContractProduct();
+                                                $shopName = $contract->getshopDetail()->getName();
+                                                if(isset($products) && count($products) > 0){
+                                                    for($i = 0; $i < count($products); $i++){
+                                                        $data = $products[$i];
+                                                        $startDate = $data["startDateYear"]."年".$data["startDateMonth"]."月";
+                                                        $endDate = $data["endDateYear"]."年".$data["endDate_Month"]."月";
+                                                        ?>
+                                                        <tr>
+                                                            <td><?php echo $data["productId"] ?></td>
+                                                            <td><?php echo $data["name"] ?></td>
+                                                            <td style="width: 40%"><?php echo $data["note"] ?></td>
+                                                            <td><?php echo $shopName ?></td>
+                                                            <td>Yes</td>
+                                                            <!--<td><?php /*echo $startDate */?></td>
+                                                            <td><?php /*echo $endDate */?></td>-->
+                                                        </tr>
+                                            <?php
+                                                    }
+                                                }
+                                                else{
+                                                    echo "No Product available";
+                                                }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -273,13 +300,9 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="form-group gap-2 mx-auto" style="max-width: 950px">
                         <button onclick="" id="product_registration" class="btn btn-primary k1Btn k1Btn2">契約修正</button>
                     </div>
-
-
-                    <!--Details Body End-->
                 </div>
                 <div class="card-footer">
                     <div class="row mx-auto pb-3" style="max-width: 950px">
