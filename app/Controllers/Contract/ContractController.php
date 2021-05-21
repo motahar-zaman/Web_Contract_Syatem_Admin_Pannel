@@ -7,6 +7,7 @@ namespace App\Controllers\Contract;
 use App\Controllers\BaseController;
 use App\Models\Common\AddressModel;
 use App\Models\Contract\ContractModel;
+use App\Models\Contractor\ContractorModel;
 
 class ContractController extends BaseController
 {
@@ -25,7 +26,12 @@ class ContractController extends BaseController
 
                 if($contractId != ""){
                     $contract = (new ContractModel())->getContractById($contractId);
-                    return view("Contract/contractSearch", ["title" => "Contract Details", "contracts" => $contract, "prefectures" => $prefectures]);
+                    if(isset($contract) && count($contract) > 0 ){
+                        return redirect()->to("contract-details/".$contractId);
+                    }
+                    else{
+                        return view("Contract/contractSearch", ["title" => "Contract Search", "contracts" => $contract, "prefectures" => $prefectures]);
+                    }
                 }
                 elseif($contractorId != "" || $contractorName != "" || $productId != "" || $productName != "" || $shopId != "" || $shopName != "" || $prefecture != "0"){
                     $contract = (new ContractModel())->getContractBySearchOptions($contractorId, $contractorName, $productId, $productName, $shopId, $shopName, $prefecture);
@@ -44,10 +50,17 @@ class ContractController extends BaseController
             return redirect()->to("/login");
         }
     }
-    public function contractDetails(){
-        if( session() && session()->get('login') ){
 
-            return view("Contract/contractDetails", ["title" => "Contract Details"]);
+    public function contractDetails($contractId){
+        if( session() && session()->get('login') ){
+            $contract = (new ContractModel())->getContractById($contractId);
+            $contractDetails = $contract[$contractId];
+
+            if(isset($contractDetails) && $contractDetails->getContractorId() ){
+                $contractorDetails = (new ContractorModel())->getContractorDetailsById($contractDetails->getContractorId());
+            }
+
+            return view("Contract/contractDetails", ["title" => "Contract Details", "contract" => $contractDetails ?? null, "contractorDetails" => $contractorDetails[0] ?? null]);
         }
     }
 }
