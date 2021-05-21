@@ -103,7 +103,7 @@
                             <div class="card-body">
                                 <div class="card-body table-responsive p-0">
                                     <table class="table table-hover text-center productTable productInfoTable" style="width: 130% !important;">
-                                        <thead>
+                                        <thead class="k1TableTitleBG">
                                             <tr>
                                                 <th class="d-none">選択</th>
                                                 <th>契約者ID</th>
