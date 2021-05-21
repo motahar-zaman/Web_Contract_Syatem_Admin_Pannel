@@ -16,7 +16,12 @@ class ContractorController extends BaseController
                 $searchName = $_GET['searchByName'];
                 if($searchId){
                     $contractor = (new ContractorModel())->getContractorDetailsById($searchId);
-                    return view("Contractor/contractorDetails", ["title" => "Contractor Detail", "contractorDetails" => $contractor[0]]);
+                    if(isset($contractor) && count($contractor) > 0 ){
+                        return redirect()->to("contractor-details/".$searchId);
+                    }
+                    else{
+                        return view("Contractor/contractorSearch", ["title" => "Contractor Search", "contractor" => $contractor]);
+                    }
                 }
                 else{
                     $contractor = (new ContractorModel())->getContractorByName($searchName);
