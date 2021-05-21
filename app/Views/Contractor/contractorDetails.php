@@ -37,7 +37,7 @@
                 </div>
                 <div class="row col-md-12">
                     <div class="col-md-6">
-                        <h1 class="mb-0 pt-2 pl-5">契約詳細</h1>
+                        <h1 class="mb-0 pt-2 pl-5">契約者詳細</h1>
                     </div>
                     <div class="col-md-6 text-right pt-4 pr-5">
                         <span>[<?= session()->get("userId") ?>]：[<?= session()->get("userName") ?>]</span>
@@ -234,12 +234,9 @@
         <div class="card-footer">
             <div class="row mx-auto pb-3" style="max-width: 950px">
                 <div class="col-md-6 pl-0">
-                    <button onclick="" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3">
-                        見積
-                    </button>
-                    <button onclick="" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3">
+                    <!--<button onclick="" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3">
                         承認
-                    </button>
+                    </button>-->
                     <button onclick="" id="menu" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2">
                         <a class="k1Btn2" href="/home">メニュー</a>
                     </button>
