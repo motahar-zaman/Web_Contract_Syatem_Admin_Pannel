@@ -156,7 +156,7 @@ class RegistrationController extends BaseController
                 }
 
                 if($storeContractor && $storeCompany && $storeGroup){
-                    return json_encode(['msg' => "Successful", 'status' => 1]);
+                    return json_encode(['msg' => "Successful", "contractor" => $contractor->getId(), "status" => 1]);
                 }
                 else{
                     $deleteContractor = (new ContractorModel())->deleteData($contractor->getId());

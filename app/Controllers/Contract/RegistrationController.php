@@ -131,7 +131,7 @@ class RegistrationController extends BaseController
                     (new ContractModel())->storeContractProductData($contractProduct);
                 }
 
-                return json_encode(['msg' => "Successful", 'status' => 1]);
+                return json_encode(['msg' => "Successful", "contract" => $contract->getId(), "status" => 1]);
             }
             else{
                 return json_encode(['msg' => "Not an ajax request", 'status' => 2]);
