@@ -73,6 +73,9 @@ class RegistrationController extends BaseController
             if($this->request->isAJAX()){
                 $contract = new Contract();
 
+                $notificationLetter = $_POST["notification_letter"];
+                $path = "/shopFiles";
+
                 if($_POST['shop']){
                     $shop = new Shop();
                     $shop->setId((new SequenceModel())->getShopSequence());
@@ -91,6 +94,7 @@ class RegistrationController extends BaseController
                     $shop->setTelNo($_POST['shopTel'] ?? null);
                     $shop->setMailAddress($_POST['shopMail'] ?? null);
                     $shop->setSiteUrl($_POST['shopSite'] ?? null);
+                    $shop->setNotificationLetter($this->processShopFile($notificationLetter, $shop->getId(), $path) ?? null);
                     $shop->setInsertDate(date("Y-m-d H:i:s"));
                     $shop->setInsertUserId(session()->get('userId'));
                     $shop->setUpdateDate(date("Y-m-d H:i:s"));
@@ -142,7 +146,6 @@ class RegistrationController extends BaseController
 
                     (new ContractModel())->storeContractProductData($contractProduct);
                 }
-
                 return json_encode(['msg' => "Successful", "contract" => $contract->getId(), "status" => 1]);
             }
             else{
@@ -264,5 +267,13 @@ class RegistrationController extends BaseController
         else{
             return json_encode(['msg' => "Not Logged in user", 'status' => 3]);
         }
+    }
+
+    public function processShopFile($file, $shopId, $path){
+        $fileDirectory = $path."/".date("Ymd")."_".$shopId.".pdf";
+
+        move_uploaded_file($file, $fileDirectory);
+
+        return $fileDirectory;
     }
 }
