@@ -23,6 +23,7 @@ class Shop
     private $faxNo;
     private $mailAddress;
     private $siteUrl;
+    private $notificationLetter;
     private $insertDate;
     private $insertUserId;
     private $updateDate;
@@ -307,6 +308,22 @@ class Shop
     public function setSiteUrl($siteUrl): void
     {
         $this->siteUrl = $siteUrl;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNotificationLetter()
+    {
+        return $this->notificationLetter;
+    }
+
+    /**
+     * @param mixed $notificationLetter
+     */
+    public function setNotificationLetter($notificationLetter): void
+    {
+        $this->notificationLetter = $notificationLetter;
     }
 
     /**
