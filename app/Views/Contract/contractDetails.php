@@ -259,16 +259,16 @@
                             </div>
                             <div class="card-body">
                                 <div class="card-body table-responsive p-0">
-                                    <table class="table table-hover text-center">
+                                    <table class="table table-hover text-center" style="width: 130% !important;">
                                         <thead class="k1RegTableTitleBG">
                                             <tr>
                                                 <th>商品ID</th>
                                                 <th>商品名</th>
-                                                <th>商品概要</th>
+                                                <th style="width: 40%">商品概要</th>
                                                 <th>対象店舗名</th>
                                                 <th>届出書有無</th>
-                                                <!--<th>公開開始日</th>
-                                                <th>公開終了日</th>-->
+                                                <th>公開開始日</th>
+                                                <th>公開終了日</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -284,11 +284,11 @@
                                                         <tr>
                                                             <td><?php echo $data["productId"] ?></td>
                                                             <td><?php echo $data["name"] ?></td>
-                                                            <td style="width: 40%"><?php echo $data["note"] ?></td>
+                                                            <td><?php echo $data["note"] ?></td>
                                                             <td><?php echo $shopName ?></td>
                                                             <td>Yes</td>
-                                                            <!--<td><?php /*echo $startDate */?></td>
-                                                            <td><?php /*echo $endDate */?></td>-->
+                                                            <td><?php echo $startDate ?></td>
+                                                            <td><?php echo $endDate ?></td>
                                                         </tr>
                                             <?php
                                                     }
