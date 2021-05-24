@@ -49,6 +49,30 @@
 
                     <div class="gap-2 mx-auto text-center" style="max-width: 950px">
                         <div class="card mt-5 text-left">
+                            <form method="get" action="/contract-search">
+                                <div class="card-body">
+                                    <div class="row " id="contractIdSearchFields">
+                                        <div class="col-md-6">
+                                            <div class="form-group " >
+                                                <label>契約ID</label>
+                                                <input type="text" class="form-control " name="contractIdSearch" id="contractIdSearch" value="" >
+                                            </div>
+                                            <div class="form-group " >
+                                                <label>契約ステータス</label>
+                                                <input type="text" class="form-control " name="contractStatus" id="contractStatus" value="<?php echo "status"; ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 pt-4">
+                                            <label class="pt-4"></label>
+                                            <button type="submit" id="contractorDetailsBtn" class="btn btn-primary ml-2 k1Btn k1Btn2">表示</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="gap-2 mx-auto text-center" style="max-width: 950px">
+                        <div class="card mt-5 text-left">
                             <div class="card-header">
                                 <h3 class="card-title text-center">
                                     【契約者情報】
