@@ -3,9 +3,10 @@
 namespace App\Models\Employee;
 
 class Employee{
-    private $employeeId;
-    private $employeeName;
-    private $employeeNameKana;
+    private $id;
+    private $name;
+    private $nameKana;
+    private $password;
     private $updateDate;
     private $updateUserId;
     private $insertDate;
@@ -15,49 +16,65 @@ class Employee{
     /**
      * @return mixed
      */
-    public function getEmployeeId()
+    public function getId()
     {
-        return $this->employeeId;
+        return $this->id;
     }
 
     /**
-     * @param mixed $employeeId
+     * @param mixed $id
      */
-    public function setEmployeeId($employeeId): void
+    public function setId($id): void
     {
-        $this->employeeId = $employeeId;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEmployeeName()
-    {
-        return $this->employeeName;
-    }
-
-    /**
-     * @param mixed $employeeName
-     */
-    public function setEmployeeName($employeeName): void
-    {
-        $this->employeeName = $employeeName;
+        $this->id = $id;
     }
 
     /**
      * @return mixed
      */
-    public function getEmployeeNameKana()
+    public function getName()
     {
-        return $this->employeeNameKana;
+        return $this->name;
     }
 
     /**
-     * @param mixed $employeeNameKana
+     * @param mixed $name
      */
-    public function setEmployeeNameKana($employeeNameKana): void
+    public function setName($name): void
     {
-        $this->employeeNameKana = $employeeNameKana;
+        $this->name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNameKana()
+    {
+        return $this->nameKana;
+    }
+
+    /**
+     * @param mixed $nameKana
+     */
+    public function setNameKana($nameKana): void
+    {
+        $this->nameKana = $nameKana;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param mixed $password
+     */
+    public function setPassword($password): void
+    {
+        $this->password = $password;
     }
 
     /**
