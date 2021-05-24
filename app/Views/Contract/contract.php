@@ -79,6 +79,7 @@
                                     <div class="form-group " >
                                         <label>担当者</label>
                                         <select name="tantou" id="tantou" class="form-control">
+                                            <option value="0">担当者選択</option>
                                             <?php foreach ($employees as $employee) { ?>
                                                 <option value="<?php echo $employee->getId() ?>"><?php echo $employee->getName() ?></option>
                                             <?php } ?>
@@ -360,12 +361,14 @@
                             </div>
                             <div class="card-body">
                                 <div class="card-body table-responsive p-0">
-                                    <table class="table table-hover text-center productTable productInfoTable">
+                                    <table class="table table-hover text-center productTable productInfoTable" style="width: 140% !important;">
                                         <thead class="k1RegTableTitleBG">
                                             <tr>
                                                 <th>商品ID</th>
                                                 <th>商品名</th>
-                                                <th>商品概要</th>
+                                                <th style="width: 40%">商品概要</th>
+                                                <th>対象店舗名</th>
+                                                <th>届出書有無</th>
                                                 <th>公開開始日</th>
                                                 <th>公開終了日</th>
                                             </tr>

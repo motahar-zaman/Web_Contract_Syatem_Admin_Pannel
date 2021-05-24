@@ -48,7 +48,7 @@ function selectedProduct(data, td) {
     $(td).addClass("bg-dark-silver");
 
     //Push Data To the product info table
-    var markup = "<tr><td>" + productId + "</td><td>" + productName + "</td><td>" + productNote + "</td><td>" + productPeriodStartDate + "</td><td>" + productPeriodEndDate + "</td></tr>";
+    var markup = "<tr><td>" + productId + "</td><td>" + productName + "</td><td>" + productNote + "</td><td>Shop Name</td> <td>File</td> <td>" + productPeriodStartDate + "</td><td>" + productPeriodEndDate + "</td></tr>";
     $(".productInfoTable tbody").append(markup);
 
     //Push and Pass Data  To the product discount table
@@ -116,6 +116,8 @@ function contractRegistration() {
             data2[1] = $(this).children('#productSelectNote').text();
             data2[2] = $(this).children('#productSelectStartDate').text();
             data2[3] = $(this).children('#productSelectEndDate').text();
+            data2[4] = $(this).children('#productSelectShop').text();
+            data2[5] = $(this).children('#productSelectFile').text();
             data1[i-1] = data2;
         });
     })
