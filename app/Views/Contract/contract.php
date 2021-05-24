@@ -50,8 +50,46 @@
                     </div>
                     <div class="underline mt-2"></div>
 
-                    <div class="gap-2 mx-auto text-center" style="max-width: 950px">
 
+                    <div class="gap-2 mx-auto text-center" style="max-width: 950px">
+                        <div class="card mt-5 text-left">
+                            <form method="get" action="/contract-search">
+                                <div class="card-body">
+                                    <div class="row " id="contractIdSearchFields">
+                                        <div class="col-md-6">
+                                            <div class="form-group " >
+                                                <label>契約ID</label>
+                                                <input type="text" class="form-control " name="contractIdSearch" id="contractIdSearch" value="" >
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 pt-4">
+                                            <label class="pt-4"></label>
+                                            <button type="submit" id="contractorDetailsBtn" class="btn btn-primary ml-2 k1Btn k1Btn2">表示</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="gap-2 mx-auto text-center" style="max-width: 950px">
+                        <div class="card mt-5 text-left">
+                            <div class="card-body">
+                                <div class="col-md-6">
+                                    <div class="form-group " >
+                                        <label>担当者</label>
+                                        <select name="tantou" id="tantou" class="form-control">
+                                            <?php foreach ($employees as $employee) { ?>
+                                                <option value="<?php echo $employee->getId() ?>"><?php echo $employee->getName() ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gap-2 mx-auto text-center" style="max-width: 950px">
                         <div class="card mt-5 text-left">
                             <div class="card-header">
                                 <h3 class="card-title text-center mat-1">【契約者登録】</h3>
@@ -79,13 +117,6 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-<!--                                            <tr>-->
-<!--                                                <td id="contractorId"></td>-->
-<!--                                                <td id="contractorName"></td>-->
-<!--                                                <td id="contractorAddress1"></td>-->
-<!--                                                <td id="contractorPhn"></td>-->
-<!--                                                <td id="contractorMail"></td>-->
-<!--                                            </tr>-->
                                         </tbody>
                                     </table>
                                 </div>
@@ -155,14 +186,6 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-<!--                                            <tr>-->
-<!--                                                <td id="shopId"></td>-->
-<!--                                                <td id="shopName"></td>-->
-<!--                                                <td id="shopRepresentativeName"></td>-->
-<!--                                                <td id="shopPrefecture"></td>-->
-<!--                                                <td id="shopAddress"></td>-->
-<!--                                                <td id="shopPhoneNumber"></td>-->
-<!--                                            </tr>-->
                                         </tbody>
                                     </table>
                                 </div>
@@ -191,7 +214,7 @@
                                                 <label for="inputEmail3" >地域</label>
                                                 <select name="district" id="district" class="form-control">
                                                     <?php foreach ($districts as $district) { ?>
-                                                    <option value="<?php echo $district->getId() ?>"><?php echo $district->getareaName() ?></option>
+                                                    <option value="<?php echo $district->getId() ?>"><?php echo $district->getAreaName() ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
