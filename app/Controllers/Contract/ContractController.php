@@ -15,14 +15,14 @@ class ContractController extends BaseController
         if( session() && session()->get('login') ){
             $prefectures = (new AddressModel())->getAllPrefecture();
             if($_SERVER['QUERY_STRING']){
-                $contractId = $_GET['contractIdSearch'];
-                $contractorId = $_GET['contractorIdSearch'];
-                $contractorName = $_GET['contractorNameSearch'];
-                $productId = $_GET['productIdSearch'];
-                $productName = $_GET['productNameSearch'];
-                $shopId = $_GET['shopIdSearch'];
-                $shopName = $_GET['shopNameSearch'];
-                $prefecture = $_GET['prefectureSearch'];
+                $contractId = $_GET['contractIdSearch'] ?? null;
+                $contractorId = $_GET['contractorIdSearch'] ?? null;
+                $contractorName = $_GET['contractorNameSearch'] ?? null;
+                $productId = $_GET['productIdSearch'] ?? null;
+                $productName = $_GET['productNameSearch'] ?? null;
+                $shopId = $_GET['shopIdSearch'] ?? null;
+                $shopName = $_GET['shopNameSearch'] ?? null;
+                $prefecture = $_GET['prefectureSearch'] ?? null;
 
                 if($contractId != ""){
                     $contract = (new ContractModel())->getContractById($contractId);
@@ -61,6 +61,9 @@ class ContractController extends BaseController
             }
 
             return view("Contract/contractDetails", ["title" => "Contract Details", "contract" => $contractDetails ?? null, "contractorDetails" => $contractorDetails[0] ?? null]);
+        }
+        else{
+            return redirect()->to("/login");
         }
     }
 }
