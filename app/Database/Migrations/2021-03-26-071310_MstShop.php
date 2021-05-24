@@ -111,6 +111,12 @@ class MstShop extends Migration
                 'null'      => true,
                 'comment'=> '店舗サイトURL / Shop Site URL',
             ],
+            'notification_letter' => [
+                'type'   => 'VARCHAR',
+                'constraint'=> '100',
+                'null'      => false,
+                'comment'=> '届出書 / notification letter',
+            ],
             'insert_date' => [
                 'type'   => 'DATETIME',
                 'null'   => false,
