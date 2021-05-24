@@ -143,7 +143,7 @@ function contractRegistration() {
     data["shopSite"] = $("#shop_site_url").val();
     data["BusinessType"] = $("#BusinessType").val();
     data["note"] = $("#product_registration_remark").val();
-    data["notification_letter"] = 0;
+    data["notification_letter"] = $("#notification_letter").val();
     data["contractorId"] = $("#contractorId").html();
 
     if (validateData(data)) {
@@ -167,7 +167,6 @@ function contractRegistration() {
             }
         });
     }
-
 }
 
 function validateData(data) {

@@ -336,8 +336,8 @@
                                             <div class="form-group">
                                                 <label for="notification_letter">届出書</label>
                                                 <div class="col-sm-12">
-                                                    <input class="form-control h-auto custom-file-input" type="file" id="notification_letter" name="notification_letter"  style="margin-left: -5px;">
-                                                    <span class="errormsg" id="MailAddressError"></span>
+                                                    <input class="form-control h-auto custom-file-input" type="file" id="notification_letter" name="notification_letter" style="margin-left: -5px;">
+                                                    <span class="errormsg" id="notificationLetterError"></span>
                                                 </div>
                                             </div>
                                         </div>
