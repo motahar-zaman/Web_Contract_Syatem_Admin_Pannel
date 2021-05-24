@@ -10,6 +10,7 @@ use App\Models\Common\SequenceModel;
 use App\Models\Contract\Contract;
 use App\Models\Contract\ContractModel;
 use App\Models\Contractor\ContractorModel;
+use App\Models\Employee\EmployeeModel;
 use App\Models\Product\ProductModel;
 use App\Models\Shop\Shop;
 use App\Models\Shop\ShopModel;
@@ -26,10 +27,21 @@ class RegistrationController extends BaseController
             $prefecture = (new AddressModel())->getAllPrefecture();
             $areaLarge = (new AddressModel())->getAllAreaLarge();
             $areaSmall = (new AddressModel())->getAllAreaSmall();
+            $employee = (new EmployeeModel())->getAllEmployee();
 
-            return view("Contract/contract", ["title" => "Contract Registration", "shop" => $shop, "product" => $product, "contractor" =>
-                $contractor, "areas" => $area, "districts" => $district, "prefectures" => $prefecture, "areaLarges" => $areaLarge,
-                "areaSmalls" => $areaSmall]);
+            $data = array(
+                "title" => "Contract Registration",
+                "shop" => $shop,
+                "product" => $product,
+                "contractor" => $contractor,
+                "areas" => $area,
+                "districts" => $district,
+                "prefectures" => $prefecture,
+                "areaLarges" => $areaLarge,
+                "areaSmalls" => $areaSmall,
+                "employees" => $employee
+            );
+            return view("Contract/contract", $data);
         }
         else{
             return redirect()->to("/login");
@@ -94,7 +106,7 @@ class RegistrationController extends BaseController
 
                 $contract->setId((new SequenceModel())->getContractSequence());
                 $contract->setContractorId($_POST['contractorId'] ?? null);
-                $contract->setTantouId("abcd");
+                $contract->setTantouId($_POST['tantou'] ?? null);
                 $contract->setNote($_POST['note'] ?? null);
                 $contract->setUpdateDate(date("Y-m-d H:i:s"));
                 $contract->setUpdateUserId(session()->get('userId'));

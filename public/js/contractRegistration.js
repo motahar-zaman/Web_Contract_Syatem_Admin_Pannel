@@ -130,6 +130,7 @@ function contractRegistration() {
     data["shopDistrict"] = $("#district").val();
     data["shopAreaSmall"] = $("#areaSmall").val();
     data["shopAreaLarge"] = $("#areaLarge").val();
+    data["tantou"] = $("#tantou").val();
     data["shopZip"] = $("#postCode").val();
     data["shopAddress01"] = $("#address1").val();
     data["shopAddress02"] = $("#address2").val();
@@ -142,7 +143,6 @@ function contractRegistration() {
     data["note"] = $("#product_registration_remark").val();
     data["notification_letter"] = 0;
     data["contractorId"] = $("#contractorId").html();
-    console.log(data);
 
     if (validateData(data)) {
         $.ajax({
