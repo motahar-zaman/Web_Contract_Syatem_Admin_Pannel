@@ -231,3 +231,9 @@ function shopTypeCheck() {
         $('#mySelect').prop('disabled', true);
     }
 }
+
+$(document).ready(function() {
+    $('#shopInputFields :input').attr('disabled', true);
+    $('#shopInputFields :button').attr('disabled', true);
+    $('#mySelect').prop('disabled', true);
+});
