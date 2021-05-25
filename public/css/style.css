@@ -68,6 +68,7 @@
 }
 .k1Btn2.disabled, .k1Btn2:disabled{
     border-color: rgba(100, 100, 100, 0);
+    background-color: #D0CECE;
 }
 .k1TableTitleBG{
     background-color: #44546A !important;
