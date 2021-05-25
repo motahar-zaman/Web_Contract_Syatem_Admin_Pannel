@@ -1,6 +1,11 @@
 $(document).ready(function(){
     $("#clearSearchText").click(function (){
-        $("#searchById").val("");
-        $("#searchByName").val("");
+        window.location.href = "/contractor-search";
+        /*$("#contractorIdSearch").val("");
+        $("#contractorNameSearch").val("");
+        $("#companyIdSearch").val("");
+        $("#companyNameSearch").val("");
+        $("#groupIdSearch").val("");
+        $("#groupNameSearch").val("");*/
     });
 });
