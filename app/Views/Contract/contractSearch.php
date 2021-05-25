@@ -73,12 +73,12 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group " >
+                                                <label>担当者ID</label>
+                                                <input type="text" class="form-control " name="tantouIdSearch" id="tantouIdSearch">
+                                            </div>
+                                            <div class="form-group " >
                                                 <label>店舗ID</label>
                                                 <input type="text" class="form-control " name="shopIdSearch" id="shopIdSearch">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>店舗名</label>
-                                                <input type="text" class="form-control " name="shopNameSearch" id="shopNameSearch">
                                             </div>
                                             <div class="form-group">
                                                 <label>都道府県</label>
@@ -98,6 +98,10 @@
                                             <div class="form-group">
                                                 <label>商品名</label>
                                                 <input type="text" class="form-control " name="productNameSearch" id="productNameSearch">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>店舗名</label>
+                                                <input type="text" class="form-control " name="shopNameSearch" id="shopNameSearch">
                                             </div>
                                         </div>
                                     </div>

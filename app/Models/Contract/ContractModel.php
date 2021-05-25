@@ -163,15 +163,18 @@ class ContractModel
         return (new Database())->readQueryExecution($queryString, $queryParameter);
     }
 
-    public function getContractBySearchOptions($contractorId, $contractorName, $productId, $productName, $shopId, $shopName, $prefecture){
-        $data = $this->getContractDataBySearchOptions($contractorId, $contractorName, $productId, $productName, $shopId, $shopName, $prefecture);
+    public function getContractBySearchOptions($contractorId, $contractorName, $productId, $productName, $shopId, $shopName, $prefecture, $tantouId){
+        $data = $this->getContractDataBySearchOptions($contractorId, $contractorName, $productId, $productName, $shopId, $shopName, $prefecture, $tantouId);
         return $this->mapContractData($data);
     }
 
-    public function getContractDataBySearchOptions($contractorId, $contractorName, $productId, $productName, $shopId, $shopName, $prefecture){
+    public function getContractDataBySearchOptions($contractorId, $contractorName, $productId, $productName, $shopId, $shopName, $prefecture, $tantouId){
         $where = " WHERE ";
         if($contractorId != ""){
             $where .= "c.contractor_id = '$contractorId' AND ";
+        }
+        if($tantouId != ""){
+            $where .= "c.tantou_id = '$tantouId' AND ";
         }
         if($contractorName != ""){
             $where .= "cntr.contractor_name LIKE '%$contractorName%' AND ";
