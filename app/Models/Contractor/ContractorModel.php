@@ -159,17 +159,34 @@ class ContractorModel
         return (new Database())->readQueryExecution($queryString, $queryParameter);
     }
 
-    public function getContractorByName($contractorName){
-        $data = $this->getContractorDataByName($contractorName);
+    public function getContractorByName($contractorName, $companyId, $companyName, $groupId, $groupName){
+        $data = $this->getContractorDataByName($contractorName, $companyId, $companyName, $groupId, $groupName);
         return $this->mapData($data);
     }
 
-    public function getContractorDataByName($contractorName){
-        $contractorName = "%".$contractorName."%";
-        $queryString = "SELECT contractor_id, contractor_name, contractor_name_kana, password, zipcode, address_01, address_02, tel_no, fax_no,
-                        mail_address, company_id, group_id, temporary, type_contractor, update_date, update_user_id, insert_date, insert_user_id,
-                        delete_flag FROM mst_contractor WHERE contractor_name LIKE ? AND delete_flag = ? ORDER BY insert_date DESC";
-        $queryParameter = array($contractorName, 1);
+    public function getContractorDataByName($contractorName, $companyId, $companyName, $groupId, $groupName){
+        $where = " WHERE ";
+        if($contractorName != ""){
+            $where .= "con.contractor_name like '%$contractorName%' AND ";
+        }
+        if($companyId != ""){
+            $where .= "con.company_id = '$companyId' AND ";
+        }
+        if($companyName != ""){
+            $where .= "com.company_name LIKE '%$companyName%' AND ";
+        }
+        if($groupId != ""){
+            $where .= "con.group_id = '$groupId' AND ";
+        }
+        if($groupName != ""){
+            $where .= "g.group_name LIKE '%$groupName%' AND ";
+        }
+
+        $queryString = "SELECT contractor_id, contractor_name, contractor_name_kana, password, con.zipcode, con.address_01, con.address_02, con.tel_no,
+                        con.fax_no, con.mail_address, com.company_id, com.company_name, g.group_id, g.group_name, temporary, type_contractor, con.update_date,
+                        con.update_user_id, con.insert_date, con.insert_user_id, con.delete_flag FROM mst_contractor AS con LEFT JOIN mst_company AS com ON
+                        con.company_id = com.company_id LEFT JOIN mst_group AS g ON con.group_id = g.group_id".$where."con.delete_flag = ? ORDER BY insert_date DESC";
+        $queryParameter = array(1);
 
         return (new Database())->readQueryExecution($queryString, $queryParameter);
     }

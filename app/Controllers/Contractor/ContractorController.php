@@ -12,20 +12,28 @@ class ContractorController extends BaseController
     public function contractorSearch(){
         if( session() && session()->get('login') ){
             if($_SERVER['QUERY_STRING']){
-                $searchId = $_GET['searchById'];
-                $searchName = $_GET['searchByName'];
-                if($searchId){
-                    $contractor = (new ContractorModel())->getContractorDetailsById($searchId);
+                $contractorId = $_GET['contractorIdSearch'];
+                $contractorName = $_GET['contractorNameSearch'];
+                $companyId = $_GET['companyIdSearch'];
+                $companyName = $_GET['companyNameSearch'];
+                $groupId = $_GET['groupIdSearch'];
+                $groupName = $_GET['groupNameSearch'];
+                if($contractorId){
+                    $contractor = (new ContractorModel())->getContractorDetailsById($contractorId);
                     if(isset($contractor) && count($contractor) > 0 ){
-                        return redirect()->to("contractor-details/".$searchId);
+                        return redirect()->to("contractor-details/".$contractorId);
                     }
                     else{
                         return view("Contractor/contractorSearch", ["title" => "Contractor Search", "contractor" => $contractor]);
                     }
                 }
-                else{
-                    $contractor = (new ContractorModel())->getContractorByName($searchName);
+                elseif($contractorName != "" || $companyId != "" || $companyName != "" || $groupId != "" || $groupName != ""){
+                    $contractor = (new ContractorModel())->getContractorByName($contractorName, $companyId, $companyName, $groupId, $groupName);
+
                     return view("Contractor/contractorSearch", ["title" => "Contractor Search", "contractor" => $contractor]);
+                }
+                else{
+                    return view("Contractor/contractorSearch", ["title" => "Contractor Search", "contractor" => array()]);
                 }
             }
             else{
