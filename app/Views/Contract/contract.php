@@ -429,9 +429,7 @@
                 </div>
             </section>
         </div>
-        <script>
-
-        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script type="text/javascript" src="../../js/contractRegistration.js"></script>
         <!-- jQuery -->
         <script src="../../plugins/jquery/jquery.min.js"></script>
