@@ -59,32 +59,32 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group " >
-                                                <label>契約者ID（完全一致）</label>
-                                                <input type="text" class="form-control" id="searchById", name="searchById" placeholder="">
+                                                <label>契約者ID</label>
+                                                <input type="text" class="form-control" id="contractorIdSearch", name="contractorIdSearch" placeholder="">
                                             </div>
                                             <div class="form-group">
-                                                <label>契約者名（あいまい）</label>
-                                                <input type="text" class="form-control" id="searchByName" name="searchByName" placeholder="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group " >
-                                                <label>店舗ID</label>
-                                                <input type="text" class="form-control " name="shopIdSearch" id="shopIdSearch">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>店舗名</label>
-                                                <input type="text" class="form-control " name="shopNameSearch" id="shopNameSearch">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group " >
                                                 <label>契約者名</label>
-                                                <input type="text" class="form-control " name="contractorNameSearch" id="contractorNameSearch">
+                                                <input type="text" class="form-control" id="contractorNameSearch" name="contractorNameSearch" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group " >
+                                                <label>会社ID</label>
+                                                <input type="text" class="form-control " name="companyIdSearch" id="companyIdSearch">
                                             </div>
                                             <div class="form-group">
-                                                <label>商品名</label>
-                                                <input type="text" class="form-control " name="productNameSearch" id="productNameSearch">
+                                                <label>会社名</label>
+                                                <input type="text" class="form-control " name="companyNameSearch" id="companyNameSearch">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group " >
+                                                <label>グループID</label>
+                                                <input type="text" class="form-control " name="groupIdSearch" id="groupIdSearch">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>グループ名</label>
+                                                <input type="text" class="form-control " name="groupNameSearch" id="groupNameSearch">
                                             </div>
                                         </div>
                                     </div>
