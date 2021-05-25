@@ -270,10 +270,14 @@ class RegistrationController extends BaseController
     }
 
     public function processShopFile($file, $shopId, $path){
-        $fileDirectory = $path."/".date("Ymd")."_".$shopId.".pdf";
+        $fileName = date("Ymd")."_".$shopId.".pdf";//$file->getClientExtension();
+        $targetFile = $path."/".$fileName;
 
-        move_uploaded_file($file, $fileDirectory);
+        if(file_exists($path)){
+            mkdir($path, 0777, true);
+        }
+        move_uploaded_file($file, $targetFile);
 
-        return $fileDirectory;
+        return $fileName;
     }
 }
