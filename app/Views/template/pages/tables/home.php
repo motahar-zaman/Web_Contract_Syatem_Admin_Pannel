@@ -76,7 +76,7 @@
                                             <td>契約者の新規登録を行います</td>
                                         </tr>
                                         <tr>
-                                            <td><a href="/contractor-registration">契約者更新</a></td>
+                                            <td><a href="/contractor-update">契約者更新</a></td>
                                             <td>契約者の既存契約者更新を行います</td>
                                         </tr>
                                         <?php if(session()->get("user") == "employee"){ ?>
