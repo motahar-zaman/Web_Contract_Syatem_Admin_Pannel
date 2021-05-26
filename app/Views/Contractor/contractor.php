@@ -40,7 +40,7 @@
                         </div>
                         <div class="row col-md-12">
                             <div class="col-md-6">
-                                <h1 class="mb-0 pt-2 pl-5">契約者情報登録</h1>
+                                <h1 class="mb-0 pt-2 pl-5">契約者情報登録・更新</h1>
                             </div>
                             <div class="col-md-6 text-right pt-4 pr-5">
                                 <span>[<?= session()->get("userId")?>]：[<?= session()->get("userName")?>]</span>
