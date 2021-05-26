@@ -40,7 +40,7 @@ class RegistrationController extends BaseController
             $idMappedCompany = (new CompanyModel())->mapDataByKeyValue($company);
 
             $data = array(
-                "title" => "Contractor Registration",
+                "title" => "Contractor Registration-Update",
                 "group" => $group,
                 "company" => $company,
                 "contractor" => $contractor,
@@ -48,7 +48,8 @@ class RegistrationController extends BaseController
                 "companyId" => $companyId,
                 "groupId" => $groupId,
                 "idMappedGroup" => $idMappedGroup,
-                "idMappedCompany" => $idMappedCompany
+                "idMappedCompany" => $idMappedCompany,
+                "action" => "registration"
             );
 
             return view("Contractor/contractor", $data);
@@ -67,8 +68,17 @@ class RegistrationController extends BaseController
             $companyId = (new SequenceModel())->getCompanySequence();
             $groupId = (new SequenceModel())->getGroupSequence();
 
-            return view("Contractor/temp_contractor", ["title" => "Temporary Contractor Registration", "group" => $group, "company"
-                => $company, "contractor" => $contractor, "contractorId" => $contractorId, "companyId" => $companyId, "groupId" => $groupId]);
+            $data = array(
+                "title" => "Temporary Contractor Registration",
+                "group" => $group,
+                "company" => $company,
+                "contractor" => $contractor,
+                "contractorId" => $contractorId,
+                "companyId" => $companyId,
+                "groupId" => $groupId,
+                "action" => "tempRegistration"
+            );
+            return view("Contractor/temp_contractor", $data);
         }
         else{
             return redirect()->to("/login");
@@ -199,7 +209,8 @@ class RegistrationController extends BaseController
                 "company" => $company,
                 "contractor" => $contractor,
                 "idMappedGroup" => $idMappedGroup,
-                "idMappedCompany" => $idMappedCompany
+                "idMappedCompany" => $idMappedCompany,
+                "action" => "update"
             );
 
             return view("Contractor/updateContractor", $data);
