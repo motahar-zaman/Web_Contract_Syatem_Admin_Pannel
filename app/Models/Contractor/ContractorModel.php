@@ -27,12 +27,11 @@ class ContractorModel
         $insert = $contractor->getInsertDate();
         $insertUser = $contractor->getInsertUserId();
         $delete = $contractor->getDeleteFlag();
-        $temp = $contractor->getTemporary();
 
         $queryString = "INSERT INTO mst_contractor(contractor_id, contractor_name, contractor_name_kana, password, zipcode, address_01, address_02,
-                        tel_no, fax_no, mail_address, company_id, group_id, temporary, type_contractor, update_date, update_user_id, insert_date,
-                        insert_user_id, delete_flag) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $queryParameter = array($id, $name, $kana, $password, $zip, $address1, $address2, $phn, $fax, $mail, $company, $group, $temp, $type,
+                        tel_no, fax_no, mail_address, company_id, group_id, type_contractor, update_date, update_user_id, insert_date,
+                        insert_user_id, delete_flag) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $queryParameter = array($id, $name, $kana, $password, $zip, $address1, $address2, $phn, $fax, $mail, $company, $group, $type,
             $update, $updateUser, $insert, $insertUser, $delete);
 
         return (new Database())->writeQueryExecution($queryString, $queryParameter);

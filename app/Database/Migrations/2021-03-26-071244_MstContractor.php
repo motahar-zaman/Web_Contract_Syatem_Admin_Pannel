@@ -81,12 +81,6 @@ class MstContractor extends Migration
                 'null'         => true,
                 'comment'      => '契約者ID / Group ID',
             ],
-            'temporary' => [
-                'type'       => 'TINYINT',
-                'null'       => false,
-                'on update' => '1',
-                'comment'    => '1 = temporary, 0 = not/permanent',
-            ],
             'type_contractor'   => [
                 'type'          => 'VARCHAR',
                 'constraint'    => '2',
