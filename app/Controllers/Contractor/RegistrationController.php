@@ -36,8 +36,22 @@ class RegistrationController extends BaseController
             $companyId = (new SequenceModel())->getCompanySequence();
             $groupId = (new SequenceModel())->getGroupSequence();
 
-            return view("Contractor/contractor", ["title" => "Contractor Registration", "group" => $group, "company" => $company,
-                "contractor" => $contractor, "contractorId" => $contractorId, "companyId" => $companyId, "groupId" => $groupId]);
+            $idMappedGroup = (new GroupModel())->mapDataByKeyValue($group);
+            $idMappedCompany = (new CompanyModel())->mapDataByKeyValue($company);
+
+            $data = array(
+                "title" => "Contractor Registration",
+                "group" => $group,
+                "company" => $company,
+                "contractor" => $contractor,
+                "contractorId" => $contractorId,
+                "companyId" => $companyId,
+                "groupId" => $groupId,
+                "idMappedGroup" => $idMappedGroup,
+                "idMappedCompany" => $idMappedCompany
+            );
+
+            return view("Contractor/contractor", $data);
         }
         else{
             return redirect()->to("/login");
@@ -184,8 +198,16 @@ class RegistrationController extends BaseController
             $idMappedGroup = (new GroupModel())->mapDataByKeyValue($group);
             $idMappedCompany = (new CompanyModel())->mapDataByKeyValue($company);
 
-            return view("Contractor/updateContractor", ["title" => "Update Contractor Information", "group" => $group,
-                "company" => $company, "contractor" => $contractor, "idMappedGroup" => $idMappedGroup, "idMappedCompany" => $idMappedCompany]);
+            $data = array(
+                "title" => "Update Contractor Information",
+                "group" => $group,
+                "company" => $company,
+                "contractor" => $contractor,
+                "idMappedGroup" => $idMappedGroup,
+                "idMappedCompany" => $idMappedCompany
+            );
+
+            return view("Contractor/updateContractor", $data);
         }
         else{
             return redirect()->to("/login");
