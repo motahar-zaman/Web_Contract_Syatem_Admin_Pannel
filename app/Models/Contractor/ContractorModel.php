@@ -58,15 +58,19 @@ class ContractorModel
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
 
-    public function getAllContractorData(){
-        $data = $this->getAllData();
+    public function getAllContractorData($userType, $userId){
+        $data = $this->getAllData($userType, $userId);
         return $this->mapData($data);
     }
 
-    public function getAllData(){
+    public function getAllData($userType, $userId){
+        $where = " WHERE ";
+        if($userType){
+            $where .= "insert_user_id = '$userId' AND ";
+        }
         $queryString = "SELECT contractor_id, contractor_name, contractor_name_kana, password, zipcode, address_01, address_02, tel_no, fax_no,
                         mail_address, company_id, group_id, temporary, type_contractor, update_date, update_user_id, insert_date, insert_user_id,
-                        delete_flag FROM mst_contractor WHERE delete_flag = ? ORDER BY update_date DESC";
+                        delete_flag FROM mst_contractor".$where."delete_flag = ? ORDER BY update_date DESC";
         $queryParameter = array(1);
 
         return (new Database())->readQueryExecution($queryString, $queryParameter);
@@ -116,12 +120,17 @@ class ContractorModel
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
 
-    public function getContractorDetailsById($contractorId){
-        $data = $this->getContractorDetailsDataById($contractorId);
+    public function getContractorDetailsById($contractorId, $userType = null, $userId = null){
+        $data = $this->getContractorDetailsDataById($contractorId, $userType, $userId);
         return $this->mapContractorDetailsData($data);
     }
 
-    public function getContractorDetailsDataById($contractorId){
+    public function getContractorDetailsDataById($contractorId, $userType, $userId){
+        $where = " WHERE ";
+        if($userType){
+            $where .= "con.insert_user_id = '$userId' AND ";
+        }
+
         $queryString = "SELECT con.contractor_id, con.contractor_name, con.contractor_name_kana, con.zipcode, con.address_01, con.address_02,
                         con.tel_no, con.mail_address, con.company_id, con.group_id, con.temporary, con.type_contractor, con.update_date,
                         con.update_user_id, con.insert_date, con.insert_user_id, con.delete_flag, com.company_name, com.company_name_kana,
@@ -133,7 +142,7 @@ class ContractorModel
                         AS groupAddress01, grp.address_02 AS groupAddress02, grp.tel_no AS groupPhn, grp.mail_address AS groupMail, grp.update_date
                         AS groupUpdateDate, grp.update_user_id AS groupUpdateUser, grp.insert_date AS groupInsertDate, grp.insert_user_id AS
                         groupInsertUser FROM mst_contractor AS con LEFT JOIN mst_company AS com ON con.company_id = com.company_id LEFT JOIN
-                        mst_group AS grp ON con.group_id = grp.group_id WHERE con.contractor_id = ? AND con.delete_flag = ?";
+                        mst_group AS grp ON con.group_id = grp.group_id ".$where." con.contractor_id = ? AND con.delete_flag = ?";
         $queryParameter = array($contractorId, 1);
 
         return (new Database())->readQueryExecution($queryString, $queryParameter);
@@ -157,12 +166,12 @@ class ContractorModel
         return (new Database())->readQueryExecution($queryString, $queryParameter);
     }
 
-    public function getContractorByName($contractorName, $companyId, $companyName, $groupId, $groupName){
-        $data = $this->getContractorDataByName($contractorName, $companyId, $companyName, $groupId, $groupName);
+    public function getContractorByName($contractorName, $companyId, $companyName, $groupId, $groupName, $userType = null, $userId = null){
+        $data = $this->getContractorDataByName($contractorName, $companyId, $companyName, $groupId, $groupName, $userType, $userId);
         return $this->mapData($data);
     }
 
-    public function getContractorDataByName($contractorName, $companyId, $companyName, $groupId, $groupName){
+    public function getContractorDataByName($contractorName, $companyId, $companyName, $groupId, $groupName, $userType, $userId){
         $where = " WHERE ";
         if($contractorName != ""){
             $where .= "con.contractor_name like '%$contractorName%' AND ";
@@ -178,6 +187,10 @@ class ContractorModel
         }
         if($groupName != ""){
             $where .= "g.group_name LIKE '%$groupName%' AND ";
+        }
+
+        if($userType){
+            $where .= "con.insert_user_id = '$userId' AND ";
         }
 
         $queryString = "SELECT contractor_id, contractor_name, contractor_name_kana, password, con.zipcode, con.address_01, con.address_02, con.tel_no,

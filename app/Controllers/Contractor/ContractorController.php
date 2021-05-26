@@ -18,8 +18,16 @@ class ContractorController extends BaseController
                 $companyName = $_GET['companyNameSearch'];
                 $groupId = $_GET['groupIdSearch'];
                 $groupName = $_GET['groupNameSearch'];
+
+                if(session()->get("user") == "contractor"){
+                    $userType = 1;
+                }
+                else{
+                    $userType = 0;
+                }
+
                 if($contractorId){
-                    $contractor = (new ContractorModel())->getContractorDetailsById($contractorId);
+                    $contractor = (new ContractorModel())->getContractorDetailsById($contractorId, $userType, session()->get("userId"));
                     if(isset($contractor) && count($contractor) > 0 ){
                         return redirect()->to("contractor-details/".$contractorId);
                     }
@@ -28,7 +36,7 @@ class ContractorController extends BaseController
                     }
                 }
                 elseif($contractorName != "" || $companyId != "" || $companyName != "" || $groupId != "" || $groupName != ""){
-                    $contractor = (new ContractorModel())->getContractorByName($contractorName, $companyId, $companyName, $groupId, $groupName);
+                    $contractor = (new ContractorModel())->getContractorByName($contractorName, $companyId, $companyName, $groupId, $groupName, $userType, session()->get("userId"));
 
                     return view("Contractor/contractorSearch", ["title" => "Contractor Search", "contractor" => $contractor]);
                 }
@@ -37,7 +45,13 @@ class ContractorController extends BaseController
                 }
             }
             else{
-                $contractor = (new ContractorModel())->getAllContractorData();
+                if(session()->get("user") == "contractor"){
+                    $contractor = (new ContractorModel())->getAllContractorData(1, session()->get("userId"));
+                }
+                else{
+                    $contractor = (new ContractorModel())->getAllContractorData(0, session()->get("userId"));
+                }
+
                 return view("Contractor/contractorSearch", ["title" => "Contractor Search", "contractor" => $contractor]);
             }
         }
