@@ -93,7 +93,6 @@ class ContractorModel
                     $contractor->setMailAddress($data->mail_address ?? NULL);
                     $contractor->setCompanyId($data->company_id ?? NULL);
                     $contractor->setGroupId($data->group_id ?? NULL);
-                    $contractor->setTemporary($data->temporary ?? NULL);
                     $contractor->setType($data->type_contractor ?? NULL);
                     $contractor->setUpdateDate($data->update_date ?? NULL);
                     $contractor->setUpdateUserId($data->update_user_id ?? NULL);
