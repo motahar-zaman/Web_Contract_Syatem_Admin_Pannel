@@ -50,7 +50,7 @@ class CompanyModel
         $updateUser = $company->getUpdateUserId();
 
         $queryString = "UPDATE mst_company SET company_name = ?, company_name_kana = ?, daihyousha_name = ?, daihyousha_name_kana = ?,
-                        zipcode = ?, address_01 = ?, address_02 = ?, tel_no = ?, mail_address = ?, update_date = ?, update_user_id = ?,
+                        zipcode = ?, address_01 = ?, address_02 = ?, tel_no = ?, mail_address = ?, update_date = ?, update_user_id = ?
                         WHERE company_id = ?";
         $queryParameter = array($name, $kana, $representative, $representativeKana, $zip, $address1, $address2, $phn, $mail, $update,
             $updateUser, $id);
