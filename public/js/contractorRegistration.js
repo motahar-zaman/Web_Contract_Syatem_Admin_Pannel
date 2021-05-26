@@ -1,15 +1,3 @@
-$(function () {
-    //Initialize Select2 Elements
-    $('.select2').select2()
-
-    //Initialize Select2 Elements
-    $('.select2bs4').select2({
-        theme: 'bootstrap4'
-    })
-})
-
-var request;
-
 function contractorRegistration() {
     let data = {};
     data["contractorId"] = $("#contractorId").val();
@@ -47,10 +35,6 @@ function contractorRegistration() {
     data["groupInsert"] = $("#groupInsert").val();
 
     if (validateData(data)) {
-        if (request) {
-            request.abort();
-        }
-
         request = $.ajax({
             url: "/contractor-registration",
             type: "POST",
