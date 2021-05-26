@@ -49,7 +49,6 @@ class RegistrationController extends BaseController
                 "groupId" => $groupId,
                 "idMappedGroup" => $idMappedGroup,
                 "idMappedCompany" => $idMappedCompany,
-                "action" => "registration"
             );
 
             return view("Contractor/contractor", $data);
@@ -63,7 +62,6 @@ class RegistrationController extends BaseController
         if( session() && session()->get('login') && session()->get('user') == "employee" ){
             $group = (new GroupModel())->getAllGroupData();
             $company = (new CompanyModel())->getAllCompanyData();
-            $contractor = (new ContractorModel())->getAllContractorData();
             $contractorId = (new SequenceModel())->getContractorSequence();
             $companyId = (new SequenceModel())->getCompanySequence();
             $groupId = (new SequenceModel())->getGroupSequence();
@@ -72,11 +70,9 @@ class RegistrationController extends BaseController
                 "title" => "Temporary Contractor Registration",
                 "group" => $group,
                 "company" => $company,
-                "contractor" => $contractor,
                 "contractorId" => $contractorId,
                 "companyId" => $companyId,
                 "groupId" => $groupId,
-                "action" => "tempRegistration"
             );
             return view("Contractor/temp_contractor", $data);
         }
@@ -210,7 +206,6 @@ class RegistrationController extends BaseController
                 "contractor" => $contractor,
                 "idMappedGroup" => $idMappedGroup,
                 "idMappedCompany" => $idMappedCompany,
-                "action" => "update"
             );
 
             return view("Contractor/updateContractor", $data);
