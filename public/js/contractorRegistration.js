@@ -21,7 +21,6 @@ function contractorRegistration() {
     data["contractorPhn"] = $("#contractorPhn").val();
     data["contractorMail"] = $("#contractorMail").val();
     data["contractorInsert"] = $("#contractorInsert").val();
-    data["temporary"] = $("#temporary").val();
 
     data["companyId"] = $("#companyId").val();
     data["companyName"] = $("#companyName").val();

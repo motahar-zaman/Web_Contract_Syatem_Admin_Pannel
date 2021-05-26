@@ -60,7 +60,6 @@
                                             <label for="contractorId">契約者ID</label>
                                             <input class="form-control" type="text" name="contractorId" id="contractorId" value="<?php echo $contractorId ?>" readonly>
                                             <input type="hidden" name="contractorInsert" id="contractorInsert" value="insert">
-                                            <input type="hidden" name="temporary" id="temporary" value="NO">
                                         </div>
                                         <div class="form-group">
                                             <label for="contractorName">契約者名</label>
