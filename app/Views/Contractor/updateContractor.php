@@ -9,26 +9,26 @@
         <link rel="stylesheet"
               href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
         <!-- Font Awesome -->
-        <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+        <link rel="stylesheet" href="../template/plugins/fontawesome-free/css/all.min.css">
         <!-- daterange picker -->
-        <link rel="stylesheet" href="../../plugins/daterangepicker/daterangepicker.css">
+        <link rel="stylesheet" href="../template/plugins/daterangepicker/daterangepicker.css">
         <!-- iCheck for checkboxes and radio inputs -->
-        <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+        <link rel="stylesheet" href="../template/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
         <!-- Bootstrap Color Picker -->
-        <link rel="stylesheet" href="../../plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+        <link rel="stylesheet" href="../template/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
         <!-- Tempusdominus Bootstrap 4 -->
-        <link rel="stylesheet" href="../../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+        <link rel="stylesheet" href="../template/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
         <!-- Select2 -->
-        <link rel="stylesheet" href="../../plugins/select2/css/select2.min.css">
-        <link rel="stylesheet" href="../../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+        <link rel="stylesheet" href="../template/plugins/select2/css/select2.min.css">
+        <link rel="stylesheet" href="../template/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
         <!-- Bootstrap4 Duallistbox -->
-        <link rel="stylesheet" href="../../plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+        <link rel="stylesheet" href="../template/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <?= $this->include('modals\contractorSelect') ?>
+        <?= $this->include('modals\updateContractorSelect') ?>
         <?= $this->include('modals\companySelect') ?>
         <?= $this->include('modals\groupSelect') ?>
         <div class="wrapper">
@@ -58,9 +58,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="contractorId">契約者ID</label>
-                                            <input class="form-control" type="text" name="contractorId" id="contractorId" value="<?php echo $contractorId ?>" readonly>
-                                            <input type="hidden" name="contractorInsert" id="contractorInsert" value="insert">
-                                            <input type="hidden" name="temporary" id="temporary" value="NO">
+                                            <input class="form-control" type="text" name="contractorId" id="contractorId" value="<?php old('contractorId')?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label for="contractorName">契約者名</label>
@@ -112,7 +110,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="contractorMail">メールアドレス</label>
-                                            <input class="form-control" type="email"  name="contractorMail" id="contractorMail" value="<?php old('contractorMail')?>">
+                                            <input class="form-control"  name="contractorMail" type="text" id="contractorMail" value="<?php old('contractorMail')?>">
                                             <span class="errormsg" id="contractorMailError"></span>
                                         </div>
                                     </div>
@@ -128,8 +126,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="companyId">会社ID</label>
-                                            <input class="form-control" type="text" name="companyId" id="companyId" value="<?php echo $companyId ?>" readonly>
-                                            <input type="hidden" name="companyInsert" id="companyInsert" value="insert">
+                                            <input class="form-control" type="text" name="companyId" id="companyId" value="<?php old('companyId')?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label for="companyName">会社名</label>
@@ -191,7 +188,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="companyMail">メールアドレス</label>
-                                            <input class="form-control" type="email"  name="companyMail" id="companyMail" value="<?php old('companyMail')?>">
+                                            <input class="form-control"  name="companyMail" type="text" id="companyMail" value="<?php old('companyMail')?>">
                                             <span class="errormsg" id="companyMailError"></span>
                                         </div>
                                     </div>
@@ -207,11 +204,10 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="groupId">グループID</label>
-                                            <input class="form-control" type="text" name="groupId" id="groupId" value="<?php echo $groupId ?>" readonly>
-                                            <input type="hidden" name="groupInsert" id="groupInsert" value="insert">
+                                            <input class="form-control" type="text" name="groupId" id="groupId" value="<?php old('groupId')?>" readonly>
                                         </div>
                                         <div class="form-group">
-                                            <label for="groupName">グループ名</label>
+                                            <label for="groupName">グループ選択</label>
                                             <input class="form-control"  name="groupName" type="text" id="groupName" value="<?php old('groupName')?>">
                                             <span class="errormsg" id="groupNameError"></span>
                                         </div>
@@ -230,9 +226,9 @@
                                         <div class="form-group">
                                             <label for="groupSelect">グループ選択</label>
                                             <div class="select2-purple">
-                                              <button type="button" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2" data-toggle="modal" data-target="#group-select-modal">
-                                                  グループ選択
-                                              </button>
+                                                <button type="button" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2" data-toggle="modal" data-target="#group-select-modal">
+                                                    グループ選択
+                                                </button>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -270,7 +266,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="groupMail">メールアドレス</label>
-                                            <input class="form-control" type="email" name="groupMail" id="groupMail" value="<?php old('groupMail')?>">
+                                            <input class="form-control"  name="groupMail" type="text" id="groupMail" value="<?php old('groupMail')?>">
                                             <span class="errormsg" id="groupMailError"></span>
                                         </div>
                                     </div>
@@ -282,8 +278,8 @@
               <div class="card-footer">
                 <div class="row mx-auto pb-3" style="max-width: 950px">
                   <div class="col-md-6 pl-0">
-                    <button onclick="contractorRegistration()" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-1">
-                      登録
+                    <button onclick="contractorUpdate()" id="contractorUpdate" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-1">
+                      契約者更新
                     </button>
                   </div>
                   <div class="col-md-6 pr-0 text-right">
@@ -294,26 +290,26 @@
             </section>
         </div>
 
-        <script type="text/javascript" src="../../js/contractorRegistration.js"></script>
+        <script type="text/javascript" src="../../js/contractorUpdate.js"></script>
         <!-- jQuery -->
-        <script src="../../plugins/jquery/jquery.min.js"></script>
+        <script src="../template/plugins/jquery/jquery.min.js"></script>
         <!-- Bootstrap 4 -->
-        <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- Select2 -->
-        <script src="../../plugins/select2/js/select2.full.min.js"></script>
+        <script src="../template/plugins/select2/js/select2.full.min.js"></script>
         <!-- Bootstrap4 Duallistbox -->
-        <script src="../../plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+        <script src="../template/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
         <!-- InputMask -->
-        <script src="../../plugins/moment/moment.min.js"></script>
-        <script src="../../plugins/inputmask/jquery.inputmask.min.js"></script>
+        <script src="../template/plugins/moment/moment.min.js"></script>
+        <script src="../template/plugins/inputmask/jquery.inputmask.min.js"></script>
         <!-- date-range-picker -->
-        <script src="../../plugins/daterangepicker/daterangepicker.js"></script>
+        <script src="../template/plugins/daterangepicker/daterangepicker.js"></script>
         <!-- bootstrap color picker -->
-        <script src="../../plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+        <script src="../template/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
         <!-- Tempusdominus Bootstrap 4 -->
-        <script src="../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+        <script src="../template/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
         <!-- Bootstrap Switch -->
-        <script src="../../plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+        <script src="../template/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
         <!-- AdminLTE App -->
         <script src="../../dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->

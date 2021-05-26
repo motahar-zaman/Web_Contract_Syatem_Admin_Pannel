@@ -36,7 +36,7 @@ class RegistrationController extends BaseController
             $companyId = (new SequenceModel())->getCompanySequence();
             $groupId = (new SequenceModel())->getGroupSequence();
 
-            return view("template/pages/forms/contractor", ["title" => "Contractor Registration", "group" => $group, "company" => $company,
+            return view("Contractor/contractor", ["title" => "Contractor Registration", "group" => $group, "company" => $company,
                 "contractor" => $contractor, "contractorId" => $contractorId, "companyId" => $companyId, "groupId" => $groupId]);
         }
         else{
@@ -53,7 +53,7 @@ class RegistrationController extends BaseController
             $companyId = (new SequenceModel())->getCompanySequence();
             $groupId = (new SequenceModel())->getGroupSequence();
 
-            return view("template/pages/forms/temp_contractor", ["title" => "Temporary Contractor Registration", "group" => $group, "company"
+            return view("Contractor/temp_contractor", ["title" => "Temporary Contractor Registration", "group" => $group, "company"
                 => $company, "contractor" => $contractor, "contractorId" => $contractorId, "companyId" => $companyId, "groupId" => $groupId]);
         }
         else{
@@ -184,7 +184,7 @@ class RegistrationController extends BaseController
             $idMappedGroup = (new GroupModel())->mapDataByKeyValue($group);
             $idMappedCompany = (new CompanyModel())->mapDataByKeyValue($company);
 
-            return view("template/pages/forms/updateContractor", ["title" => "Update Contractor Information", "group" => $group,
+            return view("Contractor/updateContractor", ["title" => "Update Contractor Information", "group" => $group,
                 "company" => $company, "contractor" => $contractor, "idMappedGroup" => $idMappedGroup, "idMappedCompany" => $idMappedCompany]);
         }
         else{
