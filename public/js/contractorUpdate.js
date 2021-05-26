@@ -166,7 +166,7 @@ function selectedCompany(data, td){
     $("#companyModalClose").click();
 }
 
-function selectedContractorUpdate(id, td){
+function selectedContractorWithCompanyGroup(id, td){
     let contractorCompany = $("#contractorCompany"+id).val();
     let contractorGroup = $("#contractorGroup"+id).val();
     let contractorCompanyData = contractorCompany.split("=>");

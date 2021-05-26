@@ -55,7 +55,9 @@
                                 }
                                 ?>
                                 <tr>
-                                    <td onclick="selectedContractorUpdate(<?php echo $i; ?>, this)" id="selectedContractorUpdate<?php echo $data->getId(); ?>"><a href="#">選択</a></td>
+                                    <td onclick="selectedContractorWithCompanyGroup(<?php echo $i; ?>, this)" id="selectedContractorUpdate<?php echo $data->getId(); ?>">
+                                        <a href="#">選択</a>
+                                    </td>
                                     <td id="contractorId<?php echo $i ?>"><?php echo $data->getId() ?></td>
                                     <td id="contractorName<?php echo $i ?>"><?php echo $data->getName() ?></td>
                                     <td id="contractorAddress1<?php echo $i ?>"><?php echo $data->getAddress01() ?></td>
