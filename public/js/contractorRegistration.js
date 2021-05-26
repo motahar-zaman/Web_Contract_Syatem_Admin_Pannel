@@ -216,6 +216,7 @@ function selectedContractorWithCompanyGroup(id, td){
     $("#contractorAddress2").val($("#contractorAddress2"+id).val());
     $("#contractorPhn").val($("#contractorPhn"+id).html());
     $("#contractorMail").val($("#contractorMail"+id).html());
+    $("#contractorInsert").val("update");
 
     $('#updateContractorSelectTable td').removeClass("bg-dark-silver");
     $(td).addClass("bg-dark-silver");
@@ -232,6 +233,7 @@ function selectedContractorWithCompanyGroup(id, td){
     $("#companyAddress2").val(contractorCompanyData[7]);
     $("#companyPhn").val(contractorCompanyData[8]);
     $("#companyMail").val(contractorCompanyData[10]);
+    $("#companyInsert").val("update");
 
     //group data populate
     $("#groupId").val(contractorGroupData[0]);
@@ -244,4 +246,5 @@ function selectedContractorWithCompanyGroup(id, td){
     $("#groupAddress2").val(contractorGroupData[7]);
     $("#groupPhn").val(contractorGroupData[10]);
     $("#groupMail").val(contractorGroupData[12]);
+    $("#groupInsert").val("update");
 }
