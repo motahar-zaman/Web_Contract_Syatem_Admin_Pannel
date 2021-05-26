@@ -242,7 +242,7 @@ class RegistrationController extends BaseController
                 (new CompanyModel())->updateCompanyData($company);
                 (new ContractorModel())->updateContractorData($contractor);
 
-                return json_encode(['msg' => "Successful", 'status' => 1]);
+                return json_encode(['msg' => "Successful", "contractor" => $contractor->getId(), 'status' => 1]);
             }
             else{
                 return json_encode(['msg' => "Not an ajax request", 'status' => 2]);

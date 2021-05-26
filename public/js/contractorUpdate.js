@@ -56,7 +56,8 @@ function contractorUpdate(){
 
             success: function(data){
                 if(data.status === 1){
-                    window.location.href = "/home";
+                    let id = data.contractor;
+                    window.location.href = "/contractor-details/"+id;
                 }
                 else if(data.status === 3){
                     window.location.href = "/login";
