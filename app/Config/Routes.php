@@ -64,7 +64,7 @@ $routes->post('contractor-registration', 'Contractor\RegistrationController::reg
 //$routes->post('contractor-update', 'Contractor\RegistrationController::updateAction');
 $routes->get('contractor-update', 'Contractor\RegistrationController::index');
 $routes->post('contractor-update', 'Contractor\RegistrationController::registrationAction');
-$routes->get('contractor-update/(:any)', 'Contractor\RegistrationController::update');
+$routes->get('contractor-update/(:any)', 'Contractor\RegistrationController::update/$1');
 $routes->get('contractor-search', 'Contractor\ContractorController::contractorSearch');
 $routes->get('contractor-details/(:any)', 'Contractor\ContractorController::contractorDetails/$1');
 
