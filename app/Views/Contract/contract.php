@@ -25,7 +25,7 @@
         <link rel="stylesheet" href="../../plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="../css/style.css">
     </head>
     <body>
         <?= $this->include('modals\contractorSelect') ?>
@@ -80,8 +80,14 @@
                                         <label>担当者</label>
                                         <select name="tantou" id="tantou" class="form-control">
                                             <option value="0">担当者選択</option>
-                                            <?php foreach ($employees as $employee) { ?>
-                                                <option value="<?php echo $employee->getId() ?>"><?php echo $employee->getName() ?></option>
+                                            <?php foreach ($employees as $employee) {
+                                                $insertUser = "";
+                                                $employeeId = $employee->getId();
+                                                if(isset($contract)){
+                                                    $insertUser = $contract->getInsertUserId();
+                                                }
+                                                ?>
+                                                <option value="<?= $employeeId ?>" <?php if($insertUser == $employeeId) echo "selected" ?>><?php echo $employee->getName() ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -118,6 +124,30 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php
+                                                if(isset($contract)){
+                                                    ?>
+                                                    <tr>
+                                                        <?php
+                                                            $contractorId = $contract->getContractorId();
+                                                            foreach ($contractor as $index => $data){
+                                                                if($data->getId() == $contractorId){
+                                                                    $cName = $data->getName();
+                                                                    $cAddress = $data->getAddress01();
+                                                                    $cPhn = $data->getTelNo();
+                                                                    $cEmail = $data->getMailAddress();
+                                                                }
+                                                            }
+                                                        ?>
+                                                        <td id="contractorId"><?= $contractorId ?></td>
+                                                        <td id="contractorName"><?= $cName ?></td>
+                                                        <td id="contractorAddress1"><?= $cAddress ?></td>
+                                                        <td id="contractorPhn"><?= $cPhn ?></td>
+                                                        <td id="contractorMail"><?= $cEmail ?></td>
+                                                    </tr>
+                                                <?php
+                                                }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -150,6 +180,21 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php
+                                                if(isset($contract)){
+                                                    foreach ($contract->getContractProduct() as $product) {
+                                                        ?>
+                                                        <tr>
+                                                            <td id = "productSelectId"><?php echo $product['productId'] ?></td>
+                                                            <td id = "productSelectName"><?php echo $product['name'] ?></td>
+                                                            <td id= "productSelectNote"><?php echo $product['note'] ?></td>
+                                                            <td id= "productSelectStartDate"><?php echo '01/'.$product['startDateMonth'].'/'.$product['startDateYear']  ?></td>
+                                                            <td id= "productSelectEndDate"><?php echo '01/'.$product['endDate_Month'].'/'.$product['endDateYear'] ?></td>
+                                                        </tr>
+                                                    <?php
+                                                    }
+                                                }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -187,6 +232,37 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php
+                                                if(isset($contract)){
+                                                    ?>
+                                                    <tr>
+                                                        <?php
+                                                            $name = "";
+                                                            $representative = "";
+                                                            $address = "";
+                                                            $prefecture = "";
+                                                            $phn = "";
+                                                            $shopId = $contract->getShopId();
+                                                            foreach ($shop as $index => $data){
+                                                                if($data->getId() == $shopId){
+                                                                    $name = $data->getName();
+                                                                    $representative = $data->getRepresentative();
+                                                                    $address = $data->getAddress01();
+                                                                    $prefecture = $data->getPrefecture();
+                                                                    $phn = $data->getTelNo();
+                                                                }
+                                                            }
+                                                        ?>
+                                                        <td id="shopId"><?= $shopId ?></td>
+                                                        <td id="shopName"><?= $name ?></td>
+                                                        <td id="shopRepresentativeName"><?= $representative ?></td>
+                                                        <td id="shopPrefecture"><?= $prefecture ?></td>
+                                                        <td id="shopAddress"><?= $address ?></td>
+                                                        <td id="shopPhoneNumber"><?= $phn ?></td>
+                                                    </tr>
+                                                    <?php
+                                                }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -348,12 +424,11 @@
                     <div class="form-group gap-2 mx-auto" style="max-width: 950px">
                         <div class="form-group mt-5">
                             <label for="companySelect">登録商品備考</label>
-                            <textarea class="form-control" name="product_registration_remark" type="text" id="product_registration_remark" rows="3"></textarea>
+                            <textarea class="form-control" name="product_registration_remark" type="text" id="product_registration_remark" rows="3"><?php if(isset($contract)) echo $contract->getNote() ?></textarea>
                             <span class="errormsg" id="ProductRegistrationRemarkError"></span>
                         </div>
                         <button onclick="" id="product_registration" class="btn btn-primary k1Btn k1Btn2">商品登録</button>
                     </div>
-
                     <div class="gap-2 mx-auto text-center" style="max-width: 950px">
                         <div class="card mt-5 text-left">
                             <div class="card-header">
