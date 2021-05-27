@@ -84,44 +84,44 @@
                                         <div id="mySelect">
                                             <div class="form-group " >
                                                 <label>契約者ID</label>
-                                                <input type="text" class="form-control " name="contractorDetailsId" id="contractorDetailsId" value="<?php echo $contractorDetails->contractor_id; ?>" readonly >
+                                                <input type="text" class="form-control " name="contractorDetailsId" id="contractorDetailsId" value="<?= $contractorDetails->contractor_id ?? ""; ?>" readonly >
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label>契約者名</label>
-                                            <input type="text" name="contractorDetailsName" id="contractorDetailsName" class="form-control" value="<?php echo $contractorDetails->contractor_name; ?>" readonly >
+                                            <input type="text" name="contractorDetailsName" id="contractorDetailsName" class="form-control" value="<?= $contractorDetails->contractor_name ?? ""; ?>" readonly >
                                         </div>
                                         <div class="form-group">
                                             <label>郵便番号</label>
-                                            <input type="text" name="contractorDetailsPostcode" id="contractorDetailsPostcode" class="form-control" value="<?php echo $contractorDetails->zipcode; ?>" readonly>
+                                            <input type="text" name="contractorDetailsPostcode" id="contractorDetailsPostcode" class="form-control" value="<?= $contractorDetails->zipcode ?? ""; ?>" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>契約者名カナ</label>
-                                            <input type="text" class="form-control" name="contractorDetailsContractor" id="contractorDetailsContractor" value="<?php echo $contractorDetails->contractor_name_kana; ?>" readonly>
+                                            <input type="text" class="form-control" name="contractorDetailsContractor" id="contractorDetailsContractor" value="<?= $contractorDetails->contractor_name_kana ?? ""; ?>" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>住所１</label>
-                                            <input class="form-control" name="contractorDetailsAddress1" type="text" id="contractorDetailsAddress1" value="<?php echo $contractorDetails->address_01; ?>" readonly>
+                                            <input class="form-control" name="contractorDetailsAddress1" type="text" id="contractorDetailsAddress1" value="<?= $contractorDetails->address_01 ?? ""; ?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label>住所２</label>
-                                            <input class="form-control" name="contractorDetailsAddress2" type="text" id="contractorDetailsAddress2" value="<?php echo $contractorDetails->address_02; ?>" readonly>
+                                            <input class="form-control" name="contractorDetailsAddress2" type="text" id="contractorDetailsAddress2" value="<?= $contractorDetails->address_02 ?? ""; ?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label>電話番号</label>
-                                            <input class="form-control" name="contractorDetailsPhoneNumber" type="text" id="contractorDetailsPhoneNumber" value="<?php echo $contractorDetails->tel_no; ?>" readonly>
+                                            <input class="form-control" name="contractorDetailsPhoneNumber" type="text" id="contractorDetailsPhoneNumber" value="<?= $contractorDetails->tel_no ?? ""; ?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label>メールアドレス</label>
-                                            <input class="form-control" name="contractorDetailsMailAddress" type="text" id="contractorDetailsMailAddress" value="<?php echo $contractorDetails->mail_address; ?>" readonly>
+                                            <input class="form-control" name="contractorDetailsMailAddress" type="text" id="contractorDetailsMailAddress" value="<?= $contractorDetails->mail_address ?? ""; ?>" readonly>
                                         </div>
                                     </div>
                                     <button onclick="" id="contractorDetailsBtn" class="btn btn-primary ml-2 k1Btn k1Btn2">
-                                        <a href="/contractor-update/<?= $contractorDetails->contractor_id ?>">契約者修正</a>
+                                        <a href="/contractor-update/<?= $contractorDetails->contractor_id ?? "" ?>">契約者修正</a>
                                     </button>
                                 </div>
                             </div>
@@ -141,52 +141,52 @@
                                         <div id="mySelect">
                                             <div class="form-group " >
                                                 <label>会社ID</label>
-                                                <input type="text" class="form-control " name="contractorDetailsComId" id="contractorDetailsComId" value="<?php echo $contractorDetails->company_id; ?>" readonly>
+                                                <input type="text" class="form-control " name="contractorDetailsComId" id="contractorDetailsComId" value="<?= $contractorDetails->company_id ?? "" ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label>会社名</label>
-                                            <input type="text" name="contractorDetailsComName" id="contractorDetailsComName" class="form-control" value="<?php echo $contractorDetails->company_name; ?>" readonly>
+                                            <input type="text" name="contractorDetailsComName" id="contractorDetailsComName" class="form-control" value="<?= $contractorDetails->company_name ?? "" ?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label>代表者名</label>
-                                            <input type="text" name="contractorDetailsComRepName" id="contractorDetailsComRepName" class="form-control" value="<?php echo $contractorDetails->companyDaihyousha; ?>" readonly>
+                                            <input type="text" name="contractorDetailsComRepName" id="contractorDetailsComRepName" class="form-control" value="<?= $contractorDetails->companyDaihyousha ?? "" ?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label>郵便番号</label>
-                                            <input type="text" name="contractorDetailsComPostCode" id="contractorDetailsComPostCode" class="form-control" value="<?php echo $contractorDetails->companyZip; ?>" readonly>
+                                            <input type="text" name="contractorDetailsComPostCode" id="contractorDetailsComPostCode" class="form-control" value="<?= $contractorDetails->companyZip ?? "" ?>" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>会社名カナ</label>
-                                            <input type="text" class="form-control" name="contractorDetailsComName2" id="contractorDetailsComName2" value="<?php echo $contractorDetails->company_name_kana; ?>" readonly>
+                                            <input type="text" class="form-control" name="contractorDetailsComName2" id="contractorDetailsComName2" value="<?= $contractorDetails->company_name_kana ?? "" ?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label>代表者名カナ</label>
-                                            <input type="text" class="form-control" name="contractorDetailsComRepName2" id="contractorDetailsComRepName2" value="<?php echo $contractorDetails->companyDaihyoushaKana; ?>" readonly>
+                                            <input type="text" class="form-control" name="contractorDetailsComRepName2" id="contractorDetailsComRepName2" value="<?= $contractorDetails->companyDaihyoushaKana ?? "" ?>" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>住所１</label>
-                                            <input class="form-control" name="contractorDetailsComAddress1" type="text" id="contractorDetailsComAddress1" value="<?php echo $contractorDetails->companyAddress01; ?>" readonly>
+                                            <input class="form-control" name="contractorDetailsComAddress1" type="text" id="contractorDetailsComAddress1" value="<?= $contractorDetails->companyAddress01 ?? "" ?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label>住所２</label>
-                                            <input class="form-control" name="contractorDetailsComAddress2" type="text" id="contractorDetailsComAddress2" value="<?php echo $contractorDetails->companyAddress02; ?>" readonly>
+                                            <input class="form-control" name="contractorDetailsComAddress2" type="text" id="contractorDetailsComAddress2" value="<?= $contractorDetails->companyAddress02 ?? "" ?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label>電話番号</label>
-                                            <input class="form-control" name="contractorDetailsComPhoneNumber" type="text" id="contractorDetailsComPhoneNumber" value="<?php echo $contractorDetails->companyPhn; ?>" readonly>
+                                            <input class="form-control" name="contractorDetailsComPhoneNumber" type="text" id="contractorDetailsComPhoneNumber" value="<?= $contractorDetails->companyPhn ?? "" ?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label>メールアドレス</label>
-                                            <input class="form-control" name="contractorDetailsComMailAddress" type="text" id="contractorDetailsComMailAddress" value="<?php echo $contractorDetails->companyMail; ?>" readonly>
+                                            <input class="form-control" name="contractorDetailsComMailAddress" type="text" id="contractorDetailsComMailAddress" value="<?= $contractorDetails->companyMail ?? "" ?>" readonly>
                                         </div>
                                     </div>
                                     <button onclick="" id="contractorDetailsComUpdate" class="btn btn-primary ml-2 k1Btn k1Btn2">
-                                        <a href="/contractor-update/<?= $contractorDetails->contractor_id ?>">会社修正</a>
+                                        <a href="/contractor-update/<?= $contractorDetails->contractor_id ?? "" ?>">会社修正</a>
                                     </button>
                                 </div>
                             </div>
@@ -206,52 +206,52 @@
                                         <div id="mySelect">
                                             <div class="form-group " >
                                                 <label>グループID</label>
-                                                <input type="text" class="form-control " name="contractorDetailsGrpId" id="contractorDetailsGrpId" value="<?php echo $contractorDetails->group_id; ?>" readonly>
+                                                <input type="text" class="form-control " name="contractorDetailsGrpId" id="contractorDetailsGrpId" value="<?= $contractorDetails->group_id ?? "" ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label>グループ名</label>
-                                            <input type="text" name="contractorDetailsGrpName" id="contractorDetailsGrpName" class="form-control" value="<?php echo $contractorDetails->group_name; ?>" readonly>
+                                            <input type="text" name="contractorDetailsGrpName" id="contractorDetailsGrpName" class="form-control" value="<?= $contractorDetails->group_name ?? "" ?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label>代表者名</label>
-                                            <input type="text" name="contractorDetailsGrpRepName" id="contractorDetailsGrpRepName" class="form-control" value="<?php echo $contractorDetails->groupDaihyousha; ?>" readonly>
+                                            <input type="text" name="contractorDetailsGrpRepName" id="contractorDetailsGrpRepName" class="form-control" value="<?= $contractorDetails->groupDaihyousha ?? "" ?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label>郵便番号</label>
-                                            <input type="text" name="contractorDetailsGrpPostCode" id="contractorDetailsGrpPostCode" class="form-control" value="<?php echo $contractorDetails->groupZip; ?>" readonly>
+                                            <input type="text" name="contractorDetailsGrpPostCode" id="contractorDetailsGrpPostCode" class="form-control" value="<?= $contractorDetails->groupZip ?? "" ?>" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>グループ名カナ</label>
-                                            <input type="text" class="form-control" name="contractorDetailsGrpName2" id="contractorDetailsGrpName2" value="<?php echo $contractorDetails->group_name_kana; ?>" readonly>
+                                            <input type="text" class="form-control" name="contractorDetailsGrpName2" id="contractorDetailsGrpName2" value="<?= $contractorDetails->group_name_kana ?? "" ?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label>代表者名カナ</label>
-                                            <input type="text" class="form-control" name="contractorDetailsGrpRepName2" id="contractorDetailsGrpRepName2" value="<?php echo $contractorDetails->groupDaihyoushaKana; ?>" readonly>
+                                            <input type="text" class="form-control" name="contractorDetailsGrpRepName2" id="contractorDetailsGrpRepName2" value="<?= $contractorDetails->groupDaihyoushaKana ?? "" ?>" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>住所１</label>
-                                            <input class="form-control" name="contractorDetailsGrpAddress1" type="text" id="contractorDetailsGrpAddress1" value="<?php echo $contractorDetails->groupAddress01; ?>" readonly>
+                                            <input class="form-control" name="contractorDetailsGrpAddress1" type="text" id="contractorDetailsGrpAddress1" value="<?= $contractorDetails->groupAddress01 ?? "" ?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label>住所２</label>
-                                            <input class="form-control" name="contractorDetailsGrpAddress2" type="text" id="contractorDetailsGrpAddress2" value="<?php echo $contractorDetails->groupAddress02; ?>" readonly>
+                                            <input class="form-control" name="contractorDetailsGrpAddress2" type="text" id="contractorDetailsGrpAddress2" value="<?= $contractorDetails->groupAddress02 ?? "" ?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label>電話番号</label>
-                                            <input class="form-control" name="contractorDetailsGrpPhoneNumber" type="text" id="contractorDetailsGrpPhoneNumber" value="<?php echo $contractorDetails->groupPhn; ?>" readonly>
+                                            <input class="form-control" name="contractorDetailsGrpPhoneNumber" type="text" id="contractorDetailsGrpPhoneNumber" value="<?= $contractorDetails->groupPhn ?? "" ?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label>メールアドレス</label>
-                                            <input class="form-control" name="contractorDetailsGrpMailAddress" type="text" id="contractorDetailsGrpMailAddress" value="<?php echo $contractorDetails->groupMail; ?>" readonly>
+                                            <input class="form-control" name="contractorDetailsGrpMailAddress" type="text" id="contractorDetailsGrpMailAddress" value="<?= $contractorDetails->groupMail ?? "" ?>" readonly>
                                         </div>
                                     </div>
                                     <button onclick="" id="contractorDetailsGrpUpdate" class="btn btn-primary ml-2 k1Btn k1Btn2">
-                                        <a href="/contractor-update/<?= $contractorDetails->contractor_id ?>">グループ修正</a>
+                                        <a href="/contractor-update/<?= $contractorDetails->contractor_id ?? "" ?>">グループ修正</a>
                                     </button>
                                 </div>
                             </div>
@@ -300,7 +300,7 @@
                                                     }
                                                 }
                                                 else{
-                                                    echo "No Product available";
+                                                    echo "データがありません！";
                                                 }
                                             ?>
                                         </tbody>
