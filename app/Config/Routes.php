@@ -61,10 +61,10 @@ $routes->get('home', 'Authentication\AuthController::index');
 $routes->get('contractor-registration', 'Contractor\RegistrationController::index');
 $routes->get('temp-contractor-registration', 'Contractor\RegistrationController::tempRegistration');
 $routes->post('contractor-registration', 'Contractor\RegistrationController::registrationAction');
-//$routes->get('contractor-update', 'Contractor\RegistrationController::update');
 //$routes->post('contractor-update', 'Contractor\RegistrationController::updateAction');
 $routes->get('contractor-update', 'Contractor\RegistrationController::index');
 $routes->post('contractor-update', 'Contractor\RegistrationController::registrationAction');
+$routes->get('contractor-update/(:any)', 'Contractor\RegistrationController::update');
 $routes->get('contractor-search', 'Contractor\ContractorController::contractorSearch');
 $routes->get('contractor-details/(:any)', 'Contractor\ContractorController::contractorDetails/$1');
 
