@@ -58,7 +58,7 @@ class ContractorModel
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
 
-    public function getAllContractorData($userType, $userId){
+    public function getAllContractorData($userType = null, $userId = null){
         $data = $this->getAllData($userType, $userId);
         return $this->mapData($data);
     }
@@ -66,8 +66,9 @@ class ContractorModel
     public function getAllData($userType, $userId){
         $where = " WHERE ";
         if($userType){
-            $where .= "insert_user_id = '$userId' AND ";
+            $where .= "contractor_id = '$userId' AND ";
         }
+
         $queryString = "SELECT contractor_id, contractor_name, contractor_name_kana, password, zipcode, address_01, address_02, tel_no, fax_no,
                         mail_address, company_id, group_id, temporary, type_contractor, update_date, update_user_id, insert_date, insert_user_id,
                         delete_flag FROM mst_contractor".$where."delete_flag = ? ORDER BY update_date DESC";
