@@ -58,10 +58,22 @@ class RegistrationController extends BaseController
             $prefecture = (new AddressModel())->getAllPrefecture();
             $areaLarge = (new AddressModel())->getAllAreaLarge();
             $areaSmall = (new AddressModel())->getAllAreaSmall();
+            $employee = (new EmployeeModel())->getAllEmployee();
 
-            return view("Contract/temp_contract", ["title" => "Temporary Contract Registration", "shop" => $shop, "product" => $product,
-                "contractor" => $contractor, "areas" => $area, "districts" => $district, "prefectures" => $prefecture, "areaLarges" => $areaLarge,
-                "areaSmalls" => $areaSmall]);
+            $data = array(
+                "title" => "Temporary Contract Registration",
+                "shop" => $shop,
+                "product" => $product,
+                "contractor" => $contractor,
+                "areas" => $area,
+                "districts" => $district,
+                "prefectures" => $prefecture,
+                "areaLarges" => $areaLarge,
+                "areaSmalls" => $areaSmall,
+                "employees" => $employee
+            );
+
+            return view("Contract/contract", $data);
         }
         else{
             return redirect()->to("/login");
@@ -167,6 +179,7 @@ class RegistrationController extends BaseController
             $prefecture = (new AddressModel())->getAllPrefecture();
             $areaLarge = (new AddressModel())->getAllAreaLarge();
             $areaSmall = (new AddressModel())->getAllAreaSmall();
+            $employee = (new EmployeeModel())->getAllEmployee();
 
             $contract = (new ContractModel())->getContractById($contractId);
 
@@ -180,9 +193,10 @@ class RegistrationController extends BaseController
                 "prefectures" => $prefecture,
                 "areaLarges" => $areaLarge,
                 "areaSmalls" => $areaSmall,
+                "employees" => $employee,
                 "contract" => $contract[$contractId] ?? null
             );
-            return view("Contract/update", $data);
+            return view("Contract/contract", $data);
         }
         else{
             return redirect()->to("/login");
