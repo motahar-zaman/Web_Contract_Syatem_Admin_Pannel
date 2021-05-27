@@ -25,7 +25,7 @@
         <link rel="stylesheet" href="../../plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="../css/style.css">
     </head>
     <body>
         <?= $this->include('modals\updateContractorSelect') ?>
@@ -57,18 +57,26 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <?php
+                                                if(isset($contractorId)){
+                                                    $id = $contractorId;
+                                                }
+                                                else{
+                                                    $id = $editContractorDetails->contractor_id;
+                                                }
+                                            ?>
                                             <label for="contractorId">契約者ID</label>
-                                            <input class="form-control" type="text" name="contractorId" id="contractorId" value="<?php echo $contractorId ?>" readonly>
+                                            <input class="form-control" type="text" name="contractorId" id="contractorId" value="<?= $id ?>" readonly>
                                             <input type="hidden" name="contractorInsert" id="contractorInsert" value="insert">
                                         </div>
                                         <div class="form-group">
                                             <label for="contractorName">契約者名</label>
-                                            <input class="form-control"  name="contractorName" type="text" id="contractorName" value="<?php old('contractorName')?>">
+                                            <input class="form-control"  name="contractorName" type="text" id="contractorName" value="<?= $editContractorDetails->contractor_name ?? "" ?>">
                                             <span class="errormsg" id="contractorNameError"></span>
                                         </div>
                                         <div class="form-group">
                                             <label for="contractorPostCode">郵便番号</label>
-                                            <input class="form-control" name="contractorPostCode" type="text" id="contractorPostCode" value="<?php old('contractorPostCode')?>">
+                                            <input class="form-control" name="contractorPostCode" type="text" id="contractorPostCode" value="<?= $editContractorDetails->zipcode ?? "" ?>">
                                             <span class="errormsg" id="contractorPostCodeError"></span>
                                         </div>
                                     </div>
@@ -83,7 +91,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="contractorKana">契約者名カナ</label>
-                                            <input class="form-control" name="contractorKana" type="text" id="contractorKana" value="<?php old('contractorKana')?>">
+                                            <input class="form-control" name="contractorKana" type="text" id="contractorKana" value="<?= $editContractorDetails->contractor_name_kana ?? "" ?>">
                                             <span class="errormsg" id="contractorKanaError"></span>
                                         </div>
                                         <div class="form-group">
@@ -96,22 +104,22 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="contractorAddress1">住所１</label>
-                                            <input class="form-control" name="contractorAddress1" type="text" id="contractorAddress1" value="<?php old('contractorAddress1')?>">
+                                            <input class="form-control" name="contractorAddress1" type="text" id="contractorAddress1" value="<?= $editContractorDetails->address_01 ?? "" ?>">
                                             <span class="errormsg" id="contractorAddress1Error"></span>
                                         </div>
                                         <div class="form-group">
                                             <label for="contractorAddress2">住所２</label>
-                                            <input class="form-control" name="contractorAddress2" type="text" id="contractorAddress2" value="<?php old('contractorAddress2')?>">
+                                            <input class="form-control" name="contractorAddress2" type="text" id="contractorAddress2" value="<?= $editContractorDetails->address_02 ?? "" ?>">
                                             <span class="errormsg" id="contractorAddress2Error"></span>
                                         </div>
                                         <div class="form-group">
                                             <label for="contractorPhn">電話番号</label>
-                                            <input class="form-control" type="number" name="contractorPhn" id="contractorPhn" value="<?php old('contractorPhn')?>">
+                                            <input class="form-control" type="number" name="contractorPhn" id="contractorPhn" value="<?= $editContractorDetails->tel_no ?? "" ?>">
                                             <span class="errormsg" id="contractorPhnError"></span>
                                         </div>
                                         <div class="form-group">
                                             <label for="contractorMail">メールアドレス</label>
-                                            <input class="form-control" type="email"  name="contractorMail" id="contractorMail" value="<?php old('contractorMail')?>">
+                                            <input class="form-control" type="email"  name="contractorMail" id="contractorMail" value="<?= $editContractorDetails->mail_address ?? "" ?>">
                                             <span class="errormsg" id="contractorMailError"></span>
                                         </div>
                                     </div>
@@ -126,23 +134,31 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <?php
+                                                if(isset($companyId)){
+                                                    $id = $companyId;
+                                                }
+                                                else{
+                                                    $id = $editContractorDetails->company_id;
+                                                }
+                                            ?>
                                             <label for="companyId">会社ID</label>
-                                            <input class="form-control" type="text" name="companyId" id="companyId" value="<?php echo $companyId ?>" readonly>
+                                            <input class="form-control" type="text" name="companyId" id="companyId" value="<?= $id ?>" readonly>
                                             <input type="hidden" name="companyInsert" id="companyInsert" value="insert">
                                         </div>
                                         <div class="form-group">
                                             <label for="companyName">会社名</label>
-                                            <input class="form-control"  name="companyName" type="text" id="companyName" value="<?php old('companyName')?>">
+                                            <input class="form-control"  name="companyName" type="text" id="companyName" value="<?= $editContractorDetails->company_name ?? "" ?>">
                                             <span class="errormsg" id="companyNameError"></span>
                                         </div>
                                         <div class="form-group">
                                             <label for="companyRepresentative">代表者名</label>
-                                            <input class="form-control"  name="companyRepresentative" type="text" id="companyRepresentative" value="<?php old('companyRepresentative')?>">
+                                            <input class="form-control"  name="companyRepresentative" type="text" id="companyRepresentative" value="<?= $editContractorDetails->companyDaihyousha ?? "" ?>">
                                             <span class="errormsg" id="companyRepresentativeError"></span>
                                         </div>
                                         <div class="form-group">
                                             <label for="companyPostCode">郵便番号</label>
-                                            <input class="form-control" name="companyPostCode" type="text" id="companyPostCode" value="<?php old('companyPostCode')?>">
+                                            <input class="form-control" name="companyPostCode" type="text" id="companyPostCode" value="<?= $editContractorDetails->companyZip ?? "" ?>">
                                             <span class="errormsg" id="companyPostCodeError"></span>
                                         </div>
                                     </div>
@@ -157,12 +173,12 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="companyKana">会社名カナ</label>
-                                            <input class="form-control" name="companyKana" type="text" id="companyKana" value="<?php old('companyKana')?>">
+                                            <input class="form-control" name="companyKana" type="text" id="companyKana" value="<?= $editContractorDetails->company_name_kana ?? "" ?>">
                                             <span class="errormsg" id="companyKanaError"></span>
                                         </div>
                                         <div class="form-group">
                                             <label for="companyRepresentativeKana">代表者名</label>
-                                            <input class="form-control" name="companyRepresentativeKana" type="text" id="companyRepresentativeKana" value="<?php old('companyRepresentativeKana')?>">
+                                            <input class="form-control" name="companyRepresentativeKana" type="text" id="companyRepresentativeKana" value="<?= $editContractorDetails->companyDaihyoushaKana ?? "" ?>">
                                             <span class="errormsg" id="companyRepresentativeKanaError"></span>
                                         </div>
                                         <div class="form-group">
@@ -175,22 +191,22 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="companyAddress1">住所１</label>
-                                            <input class="form-control" name="companyAddress1" type="text" id="companyAddress1" value="<?php old('companyAddress1')?>">
+                                            <input class="form-control" name="companyAddress1" type="text" id="companyAddress1" value="<?= $editContractorDetails->companyAddress01 ?? "" ?>">
                                             <span class="errormsg" id="companyAddress1Error"></span>
                                         </div>
                                         <div class="form-group">
                                             <label for="companyAddress2">住所２</label>
-                                            <input class="form-control" name="companyAddress2" type="text" id="companyAddress2" value="<?php old('companyAddress2')?>">
+                                            <input class="form-control" name="companyAddress2" type="text" id="companyAddress2" value="<?= $editContractorDetails->companyAddress02 ?? "" ?>">
                                             <span class="errormsg" id="companyAddress2Error"></span>
                                         </div>
                                         <div class="form-group">
                                             <label for="companyPhn">電話番号</label>
-                                            <input class="form-control" type="number" name="companyPhn" id="companyPhn" value="<?php old('companyPhn')?>">
+                                            <input class="form-control" type="number" name="companyPhn" id="companyPhn" value="<?= $editContractorDetails->companyPhn ?? "" ?>">
                                             <span class="errormsg" id="companyPhnError"></span>
                                         </div>
                                         <div class="form-group">
                                             <label for="companyMail">メールアドレス</label>
-                                            <input class="form-control" type="email"  name="companyMail" id="companyMail" value="<?php old('companyMail')?>">
+                                            <input class="form-control" type="email"  name="companyMail" id="companyMail" value="<?= $editContractorDetails->companyMail ?? "" ?>">
                                             <span class="errormsg" id="companyMailError"></span>
                                         </div>
                                     </div>
@@ -205,23 +221,31 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <?php
+                                                if(isset($groupId)){
+                                                    $id = $groupId;
+                                                }
+                                                else{
+                                                    $id = $editContractorDetails->group_id;
+                                                }
+                                            ?>
                                             <label for="groupId">グループID</label>
-                                            <input class="form-control" type="text" name="groupId" id="groupId" value="<?php echo $groupId ?>" readonly>
+                                            <input class="form-control" type="text" name="groupId" id="groupId" value="<?= $id ?>" readonly>
                                             <input type="hidden" name="groupInsert" id="groupInsert" value="insert">
                                         </div>
                                         <div class="form-group">
                                             <label for="groupName">グループ名</label>
-                                            <input class="form-control"  name="groupName" type="text" id="groupName" value="<?php old('groupName')?>">
+                                            <input class="form-control"  name="groupName" type="text" id="groupName" value="<?= $editContractorDetails->group_name ?? "" ?>">
                                             <span class="errormsg" id="groupNameError"></span>
                                         </div>
                                         <div class="form-group">
                                             <label for="groupRepresentative">代表者名</label>
-                                            <input class="form-control"  name="groupRepresentative" type="text" id="groupRepresentative" value="<?php old('groupRepresentative')?>">
+                                            <input class="form-control"  name="groupRepresentative" type="text" id="groupRepresentative" value="<?= $editContractorDetails->groupDaihyousha ?? "" ?>">
                                             <span class="errormsg" id="groupRepresentativeError"></span>
                                         </div>
                                         <div class="form-group">
                                             <label for="groupPostCode">郵便番号</label>
-                                            <input class="form-control" name="groupPostCode" type="text" id="groupPostCode" value="<?php old('groupPostCode')?>">
+                                            <input class="form-control" name="groupPostCode" type="text" id="groupPostCode" value="<?= $editContractorDetails->groupZip ?? "" ?>">
                                             <span class="errormsg" id="groupPostCodeError"></span>
                                         </div>
                                     </div>
@@ -236,12 +260,12 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="groupKana">グループ名カナ</label>
-                                            <input class="form-control" name="groupKana" type="text" id="groupKana" value="<?php old('groupKana')?>">
+                                            <input class="form-control" name="groupKana" type="text" id="groupKana" value="<?= $editContractorDetails->group_name_kana ?? "" ?>">
                                             <span class="errormsg" id="groupKanaError"></span>
                                         </div>
                                         <div class="form-group">
                                             <label for="groupRepresentativeKana">代表者名カナ</label>
-                                            <input class="form-control" name="groupRepresentativeKana" type="text" id="groupRepresentativeKana" value="<?php old('groupRepresentativeKana')?>">
+                                            <input class="form-control" name="groupRepresentativeKana" type="text" id="groupRepresentativeKana" value="<?= $editContractorDetails->groupDaihyoushaKana ?? "" ?>">
                                             <span class="errormsg" id="groupRepresentativeKanaError"></span>
                                         </div>
                                         <div class="form-group">
@@ -254,22 +278,22 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="groupAddress1">住所１</label>
-                                            <input class="form-control" name="groupAddress1" type="text" id="groupAddress1" value="<?php old('groupAddress1')?>">
+                                            <input class="form-control" name="groupAddress1" type="text" id="groupAddress1" value="<?= $editContractorDetails->groupAddress01 ?? "" ?>">
                                             <span class="errormsg" id="groupAddress1Error"></span>
                                         </div>
                                         <div class="form-group">
                                             <label for="groupAddress2">住所２</label>
-                                            <input class="form-control" name="groupAddress2" type="text" id="groupAddress2" value="<?php old('groupAddress2')?>">
+                                            <input class="form-control" name="groupAddress2" type="text" id="groupAddress2" value="<?= $editContractorDetails->groupAddress02 ?? "" ?>">
                                             <span class="errormsg" id="groupAddress2Error"></span>
                                         </div>
                                         <div class="form-group">
                                             <label for="groupPhn">電話番号</label>
-                                            <input class="form-control" type="number" name="groupPhn" id="groupPhn" value="<?php old('groupPhn')?>">
+                                            <input class="form-control" type="number" name="groupPhn" id="groupPhn" value="<?= $editContractorDetails->groupPhn ?? "" ?>">
                                             <span class="errormsg" id="groupPhnError"></span>
                                         </div>
                                         <div class="form-group">
                                             <label for="groupMail">メールアドレス</label>
-                                            <input class="form-control" type="email" name="groupMail" id="groupMail" value="<?php old('groupMail')?>">
+                                            <input class="form-control" type="email" name="groupMail" id="groupMail" value="<?= $editContractorDetails->groupMail ?? "" ?>">
                                             <span class="errormsg" id="groupMailError"></span>
                                         </div>
                                     </div>

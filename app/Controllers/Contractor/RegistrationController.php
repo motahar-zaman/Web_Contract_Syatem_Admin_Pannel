@@ -190,11 +190,12 @@ class RegistrationController extends BaseController
         }
     }
 
-    public function update(){
+    public function update($contractorId){
         if( session() && session()->get('login') ){
             $group = (new GroupModel())->getAllGroupData();
             $company = (new CompanyModel())->getAllCompanyData();
             $contractor = (new ContractorModel())->getAllContractorData();
+            $editContractorDetails = (new ContractorModel())->getContractorDetailsById($contractorId);
 
             $idMappedGroup = (new GroupModel())->mapDataByKeyValue($group);
             $idMappedCompany = (new CompanyModel())->mapDataByKeyValue($company);
@@ -206,9 +207,10 @@ class RegistrationController extends BaseController
                 "contractor" => $contractor,
                 "idMappedGroup" => $idMappedGroup,
                 "idMappedCompany" => $idMappedCompany,
+                "editContractorDetails" => $editContractorDetails[0]
             );
 
-            return view("Contractor/updateContractor", $data);
+            return view("Contractor/contractor", $data);
         }
         else{
             return redirect()->to("/login");
