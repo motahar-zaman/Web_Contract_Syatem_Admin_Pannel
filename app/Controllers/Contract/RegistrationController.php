@@ -157,9 +157,8 @@ class RegistrationController extends BaseController
         }
     }
 
-    public function update(){
+    public function update($contractId){
         if( session() && session()->get('login') ){
-            $contractId = "CNTR_00005";//$_GET["contractId"];
             $shop = (new ShopModel())->getAllShopData();
             $product = (new ProductModel())->getAllProductData();
             $contractor = (new ContractorModel())->getAllContractorData();
@@ -171,9 +170,19 @@ class RegistrationController extends BaseController
 
             $contract = (new ContractModel())->getContractById($contractId);
 
-            return view("Contract/update", ["title" => "Contract Update", "shop" => $shop, "product" => $product, "contractor" =>
-                $contractor, "areas" => $area, "districts" => $district, "prefectures" => $prefecture, "areaLarges" => $areaLarge,
-                "areaSmalls" => $areaSmall, "contract" => $contract[$contractId] ?? null]);
+            $data = array(
+                "title" => "Contract Update",
+                "shop" => $shop,
+                "product" => $product,
+                "contractor" => $contractor,
+                "areas" => $area,
+                "districts" => $district,
+                "prefectures" => $prefecture,
+                "areaLarges" => $areaLarge,
+                "areaSmalls" => $areaSmall,
+                "contract" => $contract[$contractId] ?? null
+            );
+            return view("Contract/update", $data);
         }
         else{
             return redirect()->to("/login");
