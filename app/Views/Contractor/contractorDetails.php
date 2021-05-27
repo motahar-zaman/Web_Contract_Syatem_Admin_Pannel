@@ -96,7 +96,9 @@
                                             <input class="form-control" name="contractorDetailsMailAddress" type="text" id="contractorDetailsMailAddress" value="<?php echo $contractorDetails->mail_address; ?>" readonly>
                                         </div>
                                     </div>
-                                    <button onclick="" id="contractorDetailsBtn" class="btn btn-primary ml-2 k1Btn k1Btn2">契約者修正</button>
+                                    <button onclick="" id="contractorDetailsBtn" class="btn btn-primary ml-2 k1Btn k1Btn2">
+                                        <a href="/contractor-update/<?= $contractorDetails->contractor_id ?>">契約者修正</a>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -159,7 +161,9 @@
                                             <input class="form-control" name="contractorDetailsComMailAddress" type="text" id="contractorDetailsComMailAddress" value="<?php echo $contractorDetails->companyMail; ?>" readonly>
                                         </div>
                                     </div>
-                                    <button onclick="" id="contractorDetailsComUpdate" class="btn btn-primary ml-2 k1Btn k1Btn2">会社修正</button>
+                                    <button onclick="" id="contractorDetailsComUpdate" class="btn btn-primary ml-2 k1Btn k1Btn2">
+                                        <a href="/contractor-update/<?= $contractorDetails->contractor_id ?>">会社修正</a>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -222,7 +226,9 @@
                                             <input class="form-control" name="contractorDetailsGrpMailAddress" type="text" id="contractorDetailsGrpMailAddress" value="<?php echo $contractorDetails->groupMail; ?>" readonly>
                                         </div>
                                     </div>
-                                    <button onclick="" id="contractorDetailsGrpUpdate" class="btn btn-primary ml-2 k1Btn k1Btn2">グループ修正</button>
+                                    <button onclick="" id="contractorDetailsGrpUpdate" class="btn btn-primary ml-2 k1Btn k1Btn2">
+                                        <a href="/contractor-update/<?= $contractorDetails->contractor_id ?>">グループ修正</a>
+                                    </button>
                                 </div>
                             </div>
                         </div>
