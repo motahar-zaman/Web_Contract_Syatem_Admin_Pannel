@@ -15,6 +15,7 @@ class ContractModel
         $shop = $contract->getShopId();
         $contractor = $contract->getContractorId();
         $tantou = $contract->getTantouId();
+        $status = $contract->getStatus();
         $note = $contract->getNote();
         $update = $contract->getUpdateDate();
         $updateUser = $contract->getUpdateUserId();
@@ -22,9 +23,9 @@ class ContractModel
         $insertUser = $contract->getInsertUserId();
         $delete = $contract->getDeleteFlag();
 
-        $queryString = "INSERT INTO trn_web_contract_base ( contract_id, shop_id, contractor_id, tantou_id, note, update_date,
-                        update_user_id, insert_date, insert_user_id, delete_flag) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $queryParameter = array($id, $shop, $contractor, $tantou, $note, $update, $updateUser, $insert, $insertUser, $delete);
+        $queryString = "INSERT INTO trn_web_contract_base (contract_id, shop_id, contractor_id, tantou_id, status, note, update_date,
+                        update_user_id, insert_date, insert_user_id, delete_flag) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $queryParameter = array($id, $shop, $contractor, $tantou, $status, $note, $update, $updateUser, $insert, $insertUser, $delete);
 
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
@@ -32,7 +33,7 @@ class ContractModel
     public function storeContractProductData($contractProduct = array()){
         $d = $contractProduct;
 
-        $queryString = "INSERT INTO trn_contract_product (contract_id, branch_no, product_id, contract_status, start_date_year, start_date_month,
+        $queryString = "INSERT INTO trn_contract_product (contract_id, branch_no, product_id, status, start_date_year, start_date_month,
                         end_date_year, end_date_month, tantou_id, note, update_date, update_user_id, insert_date, insert_user_id, delete_flag)
                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $queryParameter = array($d['id'], $d['branch'], $d['product'], $d['contractStatus'], $d['startYear'], $d['startMonth'], $d['endYear'],
@@ -47,8 +48,8 @@ class ContractModel
     }
 
     public function getAllContractData(){
-        $queryString = "SELECT c.contract_id, c.shop_id, contractor_id, c.tantou_id, c.note, c.update_date, c.update_user_id, c.insert_date,
-            c.insert_user_id, c.delete_flag, branch_no, p.product_id, contract_status, start_date_year, start_date_month, end_date_year,
+        $queryString = "SELECT c.contract_id, c.shop_id, contractor_id, c.tantou_id, c.status, c.note, c.update_date, c.update_user_id, c.insert_date,
+            c.insert_user_id, c.delete_flag, branch_no, p.product_id, p.status AS product_status, start_date_year, start_date_month, end_date_year,
             end_date_month, p.note AS product_note, mp.product_name, mp.product_note, s.shop_name, s.zipcode, s.daihyousha_name, s.address_01,
             s.tel_no, s.mail_address, s.notification_letter FROM trn_web_contract_base AS c LEFT JOIN trn_contract_product AS p ON c.contract_id =
             p.contract_id LEFT JOIN mst_product AS mp ON mp.product_id = p.product_id LEFT JOIN mst_shop AS s ON s.shop_id = c.shop_id WHERE c.delete_flag = ?";
@@ -75,6 +76,7 @@ class ContractModel
                         $contract->setContractorId($data->contractor_id ?? NULL);
                         $contract->setShopId($data->shop_id ?? NULL);
                         $contract->setTantouId($data->tantou_id ?? NULL);
+                        $contract->setStatus($data->status ?? NULL);
                         $contract->setNote($data->note ?? NULL);
                         $contract->setUpdateDate($data->update_date ?? NULL);
                         $contract->setUpdateUserId($data->update_user_id ?? NULL);
@@ -105,7 +107,7 @@ class ContractModel
 
         $mapData["branchNo"] = $data->branch_no ?? NULL;
         $mapData["productId"] = $data->product_id ?? NULL;
-        $mapData["contractStatus"] = $data->contract_status ?? NULL;
+        $mapData["status"] = $data->product_status ?? NULL;
         $mapData["startDateYear"] = $data->start_date_year ?? NULL;
         $mapData["startDateMonth"] = $data->start_date_month ?? NULL;
         $mapData["endDateYear"] = $data->end_date_year ?? NULL;
@@ -124,8 +126,8 @@ class ContractModel
     }
 
     public function getContractDataById($id){
-        $queryString = "SELECT c.contract_id, c.shop_id, contractor_id, c.tantou_id, c.note, c.update_date, c.update_user_id, c.insert_date,
-            c.insert_user_id, c.delete_flag, branch_no, p.product_id, contract_status, start_date_year, start_date_month, end_date_year,
+        $queryString = "SELECT c.contract_id, c.shop_id, contractor_id, c.tantou_id, c.status, c.note, c.update_date, c.update_user_id, c.insert_date,
+            c.insert_user_id, c.delete_flag, branch_no, p.product_id, p.status AS product_status, start_date_year, start_date_month, end_date_year,
             end_date_month, p.note AS product_note, mp.product_name, mp.product_note, s.shop_name, s.zipcode, s.daihyousha_name, s.address_01,
             s.tel_no, s.mail_address, s.notification_letter FROM trn_web_contract_base AS c LEFT JOIN trn_contract_product AS p ON c.contract_id =
             p.contract_id LEFT JOIN mst_product AS mp ON mp.product_id = p.product_id LEFT JOIN mst_shop AS s ON s.shop_id = c.shop_id WHERE
@@ -141,20 +143,21 @@ class ContractModel
         $shop = $contract->getShopId();
         $contractor = $contract->getContractorId();
         $tantou = $contract->getTantouId();
+        $status = $contract->getStatus();
         $note = $contract->getNote();
         $update = $contract->getUpdateDate();
         $updateUser = $contract->getUpdateUserId();
 
-        $queryString = "UPDATE trn_web_contract_base SET shop_id = ?, contractor_id = ?, tantou_id = ?, note = ?, update_date = ?,
+        $queryString = "UPDATE trn_web_contract_base SET shop_id = ?, contractor_id = ?, tantou_id = ?, status = ?, note = ?, update_date = ?,
                         update_user_id = ? WHERE contract_id = ?";
-        $queryParameter = array($shop, $contractor, $tantou, $note, $update, $updateUser, $id);
+        $queryParameter = array($shop, $contractor, $tantou, $status, $note, $update, $updateUser, $id);
 
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
 
     public function getContractProductById($contractId, $contractProductId){
 
-        $queryString = "SELECT contract_id, branch_no, product_id, contract_status, start_date_year, start_date_month, end_date_year, end_date_month,
+        $queryString = "SELECT contract_id, branch_no, product_id, status, start_date_year, start_date_month, end_date_year, end_date_month,
             tantou_id, note, update_date, update_user_id, insert_date, insert_user_id, delete_flag FROM trn_contract_product  WHERE contract_id = ?
             AND product_id = ?";
 
@@ -195,8 +198,8 @@ class ContractModel
             $where .= "s.prefecture = '$prefecture' AND ";
         }
 
-        $queryString = "SELECT c.contract_id, s.shop_id, c.contractor_id, c.tantou_id, c.note, c.update_date, c.update_user_id, c.insert_date,
-            c.insert_user_id, c.delete_flag, p.branch_no, p.product_id, p.contract_status, p.start_date_year, p.start_date_month, p.end_date_year,
+        $queryString = "SELECT c.contract_id, s.shop_id, c.contractor_id, c.tantou_id, c.status, c.note, c.update_date, c.update_user_id, c.insert_date,
+            c.insert_user_id, c.delete_flag, p.branch_no, p.product_id, p.status AS product_status, p.start_date_year, p.start_date_month, p.end_date_year,
             p.end_date_month, p.note AS product_note, mp.product_name, mp.product_note, s.shop_name, s.zipcode, s.daihyousha_name, s.address_01,
             s.tel_no, s.mail_address, s.notification_letter, cntr.contractor_name FROM trn_web_contract_base AS c LEFT JOIN trn_contract_product AS p ON
             c.contract_id = p.contract_id LEFT JOIN mst_product AS mp ON mp.product_id = p.product_id LEFT JOIN mst_shop AS s ON s.shop_id = c.shop_id
