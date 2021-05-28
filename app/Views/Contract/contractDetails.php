@@ -59,7 +59,7 @@
                                             </div>
                                             <div class="form-group " >
                                                 <label>契約ステータス</label>
-                                                <input type="text" class="form-control " name="contractStatus" id="contractStatus" value="<?php echo "status"; ?>" readonly>
+                                                <input type="text" class="form-control " name="contractStatus" id="contractStatus" value="<?= $contract->getStatus() ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-6 pt-4">
@@ -343,12 +343,23 @@
                                 見積
                             </button>
                             <?php
-                                if($contract->getStatus() == 2 || $contract->getStatus() == 7){
-                                ?>
-                                    <button id="contractStatusUpdate" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3">
-                                        <a class="k1Btn2" href="/contract-status-update/<?= $contract->getId() ?>/3">承認</a>
-                                    </button>
-                                    <?php
+                                if(session()->get('user') == "contractor"){
+                                    if($contract->getStatus() == 2 || $contract->getStatus() == 7){
+                                    ?>
+                                        <button id="contractStatusUpdate" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3">
+                                            <a class="k1Btn2" href="/contract-status-update/<?= $contract->getId() ?>/3">承認</a>
+                                        </button>
+                                        <?php
+                                    }
+                                }
+                                elseif(session()->get('user') == "employee"){
+                                    if($contract->getStatus() == 3){
+                                        ?>
+                                        <button id="contractStatusUpdate" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3">
+                                            <a class="k1Btn2" href="/contract-status-update/<?= $contract->getId() ?>/6">承認</a>
+                                        </button>
+                                        <?php
+                                    }
                                 }
                             ?>
                             <button onclick="" id="menu" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2">
