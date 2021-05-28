@@ -284,7 +284,7 @@
                                             <div id="mySelect">
                                                 <div class="form-group " >
                                                     <label for="inputEmail3">店舗名</label>
-                                                    <input type="text" class="form-control " name="shop_name" id="shop_name">
+                                                    <input type="text" class="form-control " name="shop_name" id="shop_name" value="">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -315,7 +315,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="inputEmail3" >店舗名カナ</label>
-                                                <input type="text" class="form-control" name="shop_name_kana" id="shop_name_kana">
+                                                <input type="text" class="form-control" name="shop_name_kana" id="shop_name_kana" value="">
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail3" >都道府県</label>
@@ -337,7 +337,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="inputEmail3" >郵便番号</label>
-                                                <input type="text" name="postCode" class="form-control" id="postCode">
+                                                <input type="text" name="postCode" class="form-control" id="postCode" value="">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -351,48 +351,43 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="inputEmail3" >住所０１</label>
-                                                <input class="form-control" name="address1"
-                                                       type="text" id="address1">
+                                                <input class="form-control" name="address1" type="text" id="address1" value="">
                                                 <span class="errormsg" id="Address1Error"></span>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail3">住所０２</label>
-                                                <input class="form-control" name="address2"
-                                                       type="text" id="address2">
+                                                <input class="form-control" name="address2" type="text" id="address2" value="">
                                                 <span class="errormsg" id="Address2Error"></span>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail3" >電話番号</label>
-                                                <input class="form-control" name="phone_number"
-                                                       type="text" id="phone_number">
+                                                <input class="form-control" name="phone_number" type="text" id="phone_number" value="">
                                                 <span class="errormsg" id="PhoneNumberError"></span>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail3" >メールアドレス</label>
-                                                <input class="form-control" name="mail_address"
-                                                       type="text" id="mail_address">
+                                                <input class="form-control" name="mail_address" type="text" id="mail_address" value="">
                                                 <span class="errormsg" id="PhoneNumberError"></span>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="inputEmail3">代表者名</label>
-                                                <input class="form-control" name="representative_name" type="text"
-                                                       id="representative_name">
+                                                <input class="form-control" name="representative_name" type="text" id="representative_name" value="">
                                                 <span class="errormsg" id="MailAddressError"></span>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="inputEmail3" >代表者名カナ</label>
-                                                <input class="form-control" name="rep_name_kana" type="text" id="rep_name_kana">
+                                                <input class="form-control" name="rep_name_kana" type="text" id="rep_name_kana" value="">
                                                 <span class="errormsg" id="MailAddressError"></span>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="inputEmail3" >店舗サイトURL</label>
-                                                <input class="form-control" name="shop_site_url" type="text" id="shop_site_url">
+                                                <input class="form-control" name="shop_site_url" type="text" id="shop_site_url" value="">
                                                 <span class="errormsg" id="MailAddressError"></span>
                                             </div>
                                         </div>
@@ -411,8 +406,8 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="notification_letter">届出書</label>
-                                                <div class="col-sm-12">
-                                                    <input class="form-control h-auto custom-file-input" type="file" id="notification_letter" name="notification_letter" style="margin-left: -5px;">
+                                                <div class="col-sm-12 pl-0">
+                                                    <input class="form-control h-auto custom-file-input" type="file" id="notification_letter" name="notification_letter" value="">
                                                     <span class="errormsg" id="notificationLetterError"></span>
                                                 </div>
                                             </div>
