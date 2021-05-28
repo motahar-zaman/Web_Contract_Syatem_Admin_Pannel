@@ -339,12 +339,18 @@
                 <div class="card-footer">
                     <div class="row mx-auto pb-3" style="max-width: 950px">
                         <div class="col-md-6 pl-0">
-                            <button onclick="" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3">
+                            <button onclick="" id="estimation" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3">
                                 見積
                             </button>
-                            <button onclick="" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3">
-                                承認
-                            </button>
+                            <?php
+                                if($contract->getStatus() == 2 || $contract->getStatus() == 7){
+                                ?>
+                                    <button id="contractStatusUpdate" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3">
+                                        <a class="k1Btn2" href="/contract-status-update/<?= $contract->getId() ?>/3">承認</a>
+                                    </button>
+                                    <?php
+                                }
+                            ?>
                             <button onclick="" id="menu" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2">
                                 <a class="k1Btn2" href="/home">メニュー</a>
                             </button>
