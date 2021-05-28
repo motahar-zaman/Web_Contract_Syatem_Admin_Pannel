@@ -155,6 +155,14 @@ class ContractModel
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
 
+    public function updateContractStatus($contractId, $status, $updateDate, $updateUser){
+        $queryString = "UPDATE trn_web_contract_base SET status = ?, update_date = ?, update_user_id = ? WHERE contract_id = ?";
+
+        $queryParameter = array($status,$updateDate, $updateUser , $contractId);
+
+        return (new Database())->writeQueryExecution($queryString, $queryParameter);
+    }
+
     public function getContractProductById($contractId, $contractProductId){
 
         $queryString = "SELECT contract_id, branch_no, product_id, status, start_date_year, start_date_month, end_date_year, end_date_month,
