@@ -33,7 +33,7 @@ class TrnWebContractBase extends Migration
                 'null'       => false,
                 'comment'    => '担当者ID / Rep.ID',
             ],
-            'contract_status'    => [
+            'status'    => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '10',
                 'null'           => false,
