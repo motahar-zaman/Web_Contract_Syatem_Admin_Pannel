@@ -146,6 +146,8 @@ function contractRegistration() {
     // data["notification_letter"] = $("#notification_letter").prop('files')[0];
     data["notification_letter"] = $("#notification_letter").val();
     data["contractorId"] = $("#contractorId").html();
+    data["contractType"] = $("#contractType").val();
+    data["contractId"] = $("#contractId").val();
 
     if (validateData(data)) {
         $.ajax({

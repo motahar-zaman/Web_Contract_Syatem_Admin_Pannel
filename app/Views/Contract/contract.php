@@ -50,7 +50,6 @@
                     </div>
                     <div class="underline mt-2"></div>
 
-
                     <div class="gap-2 mx-auto text-center" style="max-width: 950px">
                         <div class="card mt-5 text-left">
                             <form method="get" action="/contract-search">
@@ -90,6 +89,8 @@
                                                 <option value="<?= $employeeId ?>" <?php if($insertUser == $employeeId) echo "selected" ?>><?php echo $employee->getName() ?></option>
                                             <?php } ?>
                                         </select>
+                                        <input type="hidden" name="contractType" id="contractType" value="<?= $type ?>">
+                                        <input type="hidden" name="contractId" id="contractId" value="<?php if(isset($contract)) echo $contract->getId() ?>">
                                     </div>
                                 </div>
                             </div>
