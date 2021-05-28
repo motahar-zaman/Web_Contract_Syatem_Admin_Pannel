@@ -39,7 +39,8 @@ class RegistrationController extends BaseController
                 "prefectures" => $prefecture,
                 "areaLarges" => $areaLarge,
                 "areaSmalls" => $areaSmall,
-                "employees" => $employee
+                "employees" => $employee,
+                "type" => "insert"
             );
             return view("Contract/contract", $data);
         }
@@ -70,7 +71,8 @@ class RegistrationController extends BaseController
                 "prefectures" => $prefecture,
                 "areaLarges" => $areaLarge,
                 "areaSmalls" => $areaSmall,
-                "employees" => $employee
+                "employees" => $employee,
+                "type" => "insert"
             );
 
             return view("Contract/contract", $data);
@@ -120,7 +122,6 @@ class RegistrationController extends BaseController
                     $contract->setShopId($_POST['shopId']);
                 }
 
-                $contract->setId((new SequenceModel())->getContractSequence());
                 $contract->setContractorId($_POST['contractorId'] ?? null);
                 $contract->setTantouId($_POST['tantou'] ?? null);
                 $contract->setNote($_POST['note'] ?? null);
@@ -130,7 +131,16 @@ class RegistrationController extends BaseController
                 $contract->setInsertUserId(session()->get('userId'));
                 $contract->setDeleteFlag(1);
 
-                (new contractmodel())->storeContractData($contract);
+                if($_POST['contractType'] == 'update'){
+                    $contract->setId($_POST['contractId']);
+                    $contract->setStatus(07);
+                    (new contractmodel())->updateContractData($contract);
+                }
+                else{
+                    $contract->setId((new SequenceModel())->getContractSequence());
+                    $contract->setStatus(02);
+                    (new contractmodel())->storeContractData($contract);
+                }
 
                 $products = $_POST['productSelectId'];
                 $contractProduct = array();
@@ -194,7 +204,8 @@ class RegistrationController extends BaseController
                 "areaLarges" => $areaLarge,
                 "areaSmalls" => $areaSmall,
                 "employees" => $employee,
-                "contract" => $contract[$contractId] ?? null
+                "contract" => $contract[$contractId] ?? null,
+                "type" => "update"
             );
             return view("Contract/contract", $data);
         }
