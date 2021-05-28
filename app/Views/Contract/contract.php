@@ -80,13 +80,13 @@
                                         <select name="tantou" id="tantou" class="form-control">
                                             <option value="0">担当者選択</option>
                                             <?php foreach ($employees as $employee) {
-                                                $insertUser = "";
+                                                $tantouId = "";
                                                 $employeeId = $employee->getId();
                                                 if(isset($contract)){
-                                                    $insertUser = $contract->getInsertUserId();
+                                                    $tantouId = $contract->getTantouId();
                                                 }
                                                 ?>
-                                                <option value="<?= $employeeId ?>" <?php if($insertUser == $employeeId) echo "selected" ?>><?php echo $employee->getName() ?></option>
+                                                <option value="<?= $employeeId ?>" <?php if($tantouId == $employeeId) {echo "selected";} ?>><?php echo $employee->getName() ?></option>
                                             <?php } ?>
                                         </select>
                                         <input type="hidden" name="contractType" id="contractType" value="<?= $type ?>">
