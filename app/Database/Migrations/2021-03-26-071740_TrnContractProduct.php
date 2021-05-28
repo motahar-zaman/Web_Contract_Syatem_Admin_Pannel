@@ -27,11 +27,11 @@ class TrnContractProduct extends Migration
                 'null'   => false,
                 'comment'=> '商品ID / Product ID',
             ],
-            'contract_status'    => [
+            'status'    => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '10',
                 'null'           => false,
-                'comment'        => '契約状況 / Contract status',
+                'comment'        => '契約状況 / Status',
             ],
             'start_date_year'=> [
                 'type'       => 'INTEGER',
