@@ -155,8 +155,8 @@ class RegistrationController extends BaseController
 
                 for ($i = 0; $i < count($products); $i++){
                     $product = $products[$i];
-                    $start = explode("-",$product[2]);
-                    $end = explode("-",$product[3]);
+                    $start = explode("/",$product[2]);
+                    $end = explode("/",$product[3]);
 
                     $contractProduct['product'] = $product[0];
                     $contractProduct['note'] = $product[1];
