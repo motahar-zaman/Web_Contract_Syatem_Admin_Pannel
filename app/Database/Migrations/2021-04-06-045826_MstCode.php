@@ -79,8 +79,6 @@ class MstCode extends Migration
                 'comment'=> '作成者 / Insert User ID',
             ],
         ]);
-        $this->forge->addKey('function_id', true);
-        $this->forge->addKey('group_id', true);
         $this->forge->addKey('code_id', true);
         $this->forge->createTable('MST_CODE');
 	}
