@@ -58,8 +58,24 @@
                                                 <input type="text" class="form-control " name="contractIdSearch" id="contractIdSearch" value="" >
                                             </div>
                                             <div class="form-group " >
+                                                <?php
+                                                    $status = $contract->getStatus();
+                                                    $text = "Not defined";
+                                                    if($status == 2){
+                                                        $text = "仮契約";
+                                                    }
+                                                    elseif($status == 3){
+                                                        $text = "内部確認01";
+                                                    }
+                                                    if($status == 6){
+                                                        $text = "成約";
+                                                    }
+                                                    if($status == 7){
+                                                        $text = "契約更新";
+                                                    }
+                                                ?>
                                                 <label>契約ステータス</label>
-                                                <input type="text" class="form-control " name="contractStatus" id="contractStatus" value="<?= $contract->getStatus() ?>" readonly>
+                                                <input type="text" class="form-control " name="contractStatus" id="contractStatus" value="<?= $text ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-6 pt-4">
