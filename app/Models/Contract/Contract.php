@@ -12,6 +12,7 @@ class Contract
     private $shopId;
     private $contractorId;
     private $tantou_id;
+    private $status;
     private $note;
     private $updateDate;
     private $updateUserId;
@@ -84,6 +85,22 @@ class Contract
     public function setTantouId($tantou_id): void
     {
         $this->tantou_id = $tantou_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param mixed $status
+     */
+    public function setStatus($status): void
+    {
+        $this->status = $status;
     }
 
     /**
