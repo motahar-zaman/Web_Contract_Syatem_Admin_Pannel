@@ -70,10 +70,10 @@ class ContractController extends BaseController
 
     public function contractStatusUpdate($contractId, $status){
         $updateDate = date("Y-m-d H:i:s");
-        $updateUser =  session()->get('userId');
+        $updateUser = session()->get('userId');
 
         (new ContractModel())->updateContractStatus($contractId, $status, $updateDate, $updateUser);
 
-        return redirect()->to("contract-details/".$contractId);
+        return redirect()->to("/contract-details/".$contractId);
     }
 }

@@ -158,7 +158,7 @@ class ContractModel
     public function updateContractStatus($contractId, $status, $updateDate, $updateUser){
         $queryString = "UPDATE trn_web_contract_base SET status = ?, update_date = ?, update_user_id = ? WHERE contract_id = ?";
 
-        $queryParameter = array($status,$updateDate, $updateUser , $contractId);
+        $queryParameter = array($status, $updateDate, $updateUser, $contractId);
 
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
