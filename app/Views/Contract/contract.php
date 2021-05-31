@@ -291,6 +291,7 @@
                                             <div class="form-group">
                                                 <label for="inputEmail3" >地域</label>
                                                 <select name="district" id="district" class="form-control">
+                                                    <option value="0"></option>
                                                     <?php foreach ($districts as $district) { ?>
                                                     <option value="<?php echo $district->getId() ?>"><?php echo $district->getAreaName() ?></option>
                                                     <?php } ?>
@@ -299,6 +300,7 @@
                                             <div class="form-group">
                                                 <label for="inputEmail3" >大エリア</label>
                                                 <select name="area_large" id="area_large" class="form-control">
+                                                    <option value="0"></option>
                                                     <?php foreach ($areaLarges as $areaLarge) { ?>
                                                         <option value="<?php echo $areaLarge->getId() ?>"><?php echo $areaLarge->getname() ?></option>
                                                     <?php } ?>
@@ -307,6 +309,7 @@
                                             <div class="form-group">
                                                 <label for="inputEmail3">詳細エリア</label>
                                                 <select name="area" id="area" class="form-control">
+                                                    <option value="0"></option>
                                                     <?php foreach ($areas as $area) { ?>
                                                         <option value="<?php echo $area->getId() ?>"><?php echo $area->getname() ?></option>
                                                     <?php } ?>
@@ -321,6 +324,7 @@
                                             <div class="form-group">
                                                 <label for="inputEmail3" >都道府県</label>
                                                 <select name="prefecture" id="prefecture" class="form-control">
+                                                    <option value="0"></option>
                                                     <?php foreach ($prefectures as $prefecture) { ?>
                                                         <option value="<?php echo $prefecture->getId() ?>"><?php echo $prefecture->getname() ?></option>
                                                     <?php } ?>
@@ -329,6 +333,7 @@
                                             <div class="form-group">
                                                 <label for="inputEmail3" >小エリア</label>
                                                 <select name="area_small" id="area_small" class="form-control">
+                                                    <option value="0"></option>
                                                     <?php foreach ($areaSmalls as $areaSmall) { ?>
                                                         <option value="<?php echo $areaSmall->getId() ?>"><?php echo $areaSmall->getname() ?></option>
                                                     <?php } ?>
@@ -396,11 +401,11 @@
                                             <div class="form-group">
                                                 <label for="inputEmail3" >業態</label>
                                                 <select name="BusinessType" id="BusinessType" class="form-control">
-                                                    <option>option 1</option>
-                                                    <option>option 2</option>
-                                                    <option>option 3</option>
-                                                    <option>option 4</option>
-                                                    <option>option 5</option>
+                                                    <option value="0"></option>
+                                                    <option value="1">option 1</option>
+                                                    <option value="2">option 2</option>
+                                                    <option value="3">option 3</option>
+                                                    <option value="4">option 4</option>
                                                 </select>
                                             </div>
                                         </div>
