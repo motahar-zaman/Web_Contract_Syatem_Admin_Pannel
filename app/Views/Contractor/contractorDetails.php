@@ -72,7 +72,10 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group">
+                                        <div class="form-group text-right mt-4">
+                                            <a class="btn btn-primary k1Btn k1Btn2" href="/contractor-update/<?= $contractorDetails->contractor_id ?>">契約者修正</a>
+                                        </div>
+                                        <div class="form-group pt-2">
                                             <label>契約者名カナ</label>
                                             <input type="text" class="form-control" name="contractorDetailsContractor" id="contractorDetailsContractor" value="<?php echo $contractorDetails->contractor_name_kana; ?>" readonly>
                                         </div>
@@ -95,7 +98,6 @@
                                             <input class="form-control" name="contractorDetailsMailAddress" type="text" id="contractorDetailsMailAddress" value="<?php echo $contractorDetails->mail_address; ?>" readonly>
                                         </div>
                                     </div>
-                                    <a class="btn btn-primary ml-2 k1Btn k1Btn2" href="/contractor-update/<?= $contractorDetails->contractor_id ?>">契約者修正</a>
                                 </div>
                             </div>
                         </div>
@@ -131,7 +133,10 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group">
+                                        <div class="form-group mt-4 text-right">
+                                            <a class="btn btn-primary ml-2 k1Btn k1Btn2" href="/contractor-update/<?= $contractorDetails->contractor_id ?>">会社修正</a>
+                                        </div>
+                                        <div class="form-group pt-2">
                                             <label>会社名カナ</label>
                                             <input type="text" class="form-control" name="contractorDetailsComName2" id="contractorDetailsComName2" value="<?php echo $contractorDetails->company_name_kana; ?>" readonly>
                                         </div>
@@ -158,7 +163,6 @@
                                             <input class="form-control" name="contractorDetailsComMailAddress" type="text" id="contractorDetailsComMailAddress" value="<?php echo $contractorDetails->companyMail; ?>" readonly>
                                         </div>
                                     </div>
-                                    <a class="btn btn-primary ml-2 k1Btn k1Btn2" href="/contractor-update/<?= $contractorDetails->contractor_id ?>">会社修正</a>
                                 </div>
                             </div>
                         </div>
@@ -194,7 +198,10 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group">
+                                        <div class="form-group mt-4 text-right">
+                                            <a class="btn btn-primary ml-2 k1Btn k1Btn2" href="/contractor-update/<?= $contractorDetails->contractor_id ?>">グループ修正</a>
+                                        </div>
+                                        <div class="form-group pt-2">
                                             <label>グループ名カナ</label>
                                             <input type="text" class="form-control" name="contractorDetailsGrpName2" id="contractorDetailsGrpName2" value="<?php echo $contractorDetails->group_name_kana; ?>" readonly>
                                         </div>
@@ -221,7 +228,6 @@
                                             <input class="form-control" name="contractorDetailsGrpMailAddress" type="text" id="contractorDetailsGrpMailAddress" value="<?php echo $contractorDetails->groupMail; ?>" readonly>
                                         </div>
                                     </div>
-                                    <a class="btn btn-primary ml-2 k1Btn k1Btn2" href="/contractor-update/<?= $contractorDetails->contractor_id ?>">グループ修正</a>
                                 </div>
                             </div>
                         </div>
