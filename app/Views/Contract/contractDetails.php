@@ -136,9 +136,7 @@
                                             <input class="form-control" name="contractorDetailsMailAddress" type="text" id="contractorDetailsMailAddress" value="<?= $contractorDetails->mail_address ?? ""; ?>" readonly>
                                         </div>
                                     </div>
-                                    <button onclick="" id="contractorDetailsBtn" class="btn btn-primary ml-2 k1Btn k1Btn2">
-                                        <a href="/contractor-update/<?= $contractorDetails->contractor_id ?? "" ?>">契約者修正</a>
-                                    </button>
+                                    <a class="btn btn-primary ml-2 k1Btn k1Btn2" href="/contractor-update/<?= $contractorDetails->contractor_id ?? "" ?>">契約者修正</a>
                                 </div>
                             </div>
                         </div>
@@ -201,9 +199,7 @@
                                             <input class="form-control" name="contractorDetailsComMailAddress" type="text" id="contractorDetailsComMailAddress" value="<?= $contractorDetails->companyMail ?? "" ?>" readonly>
                                         </div>
                                     </div>
-                                    <button onclick="" id="contractorDetailsComUpdate" class="btn btn-primary ml-2 k1Btn k1Btn2">
-                                        <a href="/contractor-update/<?= $contractorDetails->contractor_id ?? "" ?>">会社修正</a>
-                                    </button>
+                                    <a class="btn btn-primary ml-2 k1Btn k1Btn2" href="/contractor-update/<?= $contractorDetails->contractor_id ?? "" ?>">会社修正</a>
                                 </div>
                             </div>
                         </div>
@@ -266,9 +262,7 @@
                                             <input class="form-control" name="contractorDetailsGrpMailAddress" type="text" id="contractorDetailsGrpMailAddress" value="<?= $contractorDetails->groupMail ?? "" ?>" readonly>
                                         </div>
                                     </div>
-                                    <button onclick="" id="contractorDetailsGrpUpdate" class="btn btn-primary ml-2 k1Btn k1Btn2">
-                                        <a href="/contractor-update/<?= $contractorDetails->contractor_id ?? "" ?>">グループ修正</a>
-                                    </button>
+                                    <a class="btn btn-primary ml-2 k1Btn k1Btn2" href="/contractor-update/<?= $contractorDetails->contractor_id ?? "" ?>">グループ修正</a>
                                 </div>
                             </div>
                         </div>
@@ -347,40 +341,30 @@
                         </div>
                     </div>
                     <div class="form-group gap-2 mx-auto" style="max-width: 950px">
-                        <button onclick="" id="product_registration" class="btn btn-primary k1Btn k1Btn2">
-                            <a href="/contract-update/<?= $contract->getId() ?>">契約修正</a>
-                        </button>
+                        <a class="btn btn-primary ml-2 k1Btn k1Btn2" href="/contract-update/<?= $contract->getId() ?>">契約修正</a>
                     </div>
                 </div>
                 <div class="card-footer">
                     <div class="row mx-auto pb-3" style="max-width: 950px">
                         <div class="col-md-6 pl-0">
-                            <button onclick="" id="estimation" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3">
-                                見積
-                            </button>
+                            <a class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3" href="#estimation"> 見積 </a>
                             <?php
                                 if(session()->get('user') == "contractor"){
                                     if($contract->getStatus() == 2 || $contract->getStatus() == 7){
                                     ?>
-                                        <button id="contractStatusUpdate" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3">
-                                            <a class="k1Btn2" href="/contract-status-update/<?= $contract->getId() ?>/3">承認</a>
-                                        </button>
+                                        <a class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3" href="/contract-status-update/<?= $contract->getId() ?>/3">承認</a>
                                         <?php
                                     }
                                 }
                                 elseif(session()->get('user') == "employee"){
                                     if($contract->getStatus() == 3){
                                         ?>
-                                        <button id="contractStatusUpdate" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3">
-                                            <a class="k1Btn2" href="/contract-status-update/<?= $contract->getId() ?>/6">承認</a>
-                                        </button>
+                                        <a class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3" href="/contract-status-update/<?= $contract->getId() ?>/6">承認</a>
                                         <?php
                                     }
                                 }
                             ?>
-                            <button onclick="" id="menu" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2">
-                                <a class="k1Btn2" href="/home">メニュー</a>
-                            </button>
+                            <a class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3" href="/home">メニュー</a>
                         </div>
                         <div class="col-md-6 pr-0 text-right">
                             <span>アクセス日時：<?= date("Y/m/d") ?>	</span>
