@@ -27,18 +27,6 @@ class MstShop extends Migration
                 'null'   => true,
                 'comment'=> '店舗名-フリガナ / Shop Name - Furigana',
             ],
-            'daihyousha_name'   => [
-                'type'       => 'VARCHAR',
-                'constraint' => '200',
-                'null'       => false,
-                'comment'    => '契約者名 / Representative Name',
-            ],
-            'daihyousha_name_kana' => [
-                'type'          => 'VARCHAR',
-                'constraint'    => '200',
-                'null'          => true,
-                'comment'       => '契約者名カナ / Representative - Kana',
-            ],
             'zipcode' => [
                 'type'   => 'VARCHAR',
                 'constraint'=> '8',
@@ -90,7 +78,7 @@ class MstShop extends Migration
             'tel_no'          => [
                 'type'        => 'VARCHAR',
                 'constraint'  => '13',
-                'null'        => false,
+                'null'        => true,
                 'comment'     => '電話番号 / Phone Number',
             ],
             'fax_no'       => [
@@ -110,12 +98,6 @@ class MstShop extends Migration
                 'constraint'=> '400',
                 'null'      => true,
                 'comment'=> '店舗サイトURL / Shop Site URL',
-            ],
-            'notification_letter' => [
-                'type'   => 'VARCHAR',
-                'constraint'=> '100',
-                'null'      => false,
-                'comment'=> '届出書 / notification letter',
             ],
             'insert_date' => [
                 'type'   => 'DATETIME',
