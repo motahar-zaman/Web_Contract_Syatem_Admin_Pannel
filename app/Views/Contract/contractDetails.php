@@ -44,8 +44,8 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="underline mt-2"></div>
-                    <!--Details Body Start-->
 
                     <div class="gap-2 mx-auto text-center" style="max-width: 950px">
                         <div class="card mt-5 text-left">
@@ -87,6 +87,7 @@
                             </form>
                         </div>
                     </div>
+
                     <div class="gap-2 mx-auto text-center" style="max-width: 950px">
                         <div class="card mt-5 text-left">
                             <div class="card-header">
@@ -113,7 +114,10 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group">
+                                        <div class="form-group text-right mt-4">
+                                            <a class="btn btn-primary k1Btn k1Btn2" href="/contractor-update/<?= $contractorDetails->contractor_id ?? "" ?>">契約者修正</a>
+                                        </div>
+                                        <div class="form-group pt-2">
                                             <label>契約者名カナ</label>
                                             <input type="text" class="form-control" name="contractorDetailsContractor" id="contractorDetailsContractor" value="<?= $contractorDetails->contractor_name_kana ?? ""; ?>" readonly>
                                         </div>
@@ -136,7 +140,6 @@
                                             <input class="form-control" name="contractorDetailsMailAddress" type="text" id="contractorDetailsMailAddress" value="<?= $contractorDetails->mail_address ?? ""; ?>" readonly>
                                         </div>
                                     </div>
-                                    <a class="btn btn-primary ml-2 k1Btn k1Btn2" href="/contractor-update/<?= $contractorDetails->contractor_id ?? "" ?>">契約者修正</a>
                                 </div>
                             </div>
                         </div>
@@ -172,7 +175,10 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group">
+                                        <div class="form-group text-right mt-4">
+                                            <a class="btn btn-primary ml-2 k1Btn k1Btn2" href="/contractor-update/<?= $contractorDetails->contractor_id ?? "" ?>">会社修正</a>
+                                        </div>
+                                        <div class="form-group pt-2">
                                             <label>会社名カナ</label>
                                             <input type="text" class="form-control" name="contractorDetailsComName2" id="contractorDetailsComName2" value="<?= $contractorDetails->company_name_kana ?? "" ?>" readonly>
                                         </div>
@@ -199,7 +205,6 @@
                                             <input class="form-control" name="contractorDetailsComMailAddress" type="text" id="contractorDetailsComMailAddress" value="<?= $contractorDetails->companyMail ?? "" ?>" readonly>
                                         </div>
                                     </div>
-                                    <a class="btn btn-primary ml-2 k1Btn k1Btn2" href="/contractor-update/<?= $contractorDetails->contractor_id ?? "" ?>">会社修正</a>
                                 </div>
                             </div>
                         </div>
@@ -235,7 +240,10 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group">
+                                        <div class="form-group text-right mt-4">
+                                            <a class="btn btn-primary ml-2 k1Btn k1Btn2" href="/contractor-update/<?= $contractorDetails->contractor_id ?? "" ?>">グループ修正</a>
+                                        </div>
+                                        <div class="form-group pt-2">
                                             <label>グループ名カナ</label>
                                             <input type="text" class="form-control" name="contractorDetailsGrpName2" id="contractorDetailsGrpName2" value="<?= $contractorDetails->group_name_kana ?? "" ?>" readonly>
                                         </div>
@@ -262,7 +270,23 @@
                                             <input class="form-control" name="contractorDetailsGrpMailAddress" type="text" id="contractorDetailsGrpMailAddress" value="<?= $contractorDetails->groupMail ?? "" ?>" readonly>
                                         </div>
                                     </div>
-                                    <a class="btn btn-primary ml-2 k1Btn k1Btn2" href="/contractor-update/<?= $contractorDetails->contractor_id ?? "" ?>">グループ修正</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group gap-2 mx-auto" style="max-width: 950px">
+                        <div class="row">
+                            <div class="col-md-9 pl-0">
+                                <div class="form-group mt-5">
+                                    <label for="companySelect">登録商品備考</label>
+                                    <textarea class="form-control" name="product_registration_remark" type="text" id="product_registration_remark" rows="3"><?= $contract->getNote() ?></textarea>
+                                    <span class="errormsg" id="ProductRegistrationRemarkError"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mt-5">
+                                <div class="form-group text-right mt-5">
+                                    <a class="btn btn-primary k1Btn k1Btn2" href="/contract-update/<?= $contract->getId() ?>">契約修正</a>
                                 </div>
                             </div>
                         </div>
@@ -339,9 +363,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group gap-2 mx-auto" style="max-width: 950px">
-                        <a class="btn btn-primary ml-2 k1Btn k1Btn2" href="/contract-update/<?= $contract->getId() ?>">契約修正</a>
                     </div>
                 </div>
                 <div class="card-footer">
