@@ -142,9 +142,7 @@
                     </div>
 
                     <div class="gap-2 mx-auto mt-3 mb-4 " style="max-width: 950px !important;">
-                        <button onclick="" id="menu" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2">
-                            <a class="k1Btn2" href="/home">メニュー</a>
-                        </button>
+                        <a class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2" href="/home">メニュー</a>
                     </div>
                 </div>
             </section>
