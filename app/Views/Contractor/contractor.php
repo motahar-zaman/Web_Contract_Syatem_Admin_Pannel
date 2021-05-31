@@ -67,7 +67,7 @@
                                             ?>
                                             <label for="contractorId">契約者ID</label>
                                             <input class="form-control" type="text" name="contractorId" id="contractorId" value="<?= $id ?>" readonly>
-                                            <input type="hidden" name="contractorInsert" id="contractorInsert" value="insert">
+                                            <input type="hidden" name="contractorInsert" id="contractorInsert" value="<?= $store ?>">
                                         </div>
                                         <div class="form-group">
                                             <label for="contractorName">契約者名</label>

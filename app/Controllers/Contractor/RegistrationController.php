@@ -49,6 +49,7 @@ class RegistrationController extends BaseController
                 "groupId" => $groupId,
                 "idMappedGroup" => $idMappedGroup,
                 "idMappedCompany" => $idMappedCompany,
+                "store" => "insert"
             );
 
             return view("Contractor/contractor", $data);
@@ -73,6 +74,7 @@ class RegistrationController extends BaseController
                 "contractorId" => $contractorId,
                 "companyId" => $companyId,
                 "groupId" => $groupId,
+                "store" => "insert"
             );
             return view("Contractor/temp_contractor", $data);
         }
@@ -207,7 +209,8 @@ class RegistrationController extends BaseController
                 "contractor" => $contractor,
                 "idMappedGroup" => $idMappedGroup,
                 "idMappedCompany" => $idMappedCompany,
-                "editContractorDetails" => $editContractorDetails[0]
+                "editContractorDetails" => $editContractorDetails[0],
+                "store" => "update"
             );
 
             return view("Contractor/contractor", $data);
