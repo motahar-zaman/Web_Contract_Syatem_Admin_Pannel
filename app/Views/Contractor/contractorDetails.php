@@ -46,7 +46,6 @@
                     </div>
                     <div class="underline mt-2"></div>
 
-        <!--            Details Body Start-->
                     <div class="gap-2 mx-auto text-center" style="max-width: 950px">
                         <div class="card mt-5 text-left">
                             <div class="card-header">
@@ -233,19 +232,12 @@
                             </div>
                         </div>
                     </div>
-
-        <!--            Details Body End-->
-
                 </div>
+
                 <div class="card-footer">
                     <div class="row mx-auto pb-3" style="max-width: 950px">
                         <div class="col-md-6 pl-0">
-                            <!--<button onclick="" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3">
-                                承認
-                            </button>-->
-                            <button onclick="" id="menu" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2">
-                                <a class="k1Btn2" href="/home">メニュー</a>
-                            </button>
+                            <a class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2" href="/home">メニュー</a>
                         </div>
                         <div class="col-md-6 pr-0 text-right">
                             <span>アクセス日時：<?= date("Y/m/d") ?>	</span>
