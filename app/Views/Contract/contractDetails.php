@@ -55,7 +55,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group " >
                                                 <label>契約ID</label>
-                                                <input type="text" class="form-control " name="contractIdSearch" id="contractIdSearch" value="" >
+                                                <input type="text" class="form-control " name="contractIdSearch" id="contractIdSearch" value="<?= $contract->getId() ?? "" ?>" >
                                             </div>
                                             <div class="form-group " >
                                                 <?php
