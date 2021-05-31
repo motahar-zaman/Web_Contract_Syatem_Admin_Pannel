@@ -280,7 +280,9 @@
                             <div class="col-md-9 pl-0">
                                 <div class="form-group mt-5">
                                     <label for="companySelect">登録商品備考</label>
-                                    <textarea class="form-control" name="product_registration_remark" type="text" id="product_registration_remark" rows="3"><?= $contract->getNote() ?></textarea>
+                                    <textarea class="form-control" name="product_registration_remark" type="text" id="product_registration_remark" rows="3" readonly>
+                                        <?= $contract->getNote() ?>
+                                    </textarea>
                                     <span class="errormsg" id="ProductRegistrationRemarkError"></span>
                                 </div>
                             </div>
