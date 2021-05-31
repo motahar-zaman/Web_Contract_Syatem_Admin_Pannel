@@ -494,9 +494,7 @@
                             <button onclick="contractRegistration()" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3">
                                 登録
                             </button>
-                            <button onclick="" id="menu" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2">
-                                <a class="k1Btn2" href="/home">メニュー</a>
-                            </button>
+                            <a class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2" href="/home">メニュー</a>
                         </div>
                         <div class="col-md-6 pr-0 text-right">
                             <span>アクセス日時：<?= date("Y/m/d") ?>	</span>
