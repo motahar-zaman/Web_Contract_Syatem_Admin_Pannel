@@ -234,6 +234,32 @@ function shopTypeCheck() {
     }
 }
 
+function checkContractAvailable(){
+    let contractId = $("#contractIdSearch").val();
+    let data = {};
+    data["contractIdSearch"] = contractId
+    $.ajax({
+        url: "/contract-registration-search",
+        type: "GET",
+        data: data,
+        dataType: 'JSON',
+        headers: {'X-Requested-With': 'XMLHttpRequest'},
+
+        success: function (data) {
+            if (data.status === 1) {
+                $("#ContractSearchForm").attr('action', "/contract-update/"+contractId);
+                $("#ContractSearchForm").submit();
+            }
+            else if(data.status === 0){
+                alert("No data available for this contract id");
+            }
+        },
+        error: function (jqXHR, exception) {
+            alert("Error occurred");
+        }
+    });
+}
+
 $(document).ready(function() {
     $('#shopInputFields :input').attr('disabled', true);
     $('#shopInputFields :button').attr('disabled', true);
