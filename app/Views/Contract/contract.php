@@ -52,18 +52,18 @@
 
                     <div class="gap-2 mx-auto text-center" style="max-width: 950px">
                         <div class="card mt-5 text-left">
-                            <form method="get" action="/contract-search">
+                            <form method="get" id="ContractSearchForm">
                                 <div class="card-body">
-                                    <div class="row " id="contractIdSearchFields">
+                                    <div class="row">
                                         <div class="col-md-6">
-                                            <div class="form-group " >
+                                            <div class="form-group" >
                                                 <label>契約ID</label>
-                                                <input type="text" class="form-control " name="contractIdSearch" id="contractIdSearch" value="" >
+                                                <input type="text" class="form-control" name="contractIdSearch" id="contractIdSearch" value="<?php if(isset($contract)) echo $contract->getId(); ?>" >
                                             </div>
                                         </div>
                                         <div class="col-md-6 pt-4">
                                             <label class="pt-4"></label>
-                                            <button type="submit" id="contractorDetailsBtn" class="btn btn-primary ml-2 k1Btn k1Btn2">表示</button>
+                                            <button onclick="checkContractAvailable()" type="button" id="contractorDetailsBtn" class="btn btn-primary ml-2 k1Btn k1Btn2">表示</button>
                                         </div>
                                     </div>
                                 </div>
