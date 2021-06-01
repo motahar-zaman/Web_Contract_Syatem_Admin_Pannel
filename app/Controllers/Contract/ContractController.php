@@ -69,11 +69,33 @@ class ContractController extends BaseController
     }
 
     public function contractStatusUpdate($contractId, $status){
-        $updateDate = date("Y-m-d H:i:s");
-        $updateUser = session()->get('userId');
+        if( session() && session()->get('login') ){
+            $updateDate = date("Y-m-d H:i:s");
+            $updateUser = session()->get('userId');
 
-        (new ContractModel())->updateContractStatus($contractId, $status, $updateDate, $updateUser);
+            (new ContractModel())->updateContractStatus($contractId, $status, $updateDate, $updateUser);
 
-        return redirect()->to("/contract-details/".$contractId);
+            return redirect()->to("/contract-details/".$contractId);
+        }
+        else{
+            return redirect()->to("/login");
+        }
+    }
+
+    public function contractRegistrationSearch(){
+        if( session() && session()->get('login') ){
+            $contractId = $_GET["contractIdSearch"];
+            $contract = (new ContractModel())->getContractById($contractId);
+
+            if(isset($contract) && count($contract) > 0){
+                return json_encode(['msg' => "Successful", "contract" => $contract, "status" => 1]);
+            }
+            else{
+                return json_encode(['msg' => "Successful", "contract" => null, "status" => 0]);
+            }
+        }
+        else{
+            return redirect()->to("/login");
+        }
     }
 }
