@@ -281,7 +281,7 @@
                                 <div class="form-group mt-5">
                                     <label for="companySelect">登録商品備考</label>
                                     <span class="form-control h-auto">
-                                        <?= $contract->getNote() ?>
+                                        <?= nl2br($contract->getNote()) ?>
                                     </span>
                                     <span class="errormsg" id="ProductRegistrationRemarkError"></span>
                                 </div>
