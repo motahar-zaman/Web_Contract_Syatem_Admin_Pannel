@@ -428,7 +428,7 @@
                             <textarea class="form-control" name="product_registration_remark" type="text" id="product_registration_remark" rows="3"><?php if(isset($contract)) echo $contract->getNote() ?></textarea>
                             <span class="errormsg" id="ProductRegistrationRemarkError"></span>
                         </div>
-                        <button onclick="" id="product_registration" class="btn btn-primary k1Btn k1Btn2">商品登録</button>
+                        <button onclick="productRegistration()" id="product_registration" class="btn btn-primary k1Btn k1Btn2">商品登録</button>
                     </div>
                     <div class="gap-2 mx-auto text-center" style="max-width: 950px">
                         <div class="card mt-5 text-left">
