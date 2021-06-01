@@ -285,6 +285,68 @@ function checkContractAvailableFromDetails(){
     });
 }
 
+function productRegistration(){
+    let shop = $("input[type='radio'][name='shop']:checked").val();
+    console.log(shop);
+    if(shop){
+        let data = shopRegistration();
+        let shopId = data.shopId;
+        let shopName = data.shopName;
+    }
+    else{
+        let shopId = $("#shopId").html();
+        let shopName = $("#shopName").html();
+    }
+}
+
+function shopRegistration(){
+    let data = {};
+
+    data["shopName"] = $("#shop_name").val();
+    data["shopNameKana"] = $("#shop_name_kana").val();
+    data["shopArea"] = $("#area").val();
+    data["shopPrefecture"] = $("#prefecture").val();
+    data["shopDistrict"] = $("#district").val();
+    data["shopAreaSmall"] = $("#areaSmall").val();
+    data["shopAreaLarge"] = $("#areaLarge").val();
+    data["shopZip"] = $("#postCode").val();
+    data["shopAddress01"] = $("#address1").val();
+    data["shopAddress02"] = $("#address2").val();
+    data["shopTel"] = $("#phone_number").val();
+    data["shopMail"] = $("#mail_address").val();
+    data["shopRepresentative"] = $("#representative_name").val();
+    data["shopRepresentativeKana'"] = $("#rep_name_kana").val();
+    data["shopSite"] = $("#shop_site_url").val();
+    data["BusinessType"] = $("#BusinessType").val();
+    data["notification_letter"] = $("#notification_letter").val();
+
+    if (validateData(data)) {
+        $.ajax({
+            url: "/shop-registration",
+            type: "POST",
+            data: data,
+            dataType: 'JSON',
+            headers: {'X-Requested-With': 'XMLHttpRequest'},
+
+            success: function (data) {
+                if (data.status === 1) {
+                    return data;
+                    /*let shopId = data.shopId;
+                    let shopName = data.shopName;
+                    return {'shopId' : shopId, 'shopName' : shopName};
+                    alert(shopId+" "+shopName);*/
+                }
+                else if (data.status === 3) {
+                    window.location.href = "/login";
+                }
+            },
+            error: function (jqXHR, exception) {
+                alert("Error occurred");
+            }
+        });
+    }
+}
+
 $(document).ready(function() {
     $('#shopInputFields :input').attr('disabled', true);
     $('#shopInputFields :button').attr('disabled', true);
