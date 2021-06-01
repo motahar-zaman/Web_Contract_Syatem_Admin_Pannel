@@ -83,7 +83,9 @@ class ContractModel
                         $contract->setInsertDate($data->insert_date ?? NULL);
                         $contract->setInsertUserId($data->insert_user_id ?? NULL);
                         $contract->setDeleteFlag($data->delete_flag ?? NULL);
-                        $contract->setContractProduct($this->mapContractProduct($data));
+                        if($data->product_id){
+                            $contract->setContractProduct($this->mapContractProduct($data));
+                        }
 
                         $shopData = (new ShopModel())->mapData(array($data));
                         if(isset($shopData) && count($shopData) > 0) {
