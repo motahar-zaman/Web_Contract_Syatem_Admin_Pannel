@@ -43,7 +43,7 @@
                                     <td onclick="selectedShop(<?php echo $i ?>, this)" id="selectedShop<?php echo $data->getId() ?>"><a href="#">選択</a></td>
                                     <td id="shopId<?php echo $i ?>"><?php echo $data->getId() ?? "" ?></td>
                                     <td id="shopName<?php echo $i ?>"><?php echo $data->getName() ?? "" ?></td>
-                                    <td style="display: none" id="shopRepresentativeName<?php echo $i ?>"><?php echo $data->getRepresentativeKana() ?? "" ?></td>
+                                    <td style="display: none" id="shopRepresentativeName<?php echo $i ?>"></td>
                                     <td style="display: none" id="shopPrefecture<?php echo $i ?>"><?php echo $data->getPrefecture() ?? "" ?></td>
                                     <td id="shopAddress<?php echo $i ?>"><?php echo $data->getAddress01() ?? "" ?></td>
                                     <td style="display: none" id="shopPhoneNumber<?php echo $i ?>"><?php echo $data->getTelNo() ?? "" ?></td>
