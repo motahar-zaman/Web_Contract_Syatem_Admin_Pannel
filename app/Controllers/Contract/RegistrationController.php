@@ -13,6 +13,7 @@ use App\Models\Contractor\ContractorModel;
 use App\Models\Employee\EmployeeModel;
 use App\Models\Product\ProductModel;
 use App\Models\Shop\Shop;
+use App\Models\Shop\ShopInfo;
 use App\Models\Shop\ShopModel;
 
 class RegistrationController extends BaseController
@@ -313,5 +314,63 @@ class RegistrationController extends BaseController
         move_uploaded_file($file, $targetFile);
 
         return $fileName;
+    }
+
+    public function shopRegistration(){
+        if( session() && session()->get('login') ) {
+            if ($this->request->isAJAX()) {
+                $shop = new Shop();
+                $shopInfo = new ShopInfo();
+
+                $notificationLetter = $_POST["notification_letter"];
+                $path = "/shopFiles";
+
+                $shop->setId((new SequenceModel())->getShopSequence());
+                $shop->setName($_POST['shopName'] ?? null);
+                $shop->setNameKana($_POST['shopNameKana'] ?? null);
+                $shop->setZipcode($_POST['shopZip'] ?? null);
+                $shop->setAddress01($_POST['shopAddress01'] ?? null);
+                $shop->setAddress02($_POST['shopAddress02'] ?? null);
+                $shop->setAreaId($_POST['shopArea'] ?? null);
+                $shop->setPrefecture($_POST['shopPrefecture'] ?? null);
+                $shop->setDistrict($_POST['shopDistrict'] ?? null);
+                $shop->setAreaLarge($_POST['shopAreaLarge'] ?? null);
+                $shop->setAreaSmall($_POST['shopAreaSmall'] ?? null);
+                $shop->setTelNo($_POST['shopTel'] ?? null);
+                $shop->setMailAddress($_POST['shopMail'] ?? null);
+                $shop->setSiteUrl($_POST['shopSite'] ?? null);
+                $shop->setInsertDate(date("Y-m-d H:i:s"));
+                $shop->setInsertUserId(session()->get('userId'));
+                $shop->setUpdateDate(date("Y-m-d H:i:s"));
+                $shop->setUpdateUserId(session()->get('userId'));
+                $shop->setDeleteFlag(1);
+
+                $shopInfo->setId($shop->getId());
+                $shopInfo->setStatus(1);
+                $shopInfo->setRepresentative($_POST['shopRepresentative'] ?? null);
+                $shopInfo->setRepresentativeKana($_POST['shopRepresentativeKana'] ?? null);
+                $shopInfo->setBusiness(1);
+                $shopInfo->setNotification($this->processShopFile($notificationLetter, $shop->getId(), $path) ?? null);
+                $shopInfo->setPjId(null);
+                $shopInfo->setPlId(null);
+                $shopInfo->setTorihikisakiId(null);
+                $shopInfo->setInsertDate(date("Y-m-d H:i:s"));
+                $shopInfo->setInsertUserId(session()->get('userId'));
+                $shopInfo->setUpdateDate(date("Y-m-d H:i:s"));
+                $shopInfo->setUpdateUserId(session()->get('userId'));
+                $shopInfo->setDeleteFlag(1);
+
+                (new ShopModel())->storeShopData($shop);
+                (new ShopModel())->storeShopInfoData($shopInfo);
+
+                return json_encode(['msg' => "successful", 'shopId' => $shop->getId(), 'shopName' => $shop->getName(), 'status' => 1]);
+            }
+            else {
+                return json_encode(['msg' => "Not an ajax request", 'status' => 2]);
+            }
+        }
+        else{
+            return json_encode(['msg' => "Not Logged in user", 'status' => 3]);
+        }
     }
 }
