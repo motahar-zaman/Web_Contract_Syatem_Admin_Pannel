@@ -160,9 +160,9 @@ class RegistrationController extends BaseController
 
                     $contractProduct['product'] = $product[0];
                     $contractProduct['note'] = $product[1];
-                    $contractProduct['startYear'] = $start[2];
+                    $contractProduct['startYear'] = $start[0];
                     $contractProduct['startMonth'] = $start[1];
-                    $contractProduct['endYear'] = $end[2];
+                    $contractProduct['endYear'] = $end[0];
                     $contractProduct['endMonth'] = $end[1];
                     $contractProduct['branch'] = strtotime(date("Y-m-d H:i:s")) + $i;
 
