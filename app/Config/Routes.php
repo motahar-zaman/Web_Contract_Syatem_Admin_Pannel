@@ -78,3 +78,5 @@ $routes->get('contract-search', 'Contract\ContractController::contractSearch');
 $routes->get('contract-registration-search', 'Contract\ContractController::contractRegistrationSearch');
 $routes->get('contract-details/(:any)', 'Contract\ContractController::contractDetails/$1');
 $routes->get('contract-status-update/(:any)/(:any)', 'Contract\ContractController::contractStatusUpdate/$1/$2');
+
+$routes->post('shop-registration', 'Contract\RegistrationController::shopRegistration');
