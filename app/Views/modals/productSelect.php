@@ -43,11 +43,11 @@
 
                                 $getStartDate = $data->getStartDate();
                                 $repStartDate = str_replace('-"', '/', $getStartDate);
-                                $startDate = date("d/m/Y", strtotime($repStartDate));
+                                $startDate = date("Y/m/d", strtotime($repStartDate));
 
                                 $getEndDate = $data->getEndDate();
                                 $repEndDDate = str_replace('-"', '/', $getEndDate);
-                                $endDate = date("d/m/Y", strtotime($repEndDDate));
+                                $endDate = date("Y/m/d", strtotime($repEndDDate));
                                 ?>
                                 <tr>
                                     <td onclick="selectedProduct(<?php echo $i ?>, this);" id="selectedProduct<?php echo $data->getId() ?>"><a href="#" style="color: #0099FF">選択</a></td>
