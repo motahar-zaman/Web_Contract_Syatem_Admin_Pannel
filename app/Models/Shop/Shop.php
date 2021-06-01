@@ -9,8 +9,6 @@ class Shop
     private $id ;
     private $name;
     private $nameKana;
-    private $representative;
-    private $representativeKana;
     private $zipcode;
     private $address01;
     private $address02;
@@ -23,7 +21,6 @@ class Shop
     private $faxNo;
     private $mailAddress;
     private $siteUrl;
-    private $notificationLetter;
     private $insertDate;
     private $insertUserId;
     private $updateDate;
@@ -76,46 +73,6 @@ class Shop
     public function setNameKana($nameKana): void
     {
         $this->nameKana = $nameKana;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRepresentative()
-    {
-        return $this->representative;
-    }
-
-    /**
-     * @param mixed $representative
-     */
-    public function setRepresentative($representative): void
-    {
-        $this->representative = $representative;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRepresentativeKana()
-    {
-        return $this->representativeKana;
-    }
-
-    /**
-     * @param mixed $representativeKana
-     */
-    public function setRepresentativeKana($representativeKana): void
-    {
-        $this->representativeKana = $representativeKana;
-    }
-
-    /**
-     * @param mixed $shopNameKana
-     */
-    public function setShopNameKana($shopNameKana): void
-    {
-        $this->shopNameKana = $shopNameKana;
     }
 
     /**
@@ -308,22 +265,6 @@ class Shop
     public function setSiteUrl($siteUrl): void
     {
         $this->siteUrl = $siteUrl;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNotificationLetter()
-    {
-        return $this->notificationLetter;
-    }
-
-    /**
-     * @param mixed $notificationLetter
-     */
-    public function setNotificationLetter($notificationLetter): void
-    {
-        $this->notificationLetter = $notificationLetter;
     }
 
     /**
