@@ -50,12 +50,12 @@
                                 $endDate = date("Y/m/d", strtotime($repEndDDate));
                                 ?>
                                 <tr>
-                                    <td onclick="selectedProduct(<?php echo $i ?>, this);" id="selectedProduct<?php echo $data->getId() ?>"><a href="#" style="color: #0099FF">選択</a></td>
-                                    <td id="productId<?php echo $i ?>"><?php echo $data->getId() ?></td>
-                                    <td id="productName<?php echo $i ?>"><?php echo $data->getName() ?></td>
-                                    <td id="productNote<?php echo $i ?>"><?php echo $data->getProductNote() ?></td>
-                                    <td id="productPeriodStartDate<?php echo $i ?>"><?php echo $startDate ?></td>
-                                    <td id="productPeriodEndDate<?php echo $i ?>"><?php echo $endDate ?></td>
+                                    <td onclick="selectedProduct(<?= $i ?>, this);" id="selectedProduct<?= $data->getId() ?>"><a href="#" style="color: #0099FF">選択</a></td>
+                                    <td id="productId<?= $i ?>"><?= $data->getId() ?></td>
+                                    <td id="productName<?= $i ?>"><?= $data->getName() ?></td>
+                                    <td id="productNote<?= $i ?>"><?= $data->getProductNote() ?></td>
+                                    <td id="productPeriodStartDate<?= $i ?>"><?= $startDate ?></td>
+                                    <td id="productPeriodEndDate<?= $i ?>"><?= $endDate ?></td>
                                 </tr>
                                 <?php
                             }
