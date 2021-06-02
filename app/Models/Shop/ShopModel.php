@@ -108,9 +108,9 @@ class ShopModel
         $insertUser = $shopInfo->getInsertUserId();
         $delete = $shopInfo->getDeleteFlag();
 
-        $queryString = "INSERT INTO trn_shop_info (shop_id, shop_status, shop_daihyo_name, shop_daihyo_name_kana, business, notificate_file_path
+        $queryString = "INSERT INTO trn_shop_info (shop_id, shop_status, shop_daihyo_name, shop_daihyo_name_kana, business, notificate_file_path,
                         pl_id, pj_id, torihikisaki_id, update_date, update_user_id, insert_date, insert_user_id, delete_flag)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $queryParameter = array($id, $status, $rep, $repKana, $business, $notification, $pl, $pj, $torihikisaki, $update, $updateUser, $insert, $insertUser, $delete);
 
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
