@@ -26,14 +26,14 @@
                 <div class="card-body table-responsive p-0 ml-3" style="height: 300px;">
                     <table class="table text-nowrap productTable ml-3" id="productSelectTable">
                         <thead class="k1TableTitleBG">
-                        <tr>
-                            <th>選択</th>
-                            <th>商品ID</th>
-                            <th>商品名</th>
-                            <th>商品概要</th>
-                            <th>公開開始日</th>
-                            <th>公開終了日</th>
-                        </tr>
+                            <tr>
+                                <th>選択</th>
+                                <th>商品ID</th>
+                                <th>商品名</th>
+                                <th>商品概要</th>
+                                <th>公開開始日</th>
+                                <th>公開終了日</th>
+                            </tr>
                         </thead>
                         <tbody>
                         <?php
