@@ -247,7 +247,7 @@
                                                             foreach ($shop as $index => $data){
                                                                 if($data->getId() == $shopId){
                                                                     $name = $data->getName();
-                                                                    $representative = $data->getRepresentative();
+                                                                    $representative = "";//$data->getRepresentative();
                                                                     $address = $data->getAddress01();
                                                                     $prefecture = $data->getPrefecture();
                                                                     $phn = $data->getTelNo();
@@ -299,7 +299,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="inputEmail3" >大エリア</label>
-                                            <select name="area_large" id="area_large" class="form-control">
+                                            <select name="areaLarge" id="areaLarge" class="form-control">
                                                 <option value="0"></option>
                                                 <?php foreach ($areaLarges as $areaLarge) { ?>
                                                     <option value="<?php echo $areaLarge->getId() ?>"><?php echo $areaLarge->getname() ?></option>
@@ -332,7 +332,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="inputEmail3" >小エリア</label>
-                                            <select name="area_small" id="area_small" class="form-control">
+                                            <select name="areaSmall" id="areaSmall" class="form-control">
                                                 <option value="0"></option>
                                                 <?php foreach ($areaSmalls as $areaSmall) { ?>
                                                     <option value="<?php echo $areaSmall->getId() ?>"><?php echo $areaSmall->getname() ?></option>
