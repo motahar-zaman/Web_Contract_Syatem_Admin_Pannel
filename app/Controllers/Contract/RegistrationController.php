@@ -308,10 +308,10 @@ class RegistrationController extends BaseController
         $fileName = date("Ymd")."_".$shopId.".pdf";//$file->getClientExtension();
         $targetFile = $path."/".$fileName;
 
-        if(file_exists($path)){
+        /*if(file_exists($path)){
             mkdir($path, 0777, true);
         }
-        move_uploaded_file($file, $targetFile);
+        move_uploaded_file($file, $targetFile);*/
 
         return $fileName;
     }
@@ -363,7 +363,7 @@ class RegistrationController extends BaseController
                 (new ShopModel())->storeShopData($shop);
                 (new ShopModel())->storeShopInfoData($shopInfo);
 
-                return json_encode(['msg' => "successful", 'shopId' => $shop->getId(), 'shopName' => $shop->getName(), 'file' => $shopInfo->getNotification(), 'status' => 1]);
+                return json_encode(['msg' => "successful", 'shopId' => $shop->getId(), 'shopName' => $shop->getName(), 'shopFile' => $shopInfo->getNotification(), 'status' => 1]);
             }
             else {
                 return json_encode(['msg' => "Not an ajax request", 'status' => 2]);
