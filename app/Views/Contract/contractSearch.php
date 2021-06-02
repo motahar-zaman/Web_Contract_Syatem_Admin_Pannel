@@ -147,8 +147,8 @@
                                                         <td><?php echo $shop->getTelNo() ?></td>
                                                         <td><?php echo $shop->getMailAddress() ?></td>
                                                         <td>業態</td>
-                                                        <td><?php echo $shop->getRepresentative() ?></td>
-                                                        <td>2021/01/01</td>
+                                                        <td></td> <!--echo $shop->getRepresentative()-->
+                                                        <td><?php echo date("Y/m/d", strtotime($contract->getInsertDate())) ?></td>
                                                     </tr>
                                             <?php }
                                                 }
