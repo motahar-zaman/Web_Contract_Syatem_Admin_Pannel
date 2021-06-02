@@ -26,6 +26,7 @@ class Shop
     private $updateDate;
     private $updateUserId;
     private $deleteFlag;
+    private $shopInfo;
 
     /**
      * @return mixed
@@ -345,5 +346,21 @@ class Shop
     public function setDeleteFlag($deleteFlag): void
     {
         $this->deleteFlag = $deleteFlag;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getShopInfo()
+    {
+        return $this->shopInfo;
+    }
+
+    /**
+     * @param mixed $shopInfo
+     */
+    public function setShopInfo(ShopInfo $shopInfo): void
+    {
+        $this->shopInfo = $shopInfo;
     }
 }
