@@ -46,21 +46,6 @@ function selectedProduct(data, td) {
     $(".productSelectTable tbody").append(markup);
 
     $(td).addClass("bg-dark-silver");
-
-    //Push Data To the product info table
-    var markup = "<tr><td>" + productId + "</td><td>" + productName + "</td><td>" + productNote + "</td><td>Shop Name</td> <td>File</td> <td>" + productPeriodStartDate + "</td><td>" + productPeriodEndDate + "</td></tr>";
-    $(".productInfoTable tbody").append(markup);
-
-    //Push and Pass Data  To the product discount table
-    let datalen = data;
-    let productDiscountId = 'productDiscountId' + datalen;
-    let productDiscountNameId = 'productDiscountName' + datalen;
-    let productDiscountNoteId = 'productDiscountNote' + datalen;
-    let productDiscountStartDateId = 'productDiscountStartDate' + datalen;
-    let productDiscountEndDateId = 'productDiscountEndDate' + datalen;
-
-    var markup = "<tr><td onclick=\'productDiscount("+ datalen +")\'><a href='#'><p id='" + productDiscountId + "'>" + productId + "</p></a></td><td id='" + productDiscountNameId + "'>" + productName + "</td><td id='" + productDiscountNoteId + "'>" + productNote + "</td><td id='" + productDiscountStartDateId + "'>" + productPeriodStartDate + "</td><td id='" + productDiscountEndDateId + "'>" + productPeriodEndDate + "</td></tr>";
-    $(".productDiscountTableModal tbody").append(markup);
 }
 
 function productDiscount(data) {
@@ -139,7 +124,7 @@ function contractRegistration() {
     data["shopTel"] = $("#phone_number").val();
     data["shopMail"] = $("#mail_address").val();
     data["shopRepresentative"] = $("#representative_name").val();
-    data["shopRepresentativeKana'"] = $("#rep_name_kana").val();
+    data["shopRepresentativeKana"] = $("#rep_name_kana").val();
     data["shopSite"] = $("#shop_site_url").val();
     data["BusinessType"] = $("#BusinessType").val();
     data["note"] = $("#product_registration_remark").val();
@@ -285,21 +270,56 @@ function checkContractAvailableFromDetails(){
     });
 }
 
+var shopCount = 0;
 function productRegistration(){
     let shop = $("input[type='radio'][name='shop']:checked").val();
-    console.log(shop);
-    if(shop){
-        let data = shopRegistration();
-        let shopId = data.shopId;
-        let shopName = data.shopName;
+    let shopId = "";
+    let shopName = "";
+    let shopFile = "";
+    let productCount = 0;
+    shopCount++;
+
+    $(".productSelectTable tr").each(function(i){
+        if (i == 0){
+            return;
+        }
+
+        productCount++;
+
+        if(i == 1){
+            if(shop == 1){
+                shopRegistration(shopCount);
+            }
+            else{
+                shopId = $("#shopId").html();
+                shopName = $("#shopName").html();
+                shopFile = $("#shopFile").html();
+            }
+        }
+
+        $(this).each(function(){
+            let data = Array();
+            data[0] = $(this).children('#productSelectId').text();
+            data[1] = $(this).children('#productSelectName').text();
+            data[2] = $(this).children('#productSelectNote').text();
+            data[3] = $(this).children('#productSelectStartDate').text();
+            data[4] = $(this).children('#productSelectEndDate').text();
+
+            let markup = "<tr><td id=\"productInfoId\">" + data[0] + "</td><td id=\"productInfoName\">" + data[1] + "</td><td id=\"productInfoNote\">" +
+                data[2] + "</td><td id=\"productInfoShopName\" class=\"productInfoShopName"+ shopCount +"\"></td>"+ shopName +"<td id=\"productInfoShopFile\" class=\"productInfoShopFile"+ shopCount +"\">"+ shopFile +"</td> <td id=\"productInfoStart\">" +
+                data[3] + "</td><td id=\"productInfoEnd\">" + data[4] + "</td><td style=\"display: none\" id=\"productInfoShopId\" class=\"productInfoShopId"+ shopCount +"\">"+ shopId +"</td></tr>";
+            $(".productInfoTable tbody").append(markup);
+        });
+    });
+
+    if(!productCount){
+        alert("No product selected");
     }
-    else{
-        let shopId = $("#shopId").html();
-        let shopName = $("#shopName").html();
-    }
+    $(".productSelectTable tbody").empty();
+    $('#productSelectTable td').removeClass("bg-dark-silver");
 }
 
-function shopRegistration(){
+function shopRegistration(shopCount){
     let data = {};
 
     data["shopName"] = $("#shop_name").val();
@@ -315,7 +335,7 @@ function shopRegistration(){
     data["shopTel"] = $("#phone_number").val();
     data["shopMail"] = $("#mail_address").val();
     data["shopRepresentative"] = $("#representative_name").val();
-    data["shopRepresentativeKana'"] = $("#rep_name_kana").val();
+    data["shopRepresentativeKana"] = $("#rep_name_kana").val();
     data["shopSite"] = $("#shop_site_url").val();
     data["BusinessType"] = $("#BusinessType").val();
     data["notification_letter"] = $("#notification_letter").val();
@@ -330,11 +350,9 @@ function shopRegistration(){
 
             success: function (data) {
                 if (data.status === 1) {
-                    return data;
-                    /*let shopId = data.shopId;
-                    let shopName = data.shopName;
-                    return {'shopId' : shopId, 'shopName' : shopName};
-                    alert(shopId+" "+shopName);*/
+                    $(".productInfoShopId"+shopCount).html(data.shopId);
+                    $(".productInfoShopName"+shopCount).html(data.shopName);
+                    $(".productInfoShopFile"+shopCount).html(data.shopFile);
                 }
                 else if (data.status === 3) {
                     window.location.href = "/login";
