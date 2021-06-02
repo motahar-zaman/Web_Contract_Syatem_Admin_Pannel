@@ -232,8 +232,8 @@ class RegistrationController extends BaseController
                     $shop->setId((new SequenceModel())->getShopSequence());
                     $shop->setName($_POST['shopName'] ?? null);
                     $shop->setNameKana($_POST['shopNameKana'] ?? null);
-                    $shop->setRepresentative($_POST['shopRepresentative'] ?? null);
-                    $shop->setRepresentativeKana($_POST['shopRepresentativeKana'] ?? null);
+                    //$shop->setRepresentative($_POST['shopRepresentative'] ?? null);
+                    //$shop->setRepresentativeKana($_POST['shopRepresentativeKana'] ?? null);
                     $shop->setZipcode($_POST['shopZip'] ?? null);
                     $shop->setAddress01($_POST['shopAddress01'] ?? null);
                     $shop->setAddress02($_POST['shopAddress02'] ?? null);
@@ -363,7 +363,7 @@ class RegistrationController extends BaseController
                 (new ShopModel())->storeShopData($shop);
                 (new ShopModel())->storeShopInfoData($shopInfo);
 
-                return json_encode(['msg' => "successful", 'shopId' => $shop->getId(), 'shopName' => $shop->getName(), 'status' => 1]);
+                return json_encode(['msg' => "successful", 'shopId' => $shop->getId(), 'shopName' => $shop->getName(), 'file' => $shopInfo->getNotification(), 'status' => 1]);
             }
             else {
                 return json_encode(['msg' => "Not an ajax request", 'status' => 2]);
