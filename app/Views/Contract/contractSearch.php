@@ -135,7 +135,7 @@
                                         </thead>
                                         <tbody>
                                             <?php
-                                                if(count($contracts) > 0){
+                                                if(isset($contracts) && count($contracts) > 0){
                                                     foreach ($contracts as $contract) {
                                                     $shop = $contract->getShopDetail();
                                                     ?>
