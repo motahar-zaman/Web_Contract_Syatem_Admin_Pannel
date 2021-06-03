@@ -69,8 +69,8 @@ function selectedShop(data, td) {
     let shopPhoneNumber = $("#shopPhoneNumber" + data).html();
 
     //Push Data To the product contract table
-    var markup = "<tr><td id=\"shopId\">" + shopId + "</td><td id=\"shopName\">" + shopName + "</td><td id=\"shopRepresentativeName\">"
-        + shopRepresentativeName + "</td><td id=\"shopPrefecture\">" + shopPrefecture + "</td><td id=\"shopAddress\">" + shopAddress + "</td><td id=\"shopPhoneNumber\">" + shopPhoneNumber +
+    var markup = "<tr><td id=\"shopId\">" + shopId + "</td><td id=\"shopName\">" + shopName + "</td><td id=\"shopRepresentativeName\">"+ shopRepresentativeName +
+        "</td><td id=\"shopPrefecture\">" + shopPrefecture + "</td><td id=\"shopAddress\">" + shopAddress + "</td><td id=\"shopPhoneNumber\">" + shopPhoneNumber +
         "</td></tr>";
     $(".shopSelectTable tbody").html(markup);
 
