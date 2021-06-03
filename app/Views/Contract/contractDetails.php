@@ -382,7 +382,7 @@
                             <?php
                                 if(session()->get('user') == "contractor"){
                                     if($contract->getStatus() == 2 || $contract->getStatus() == 7){
-                                    ?>
+                                        ?>
                                         <a class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3" href="/contract-status-update/<?= $contract->getId() ?>/3">承認</a>
                                         <?php
                                     }

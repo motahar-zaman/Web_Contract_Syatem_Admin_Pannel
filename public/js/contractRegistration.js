@@ -300,6 +300,10 @@ function productRegistration(){
     $(".productSelectTable tbody").empty();
     $(".shopSelectTable tbody").empty();
     $('#productSelectTable td').removeClass("bg-dark-silver");
+    $('#shopRegistrationForm').find('input:text, input:file, select, textarea')
+        .each(function () {
+            $(this).val('');
+        });
 }
 
 function shopRegistration(shopCount){

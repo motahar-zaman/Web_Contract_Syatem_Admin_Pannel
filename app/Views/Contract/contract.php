@@ -225,7 +225,7 @@
                         </div>
                     </div>
 
-                    <div class="gap-2 mx-auto text-center" style="max-width: 950px">
+                    <div id="shopRegistrationForm" class="gap-2 mx-auto text-center" style="max-width: 950px">
                         <div class="card mt-5 text-left">
                             <div class="card-header">
                                 <h3 class="card-title text-center">
