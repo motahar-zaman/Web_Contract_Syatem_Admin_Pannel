@@ -320,17 +320,24 @@
                                                 if(isset($products) && count($products) > 0){
                                                     for($i = 0; $i < count($products); $i++){
                                                         $data = $products[$i];
-                                                        /*$startDate = $data["startDateYear"]."年".$data["startDateMonth"]."月";
-                                                        $endDate = $data["endDateYear"]."年".$data["endDate_Month"]."月";*/
-                                                        $startDate = $data["startDate"];
-                                                        $endDate = $data["endDate"];
+                                                        $startDate = date("Y",strtotime($data["startDate"]))."年".date("m",strtotime($data["startDate"]))."月".date("d",strtotime($data["startDate"]))."日";
+                                                        $endDate = date("Y",strtotime($data["endDate"]))."年".date("m",strtotime($data["endDate"]))."月".date("d",strtotime($data["endDate"]))."日";
                                                         ?>
                                                         <tr>
                                                             <td><?= $data["productId"] ?></td>
                                                             <td><?= $data["name"] ?></td>
                                                             <td><?= $data["note"] ?></td>
-                                                            <td><?= $shopName ?></td>
-                                                            <td>Yes</td>
+                                                            <td><?= $data["shopName"] ?></td>
+                                                            <td>
+                                                                <?php
+                                                                    if($data["shopNotification"]){
+                                                                        echo "<a href='#'>あり</a>";
+                                                                    }
+                                                                    else{
+                                                                        echo " なし";
+                                                                    }
+                                                                ?>
+                                                            </td>
                                                             <td><?= $startDate ?></td>
                                                             <td><?= $endDate ?></td>
                                                         </tr>
