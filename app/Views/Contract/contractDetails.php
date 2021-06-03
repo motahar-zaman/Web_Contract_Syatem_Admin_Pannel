@@ -316,7 +316,6 @@
                                         <tbody>
                                             <?php
                                                 $products = $contract->getContractProduct();
-                                                $shopName = $contract->getshopDetail()->getName();
                                                 if(isset($products) && count($products) > 0){
                                                     for($i = 0; $i < count($products); $i++){
                                                         $data = $products[$i];

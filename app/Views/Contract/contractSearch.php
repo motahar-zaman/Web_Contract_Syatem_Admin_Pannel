@@ -137,18 +137,22 @@
                                             <?php
                                                 if(isset($contracts) && count($contracts) > 0){
                                                     foreach ($contracts as $contract) {
-                                                    $shop = $contract->getShopDetail();
+                                                    //$shop = $contract->getShopDetail();
                                                     ?>
                                                     <tr>
                                                         <td><a href='<?php echo base_url();?>/contract-details/<?php echo $contract->getId() ?>'><?php echo $contract->getId() ?></a></td>
                                                         <td>ぴゅあらば</td>
-                                                        <td><?php echo $shop->getName() ?></td>
-                                                        <td><?php echo $shop->getAddress01() ?></td>
-                                                        <td><?php echo $shop->getTelNo() ?></td>
-                                                        <td><?php echo $shop->getMailAddress() ?></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+<!--                                                        <td>--><?php //echo $shop->getName() ?><!--</td>-->
+<!--                                                        <td>--><?php //echo $shop->getAddress01() ?><!--</td>-->
+<!--                                                        <td>--><?php //echo $shop->getTelNo() ?><!--</td>-->
+<!--                                                        <td>--><?php //echo $shop->getMailAddress() ?><!--</td>-->
                                                         <td>業態</td>
                                                         <td></td> <!--echo $shop->getRepresentative()-->
-                                                        <td><?php echo date("Y/m/d", strtotime($contract->getInsertDate())) ?></td>
+                                                        <td><?= date("Y/m/d", strtotime($contract->getInsertDate())) ?></td>
                                                     </tr>
                                             <?php }
                                                 }
