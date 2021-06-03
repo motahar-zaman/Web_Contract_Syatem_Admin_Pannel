@@ -218,4 +218,11 @@ class ContractModel
 
         return (new Database())->readQueryExecution($queryString, $queryParameter);
     }
+
+    public function removeContractProductData($contractId){
+        $queryString = "DELETE FROM trn_contract_product WHERE contract_id = ?";
+        $queryParameter = array($contractId);
+
+        return (new Database())->writeQueryExecution($queryString, $queryParameter);
+    }
 }
