@@ -27,6 +27,12 @@ class TrnContractProduct extends Migration
                 'null'   => false,
                 'comment'=> '商品ID / Product ID',
             ],
+            'shop_id'       => [
+                'type'       => 'VARCHAR',
+                'constraint' => '20',
+                'null'       => false,
+                'comment'    => '店舗ID /  Shop ID',
+            ],
             'status'    => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '10',
