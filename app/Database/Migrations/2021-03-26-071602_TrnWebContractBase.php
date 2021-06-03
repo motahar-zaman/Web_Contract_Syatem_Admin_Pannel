@@ -15,12 +15,6 @@ class TrnWebContractBase extends Migration
                 'null'           => false,
                 'comment'        => '契約ID / Contract ID',
             ],
-            'shop_id'       => [
-                'type'       => 'VARCHAR',
-                'constraint' => '20',
-                'null'       => false,
-                'comment'    => '店舗ID /  Shop ID',
-            ],
             'contractor_id' => [
                 'type'   => 'VARCHAR',
                 'constraint'=> '20',
