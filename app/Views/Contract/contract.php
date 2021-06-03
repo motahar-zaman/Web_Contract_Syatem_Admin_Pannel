@@ -218,37 +218,6 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php
-                                                if(isset($contract)){
-                                                    ?>
-                                                    <tr>
-                                                        <?php
-                                                            $name = "";
-                                                            $representative = "";
-                                                            $address = "";
-                                                            $prefecture = "";
-                                                            $phn = "";
-                                                            $shopId = $contract->getShopId();
-                                                            foreach ($shop as $index => $data){
-                                                                if($data->getId() == $shopId){
-                                                                    $name = $data->getName();
-                                                                    $representative = "";//$data->getRepresentative();
-                                                                    $address = $data->getAddress01();
-                                                                    $prefecture = $data->getPrefecture();
-                                                                    $phn = $data->getTelNo();
-                                                                }
-                                                            }
-                                                        ?>
-                                                        <td id="shopId"><?= $shopId ?></td>
-                                                        <td id="shopName"><?= $name ?></td>
-                                                        <td id="shopRepresentativeName"><?= $representative ?></td>
-                                                        <td id="shopPrefecture"><?= $prefecture ?></td>
-                                                        <td id="shopAddress"><?= $address ?></td>
-                                                        <td id="shopPhoneNumber"><?= $phn ?></td>
-                                                    </tr>
-                                                    <?php
-                                                }
-                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
