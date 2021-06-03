@@ -301,12 +301,12 @@
                             </div>
                             <div class="card-body">
                                 <div class="card-body table-responsive p-0">
-                                    <table class="table table-hover text-center" style="width: 130% !important;">
+                                    <table class="table table-hover text-center" style="width: 150% !important;">
                                         <thead class="k1RegTableTitleBG">
                                             <tr>
                                                 <th>商品ID</th>
                                                 <th>商品名</th>
-                                                <th style="width: 40%">商品概要</th>
+                                                <th style="width: 35%">商品概要</th>
                                                 <th>対象店舗名</th>
                                                 <th>届出書有無</th>
                                                 <th>公開開始日</th>
@@ -320,17 +320,19 @@
                                                 if(isset($products) && count($products) > 0){
                                                     for($i = 0; $i < count($products); $i++){
                                                         $data = $products[$i];
-                                                        $startDate = $data["startDateYear"]."年".$data["startDateMonth"]."月";
-                                                        $endDate = $data["endDateYear"]."年".$data["endDate_Month"]."月";
+                                                        /*$startDate = $data["startDateYear"]."年".$data["startDateMonth"]."月";
+                                                        $endDate = $data["endDateYear"]."年".$data["endDate_Month"]."月";*/
+                                                        $startDate = $data["startDate"];
+                                                        $endDate = $data["endDate"];
                                                         ?>
                                                         <tr>
-                                                            <td><?php echo $data["productId"] ?></td>
-                                                            <td><?php echo $data["name"] ?></td>
-                                                            <td><?php echo $data["note"] ?></td>
-                                                            <td><?php echo $shopName ?></td>
+                                                            <td><?= $data["productId"] ?></td>
+                                                            <td><?= $data["name"] ?></td>
+                                                            <td><?= $data["note"] ?></td>
+                                                            <td><?= $shopName ?></td>
                                                             <td>Yes</td>
-                                                            <td><?php echo $startDate ?></td>
-                                                            <td><?php echo $endDate ?></td>
+                                                            <td><?= $startDate ?></td>
+                                                            <td><?= $endDate ?></td>
                                                         </tr>
                                             <?php
                                                     }
