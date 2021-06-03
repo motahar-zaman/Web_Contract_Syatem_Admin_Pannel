@@ -12,7 +12,6 @@ class ContractModel
 {
     public function storeContractData(Contract $contract){
         $id = $contract->getId();
-        $shop = $contract->getShopId();
         $contractor = $contract->getContractorId();
         $tantou = $contract->getTantouId();
         $status = $contract->getStatus();
@@ -23,9 +22,9 @@ class ContractModel
         $insertUser = $contract->getInsertUserId();
         $delete = $contract->getDeleteFlag();
 
-        $queryString = "INSERT INTO trn_web_contract_base (contract_id, shop_id, contractor_id, tantou_id, status, note, update_date,
-                        update_user_id, insert_date, insert_user_id, delete_flag) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $queryParameter = array($id, $shop, $contractor, $tantou, $status, $note, $update, $updateUser, $insert, $insertUser, $delete);
+        $queryString = "INSERT INTO trn_web_contract_base (contract_id, contractor_id, tantou_id, status, note, update_date,
+                        update_user_id, insert_date, insert_user_id, delete_flag) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $queryParameter = array($id, $contractor, $tantou, $status, $note, $update, $updateUser, $insert, $insertUser, $delete);
 
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
@@ -142,7 +141,6 @@ class ContractModel
 
     public function updateContractData(Contract $contract){
         $id = $contract->getId();
-        $shop = $contract->getShopId();
         $contractor = $contract->getContractorId();
         $tantou = $contract->getTantouId();
         $status = $contract->getStatus();
@@ -150,9 +148,9 @@ class ContractModel
         $update = $contract->getUpdateDate();
         $updateUser = $contract->getUpdateUserId();
 
-        $queryString = "UPDATE trn_web_contract_base SET shop_id = ?, contractor_id = ?, tantou_id = ?, status = ?, note = ?, update_date = ?,
+        $queryString = "UPDATE trn_web_contract_base SET contractor_id = ?, tantou_id = ?, status = ?, note = ?, update_date = ?,
                         update_user_id = ? WHERE contract_id = ?";
-        $queryParameter = array($shop, $contractor, $tantou, $status, $note, $update, $updateUser, $id);
+        $queryParameter = array($contractor, $tantou, $status, $note, $update, $updateUser, $id);
 
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
