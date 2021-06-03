@@ -437,12 +437,13 @@
                             </div>
                             <div class="card-body">
                                 <div class="card-body table-responsive p-0">
-                                    <table class="table table-hover text-center productTable productInfoTable" style="width: 140% !important;">
+                                    <table class="table table-hover text-center productTable productInfoTable" style="width: 150% !important;">
                                         <thead class="k1RegTableTitleBG">
                                             <tr>
+                                                <th>削除</th>
                                                 <th>商品ID</th>
                                                 <th>商品名</th>
-                                                <th style="width: 40%">商品概要</th>
+                                                <th style="width: 30%">商品概要</th>
                                                 <th>対象店舗名</th>
                                                 <th>届出書有無</th>
                                                 <th>公開開始日</th>
