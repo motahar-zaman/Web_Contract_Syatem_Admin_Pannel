@@ -293,7 +293,7 @@ function productRegistration(){
             else{
                 shopId = $("#shopId").html();
                 shopName = $("#shopName").html();
-                shopFile = $("#shopFile").html();
+                //shopFile = $("#shopFile").html();
             }
         }
 
@@ -305,9 +305,12 @@ function productRegistration(){
             data[3] = $(this).children('#productSelectStartDate').text();
             data[4] = $(this).children('#productSelectEndDate').text();
 
-            let markup = "<tr><td id=\"productInfoId\">" + data[0] + "</td><td id=\"productInfoName\">" + data[1] + "</td><td id=\"productInfoNote\">" +
-                data[2] + "</td><td id=\"productInfoShopName\" class=\"productInfoShopName"+ shopCount +"\"></td>"+ shopName +"<td id=\"productInfoShopFile\" class=\"productInfoShopFile"+ shopCount +"\">"+ shopFile +"</td> <td id=\"productInfoStart\">" +
-                data[3] + "</td><td id=\"productInfoEnd\">" + data[4] + "</td><td style=\"display: none\" id=\"productInfoShopId\" class=\"productInfoShopId"+ shopCount +"\">"+ shopId +"</td></tr>";
+            let markup = "<tr><td onclick=\"productInfoRemove(this)\" id=\"productInfoRemove\"><a href=\"#\">削除</a></td><td id=\"productInfoId\">" + data[0] +
+                "</td><td id=\"productInfoName\">" + data[1] + "</td><td id=\"productInfoNote\">" + data[2] +
+                "</td><td id=\"productInfoShopName\" class=\"productInfoShopName"+ shopCount +"\">"+ shopName +
+                "</td><td id=\"productInfoShopFile\" class=\"productInfoShopFile"+ shopCount +"\">"+ shopFile +
+                "</td> <td id=\"productInfoStart\">" + data[3] + "</td><td id=\"productInfoEnd\">" + data[4] +
+                "</td><td style=\"display: none\" id=\"productInfoShopId\" class=\"productInfoShopId"+ shopCount +"\">"+ shopId +"</td></tr>";
             $(".productInfoTable tbody").append(markup);
         });
     });
@@ -316,6 +319,7 @@ function productRegistration(){
         alert("No product selected");
     }
     $(".productSelectTable tbody").empty();
+    $(".shopSelectTable tbody").empty();
     $('#productSelectTable td').removeClass("bg-dark-silver");
 }
 
@@ -370,3 +374,7 @@ $(document).ready(function() {
     $('#shopInputFields :button').attr('disabled', true);
     $('#mySelect').prop('disabled', true);
 });
+
+function productInfoRemove(td){
+    $(td).parents("tr").remove();
+}
