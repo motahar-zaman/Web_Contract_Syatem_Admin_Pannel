@@ -113,7 +113,7 @@ class RegistrationController extends BaseController
                 $contractProduct = array();
                 $contractProduct['id'] = $contract->getId();
                 $contractProduct['contractStatus'] = 0;
-                $contractProduct['tantou'] = "abcd";
+                $contractProduct['tantou'] = $_POST['tantou'] ?? null;
                 $contractProduct['update'] = date("Y-m-d H:i:s");
                 $contractProduct['updateUser'] = session()->get('userId');
                 $contractProduct['insert'] = date("Y-m-d H:i:s");
