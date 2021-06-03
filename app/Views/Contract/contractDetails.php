@@ -341,7 +341,7 @@
                                                             <td><?= $startDate ?></td>
                                                             <td><?= $endDate ?></td>
                                                         </tr>
-                                            <?php
+                                                        <?php
                                                     }
                                                 }
                                                 else{
