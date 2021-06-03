@@ -55,7 +55,7 @@ class ContractController extends BaseController
     public function contractDetails($contractId){
         if( session() && session()->get('login') ){
             $contract = (new ContractModel())->getContractById($contractId);
-            $contractDetails = $contract[$contractId];
+            $contractDetails = $contract[$contractId] ?? null;
 
             if(isset($contractDetails) && $contractDetails->getContractorId() ){
                 $contractorDetails = (new ContractorModel())->getContractorDetailsById($contractDetails->getContractorId());
