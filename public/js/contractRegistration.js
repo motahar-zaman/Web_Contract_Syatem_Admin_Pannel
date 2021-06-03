@@ -91,45 +91,24 @@ function contractRegistration() {
     let data = {};
     let data1 = Array();
 
-    $(".productSelectTable tr").each(function(i){
+    $(".productInfoTable tr").each(function(i){
         if (i == 0){
             return;
         }
         $(this).each(function(){
             let data2 = Array();
-            data2[0] = $(this).children('#productSelectId').text();
-            data2[1] = $(this).children('#productSelectNote').text();
-            data2[2] = $(this).children('#productSelectStartDate').text();
-            data2[3] = $(this).children('#productSelectEndDate').text();
-            data2[4] = $(this).children('#productSelectShop').text();
-            data2[5] = $(this).children('#productSelectFile').text();
+            data2[0] = $(this).children('#productInfoId').text();
+            data2[1] = $(this).children('#productInfoNote').text();
+            data2[2] = $(this).children('#productInfoStart').text();
+            data2[3] = $(this).children('#productInfoEnd').text();
+            data2[4] = $(this).children('#productInfoShopId').text();
             data1[i-1] = data2;
         });
     })
 
     data["productSelectId"] = data1;
-    data["shop"] = $("input[type='radio'][name='shop']:checked").val();
-    data["shopId"] = $("#shopId").html();
-    data["shopName"] = $("#shop_name").val();
-    data["shopNameKana"] = $("#shop_name_kana").val();
-    data["shopArea"] = $("#area").val();
-    data["shopPrefecture"] = $("#prefecture").val();
-    data["shopDistrict"] = $("#district").val();
-    data["shopAreaSmall"] = $("#areaSmall").val();
-    data["shopAreaLarge"] = $("#areaLarge").val();
     data["tantou"] = $("#tantou").val();
-    data["shopZip"] = $("#postCode").val();
-    data["shopAddress01"] = $("#address1").val();
-    data["shopAddress02"] = $("#address2").val();
-    data["shopTel"] = $("#phone_number").val();
-    data["shopMail"] = $("#mail_address").val();
-    data["shopRepresentative"] = $("#representative_name").val();
-    data["shopRepresentativeKana"] = $("#rep_name_kana").val();
-    data["shopSite"] = $("#shop_site_url").val();
-    data["BusinessType"] = $("#BusinessType").val();
     data["note"] = $("#product_registration_remark").val();
-    // data["notification_letter"] = $("#notification_letter").prop('files')[0];
-    data["notification_letter"] = $("#notification_letter").val();
     data["contractorId"] = $("#contractorId").html();
     data["contractType"] = $("#contractType").val();
     data["contractId"] = $("#contractId").val();
