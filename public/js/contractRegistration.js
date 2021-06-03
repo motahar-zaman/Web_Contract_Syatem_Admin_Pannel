@@ -284,10 +284,18 @@ function productRegistration(){
             data[3] = $(this).children('#productSelectStartDate').text();
             data[4] = $(this).children('#productSelectEndDate').text();
 
+            let file = "";
+            if(shopFile){
+                file = "<a href='#'>あり</a>";
+            }
+            else{
+                file = "なし";
+            }
+
             let markup = "<tr><td onclick=\"productInfoRemove(this)\" id=\"productInfoRemove\"><a href=\"#\">削除</a></td><td id=\"productInfoId\">" + data[0] +
                 "</td><td id=\"productInfoName\">" + data[1] + "</td><td id=\"productInfoNote\">" + data[2] +
                 "</td><td id=\"productInfoShopName\" class=\"productInfoShopName"+ shopCount +"\">"+ shopName +
-                "</td><td id=\"productInfoShopFile\" class=\"productInfoShopFile"+ shopCount +"\">"+ shopFile +
+                "</td><td id=\"productInfoShopFile\" class=\"productInfoShopFile"+ shopCount +"\">"+ file +
                 "</td> <td id=\"productInfoStart\">" + data[3] + "</td><td id=\"productInfoEnd\">" + data[4] +
                 "</td><td style=\"display: none\" id=\"productInfoShopId\" class=\"productInfoShopId"+ shopCount +"\">"+ shopId +"</td></tr>";
             $(".productInfoTable tbody").append(markup);
@@ -337,9 +345,16 @@ function shopRegistration(shopCount){
 
             success: function (data) {
                 if (data.status === 1) {
+                    let file = "";
+                    if(data.shopFile){
+                        file = "<a href='#'>あり</a>";
+                    }
+                    else{
+                        file = "なし";
+                    }
                     $(".productInfoShopId"+shopCount).html(data.shopId);
                     $(".productInfoShopName"+shopCount).html(data.shopName);
-                    $(".productInfoShopFile"+shopCount).html(data.shopFile);
+                    $(".productInfoShopFile"+shopCount).html(file);
                 }
                 else if (data.status === 3) {
                     window.location.href = "/login";
