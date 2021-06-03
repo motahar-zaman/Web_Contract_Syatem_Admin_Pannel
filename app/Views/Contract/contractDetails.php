@@ -277,7 +277,7 @@
 
                     <div class="form-group gap-2 mx-auto" style="max-width: 950px">
                         <div class="row">
-                            <div class="col-md-9 pl-0">
+                            <div class="col-md-9">
                                 <div class="form-group mt-5">
                                     <label for="companySelect">登録商品備考</label>
                                     <span class="form-control h-auto">
