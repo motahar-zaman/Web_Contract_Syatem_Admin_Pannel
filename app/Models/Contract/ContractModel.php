@@ -73,7 +73,6 @@ class ContractModel
                         $contract = new Contract();
                         $contract->setId($data->contract_id ?? NULL);
                         $contract->setContractorId($data->contractor_id ?? NULL);
-                        $contract->setShopId($data->shop_id ?? NULL);
                         $contract->setTantouId($data->tantou_id ?? NULL);
                         $contract->setStatus($data->status ?? NULL);
                         $contract->setNote($data->note ?? NULL);
@@ -108,11 +107,12 @@ class ContractModel
 
         $mapData["branchNo"] = $data->branch_no ?? NULL;
         $mapData["productId"] = $data->product_id ?? NULL;
+        $mapData["shopId"] = $data->shop_id ?? NULL;
+        $mapData["shopName"] = $data->shop_name ?? NULL;
+        $mapData["shopNotification"] = $data->notification_letter ?? NULL;
         $mapData["status"] = $data->product_status ?? NULL;
-        $mapData["startDateYear"] = $data->start_date_year ?? NULL;
-        $mapData["startDateMonth"] = $data->start_date_month ?? NULL;
-        $mapData["endDateYear"] = $data->end_date_year ?? NULL;
-        $mapData["endDate_Month"] = $data->end_date_month ?? NULL;
+        $mapData["startDate"] = $data->start_date ?? NULL;
+        $mapData["endDate"] = $data->end_date ?? NULL;
         $mapData["tantouId"] = $data->tantou_id ?? NULL;
         $mapData["note"] = $data->product_note ?? NULL;
         $mapData["name"] = $data->product_name ?? NULL;
@@ -127,12 +127,12 @@ class ContractModel
     }
 
     public function getContractDataById($id){
-        $queryString = "SELECT c.contract_id, c.shop_id, contractor_id, c.tantou_id, c.status, c.note, c.update_date, c.update_user_id, c.insert_date,
-            c.insert_user_id, c.delete_flag, branch_no, p.product_id, p.status AS product_status, start_date_year, start_date_month, end_date_year,
-            end_date_month, p.note AS product_note, mp.product_name, mp.product_note, s.shop_name, s.zipcode, s.daihyousha_name, s.address_01,
-            s.tel_no, s.mail_address, s.notification_letter FROM trn_web_contract_base AS c LEFT JOIN trn_contract_product AS p ON c.contract_id =
-            p.contract_id LEFT JOIN mst_product AS mp ON mp.product_id = p.product_id LEFT JOIN mst_shop AS s ON s.shop_id = c.shop_id WHERE
-            c.contract_id = ? AND c.delete_flag = ?";
+        $queryString = "SELECT c.contract_id, p.shop_id, contractor_id, c.tantou_id, c.status, c.note, c.update_date, c.update_user_id, c.insert_date,
+            c.insert_user_id, c.delete_flag, branch_no, p.product_id, p.status AS product_status, DATE_FORMAT(start_date, '%Y/%m/%d') AS start_date,
+            DATE_FORMAT(end_date, '%Y/%m/%d') AS end_date, p.note AS product_note, mp.product_name, mp.product_note, s.shop_name, s.zipcode,
+            s.daihyousha_name, s.address_01, s.tel_no, s.mail_address, s.notification_letter FROM trn_web_contract_base AS c LEFT JOIN trn_contract_product
+            AS p ON c.contract_id = p.contract_id LEFT JOIN mst_product AS mp ON mp.product_id = p.product_id LEFT JOIN mst_shop AS s ON
+            s.shop_id = p.shop_id WHERE c.contract_id = ? AND c.delete_flag = ?";
 
         $queryParameter = array($id, 1);
 
