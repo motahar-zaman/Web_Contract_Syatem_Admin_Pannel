@@ -415,7 +415,16 @@
                                                                 <td id="productInfoName" ><?= $product['name'] ?></td>
                                                                 <td id="productInfoNote" ><?= $product['note'] ?></td>
                                                                 <td id="productInfoShopName" ><?= $product['shopName'] ?></td>
-                                                                <td id="productInfoShopFile" >Yes</td>
+                                                                <td id="productInfoShopFile" >
+                                                                    <?php
+                                                                        if($product["shopNotification"]){
+                                                                            echo "<a href='#'>あり</a>";
+                                                                        }
+                                                                        else{
+                                                                            echo " なし";
+                                                                        }
+                                                                    ?>
+                                                                </td>
                                                                 <td id="productInfoStart" ><?= $product['startDate'] ?></td>
                                                                 <td id="productInfoEnd" ><?= $product['endDate'] ?></td>
                                                                 <td style="display: none" id="productInfoShopId" ><?= $product['shopId'] ?></td>
