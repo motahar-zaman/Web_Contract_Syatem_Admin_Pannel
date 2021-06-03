@@ -9,7 +9,6 @@ use App\Models\Shop\Shop;
 class Contract
 {
     private $id;
-    private $shopId;
     private $contractorId;
     private $tantou_id;
     private $status;
@@ -20,7 +19,6 @@ class Contract
     private $insertUserId;
     private $deleteFlag;
     private $contractProduct = array();
-    private $shopDetail;
     private $contractorDetail;
 
     /**
@@ -37,22 +35,6 @@ class Contract
     public function setId($id): void
     {
         $this->id = $id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getShopId()
-    {
-        return $this->shopId;
-    }
-
-    /**
-     * @param mixed $shopId
-     */
-    public function setShopId($shopId): void
-    {
-        $this->shopId = $shopId;
     }
 
     /**
@@ -213,22 +195,6 @@ class Contract
     public function setContractProduct(array $contractProduct): void
     {
         $this->contractProduct[] = $contractProduct;
-    }
-
-    /**
-     * @return Shop
-     */
-    public function getShopDetail(): Shop
-    {
-        return $this->shopDetail;
-    }
-
-    /**
-     * @param Shop $shopDetail
-     */
-    public function setShopDetail(Shop $shopDetail): void
-    {
-        $this->shopDetail = $shopDetail;
     }
 
     /**
