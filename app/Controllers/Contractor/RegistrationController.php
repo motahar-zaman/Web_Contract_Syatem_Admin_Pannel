@@ -29,9 +29,14 @@ class RegistrationController extends BaseController
 
     public function index(){
         if( session() && session()->get('login') ){
+            $userType = 0;
+            if(session()->get("user") == "contractor"){
+                $userType = 1;
+            }
+
             $group = (new GroupModel())->getAllGroupData();
             $company = (new CompanyModel())->getAllCompanyData();
-            $contractor = (new ContractorModel())->getAllContractorData();
+            $contractor = (new ContractorModel())->getAllContractorData($userType, session()->get("userId"));
             $contractorId = (new SequenceModel())->getContractorSequence();
             $companyId = (new SequenceModel())->getCompanySequence();
             $groupId = (new SequenceModel())->getGroupSequence();
@@ -194,9 +199,14 @@ class RegistrationController extends BaseController
 
     public function update($contractorId){
         if( session() && session()->get('login') ){
+            $userType = 0;
+            if(session()->get("user") == "contractor"){
+                $userType = 1;
+            }
+
             $group = (new GroupModel())->getAllGroupData();
             $company = (new CompanyModel())->getAllCompanyData();
-            $contractor = (new ContractorModel())->getAllContractorData();
+            $contractor = (new ContractorModel())->getAllContractorData($userType, session()->get("userId"));
             $editContractorDetails = (new ContractorModel())->getContractorDetailsById($contractorId);
 
             $idMappedGroup = (new GroupModel())->mapDataByKeyValue($group);

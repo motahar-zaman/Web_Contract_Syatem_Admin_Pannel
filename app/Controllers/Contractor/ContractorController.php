@@ -19,11 +19,9 @@ class ContractorController extends BaseController
                 $groupId = $_GET['groupIdSearch'];
                 $groupName = $_GET['groupNameSearch'];
 
+                $userType = 0;
                 if(session()->get("user") == "contractor"){
                     $userType = 1;
-                }
-                else{
-                    $userType = 0;
                 }
 
                 if($contractorId){
