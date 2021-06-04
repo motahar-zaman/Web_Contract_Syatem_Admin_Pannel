@@ -1,4 +1,4 @@
-<div class="modal fade" id="contractor-select-modal">
+<div class="modal fade" id="discount-select-modal">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
@@ -18,7 +18,6 @@
                     </div>
                 </form>
                 <br />
-
 
                 <div class="card mt-3 text-left">
                     <div class="card-body">
@@ -52,7 +51,7 @@
                             </div>
 
                             <div class="col-md-12  mt-3">
-                                <label>税抜き価格 :</label>
+                                <label>税抜き価格</label>
                             </div>
 
                             <div class="col-md-6">
@@ -69,7 +68,7 @@
                             </div>
 
                             <div class="col-md-12 mt-3">
-                                <label>摘要期間(Applicable period) :</label>
+                                <label>摘要期間(Applicable period)</label>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
