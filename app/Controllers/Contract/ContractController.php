@@ -104,7 +104,7 @@ class ContractController extends BaseController
             $contract = (new ContractModel())->getContractById($contractId);
             $contractDetails = $contract[$contractId] ?? null;
 
-            return view("Contract/estimation",["contractDetails" => $contractDetails]);
+            return view("Contract/estimation",["title" => "Contract Estimation", "contractDetails" => $contractDetails]);
         }
         else{
             return redirect()->to("/login");
