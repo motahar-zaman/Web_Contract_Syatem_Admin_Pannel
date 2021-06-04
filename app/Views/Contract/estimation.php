@@ -71,6 +71,7 @@
                                                             for($i = 0; $i < $count; $i++ ){
                                                                 $price += $products[$i]["price"];
                                                             }
+                                                            $tax = $price / 100 * contract_product_tax;
                                                         }
                                                         ?>
                                                             <tr>
