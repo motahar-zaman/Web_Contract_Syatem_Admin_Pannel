@@ -42,11 +42,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label>内容詳細(Content detail)</label>
-                                    <span class="form-control" ></span>
+                                    <span class="form-control h100px" ></span>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group ">
                                     <label>条件(Condition)</label>
-                                    <span class="form-control" ></span>
+                                    <span class="form-control h100px" ></span>
                                 </div>
                             </div>
 
@@ -92,11 +92,11 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>目標(Purpose)</label>
-                                    <span class="form-control" ></span>
+                                    <span class="form-control h100px" ></span>
                                 </div>
                                 <div class="form-group">
                                     <label>備考(Remarks)</label>
-                                    <span class="form-control" ></span>
+                                    <span class="form-control h100px" ></span>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary ml-3 mt-2 k1Btn k1Btn2" style="margin-left: 5px !important;" data-dismiss="modal" aria-label="Close">摘要(Apply)</button>
