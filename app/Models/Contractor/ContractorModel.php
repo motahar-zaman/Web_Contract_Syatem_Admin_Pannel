@@ -66,7 +66,7 @@ class ContractorModel
     public function getAllData($userType, $userId){
         $where = " WHERE ";
         if($userType){
-            $where .= "contractor_id = '$userId' AND ";
+            $where .= "(insert_user_id = '$userId' OR contractor_id ='$userId') AND ";
         }
 
         $queryString = "SELECT contractor_id, contractor_name, contractor_name_kana, password, zipcode, address_01, address_02, tel_no, fax_no,
@@ -126,10 +126,15 @@ class ContractorModel
         return $this->mapContractorDetailsData($data);
     }
 
-    public function getContractorDetailsDataById($contractorId, $userType, $userId){
-        $where = " WHERE ";
+    public function getContractorDetailsDataById($contractorId, $userType = null, $userId = null){
+        $where = "WHERE ";
         if($userType){
-            $where .= "con.insert_user_id = '$userId' AND ";
+            if($contractorId == $userId){
+                $where .= "con.contractor_id ='$userId') AND ";
+            }
+            else{
+                $where .= "con.insert_user_id = '$userId' AND con.contractor_id ='$contractorId' AND ";
+            }
         }
 
         $queryString = "SELECT con.contractor_id, con.contractor_name, con.contractor_name_kana, con.zipcode, con.address_01, con.address_02,
@@ -143,8 +148,9 @@ class ContractorModel
                         AS groupAddress01, grp.address_02 AS groupAddress02, grp.tel_no AS groupPhn, grp.mail_address AS groupMail, grp.update_date
                         AS groupUpdateDate, grp.update_user_id AS groupUpdateUser, grp.insert_date AS groupInsertDate, grp.insert_user_id AS
                         groupInsertUser FROM mst_contractor AS con LEFT JOIN mst_company AS com ON con.company_id = com.company_id LEFT JOIN
-                        mst_group AS grp ON con.group_id = grp.group_id ".$where." con.contractor_id = ? AND con.delete_flag = ?";
-        $queryParameter = array($contractorId, 1);
+                        mst_group AS grp ON con.group_id = grp.group_id ".$where." con.delete_flag = ?";
+
+        $queryParameter = array(1);
 
         return (new Database())->readQueryExecution($queryString, $queryParameter);
     }
@@ -191,7 +197,7 @@ class ContractorModel
         }
 
         if($userType){
-            $where .= "con.insert_user_id = '$userId' AND ";
+            $where .= "(con.insert_user_id = '$userId' OR con.contractor_id ='$userId') AND ";
         }
 
         $queryString = "SELECT contractor_id, contractor_name, contractor_name_kana, password, con.zipcode, con.address_01, con.address_02, con.tel_no,
