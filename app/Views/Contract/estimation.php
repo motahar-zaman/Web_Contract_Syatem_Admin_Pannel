@@ -207,7 +207,15 @@
                 <div class="card-footer">
                     <div class="row mx-auto pb-3" style="max-width: 1050px">
                         <div class="col-md-6 pl-0">
-                            <a class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3" href="/contract-details/<?= $contractDetails->getId() ?>">戻る</a>
+                            <?php
+                                if(isset($_SERVER['HTTP_REFERER'])){
+                                    $url= $_SERVER['HTTP_REFERER'];
+                                }
+                                else{
+                                    $url = "/contract-details/".$contractDetails->getId();
+                                }
+                            ?>
+                            <a class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3" href="<?= $url ?>">戻る</a>
                             <a class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2" href="/home">メニュー</a>
                         </div>
                         <div class="col-md-6 pr-0 text-right">
