@@ -83,3 +83,4 @@ const contractor_user_prefix = 'CONT';
 const contract_user_prefix = 'CNTR';
 const jwt_token_key = "k1_jwt_user_token";
 const jwt_token_algorithm = "HS512";
+const contract_product_tax = 10;
