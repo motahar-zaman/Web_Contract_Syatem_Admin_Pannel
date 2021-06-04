@@ -98,4 +98,13 @@ class ContractController extends BaseController
             return redirect()->to("/login");
         }
     }
+
+    public function contractEstimation($contractId){
+        if( session() && session()->get('login') ){
+            return view("Contract/estimation");
+        }
+        else{
+            return redirect()->to("/login");
+        }
+    }
 }
