@@ -319,7 +319,7 @@ class RegistrationController extends BaseController
                 $shopInfo->setRepresentative($_POST['shopRepresentative'] ?? null);
                 $shopInfo->setRepresentativeKana($_POST['shopRepresentativeKana'] ?? null);
                 $shopInfo->setBusiness(1);
-                $shopInfo->setNotification($this->processShopFile($notificationLetter, $shop->getId(), $path) ?? null);
+                $shopInfo->setNotification(isset($notificationLetter) ? $this->processShopFile($notificationLetter, $shop->getId(), $path) : null);
                 $shopInfo->setPjId(null);
                 $shopInfo->setPlId(null);
                 $shopInfo->setTorihikisakiId(null);
