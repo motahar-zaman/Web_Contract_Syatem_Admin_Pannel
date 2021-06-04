@@ -91,9 +91,9 @@
                                     <div class="card-body table-responsive p-0" style="border: 1px solid gray; width: 35%">
                                         <table class="table table-hover text-center ">
                                             <thead class="k1TableTitleBG">
-                                            <tr>
-                                                <th>税抜御請求額 <br>Tax-inc billing amount</th>
-                                            </tr>
+                                                <tr>
+                                                    <th>税抜御請求額 <br>Tax-inc billing amount</th>
+                                                </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
@@ -163,38 +163,38 @@
                                 <div class="card-body table-responsive p-0">
                                     <table class="table table-hover text-center">
                                         <thead class="k1TableTitleBG">
-                                        <tr>
-                                            <th>割引サービス名 <br>Discount service name</th>
-                                            <th>割引率 <br>Dis. Rate</th>
-                                            <th>割引額 <br>Discount amount</th>
-                                            <th>摘要 <br>Description</th>
-                                        </tr>
+                                            <tr>
+                                                <th>割引サービス名 <br>Discount service name</th>
+                                                <th>割引率 <br>Dis. Rate</th>
+                                                <th>割引額 <br>Discount amount</th>
+                                                <th>摘要 <br>Description</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>ぴゅあらば3ヶ月割</td>
-                                            <td>20%</td>
-                                            <td>10000</td>
-                                            <td>{$shopId}【デリヘル遠藤　青梅店】契約初月のみ適用</td>
-                                        </tr>
-                                        <tr>
-                                            <td>ぴゅあらば3ヶ月割</td>
-                                            <td>20%</td>
-                                            <td>10000</td>
-                                            <td>{$shopId}【デリヘル遠藤　青梅店】契約初月のみ適用</td>
-                                        </tr>
-                                        <tr>
-                                            <td>ぴゅあらば3ヶ月割</td>
-                                            <td>20%</td>
-                                            <td>10000</td>
-                                            <td>{$shopId}【デリヘル遠藤　青梅店】契約初月のみ適用</td>
-                                        </tr>
-                                        <tr>
-                                            <td>ぴゅあらば3ヶ月割</td>
-                                            <td>20%</td>
-                                            <td>10000</td>
-                                            <td>{$shopId}【デリヘル遠藤　青梅店】契約初月のみ適用</td>
-                                        </tr>
+                                            <tr>
+                                                <td>ぴゅあらば3ヶ月割</td>
+                                                <td>20%</td>
+                                                <td>10000</td>
+                                                <td>{$shopId}【デリヘル遠藤　青梅店】契約初月のみ適用</td>
+                                            </tr>
+                                            <tr>
+                                                <td>ぴゅあらば3ヶ月割</td>
+                                                <td>20%</td>
+                                                <td>10000</td>
+                                                <td>{$shopId}【デリヘル遠藤　青梅店】契約初月のみ適用</td>
+                                            </tr>
+                                            <tr>
+                                                <td>ぴゅあらば3ヶ月割</td>
+                                                <td>20%</td>
+                                                <td>10000</td>
+                                                <td>{$shopId}【デリヘル遠藤　青梅店】契約初月のみ適用</td>
+                                            </tr>
+                                            <tr>
+                                                <td>ぴゅあらば3ヶ月割</td>
+                                                <td>20%</td>
+                                                <td>10000</td>
+                                                <td>{$shopId}【デリヘル遠藤　青梅店】契約初月のみ適用</td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
