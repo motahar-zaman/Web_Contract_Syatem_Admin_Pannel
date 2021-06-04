@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>見積</title>
+        <title><?php echo $title; ?></title>
 
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet"
@@ -61,11 +61,26 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td>627500</td>
-                                                <td>62750</td>
-                                                <td>690250</td>
-                                            </tr>
+                                                <?php
+                                                    if (isset($contractDetails)){
+                                                        $products = $contractDetails->getContractProduct();
+                                                        $count = count($products);
+                                                        $price = 0;
+                                                        $tax = 0;
+                                                        if(isset($products) && $count > 0){
+                                                            for($i = 0; $i < $count; $i++ ){
+                                                                $price += $products[$i]["price"];
+                                                            }
+                                                        }
+                                                        ?>
+                                                            <tr>
+                                                                <td><?= $price ?></td>
+                                                                <td><?= $tax ?></td>
+                                                                <td><?= $price+$tax ?></td>
+                                                            </tr>
+                                                        <?php
+                                                    }
+                                                ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -81,9 +96,9 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td>627500</td>
-                                            </tr>
+                                                <tr>
+                                                    <td><?= $price+$tax ?></td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -101,36 +116,37 @@
                                 <div class="card-body table-responsive p-0">
                                     <table class="table table-hover text-center">
                                         <thead class="k1TableTitleBG">
-                                        <tr>
-                                            <th>商品名 <br>Product Name</th>
-                                            <th>契約期間 <br>Contract period</th>
-                                            <th>請求月 <br>Billing month</th>
-                                            <th>税抜価格 <br>Price Tax-ex</th>
-                                            <th>摘要 <br>Description</th>
-                                        </tr>
+                                            <tr>
+                                                <th style="width: 17%">商品名 <br>Product Name</th>
+                                                <th style="width: 20%">契約期間 <br>Contract period</th>
+                                                <th style="width: 11%">請求月 <br>Billing month</th>
+                                                <th>税抜価格 <br>Price Tax-ex</th>
+                                                <th>摘要 <br>Description</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>ぴゅあらば基本掲載（{$エリア}）</td>
-                                                <td>YYYY年12月 - YYYY年02月 </td>
-                                                <td>YYYY年12月</td>
-                                                <td>150000</td>
-                                                <td>{$shopId}【デリヘル遠藤　青梅店】</td>
-                                            </tr>
-                                            <tr>
-                                                <td>ぴゅあらば基本掲載（{$エリア}）</td>
-                                                <td>YYYY年12月 - YYYY年02月 </td>
-                                                <td>YYYY年12月</td>
-                                                <td>150000</td>
-                                                <td>{$shopId}【デリヘル遠藤　青梅店】</td>
-                                            </tr>
-                                            <tr>
-                                                <td>ぴゅあらば基本掲載（{$エリア}）</td>
-                                                <td>YYYY年12月 - YYYY年02月 </td>
-                                                <td>YYYY年12月</td>
-                                                <td>150000</td>
-                                                <td>{$shopId}【デリヘル遠藤　青梅店】</td>
-                                            </tr>
+                                            <?php
+                                                if (isset($contractDetails)){
+                                                    $products = $contractDetails->getContractProduct();
+                                                    $count = count($products);
+                                                    if(isset($products) && $count > 0){
+                                                        for($i = 0; $i < $count; $i++ ){
+                                                            $product = $products[$i];
+                                                            $startDate = date("Y",strtotime($product["startDate"]))."年".date("m",strtotime($product["startDate"]))."月";
+                                                            $endDate = date("Y",strtotime($product["endDate"]))."年".date("m",strtotime($product["endDate"]))."月";
+                                                            ?>
+                                                                <tr>
+                                                                    <td><?= $product["name"] ?></td>
+                                                                    <td><?= $startDate ." - ". $endDate ?></td>
+                                                                    <td>YYYY年12月</td>
+                                                                    <td><?= $product["price"] ?></td>
+                                                                    <td><?= $product["note"] ?></td>
+                                                                </tr>
+                                                            <?php
+                                                        }
+                                                    }
+                                                }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -185,7 +201,6 @@
                             </div>
                         </div>
                     </div>
-
 
                 </div>
                 <div class="card-footer">
