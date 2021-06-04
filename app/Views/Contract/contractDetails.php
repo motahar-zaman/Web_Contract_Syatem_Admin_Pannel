@@ -377,7 +377,7 @@
                 </div>
                 <div class="card-footer">
                     <div class="row mx-auto pb-3" style="max-width: 950px">
-                        <div class="col-md-6 pl-0">
+                        <div class="col-md-8 pl-0">
                             <a class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3" href="/contract-estimation/<?= $contract->getId() ?>"> 見積 </a>
                             <?php
                                 if(session()->get('user') == "contractor"){
@@ -397,7 +397,7 @@
                             ?>
                             <a class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3" href="/home">メニュー</a>
                         </div>
-                        <div class="col-md-6 pr-0 text-right">
+                        <div class="col-md-4 pr-0 text-right">
                             <span>アクセス日時：<?= date("Y/m/d") ?>	</span>
                         </div>
                     </div>
