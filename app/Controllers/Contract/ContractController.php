@@ -101,7 +101,10 @@ class ContractController extends BaseController
 
     public function contractEstimation($contractId){
         if( session() && session()->get('login') ){
-            return view("Contract/estimation");
+            $contract = (new ContractModel())->getContractById($contractId);
+            $contractDetails = $contract[$contractId] ?? null;
+
+            return view("Contract/estimation",["contractDetails" => $contractDetails]);
         }
         else{
             return redirect()->to("/login");
