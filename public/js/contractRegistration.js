@@ -367,12 +367,124 @@ function shopRegistration(shopCount){
     }
 }
 
+function productInfoRemove(td){
+    $(td).parents("tr").remove();
+}
+
+function filterByProductIdOrName(productId, productName) {
+      console.log($.fn.dataTableExt.afnFiltering);
+      // Custom filter syntax requires pushing the new filter to the global filter array
+      $.fn.dataTableExt.afnFiltering.push(function (
+        oSettings,
+        aData,
+        iDataIndex
+      ) {
+        console.log(aData);
+        var rowProductId = aData[1],
+            rowProductName = aData[2];
+
+        if (productId && rowProductId == productId) {
+          return true;
+        }
+        if (productName && rowProductName == productName) {
+          return true;
+        }
+        return false;
+      });
+    };
+
 $(document).ready(function() {
     $('#shopInputFields :input').attr('disabled', true);
     $('#shopInputFields :button').attr('disabled', true);
     $('#mySelect').prop('disabled', true);
-});
 
-function productInfoRemove(td){
-    $(td).parents("tr").remove();
-}
+    // Load datatable data for contractors on modal
+    var $productDataTable = $("#productSelectTable");
+    $productDataTable.DataTable({
+      paging: false,
+      bProcessing: true,
+      serverSide: true,
+      scrollCollapse: false,
+      ajax: {
+        url: baseUrl + "/contract-product-data-table-data", // json data source
+        type: "post",
+        data: {
+          // key1: value1 - in case if we want send data with request
+        },
+      },
+      columns: [
+        {
+          data: "product_id",
+          render: function (datum, type, row) {
+            return "<a href='#' style='color: #0099FF'>選択</a>";
+          },
+        },
+        { data: "product_id" },
+        { data: "product_name" },
+        { data: "product_note" },
+        { data: "start_date" },
+        { data: "end_date" },
+      ],
+      columnDefs: [
+        {
+          targets: 0,
+          createdCell: function (td, cellData, rowData, row, col) {
+            $(td).attr("id", "selectedProduct" + rowData.product_id);
+            $(td).attr("onclick", "selectedProduct(" + row + ", this)");
+          },
+        },
+        {
+          targets: 1,
+          createdCell: function (td, cellData, rowData, row, col) {
+            $(td).attr("id", "productId" + row);
+          },
+        },
+        {
+          targets: 2,
+          createdCell: function (td, cellData, rowData, row, col) {
+            $(td).attr("id", "productName" + row);
+          },
+        },
+        {
+          targets: 3,
+          createdCell: function (td, cellData, rowData, row, col) {
+            $(td).attr("id", "productNote" + row);
+          },
+        },
+        {
+          targets: 4,
+          createdCell: function (td, cellData, rowData, row, col) {
+            $(td).attr("id", "productPeriodStartDate" + row);
+          },
+        },
+        {
+          targets: 5,
+          createdCell: function (td, cellData, rowData, row, col) {
+            $(td).attr("id", "productPeriodEndDate" + row);
+          },
+        },
+        { orderable: false, targets: [0, 1, 2, 3, 4] },
+      ],
+      bFilter: false, // to display datatable search
+      bInfo: false, // to display data-table entries text
+    });
+
+    $(document).on("click", "#productSearch", function (e) {
+      e.preventDefault();
+      var productId = $("#searchProductId").val();
+      var productName = $("#searchProductName").val();
+
+      $productDataTable.on("preXhr.dt", function (e, settings, data) {
+        data.productId = productId;
+        data.productName = productName;
+      });
+
+    //   filterByProductIdOrName(productId, productName); // We call our filter function
+    //   $productDataTable
+    //     .fnSettings()
+    //     .aoData.push({ name: "highlight", value: "true" });
+
+      $productDataTable.dataTable().fnDraw(); // Manually redraw the table after filtering
+    //   $productDataTable.dataTable().fnDraw(); // Manually redraw the table after filtering
+    });
+});

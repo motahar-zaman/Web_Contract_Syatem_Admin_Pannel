@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="productFilterForm">
                     <div class="card-body">
                         <div class="form-group col-md-4 pl-0">
                             <label for="productId">商品ID（完全一致）</label>
@@ -35,35 +35,6 @@
                                 <th>公開終了日</th>
                             </tr>
                         </thead>
-                        <tbody>
-                        <?php
-                        if (isset($product) && count($product) > 0) {
-                            for ($i = 0; $i < count($product); $i++) {
-                                $data = $product[$i];
-
-                                $getStartDate = $data->getStartDate();
-                                $repStartDate = str_replace('-"', '/', $getStartDate);
-                                $startDate = date("Y/m/d", strtotime($repStartDate));
-
-                                $getEndDate = $data->getEndDate();
-                                $repEndDDate = str_replace('-"', '/', $getEndDate);
-                                $endDate = date("Y/m/d", strtotime($repEndDDate));
-                                ?>
-                                <tr>
-                                    <td onclick="selectedProduct(<?= $i ?>, this);" id="selectedProduct<?= $data->getId() ?>"><a href="#" style="color: #0099FF">選択</a></td>
-                                    <td id="productId<?= $i ?>"><?= $data->getId() ?></td>
-                                    <td id="productName<?= $i ?>"><?= $data->getName() ?></td>
-                                    <td id="productNote<?= $i ?>"><?= $data->getProductNote() ?></td>
-                                    <td id="productPeriodStartDate<?= $i ?>"><?= $startDate ?></td>
-                                    <td id="productPeriodEndDate<?= $i ?>"><?= $endDate ?></td>
-                                </tr>
-                                <?php
-                            }
-                        } else {
-                            echo "<h3>データがありません！</h3>";
-                        }
-                        ?>
-                        </tbody>
                     </table>
                 </div>
                 <button type="submit" class="btn btn-primary ml-3 mt-5 k1Btn k1Btn2" data-dismiss="modal" aria-label="Close">選択反映</button>

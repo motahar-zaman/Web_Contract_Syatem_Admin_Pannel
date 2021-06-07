@@ -493,12 +493,18 @@
                 </div>
             </section>
         </div>
+        <script>
+            var baseUrl = "<?php echo base_url(); ?>";
+        </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript" src="../../js/contractRegistration.js"></script>
         <!-- jQuery -->
         <script src="../../plugins/jquery/jquery.min.js"></script>
         <!-- Bootstrap 4 -->
         <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- DataTable -->
+        <script src="../../plugins/datatables/jquery.dataTables.js"></script>
+        <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
         <!-- Select2 -->
         <script src="../../plugins/select2/js/select2.full.min.js"></script>
         <!-- Bootstrap4 Duallistbox -->

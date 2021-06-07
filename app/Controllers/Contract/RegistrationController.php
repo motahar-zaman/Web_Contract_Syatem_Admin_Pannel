@@ -50,6 +50,12 @@ class RegistrationController extends BaseController
         }
     }
 
+    public function productDataTableData() {
+        $products = (new ProductModel())->getDataTableData();
+        // echo "<pre>"; print_r($products); exit;
+        echo json_encode($products);
+    }
+
     public function tempRegistration(){
         if( session() && session()->get('login') ){
             $shop = (new ShopModel())->getAllShopData();

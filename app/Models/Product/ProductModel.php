@@ -110,4 +110,36 @@ class ProductModel
             return $datas;
         }
     }
+
+    public function getDataTableData() {
+        $params['draw'] = $_REQUEST['draw'];
+
+        /* $condition = "";
+        if ($this->input->post('productId') && $this->input->post('productName')) {
+            $condition .= " AND product_id LIKE '%?%' AND product_name LIKE '%?%'";
+            $queryParameter = array(1, $this->input->post('productId'), $this->input->post('productName'));
+        } else if ($this->input->post('productId')) {
+            $condition .= " AND product_id LIKE '%?%'";
+            $queryParameter = array(1, $this->input->post('productId'));
+        } else if ($this->input->post('productName')) {
+            $condition .= " AND product_name LIKE '%?%'";
+            $queryParameter = array(1, $this->input->post('productName'));
+        } else {
+        } */
+        $queryParameter = array(1);
+
+        $queryString = "SELECT product_id, product_name, product_name_official, price, DATE_FORMAT(start_date, '%Y/%c/%d') AS start_date, DATE_FORMAT(end_date, '%Y/%c/%d') AS end_date, service_type, product_type, campaign_flag, shop_type, product_note, update_date, update_user_id, insert_date, insert_user_id, delete_flag FROM mst_product WHERE delete_flag = ? {$condition} ORDER BY update_date DESC";
+
+
+        $data = (new Database())->readQueryExecution($queryString, $queryParameter);
+
+        $jsonData = array(
+            "draw" => intval($params['draw']),
+            "recordsTotal" => count($data),
+            "recordsFiltered" => count($data),
+            "data" => $data
+        );
+
+        return $jsonData;
+    }
 }
