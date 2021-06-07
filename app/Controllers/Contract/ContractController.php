@@ -8,6 +8,7 @@ use App\Controllers\BaseController;
 use App\Models\Common\AddressModel;
 use App\Models\Contract\ContractModel;
 use App\Models\Contractor\ContractorModel;
+use App\Models\Ringi\RingiModel;
 
 class ContractController extends BaseController
 {
@@ -116,5 +117,18 @@ class ContractController extends BaseController
         else{
             return redirect()->to("/login");
         }
+    }
+
+    public function ringiSearch(){
+        $ringiNo = $_GET["ringiNo"];
+        $ringiInfo = (new RingiModel())->getRingiByNo($ringiNo)[0];
+
+        $startDate = $ringiInfo->start_date;
+        $endDate = $ringiInfo->end_date;
+
+        $ringiInfo->start_date = date("Y",strtotime($startDate))."年".date("m",strtotime($startDate))."月".date("d",strtotime($startDate))."日";
+        $ringiInfo->end_date = date("Y",strtotime($endDate))."年".date("m",strtotime($endDate))."月".date("d",strtotime($endDate))."日";
+
+        return json_encode(['msg' => "Successful", "ringi" => $ringiInfo, "status" => 1]);
     }
 }
