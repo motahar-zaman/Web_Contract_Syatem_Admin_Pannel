@@ -19,7 +19,12 @@ class AuthController extends BaseController{
     }
 
     public function login(){
-        return view("login", ["title" => "Login"]);
+        if( session() && session()->get('login') ){
+            return redirect()->to("/");
+        }
+        else{
+            return view("login", ["title" => "Login"]);
+        }
     }
 
     public function loginAction(){
