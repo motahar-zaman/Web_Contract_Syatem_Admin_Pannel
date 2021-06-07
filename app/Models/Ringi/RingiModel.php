@@ -15,8 +15,8 @@ class RingiModel
 
     public function getAllData(){
         $queryString = "SELECT ringi_no, applicant_name, ringi_type, target_area, target_name, discount_service_type, ringi_detail, summary_condition,
-                        before_summary_price, after_summary_price, summary_period, start_date, end_date, purpose, memo, delete_flag
-                        FROM trn_ringi_info WHERE delete_flag = ?";
+                        before_summary_price, after_summary_price, summary_period, DATE_FORMAT(start_date, '%Y/%m/%d') AS start_date, DATE_FORMAT(end_date, '%Y/%m/%d')
+                        AS end_date, purpose, memo, delete_flag FROM trn_ringi_info WHERE delete_flag = ?";
         $queryParameter = array(1);
 
         return (new Database())->readQueryExecution($queryString, $queryParameter);
@@ -55,5 +55,18 @@ class RingiModel
         else{
             return $datas;
         }
+    }
+
+    public function getRingiByNo($ringiNo){
+        return $this->getRingiDataByNo($ringiNo);
+    }
+
+    public function getRingiDataByNo($ringiNo){
+        $queryString = "SELECT ringi_no, applicant_name, ringi_type, target_area, target_name, discount_service_type, ringi_detail, summary_condition,
+                        before_summary_price, after_summary_price, summary_period, DATE_FORMAT(start_date, '%Y/%m/%d') AS start_date, DATE_FORMAT(end_date, '%Y/%m/%d')
+                        AS end_date, purpose, memo, delete_flag FROM trn_ringi_info WHERE ringi_no = ? AND delete_flag = ?";
+        $queryParameter = array($ringiNo, 1);
+
+        return (new Database())->readQueryExecution($queryString, $queryParameter);
     }
 }
