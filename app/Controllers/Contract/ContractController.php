@@ -120,15 +120,26 @@ class ContractController extends BaseController
     }
 
     public function ringiSearch(){
-        $ringiNo = $_GET["ringiNo"];
-        $ringiInfo = (new RingiModel())->getRingiByNo($ringiNo)[0];
+        if( session() && session()->get('login') ) {
+            $ringiNo = $_GET["ringiNo"];
+            $ringiInfo = (new RingiModel())->getRingiByNo($ringiNo);
 
-        $startDate = $ringiInfo->start_date;
-        $endDate = $ringiInfo->end_date;
+            if (isset($ringiInfo) && count($ringiInfo) > 0) {
+                $ringiInfo = $ringiInfo[0];
+                $startDate = $ringiInfo->start_date;
+                $endDate = $ringiInfo->end_date;
 
-        $ringiInfo->start_date = date("Y",strtotime($startDate))."年".date("m",strtotime($startDate))."月".date("d",strtotime($startDate))."日";
-        $ringiInfo->end_date = date("Y",strtotime($endDate))."年".date("m",strtotime($endDate))."月".date("d",strtotime($endDate))."日";
+                $ringiInfo->start_date = date("Y", strtotime($startDate)) . "年" . date("m", strtotime($startDate)) . "月" . date("d", strtotime($startDate)) . "日";
+                $ringiInfo->end_date = date("Y", strtotime($endDate)) . "年" . date("m", strtotime($endDate)) . "月" . date("d", strtotime($endDate)) . "日";
 
-        return json_encode(['msg' => "Successful", "ringi" => $ringiInfo, "status" => 1]);
+                return json_encode(['msg' => "Successful", "ringi" => $ringiInfo, "status" => 1]);
+            }
+            else {
+                return json_encode(['msg' => "Successful", "ringi" => null, "status" => 2]);
+            }
+        }
+        else{
+            return json_encode(['msg' => "Not Logged in user", 'status' => 3]);
+        }
     }
 }

@@ -118,3 +118,6 @@ input[type=text]:focus {
 .h100px{
     height: 100px;
 }
+.error{
+    border:1px solid red;
+}

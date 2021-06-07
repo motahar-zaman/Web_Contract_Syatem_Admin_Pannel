@@ -380,6 +380,7 @@ function productInfoRemove(td){
 function ringiSearch(){
     let data = {};
     data["ringiNo"] = $("#ringiNo").val();
+    $("#ringiNo").removeClass('error');
 
     if (ringiNo !== "" ) {
         $.ajax({
@@ -392,6 +393,9 @@ function ringiSearch(){
             success: function (data) {
                 if (data.status === 1) {
                     fillUpRingiForm(data.ringi);
+                }
+                else if (data.status === 2) {
+                    $("#ringiNo").addClass('error');
                 }
                 else if (data.status === 3) {
                     window.location.href = "/login";
