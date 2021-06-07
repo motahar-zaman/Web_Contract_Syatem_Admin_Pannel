@@ -376,3 +376,47 @@ $(document).ready(function() {
 function productInfoRemove(td){
     $(td).parents("tr").remove();
 }
+
+function ringiSearch(){
+    let data = {};
+    data["ringiNo"] = $("#ringiNo").val();
+
+    if (ringiNo !== "" ) {
+        $.ajax({
+            url: "/ringi-search",
+            type: "GET",
+            data: data,
+            dataType: 'JSON',
+            headers: {'X-Requested-With': 'XMLHttpRequest'},
+
+            success: function (data) {
+                if (data.status === 1) {
+                    fillUpRingiForm(data.ringi);
+                }
+                else if (data.status === 3) {
+                    window.location.href = "/login";
+                }
+            },
+            error: function (jqXHR, exception) {
+                alert("Error occurred");
+            }
+        });
+    }
+}
+
+function fillUpRingiForm(ringi){
+    console.log(ringi);
+    $("#ringiType").html(ringi["ringi_type"]);
+    $("#targetArea").html(ringi["target_area"]);
+    $("#targetName").html(ringi["target_name"]);
+    $("#discountServiceType").html(ringi["discount_service_type"]);
+    $("#ringiDetail").html(ringi["ringi_detail"]);
+    $("#summaryCondition").html(ringi["summary_condition"]);
+    $("#beforeSummaryPrice").html(ringi["before_summary_price"]);
+    $("#afterSummaryPrice").html(ringi["after_summary_price"]);
+    $("#summaryPeriod").html(ringi["summary_period"]);
+    $("#startDate").html(ringi["start_date"]);
+    $("#endDate").html(ringi["end_date"]);
+    $("#purpose").html(ringi["purpose"]);
+    $("#memo").html(ringi["memo"]);
+}
