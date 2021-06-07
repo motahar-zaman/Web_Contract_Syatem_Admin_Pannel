@@ -130,7 +130,7 @@ class ContractorModel
         $where = "WHERE ";
         if($userType){
             if($contractorId == $userId){
-                $where .= "con.contractor_id ='$userId') AND ";
+                $where .= "con.contractor_id ='$userId' AND ";
             }
             else{
                 $where .= "con.insert_user_id = '$userId' AND con.contractor_id ='$contractorId' AND ";
