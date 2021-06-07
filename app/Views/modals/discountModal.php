@@ -24,6 +24,8 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>契約種別(Contract Type)</label>
+                                    <span class="form-control d-none" id="ringiNo"></span>
+                                    <span class="form-control d-none" id="applicantName"></span>
                                     <span class="form-control" id="ringiType"></span>
                                 </div>
                                 <div class="form-group">
@@ -97,7 +99,7 @@
                                     <span class="form-control h100px" id="memo"></span>
                                 </div>
                             </div>
-                            <span class="btn btn-primary ml-2 mt-2 k1Btn k1Btn2" data-dismiss="modal" aria-label="Close">摘要(Apply)</span>
+                            <span onclick="addDiscountWithContract()" class="btn btn-primary ml-2 mt-2 k1Btn k1Btn2" data-dismiss="modal" aria-label="Close">摘要(Apply)</span>
                         </div>
                     </div>
                 </div>
