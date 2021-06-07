@@ -41,17 +41,22 @@ class ContractModel
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
 
-    public function getAllContract(){
-        $data = $this->getAllContractData();
+    public function getAllContract($userType = null, $user = null){
+        $data = $this->getAllContractData($userType, $user);
         return $this->mapContractData($data);
     }
 
-    public function getAllContractData(){
+    public function getAllContractData($userType, $userId){
+        $where = "WHERE ";
+        if($userType){
+            $where .= "c.contractor_id ='$userId' AND ";
+        }
+
         $queryString = "SELECT c.contract_id, s.shop_id, contractor_id, c.tantou_id, c.status, c.note, c.update_date, c.update_user_id, c.insert_date,
             c.insert_user_id, c.delete_flag, branch_no, p.product_id, p.status AS product_status, start_date_year, start_date_month, end_date_year,
             end_date_month, p.note AS product_note, mp.product_name, mp.product_note, s.shop_name, s.zipcode, s.daihyousha_name, s.address_01,
             s.tel_no, s.mail_address, s.notification_letter FROM trn_web_contract_base AS c LEFT JOIN trn_contract_product AS p ON c.contract_id =
-            p.contract_id LEFT JOIN mst_product AS mp ON mp.product_id = p.product_id LEFT JOIN mst_shop AS s ON s.shop_id = p.shop_id WHERE c.delete_flag = ?";
+            p.contract_id LEFT JOIN mst_product AS mp ON mp.product_id = p.product_id LEFT JOIN mst_shop AS s ON s.shop_id = p.shop_id ".$where." c.delete_flag = ?";
 
         $queryParameter = array(1);
 
@@ -119,18 +124,23 @@ class ContractModel
         return $mapData;
     }
 
-    public function getContractById($id){
-        $data = $this->getContractDataById($id);
+    public function getContractById($id, $userType = null, $user = null){
+        $data = $this->getContractDataById($id, $userType, $user);
         return $this->mapContractData($data);
     }
 
-    public function getContractDataById($id){
-        $queryString = "SELECT c.contract_id, p.shop_id, contractor_id, c.tantou_id, c.status, c.note, c.update_date, c.update_user_id, c.insert_date,
+    public function getContractDataById($id, $userType, $userId){
+        $where = "WHERE ";
+        if($userType){
+            $where .= "c.contractor_id ='$userId' AND ";
+        }
+
+        $queryString = "SELECT c.contract_id, p.shop_id, c.contractor_id, c.tantou_id, c.status, c.note, c.update_date, c.update_user_id, c.insert_date,
             c.insert_user_id, c.delete_flag, branch_no, p.product_id, p.status AS product_status, DATE_FORMAT(mp.start_date, '%Y/%m/%d') AS start_date,
             DATE_FORMAT(mp.end_date, '%Y/%m/%d') AS end_date, mp.product_note, mp.product_name, mp.price, mp.product_note, mp.service_type, mp.product_type,
             mp.campaign_flag, mp.shop_type, s.shop_name, s.zipcode, s.daihyousha_name, s.address_01, s.tel_no, s.mail_address, s.notification_letter FROM
             trn_web_contract_base AS c LEFT JOIN trn_contract_product AS p ON c.contract_id = p.contract_id LEFT JOIN mst_product AS mp ON 
-            mp.product_id = p.product_id LEFT JOIN mst_shop AS s ON s.shop_id = p.shop_id WHERE c.contract_id = ? AND c.delete_flag = ?";
+            mp.product_id = p.product_id LEFT JOIN mst_shop AS s ON s.shop_id = p.shop_id ".$where." c.contract_id = ? AND c.delete_flag = ?";
 
         $queryParameter = array($id, 1);
 
@@ -172,12 +182,12 @@ class ContractModel
         return (new Database())->readQueryExecution($queryString, $queryParameter);
     }
 
-    public function getContractBySearchOptions($contractorId, $contractorName, $productId, $productName, $shopId, $shopName, $prefecture, $tantouId){
-        $data = $this->getContractDataBySearchOptions($contractorId, $contractorName, $productId, $productName, $shopId, $shopName, $prefecture, $tantouId);
+    public function getContractBySearchOptions($contractorId, $contractorName, $productId, $productName, $shopId, $shopName, $prefecture, $tantouId, $userType = null, $user = null){
+        $data = $this->getContractDataBySearchOptions($contractorId, $contractorName, $productId, $productName, $shopId, $shopName, $prefecture, $tantouId, $userType, $user);
         return $this->mapContractData($data);
     }
 
-    public function getContractDataBySearchOptions($contractorId, $contractorName, $productId, $productName, $shopId, $shopName, $prefecture, $tantouId){
+    public function getContractDataBySearchOptions($contractorId, $contractorName, $productId, $productName, $shopId, $shopName, $prefecture, $tantouId, $userType, $userId){
         $where = " WHERE ";
         if($contractorId != ""){
             $where .= "c.contractor_id = '$contractorId' AND ";
@@ -202,6 +212,10 @@ class ContractModel
         }
         if($prefecture != "0"){
             $where .= "s.prefecture = '$prefecture' AND ";
+        }
+
+        if($userType){
+            $where .= "c.contractor_id = '$userId' AND ";
         }
 
         $queryString = "SELECT c.contract_id, s.shop_id, c.contractor_id, c.tantou_id, c.status, c.note, c.update_date, c.update_user_id, c.insert_date,
