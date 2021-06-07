@@ -396,6 +396,7 @@ function ringiSearch(){
                 }
                 else if (data.status === 2) {
                     $("#ringiNo").addClass('error');
+                    $("#ringiNo").val("");
                 }
                 else if (data.status === 3) {
                     window.location.href = "/login";
@@ -409,7 +410,6 @@ function ringiSearch(){
 }
 
 function fillUpRingiForm(ringi){
-    console.log(ringi);
     $("#ringiType").html(ringi["ringi_type"]);
     $("#targetArea").html(ringi["target_area"]);
     $("#targetName").html(ringi["target_name"]);
