@@ -105,9 +105,15 @@
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm text-left">
                                         <div class="input-group-append">
-                                            <button type="button" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2" data-toggle="modal" data-target="#contractor-select-modal">
-                                                契約者選択
-                                            </button>
+                                            <?php
+                                                if(session()->get("user") == "employee"){
+                                                    ?>
+                                                        <button type="button" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2" data-toggle="modal" data-target="#contractor-select-modal">
+                                                                契約者選択
+                                                        </button>
+                                                    <?php
+                                                }
+                                            ?>
                                         </div>
                                     </div>
                                 </div>
