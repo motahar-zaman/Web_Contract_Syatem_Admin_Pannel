@@ -81,3 +81,4 @@ $routes->get('contract-status-update/(:any)/(:any)', 'Contract\ContractControlle
 $routes->get('contract-estimation/(:any)', 'Contract\ContractController::contractEstimation/$1');
 
 $routes->post('shop-registration', 'Contract\RegistrationController::shopRegistration');
+$routes->get('ringi-search', 'Contract\ContractController::ringiSearch');
