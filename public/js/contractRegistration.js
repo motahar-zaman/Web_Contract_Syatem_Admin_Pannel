@@ -410,6 +410,8 @@ function ringiSearch(){
 }
 
 function fillUpRingiForm(ringi){
+    $("#ringiNo").html(ringi["ringi_no"]);
+    $("#applicantName").html(ringi["applicant_name"]);
     $("#ringiType").html(ringi["ringi_type"]);
     $("#targetArea").html(ringi["target_area"]);
     $("#targetName").html(ringi["target_name"]);
@@ -423,4 +425,24 @@ function fillUpRingiForm(ringi){
     $("#endDate").html(ringi["end_date"]);
     $("#purpose").html(ringi["purpose"]);
     $("#memo").html(ringi["memo"]);
+}
+
+function addDiscountWithContract(){
+    let tableBody = "<td>削除</td>\n" +
+        "<td id=\"ringiNo\">"+$("#ringiNo").html()+"</td>\n" +
+        "<td id=\"ringiType\">"+$("#ringiType").html()+"</td>\n" +
+        "<td id=\"targetArea\">"+$("#targetArea").html()+"</td>\n" +
+        "<td id=\"targetName\">"+$("#targetName").html()+"</td>\n" +
+        "<td id=\"discountServiceType\">"+$("#discountServiceType").html()+"</td>\n" +
+        "<td id=\"ringiDetail\">"+$("#ringiDetail").html()+"</td>\n" +
+        "<td id=\"summaryCondition\">"+$("#summaryCondition").html()+"</td>\n" +
+        "<td id=\"beforeSummaryPrice\">"+$("#beforeSummaryPrice").html()+"</td>\n" +
+        "<td id=\"afterSummaryPrice\">"+$("#afterSummaryPrice").html()+"</td>\n" +
+        "<td id=\"summaryPeriod\">"+$("#summaryPeriod").html()+"</td>\n" +
+        "<td id=\"startDate\">"+$("#startDate").html()+"</td>\n" +
+        "<td id=\"endDate\">"+$("#endDate").html()+"</td>\n" +
+        "<td id=\"purpose\">"+$("#purpose").html()+"</td>\n" +
+        "<td id=\"memo\">"+$("#memo").html()+"</td>\n" +
+        "<td id=\"applicantName\">"+$("#applicantName").html()+"</td>";
+    $(".productDiscountTable tbody").html(tableBody);
 }
