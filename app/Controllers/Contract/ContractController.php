@@ -14,6 +14,13 @@ class ContractController extends BaseController
     public function contractSearch(){
         if( session() && session()->get('login') ){
             $prefectures = (new AddressModel())->getAllPrefecture();
+
+            $userType = 0;
+            $user = session()->get("userId");
+            if(session()->get("user") == "contractor"){
+                $userType = 1;
+            }
+
             if($_SERVER['QUERY_STRING']){
                 $contractId = $_GET['contractIdSearch'] ?? null;
                 $tantouId = $_GET['tantouIdSearch'] ?? null;
@@ -26,7 +33,7 @@ class ContractController extends BaseController
                 $prefecture = $_GET['prefectureSearch'] ?? null;
 
                 if($contractId != ""){
-                    $contract = (new ContractModel())->getContractById($contractId);
+                    $contract = (new ContractModel())->getContractById($contractId, $userType, $user);
                     if(isset($contract) && count($contract) > 0 ){
                         return redirect()->to("contract-details/".$contractId);
                     }
@@ -35,7 +42,7 @@ class ContractController extends BaseController
                     }
                 }
                 elseif($contractorId != "" || $contractorName != "" || $productId != "" || $productName != "" || $shopId != "" || $shopName != "" || $prefecture != "0" || $prefecture != ""){
-                    $contract = (new ContractModel())->getContractBySearchOptions($contractorId, $contractorName, $productId, $productName, $shopId, $shopName, $prefecture, $tantouId);
+                    $contract = (new ContractModel())->getContractBySearchOptions($contractorId, $contractorName, $productId, $productName, $shopId, $shopName, $prefecture, $tantouId, $userType, $user);
                     return view("Contract/contractSearch", ["title" => "Contract Search", "contracts" => $contract, "prefectures" => $prefectures]);
                 }
                 else{
@@ -43,7 +50,7 @@ class ContractController extends BaseController
                 }
             }
             else{
-                $contract = (new ContractModel())->getAllContract();
+                $contract = (new ContractModel())->getAllContract($userType, $user);
                 return view("Contract/contractSearch", ["title" => "Contract Search", "contracts" => $contract, "prefectures" => $prefectures]);
             }
         }
