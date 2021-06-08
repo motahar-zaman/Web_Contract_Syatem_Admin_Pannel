@@ -83,7 +83,7 @@
                                             <div class="form-group">
                                                 <label>都道府県</label>
                                                 <select name="prefectureSearch" id="prefectureSearch" class="form-control">
-                                                    <option value="0">Select</option>
+                                                    <option value="0"></option>
                                                     <?php foreach ($prefectures as $prefecture) { ?>
                                                         <option value="<?php echo $prefecture->getId() ?>"><?php echo $prefecture->getname() ?></option>
                                                     <?php } ?>
