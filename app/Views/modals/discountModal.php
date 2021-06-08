@@ -12,7 +12,7 @@
                     <div class="card-body">
                         <div class="form-group col-md-4 pl-0">
                             <label>稟議No（完全一致） Ringi No (Exact match)</label>
-                            <input name="ringiNo" id="ringiNo" type="text" class="form-control" value="">
+                            <input name="ringiNoSearch" id="ringiNoSearch" type="text" class="form-control" value="">
                         </div>
                         <span onclick="ringiSearch()" id="ringiSearch" class="btn btn-primary pl-4 pr-4 k1Btn k1Btn2 mr-3">検索(Search)</span>
                     </div>

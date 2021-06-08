@@ -379,8 +379,8 @@ function productInfoRemove(td){
 
 function ringiSearch(){
     let data = {};
-    data["ringiNo"] = $("#ringiNo").val();
-    $("#ringiNo").removeClass('error');
+    data["ringiNo"] = $("#ringiNoSearch").val();
+    $("#ringiNoSearch").removeClass('error');
 
     if (ringiNo !== "" ) {
         $.ajax({
@@ -395,8 +395,8 @@ function ringiSearch(){
                     fillUpRingiForm(data.ringi);
                 }
                 else if (data.status === 2) {
-                    $("#ringiNo").addClass('error');
-                    $("#ringiNo").val("");
+                    $("#ringiNoSearch").addClass('error');
+                    $("#ringiNoSearch").val("");
                 }
                 else if (data.status === 3) {
                     window.location.href = "/login";
@@ -428,7 +428,8 @@ function fillUpRingiForm(ringi){
 }
 
 function addDiscountWithContract(){
-    let tableBody = "<td>削除</td>\n" +
+    let tableBody = "<tr>" +
+        "<td>削除</td>\n" +
         "<td id=\"ringiNo\">"+$("#ringiNo").html()+"</td>\n" +
         "<td id=\"ringiType\">"+$("#ringiType").html()+"</td>\n" +
         "<td id=\"targetArea\">"+$("#targetArea").html()+"</td>\n" +
@@ -443,6 +444,7 @@ function addDiscountWithContract(){
         "<td id=\"endDate\">"+$("#endDate").html()+"</td>\n" +
         "<td id=\"purpose\">"+$("#purpose").html()+"</td>\n" +
         "<td id=\"memo\">"+$("#memo").html()+"</td>\n" +
-        "<td id=\"applicantName\">"+$("#applicantName").html()+"</td>";
+        "<td id=\"applicantName\">"+$("#applicantName").html()+"</td>" +
+        "</tr>";
     $(".productDiscountTable tbody").html(tableBody);
 }
