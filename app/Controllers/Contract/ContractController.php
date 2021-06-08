@@ -70,7 +70,7 @@ class ContractController extends BaseController
 
             if(isset($contractDetails) && $contractDetails->getContractorId() ){
                 $contractorDetails = (new ContractorModel())->getContractorDetailsById($contractDetails->getContractorId())[0] ?? null;
-                $ringiDetails = (new RingiModel())->getRingiByNo($contractDetails->getRingiNo())[0] ?? null;
+                $ringiDetails = (new RingiModel())->getRingiByContractId($contractDetails->getId()) ?? null;
             }
 
             $data = array(
