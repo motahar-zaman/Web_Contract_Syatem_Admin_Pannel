@@ -489,26 +489,28 @@
                                         <tbody>
                                             <?php
                                                 if(isset($ringiDetails)){
-                                                    ?>
-                                                        <tr>
-                                                            <td onclick="productInfoRemove(this)" id="ringiRemove"><a href="#">削除</a></td>
-                                                            <td id="ringiNo"><?= $ringiDetails->getNo() ?></td>
-                                                            <td id="ringiType"><?= $ringiDetails->getType() ?></td>
-                                                            <td id="targetArea"><?= $ringiDetails->getTargetArea() ?></td>
-                                                            <td id="targetName"><?= $ringiDetails->getTargetName() ?></td>
-                                                            <td id="discountServiceType"><?= $ringiDetails->getDiscountServiceType() ?></td>
-                                                            <td id="ringiDetail"><?= $ringiDetails->getDetail() ?></td>
-                                                            <td id="summaryCondition"><?= $ringiDetails->getSummaryCondition() ?></td>
-                                                            <td id="beforeSummaryPrice"><?= $ringiDetails->getBeforeSummaryPrice() ?></td>
-                                                            <td id="afterSummaryPrice"><?= $ringiDetails->getAfterSummaryPrice() ?></td>
-                                                            <td id="summaryPeriod"><?= $ringiDetails->getSummaryPeriod() ?></td>
-                                                            <td id="startDate"><?= $ringiDetails->getStartDate() ?></td>
-                                                            <td id="endDate"><?= $ringiDetails->getEndDate() ?></td>
-                                                            <td id="purpose"><?= $ringiDetails->getPurpose() ?></td>
-                                                            <td id="memo"><?= $ringiDetails->getMemo() ?></td>
-                                                            <td id="applicantName"><?= $ringiDetails->getApplicantName() ?></td>
-                                                        </tr>
-                                                    <?php
+                                                    foreach ($ringiDetails as $ringi) {
+                                                        ?>
+                                                            <tr>
+                                                                <td onclick="productInfoRemove(this)" id="ringiRemove"><a href="#">削除</a></td>
+                                                                <td id="ringiNo"><?= $ringi->getNo() ?></td>
+                                                                <td id="ringiType"><?= $ringi->getType() ?></td>
+                                                                <td id="targetArea"><?= $ringi->getTargetArea() ?></td>
+                                                                <td id="targetName"><?= $ringi->getTargetName() ?></td>
+                                                                <td id="discountServiceType"><?= $ringi->getDiscountServiceType() ?></td>
+                                                                <td id="ringiDetail"><?= $ringi->getDetail() ?></td>
+                                                                <td id="summaryCondition"><?= $ringi->getSummaryCondition() ?></td>
+                                                                <td id="beforeSummaryPrice"><?= $ringi->getBeforeSummaryPrice() ?></td>
+                                                                <td id="afterSummaryPrice"><?= $ringi->getAfterSummaryPrice() ?></td>
+                                                                <td id="summaryPeriod"><?= $ringi->getSummaryPeriod() ?></td>
+                                                                <td id="startDate"><?= $ringi->getStartDate() ?></td>
+                                                                <td id="endDate"><?= $ringi->getEndDate() ?></td>
+                                                                <td id="purpose"><?= $ringi->getPurpose() ?></td>
+                                                                <td id="memo"><?= $ringi->getMemo() ?></td>
+                                                                <td id="applicantName"><?= $ringi->getApplicantName() ?></td>
+                                                            </tr>
+                                                        <?php
+                                                    }
                                                 }
                                             ?>
                                         </tbody>
