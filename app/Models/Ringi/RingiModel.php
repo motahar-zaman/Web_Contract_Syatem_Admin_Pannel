@@ -58,7 +58,8 @@ class RingiModel
     }
 
     public function getRingiByNo($ringiNo){
-        return $this->getRingiDataByNo($ringiNo);
+        $data = $this->getRingiDataByNo($ringiNo);
+        return $this->mapData($data);
     }
 
     public function getRingiDataByNo($ringiNo){
