@@ -238,4 +238,21 @@ class ContractModel
 
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
+
+    public function storeContractRingiData($contractRingi = array()){
+        $d = $contractRingi;
+
+        $queryString = "INSERT INTO trn_contract_ringi (contract_id, ringi_no, status, update_date, update_user_id, insert_date, insert_user_id, delete_flag)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $queryParameter = array($d['contract'], $d['ringi'], $d['status'], $d['update'], $d['updateUser'], $d['insert'], $d['insertUser'], $d['delete']);
+
+        return (new Database())->writeQueryExecution($queryString, $queryParameter);
+    }
+
+    public function removeContractRingiData($contractId){
+        $queryString = "DELETE FROM trn_contract_ringi WHERE contract_id = ?";
+        $queryParameter = array($contractId);
+
+        return (new Database())->writeQueryExecution($queryString, $queryParameter);
+    }
 }
