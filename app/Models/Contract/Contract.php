@@ -13,7 +13,6 @@ class Contract
     private $tantou_id;
     private $status;
     private $note;
-    private $ringiNo;
     private $updateDate;
     private $updateUserId;
     private $insertDate;
@@ -100,22 +99,6 @@ class Contract
     public function setNote($note): void
     {
         $this->note = $note;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getRingiNo()
-    {
-        return $this->ringiNo;
-    }
-
-    /**
-     * @param mixed $ringiNo
-     */
-    public function setRingiNo($ringiNo): void
-    {
-        $this->ringiNo = $ringiNo;
     }
 
     /**
