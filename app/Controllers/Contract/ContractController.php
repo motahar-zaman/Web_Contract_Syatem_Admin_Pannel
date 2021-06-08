@@ -65,11 +65,22 @@ class ContractController extends BaseController
             $contract = (new ContractModel())->getContractById($contractId);
             $contractDetails = $contract[$contractId] ?? null;
 
+            $contractorDetails = null;
+            $ringiDetails = null;
+
             if(isset($contractDetails) && $contractDetails->getContractorId() ){
-                $contractorDetails = (new ContractorModel())->getContractorDetailsById($contractDetails->getContractorId());
+                $contractorDetails = (new ContractorModel())->getContractorDetailsById($contractDetails->getContractorId())[0] ?? null;
+                $ringiDetails = (new RingiModel())->getRingiByNo($contractDetails->getRingiNo())[0] ?? null;
             }
 
-            return view("Contract/contractDetails", ["title" => "Contract Details", "contract" => $contractDetails ?? null, "contractorDetails" => $contractorDetails[0] ?? null]);
+            $data = array(
+                "title" => "Contract Details",
+                "contract" => $contractDetails,
+                "contractorDetails" => $contractorDetails,
+                "ringiDetails" => $ringiDetails
+            );
+
+            return view("Contract/contractDetails", $data);
         }
         else{
             return redirect()->to("/login");
