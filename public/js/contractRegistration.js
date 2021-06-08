@@ -112,6 +112,7 @@ function contractRegistration() {
     data["contractorId"] = $("#contractorId").html();
     data["contractType"] = $("#contractType").val();
     data["contractId"] = $("#contractId").val();
+    data["ringiNo"] = $("#ringiNo").html();
 
     if (validateData(data)) {
         $.ajax({
@@ -429,7 +430,7 @@ function fillUpRingiForm(ringi){
 
 function addDiscountWithContract(){
     let tableBody = "<tr>" +
-        "<td>削除</td>\n" +
+        "<td onclick=\"productInfoRemove(this)\" id=\"ringiRemove\"><a href=\"#\">削除</a></td>" +
         "<td id=\"ringiNo\">"+$("#ringiNo").html()+"</td>\n" +
         "<td id=\"ringiType\">"+$("#ringiType").html()+"</td>\n" +
         "<td id=\"targetArea\">"+$("#targetArea").html()+"</td>\n" +
