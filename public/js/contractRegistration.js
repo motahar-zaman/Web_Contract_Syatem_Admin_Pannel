@@ -89,7 +89,8 @@ function enable() {
 
 function contractRegistration() {
     let data = {};
-    let data1 = Array();
+    let products = Array();
+    let ringis = Array();
 
     $(".productInfoTable tr").each(function(i){
         if (i == 0){
@@ -102,17 +103,27 @@ function contractRegistration() {
             data2[2] = $(this).children('#productInfoStart').text();
             data2[3] = $(this).children('#productInfoEnd').text();
             data2[4] = $(this).children('#productInfoShopId').text();
-            data1[i-1] = data2;
+            products[i-1] = data2;
         });
     })
 
-    data["productSelectId"] = data1;
+    $(".productDiscountTable tr").each(function(i){
+        if (i == 0){
+            return;
+        }
+        $(this).each(function(){
+            ringis[i-1] = $(this).children('#ringiNo').text();
+            console.log(ringis[i-1]);
+        });
+    })
+
+    data["productSelectId"] = products;
     data["tantou"] = $("#tantou").val();
     data["note"] = $("#product_registration_remark").val();
     data["contractorId"] = $("#contractorId").html();
     data["contractType"] = $("#contractType").val();
     data["contractId"] = $("#contractId").val();
-    data["ringiNo"] = $("#ringiNo").html();
+    data["ringis"] = ringis;
 
     if (validateData(data)) {
         $.ajax({
@@ -447,5 +458,5 @@ function addDiscountWithContract(){
         "<td id=\"memo\">"+$("#memo").html()+"</td>\n" +
         "<td id=\"applicantName\">"+$("#applicantName").html()+"</td>" +
         "</tr>";
-    $(".productDiscountTable tbody").html(tableBody);
+    $(".productDiscountTable tbody").append(tableBody);
 }
