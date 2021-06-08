@@ -113,7 +113,6 @@ function contractRegistration() {
         }
         $(this).each(function(){
             ringis[i-1] = $(this).children('#ringiNo').text();
-            console.log(ringis[i-1]);
         });
     })
 

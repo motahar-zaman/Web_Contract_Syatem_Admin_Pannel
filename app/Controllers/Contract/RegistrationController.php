@@ -183,7 +183,7 @@ class RegistrationController extends BaseController
 
             $contract = (new ContractModel())->getContractById($contractId)[$contractId] ?? null;
             if(isset($contract)){
-                $ringiDetails = (new RingiModel())->getRingiByNo($contract->getRingiNo())[0] ?? null;
+                $ringiDetails = (new RingiModel())->getRingiByContractId($contract->getId()) ?? null;
             }
             else{
                 $ringiDetails = null;

@@ -70,4 +70,19 @@ class RingiModel
 
         return (new Database())->readQueryExecution($queryString, $queryParameter);
     }
+
+    public function getRingiByContractId($contractId){
+        $data = $this->getRingiDataByContractId($contractId);
+        return $this->mapData($data);
+    }
+
+    public function getRingiDataByContractId($contractId){
+        $queryString = "SELECT contract_id, ri.ringi_no, applicant_name, ringi_type, target_area, target_name, discount_service_type, ringi_detail, summary_condition,
+                        before_summary_price, after_summary_price, summary_period, DATE_FORMAT(start_date, '%Y/%m/%d') AS start_date, DATE_FORMAT(end_date, '%Y/%m/%d')
+                        AS end_date, purpose, memo, ri.delete_flag FROM trn_contract_ringi AS cr INNER JOIN trn_ringi_info AS ri ON ri.ringi_no = cr.ringi_no
+                        WHERE cr.contract_id = ? AND cr.delete_flag = ?";
+        $queryParameter = array($contractId, 1);
+
+        return (new Database())->readQueryExecution($queryString, $queryParameter);
+    }
 }
