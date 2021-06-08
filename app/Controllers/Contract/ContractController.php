@@ -122,7 +122,7 @@ class ContractController extends BaseController
     public function ringiSearch(){
         if( session() && session()->get('login') ) {
             $ringiNo = $_GET["ringiNo"];
-            $ringiInfo = (new RingiModel())->getRingiByNo($ringiNo);
+            $ringiInfo = (new RingiModel())->getRingiDataByNo($ringiNo);
 
             if (isset($ringiInfo) && count($ringiInfo) > 0) {
                 $ringiInfo = $ringiInfo[0];
