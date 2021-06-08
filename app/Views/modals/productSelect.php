@@ -19,7 +19,7 @@
                             <input type="text" class="form-control" id="searchProductName" placeholder="" name="productName" value="">
                         </div>
                         <span id="productSearch" class="btn btn-primary pl-4 pr-4 k1Btn k1Btn2 mr-3">検索</span>
-                        <span onclick="productSearchClear()" class="btn btn-primary k1Btn k1Btn2">条件クリア</span>
+                        <span id="crealProductSearch" class="btn btn-primary k1Btn k1Btn2">条件クリア</span>
                     </div>
                 </form>
                 <br/>
@@ -37,7 +37,7 @@
                         </thead>
                     </table>
                 </div>
-                <button type="submit" class="btn btn-primary ml-3 mt-5 k1Btn k1Btn2" data-dismiss="modal" aria-label="Close">選択反映</button>
+                <button type="submit" class="btn btn-primary ml-3 mt-5 k1Btn k1Btn2" id="addSelectedProductsBtn" data-dismiss="modal" aria-label="Close">選択反映</button>
             </div>
         </div>
     </div>

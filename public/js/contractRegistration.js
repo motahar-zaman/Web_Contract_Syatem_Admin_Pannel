@@ -3,11 +3,6 @@ function shopSearchClear(){
     $("#searchShopName").val("");
 }
 
-function productSearchClear(){
-    $("#searchProductId").val("");
-    $("#searchProductName").val("");
-}
-
 function contractorSearchClear(){
     $("#searchContractorId").val("");
     $("#searchContractorName").val("");
@@ -32,20 +27,15 @@ function selectedContractor(data, td) {
 }
 
 function selectedProduct(data, td) {
-    // Grab Data From Modal
-    let productId = $("#productId" + data).html();
-    let productName = $("#productName" + data).html();
-    let productNote = $("#productNote" + data).html();
-    let productPeriodStartDate = $("#productPeriodStartDate" + data).html();
-    let productPeriodEndDate = $("#productPeriodEndDate" + data).html();
+    let isSelected = $(td).attr("data-selected");
 
-    //Push Data To the product contract table
-    var markup = "<tr><td id=\"productSelectId\">" + productId + "</td><td id=\"productSelectName\">" + productName + "</td><td id=\"productSelectNote\">"
-        + productNote + "</td><td id=\"productSelectStartDate\">" + productPeriodStartDate + "</td><td id=\"productSelectEndDate\">" + productPeriodEndDate +
-        "</td></tr>";
-    $(".productSelectTable tbody").append(markup);
-
-    $(td).addClass("bg-dark-silver");
+    if (isSelected === 'false') {
+        $(td).addClass("bg-dark-silver");
+        $(td).attr("data-selected", true);
+    } else if (isSelected === 'true') {
+        $(td).removeClass("bg-dark-silver");
+        $(td).attr("data-selected", false);
+    }
 }
 
 function productDiscount(data) {
@@ -394,97 +384,145 @@ function filterByProductIdOrName(productId, productName) {
     };
 
 $(document).ready(function() {
-    $('#shopInputFields :input').attr('disabled', true);
-    $('#shopInputFields :button').attr('disabled', true);
-    $('#mySelect').prop('disabled', true);
+  $("#shopInputFields :input").attr("disabled", true);
+  $("#shopInputFields :button").attr("disabled", true);
+  $("#mySelect").prop("disabled", true);
 
-    // Load datatable data for contractors on modal
-    var $productDataTable = $("#productSelectTable");
-    $productDataTable.DataTable({
-      paging: false,
-      bProcessing: true,
-      serverSide: true,
-      scrollCollapse: false,
-      ajax: {
-        url: baseUrl + "/contract-product-data-table-data", // json data source
-        type: "post",
-        data: {
-          // key1: value1 - in case if we want send data with request
+  // Load datatable data for products on modal
+  var $productDataTable = $("#productSelectTable");
+  $productDataTable.DataTable({
+    paging: false,
+    bProcessing: true,
+    serverSide: true,
+    scrollCollapse: false,
+    ajax: {
+      url: baseUrl + "/contract-product-data-table-data", // json data source
+      type: "post",
+      data: {
+        // key1: value1 - in case if we want send data with request
+      },
+    },
+    columns: [
+      {
+        data: "product_id",
+        render: function (datum, type, row) {
+          return "<a href='#' style='color: #0099FF'>選択</a>";
         },
       },
-      columns: [
-        {
-          data: "product_id",
-          render: function (datum, type, row) {
-            return "<a href='#' style='color: #0099FF'>選択</a>";
-          },
+      { data: "product_id" },
+      { data: "product_name" },
+      { data: "product_note" },
+      { data: "start_date" },
+      { data: "end_date" },
+    ],
+    columnDefs: [
+      {
+        targets: 0,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "selectedProduct" + rowData.product_id);
+          $(td).attr("data-selected", false);
+          $(td).attr("onclick", "selectedProduct(" + row + ", this)");
+          $(td).attr("data-row-index", row);
+          $(td).addClass("select-product-column");
         },
-        { data: "product_id" },
-        { data: "product_name" },
-        { data: "product_note" },
-        { data: "start_date" },
-        { data: "end_date" },
-      ],
-      columnDefs: [
-        {
-          targets: 0,
-          createdCell: function (td, cellData, rowData, row, col) {
-            $(td).attr("id", "selectedProduct" + rowData.product_id);
-            $(td).attr("onclick", "selectedProduct(" + row + ", this)");
-          },
+      },
+      {
+        targets: 1,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "productId" + row);
         },
-        {
-          targets: 1,
-          createdCell: function (td, cellData, rowData, row, col) {
-            $(td).attr("id", "productId" + row);
-          },
+      },
+      {
+        targets: 2,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "productName" + row);
         },
-        {
-          targets: 2,
-          createdCell: function (td, cellData, rowData, row, col) {
-            $(td).attr("id", "productName" + row);
-          },
+      },
+      {
+        targets: 3,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "productNote" + row);
         },
-        {
-          targets: 3,
-          createdCell: function (td, cellData, rowData, row, col) {
-            $(td).attr("id", "productNote" + row);
-          },
+      },
+      {
+        targets: 4,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "productPeriodStartDate" + row);
         },
-        {
-          targets: 4,
-          createdCell: function (td, cellData, rowData, row, col) {
-            $(td).attr("id", "productPeriodStartDate" + row);
-          },
+      },
+      {
+        targets: 5,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "productPeriodEndDate" + row);
         },
-        {
-          targets: 5,
-          createdCell: function (td, cellData, rowData, row, col) {
-            $(td).attr("id", "productPeriodEndDate" + row);
-          },
-        },
-        { orderable: false, targets: [0, 1, 2, 3, 4] },
-      ],
-      bFilter: false, // to display datatable search
-      bInfo: false, // to display data-table entries text
+      },
+      { orderable: false, targets: [0, 1, 2, 3, 4] },
+    ],
+    bFilter: false, // to display data-table search
+    bInfo: false, // to display data-table entries text
+  });
+
+  // Handle product search
+  $(document).on("click", "#productSearch", function (e) {
+    e.preventDefault();
+    var productId = $("#searchProductId").val();
+    var productName = $("#searchProductName").val();
+
+    $productDataTable.on("preXhr.dt", function (e, settings, data) {
+      data.productId = productId;
+      data.productName = productName;
     });
 
-    $(document).on("click", "#productSearch", function (e) {
-      e.preventDefault();
-      var productId = $("#searchProductId").val();
-      var productName = $("#searchProductName").val();
+    $productDataTable.dataTable().fnDraw(); // Manually redraw the table after filtering
+  });
 
-      $productDataTable.on("preXhr.dt", function (e, settings, data) {
-        data.productId = productId;
-        data.productName = productName;
-      });
+  // $(document).on("click", "#crealProductSearch", function (e) {
+  $(document).on("click", "#crealProductSearch", function (e) {
+    e.preventDefault();
+    $("#searchProductId").val("");
+    $("#searchProductName").val("");
 
-    //   filterByProductIdOrName(productId, productName); // We call our filter function
-    //   $productDataTable
-    //     .fnSettings()
-    //     .aoData.push({ name: "highlight", value: "true" });
-
-      $productDataTable.dataTable().fnDraw(); // Manually redraw the table after filtering
-    //   $productDataTable.dataTable().fnDraw(); // Manually redraw the table after filtering
+    $productDataTable.on("preXhr.dt", function (e, settings, data) {
+      delete data.productId;
+      delete data.productName;
     });
+
+    $productDataTable.dataTable().fnDraw();
+  });
+
+  $(document).on("click", "#addSelectedProductsBtn", function (e) {
+    e.preventDefault();
+    let selectedProducts = $(
+      "#productSelectTable > tbody > tr > td.select-product-column[data-selected='true']"
+    );
+    let markup = "";
+    $.each(selectedProducts, function (key, product) {
+      // Grab Data From Modal
+      let rowIndex = $(product).attr("data-row-index");
+
+      let productId = $("#productId" + rowIndex).html();
+      let productName = $("#productName" + rowIndex).html();
+      let productNote = $("#productNote" + rowIndex).html();
+      let productPeriodStartDate = $(
+        "#productPeriodStartDate" + rowIndex
+      ).html();
+      let productPeriodEndDate = $("#productPeriodEndDate" + rowIndex).html();
+
+      //Push Data To the product contract table
+      markup +=
+        '<tr><td id="productSelectId">' +
+        productId +
+        '</td><td id="productSelectName">' +
+        productName +
+        '</td><td id="productSelectNote">' +
+        productNote +
+        '</td><td id="productSelectStartDate">' +
+        productPeriodStartDate +
+        '</td><td id="productSelectEndDate">' +
+        productPeriodEndDate +
+        "</td></tr>";
+    });
+    $(".productSelectTable tbody").html("");
+    $(".productSelectTable tbody").append(markup);
+  });
 });

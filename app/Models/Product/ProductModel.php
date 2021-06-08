@@ -114,17 +114,16 @@ class ProductModel
     public function getDataTableData() {
         $params['draw'] = $_REQUEST['draw'];
         $condition = "";
-        if (isset($_POST['productId']) && $_POST['productId'] !== '' && isset($_POST['productName']) && $_POST['productName'] !== '') {
-            $condition .= " AND product_id LIKE ? AND product_name LIKE ?";
-            $queryParameter = array(1, "%" . $_POST['productId'] . "%", "%" . $_POST['productName'] . "%");
-        } else if (isset($_POST['productId']) && $_POST['productId'] !== '') {
+        $queryParameter = [1];
+        
+        if (isset($_POST['productId']) && $_POST['productId'] !== '') {
             $condition .= " AND product_id LIKE ?";
-            $queryParameter = array(1, "%" . $_POST['productId'] . "%");
-        } else if (isset($_POST['productName']) && $_POST['productName'] !== '') {
+            $queryParameter[] = $_POST['productId'];
+        }
+
+        if (isset($_POST['productName']) && $_POST['productName'] !== '') {
             $condition .= " AND product_name LIKE ?";
-            $queryParameter = array(1, "%" . $_POST['productName'] . "%");
-        } else {
-            $queryParameter = array(1);
+            $queryParameter[] = "%" . $_POST['productName'] . "%";
         }
 
         $queryString = "SELECT product_id, product_name, product_name_official, price, DATE_FORMAT(start_date, '%Y/%c/%d') AS start_date, DATE_FORMAT(end_date, '%Y/%c/%d') AS end_date, service_type, product_type, campaign_flag, shop_type, product_note, update_date, update_user_id, insert_date, insert_user_id, delete_flag FROM mst_product WHERE delete_flag = ? {$condition} ORDER BY update_date DESC";
