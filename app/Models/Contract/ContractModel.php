@@ -52,10 +52,10 @@ class ContractModel
             $where .= "c.contractor_id ='$userId' AND ";
         }
 
-        $queryString = "SELECT c.contract_id, s.shop_id, contractor_id, c.tantou_id, c.status, c.note, c.update_date, c.update_user_id, c.insert_date,
-            c.insert_user_id, c.delete_flag, branch_no, p.product_id, p.status AS product_status, start_date_year, start_date_month, end_date_year,
-            end_date_month, p.note AS product_note, mp.product_name, mp.product_note, s.shop_name, s.zipcode, s.daihyousha_name, s.address_01,
-            s.tel_no, s.mail_address, s.notification_letter FROM trn_web_contract_base AS c LEFT JOIN trn_contract_product AS p ON c.contract_id =
+        $queryString = "SELECT c.contract_id, s.shop_id, c.contractor_id, c.tantou_id, c.status, c.note, c.update_date, c.update_user_id, c.insert_date,
+            c.insert_user_id, c.delete_flag, branch_no, p.product_id, p.status AS product_status, mp.start_date, mp.end_date, mp.shop_type, mp.service_type, 
+            mp.product_type, p.note AS product_note, mp.product_name, mp.product_note, s.shop_name, s.zipcode, s.address_01,
+            s.tel_no, s.mail_address FROM trn_web_contract_base AS c LEFT JOIN trn_contract_product AS p ON c.contract_id =
             p.contract_id LEFT JOIN mst_product AS mp ON mp.product_id = p.product_id LEFT JOIN mst_shop AS s ON s.shop_id = p.shop_id ".$where." c.delete_flag = ?";
 
         $queryParameter = array(1);
@@ -138,7 +138,7 @@ class ContractModel
         $queryString = "SELECT c.contract_id, c.contractor_id, c.tantou_id, c.status, c.note, c.update_date, c.update_user_id, c.insert_date,
             c.insert_user_id, c.delete_flag, branch_no, p.shop_id, p.product_id, p.status AS product_status, DATE_FORMAT(mp.start_date, '%Y/%m/%d') AS start_date,
             DATE_FORMAT(mp.end_date, '%Y/%m/%d') AS end_date, mp.product_note, mp.product_name, mp.price, mp.product_note, mp.service_type, mp.product_type,
-            mp.campaign_flag, mp.shop_type, s.shop_name, s.zipcode, s.daihyousha_name, s.address_01, s.tel_no, s.mail_address, s.notification_letter FROM
+            mp.campaign_flag, mp.shop_type, s.shop_name, s.zipcode, s.address_01, s.tel_no, s.mail_address FROM
             trn_web_contract_base AS c LEFT JOIN trn_contract_product AS p ON c.contract_id = p.contract_id LEFT JOIN mst_product AS mp ON 
             mp.product_id = p.product_id LEFT JOIN mst_shop AS s ON s.shop_id = p.shop_id ".$where." c.contract_id = ? AND c.delete_flag = ?";
 
@@ -220,8 +220,8 @@ class ContractModel
 
         $queryString = "SELECT c.contract_id, s.shop_id, c.contractor_id, c.tantou_id, c.status, c.note, c.update_date, c.update_user_id, c.insert_date,
             c.insert_user_id, c.delete_flag, p.branch_no, p.product_id, p.status AS product_status, p.start_date_year, p.start_date_month, p.end_date_year,
-            p.end_date_month, p.note AS product_note, mp.product_name, mp.product_note, s.shop_name, s.zipcode, s.daihyousha_name, s.address_01,
-            s.tel_no, s.mail_address, s.notification_letter, cntr.contractor_name FROM trn_web_contract_base AS c LEFT JOIN trn_contract_product AS p ON
+            p.end_date_month, p.note AS product_note, mp.product_name, mp.product_note, s.shop_name, s.zipcode, s.address_01,
+            s.tel_no, s.mail_address, cntr.contractor_name FROM trn_web_contract_base AS c LEFT JOIN trn_contract_product AS p ON
             c.contract_id = p.contract_id LEFT JOIN mst_product AS mp ON mp.product_id = p.product_id LEFT JOIN mst_shop AS s ON s.shop_id = p.shop_id
             LEFT JOIN mst_contractor AS cntr ON cntr.contractor_id = c.contractor_id".$where."c.delete_flag = ?";
         $queryParameter = array(1);
