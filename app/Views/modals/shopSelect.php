@@ -19,12 +19,12 @@
                             <input type="text" class="form-control" id="searchShopName" placeholder="" name="shopName" value="">
                         </div>
                         <span id="shopSearch" class="btn btn-primary pl-4 pr-4 k1Btn k1Btn2 mr-3">検索</span>
-                        <span onclick="shopSearchClear()" class="btn btn-primary k1Btn k1Btn2 ">条件クリア</span>
+                        <span id="clearShopSearch" class="btn btn-primary k1Btn k1Btn2 ">条件クリア</span>
                     </div>
                 </form>
                 <br/>
                 <div class="card-body table-responsive p-0 ml-3" style="height: 300px;">
-                    <table class="table  text-nowrap ml-3" id="shopSelectTable">
+                    <table class="table  text-nowrap ml-3" id="shopSelectTable" style="width: 100%;">
                         <thead class="k1TableTitleBG">
                             <tr>
                                 <th>選択</th>
@@ -33,28 +33,6 @@
                                 <th>住所</th>
                             </tr>
                         </thead>
-                        <tbody>
-                        <?php
-                        if (isset($shop) && count($shop) > 0) {
-                            for ($i = 0; $i < count($shop); $i++) {
-                                $data = $shop[$i];
-                                ?>
-                                <tr>
-                                    <td onclick="selectedShop(<?php echo $i ?>, this)" id="selectedShop<?php echo $data->getId() ?>"><a href="#">選択</a></td>
-                                    <td id="shopId<?php echo $i ?>"><?php echo $data->getId() ?? "" ?></td>
-                                    <td id="shopName<?php echo $i ?>"><?php echo $data->getName() ?? "" ?></td>
-                                    <td style="display: none" id="shopRepresentativeName<?php echo $i ?>"></td>
-                                    <td style="display: none" id="shopPrefecture<?php echo $i ?>"><?php echo $data->getPrefecture() ?? "" ?></td>
-                                    <td id="shopAddress<?php echo $i ?>"><?php echo $data->getAddress01() ?? "" ?></td>
-                                    <td style="display: none" id="shopPhoneNumber<?php echo $i ?>"><?php echo $data->getTelNo() ?? "" ?></td>
-                                </tr>
-                                <?php
-                            }
-                        } else {
-                            echo "<h3>データがありません！</h3>";
-                        }
-                        ?>
-                        </tbody>
                     </table>
                 </div>
             </div>

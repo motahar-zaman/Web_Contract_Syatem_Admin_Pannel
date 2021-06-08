@@ -205,4 +205,36 @@ class ContractorModel
 
         return (new Database())->readQueryExecution($queryString, $queryParameter);
     }
+
+    public function getDataTableData() {
+        $params['draw'] = $_REQUEST['draw'];
+        $condition = "";
+        $queryParameter = [1];
+
+        if (isset($_POST['contractorId']) && $_POST['contractorId'] !== '') {
+            $condition .= " AND contractor_id LIKE ?";
+            $queryParameter[] = $_POST['contractorId'];
+        }
+
+        if (isset($_POST['contractorName']) && $_POST['contractorName'] !== '') {
+            $condition .= " AND contractor_name LIKE ?";
+            $queryParameter[] = "%" . $_POST['contractorName'] . "%";
+        }
+
+        $queryString = "SELECT contractor_id, contractor_name, contractor_name_kana, password, zipcode, address_01, address_02, tel_no, fax_no,
+                        mail_address, company_id, group_id, temporary, type_contractor, update_date, update_user_id, insert_date, insert_user_id,
+                        delete_flag FROM mst_contractor WHERE delete_flag = ? {$condition} ORDER BY update_date DESC";
+
+        // echo $queryString; exit;
+        $data = (new Database())->readQueryExecution($queryString, $queryParameter);
+        // echo "<pre>"; print_r($data); exit;
+        $jsonData = array(
+            "draw" => intval($params['draw']),
+            "recordsTotal" => $data ? count($data) : 0,
+            "recordsFiltered" => $data ? count($data) : 0,
+            "data" => $data
+        );
+
+        return $jsonData;
+    }
 }

@@ -53,10 +53,10 @@ function productDiscount(data) {
 function selectedShop(data, td) {
     let shopId = $("#shopId" + data).html();
     let shopName = $("#shopName" + data).html();
-    let shopRepresentativeName = $("#shopRepresentativeName" + data).html();
-    let shopPrefecture = $("#shopPrefecture" + data).html();
+    let shopRepresentativeName = $("#shopRepresentativeName" + data).val();
+    let shopPrefecture = $("#shopPrefecture" + data).val();
     let shopAddress = $("#shopAddress" + data).html();
-    let shopPhoneNumber = $("#shopPhoneNumber" + data).html();
+    let shopPhoneNumber = $("#shopPhoneNumber" + data).val();
 
     //Push Data To the product contract table
     var markup = "<tr><td id=\"shopId\">" + shopId + "</td><td id=\"shopName\">" + shopName + "</td><td id=\"shopRepresentativeName\">"+ shopRepresentativeName +
@@ -383,11 +383,7 @@ function filterByProductIdOrName(productId, productName) {
       });
     };
 
-$(document).ready(function() {
-  $("#shopInputFields :input").attr("disabled", true);
-  $("#shopInputFields :button").attr("disabled", true);
-  $("#mySelect").prop("disabled", true);
-
+function loadProductDataTable() {
   // Load datatable data for products on modal
   var $productDataTable = $("#productSelectTable");
   $productDataTable.DataTable({
@@ -398,9 +394,7 @@ $(document).ready(function() {
     ajax: {
       url: baseUrl + "/contract-product-data-table-data", // json data source
       type: "post",
-      data: {
-        // key1: value1 - in case if we want send data with request
-      },
+      data: {},
     },
     columns: [
       {
@@ -456,8 +450,11 @@ $(document).ready(function() {
           $(td).attr("id", "productPeriodEndDate" + row);
         },
       },
-      { orderable: false, targets: [0, 1, 2, 3, 4] },
+      { orderable: false, targets: [0, 1, 2, 3, 4, 5] },
     ],
+    language: {
+      emptyTable: "<h3>データがありません！</h3>",
+    },
     bFilter: false, // to display data-table search
     bInfo: false, // to display data-table entries text
   });
@@ -476,8 +473,8 @@ $(document).ready(function() {
     $productDataTable.dataTable().fnDraw(); // Manually redraw the table after filtering
   });
 
-  // $(document).on("click", "#crealProductSearch", function (e) {
-  $(document).on("click", "#crealProductSearch", function (e) {
+  // Clear Product Search
+  $(document).on("click", "#clearProductSearch", function (e) {
     e.preventDefault();
     $("#searchProductId").val("");
     $("#searchProductName").val("");
@@ -525,4 +522,240 @@ $(document).ready(function() {
     $(".productSelectTable tbody").html("");
     $(".productSelectTable tbody").append(markup);
   });
+}
+
+function loadContractorDataTable() {
+  // Load data-table data for contractors on modal
+  var $contractorDataTable = $("#contractorSelectTable");
+  $contractorDataTable.DataTable({
+    paging: false,
+    bProcessing: true,
+    serverSide: true,
+    scrollCollapse: false,
+    ajax: {
+      url: baseUrl + "/contract-contractor-data-table-data", // json data source
+      type: "post",
+      data: {},
+    },
+    columns: [
+      {
+        data: "contractor_id",
+        render: function (datum, type, row) {
+          return "<a href='#'>選択</a>";
+        },
+      },
+      { data: "contractor_id" },
+      { data: "contractor_name" },
+      { data: "address_01" },
+      { data: "tel_no" },
+      { data: "mail_address" },
+    ],
+    columnDefs: [
+      {
+        targets: 0,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "selectedContractor" + rowData.contractor_id);
+          $(td).attr("onclick", "selectedContractor(" + row + ", this)");
+          $(td).attr("data-row-index", row);
+          let hiddenInputs =
+            "<input id='contractorNameKana" +
+            row +
+            "' type='hidden' value='" +
+            rowData.contractor_name_kana +
+            "'>" +
+            "<input id='contractorPostCode" +
+            row +
+            "' type='hidden' value='" +
+            rowData.zipcode +
+            "'>" +
+            "<input id='contractorAddress2" +
+            row +
+            "' type='hidden' value='" +
+            rowData.address_02 +
+            "'>";
+          $(td).append(hiddenInputs);
+        },
+      },
+      {
+        targets: 1,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "contractorId" + row);
+        },
+      },
+      {
+        targets: 2,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "contractorName" + row);
+        },
+      },
+      {
+        targets: 3,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "contractorAddress1" + row);
+        },
+      },
+      {
+        targets: 4,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "contractorPhn" + row);
+        },
+      },
+      {
+        targets: 5,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "contractorMail" + row);
+        },
+      },
+      { orderable: false, targets: [0, 1, 2, 3, 4, 5] },
+    ],
+    language: {
+      emptyTable: "<h3>データがありません！</h3>",
+    },
+    bFilter: false, // to display data-table search
+    bInfo: false, // to display data-table entries text
+  });
+
+  // Handle contractor search
+  $(document).on("click", "#contractorSearch", function (e) {
+    e.preventDefault();
+    var contractorId = $("#searchContractorId").val();
+    var contractorName = $("#searchContractorName").val();
+
+    $contractorDataTable.on("preXhr.dt", function (e, settings, data) {
+      data.contractorId = contractorId;
+      data.contractorName = contractorName;
+    });
+
+    $contractorDataTable.dataTable().fnDraw(); // Manually redraw the table after filtering
+  });
+
+  // Clear contractor search
+  $(document).on("click", "#clearContractorSearch", function (e) {
+    e.preventDefault();
+    $("#searchContractorId").val("");
+    $("#searchContractorName").val("");
+
+    $contractorDataTable.on("preXhr.dt", function (e, settings, data) {
+      delete data.contractorId;
+      delete data.contractorName;
+    });
+
+    $contractorDataTable.dataTable().fnDraw();
+  });
+}
+
+function loadShopDataTable() {
+  // Load data-table data for shops on modal
+  var $shopDataTable = $("#shopSelectTable");
+  $shopDataTable.DataTable({
+    paging: false,
+    bProcessing: true,
+    serverSide: true,
+    scrollCollapse: false,
+    ajax: {
+      url: baseUrl + "/contract-shop-data-table-data", // json data source
+      type: "post",
+      data: {},
+    },
+    columns: [
+      {
+        data: "shop_id",
+        render: function (datum, type, row) {
+          return "<a href='#'>選択</a>";
+        },
+      },
+      { data: "shop_id" },
+      { data: "shop_name" },
+      { data: "address_01" },
+    ],
+    columnDefs: [
+      {
+        targets: 0,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "selectedShop" + rowData.shop_id);
+          $(td).attr("onclick", "selectedShop(" + row + ", this)");
+          $(td).attr("data-row-index", row);
+          let hiddenInputs =
+            "<input id='shopRepresentativeName" +
+            row +
+            "' type='hidden' value=''>" +
+            "<input id='shopPrefecture" +
+            row +
+            "' type='hidden' value='" +
+            rowData.prefecture +
+            "'>" +
+            "<input id='shopPhoneNumber" +
+            row +
+            "' type='hidden' value='" +
+            rowData.tel_no +
+            "'>";
+          $(td).append(hiddenInputs);
+        },
+      },
+      {
+        targets: 1,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "shopId" + row);
+        },
+      },
+      {
+        targets: 2,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "shopName" + row);
+        },
+      },
+      {
+        targets: 3,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "shopAddress" + row);
+        },
+      },
+      { orderable: false, targets: [0, 1, 2, 3] },
+    ],
+    language: {
+      emptyTable: "<h3>データがありません！</h3>",
+    },
+    bFilter: false, // to display data-table search
+    bInfo: false, // to display data-table entries text
+  });
+
+  // Handle shop search
+  $(document).on("click", "#shopSearch", function (e) {
+    e.preventDefault();
+    var shopId = $("#searchShopId").val();
+    var shopName = $("#searchShopName").val();
+
+    $shopDataTable.on("preXhr.dt", function (e, settings, data) {
+      data.shopId = shopId;
+      data.shopName = shopName;
+    });
+
+    $shopDataTable.dataTable().fnDraw(); // Manually redraw the table after filtering
+  });
+
+  // Clear contractor search
+  $(document).on("click", "#clearShopSearch", function (e) {
+    e.preventDefault();
+    $("#searchShopId").val("");
+    $("#searchShopName").val("");
+
+    $shopDataTable.on("preXhr.dt", function (e, settings, data) {
+      delete data.shopId;
+      delete data.shopName;
+    });
+
+    $shopDataTable.dataTable().fnDraw();
+  });
+}
+
+$(document).ready(function() {
+  $("#shopInputFields :input").attr("disabled", true);
+  $("#shopInputFields :button").attr("disabled", true);
+  $("#mySelect").prop("disabled", true);
+
+  loadProductDataTable();
+
+  loadContractorDataTable();
+
+  loadShopDataTable();
 });

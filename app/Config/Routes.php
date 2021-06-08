@@ -70,6 +70,8 @@ $routes->get('contractor-details/(:any)', 'Contractor\ContractorController::cont
 
 $routes->get('contract-registration', 'Contract\RegistrationController::index');
 $routes->post('contract-product-data-table-data', 'Contract\RegistrationController::productDataTableData');
+$routes->post('contract-contractor-data-table-data', 'Contract\RegistrationController::contractorDataTableData');
+$routes->post('contract-shop-data-table-data', 'Contract\RegistrationController::shopDataTableData');
 $routes->get('temp-contract-registration', 'Contract\RegistrationController::tempRegistration');
 $routes->post('contract-registration', 'Contract\RegistrationController::registrationAction');
 $routes->get('contract-update', 'Contract\RegistrationController::index');

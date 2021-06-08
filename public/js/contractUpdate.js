@@ -56,10 +56,10 @@ function productDiscount(data) {
 function selectedShop(data, td) {
     $("#shopId").html($("#shopId" + data).html());
     $("#shopName").html($("#shopName" + data).html());
-    $("#shopRepresentativeName").html($("#shopRepresentativeName" + data).html());
-    $("#shopPrefecture").html($("#shopPrefecture" + data).html());
+    $("#shopRepresentativeName").html($("#shopRepresentativeName" + data).val());
+    $("#shopPrefecture").html($("#shopPrefecture" + data).val());
     $("#shopAddress").html($("#shopAddress" + data).html());
-    $("#shopPhoneNumber").html($("#shopPhoneNumber" + data).html());
+    $("#shopPhoneNumber").html($("#shopPhoneNumber" + data).val());
 
     $('#shopSelectTable td').removeClass("bg-dark-silver");
     $(td).addClass("bg-dark-silver");

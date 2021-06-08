@@ -55,6 +55,16 @@ class RegistrationController extends BaseController
         echo json_encode($products);
     }
 
+    public function contractorDataTableData() {
+        $contractors = (new ContractorModel())->getDataTableData();
+        echo json_encode($contractors);
+    }
+
+    public function shopDataTableData() {
+        $shops = (new ShopModel())->getDataTableData();
+        echo json_encode($shops);
+    }
+
     public function tempRegistration(){
         if( session() && session()->get('login') ){
             $shop = (new ShopModel())->getAllShopData();
