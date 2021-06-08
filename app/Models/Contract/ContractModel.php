@@ -16,16 +16,15 @@ class ContractModel
         $tantou = $contract->getTantouId();
         $status = $contract->getStatus();
         $note = $contract->getNote();
-        $ringi = $contract->getRingiNo();
         $update = $contract->getUpdateDate();
         $updateUser = $contract->getUpdateUserId();
         $insert = $contract->getInsertDate();
         $insertUser = $contract->getInsertUserId();
         $delete = $contract->getDeleteFlag();
 
-        $queryString = "INSERT INTO trn_web_contract_base (contract_id, contractor_id, tantou_id, status, note, ringi_no, update_date,
-                        update_user_id, insert_date, insert_user_id, delete_flag) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $queryParameter = array($id, $contractor, $tantou, $status, $note, $ringi, $update, $updateUser, $insert, $insertUser, $delete);
+        $queryString = "INSERT INTO trn_web_contract_base (contract_id, contractor_id, tantou_id, status, note, update_date,
+                        update_user_id, insert_date, insert_user_id, delete_flag) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $queryParameter = array($id, $contractor, $tantou, $status, $note, $update, $updateUser, $insert, $insertUser, $delete);
 
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
@@ -82,7 +81,6 @@ class ContractModel
                         $contract->setTantouId($data->tantou_id ?? NULL);
                         $contract->setStatus($data->status ?? NULL);
                         $contract->setNote($data->note ?? NULL);
-                        $contract->setRingiNo($data->ringi_no ?? NULL);
                         $contract->setUpdateDate($data->update_date ?? NULL);
                         $contract->setUpdateUserId($data->update_user_id ?? NULL);
                         $contract->setInsertDate($data->insert_date ?? NULL);
@@ -137,7 +135,7 @@ class ContractModel
             $where .= "c.contractor_id ='$userId' AND ";
         }
 
-        $queryString = "SELECT c.contract_id, c.ringi_no, c.contractor_id, c.tantou_id, c.status, c.note, c.update_date, c.update_user_id, c.insert_date,
+        $queryString = "SELECT c.contract_id, c.contractor_id, c.tantou_id, c.status, c.note, c.update_date, c.update_user_id, c.insert_date,
             c.insert_user_id, c.delete_flag, branch_no, p.shop_id, p.product_id, p.status AS product_status, DATE_FORMAT(mp.start_date, '%Y/%m/%d') AS start_date,
             DATE_FORMAT(mp.end_date, '%Y/%m/%d') AS end_date, mp.product_note, mp.product_name, mp.price, mp.product_note, mp.service_type, mp.product_type,
             mp.campaign_flag, mp.shop_type, s.shop_name, s.zipcode, s.daihyousha_name, s.address_01, s.tel_no, s.mail_address, s.notification_letter FROM
@@ -155,13 +153,12 @@ class ContractModel
         $tantou = $contract->getTantouId();
         $status = $contract->getStatus();
         $note = $contract->getNote();
-        $ringi = $contract->getRingiNo();
         $update = $contract->getUpdateDate();
         $updateUser = $contract->getUpdateUserId();
 
-        $queryString = "UPDATE trn_web_contract_base SET contractor_id = ?, tantou_id = ?, status = ?, note = ?, ringi_no = ?,
+        $queryString = "UPDATE trn_web_contract_base SET contractor_id = ?, tantou_id = ?, status = ?, note = ?,
                         update_date = ?, update_user_id = ? WHERE contract_id = ?";
-        $queryParameter = array($contractor, $tantou, $status, $note, $ringi, $update, $updateUser, $id);
+        $queryParameter = array($contractor, $tantou, $status, $note, $update, $updateUser, $id);
 
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
