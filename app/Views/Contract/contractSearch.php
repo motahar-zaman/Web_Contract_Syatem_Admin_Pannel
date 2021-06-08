@@ -148,7 +148,6 @@
                                                             $shop = $product["shopDetails"];
                                                             $startDate = date("Y",strtotime($product["startDate"]))."年".date("m",strtotime($product["startDate"]))."月".date("d",strtotime($product["startDate"]))."日";
                                                             $endDate = date("Y",strtotime($product["endDate"]))."年".date("m",strtotime($product["endDate"]))."月".date("d",strtotime($product["endDate"]))."日";
-                                                            //dd($product, $shop);
                                                             ?>
                                                                 <tr>
                                                                     <td><a href='<?php echo base_url();?>/contract-details/<?= $contractId ?>'><?= $contractId ?></a></td>
@@ -157,8 +156,8 @@
                                                                     <td><?= $shop->getAddress01() ?></td>
                                                                     <td><?= $shop->getTelNo() ?></td>
                                                                     <td><?= $shop->getMailAddress() ?></td>
-                                                                    <td><?= $product["shopType"] ?></td>
-                                                                    <td>rep name</td>
+                                                                    <td><?= "Business Type" ?></td>
+                                                                    <td><?= $product["shopDaihyoName"] ?></td>
                                                                     <td><?= $contractDate ?></td>
                                                                     <td><?= $startDate ?></td>
                                                                     <td><?= $endDate ?></td>
