@@ -12,6 +12,7 @@ use App\Models\Contract\ContractModel;
 use App\Models\Contractor\ContractorModel;
 use App\Models\Employee\EmployeeModel;
 use App\Models\Product\ProductModel;
+use App\Models\Ringi\RingiModel;
 use App\Models\Shop\Shop;
 use App\Models\Shop\ShopInfo;
 use App\Models\Shop\ShopModel;
@@ -91,6 +92,7 @@ class RegistrationController extends BaseController
                 $contract->setContractorId($_POST['contractorId'] ?? null);
                 $contract->setTantouId($_POST['tantou'] ?? null);
                 $contract->setNote($_POST['note'] ?? null);
+                $contract->setRingiNo($_POST['ringiNo'] ?? null);
                 $contract->setUpdateDate(date("Y-m-d H:i:s"));
                 $contract->setUpdateUserId(session()->get('userId'));
                 $contract->setInsertDate(date("Y-m-d H:i:s"));
@@ -161,7 +163,13 @@ class RegistrationController extends BaseController
             $areaSmall = (new AddressModel())->getAllAreaSmall();
             $employee = (new EmployeeModel())->getAllEmployee();
 
-            $contract = (new ContractModel())->getContractById($contractId);
+            $contract = (new ContractModel())->getContractById($contractId)[$contractId] ?? null;
+            if(isset($contract)){
+                $ringiDetails = (new RingiModel())->getRingiByNo($contract->getRingiNo())[0] ?? null;
+            }
+            else{
+                $ringiDetails = null;
+            }
 
             $data = array(
                 "title" => "Contract Update",
@@ -174,7 +182,8 @@ class RegistrationController extends BaseController
                 "areaLarges" => $areaLarge,
                 "areaSmalls" => $areaSmall,
                 "employees" => $employee,
-                "contract" => $contract[$contractId] ?? null,
+                "contract" => $contract,
+                "ringiDetails" => $ringiDetails,
                 "type" => "update"
             );
             return view("Contract/contract", $data);
