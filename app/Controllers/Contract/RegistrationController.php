@@ -92,7 +92,6 @@ class RegistrationController extends BaseController
                 $contract->setContractorId($_POST['contractorId'] ?? null);
                 $contract->setTantouId($_POST['tantou'] ?? null);
                 $contract->setNote($_POST['note'] ?? null);
-                $contract->setRingiNo($_POST['ringiNo'] ?? null);
                 $contract->setUpdateDate(date("Y-m-d H:i:s"));
                 $contract->setUpdateUserId(session()->get('userId'));
                 $contract->setInsertDate(date("Y-m-d H:i:s"));
@@ -110,8 +109,27 @@ class RegistrationController extends BaseController
                     (new contractmodel())->storeContractData($contract);
                 }
 
-
                 $products = $_POST['productSelectId'];
+                $ringis = $_POST['ringis'];
+
+                $contractRingi = array();
+                $contractRingi['contract'] = $contract->getId();
+                $contractRingi['status'] = 1;
+                $contractRingi['update'] = date("Y-m-d H:i:s");
+                $contractRingi['updateUser'] = session()->get('userId');
+                $contractRingi['insert'] = date("Y-m-d H:i:s");
+                $contractRingi['insertUser'] = session()->get('userId');
+                $contractRingi['delete'] = 1;
+
+                (new ContractModel())->removeContractRingiData($contract->getId());
+                for ($i = 0; $i < count($ringis); $i++){
+                    $contractRingi['ringi'] = $ringis[$i];
+                    if($contractRingi['ringi'] != "" && $contractRingi['ringi'] != null){
+                        (new ContractModel())->storeContractRingiData($contractRingi);
+                    }
+                }
+
+
                 $contractProduct = array();
                 $contractProduct['id'] = $contract->getId();
                 $contractProduct['contractStatus'] = 0;
