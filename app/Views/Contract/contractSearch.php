@@ -112,14 +112,15 @@
                         </div>
                     </div>
 
-                    <div class="gap-2 mx-auto text-center" style="max-width: 950px">
+                    <div class="gap-2 mx-auto text-center" style="max-width: 950px; max-height: 500px">
                         <div class="card mt-5 text-left">
                             <div class="card-header">
                                 <h3 class="card-title text-center">【契約一覧】</h3>
                             </div>
                             <div class="card-body">
                                 <div class="card-body table-responsive p-0">
-                                    <table class="table table-hover text-center productTable productInfoTable" style="width: 130% !important;">
+<!--                                    <table class="table table-hover text-center productTable productInfoTable overflow-auto" style="width: 1425px;">-->
+                                    <table class="table table-hover text-center productTable productInfoTable" style="width: 1425px; height: auto;">
                                         <thead class="k1TableTitleBG">
                                             <tr>
                                                 <th>契約ID</th>
@@ -131,30 +132,40 @@
                                                 <th>業態</th>
                                                 <th>代表者名</th>
                                                 <th>契約日</th>
+                                                <th>公開開始日</th>
+                                                <th>公開終了日</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
                                                 if(isset($contracts) && count($contracts) > 0){
                                                     foreach ($contracts as $contract) {
-                                                    //$shop = $contract->getShopDetail();
-                                                    ?>
-                                                    <tr>
-                                                        <td><a href='<?php echo base_url();?>/contract-details/<?php echo $contract->getId() ?>'><?php echo $contract->getId() ?></a></td>
-                                                        <td>ぴゅあらば</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-<!--                                                        <td>--><?php //echo $shop->getName() ?><!--</td>-->
-<!--                                                        <td>--><?php //echo $shop->getAddress01() ?><!--</td>-->
-<!--                                                        <td>--><?php //echo $shop->getTelNo() ?><!--</td>-->
-<!--                                                        <td>--><?php //echo $shop->getMailAddress() ?><!--</td>-->
-                                                        <td>業態</td>
-                                                        <td></td> <!--echo $shop->getRepresentative()-->
-                                                        <td><?= date("Y/m/d", strtotime($contract->getInsertDate())) ?></td>
-                                                    </tr>
-                                            <?php }
+                                                        $contractId = $contract->getId();
+                                                        $contractDate = date("Y",strtotime($contract->getUpdateDate()))."年".date("m",strtotime($contract->getUpdateDate()))."月".date("d",strtotime($contract->getUpdateDate()))."日";
+                                                        $products = $contract->getContractProduct();
+
+                                                        foreach($products as $product){
+                                                            $shop = $product["shopDetails"];
+                                                            $startDate = date("Y",strtotime($product["startDate"]))."年".date("m",strtotime($product["startDate"]))."月".date("d",strtotime($product["startDate"]))."日";
+                                                            $endDate = date("Y",strtotime($product["endDate"]))."年".date("m",strtotime($product["endDate"]))."月".date("d",strtotime($product["endDate"]))."日";
+                                                            //dd($product, $shop);
+                                                            ?>
+                                                                <tr>
+                                                                    <td><a href='<?php echo base_url();?>/contract-details/<?= $contractId ?>'><?= $contractId ?></a></td>
+                                                                    <td><?= $product["serviceType"] ?></td>
+                                                                    <td><?= $shop->getName() ?></td>
+                                                                    <td><?= $shop->getAddress01() ?></td>
+                                                                    <td><?= $shop->getTelNo() ?></td>
+                                                                    <td><?= $shop->getMailAddress() ?></td>
+                                                                    <td><?= $product["shopType"] ?></td>
+                                                                    <td>rep name</td>
+                                                                    <td><?= $contractDate ?></td>
+                                                                    <td><?= $startDate ?></td>
+                                                                    <td><?= $endDate ?></td>
+                                                                </tr>
+                                                            <?php
+                                                        }
+                                                    }
                                                 }
                                                 else{
                                                     echo "<tr><td>データがありません！</td></tr>";
