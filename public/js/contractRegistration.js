@@ -109,7 +109,8 @@ function enable() {
 
 function contractRegistration() {
     let data = {};
-    let data1 = Array();
+    let products = Array();
+    let ringis = Array();
 
     $(".productInfoTable tr").each(function (i) {
         if (i == 0) {
@@ -117,21 +118,40 @@ function contractRegistration() {
         }
         $(this).each(function () {
             let data2 = Array();
+<<<<<<< HEAD
             data2[0] = $(this).children("#productInfoId").text();
             data2[1] = $(this).children("#productInfoNote").text();
             data2[2] = $(this).children("#productInfoStart").text();
             data2[3] = $(this).children("#productInfoEnd").text();
             data2[4] = $(this).children("#productInfoShopId").text();
             data1[i - 1] = data2;
+=======
+            data2[0] = $(this).children('#productInfoId').text();
+            data2[1] = $(this).children('#productInfoNote').text();
+            data2[2] = $(this).children('#productInfoStart').text();
+            data2[3] = $(this).children('#productInfoEnd').text();
+            data2[4] = $(this).children('#productInfoShopId').text();
+            products[i-1] = data2;
+>>>>>>> c22e7d560446bddc47557b7f236e85acd2d06e33
         });
     });
 
-    data["productSelectId"] = data1;
+    $(".productDiscountTable tr").each(function(i){
+        if (i == 0){
+            return;
+        }
+        $(this).each(function(){
+            ringis[i-1] = $(this).children('#ringiNo').text();
+        });
+    })
+
+    data["productSelectId"] = products;
     data["tantou"] = $("#tantou").val();
     data["note"] = $("#product_registration_remark").val();
     data["contractorId"] = $("#contractorId").html();
     data["contractType"] = $("#contractType").val();
     data["contractId"] = $("#contractId").val();
+    data["ringis"] = ringis;
 
     if (validateData(data)) {
         $.ajax({
@@ -846,3 +866,75 @@ $(document).ready(function () {
 
     loadProductSelectModal();
 });
+
+function ringiSearch(){
+    let data = {};
+    data["ringiNo"] = $("#ringiNoSearch").val();
+    $("#ringiNoSearch").removeClass('error');
+
+    if (ringiNo !== "" ) {
+        $.ajax({
+            url: "/ringi-search",
+            type: "GET",
+            data: data,
+            dataType: 'JSON',
+            headers: {'X-Requested-With': 'XMLHttpRequest'},
+
+            success: function (data) {
+                if (data.status === 1) {
+                    fillUpRingiForm(data.ringi);
+                }
+                else if (data.status === 2) {
+                    $("#ringiNoSearch").addClass('error');
+                    $("#ringiNoSearch").val("");
+                }
+                else if (data.status === 3) {
+                    window.location.href = "/login";
+                }
+            },
+            error: function (jqXHR, exception) {
+                alert("Error occurred");
+            }
+        });
+    }
+}
+
+function fillUpRingiForm(ringi){
+    $("#ringiNo").html(ringi["ringi_no"]);
+    $("#applicantName").html(ringi["applicant_name"]);
+    $("#ringiType").html(ringi["ringi_type"]);
+    $("#targetArea").html(ringi["target_area"]);
+    $("#targetName").html(ringi["target_name"]);
+    $("#discountServiceType").html(ringi["discount_service_type"]);
+    $("#ringiDetail").html(ringi["ringi_detail"]);
+    $("#summaryCondition").html(ringi["summary_condition"]);
+    $("#beforeSummaryPrice").html(ringi["before_summary_price"]);
+    $("#afterSummaryPrice").html(ringi["after_summary_price"]);
+    $("#summaryPeriod").html(ringi["summary_period"]);
+    $("#startDate").html(ringi["start_date"]);
+    $("#endDate").html(ringi["end_date"]);
+    $("#purpose").html(ringi["purpose"]);
+    $("#memo").html(ringi["memo"]);
+}
+
+function addDiscountWithContract(){
+    let tableBody = "<tr>" +
+        "<td onclick=\"productInfoRemove(this)\" id=\"ringiRemove\"><a href=\"#\">削除</a></td>" +
+        "<td id=\"ringiNo\">"+$("#ringiNo").html()+"</td>\n" +
+        "<td id=\"ringiType\">"+$("#ringiType").html()+"</td>\n" +
+        "<td id=\"targetArea\">"+$("#targetArea").html()+"</td>\n" +
+        "<td id=\"targetName\">"+$("#targetName").html()+"</td>\n" +
+        "<td id=\"discountServiceType\">"+$("#discountServiceType").html()+"</td>\n" +
+        "<td id=\"ringiDetail\">"+$("#ringiDetail").html()+"</td>\n" +
+        "<td id=\"summaryCondition\">"+$("#summaryCondition").html()+"</td>\n" +
+        "<td id=\"beforeSummaryPrice\">"+$("#beforeSummaryPrice").html()+"</td>\n" +
+        "<td id=\"afterSummaryPrice\">"+$("#afterSummaryPrice").html()+"</td>\n" +
+        "<td id=\"summaryPeriod\">"+$("#summaryPeriod").html()+"</td>\n" +
+        "<td id=\"startDate\">"+$("#startDate").html()+"</td>\n" +
+        "<td id=\"endDate\">"+$("#endDate").html()+"</td>\n" +
+        "<td id=\"purpose\">"+$("#purpose").html()+"</td>\n" +
+        "<td id=\"memo\">"+$("#memo").html()+"</td>\n" +
+        "<td id=\"applicantName\">"+$("#applicantName").html()+"</td>" +
+        "</tr>";
+    $(".productDiscountTable tbody").append(tableBody);
+}

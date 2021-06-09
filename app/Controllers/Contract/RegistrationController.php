@@ -12,6 +12,7 @@ use App\Models\Contract\ContractModel;
 use App\Models\Contractor\ContractorModel;
 use App\Models\Employee\EmployeeModel;
 use App\Models\Product\ProductModel;
+use App\Models\Ringi\RingiModel;
 use App\Models\Shop\Shop;
 use App\Models\Shop\ShopInfo;
 use App\Models\Shop\ShopModel;
@@ -23,12 +24,13 @@ class RegistrationController extends BaseController
             $shop = (new ShopModel())->getAllShopData();
             $product = (new ProductModel())->getAllProductData();
             $contractor = (new ContractorModel())->getAllContractorData();
-            $area = (new AddressModel())->getAllArea();
-            $district = (new AddressModel())->getAllDistrict();
-            $prefecture = (new AddressModel())->getAllPrefecture();
-            $areaLarge = (new AddressModel())->getAllAreaLarge();
-            $areaSmall = (new AddressModel())->getAllAreaSmall();
             $employee = (new EmployeeModel())->getAllEmployee();
+
+            $district = (new AddressModel())->getDistrict();
+            $prefecture = (new AddressModel())->getPrefecture();
+            $areaLarge = (new AddressModel())->getAreaLarge();
+            $areaSmall = (new AddressModel())->getAreaSmall();
+            $area = (new AddressModel())->getArea();
 
             $data = array(
                 "title" => "Contract Registration",
@@ -70,12 +72,14 @@ class RegistrationController extends BaseController
             $shop = (new ShopModel())->getAllShopData();
             $product = (new ProductModel())->getAllProductData();
             $contractor = (new ContractorModel())->getAllContractorData();
-            $area = (new AddressModel())->getAllArea();
-            $district = (new AddressModel())->getAllDistrict();
-            $prefecture = (new AddressModel())->getAllPrefecture();
-            $areaLarge = (new AddressModel())->getAllAreaLarge();
-            $areaSmall = (new AddressModel())->getAllAreaSmall();
             $employee = (new EmployeeModel())->getAllEmployee();
+
+            $district = (new AddressModel())->getDistrict();
+            $prefecture = (new AddressModel())->getPrefecture();
+            $areaLarge = (new AddressModel())->getAreaLarge();
+            $areaSmall = (new AddressModel())->getAreaSmall();
+            $area = (new AddressModel())->getArea();
+
 
             $data = array(
                 "title" => "Temporary Contract Registration",
@@ -123,8 +127,27 @@ class RegistrationController extends BaseController
                     (new contractmodel())->storeContractData($contract);
                 }
 
-
                 $products = $_POST['productSelectId'];
+                $ringis = $_POST['ringis'];
+
+                $contractRingi = array();
+                $contractRingi['contract'] = $contract->getId();
+                $contractRingi['status'] = 1;
+                $contractRingi['update'] = date("Y-m-d H:i:s");
+                $contractRingi['updateUser'] = session()->get('userId');
+                $contractRingi['insert'] = date("Y-m-d H:i:s");
+                $contractRingi['insertUser'] = session()->get('userId');
+                $contractRingi['delete'] = 1;
+
+                (new ContractModel())->removeContractRingiData($contract->getId());
+                for ($i = 0; $i < count($ringis); $i++){
+                    $contractRingi['ringi'] = $ringis[$i];
+                    if($contractRingi['ringi'] != "" && $contractRingi['ringi'] != null){
+                        (new ContractModel())->storeContractRingiData($contractRingi);
+                    }
+                }
+
+
                 $contractProduct = array();
                 $contractProduct['id'] = $contract->getId();
                 $contractProduct['contractStatus'] = 0;
@@ -169,14 +192,21 @@ class RegistrationController extends BaseController
             $shop = (new ShopModel())->getAllShopData();
             $product = (new ProductModel())->getAllProductData();
             $contractor = (new ContractorModel())->getAllContractorData();
-            $area = (new AddressModel())->getAllArea();
-            $district = (new AddressModel())->getAllDistrict();
-            $prefecture = (new AddressModel())->getAllPrefecture();
-            $areaLarge = (new AddressModel())->getAllAreaLarge();
-            $areaSmall = (new AddressModel())->getAllAreaSmall();
             $employee = (new EmployeeModel())->getAllEmployee();
 
-            $contract = (new ContractModel())->getContractById($contractId);
+            $district = (new AddressModel())->getDistrict();
+            $prefecture = (new AddressModel())->getPrefecture();
+            $areaLarge = (new AddressModel())->getAreaLarge();
+            $areaSmall = (new AddressModel())->getAreaSmall();
+            $area = (new AddressModel())->getArea();
+
+            $contract = (new ContractModel())->getContractById($contractId)[$contractId] ?? null;
+            if(isset($contract)){
+                $ringiDetails = (new RingiModel())->getRingiByContractId($contract->getId()) ?? null;
+            }
+            else{
+                $ringiDetails = null;
+            }
 
             $data = array(
                 "title" => "Contract Update",
@@ -189,7 +219,8 @@ class RegistrationController extends BaseController
                 "areaLarges" => $areaLarge,
                 "areaSmalls" => $areaSmall,
                 "employees" => $employee,
-                "contract" => $contract[$contractId] ?? null,
+                "contract" => $contract,
+                "ringiDetails" => $ringiDetails,
                 "type" => "update"
             );
             return view("Contract/contract", $data);
@@ -334,7 +365,7 @@ class RegistrationController extends BaseController
                 $shopInfo->setRepresentative($_POST['shopRepresentative'] ?? null);
                 $shopInfo->setRepresentativeKana($_POST['shopRepresentativeKana'] ?? null);
                 $shopInfo->setBusiness(1);
-                $shopInfo->setNotification(isset($notificationLetter) ? $this->processShopFile($notificationLetter, $shop->getId(), $path) : null);
+                $shopInfo->setNotification($notificationLetter != "" ? $this->processShopFile($notificationLetter, $shop->getId(), $path) : null);
                 $shopInfo->setPjId(null);
                 $shopInfo->setPlId(null);
                 $shopInfo->setTorihikisakiId(null);

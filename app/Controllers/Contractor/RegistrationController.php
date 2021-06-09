@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\Common\SequenceModel;
 use App\Models\Company\Company;
 use App\Models\Company\CompanyModel;
+use App\Models\Contract\ContractModel;
 use App\Models\Contractor\Contractor;
 use App\Models\Contractor\ContractorModel;
 use App\Models\Group\Group;
@@ -189,6 +190,7 @@ class RegistrationController extends BaseController
                 else{
                     $contractor->setId($_POST["contractorId"]);
                     (new ContractorModel())->updateContractorData($contractor);
+                    (new ContractModel())->updateContractStatusForContractorUpdate($contractor->getId(), 07, date("Y-m-d H:i:s"), session()->get('userId'));
                     $storeContractor = true;
                 }
 

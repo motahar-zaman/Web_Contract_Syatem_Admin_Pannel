@@ -358,16 +358,56 @@
                             </div>
                             <div class="card-body">
                                 <div class="card-body table-responsive p-0">
-                                    <table class="table table-hover text-center">
+                                    <table class="table table-hover text-center productDiscountTable" style="width: 200% !important;">
                                         <thead class="k1RegTableTitleBG">
-                                        <tr>
-                                            <th>対象商品</th>
-                                            <th>対象店舗</th>
-                                            <th>割引率</th>
-                                            <th>割引名称</th>
-                                        </tr>
+                                            <tr>
+                                                <th class="align-middle" rowspan="2">稟議No</th>
+                                                <th class="align-middle" rowspan="2">契約種別</th>
+                                                <th class="align-middle" rowspan="2">対象区分</th>
+                                                <th class="align-middle" rowspan="2">対象名</th>
+                                                <th class="align-middle" rowspan="2">内容項目</th>
+                                                <th class="align-middle" rowspan="2">内容詳細</th>
+                                                <th class="align-middle" rowspan="2">条件</th>
+                                                <th class="border-bottom-0" colspan="2" style="width: 14%">税抜き価格</th>
+                                                <th class="border-bottom-0" colspan="3" style="width: 17%">適用期間</th>
+                                                <th class="align-middle" rowspan="2">目標</th>
+                                                <th class="align-middle" rowspan="2">備考</th>
+                                                <th class="align-middle" rowspan="2">申請者</th>
+                                            </tr>
+                                            <tr>
+                                                <th class="align-middle">サービス前</th>
+                                                <th class="align-middle">サービス後</th>
+                                                <th class="align-middle">月数</th>
+                                                <th class="align-middle">開始日</th>
+                                                <th class="align-middle">終了日</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
+                                            <?php
+                                                if(isset($ringiDetails)){
+                                                    foreach ($ringiDetails as $ringi) {
+                                                        ?>
+                                                            <tr>
+                                                                <td id="ringiNo"><?= $ringi->getNo() ?></td>
+                                                                <td id="ringiType"><?= $ringi->getType() ?></td>
+                                                                <td id="targetArea"><?= $ringi->getTargetArea() ?></td>
+                                                                <td id="targetName"><?= $ringi->getTargetName() ?></td>
+                                                                <td id="discountServiceType"><?= $ringi->getDiscountServiceType() ?></td>
+                                                                <td id="ringiDetail"><?= $ringi->getDetail() ?></td>
+                                                                <td id="summaryCondition"><?= $ringi->getSummaryCondition() ?></td>
+                                                                <td id="beforeSummaryPrice"><?= $ringi->getBeforeSummaryPrice() ?></td>
+                                                                <td id="afterSummaryPrice"><?= $ringi->getAfterSummaryPrice() ?></td>
+                                                                <td id="summaryPeriod"><?= $ringi->getSummaryPeriod() ?></td>
+                                                                <td id="startDate"><?= $ringi->getStartDate() ?></td>
+                                                                <td id="endDate"><?= $ringi->getEndDate() ?></td>
+                                                                <td id="purpose"><?= $ringi->getPurpose() ?></td>
+                                                                <td id="memo"><?= $ringi->getMemo() ?></td>
+                                                                <td id="applicantName"><?= $ringi->getApplicantName() ?></td>
+                                                            </tr>
+                                                        <?php
+                                                    }
+                                                }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>

@@ -8,6 +8,7 @@ use App\Controllers\BaseController;
 use App\Models\Common\AddressModel;
 use App\Models\Contract\ContractModel;
 use App\Models\Contractor\ContractorModel;
+use App\Models\Ringi\RingiModel;
 
 class ContractController extends BaseController
 {
@@ -64,11 +65,22 @@ class ContractController extends BaseController
             $contract = (new ContractModel())->getContractById($contractId);
             $contractDetails = $contract[$contractId] ?? null;
 
+            $contractorDetails = null;
+            $ringiDetails = null;
+
             if(isset($contractDetails) && $contractDetails->getContractorId() ){
-                $contractorDetails = (new ContractorModel())->getContractorDetailsById($contractDetails->getContractorId());
+                $contractorDetails = (new ContractorModel())->getContractorDetailsById($contractDetails->getContractorId())[0] ?? null;
+                $ringiDetails = (new RingiModel())->getRingiByContractId($contractDetails->getId()) ?? null;
             }
 
-            return view("Contract/contractDetails", ["title" => "Contract Details", "contract" => $contractDetails ?? null, "contractorDetails" => $contractorDetails[0] ?? null]);
+            $data = array(
+                "title" => "Contract Details",
+                "contract" => $contractDetails,
+                "contractorDetails" => $contractorDetails,
+                "ringiDetails" => $ringiDetails
+            );
+
+            return view("Contract/contractDetails", $data);
         }
         else{
             return redirect()->to("/login");
@@ -115,6 +127,30 @@ class ContractController extends BaseController
         }
         else{
             return redirect()->to("/login");
+        }
+    }
+
+    public function ringiSearch(){
+        if( session() && session()->get('login') ) {
+            $ringiNo = $_GET["ringiNo"];
+            $ringiInfo = (new RingiModel())->getRingiDataByNo($ringiNo);
+
+            if (isset($ringiInfo) && count($ringiInfo) > 0) {
+                $ringiInfo = $ringiInfo[0];
+                $startDate = $ringiInfo->start_date;
+                $endDate = $ringiInfo->end_date;
+
+                $ringiInfo->start_date = date("Y", strtotime($startDate)) . "年" . date("m", strtotime($startDate)) . "月" . date("d", strtotime($startDate)) . "日";
+                $ringiInfo->end_date = date("Y", strtotime($endDate)) . "年" . date("m", strtotime($endDate)) . "月" . date("d", strtotime($endDate)) . "日";
+
+                return json_encode(['msg' => "Successful", "ringi" => $ringiInfo, "status" => 1]);
+            }
+            else {
+                return json_encode(['msg' => "Successful", "ringi" => null, "status" => 2]);
+            }
+        }
+        else{
+            return json_encode(['msg' => "Not Logged in user", 'status' => 3]);
         }
     }
 }

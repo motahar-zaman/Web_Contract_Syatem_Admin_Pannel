@@ -39,7 +39,7 @@ class TrnRingiInfo extends Migration
                 'null'   => false,
                 'comment'=> '対象名 / Target name',
             ],
-            'discount‗service_type' => [
+            'discount_service_type' => [
                 'type'   => 'VARCHAR',
                 'constraint'=> '20',
                 'null'   => false,
