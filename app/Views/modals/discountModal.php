@@ -62,7 +62,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>サービス前</label>
+                                    <label>サービス後</label>
                                     <span class="form-control" id="afterSummaryPrice"></span>
                                 </div>
                             </div>
