@@ -13,13 +13,16 @@ class AddressModel
         return $this->mapAreaData($data);
     }
 
-    public function getAreaData($district = null, $prefecture = null){
+    public function getAreaData($district = null, $prefecture = null, $areaLarge = null){
         $where = "WHERE ";
         if($district){
             $where .= "district_id = '$district' AND ";
         }
         if($prefecture){
             $where .= "prefecture_id = '$prefecture' AND ";
+        }
+        if($areaLarge){
+            $where .= "large_area_id = '$areaLarge' AND ";
         }
 
         $queryString = "SELECT area_id, district_id, prefecture_id, large_area_id, small_area_id, area_name, area_areas, sort_order, update_date,
@@ -205,13 +208,16 @@ class AddressModel
         return $this->mapAreaSmallData($data);
     }
 
-    public function getAreaSmallData($district = null, $prefecture = null){
+    public function getAreaSmallData($district = null, $prefecture = null, $areaLarge = null){
         $where = "WHERE ";
         if($district){
             $where .= "district_id = '$district' AND ";
         }
         if($prefecture){
             $where .= "prefecture_id = '$prefecture' AND ";
+        }
+        if($areaLarge){
+            $where .= "large_area_id = '$areaLarge' AND ";
         }
 
         $queryString = "SELECT small_area_id, district_id, prefecture_id, area_large_id, area_name, area_areas, sort_order, update_date, update_user_id,
