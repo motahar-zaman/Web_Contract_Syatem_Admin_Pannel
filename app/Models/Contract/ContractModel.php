@@ -259,4 +259,12 @@ class ContractModel
 
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
+
+    public function updateContractStatusForContractorUpdate($contractorId, $status, $updateDate, $updateUser){
+        $queryString = "UPDATE trn_web_contract_base SET status = ?, update_date = ?, update_user_id = ? WHERE contractor_id = ?";
+
+        $queryParameter = array($status, $updateDate, $updateUser, $contractorId);
+
+        return (new Database())->writeQueryExecution($queryString, $queryParameter);
+    }
 }
