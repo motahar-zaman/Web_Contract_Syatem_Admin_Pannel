@@ -13,9 +13,14 @@ class AddressModel
         return $this->mapAreaData($data);
     }
 
-    public function getAreaData(){
+    public function getAreaData($district = null){
+        $where = "WHERE ";
+        if($district){
+            $where .= "district_id = '$district' AND ";
+        }
+
         $queryString = "SELECT area_id, district_id, prefecture_id, large_area_id, small_area_id, area_name, area_areas, sort_order, update_date,
-                        update_user_id, insert_date, insert_user_id, delete_flag FROM mst_area WHERE delete_flag = ?";
+                        update_user_id, insert_date, insert_user_id, delete_flag FROM mst_area ".$where." delete_flag = ?";
         $parameter = array(1);
 
         return (new Database())->readQueryExecution($queryString, $parameter);
@@ -94,18 +99,19 @@ class AddressModel
         }
     }
 
-    public function getPrefecture($district = null){
-        $data = $this->getPrefectureData($district);
+    public function getPrefecture(){
+        $data = $this->getPrefectureData();
         return $this->mapPrefectureData($data);
     }
 
-    public function getPrefectureData($district){
+    public function getPrefectureData($district = null){
         $where = "WHERE ";
         if($district){
-            $where .= "district_id = ".$district." AND ";
+            $where .= "district_id = '$district' AND ";
         }
         $queryString = "SELECT prefecture_id, district_id, area_name, area_areas, sort_order, update_date, update_user_id, insert_date, insert_user_id,
                         delete_flag FROM mst_area_prefecture ".$where." delete_flag = ?";
+
         $parameter = array(1);
 
         return (new Database())->readQueryExecution($queryString, $parameter);
@@ -145,9 +151,14 @@ class AddressModel
         return $this->mapAreaLargeData($data);
     }
 
-    public function getAreaLargeData(){
+    public function getAreaLargeData($district = null){
+        $where = "WHERE ";
+        if($district){
+            $where .= "district_id = '$district' AND ";
+        }
+
         $queryString = "SELECT large_area_id, district_id, prefecture_id, area_name, area_areas, sort_order, update_date, update_user_id, insert_date,
-                        insert_user_id, delete_flag FROM mst_area_large WHERE delete_flag = ?";
+                        insert_user_id, delete_flag FROM mst_area_large ".$where." delete_flag = ?";
         $parameter = array(1);
 
         return (new Database())->readQueryExecution($queryString, $parameter);
@@ -188,9 +199,14 @@ class AddressModel
         return $this->mapAreaSmallData($data);
     }
 
-    public function getAreaSmallData(){
+    public function getAreaSmallData($district = null){
+        $where = "WHERE ";
+        if($district){
+            $where .= "district_id = '$district' AND ";
+        }
+
         $queryString = "SELECT small_area_id, district_id, prefecture_id, area_large_id, area_name, area_areas, sort_order, update_date, update_user_id,
-                         insert_date, insert_user_id, delete_flag FROM mst_area_small WHERE delete_flag = ?";
+                         insert_date, insert_user_id, delete_flag FROM mst_area_small ".$where." delete_flag = ?";
         $parameter = array(1);
 
         return (new Database())->readQueryExecution($queryString, $parameter);
