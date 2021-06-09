@@ -66,4 +66,15 @@ class AddressController extends BaseController
                 return json_encode(['msg' => "Not Logged in user", 'status' => 3]);
             }
     }
+
+    public function getAreaSmallSubordinateAddress($districtId, $prefectureId, $areaLargeId, $areaSmallId){
+        if( session() && session()->get('login') ) {
+            $area = (new AddressModel())->getAreaData($districtId, $prefectureId, $areaLargeId, $areaSmallId);
+
+            return json_encode(['msg' => "Successful", "area" => $area, "status" => 1]);
+        }
+        else{
+                return json_encode(['msg' => "Not Logged in user", 'status' => 3]);
+            }
+    }
 }
