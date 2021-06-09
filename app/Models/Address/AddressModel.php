@@ -94,14 +94,18 @@ class AddressModel
         }
     }
 
-    public function getPrefecture(){
-        $data = $this->getPrefectureData();
+    public function getPrefecture($district = null){
+        $data = $this->getPrefectureData($district);
         return $this->mapPrefectureData($data);
     }
 
-    public function getPrefectureData(){
+    public function getPrefectureData($district){
+        $where = "WHERE ";
+        if($district){
+            $where .= "district_id = ".$district." AND ";
+        }
         $queryString = "SELECT prefecture_id, district_id, area_name, area_areas, sort_order, update_date, update_user_id, insert_date, insert_user_id,
-                        delete_flag FROM mst_area_prefecture WHERE delete_flag = ?";
+                        delete_flag FROM mst_area_prefecture ".$where." delete_flag = ?";
         $parameter = array(1);
 
         return (new Database())->readQueryExecution($queryString, $parameter);
