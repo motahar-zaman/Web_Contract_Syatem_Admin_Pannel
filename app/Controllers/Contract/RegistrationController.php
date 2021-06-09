@@ -57,12 +57,14 @@ class RegistrationController extends BaseController
             $shop = (new ShopModel())->getAllShopData();
             $product = (new ProductModel())->getAllProductData();
             $contractor = (new ContractorModel())->getAllContractorData();
-            $area = (new AddressModel())->getAllArea();
-            $district = (new AddressModel())->getAllDistrict();
-            $prefecture = (new AddressModel())->getAllPrefecture();
-            $areaLarge = (new AddressModel())->getAllAreaLarge();
-            $areaSmall = (new AddressModel())->getAllAreaSmall();
             $employee = (new EmployeeModel())->getAllEmployee();
+
+            $district = (new AddressModel())->getDistrict();
+            $prefecture = (new AddressModel())->getPrefecture();
+            $areaLarge = (new AddressModel())->getAreaLarge();
+            $areaSmall = (new AddressModel())->getAreaSmall();
+            $area = (new AddressModel())->getArea();
+
 
             $data = array(
                 "title" => "Temporary Contract Registration",
@@ -175,12 +177,13 @@ class RegistrationController extends BaseController
             $shop = (new ShopModel())->getAllShopData();
             $product = (new ProductModel())->getAllProductData();
             $contractor = (new ContractorModel())->getAllContractorData();
-            $area = (new AddressModel())->getAllArea();
-            $district = (new AddressModel())->getAllDistrict();
-            $prefecture = (new AddressModel())->getAllPrefecture();
-            $areaLarge = (new AddressModel())->getAllAreaLarge();
-            $areaSmall = (new AddressModel())->getAllAreaSmall();
             $employee = (new EmployeeModel())->getAllEmployee();
+
+            $district = (new AddressModel())->getDistrict();
+            $prefecture = (new AddressModel())->getPrefecture();
+            $areaLarge = (new AddressModel())->getAreaLarge();
+            $areaSmall = (new AddressModel())->getAreaSmall();
+            $area = (new AddressModel())->getArea();
 
             $contract = (new ContractModel())->getContractById($contractId)[$contractId] ?? null;
             if(isset($contract)){
