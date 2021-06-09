@@ -82,3 +82,8 @@ $routes->get('contract-estimation/(:any)', 'Contract\ContractController::contrac
 
 $routes->post('shop-registration', 'Contract\RegistrationController::shopRegistration');
 $routes->get('ringi-search', 'Contract\ContractController::ringiSearch');
+
+$routes->get('district-address/(:any)', 'Address\AddressController::getDistrictSubordinateAddress/$1');
+$routes->get('prefecture-address/(:any)', 'Address\AddressController::getPrefectureSubordinateAddress/$1');
+$routes->get('area-large-address/(:any)', 'Address\AddressController::getAreaLargeSubordinateAddress/$1');
+$routes->get('area-small-address/(:any)', 'Address\AddressController::getAreaSmallSubordinateAddress/$1');
