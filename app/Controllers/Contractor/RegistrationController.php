@@ -64,6 +64,11 @@ class RegistrationController extends BaseController
         }
     }
 
+    public function contractorDataTableData() {
+        $contractors = (new ContractorModel())->getDataTableData(true, true);
+        echo json_encode($contractors);
+    }
+
     public function tempRegistration(){
         if( session() && session()->get('login') && session()->get('user') == "employee" ){
             $group = (new GroupModel())->getAllGroupData();

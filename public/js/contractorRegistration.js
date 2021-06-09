@@ -231,3 +231,144 @@ function selectedContractorWithCompanyGroup(id, td){
     $("#groupMail").val(contractorGroupData[12]);
     $("#groupInsert").val("update");
 }
+
+function loadContractorDataTable() {
+  // Load data-table data for contractors on modal
+  var $contractorDataTable = $("#updateContractorSelectTable");
+  $contractorDataTable.DataTable({
+    paging: false,
+    bProcessing: true,
+    serverSide: true,
+    scrollCollapse: false,
+    ajax: {
+      url: baseUrl + "/contractor-registration-get-data-table-data", // json data source
+      type: "post",
+      data: {},
+    },
+    columns: [
+      {
+        data: "contractor_id",
+        render: function (datum, type, row) {
+          return "<a href='#'>選択</a>";
+        },
+      },
+      { data: "contractor_id" },
+      { data: "contractor_name" },
+      { data: "address_01" },
+      { data: "tel_no" },
+      { data: "mail_address" },
+    ],
+    columnDefs: [
+      {
+        targets: 0,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "selectedContractorUpdate" + rowData.contractor_id);
+          $(td).attr(
+            "onclick",
+            "selectedContractorWithCompanyGroup(" + row + ", this)"
+          );
+          $(td).attr("data-row-index", row);
+          let hiddenInputs =
+            "<input id='contractorNameKana" +
+            row +
+            "' type='hidden' value='" +
+            rowData.contractor_name_kana +
+            "'>" +
+            "<input id='contractorPostCode" +
+            row +
+            "' type='hidden' value='" +
+            rowData.zipcode +
+            "'>" +
+            "<input id='contractorAddress2" +
+            row +
+            "' type='hidden' value='" +
+            rowData.address_02 +
+            "'>" +
+            "<input id='contractorCompany" +
+            row +
+            "' type='hidden' value='" +
+            rowData.company_data +
+            "'>" +
+            "<input id='contractorGroup" +
+            row +
+            "' type='hidden' value='" +
+            rowData.group_data +
+            "'>";
+          $(td).append(hiddenInputs);
+        },
+      },
+      {
+        targets: 1,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "contractorId" + row);
+        },
+      },
+      {
+        targets: 2,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "contractorName" + row);
+        },
+      },
+      {
+        targets: 3,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "contractorAddress1" + row);
+        },
+      },
+      {
+        targets: 4,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "contractorPhn" + row);
+        },
+      },
+      {
+        targets: 5,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "contractorMail" + row);
+        },
+      },
+      { orderable: false, targets: [0, 1, 2, 3, 4, 5] },
+    ],
+    language: {
+      emptyTable: "<h3>データがありません！</h3>",
+    },
+    bFilter: false, // to display data-table search
+    bInfo: false, // to display data-table entries text
+  });
+
+  // Handle contractor search
+  $(document).on("submit", "#contractorSearchForm", function (e) {
+    e.preventDefault();
+    var contractorId = $("#searchContractorId").val();
+    var contractorName = $("#searchContractorName").val();
+
+    $contractorDataTable.on("preXhr.dt", function (e, settings, data) {
+      data.contractorId = contractorId;
+      data.contractorName = contractorName;
+    });
+
+    $contractorDataTable.dataTable().fnDraw(); // Manually redraw the table after filtering
+  });
+
+  // Clear contractor search
+  $(document).on("click", "#clearContractorSearch", function (e) {
+    e.preventDefault();
+    $("#searchContractorId").val("");
+    $("#searchContractorName").val("");
+
+    $contractorDataTable.on("preXhr.dt", function (e, settings, data) {
+      delete data.contractorId;
+      delete data.contractorName;
+    });
+
+    $contractorDataTable.dataTable().fnDraw();
+  });
+}
+
+$(document).ready(function () {
+//   loadProductDataTable();
+
+  loadContractorDataTable();
+
+//   loadShopDataTable();
+});

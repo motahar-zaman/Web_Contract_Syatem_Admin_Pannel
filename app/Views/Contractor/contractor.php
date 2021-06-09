@@ -317,11 +317,16 @@
             </section>
         </div>
 
-        <script type="text/javascript" src="../../js/contractorRegistration.js"></script>
+        <script>
+            var baseUrl = "<?php echo base_url(); ?>";
+        </script>
         <!-- jQuery -->
         <script src="../../plugins/jquery/jquery.min.js"></script>
         <!-- Bootstrap 4 -->
         <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- DataTable -->
+        <script src="../../plugins/datatables/jquery.dataTables.js"></script>
+        <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
         <!-- Select2 -->
         <script src="../../plugins/select2/js/select2.full.min.js"></script>
         <!-- Bootstrap4 Duallistbox -->
@@ -339,6 +344,8 @@
         <script src="../../plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
         <!-- AdminLTE App -->
         <script src="../../dist/js/adminlte.min.js"></script>
+        <!-- Custom JS -->
+        <script type="text/javascript" src="../../js/contractorRegistration.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="../../dist/js/demo.js"></script>
         <!-- Page specific script -->
