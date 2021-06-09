@@ -118,21 +118,12 @@ function contractRegistration() {
         }
         $(this).each(function () {
             let data2 = Array();
-<<<<<<< HEAD
-            data2[0] = $(this).children("#productInfoId").text();
-            data2[1] = $(this).children("#productInfoNote").text();
-            data2[2] = $(this).children("#productInfoStart").text();
-            data2[3] = $(this).children("#productInfoEnd").text();
-            data2[4] = $(this).children("#productInfoShopId").text();
-            data1[i - 1] = data2;
-=======
             data2[0] = $(this).children('#productInfoId').text();
             data2[1] = $(this).children('#productInfoNote').text();
             data2[2] = $(this).children('#productInfoStart').text();
             data2[3] = $(this).children('#productInfoEnd').text();
             data2[4] = $(this).children('#productInfoShopId').text();
             products[i-1] = data2;
->>>>>>> c22e7d560446bddc47557b7f236e85acd2d06e33
         });
     });
 
