@@ -1,9 +1,9 @@
-function shopSearchClear(){
+function shopSearchClear() {
     $("#searchShopId").val("");
     $("#searchShopName").val("");
 }
 
-function contractorSearchClear(){
+function contractorSearchClear() {
     $("#searchContractorId").val("");
     $("#searchContractorName").val("");
 }
@@ -16,12 +16,21 @@ function selectedContractor(data, td) {
     let contractorMail = $("#contractorMail" + data).html();
 
     //Push Data To the product contract table
-    var markup = "<tr><td id=\"contractorId\">" + contractorId + "</td><td id=\"contractorName\">" + contractorName + "</td><td id=\"contractorAddress1\">"
-        + contractorAddress1 + "</td><td id=\"contractorPhn\">" + contractorPhn + "</td><td id=\"contractorMail\">" + contractorMail +
+    var markup =
+        '<tr><td id="contractorId">' +
+        contractorId +
+        '</td><td id="contractorName">' +
+        contractorName +
+        '</td><td id="contractorAddress1">' +
+        contractorAddress1 +
+        '</td><td id="contractorPhn">' +
+        contractorPhn +
+        '</td><td id="contractorMail">' +
+        contractorMail +
         "</td></tr>";
     $(".contractorSelectTable tbody").html(markup);
 
-    $('#contractorSelectTable td').removeClass("bg-dark-silver");
+    $("#contractorSelectTable td").removeClass("bg-dark-silver");
     $(td).addClass("bg-dark-silver");
     $("#contractorModalClose").click();
 }
@@ -29,10 +38,10 @@ function selectedContractor(data, td) {
 function selectedProduct(data, td) {
     let isSelected = $(td).attr("data-selected");
 
-    if (isSelected === 'false') {
+    if (isSelected === "false") {
         $(td).addClass("bg-dark-silver");
         $(td).attr("data-selected", true);
-    } else if (isSelected === 'true') {
+    } else if (isSelected === "true") {
         $(td).removeClass("bg-dark-silver");
         $(td).attr("data-selected", false);
     }
@@ -41,13 +50,23 @@ function selectedProduct(data, td) {
 function productDiscount(data) {
     let productDiscountId = $("#productDiscountId" + data).html();
     let productDiscountShop = $("#productDiscountName" + data).html();
-    let productDiscountRate = '<input className="form-control" name="productDiscountRate" type="number" id="productDiscountRate">';
-    let productDiscountName = '<input className="form-control" name="productDiscountName" type="text" id="productDiscountName">';
+    let productDiscountRate =
+        '<input className="form-control" name="productDiscountRate" type="number" id="productDiscountRate">';
+    let productDiscountName =
+        '<input className="form-control" name="productDiscountName" type="text" id="productDiscountName">';
 
     //Push Data To the product discount table
-    var markup = "<tr><td>" + productDiscountId + "</td><td>" + productDiscountShop + "</td><td>" + productDiscountRate + "</td><td>" + productDiscountName + "</td></tr>";
+    var markup =
+        "<tr><td>" +
+        productDiscountId +
+        "</td><td>" +
+        productDiscountShop +
+        "</td><td>" +
+        productDiscountRate +
+        "</td><td>" +
+        productDiscountName +
+        "</td></tr>";
     $(".productDiscountTable tbody").append(markup);
-
 }
 
 function selectedShop(data, td) {
@@ -59,42 +78,53 @@ function selectedShop(data, td) {
     let shopPhoneNumber = $("#shopPhoneNumber" + data).val();
 
     //Push Data To the product contract table
-    var markup = "<tr><td id=\"shopId\">" + shopId + "</td><td id=\"shopName\">" + shopName + "</td><td id=\"shopRepresentativeName\">"+ shopRepresentativeName +
-        "</td><td id=\"shopPrefecture\">" + shopPrefecture + "</td><td id=\"shopAddress\">" + shopAddress + "</td><td id=\"shopPhoneNumber\">" + shopPhoneNumber +
+    var markup =
+        '<tr><td id="shopId">' +
+        shopId +
+        '</td><td id="shopName">' +
+        shopName +
+        '</td><td id="shopRepresentativeName">' +
+        shopRepresentativeName +
+        '</td><td id="shopPrefecture">' +
+        shopPrefecture +
+        '</td><td id="shopAddress">' +
+        shopAddress +
+        '</td><td id="shopPhoneNumber">' +
+        shopPhoneNumber +
         "</td></tr>";
     $(".shopSelectTable tbody").html(markup);
 
-    $('#shopSelectTable td').removeClass("bg-dark-silver");
+    $("#shopSelectTable td").removeClass("bg-dark-silver");
     $(td).addClass("bg-dark-silver");
     $("#shopModalClose").click();
 }
 
 function disable() {
-    document.getElementById("mySelect").disabled=true;
+    document.getElementById("mySelect").disabled = true;
 }
 
 function enable() {
-    document.getElementById("mySelect").disabled=false;
+    document.getElementById("mySelect").disabled = false;
 }
 
 function contractRegistration() {
     let data = {};
     let data1 = Array();
 
-    $(".productInfoTable tr").each(function(i){
-        if (i == 0){
+    $(".productInfoTable tr").each(function (i) {
+        if (i == 0) {
             return;
         }
-        $(this).each(function(){
+        $(this).each(function () {
             let data2 = Array();
-            data2[0] = $(this).children('#productInfoId').text();
-            data2[1] = $(this).children('#productInfoNote').text();
-            data2[2] = $(this).children('#productInfoStart').text();
-            data2[3] = $(this).children('#productInfoEnd').text();
-            data2[4] = $(this).children('#productInfoShopId').text();
-            data1[i-1] = data2;
+            data2[0] = $(this).children("#productInfoId").text();
+            data2[1] = $(this).children("#productInfoNote").text();
+            data2[2] = $(this).children("#productInfoStart").text();
+            data2[3] = $(this).children("#productInfoEnd").text();
+            data2[4] = $(this).children("#productInfoShopId").text();
+            data1[i - 1] = data2;
         });
-    })
+    });
 
     data["productSelectId"] = data1;
     data["tantou"] = $("#tantou").val();
@@ -108,20 +138,20 @@ function contractRegistration() {
             url: "/contract-registration",
             type: "POST",
             data: data,
-            dataType: 'JSON',
-            headers: {'X-Requested-With': 'XMLHttpRequest'},
+            dataType: "JSON",
+            headers: { "X-Requested-With": "XMLHttpRequest" },
 
             success: function (data) {
                 if (data.status === 1) {
                     let id = data.contract;
-                    window.location.href = "/contract-details/"+id;
+                    window.location.href = "/contract-details/" + id;
                 } else if (data.status === 3) {
                     window.location.href = "/login";
                 }
             },
             error: function (jqXHR, exception) {
                 alert("Error occurred");
-            }
+            },
         });
     }
 }
@@ -145,9 +175,9 @@ function validateData(data) {
 }
 
 function shopAddressSearch() {
-    let zipCode = $('#postCode').val();
+    let zipCode = $("#postCode").val();
     let setAddressId = "address1";
-    var param = {zipcode: zipCode};
+    var param = { zipcode: zipCode };
     var send_url = "http://zipcloud.ibsnet.co.jp/api/search";
 
     $.ajax({
@@ -159,7 +189,9 @@ function shopAddressSearch() {
         success: function (res) {
             if (res.status == 200) {
                 if (res.results) {
-                    $("#" + setAddressId).val(res.results[0].address1 + res.results[0].address2);
+                    $("#" + setAddressId).val(
+                        res.results[0].address1 + res.results[0].address2
+                    );
                 } else {
                     alert("Invalid Zip Code");
                 }
@@ -169,78 +201,78 @@ function shopAddressSearch() {
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             console.log(XMLHttpRequest);
-        }
+        },
     });
 }
 
 function shopTypeCheck() {
     var shopType = document.querySelector('input[name="shop"]:checked').value;
-    if (shopType == 0){
-        $('#shopInputFields :input').attr('disabled', true);
-        $('#shopInputFields :button').attr('disabled', true);
-        $('#mySelect').prop('disabled', false);
-
+    if (shopType == 0) {
+        $("#shopInputFields :input").attr("disabled", true);
+        $("#shopInputFields :button").attr("disabled", true);
+        $("#mySelect").prop("disabled", false);
     }
-    if (shopType == 1){
-        $('#shopInputFields :input').attr('disabled', false);
-        $('#shopInputFields :button').attr('disabled', false);
-        $('#mySelect').prop('disabled', true);
+    if (shopType == 1) {
+        $("#shopInputFields :input").attr("disabled", false);
+        $("#shopInputFields :button").attr("disabled", false);
+        $("#mySelect").prop("disabled", true);
     }
 }
 
-function checkContractAvailable(){
+function checkContractAvailable() {
     let contractId = $("#contractIdSearch").val();
     let data = {};
-    data["contractIdSearch"] = contractId
+    data["contractIdSearch"] = contractId;
     $.ajax({
         url: "/contract-registration-search",
         type: "GET",
         data: data,
-        dataType: 'JSON',
-        headers: {'X-Requested-With': 'XMLHttpRequest'},
+        dataType: "JSON",
+        headers: { "X-Requested-With": "XMLHttpRequest" },
 
         success: function (data) {
             if (data.status === 1) {
-                $("#ContractSearchForm").attr('action', "/contract-update/"+contractId);
+                $("#ContractSearchForm").attr(
+                    "action",
+                    "/contract-update/" + contractId
+                );
                 $("#ContractSearchForm").submit();
-            }
-            else if(data.status === 0){
+            } else if (data.status === 0) {
                 alert("No data available for this contract id");
             }
         },
         error: function (jqXHR, exception) {
             alert("Error occurred");
-        }
+        },
     });
 }
 
-function checkContractAvailableFromDetails(){
+function checkContractAvailableFromDetails() {
     let contractId = $("#contractIdSearch").val();
     let data = {};
-    data["contractIdSearch"] = contractId
+    data["contractIdSearch"] = contractId;
     $.ajax({
         url: "/contract-registration-search",
         type: "GET",
         data: data,
-        dataType: 'JSON',
-        headers: {'X-Requested-With': 'XMLHttpRequest'},
+        dataType: "JSON",
+        headers: { "X-Requested-With": "XMLHttpRequest" },
 
         success: function (data) {
             if (data.status === 1) {
                 $("#ContractSearchFromDetails").submit();
-            }
-            else if(data.status === 0){
+            } else if (data.status === 0) {
                 alert("No data available for this contract id");
             }
         },
         error: function (jqXHR, exception) {
             alert("Error occurred");
-        }
+        },
     });
 }
 
 var shopCount = 0;
-function productRegistration(){
+function productRegistration() {
     let shop = $("input[type='radio'][name='shop']:checked").val();
     let shopId = "";
     let shopName = "";
@@ -248,63 +280,80 @@ function productRegistration(){
     let productCount = 0;
     shopCount++;
 
-    $(".productSelectTable tr").each(function(i){
-        if (i == 0){
+    $(".productSelectTable tr").each(function (i) {
+        if (i == 0) {
             return;
         }
 
         productCount++;
 
-        if(i == 1){
-            if(shop == 1){
+        if (i == 1) {
+            if (shop == 1) {
                 shopRegistration(shopCount);
-            }
-            else{
+            } else {
                 shopId = $("#shopId").html();
                 shopName = $("#shopName").html();
                 //shopFile = $("#shopFile").html();
             }
         }
 
-        $(this).each(function(){
+        $(this).each(function () {
             let data = Array();
-            data[0] = $(this).children('#productSelectId').text();
-            data[1] = $(this).children('#productSelectName').text();
-            data[2] = $(this).children('#productSelectNote').text();
-            data[3] = $(this).children('#productSelectStartDate').text();
-            data[4] = $(this).children('#productSelectEndDate').text();
+            data[0] = $(this).children("#productSelectId").text();
+            data[1] = $(this).children("#productSelectName").text();
+            data[2] = $(this).children("#productSelectNote").text();
+            data[3] = $(this).children("#productSelectStartDate").text();
+            data[4] = $(this).children("#productSelectEndDate").text();
 
             let file = "";
-            if(shopFile){
+            if (shopFile) {
                 file = "<a href='#'>あり</a>";
-            }
-            else{
+            } else {
                 file = "なし";
             }
 
-            let markup = "<tr><td onclick=\"productInfoRemove(this)\" id=\"productInfoRemove\"><a href=\"#\">削除</a></td><td id=\"productInfoId\">" + data[0] +
-                "</td><td id=\"productInfoName\">" + data[1] + "</td><td id=\"productInfoNote\">" + data[2] +
-                "</td><td id=\"productInfoShopName\" class=\"productInfoShopName"+ shopCount +"\">"+ shopName +
-                "</td><td id=\"productInfoShopFile\" class=\"productInfoShopFile"+ shopCount +"\">"+ file +
-                "</td> <td id=\"productInfoStart\">" + data[3] + "</td><td id=\"productInfoEnd\">" + data[4] +
-                "</td><td style=\"display: none\" id=\"productInfoShopId\" class=\"productInfoShopId"+ shopCount +"\">"+ shopId +"</td></tr>";
+            let markup =
+                '<tr><td onclick="productInfoRemove(this)" id="productInfoRemove"><a href="#">削除</a></td><td id="productInfoId">' +
+                data[0] +
+                '</td><td id="productInfoName">' +
+                data[1] +
+                '</td><td id="productInfoNote">' +
+                data[2] +
+                '</td><td id="productInfoShopName" class="productInfoShopName' +
+                shopCount +
+                '">' +
+                shopName +
+                '</td><td id="productInfoShopFile" class="productInfoShopFile' +
+                shopCount +
+                '">' +
+                file +
+                '</td> <td id="productInfoStart">' +
+                data[3] +
+                '</td><td id="productInfoEnd">' +
+                data[4] +
+                '</td><td style="display: none" id="productInfoShopId" class="productInfoShopId' +
+                shopCount +
+                '">' +
+                shopId +
+                "</td></tr>";
             $(".productInfoTable tbody").append(markup);
         });
     });
 
-    if(!productCount){
+    if (!productCount) {
         alert("No product selected");
     }
     $(".productSelectTable tbody").empty();
     $(".shopSelectTable tbody").empty();
-    $('#productSelectTable td').removeClass("bg-dark-silver");
-    $('#shopRegistrationForm').find('input:text, input:file, select, textarea')
+    $("#productSelectTable td").removeClass("bg-dark-silver");
+    $("#shopRegistrationForm")
+        .find("input:text, input:file, select, textarea")
         .each(function () {
-            $(this).val('');
+            $(this).val("");
         });
 }
 
-function shopRegistration(shopCount){
+function shopRegistration(shopCount) {
     let data = {};
 
     data["shopName"] = $("#shop_name").val();
@@ -330,432 +379,470 @@ function shopRegistration(shopCount){
             url: "/shop-registration",
             type: "POST",
             data: data,
-            dataType: 'JSON',
-            headers: {'X-Requested-With': 'XMLHttpRequest'},
+            dataType: "JSON",
+            headers: { "X-Requested-With": "XMLHttpRequest" },
 
             success: function (data) {
                 if (data.status === 1) {
                     let file = "";
-                    if(data.shopFile){
+                    if (data.shopFile) {
                         file = "<a href='#'>あり</a>";
-                    }
-                    else{
+                    } else {
                         file = "なし";
                     }
-                    $(".productInfoShopId"+shopCount).html(data.shopId);
-                    $(".productInfoShopName"+shopCount).html(data.shopName);
-                    $(".productInfoShopFile"+shopCount).html(file);
-                }
-                else if (data.status === 3) {
+                    $(".productInfoShopId" + shopCount).html(data.shopId);
+                    $(".productInfoShopName" + shopCount).html(data.shopName);
+                    $(".productInfoShopFile" + shopCount).html(file);
+                } else if (data.status === 3) {
                     window.location.href = "/login";
                 }
             },
             error: function (jqXHR, exception) {
                 alert("Error occurred");
-            }
+            },
         });
     }
 }
 
-function productInfoRemove(td){
+function productInfoRemove(td) {
     $(td).parents("tr").remove();
 }
 
 function filterByProductIdOrName(productId, productName) {
-      console.log($.fn.dataTableExt.afnFiltering);
-      // Custom filter syntax requires pushing the new filter to the global filter array
-      $.fn.dataTableExt.afnFiltering.push(function (
+    console.log($.fn.dataTableExt.afnFiltering);
+    // Custom filter syntax requires pushing the new filter to the global filter array
+    $.fn.dataTableExt.afnFiltering.push(function (
         oSettings,
         aData,
         iDataIndex
-      ) {
+    ) {
         console.log(aData);
         var rowProductId = aData[1],
             rowProductName = aData[2];
 
         if (productId && rowProductId == productId) {
-          return true;
+            return true;
         }
         if (productName && rowProductName == productName) {
-          return true;
+            return true;
         }
         return false;
-      });
-    };
+    });
+}
 
 function loadProductDataTable() {
-  // Load datatable data for products on modal
-  var $productDataTable = $("#productSelectTable");
-  $productDataTable.DataTable({
-    paging: false,
-    bProcessing: true,
-    serverSide: true,
-    scrollCollapse: false,
-    ajax: {
-      url: baseUrl + "/contract-product-data-table-data", // json data source
-      type: "post",
-      data: {},
-    },
-    columns: [
-      {
-        data: "product_id",
-        render: function (datum, type, row) {
-          return "<a href='#' style='color: #0099FF'>選択</a>";
+    // Load datatable data for products on modal
+    var $productDataTable = $("#productSelectTable");
+    $productDataTable.DataTable({
+        paging: false,
+        bProcessing: true,
+        serverSide: true,
+        scrollCollapse: false,
+        ajax: {
+            url: baseUrl + "/contract-product-data-table-data", // json data source
+            type: "post",
+            data: {},
         },
-      },
-      { data: "product_id" },
-      { data: "product_name" },
-      { data: "product_note" },
-      { data: "start_date" },
-      { data: "end_date" },
-    ],
-    columnDefs: [
-      {
-        targets: 0,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "selectedProduct" + rowData.product_id);
-          $(td).attr("data-selected", false);
-          $(td).attr("onclick", "selectedProduct(" + row + ", this)");
-          $(td).attr("data-row-index", row);
-          $(td).addClass("select-product-column");
+        columns: [
+            {
+                data: "product_id",
+                render: function (datum, type, row) {
+                    return "<a href='#' style='color: #0099FF'>選択</a>";
+                },
+            },
+            { data: "product_id" },
+            { data: "product_name" },
+            { data: "product_note" },
+            { data: "start_date" },
+            { data: "end_date" },
+        ],
+        columnDefs: [
+            {
+                targets: 0,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "selectedProduct" + rowData.product_id);
+                    $(td).attr("data-selected", false);
+                    $(td).attr("onclick", "selectedProduct(" + row + ", this)");
+                    $(td).attr("data-row-index", row);
+                    $(td).attr("data-identifier", rowData.product_id);
+                    $(td).addClass("select-product-column");
+                },
+            },
+            {
+                targets: 1,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "productId" + row);
+                },
+            },
+            {
+                targets: 2,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "productName" + row);
+                },
+            },
+            {
+                targets: 3,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "productNote" + row);
+                },
+            },
+            {
+                targets: 4,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "productPeriodStartDate" + row);
+                },
+            },
+            {
+                targets: 5,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "productPeriodEndDate" + row);
+                },
+            },
+            { orderable: false, targets: [0, 1, 2, 3, 4, 5] },
+        ],
+        language: {
+            emptyTable: "<h3>データがありません！</h3>",
         },
-      },
-      {
-        targets: 1,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "productId" + row);
-        },
-      },
-      {
-        targets: 2,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "productName" + row);
-        },
-      },
-      {
-        targets: 3,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "productNote" + row);
-        },
-      },
-      {
-        targets: 4,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "productPeriodStartDate" + row);
-        },
-      },
-      {
-        targets: 5,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "productPeriodEndDate" + row);
-        },
-      },
-      { orderable: false, targets: [0, 1, 2, 3, 4, 5] },
-    ],
-    language: {
-      emptyTable: "<h3>データがありません！</h3>",
-    },
-    bFilter: false, // to display data-table search
-    bInfo: false, // to display data-table entries text
-  });
-
-  // Handle product search
-  $(document).on("click", "#productSearch", function (e) {
-    e.preventDefault();
-    var productId = $("#searchProductId").val();
-    var productName = $("#searchProductName").val();
-
-    $productDataTable.on("preXhr.dt", function (e, settings, data) {
-      data.productId = productId;
-      data.productName = productName;
+        bFilter: false, // to display data-table search
+        bInfo: false, // to display data-table entries text
     });
 
-    $productDataTable.dataTable().fnDraw(); // Manually redraw the table after filtering
-  });
+    // Handle product search
+    $(document).on("submit", "#productSearchForm", function (e) {
+        e.preventDefault();
+        var productId = $("#searchProductId").val();
+        var productName = $("#searchProductName").val();
 
-  // Clear Product Search
-  $(document).on("click", "#clearProductSearch", function (e) {
-    e.preventDefault();
-    $("#searchProductId").val("");
-    $("#searchProductName").val("");
+        $productDataTable.on("preXhr.dt", function (e, settings, data) {
+            data.productId = productId;
+            data.productName = productName;
+        });
 
-    $productDataTable.on("preXhr.dt", function (e, settings, data) {
-      delete data.productId;
-      delete data.productName;
+        $productDataTable.dataTable().fnDraw(); // Manually redraw the table after filtering
     });
 
-    $productDataTable.dataTable().fnDraw();
-  });
+    // Clear Product Search
+    $(document).on("click", "#clearProductSearch", function (e) {
+        e.preventDefault();
+        $("#searchProductId").val("");
+        $("#searchProductName").val("");
 
-  $(document).on("click", "#addSelectedProductsBtn", function (e) {
-    e.preventDefault();
-    let selectedProducts = $(
-      "#productSelectTable > tbody > tr > td.select-product-column[data-selected='true']"
-    );
-    let markup = "";
-    $.each(selectedProducts, function (key, product) {
-      // Grab Data From Modal
-      let rowIndex = $(product).attr("data-row-index");
+        $productDataTable.on("preXhr.dt", function (e, settings, data) {
+            delete data.productId;
+            delete data.productName;
+        });
 
-      let productId = $("#productId" + rowIndex).html();
-      let productName = $("#productName" + rowIndex).html();
-      let productNote = $("#productNote" + rowIndex).html();
-      let productPeriodStartDate = $(
-        "#productPeriodStartDate" + rowIndex
-      ).html();
-      let productPeriodEndDate = $("#productPeriodEndDate" + rowIndex).html();
-
-      //Push Data To the product contract table
-      markup +=
-        '<tr><td id="productSelectId">' +
-        productId +
-        '</td><td id="productSelectName">' +
-        productName +
-        '</td><td id="productSelectNote">' +
-        productNote +
-        '</td><td id="productSelectStartDate">' +
-        productPeriodStartDate +
-        '</td><td id="productSelectEndDate">' +
-        productPeriodEndDate +
-        "</td></tr>";
+        $productDataTable.dataTable().fnDraw();
     });
-    $(".productSelectTable tbody").html("");
-    $(".productSelectTable tbody").append(markup);
-  });
+
+    $(document).on("click", "#addSelectedProductsBtn", function (e) {
+        e.preventDefault();
+        let selectedProducts = $(
+            "#productSelectTable > tbody > tr > td.select-product-column[data-selected='true']"
+        );
+        let markup = "";
+        $.each(selectedProducts, function (key, product) {
+            // Grab Data From Modal
+            let rowIndex = $(product).attr("data-row-index");
+
+            let productId = $("#productId" + rowIndex).html();
+            let productName = $("#productName" + rowIndex).html();
+            let productNote = $("#productNote" + rowIndex).html();
+            let productPeriodStartDate = $(
+                "#productPeriodStartDate" + rowIndex
+            ).html();
+            let productPeriodEndDate = $(
+                "#productPeriodEndDate" + rowIndex
+            ).html();
+
+            //Push Data To the product contract table
+            markup +=
+                '<tr><td id="productSelectId" class="product-select-id" data-identifier="' +
+                productId +
+                '">' +
+                productId +
+                '</td><td id="productSelectName">' +
+                productName +
+                '</td><td id="productSelectNote">' +
+                productNote +
+                '</td><td id="productSelectStartDate">' +
+                productPeriodStartDate +
+                '</td><td id="productSelectEndDate">' +
+                productPeriodEndDate +
+                "</td></tr>";
+        });
+        $(".productSelectTable tbody").html("");
+        $(".productSelectTable tbody").append(markup);
+    });
 }
 
 function loadContractorDataTable() {
-  // Load data-table data for contractors on modal
-  var $contractorDataTable = $("#contractorSelectTable");
-  $contractorDataTable.DataTable({
-    paging: false,
-    bProcessing: true,
-    serverSide: true,
-    scrollCollapse: false,
-    ajax: {
-      url: baseUrl + "/contract-contractor-data-table-data", // json data source
-      type: "post",
-      data: {},
-    },
-    columns: [
-      {
-        data: "contractor_id",
-        render: function (datum, type, row) {
-          return "<a href='#'>選択</a>";
+    // Load data-table data for contractors on modal
+    var $contractorDataTable = $("#contractorSelectTable");
+    $contractorDataTable.DataTable({
+        paging: false,
+        bProcessing: true,
+        serverSide: true,
+        scrollCollapse: false,
+        ajax: {
+            url: baseUrl + "/contract-contractor-data-table-data", // json data source
+            type: "post",
+            data: {},
         },
-      },
-      { data: "contractor_id" },
-      { data: "contractor_name" },
-      { data: "address_01" },
-      { data: "tel_no" },
-      { data: "mail_address" },
-    ],
-    columnDefs: [
-      {
-        targets: 0,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "selectedContractor" + rowData.contractor_id);
-          $(td).attr("onclick", "selectedContractor(" + row + ", this)");
-          $(td).attr("data-row-index", row);
-          let hiddenInputs =
-            "<input id='contractorNameKana" +
-            row +
-            "' type='hidden' value='" +
-            rowData.contractor_name_kana +
-            "'>" +
-            "<input id='contractorPostCode" +
-            row +
-            "' type='hidden' value='" +
-            rowData.zipcode +
-            "'>" +
-            "<input id='contractorAddress2" +
-            row +
-            "' type='hidden' value='" +
-            rowData.address_02 +
-            "'>";
-          $(td).append(hiddenInputs);
+        columns: [
+            {
+                data: "contractor_id",
+                render: function (datum, type, row) {
+                    return "<a href='#'>選択</a>";
+                },
+            },
+            { data: "contractor_id" },
+            { data: "contractor_name" },
+            { data: "address_01" },
+            { data: "tel_no" },
+            { data: "mail_address" },
+        ],
+        columnDefs: [
+            {
+                targets: 0,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr(
+                        "id",
+                        "selectedContractor" + rowData.contractor_id
+                    );
+                    $(td).attr(
+                        "onclick",
+                        "selectedContractor(" + row + ", this)"
+                    );
+                    $(td).attr("data-row-index", row);
+                    let hiddenInputs =
+                        "<input id='contractorNameKana" +
+                        row +
+                        "' type='hidden' value='" +
+                        rowData.contractor_name_kana +
+                        "'>" +
+                        "<input id='contractorPostCode" +
+                        row +
+                        "' type='hidden' value='" +
+                        rowData.zipcode +
+                        "'>" +
+                        "<input id='contractorAddress2" +
+                        row +
+                        "' type='hidden' value='" +
+                        rowData.address_02 +
+                        "'>";
+                    $(td).append(hiddenInputs);
+                },
+            },
+            {
+                targets: 1,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "contractorId" + row);
+                },
+            },
+            {
+                targets: 2,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "contractorName" + row);
+                },
+            },
+            {
+                targets: 3,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "contractorAddress1" + row);
+                },
+            },
+            {
+                targets: 4,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "contractorPhn" + row);
+                },
+            },
+            {
+                targets: 5,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "contractorMail" + row);
+                },
+            },
+            { orderable: false, targets: [0, 1, 2, 3, 4, 5] },
+        ],
+        language: {
+            emptyTable: "<h3>データがありません！</h3>",
         },
-      },
-      {
-        targets: 1,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "contractorId" + row);
-        },
-      },
-      {
-        targets: 2,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "contractorName" + row);
-        },
-      },
-      {
-        targets: 3,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "contractorAddress1" + row);
-        },
-      },
-      {
-        targets: 4,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "contractorPhn" + row);
-        },
-      },
-      {
-        targets: 5,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "contractorMail" + row);
-        },
-      },
-      { orderable: false, targets: [0, 1, 2, 3, 4, 5] },
-    ],
-    language: {
-      emptyTable: "<h3>データがありません！</h3>",
-    },
-    bFilter: false, // to display data-table search
-    bInfo: false, // to display data-table entries text
-  });
-
-  // Handle contractor search
-  $(document).on("click", "#contractorSearch", function (e) {
-    e.preventDefault();
-    var contractorId = $("#searchContractorId").val();
-    var contractorName = $("#searchContractorName").val();
-
-    $contractorDataTable.on("preXhr.dt", function (e, settings, data) {
-      data.contractorId = contractorId;
-      data.contractorName = contractorName;
+        bFilter: false, // to display data-table search
+        bInfo: false, // to display data-table entries text
     });
 
-    $contractorDataTable.dataTable().fnDraw(); // Manually redraw the table after filtering
-  });
+    // Handle contractor search
+    $(document).on("submit", "#contractorSearchForm", function (e) {
+        e.preventDefault();
+        var contractorId = $("#searchContractorId").val();
+        var contractorName = $("#searchContractorName").val();
 
-  // Clear contractor search
-  $(document).on("click", "#clearContractorSearch", function (e) {
-    e.preventDefault();
-    $("#searchContractorId").val("");
-    $("#searchContractorName").val("");
+        $contractorDataTable.on("preXhr.dt", function (e, settings, data) {
+            data.contractorId = contractorId;
+            data.contractorName = contractorName;
+        });
 
-    $contractorDataTable.on("preXhr.dt", function (e, settings, data) {
-      delete data.contractorId;
-      delete data.contractorName;
+        $contractorDataTable.dataTable().fnDraw(); // Manually redraw the table after filtering
     });
 
-    $contractorDataTable.dataTable().fnDraw();
-  });
+    // Clear contractor search
+    $(document).on("click", "#clearContractorSearch", function (e) {
+        e.preventDefault();
+        $("#searchContractorId").val("");
+        $("#searchContractorName").val("");
+
+        $contractorDataTable.on("preXhr.dt", function (e, settings, data) {
+            delete data.contractorId;
+            delete data.contractorName;
+        });
+
+        $contractorDataTable.dataTable().fnDraw();
+    });
 }
 
 function loadShopDataTable() {
-  // Load data-table data for shops on modal
-  var $shopDataTable = $("#shopSelectTable");
-  $shopDataTable.DataTable({
-    paging: false,
-    bProcessing: true,
-    serverSide: true,
-    scrollCollapse: false,
-    ajax: {
-      url: baseUrl + "/contract-shop-data-table-data", // json data source
-      type: "post",
-      data: {},
-    },
-    columns: [
-      {
-        data: "shop_id",
-        render: function (datum, type, row) {
-          return "<a href='#'>選択</a>";
+    // Load data-table data for shops on modal
+    var $shopDataTable = $("#shopSelectTable");
+    $shopDataTable.DataTable({
+        paging: false,
+        bProcessing: true,
+        serverSide: true,
+        scrollCollapse: false,
+        ajax: {
+            url: baseUrl + "/contract-shop-data-table-data", // json data source
+            type: "post",
+            data: {},
         },
-      },
-      { data: "shop_id" },
-      { data: "shop_name" },
-      { data: "address_01" },
-    ],
-    columnDefs: [
-      {
-        targets: 0,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "selectedShop" + rowData.shop_id);
-          $(td).attr("onclick", "selectedShop(" + row + ", this)");
-          $(td).attr("data-row-index", row);
-          let hiddenInputs =
-            "<input id='shopRepresentativeName" +
-            row +
-            "' type='hidden' value=''>" +
-            "<input id='shopPrefecture" +
-            row +
-            "' type='hidden' value='" +
-            rowData.prefecture +
-            "'>" +
-            "<input id='shopPhoneNumber" +
-            row +
-            "' type='hidden' value='" +
-            rowData.tel_no +
-            "'>";
-          $(td).append(hiddenInputs);
+        columns: [
+            {
+                data: "shop_id",
+                render: function (datum, type, row) {
+                    return "<a href='#'>選択</a>";
+                },
+            },
+            { data: "shop_id" },
+            { data: "shop_name" },
+            { data: "address_01" },
+        ],
+        columnDefs: [
+            {
+                targets: 0,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "selectedShop" + rowData.shop_id);
+                    $(td).attr("onclick", "selectedShop(" + row + ", this)");
+                    $(td).attr("data-row-index", row);
+                    let hiddenInputs =
+                        "<input id='shopRepresentativeName" +
+                        row +
+                        "' type='hidden' value=''>" +
+                        "<input id='shopPrefecture" +
+                        row +
+                        "' type='hidden' value='" +
+                        rowData.prefecture +
+                        "'>" +
+                        "<input id='shopPhoneNumber" +
+                        row +
+                        "' type='hidden' value='" +
+                        rowData.tel_no +
+                        "'>";
+                    $(td).append(hiddenInputs);
+                },
+            },
+            {
+                targets: 1,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "shopId" + row);
+                },
+            },
+            {
+                targets: 2,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "shopName" + row);
+                },
+            },
+            {
+                targets: 3,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "shopAddress" + row);
+                },
+            },
+            { orderable: false, targets: [0, 1, 2, 3] },
+        ],
+        language: {
+            emptyTable: "<h3>データがありません！</h3>",
         },
-      },
-      {
-        targets: 1,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "shopId" + row);
-        },
-      },
-      {
-        targets: 2,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "shopName" + row);
-        },
-      },
-      {
-        targets: 3,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "shopAddress" + row);
-        },
-      },
-      { orderable: false, targets: [0, 1, 2, 3] },
-    ],
-    language: {
-      emptyTable: "<h3>データがありません！</h3>",
-    },
-    bFilter: false, // to display data-table search
-    bInfo: false, // to display data-table entries text
-  });
-
-  // Handle shop search
-  $(document).on("click", "#shopSearch", function (e) {
-    e.preventDefault();
-    var shopId = $("#searchShopId").val();
-    var shopName = $("#searchShopName").val();
-
-    $shopDataTable.on("preXhr.dt", function (e, settings, data) {
-      data.shopId = shopId;
-      data.shopName = shopName;
+        bFilter: false, // to display data-table search
+        bInfo: false, // to display data-table entries text
     });
 
-    $shopDataTable.dataTable().fnDraw(); // Manually redraw the table after filtering
-  });
+    // Handle shop search
+    $(document).on("submit", "#shopSearchForm", function (e) {
+        e.preventDefault();
+        var shopId = $("#searchShopId").val();
+        var shopName = $("#searchShopName").val();
 
-  // Clear contractor search
-  $(document).on("click", "#clearShopSearch", function (e) {
-    e.preventDefault();
-    $("#searchShopId").val("");
-    $("#searchShopName").val("");
+        $shopDataTable.on("preXhr.dt", function (e, settings, data) {
+            data.shopId = shopId;
+            data.shopName = shopName;
+        });
 
-    $shopDataTable.on("preXhr.dt", function (e, settings, data) {
-      delete data.shopId;
-      delete data.shopName;
+        $shopDataTable.dataTable().fnDraw(); // Manually redraw the table after filtering
     });
 
-    $shopDataTable.dataTable().fnDraw();
-  });
+    // Clear contractor search
+    $(document).on("click", "#clearShopSearch", function (e) {
+        e.preventDefault();
+        $("#searchShopId").val("");
+        $("#searchShopName").val("");
+
+        $shopDataTable.on("preXhr.dt", function (e, settings, data) {
+            delete data.shopId;
+            delete data.shopName;
+        });
+
+        $shopDataTable.dataTable().fnDraw();
+    });
 }
 
-$(document).ready(function() {
-  $("#shopInputFields :input").attr("disabled", true);
-  $("#shopInputFields :button").attr("disabled", true);
-  $("#mySelect").prop("disabled", true);
+function loadProductSelectModal() {
+    $(document).on("click", "#loadProductSelectModal", function (e) {
+        e.preventDefault();
+        var selectedProductsArray = [];
+        var selectedProducts = $(document).find(
+            "#productSelectionTable > tbody > tr > td.product-select-id"
+        );
+        $.each(selectedProducts, function (index, value) {
+            selectedProductsArray.push($(value).attr("data-identifier"));
+        });
+        var modalProducts = $(document).find(
+            "#productSelectTable > tbody > tr > td.select-product-column"
+        );
+        $.each(modalProducts, function (index, value) {
+            var productIdentifier = $(value).attr("data-identifier");
+            if (selectedProductsArray.indexOf(productIdentifier) !== -1) {
+                $(value).attr("data-selected", true);
+                $(value).addClass("bg-dark-silver");
+            } else {
+                $(value).attr("data-selected", false);
+                $(value).removeClass("bg-dark-silver");
+            }
+        });
+        $("#product-select-modal").modal("show");
+    });
+}
 
-  loadProductDataTable();
+$(document).ready(function () {
+    $("#shopInputFields :input").attr("disabled", true);
+    $("#shopInputFields :button").attr("disabled", true);
+    $("#mySelect").prop("disabled", true);
 
-  loadContractorDataTable();
+    loadProductDataTable();
 
-  loadShopDataTable();
+    loadContractorDataTable();
+
+    loadShopDataTable();
+
+    loadProductSelectModal();
 });

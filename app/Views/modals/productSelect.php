@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="productFilterForm">
+                <form id="productSearchForm">
                     <div class="card-body">
                         <div class="form-group col-md-4 pl-0">
                             <label for="productId">商品ID（完全一致）</label>
@@ -18,7 +18,7 @@
                             <label for="productName">商品名（あいまい）</label>
                             <input type="text" class="form-control" id="searchProductName" placeholder="" name="productName" value="">
                         </div>
-                        <span id="productSearch" class="btn btn-primary pl-4 pr-4 k1Btn k1Btn2 mr-3">検索</span>
+                        <button type="submit" id="productSearch" class="btn btn-primary pl-4 pr-4 k1Btn k1Btn2 mr-3">検索</button>
                         <span id="clearProductSearch" class="btn btn-primary k1Btn k1Btn2">条件クリア</span>
                     </div>
                 </form>

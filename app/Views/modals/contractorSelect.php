@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="contractorSearchForm">
                     <div class="card-body">
                         <div class="form-group col-md-4 pl-0">
                             <label for="contractorId">契約者ID（完全一致）</label>
@@ -18,7 +18,7 @@
                             <label for="contractorName">契約者名（あいまい）</label>
                             <input type="text" class="form-control" id="searchContractorName" name="contractorName" placeholder="" value="">
                         </div>
-                        <span id="contractorSearch" class="btn btn-primary pl-4 pr-4 k1Btn k1Btn2 mr-3">検索</span>
+                        <button type="submit" id="contractorSearch" class="btn btn-primary pl-4 pr-4 k1Btn k1Btn2 mr-3">検索</button>
                         <span id="clearContractorSearch" class="btn btn-primary  k1Btn k1Btn2">条件クリア</span>
                     </div>
                 </form>

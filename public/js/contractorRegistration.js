@@ -39,41 +39,41 @@ function contractorRegistration() {
             url: "/contractor-registration",
             type: "POST",
             data: data,
-            dataType: 'JSON',
-            headers: {'X-Requested-With': 'XMLHttpRequest'},
+            dataType: "JSON",
+            headers: { "X-Requested-With": "XMLHttpRequest" },
 
             success: function (data) {
                 if (data.status === 1) {
                     let id = data.contractor;
-                    window.location.href = "/contractor-details/"+id;
+                    window.location.href = "/contractor-details/" + id;
                 } else if (data.status === 3) {
                     window.location.href = "/login";
                 }
             },
             error: function (jqXHR, exception) {
                 alert("Error occurred");
-            }
+            },
         });
     }
 }
 
 function contractorAddressSearch() {
-    let zipCode = $('#contractorPostCode').val();
+    let zipCode = $("#contractorPostCode").val();
     getAddressFromZipCode(zipCode, "contractorAddress1");
 }
 
 function companyAddressSearch() {
-    let zipCode = $('#companyPostCode').val();
+    let zipCode = $("#companyPostCode").val();
     getAddressFromZipCode(zipCode, "companyAddress1");
 }
 
 function groupAddressSearch() {
-    let zipCode = $('#groupPostCode').val();
+    let zipCode = $("#groupPostCode").val();
     getAddressFromZipCode(zipCode, "groupAddress1");
 }
 
 function getAddressFromZipCode(zipCode, setAddressId) {
-    var param = {zipcode: zipCode};
+    var param = { zipcode: zipCode };
     var send_url = "http://zipcloud.ibsnet.co.jp/api/search";
 
     $.ajax({
@@ -85,7 +85,9 @@ function getAddressFromZipCode(zipCode, setAddressId) {
         success: function (res) {
             if (res.status == 200) {
                 if (res.results) {
-                    $("#" + setAddressId).val(res.results[0].address1 + res.results[0].address2);
+                    $("#" + setAddressId).val(
+                        res.results[0].address1 + res.results[0].address2
+                    );
                 } else {
                     alert("Invalid Zip Code");
                 }
@@ -95,7 +97,7 @@ function getAddressFromZipCode(zipCode, setAddressId) {
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             console.log(XMLHttpRequest);
-        }
+        },
     });
 }
 
@@ -123,14 +125,16 @@ function selectedGroup(data, td) {
     $("#groupName").val($("#groupName" + data).html());
     $("#groupKana").val($("#groupNameKana" + data).val());
     $("#groupRepresentative").val($("#groupRepresentative" + data).html());
-    $("#groupRepresentativeKana").val($("#groupRepresentativeKana" + data).val());
+    $("#groupRepresentativeKana").val(
+        $("#groupRepresentativeKana" + data).val()
+    );
     $("#groupPostCode").val($("#groupPostCode" + data).val());
     $("#groupAddress1").val($("#groupAddress1" + data).html());
     $("#groupAddress2").val($("#groupAddress2" + data).val());
     $("#groupPhn").val($("#groupPhn" + data).html());
     $("#groupMail").val($("#groupMail" + data).html());
 
-    $('#groupSelectTable td').removeClass("bg-dark-silver");
+    $("#groupSelectTable td").removeClass("bg-dark-silver");
     $(td).addClass("bg-dark-silver");
     $("#groupModalClose").click();
 }
@@ -141,14 +145,16 @@ function selectedCompany(data, td) {
     $("#companyName").val($("#companyName" + data).html());
     $("#companyKana").val($("#companyNameKana" + data).val());
     $("#companyRepresentative").val($("#companyRepresentative" + data).html());
-    $("#companyRepresentativeKana").val($("#companyRepresentativeKana" + data).val());
+    $("#companyRepresentativeKana").val(
+        $("#companyRepresentativeKana" + data).val()
+    );
     $("#companyPostCode").val($("#companyPostCode" + data).val());
     $("#companyAddress1").val($("#companyAddress1" + data).html());
     $("#companyAddress2").val($("#companyAddress2" + data).val());
     $("#companyPhn").val($("#companyPhn" + data).html());
     $("#companyMail").val($("#companyMail" + data).html());
 
-    $('#companySelectTable td').removeClass("bg-dark-silver");
+    $("#companySelectTable td").removeClass("bg-dark-silver");
     $(td).addClass("bg-dark-silver");
     $("#companyModalClose").click();
 }
@@ -164,44 +170,44 @@ function selectedContractor(data, td) {
     $("#contractorPhn").val($("#contractorPhn" + data).html());
     $("#contractorMail").val($("#contractorMail" + data).html());
 
-    $('#contractorSelectTable td').removeClass("bg-dark-silver");
+    $("#contractorSelectTable td").removeClass("bg-dark-silver");
     $(td).addClass("bg-dark-silver");
     $("#contractorModalClose").click();
 }
 
-function contractorSearchClear(){
+function contractorSearchClear() {
     $("#searchContractorId").val("");
     $("#searchContractorName").val("");
 }
 
-function groupSearchClear(){
+function groupSearchClear() {
     $("#searchGroupId").val("");
     $("#searchGroupName").val("");
 }
 
-function companySearchClear(){
+function companySearchClear() {
     $("#searchCompanyId").val("");
     $("#searchCompanyName").val("");
 }
 
-function selectedContractorWithCompanyGroup(id, td){
-    let contractorCompany = $("#contractorCompany"+id).val();
-    let contractorGroup = $("#contractorGroup"+id).val();
+function selectedContractorWithCompanyGroup(id, td) {
+    let contractorCompany = $("#contractorCompany" + id).val();
+    let contractorGroup = $("#contractorGroup" + id).val();
     let contractorCompanyData = contractorCompany.split("=>");
     let contractorGroupData = contractorGroup.split("=>");
 
     //contractor data populate
-    $("#contractorId").val($("#contractorId"+id).html());
-    $("#contractorName").val($("#contractorName"+id).html());
-    $("#contractorKana").val($("#contractorNameKana"+id).val());
-    $("#contractorPostCode").val($("#contractorPostCode"+id).val());
-    $("#contractorAddress1").val($("#contractorAddress1"+id).html());
-    $("#contractorAddress2").val($("#contractorAddress2"+id).val());
-    $("#contractorPhn").val($("#contractorPhn"+id).html());
-    $("#contractorMail").val($("#contractorMail"+id).html());
+    $("#contractorId").val($("#contractorId" + id).html());
+    $("#contractorName").val($("#contractorName" + id).html());
+    $("#contractorKana").val($("#contractorNameKana" + id).val());
+    $("#contractorPostCode").val($("#contractorPostCode" + id).val());
+    $("#contractorAddress1").val($("#contractorAddress1" + id).html());
+    $("#contractorAddress2").val($("#contractorAddress2" + id).val());
+    $("#contractorPhn").val($("#contractorPhn" + id).html());
+    $("#contractorMail").val($("#contractorMail" + id).html());
     $("#contractorInsert").val("update");
 
-    $('#updateContractorSelectTable td').removeClass("bg-dark-silver");
+    $("#updateContractorSelectTable td").removeClass("bg-dark-silver");
     $(td).addClass("bg-dark-silver");
     $("#updateContractorModalClose").click();
 
@@ -233,406 +239,413 @@ function selectedContractorWithCompanyGroup(id, td){
 }
 
 function loadContractorDataTable() {
-  // Load data-table data for contractors on modal
-  var $contractorDataTable = $("#updateContractorSelectTable");
-  $contractorDataTable.DataTable({
-    paging: false,
-    bProcessing: true,
-    serverSide: true,
-    scrollCollapse: false,
-    ajax: {
-      url: baseUrl + "/contractor-registration-get-contractor-data-table-data", // json data source
-      type: "post",
-      data: {},
-    },
-    columns: [
-      {
-        data: "contractor_id",
-        render: function (datum, type, row) {
-          return "<a href='#'>選択</a>";
+    // Load data-table data for contractors on modal
+    var $contractorDataTable = $("#updateContractorSelectTable");
+    $contractorDataTable.DataTable({
+        paging: false,
+        bProcessing: true,
+        serverSide: true,
+        scrollCollapse: false,
+        ajax: {
+            url:
+                baseUrl +
+                "/contractor-registration-get-contractor-data-table-data", // json data source
+            type: "post",
+            data: {},
         },
-      },
-      { data: "contractor_id" },
-      { data: "contractor_name" },
-      { data: "address_01" },
-      { data: "tel_no" },
-      { data: "mail_address" },
-    ],
-    columnDefs: [
-      {
-        targets: 0,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "selectedContractorUpdate" + rowData.contractor_id);
-          $(td).attr(
-            "onclick",
-            "selectedContractorWithCompanyGroup(" + row + ", this)"
-          );
-          $(td).attr("data-row-index", row);
-          let hiddenInputs =
-            "<input id='contractorNameKana" +
-            row +
-            "' type='hidden' value='" +
-            rowData.contractor_name_kana +
-            "'>" +
-            "<input id='contractorPostCode" +
-            row +
-            "' type='hidden' value='" +
-            rowData.zipcode +
-            "'>" +
-            "<input id='contractorAddress2" +
-            row +
-            "' type='hidden' value='" +
-            rowData.address_02 +
-            "'>" +
-            "<input id='contractorCompany" +
-            row +
-            "' type='hidden' value='" +
-            rowData.company_data +
-            "'>" +
-            "<input id='contractorGroup" +
-            row +
-            "' type='hidden' value='" +
-            rowData.group_data +
-            "'>";
-          $(td).append(hiddenInputs);
+        columns: [
+            {
+                data: "contractor_id",
+                render: function (datum, type, row) {
+                    return "<a href='#'>選択</a>";
+                },
+            },
+            { data: "contractor_id" },
+            { data: "contractor_name" },
+            { data: "address_01" },
+            { data: "tel_no" },
+            { data: "mail_address" },
+        ],
+        columnDefs: [
+            {
+                targets: 0,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr(
+                        "id",
+                        "selectedContractorUpdate" + rowData.contractor_id
+                    );
+                    $(td).attr(
+                        "onclick",
+                        "selectedContractorWithCompanyGroup(" + row + ", this)"
+                    );
+                    $(td).attr("data-row-index", row);
+                    let hiddenInputs =
+                        "<input id='contractorNameKana" +
+                        row +
+                        "' type='hidden' value='" +
+                        rowData.contractor_name_kana +
+                        "'>" +
+                        "<input id='contractorPostCode" +
+                        row +
+                        "' type='hidden' value='" +
+                        rowData.zipcode +
+                        "'>" +
+                        "<input id='contractorAddress2" +
+                        row +
+                        "' type='hidden' value='" +
+                        rowData.address_02 +
+                        "'>" +
+                        "<input id='contractorCompany" +
+                        row +
+                        "' type='hidden' value='" +
+                        rowData.company_data +
+                        "'>" +
+                        "<input id='contractorGroup" +
+                        row +
+                        "' type='hidden' value='" +
+                        rowData.group_data +
+                        "'>";
+                    $(td).append(hiddenInputs);
+                },
+            },
+            {
+                targets: 1,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "contractorId" + row);
+                },
+            },
+            {
+                targets: 2,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "contractorName" + row);
+                },
+            },
+            {
+                targets: 3,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "contractorAddress1" + row);
+                },
+            },
+            {
+                targets: 4,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "contractorPhn" + row);
+                },
+            },
+            {
+                targets: 5,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "contractorMail" + row);
+                },
+            },
+            { orderable: false, targets: [0, 1, 2, 3, 4, 5] },
+        ],
+        language: {
+            emptyTable: "<h3>データがありません！</h3>",
         },
-      },
-      {
-        targets: 1,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "contractorId" + row);
-        },
-      },
-      {
-        targets: 2,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "contractorName" + row);
-        },
-      },
-      {
-        targets: 3,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "contractorAddress1" + row);
-        },
-      },
-      {
-        targets: 4,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "contractorPhn" + row);
-        },
-      },
-      {
-        targets: 5,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "contractorMail" + row);
-        },
-      },
-      { orderable: false, targets: [0, 1, 2, 3, 4, 5] },
-    ],
-    language: {
-      emptyTable: "<h3>データがありません！</h3>",
-    },
-    bFilter: false, // to display data-table search
-    bInfo: false, // to display data-table entries text
-  });
-
-  // Handle contractor search
-  $(document).on("submit", "#contractorSearchForm", function (e) {
-    e.preventDefault();
-    var contractorId = $("#searchContractorId").val();
-    var contractorName = $("#searchContractorName").val();
-
-    $contractorDataTable.on("preXhr.dt", function (e, settings, data) {
-      data.contractorId = contractorId;
-      data.contractorName = contractorName;
+        bFilter: false, // to display data-table search
+        bInfo: false, // to display data-table entries text
     });
 
-    $contractorDataTable.dataTable().fnDraw(); // Manually redraw the table after filtering
-  });
+    // Handle contractor search
+    $(document).on("submit", "#contractorSearchForm", function (e) {
+        e.preventDefault();
+        var contractorId = $("#searchContractorId").val();
+        var contractorName = $("#searchContractorName").val();
 
-  // Clear contractor search
-  $(document).on("click", "#clearContractorSearch", function (e) {
-    e.preventDefault();
-    $("#searchContractorId").val("");
-    $("#searchContractorName").val("");
+        $contractorDataTable.on("preXhr.dt", function (e, settings, data) {
+            data.contractorId = contractorId;
+            data.contractorName = contractorName;
+        });
 
-    $contractorDataTable.on("preXhr.dt", function (e, settings, data) {
-      delete data.contractorId;
-      delete data.contractorName;
+        $contractorDataTable.dataTable().fnDraw(); // Manually redraw the table after filtering
     });
 
-    $contractorDataTable.dataTable().fnDraw();
-  });
+    // Clear contractor search
+    $(document).on("click", "#clearContractorSearch", function (e) {
+        e.preventDefault();
+        $("#searchContractorId").val("");
+        $("#searchContractorName").val("");
+
+        $contractorDataTable.on("preXhr.dt", function (e, settings, data) {
+            delete data.contractorId;
+            delete data.contractorName;
+        });
+
+        $contractorDataTable.dataTable().fnDraw();
+    });
 }
 
 function loadCompanyDataTable() {
-  // Load data-table data for companies on modal
-  var $companyDataTable = $("#companySelectTable");
-  $companyDataTable.DataTable({
-    paging: false,
-    bProcessing: true,
-    serverSide: true,
-    scrollCollapse: false,
-    ajax: {
-      url: baseUrl + "/contractor-registration-get-company-data-table-data", // json data source
-      type: "post",
-      data: {},
-    },
-    columns: [
-      {
-        data: "company_id",
-        render: function (datum, type, row) {
-          return "<a href='#'>選択</a>";
+    // Load data-table data for companies on modal
+    var $companyDataTable = $("#companySelectTable");
+    $companyDataTable.DataTable({
+        paging: false,
+        bProcessing: true,
+        serverSide: true,
+        scrollCollapse: false,
+        ajax: {
+            url:
+                baseUrl +
+                "/contractor-registration-get-company-data-table-data", // json data source
+            type: "post",
+            data: {},
         },
-      },
-      { data: "company_id" },
-      { data: "company_name" },
-      { data: "daihyousha_name" },
-      { data: "address_01" },
-      { data: "tel_no" },
-      { data: "mail_address" },
-    ],
-    columnDefs: [
-      {
-        targets: 0,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "selectedCompany" + rowData.company_id);
-          $(td).attr("onclick", "selectedCompany(" + row + ", this)");
-          $(td).attr("data-row-index", row);
-          let hiddenInputs =
-            "<input id='companyNameKana" +
-            row +
-            "' type='hidden' value='" +
-            rowData.company_name_kana +
-            "'>" +
-            "<input id='companyRepresentativeKana" +
-            row +
-            "' type='hidden' value='" +
-            rowData.daihyousha_name_kana +
-            "'>" +
-            "<input id='companyPostCode" +
-            row +
-            "' type='hidden' value='" +
-            rowData.zipcode +
-            "'>" +
-            "<input id='companyAddress2" +
-            row +
-            "' type='hidden' value='" +
-            rowData.address_02 +
-            "'>";
-          $(td).append(hiddenInputs);
+        columns: [
+            {
+                data: "company_id",
+                render: function (datum, type, row) {
+                    return "<a href='#'>選択</a>";
+                },
+            },
+            { data: "company_id" },
+            { data: "company_name" },
+            { data: "daihyousha_name" },
+            { data: "address_01" },
+            { data: "tel_no" },
+            { data: "mail_address" },
+        ],
+        columnDefs: [
+            {
+                targets: 0,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "selectedCompany" + rowData.company_id);
+                    $(td).attr("onclick", "selectedCompany(" + row + ", this)");
+                    $(td).attr("data-row-index", row);
+                    let hiddenInputs =
+                        "<input id='companyNameKana" +
+                        row +
+                        "' type='hidden' value='" +
+                        rowData.company_name_kana +
+                        "'>" +
+                        "<input id='companyRepresentativeKana" +
+                        row +
+                        "' type='hidden' value='" +
+                        rowData.daihyousha_name_kana +
+                        "'>" +
+                        "<input id='companyPostCode" +
+                        row +
+                        "' type='hidden' value='" +
+                        rowData.zipcode +
+                        "'>" +
+                        "<input id='companyAddress2" +
+                        row +
+                        "' type='hidden' value='" +
+                        rowData.address_02 +
+                        "'>";
+                    $(td).append(hiddenInputs);
+                },
+            },
+            {
+                targets: 1,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "companyId" + row);
+                },
+            },
+            {
+                targets: 2,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "companyName" + row);
+                },
+            },
+            {
+                targets: 3,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "companyRepresentative" + row);
+                },
+            },
+            {
+                targets: 4,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "companyAddress1" + row);
+                },
+            },
+            {
+                targets: 5,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "companyPhn" + row);
+                },
+            },
+            {
+                targets: 6,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "companyMail" + row);
+                },
+            },
+            { orderable: false, targets: [0, 1, 2, 3, 4, 5, 6] },
+        ],
+        language: {
+            emptyTable: "<h3>データがありません！</h3>",
         },
-      },
-      {
-        targets: 1,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "companyId" + row);
-        },
-      },
-      {
-        targets: 2,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "companyName" + row);
-        },
-      },
-      {
-        targets: 3,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "companyRepresentative" + row);
-        },
-      },
-      {
-        targets: 4,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "companyAddress1" + row);
-        },
-      },
-      {
-        targets: 5,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "companyPhn" + row);
-        },
-      },
-      {
-        targets: 6,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "companyMail" + row);
-        },
-      },
-      { orderable: false, targets: [0, 1, 2, 3, 4, 5, 6] },
-    ],
-    language: {
-      emptyTable: "<h3>データがありません！</h3>",
-    },
-    bFilter: false, // to display data-table search
-    bInfo: false, // to display data-table entries text
-  });
-
-  // Submit company search
-  $(document).on("submit", "#companySearchForm", function (e) {
-    e.preventDefault();
-    var companyId = $("#searchCompanyId").val();
-    var companyName = $("#searchCompanyName").val();
-
-    $companyDataTable.on("preXhr.dt", function (e, settings, data) {
-      data.companyId = companyId;
-      data.companyName = companyName;
+        bFilter: false, // to display data-table search
+        bInfo: false, // to display data-table entries text
     });
 
-    $companyDataTable.dataTable().fnDraw(); // Manually redraw the table after filtering
-  });
+    // Submit company search
+    $(document).on("submit", "#companySearchForm", function (e) {
+        e.preventDefault();
+        var companyId = $("#searchCompanyId").val();
+        var companyName = $("#searchCompanyName").val();
 
-  // Clear company search
-  $(document).on("click", "#clearCompanySearch", function (e) {
-    e.preventDefault();
-    $("#searchCompanyId").val("");
-    $("#searchCompanyName").val("");
+        $companyDataTable.on("preXhr.dt", function (e, settings, data) {
+            data.companyId = companyId;
+            data.companyName = companyName;
+        });
 
-    $companyDataTable.on("preXhr.dt", function (e, settings, data) {
-      delete data.companyId;
-      delete data.companyName;
+        $companyDataTable.dataTable().fnDraw(); // Manually redraw the table after filtering
     });
 
-    $companyDataTable.dataTable().fnDraw();
-  });
+    // Clear company search
+    $(document).on("click", "#clearCompanySearch", function (e) {
+        e.preventDefault();
+        $("#searchCompanyId").val("");
+        $("#searchCompanyName").val("");
+
+        $companyDataTable.on("preXhr.dt", function (e, settings, data) {
+            delete data.companyId;
+            delete data.companyName;
+        });
+
+        $companyDataTable.dataTable().fnDraw();
+    });
 }
 
 function loadGroupDataTable() {
-  // Load data-table data for groups on modal
-  var $groupDataTable = $("#groupSelectTable");
-  $groupDataTable.DataTable({
-    paging: false,
-    bProcessing: true,
-    serverSide: true,
-    scrollCollapse: false,
-    ajax: {
-      url: baseUrl + "/contractor-registration-get-group-data-table-data", // json data source
-      type: "post",
-      data: {},
-    },
-    columns: [
-      {
-        data: "group_id",
-        render: function (datum, type, row) {
-          return "<a href='#'>選択</a>";
+    // Load data-table data for groups on modal
+    var $groupDataTable = $("#groupSelectTable");
+    $groupDataTable.DataTable({
+        paging: false,
+        bProcessing: true,
+        serverSide: true,
+        scrollCollapse: false,
+        ajax: {
+            url: baseUrl + "/contractor-registration-get-group-data-table-data", // json data source
+            type: "post",
+            data: {},
         },
-      },
-      { data: "group_id" },
-      { data: "group_name" },
-      { data: "daihyousha_name" },
-      { data: "address_01" },
-      { data: "tel_no" },
-      { data: "mail_address" },
-    ],
-    columnDefs: [
-      {
-        targets: 0,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "selectedGroup" + rowData.group_id);
-          $(td).attr("onclick", "selectedGroup(" + row + ", this)");
-          $(td).attr("data-row-index", row);
-          let hiddenInputs =
-            "<input id='groupNameKana" +
-            row +
-            "' type='hidden' value='" +
-            rowData.group_name_kana +
-            "'>" +
-            "<input id='groupRepresentativeKana" +
-            row +
-            "' type='hidden' value='" +
-            rowData.daihyousha_name_kana +
-            "'>" +
-            "<input id='groupPostCode" +
-            row +
-            "' type='hidden' value='" +
-            rowData.zipcode +
-            "'>" +
-            "<input id='groupAddress2" +
-            row +
-            "' type='hidden' value='" +
-            rowData.address_02 +
-            "'>";
-          $(td).append(hiddenInputs);
+        columns: [
+            {
+                data: "group_id",
+                render: function (datum, type, row) {
+                    return "<a href='#'>選択</a>";
+                },
+            },
+            { data: "group_id" },
+            { data: "group_name" },
+            { data: "daihyousha_name" },
+            { data: "address_01" },
+            { data: "tel_no" },
+            { data: "mail_address" },
+        ],
+        columnDefs: [
+            {
+                targets: 0,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "selectedGroup" + rowData.group_id);
+                    $(td).attr("onclick", "selectedGroup(" + row + ", this)");
+                    $(td).attr("data-row-index", row);
+                    let hiddenInputs =
+                        "<input id='groupNameKana" +
+                        row +
+                        "' type='hidden' value='" +
+                        rowData.group_name_kana +
+                        "'>" +
+                        "<input id='groupRepresentativeKana" +
+                        row +
+                        "' type='hidden' value='" +
+                        rowData.daihyousha_name_kana +
+                        "'>" +
+                        "<input id='groupPostCode" +
+                        row +
+                        "' type='hidden' value='" +
+                        rowData.zipcode +
+                        "'>" +
+                        "<input id='groupAddress2" +
+                        row +
+                        "' type='hidden' value='" +
+                        rowData.address_02 +
+                        "'>";
+                    $(td).append(hiddenInputs);
+                },
+            },
+            {
+                targets: 1,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "groupId" + row);
+                },
+            },
+            {
+                targets: 2,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "groupName" + row);
+                },
+            },
+            {
+                targets: 3,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "groupRepresentative" + row);
+                },
+            },
+            {
+                targets: 4,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "groupAddress1" + row);
+                },
+            },
+            {
+                targets: 5,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "groupPhn" + row);
+                },
+            },
+            {
+                targets: 6,
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).attr("id", "groupMail" + row);
+                },
+            },
+            { orderable: false, targets: [0, 1, 2, 3, 4, 5, 6] },
+        ],
+        language: {
+            emptyTable: "<h3>データがありません！</h3>",
         },
-      },
-      {
-        targets: 1,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "groupId" + row);
-        },
-      },
-      {
-        targets: 2,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "groupName" + row);
-        },
-      },
-      {
-        targets: 3,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "groupRepresentative" + row);
-        },
-      },
-      {
-        targets: 4,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "groupAddress1" + row);
-        },
-      },
-      {
-        targets: 5,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "groupPhn" + row);
-        },
-      },
-      {
-        targets: 6,
-        createdCell: function (td, cellData, rowData, row, col) {
-          $(td).attr("id", "groupMail" + row);
-        },
-      },
-      { orderable: false, targets: [0, 1, 2, 3, 4, 5, 6] },
-    ],
-    language: {
-      emptyTable: "<h3>データがありません！</h3>",
-    },
-    bFilter: false, // to display data-table search
-    bInfo: false, // to display data-table entries text
-  });
-
-  // Submit company search
-  $(document).on("submit", "#groupSearchForm", function (e) {
-    e.preventDefault();
-    var groupId = $("#searchGroupId").val();
-    var groupName = $("#searchGroupName").val();
-
-    $groupDataTable.on("preXhr.dt", function (e, settings, data) {
-      data.groupId = groupId;
-      data.groupName = groupName;
+        bFilter: false, // to display data-table search
+        bInfo: false, // to display data-table entries text
     });
 
-    $groupDataTable.dataTable().fnDraw(); // Manually redraw the table after filtering
-  });
+    // Submit company search
+    $(document).on("submit", "#groupSearchForm", function (e) {
+        e.preventDefault();
+        var groupId = $("#searchGroupId").val();
+        var groupName = $("#searchGroupName").val();
 
-  // Clear company search
-  $(document).on("click", "#clearGroupSearch", function (e) {
-    e.preventDefault();
-    $("#searchGroupId").val("");
-    $("#searchGroupName").val("");
+        $groupDataTable.on("preXhr.dt", function (e, settings, data) {
+            data.groupId = groupId;
+            data.groupName = groupName;
+        });
 
-    $groupDataTable.on("preXhr.dt", function (e, settings, data) {
-      delete data.groupId;
-      delete data.groupName;
+        $groupDataTable.dataTable().fnDraw(); // Manually redraw the table after filtering
     });
 
-    $groupDataTable.dataTable().fnDraw();
-  });
+    // Clear company search
+    $(document).on("click", "#clearGroupSearch", function (e) {
+        e.preventDefault();
+        $("#searchGroupId").val("");
+        $("#searchGroupName").val("");
+
+        $groupDataTable.on("preXhr.dt", function (e, settings, data) {
+            delete data.groupId;
+            delete data.groupName;
+        });
+
+        $groupDataTable.dataTable().fnDraw();
+    });
 }
 
 $(document).ready(function () {
-  loadContractorDataTable();
+    loadContractorDataTable();
 
-  loadCompanyDataTable();
+    loadCompanyDataTable();
 
-  loadGroupDataTable();
+    loadGroupDataTable();
 });

@@ -168,7 +168,7 @@
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm text-left">
                                         <div class="input-group-append">
-                                            <button type="button" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2" data-toggle="modal" data-target="#product-select-modal">
+                                            <button type="button" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2" id="loadProductSelectModal">
                                                 商品選択
                                             </button>
                                         </div>
@@ -177,7 +177,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="card-body table-responsive p-0">
-                                    <table class="table text-center productSelectTable">
+                                    <table class="table text-center productSelectTable" id="productSelectionTable">
                                         <thead class="k1RegTableTitleBG">
                                             <tr>
                                                 <th>商品ID</th>
