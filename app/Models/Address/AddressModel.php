@@ -13,7 +13,7 @@ class AddressModel
         return $this->mapAreaData($data);
     }
 
-    public function getAreaData($district = null, $prefecture = null, $areaLarge = null){
+    public function getAreaData($district = null, $prefecture = null, $areaLarge = null, $areaSmall = null){
         $where = "WHERE ";
         if($district){
             $where .= "district_id = '$district' AND ";
@@ -23,6 +23,9 @@ class AddressModel
         }
         if($areaLarge){
             $where .= "large_area_id = '$areaLarge' AND ";
+        }
+        if($areaSmall){
+            $where .= "small_area_id = '$areaSmall' AND ";
         }
 
         $queryString = "SELECT area_id, district_id, prefecture_id, large_area_id, small_area_id, area_name, area_areas, sort_order, update_date,
