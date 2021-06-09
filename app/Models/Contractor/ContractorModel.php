@@ -235,9 +235,7 @@ class ContractorModel
 
         $queryString = "SELECT mcon.contractor_id, mcon.contractor_name, mcon.contractor_name_kana, mcon.password, mcon.zipcode, mcon.address_01, mcon.address_02, mcon.tel_no, mcon.fax_no, mcon.mail_address, mcon.company_id, mcon.group_id, mcon.temporary, mcon.type_contractor, mcon.update_date, mcon.update_user_id, mcon.insert_date, mcon.insert_user_id, mcon.delete_flag {$extSelect} FROM mst_contractor AS mcon {$extJoin} WHERE mcon.delete_flag = ? {$condition} ORDER BY mcon.update_date DESC";
 
-        // echo $queryString; exit;
         $data = (new Database())->readQueryExecution($queryString, $queryParameter);
-        // echo "<pre>"; print_r($data); exit;
         $jsonData = array(
             "draw" => intval($params['draw']),
             "recordsTotal" => $data ? count($data) : 0,

@@ -69,6 +69,11 @@ class RegistrationController extends BaseController
         echo json_encode($contractors);
     }
 
+    public function companyDataTableData() {
+        $companies = (new CompanyModel())->getDataTableData();
+        echo json_encode($companies);
+    }
+
     public function tempRegistration(){
         if( session() && session()->get('login') && session()->get('user') == "employee" ){
             $group = (new GroupModel())->getAllGroupData();

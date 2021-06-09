@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="companySearchForm">
                     <div class="card-body">
                         <div class="form-group col-md-4 pl-0">
                             <label for="companyId">会社ID（完全一致）</label>
@@ -18,13 +18,13 @@
                             <label for="companyName">会社名（あいまい）</label>
                             <input type="text" class="form-control" id="searchCompanyName" placeholder="" name="companyName" value="">
                         </div>
-                        <span id="productSearch" class="btn btn-primary pl-4 pr-4 k1Btn k1Btn2 mr-3">検索</span>
-                        <span onclick="companySearchClear()" class="btn btn-primary k1Btn k1Btn2">条件クリア</span>
+                        <button type="submit" id="companySearch" class="btn btn-primary pl-4 pr-4 k1Btn k1Btn2 mr-3">検索</button>
+                        <span id="clearCompanySearch" class="btn btn-primary k1Btn k1Btn2">条件クリア</span>
                     </div>
                 </form>
                 <br />
                 <div class="card-body table-responsive p-0 ml-1" style="height: 300px;">
-                    <table class="table table-head-fixed text-nowrap ml-1" id="companySelectTable">
+                    <table class="table table-head-fixed text-nowrap ml-1" id="companySelectTable" style="width: 100%;">
                         <thead>
                             <tr>
                                 <th>選択</th>

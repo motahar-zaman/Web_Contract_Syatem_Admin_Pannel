@@ -241,7 +241,7 @@ function loadContractorDataTable() {
     serverSide: true,
     scrollCollapse: false,
     ajax: {
-      url: baseUrl + "/contractor-registration-get-data-table-data", // json data source
+      url: baseUrl + "/contractor-registration-get-contractor-data-table-data", // json data source
       type: "post",
       data: {},
     },
@@ -365,10 +365,142 @@ function loadContractorDataTable() {
   });
 }
 
+function loadCompanyDataTable() {
+  // Load data-table data for contractors on modal
+  var $companyDataTable = $("#companySelectTable");
+  $companyDataTable.DataTable({
+    paging: false,
+    bProcessing: true,
+    serverSide: true,
+    scrollCollapse: false,
+    ajax: {
+      url: baseUrl + "/contractor-registration-get-company-data-table-data", // json data source
+      type: "post",
+      data: {},
+    },
+    columns: [
+      {
+        data: "company_id",
+        render: function (datum, type, row) {
+          return "<a href='#'>選択</a>";
+        },
+      },
+      { data: "company_id" },
+      { data: "company_name" },
+      { data: "daihyousha_name" },
+      { data: "address_01" },
+      { data: "tel_no" },
+      { data: "mail_address" },
+    ],
+    columnDefs: [
+      {
+        targets: 0,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "selectedCompany" + rowData.company_id);
+          $(td).attr("onclick", "selectedCompany(" + row + ", this)");
+          $(td).attr("data-row-index", row);
+          let hiddenInputs =
+            "<input id='companyNameKana" +
+            row +
+            "' type='hidden' value='" +
+            rowData.company_name_kana +
+            "'>" +
+            "<input id='companyRepresentativeKana" +
+            row +
+            "' type='hidden' value='" +
+            rowData.daihyousha_name_kana +
+            "'>" +
+            "<input id='companyPostCode" +
+            row +
+            "' type='hidden' value='" +
+            rowData.zipcode +
+            "'>" +
+            "<input id='companyAddress2" +
+            row +
+            "' type='hidden' value='" +
+            rowData.address_02 +
+            "'>";
+          $(td).append(hiddenInputs);
+        },
+      },
+      {
+        targets: 1,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "companyId" + row);
+        },
+      },
+      {
+        targets: 2,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "companyName" + row);
+        },
+      },
+      {
+        targets: 3,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "companyRepresentative" + row);
+        },
+      },
+      {
+        targets: 4,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "companyAddress1" + row);
+        },
+      },
+      {
+        targets: 5,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "companyPhn" + row);
+        },
+      },
+      {
+        targets: 6,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "companyMail" + row);
+        },
+      },
+      { orderable: false, targets: [0, 1, 2, 3, 4, 5, 6] },
+    ],
+    language: {
+      emptyTable: "<h3>データがありません！</h3>",
+    },
+    bFilter: false, // to display data-table search
+    bInfo: false, // to display data-table entries text
+  });
+
+  // Submit company search
+  $(document).on("submit", "#companySearchForm", function (e) {
+    e.preventDefault();
+    var companyId = $("#searchCompanyId").val();
+    var companyName = $("#searchCompanyName").val();
+
+    $companyDataTable.on("preXhr.dt", function (e, settings, data) {
+      data.companyId = companyId;
+      data.companyName = companyName;
+    });
+
+    $companyDataTable.dataTable().fnDraw(); // Manually redraw the table after filtering
+  });
+
+  // Clear company search
+  $(document).on("click", "#clearCompanySearch", function (e) {
+    e.preventDefault();
+    $("#searchCompanyId").val("");
+    $("#searchCompanyName").val("");
+
+    $companyDataTable.on("preXhr.dt", function (e, settings, data) {
+      delete data.companyId;
+      delete data.companyName;
+    });
+
+    $companyDataTable.dataTable().fnDraw();
+  });
+}
+
 $(document).ready(function () {
 //   loadProductDataTable();
 
   loadContractorDataTable();
 
-//   loadShopDataTable();
+  loadCompanyDataTable();
 });

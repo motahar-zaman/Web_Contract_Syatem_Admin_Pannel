@@ -150,4 +150,32 @@ class CompanyModel
             return $datas;
         }
     }
+
+    public function getDataTableData() {
+        $params['draw'] = $_REQUEST['draw'];
+        $condition = "";
+        $queryParameter = [1];
+
+        if (isset($_POST['companyId']) && $_POST['companyId'] !== '') {
+            $condition .= " AND company_id LIKE ?";
+            $queryParameter[] = $_POST['companyId'];
+        }
+
+        if (isset($_POST['companyName']) && $_POST['companyName'] !== '') {
+            $condition .= " AND company_name LIKE ?";
+            $queryParameter[] = "%" . $_POST['companyName'] . "%";
+        }
+
+        $queryString = "SELECT company_id, company_name, company_name_kana, daihyousha_name, daihyousha_name_kana, zipcode, address_01, address_02, tel_no, fax_no,mail_address, site_url, update_date, update_user_id, insert_date, insert_user_id, delete_flag FROM mst_company WHERE delete_flag = ? {$condition} ORDER BY update_date DESC";
+
+        $data = (new Database())->readQueryExecution($queryString, $queryParameter);
+        $jsonData = array(
+            "draw" => intval($params['draw']),
+            "recordsTotal" => $data ? count($data) : 0,
+            "recordsFiltered" => $data ? count($data) : 0,
+            "data" => $data
+        );
+
+        return $jsonData;
+    }
 }
