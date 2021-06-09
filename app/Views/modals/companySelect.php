@@ -36,33 +36,6 @@
                                 <th>メールアドレス</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <?php
-                                if(isset($company) && count($company) > 0){
-                                    for($i = 0; $i < count($company); $i++){
-                                        $data = $company[$i];
-                                        ?>
-                                        <tr>
-                                            <td onclick="selectedCompany(<?php echo $i ?>, this)" id="selectedCompany<?php echo $data->getId() ?>"><a href="#">選択</a></td>
-                                            <td id="companyId<?php echo $i ?>"><?php echo $data->getId() ?></td>
-                                            <td id="companyName<?php echo $i ?>"><?php echo $data->getName() ?></td>
-                                            <td id="companyRepresentative<?php echo $i ?>"> <?php echo $data->getRepresentative() ?></td>
-                                            <td id="companyAddress1<?php echo $i ?>"><?php echo $data->getAddress01() ?></td>
-                                            <td id="companyPhn<?php echo $i ?>"><?php echo $data->getTelNo() ?></td>
-                                            <td id="companyMail<?php echo $i ?>"><?php echo $data->getMailAddress() ?></td>
-                                        </tr>
-                                        <input id="companyNameKana<?php echo $i ?>" type="hidden" value="<?php echo $data->getNameKana() ?>">
-                                        <input id="companyRepresentativeKana<?php echo $i ?>" type="hidden" value="<?php echo $data->getRepresentativeKana() ?>">
-                                        <input id="companyPostCode<?php echo $i ?>" type="hidden" value="<?php echo $data->getZipCode() ?>">
-                                        <input id="companyAddress2<?php echo $i ?>" type="hidden" value="<?php echo $data->getAddress02() ?>">
-                                        <?php
-                                    }
-                                }
-                                else{
-                                    echo "<h3>データがありません！</h3>";
-                                }
-                            ?>
-                        </tbody>
                     </table>
                 </div>
             </div>

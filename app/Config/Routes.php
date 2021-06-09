@@ -63,6 +63,7 @@ $routes->get('temp-contractor-registration', 'Contractor\RegistrationController:
 $routes->post('contractor-registration', 'Contractor\RegistrationController::registrationAction');
 $routes->post('contractor-registration-get-contractor-data-table-data', 'Contractor\RegistrationController::contractorDataTableData');
 $routes->post('contractor-registration-get-company-data-table-data', 'Contractor\RegistrationController::companyDataTableData');
+$routes->post('contractor-registration-get-group-data-table-data', 'Contractor\RegistrationController::groupDataTableData');
 //$routes->post('contractor-update', 'Contractor\RegistrationController::updateAction');
 $routes->get('contractor-update', 'Contractor\RegistrationController::index');
 $routes->post('contractor-update', 'Contractor\RegistrationController::registrationAction');

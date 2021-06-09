@@ -366,7 +366,7 @@ function loadContractorDataTable() {
 }
 
 function loadCompanyDataTable() {
-  // Load data-table data for contractors on modal
+  // Load data-table data for companies on modal
   var $companyDataTable = $("#companySelectTable");
   $companyDataTable.DataTable({
     paging: false,
@@ -497,10 +497,142 @@ function loadCompanyDataTable() {
   });
 }
 
-$(document).ready(function () {
-//   loadProductDataTable();
+function loadGroupDataTable() {
+  // Load data-table data for groups on modal
+  var $groupDataTable = $("#groupSelectTable");
+  $groupDataTable.DataTable({
+    paging: false,
+    bProcessing: true,
+    serverSide: true,
+    scrollCollapse: false,
+    ajax: {
+      url: baseUrl + "/contractor-registration-get-group-data-table-data", // json data source
+      type: "post",
+      data: {},
+    },
+    columns: [
+      {
+        data: "group_id",
+        render: function (datum, type, row) {
+          return "<a href='#'>選択</a>";
+        },
+      },
+      { data: "group_id" },
+      { data: "group_name" },
+      { data: "daihyousha_name" },
+      { data: "address_01" },
+      { data: "tel_no" },
+      { data: "mail_address" },
+    ],
+    columnDefs: [
+      {
+        targets: 0,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "selectedGroup" + rowData.group_id);
+          $(td).attr("onclick", "selectedGroup(" + row + ", this)");
+          $(td).attr("data-row-index", row);
+          let hiddenInputs =
+            "<input id='groupNameKana" +
+            row +
+            "' type='hidden' value='" +
+            rowData.group_name_kana +
+            "'>" +
+            "<input id='groupRepresentativeKana" +
+            row +
+            "' type='hidden' value='" +
+            rowData.daihyousha_name_kana +
+            "'>" +
+            "<input id='groupPostCode" +
+            row +
+            "' type='hidden' value='" +
+            rowData.zipcode +
+            "'>" +
+            "<input id='groupAddress2" +
+            row +
+            "' type='hidden' value='" +
+            rowData.address_02 +
+            "'>";
+          $(td).append(hiddenInputs);
+        },
+      },
+      {
+        targets: 1,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "groupId" + row);
+        },
+      },
+      {
+        targets: 2,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "groupName" + row);
+        },
+      },
+      {
+        targets: 3,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "groupRepresentative" + row);
+        },
+      },
+      {
+        targets: 4,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "groupAddress1" + row);
+        },
+      },
+      {
+        targets: 5,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "groupPhn" + row);
+        },
+      },
+      {
+        targets: 6,
+        createdCell: function (td, cellData, rowData, row, col) {
+          $(td).attr("id", "groupMail" + row);
+        },
+      },
+      { orderable: false, targets: [0, 1, 2, 3, 4, 5, 6] },
+    ],
+    language: {
+      emptyTable: "<h3>データがありません！</h3>",
+    },
+    bFilter: false, // to display data-table search
+    bInfo: false, // to display data-table entries text
+  });
 
+  // Submit company search
+  $(document).on("submit", "#groupSearchForm", function (e) {
+    e.preventDefault();
+    var groupId = $("#searchGroupId").val();
+    var groupName = $("#searchGroupName").val();
+
+    $groupDataTable.on("preXhr.dt", function (e, settings, data) {
+      data.groupId = groupId;
+      data.groupName = groupName;
+    });
+
+    $groupDataTable.dataTable().fnDraw(); // Manually redraw the table after filtering
+  });
+
+  // Clear company search
+  $(document).on("click", "#clearGroupSearch", function (e) {
+    e.preventDefault();
+    $("#searchGroupId").val("");
+    $("#searchGroupName").val("");
+
+    $groupDataTable.on("preXhr.dt", function (e, settings, data) {
+      delete data.groupId;
+      delete data.groupName;
+    });
+
+    $groupDataTable.dataTable().fnDraw();
+  });
+}
+
+$(document).ready(function () {
   loadContractorDataTable();
 
   loadCompanyDataTable();
+
+  loadGroupDataTable();
 });
