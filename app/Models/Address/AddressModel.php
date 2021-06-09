@@ -217,7 +217,7 @@ class AddressModel
             $where .= "prefecture_id = '$prefecture' AND ";
         }
         if($areaLarge){
-            $where .= "large_area_id = '$areaLarge' AND ";
+            $where .= "area_large_id = '$areaLarge' AND ";
         }
 
         $queryString = "SELECT small_area_id, district_id, prefecture_id, area_large_id, area_name, area_areas, sort_order, update_date, update_user_id,
