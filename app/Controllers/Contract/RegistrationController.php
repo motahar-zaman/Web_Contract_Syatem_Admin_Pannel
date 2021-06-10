@@ -118,7 +118,12 @@ class RegistrationController extends BaseController
 
                 if($_POST['contractType'] == 'update'){
                     $contract->setId($_POST['contractId']);
-                    $contract->setStatus(07);
+                    if(session()->get('user') == "contractor"){
+                        $contract->setStatus(03);
+                    }
+                    else{
+                        $contract->setStatus(07);
+                    }
                     (new contractmodel())->updateContractData($contract);
                 }
                 else{
