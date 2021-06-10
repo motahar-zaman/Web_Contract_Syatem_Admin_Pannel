@@ -954,6 +954,16 @@ $('#areaLarge').on('change', function () {
     getAddressRelatedData(3, data, "/area-large-address");
 });
 
+$('#areaSmall').on('change', function () {
+    let data = {};
+    data["district"] = $("#district option:selected").val();
+    data["prefecture"] = $("#prefecture option:selected").val();
+    data["areaLarge"] = $("#areaLarge option:selected").val();
+    data["areaSmall"] = $("#areaSmall option:selected").val();
+
+    getAddressRelatedData(4, data, "/area-small-address");
+});
+
 function getAddressRelatedData(addressType, data, url){
     $.ajax({
         url: url,
@@ -964,7 +974,6 @@ function getAddressRelatedData(addressType, data, url){
 
         success: function (data) {
             if (data.status === 1) {
-                console.log(data.msg);
                 if(addressType === 1){
                     fillUpAddressesForDistrictSelect(data);
                 }
@@ -976,7 +985,12 @@ function getAddressRelatedData(addressType, data, url){
                 else if(addressType === 3){
                     fillUpAddressesForAreaLargeSelect(data);
                 }
-            } else if (data.status === 3) {
+
+                else if(addressType === 4){
+                    fillUpAddressesForAreaSmallSelect(data);
+                }
+            }
+            else if (data.status === 3) {
                 window.location.href = "/login";
             }
         },
@@ -1063,5 +1077,19 @@ function fillUpAddressesForAreaLargeSelect(data){
     }
 
     $("#areaSmall").html(areaSmallOption);
+    $("#area").html(areaOption);
+}
+
+function fillUpAddressesForAreaSmallSelect(data){
+
+    let areaOption = "<option value=\"0\"></option>";
+
+    let area = data[0].area;
+    let i;
+
+    for(i = 0; i < area.length; i++){
+        areaOption += "<option value=\""+area[i]["area_id"]+"\">"+area[i]["area_name"]+"</option>"
+    }
+
     $("#area").html(areaOption);
 }
