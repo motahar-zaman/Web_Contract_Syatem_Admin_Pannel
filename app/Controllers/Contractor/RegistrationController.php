@@ -65,21 +65,6 @@ class RegistrationController extends BaseController
         }
     }
 
-    public function contractorDataTableData() {
-        $contractors = (new ContractorModel())->getDataTableData(true, true);
-        echo json_encode($contractors);
-    }
-
-    public function companyDataTableData() {
-        $companies = (new CompanyModel())->getDataTableData();
-        echo json_encode($companies);
-    }
-
-    public function groupDataTableData() {
-        $groups = (new GroupModel())->getDataTableData();
-        echo json_encode($groups);
-    }
-
     public function tempRegistration(){
         if( session() && session()->get('login') && session()->get('user') == "employee" ){
             $group = (new GroupModel())->getAllGroupData();
@@ -306,5 +291,20 @@ class RegistrationController extends BaseController
         else{
             return json_encode(['msg' => "Not Logged in user", 'status' => 3]);
         }
+    }
+
+    public function contractorDataTableData() {
+        $contractors = (new ContractorModel())->getDataTableData(true, true);
+        echo json_encode($contractors);
+    }
+
+    public function companyDataTableData() {
+        $companies = (new CompanyModel())->getDataTableData();
+        echo json_encode($companies);
+    }
+
+    public function groupDataTableData() {
+        $groups = (new GroupModel())->getDataTableData();
+        echo json_encode($groups);
     }
 }
