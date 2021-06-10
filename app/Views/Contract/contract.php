@@ -451,7 +451,7 @@
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm text-left">
                                         <div class="input-group-append">
-                                            <button  type="button" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2" data-toggle="modal" data-target="#discount-select-modal"
+                                            <button onclick="clearRingiForm()"  type="button" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2" data-toggle="modal" data-target="#discount-select-modal"
                                                     style="color: black !important; background-color:#D0CECE !important;" >
                                                 割引内容更新
                                             </button>

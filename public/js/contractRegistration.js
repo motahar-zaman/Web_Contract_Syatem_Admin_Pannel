@@ -1093,3 +1093,22 @@ function fillUpAddressesForAreaSmallSelect(data){
 
     $("#area").html(areaOption);
 }
+
+function clearRingiForm(){
+    $("#ringiNoSearch").val("");
+    $("#ringiNo").html("");
+    $("#applicantName").html("");
+    $("#ringiType").html("");
+    $("#targetArea").html("");
+    $("#targetName").html("");
+    $("#discountServiceType").html("");
+    $("#ringiDetail").html("");
+    $("#summaryCondition").html("");
+    $("#beforeSummaryPrice").html("");
+    $("#afterSummaryPrice").html("");
+    $("#summaryPeriod").html("");
+    $("#startDate").html("");
+    $("#endDate").html("");
+    $("#purpose").html("");
+    $("#memo").html("");
+}
