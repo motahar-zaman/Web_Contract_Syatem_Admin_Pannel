@@ -1084,7 +1084,7 @@ function fillUpAddressesForAreaSmallSelect(data){
 
     let areaOption = "<option value=\"0\"></option>";
 
-    let area = data[0].area;
+    let area = data.area;
     let i;
 
     for(i = 0; i < area.length; i++){
