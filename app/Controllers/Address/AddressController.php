@@ -10,8 +10,11 @@ use App\Models\Address\AddressModel;
 
 class AddressController extends BaseController
 {
-    public function getDistrictSubordinateAddress($districtId){
+    public function getDistrictSubordinateAddress(){
         if( session() && session()->get('login') ) {
+
+            $districtId = $_GET["district"];
+
             $prefecture = (new AddressModel())->getPrefectureData($districtId);
             $areaLarge = (new AddressModel())->getAreaLargeData($districtId);
             $areaSmall = (new AddressModel())->getAreaSmallData($districtId);
@@ -31,8 +34,12 @@ class AddressController extends BaseController
             }
     }
 
-    public function getPrefectureSubordinateAddress($districtId, $prefectureId){
+    public function getPrefectureSubordinateAddress(){
         if( session() && session()->get('login') ) {
+
+            $districtId = $_GET["district"];
+            $prefectureId = $_GET["prefecture"];
+
             $areaLarge = (new AddressModel())->getAreaLargeData($districtId, $prefectureId);
             $areaSmall = (new AddressModel())->getAreaSmallData($districtId, $prefectureId);
             $area = (new AddressModel())->getAreaData($districtId, $prefectureId);
@@ -50,8 +57,13 @@ class AddressController extends BaseController
             }
     }
 
-    public function getAreaLargeSubordinateAddress($districtId, $prefectureId, $areaLargeId){
+    public function getAreaLargeSubordinateAddress(){
         if( session() && session()->get('login') ) {
+
+            $districtId = $_GET["district"];
+            $prefectureId = $_GET["prefecture"];
+            $areaLargeId = $_GET["areaLarge"];
+
             $areaSmall = (new AddressModel())->getAreaSmallData($districtId, $prefectureId, $areaLargeId);
             $area = (new AddressModel())->getAreaData($districtId, $prefectureId, $areaLargeId);
 
@@ -67,8 +79,14 @@ class AddressController extends BaseController
             }
     }
 
-    public function getAreaSmallSubordinateAddress($districtId, $prefectureId, $areaLargeId, $areaSmallId){
+    public function getAreaSmallSubordinateAddress(){
         if( session() && session()->get('login') ) {
+
+            $districtId = $_GET["district"];
+            $prefectureId = $_GET["prefecture"];
+            $areaLargeId = $_GET["areaLarge"];
+            $areaSmallId = $_GET["areaSmall"];
+
             $area = (new AddressModel())->getAreaData($districtId, $prefectureId, $areaLargeId, $areaSmallId);
 
             return json_encode(['msg' => "Successful", "area" => $area, "status" => 1]);

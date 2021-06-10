@@ -90,7 +90,7 @@ $routes->post('shop-registration', 'Contract\RegistrationController::shopRegistr
 
 $routes->get('ringi-search', 'Contract\ContractController::ringiSearch');
 
-$routes->get('district-address/(:any)', 'Address\AddressController::getDistrictSubordinateAddress/$1');
-$routes->get('prefecture-address/(:any)/(:any)', 'Address\AddressController::getPrefectureSubordinateAddress/$1/$2');
-$routes->get('area-large-address/(:any)/(:any)/(:any)', 'Address\AddressController::getAreaLargeSubordinateAddress/$1/$2/$3');
-$routes->get('area-small-address/(:any)/(:any)/(:any)/(:any)', 'Address\AddressController::getAreaSmallSubordinateAddress/$1/$2/$3/$4');
+$routes->get('district-address', 'Address\AddressController::getDistrictSubordinateAddress');
+$routes->get('prefecture-address', 'Address\AddressController::getPrefectureSubordinateAddress');
+$routes->get('area-large-address', 'Address\AddressController::getAreaLargeSubordinateAddress');
+$routes->get('area-small-address', 'Address\AddressController::getAreaSmallSubordinateAddress');
