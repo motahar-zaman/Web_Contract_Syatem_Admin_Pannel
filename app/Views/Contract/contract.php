@@ -465,7 +465,7 @@
                                         <thead class="k1RegTableTitleBG">
                                             <tr>
                                                 <th class="align-middle" rowspan="2"></th>
-                                                <th class="align-middle" rowspan="2">稟議No</th>
+                                                <th class="align-middle" rowspan="2">稟議番号</th>
                                                 <th class="align-middle" rowspan="2">契約種別</th>
                                                 <th class="align-middle" rowspan="2">対象区分</th>
                                                 <th class="align-middle" rowspan="2">対象名</th>

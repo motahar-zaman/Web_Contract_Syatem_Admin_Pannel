@@ -11,10 +11,10 @@
                 <form class="mb-5">
                     <div class="card-body">
                         <div class="form-group col-md-4 pl-0">
-                            <label for="ringiNoSearch">稟議No（完全一致） Ringi No (Exact match)</label>
+                            <label for="ringiNoSearch">稟議No（完全一致）</label>
                             <input name="ringiNoSearch" id="ringiNoSearch" type="text" class="form-control" value="">
                         </div>
-                        <span onclick="ringiSearch()" id="ringiSearch" class="btn btn-primary pl-4 pr-4 k1Btn k1Btn2 mr-3">検索(Search)</span>
+                        <span onclick="ringiSearch()" id="ringiSearch" class="btn btn-primary pl-4 pr-4 k1Btn k1Btn2 mr-3">検索</span>
                     </div>
                 </form>
 
@@ -23,29 +23,29 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>契約種別(Contract Type)</label>
+                                    <label>契約種別</label>
                                     <span class="form-control d-none" id="ringiNo"></span>
                                     <span class="form-control d-none" id="applicantName"></span>
                                     <span class="form-control" id="ringiType"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label>対象区分(Target classification)</label>
+                                    <label>対象区分</label>
                                     <span class="form-control" id="targetArea"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label>対象名(Target Name)</label>
+                                    <label>対象名</label>
                                     <span class="form-control" id="targetName"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label>内容項目(Content Item)</label>
+                                    <label>内容項目</label>
                                     <span class="form-control" id="discountServiceType"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label>内容詳細(Content detail)</label>
+                                    <label>内容詳細</label>
                                     <span class="form-control h100px" id="ringiDetail"></span>
                                 </div>
                                 <div class="form-group ">
-                                    <label>条件(Condition)</label>
+                                    <label>条件</label>
                                     <span class="form-control h100px" id="summaryCondition"></span>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
                             </div>
 
                             <div class="col-md-12 mt-3">
-                                <label>摘要期間(Applicable period)</label>
+                                <label>摘要期間</label>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
@@ -91,15 +91,15 @@
 
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>目標(Purpose)</label>
+                                    <label>目標</label>
                                     <span class="form-control h100px" id="purpose"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label>備考(Remarks)</label>
+                                    <label>備考</label>
                                     <span class="form-control h100px" id="memo"></span>
                                 </div>
                             </div>
-                            <span onclick="addDiscountWithContract()" class="btn btn-primary ml-2 mt-2 k1Btn k1Btn2" data-dismiss="modal" aria-label="Close">摘要(Apply)</span>
+                            <span onclick="addDiscountWithContract()" class="btn btn-primary ml-2 mt-2 k1Btn k1Btn2" data-dismiss="modal" aria-label="Close">摘要</span>
                         </div>
                     </div>
                 </div>
