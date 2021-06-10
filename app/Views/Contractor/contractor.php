@@ -144,7 +144,7 @@
                                             ?>
                                             <label for="companyId">会社ID</label>
                                             <input class="form-control" type="text" name="companyId" id="companyId" value="<?= $id ?>" readonly>
-                                            <input type="hidden" name="companyInsert" id="companyInsert" value="insert">
+                                            <input type="hidden" name="companyInsert" id="companyInsert" value="<?= $store ?>">
                                         </div>
                                         <div class="form-group">
                                             <label for="companyName">会社名</label>
@@ -231,7 +231,7 @@
                                             ?>
                                             <label for="groupId">グループID</label>
                                             <input class="form-control" type="text" name="groupId" id="groupId" value="<?= $id ?>" readonly>
-                                            <input type="hidden" name="groupInsert" id="groupInsert" value="insert">
+                                            <input type="hidden" name="groupInsert" id="groupInsert" value="<?= $store ?>">
                                         </div>
                                         <div class="form-group">
                                             <label for="groupName">グループ名</label>
