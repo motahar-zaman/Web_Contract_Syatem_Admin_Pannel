@@ -254,7 +254,7 @@
                                             <select name="district" id="district" class="form-control">
                                                 <option value="0"></option>
                                                 <?php foreach ($districts as $district) { ?>
-                                                <option value="<?php echo $district->getId() ?>"><?php echo $district->getAreaName() ?></option>
+                                                    <option value="<?php echo $district->getId() ?>"><?php echo $district->getAreaName() ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
