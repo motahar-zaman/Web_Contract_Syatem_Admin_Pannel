@@ -937,6 +937,14 @@ $('#district').on('change', function (e) {
     getAddressRelatedData(1, data, "/district-address");
 });
 
+$('#prefecture').on('change', function () {
+    let data = {};
+    data["district"] = $("#district option:selected").val();
+    data["prefecture"] = $("#prefecture option:selected").val();
+
+    getAddressRelatedData(2, data, "/prefecture-address");
+});
+
 function getAddressRelatedData(addressType, data, url){
     $.ajax({
         url: url,
@@ -949,7 +957,11 @@ function getAddressRelatedData(addressType, data, url){
             if (data.status === 1) {
                 console.log(data.msg);
                 if(addressType === 1){
-                    fillUpAddressesForDistrictselect(data);
+                    fillUpAddressesForDistrictSelect(data);
+                }
+
+                else if(addressType === 2){
+                    fillUpAddressesForPrefectureSelect(data);
                 }
             } else if (data.status === 3) {
                 window.location.href = "/login";
@@ -961,7 +973,7 @@ function getAddressRelatedData(addressType, data, url){
     });
 }
 
-function fillUpAddressesForDistrictselect(data){
+function fillUpAddressesForDistrictSelect(data){
 
     let prefectureOption = "<option value=\"0\"></option>";
     let areaLargeOption = "<option value=\"0\"></option>";
@@ -988,6 +1000,34 @@ function fillUpAddressesForDistrictselect(data){
     }
 
     $("#prefecture").html(prefectureOption);
+    $("#areaLarge").html(areaLargeOption);
+    $("#areaSmall").html(areaSmallOption);
+    $("#area").html(areaOption);
+}
+
+function fillUpAddressesForPrefectureSelect(data){
+
+    let areaLargeOption = "<option value=\"0\"></option>";
+    let areaSmallOption = "<option value=\"0\"></option>";
+    let areaOption = "<option value=\"0\"></option>";
+
+    let pref = data[0].prefecture;
+    let large = data[0].areaLarge;
+    let small = data[0].areaSmall;
+    let area = data[0].area;
+    let i;
+
+
+    for(i = 0; i < large.length; i++){
+        areaLargeOption += "<option value=\""+large[i]["large_area_id"]+"\">"+large[i]["area_name"]+"</option>"
+    }
+    for(i = 0; i < small.length; i++){
+        areaSmallOption += "<option value=\""+small[i]["small_area_id"]+"\">"+small[i]["area_name"]+"</option>"
+    }
+    for(i = 0; i < area.length; i++){
+        areaOption += "<option value=\""+area[i]["area_id"]+"\">"+area[i]["area_name"]+"</option>"
+    }
+
     $("#areaLarge").html(areaLargeOption);
     $("#areaSmall").html(areaSmallOption);
     $("#area").html(areaOption);
