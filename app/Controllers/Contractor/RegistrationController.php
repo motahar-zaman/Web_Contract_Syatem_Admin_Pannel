@@ -175,7 +175,12 @@ class RegistrationController extends BaseController
                 else{
                     $contractor->setId($_POST["contractorId"]);
                     (new ContractorModel())->updateContractorData($contractor);
-                    (new ContractModel())->updateContractStatusForContractorUpdate($contractor->getId(), 07, date("Y-m-d H:i:s"), session()->get('userId'));
+
+                    $contractStatus = 07;
+                    if(session()->get('user') == "contractor"){
+                        $contractStatus = 03;
+                    }
+                    (new ContractModel())->updateContractStatusForContractorUpdate($contractor->getId(), $contractStatus, date("Y-m-d H:i:s"), session()->get('userId'));
                     $storeContractor = true;
                 }
 
