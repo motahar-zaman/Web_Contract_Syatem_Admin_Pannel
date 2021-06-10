@@ -945,6 +945,15 @@ $('#prefecture').on('change', function () {
     getAddressRelatedData(2, data, "/prefecture-address");
 });
 
+$('#areaLarge').on('change', function () {
+    let data = {};
+    data["district"] = $("#district option:selected").val();
+    data["prefecture"] = $("#prefecture option:selected").val();
+    data["areaLarge"] = $("#areaLarge option:selected").val();
+
+    getAddressRelatedData(3, data, "/area-large-address");
+});
+
 function getAddressRelatedData(addressType, data, url){
     $.ajax({
         url: url,
@@ -962,6 +971,10 @@ function getAddressRelatedData(addressType, data, url){
 
                 else if(addressType === 2){
                     fillUpAddressesForPrefectureSelect(data);
+                }
+
+                else if(addressType === 3){
+                    fillUpAddressesForAreaLargeSelect(data);
                 }
             } else if (data.status === 3) {
                 window.location.href = "/login";
@@ -1011,7 +1024,6 @@ function fillUpAddressesForPrefectureSelect(data){
     let areaSmallOption = "<option value=\"0\"></option>";
     let areaOption = "<option value=\"0\"></option>";
 
-    let pref = data[0].prefecture;
     let large = data[0].areaLarge;
     let small = data[0].areaSmall;
     let area = data[0].area;
@@ -1029,6 +1041,27 @@ function fillUpAddressesForPrefectureSelect(data){
     }
 
     $("#areaLarge").html(areaLargeOption);
+    $("#areaSmall").html(areaSmallOption);
+    $("#area").html(areaOption);
+}
+
+function fillUpAddressesForAreaLargeSelect(data){
+
+    let areaSmallOption = "<option value=\"0\"></option>";
+    let areaOption = "<option value=\"0\"></option>";
+
+    let small = data[0].areaSmall;
+    let area = data[0].area;
+    let i;
+
+
+    for(i = 0; i < small.length; i++){
+        areaSmallOption += "<option value=\""+small[i]["small_area_id"]+"\">"+small[i]["area_name"]+"</option>"
+    }
+    for(i = 0; i < area.length; i++){
+        areaOption += "<option value=\""+area[i]["area_id"]+"\">"+area[i]["area_name"]+"</option>"
+    }
+
     $("#areaSmall").html(areaSmallOption);
     $("#area").html(areaOption);
 }
