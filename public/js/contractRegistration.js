@@ -383,28 +383,34 @@ function shopRegistration(shopCount) {
     data["shopRepresentativeKana"] = $("#rep_name_kana").val();
     data["shopSite"] = $("#shop_site_url").val();
     data["BusinessType"] = $("#BusinessType").val();
-    data["notification_letter"] = $("#notification_letter").val();
+    let formData = new FormData();
+    formData.append("notification_letter", notification_letter.files[0]);
 
     if (validateData(data)) {
         $.ajax({
             url: "/shop-registration",
             type: "POST",
-            data: data,
+            data: formData,
             dataType: "JSON",
             headers: { "X-Requested-With": "XMLHttpRequest" },
+            processData: false,
+            contentType: false,
 
             success: function (data) {
                 if (data.status === 1) {
                     let file = "";
-                    if (data.shopFile) {
-                        file = "<a href='#'>あり</a>";
-                    } else {
+                    let filePath = data.shopFile;
+                    if (filePath) {
+                        file = "<a href='"+filePath+"'>あり</a>";
+                    }
+                    else {
                         file = "なし";
                     }
                     $(".productInfoShopId" + shopCount).html(data.shopId);
                     $(".productInfoShopName" + shopCount).html(data.shopName);
                     $(".productInfoShopFile" + shopCount).html(file);
-                } else if (data.status === 3) {
+                }
+                else if (data.status === 3) {
                     window.location.href = "/login";
                 }
             },

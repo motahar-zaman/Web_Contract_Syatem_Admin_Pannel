@@ -325,13 +325,10 @@ class RegistrationController extends BaseController
     }
 
     public function processShopFile($file, $shopId, $path){
-        $fileName = date("Ymd")."_".$shopId.".pdf";//$file->getClientExtension();
-        $targetFile = $path."/".$fileName;
+        $fileName = date("YmdHis").$shopId.".pdf";
+        $targetFile = $path.DIRECTORY_SEPARATOR.$fileName;
 
-        /*if(file_exists($path)){
-            mkdir($path, 0777, true);
-        }
-        move_uploaded_file($file, $targetFile);*/
+        move_uploaded_file($file['tmp_name'], $targetFile);
 
         return $fileName;
     }
@@ -342,8 +339,9 @@ class RegistrationController extends BaseController
                 $shop = new Shop();
                 $shopInfo = new ShopInfo();
 
-                $notificationLetter = $_POST["notification_letter"];
-                $path = "/shopFiles";
+                $notificationLetter = $_FILES["notification_letter"] ?? false;
+
+                $path = "./shopFiles";
 
                 $shop->setId((new SequenceModel())->getShopSequence());
                 $shop->setName($_POST['shopName'] ?? null);
@@ -370,7 +368,7 @@ class RegistrationController extends BaseController
                 $shopInfo->setRepresentative($_POST['shopRepresentative'] ?? null);
                 $shopInfo->setRepresentativeKana($_POST['shopRepresentativeKana'] ?? null);
                 $shopInfo->setBusiness(1);
-                $shopInfo->setNotification($notificationLetter != "" ? $this->processShopFile($notificationLetter, $shop->getId(), $path) : null);
+                $shopInfo->setNotification($notificationLetter ? $this->processShopFile($notificationLetter, $shop->getId(), $path) : null);
                 $shopInfo->setPjId(null);
                 $shopInfo->setPlId(null);
                 $shopInfo->setTorihikisakiId(null);

@@ -425,7 +425,7 @@
                                                                 <td id="productInfoShopFile" >
                                                                     <?php
                                                                         if($product["shopNotification"]){
-                                                                            echo "<a href='#'>あり</a>";
+                                                                            echo "<a href='".$product["shopNotification"]."'>あり</a>";
                                                                         }
                                                                         else{
                                                                             echo " なし";
