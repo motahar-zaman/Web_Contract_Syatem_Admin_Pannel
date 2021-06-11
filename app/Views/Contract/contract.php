@@ -415,7 +415,7 @@
                                             <?php
                                                 if(isset($contract) && count($contract->getContractProduct()) > 0){
                                                     foreach ($contract->getContractProduct() as $product) {
-                                                        $filePath = "./shopFiles".DIRECTORY_SEPARATOR;
+                                                        $filePath = "/shopFiles".DIRECTORY_SEPARATOR;
                                                         ?>
                                                             <tr>
                                                                 <td onclick="productInfoRemove(this)" id="productInfoRemove"><a href="#">削除</a></td>
@@ -427,7 +427,7 @@
                                                                     <?php
                                                                         if($product["shopNotification"]){
                                                                             $filePath .= $product["shopNotification"];
-                                                                            echo "<a href='".$filePath."'>あり</a>";
+                                                                            echo "<a target=\"_blank\" href='".$filePath."'>あり</a>";
                                                                         }
                                                                         else{
                                                                             echo " なし";

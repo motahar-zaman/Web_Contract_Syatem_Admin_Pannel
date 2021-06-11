@@ -399,9 +399,9 @@ function shopRegistration(shopCount) {
             success: function (data) {
                 if (data.status === 1) {
                     let file = "";
-                    let filePath = data.shopFile;
-                    if (filePath) {
-                        file = "<a href='"+filePath+"'>あり</a>";
+                    let fileName = data.shopFile;
+                    if (fileName) {
+                        file = "<a target=\"_blank\" href='/shopFiles/"+fileName+"'>あり</a>";
                     }
                     else {
                         file = "なし";
