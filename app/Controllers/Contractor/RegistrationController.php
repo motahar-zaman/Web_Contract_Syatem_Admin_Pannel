@@ -146,28 +146,33 @@ class RegistrationController extends BaseController
                 $companyInsert = $_POST["companyInsert"];
                 $groupInsert = $_POST["groupInsert"];
 
-                if($groupInsert == "insert"){
-                    $group->setId((new SequenceModel())->getGroupSequence());
-                    $storeGroup = (new GroupModel())->storeGroupData($group);
-                }
-                else{
-                    $group->setId($_POST["groupId"]);
-                    (new GroupModel())->updateGroupData($group);
-                    $storeGroup = true;
-                }
-
-                if($companyInsert == "insert"){
-                    $company->setId((new SequenceModel())->getCompanySequence());
-                    $storeCompany = (new CompanyModel())->storeCompanyData($company);
-                }
-                else{
-                    $company->setId($_POST["companyId"]);
-                    (new CompanyModel())->updateCompanyData($company);
-                    $storeCompany = true;
+                if($_POST["contractorGroup"] == "insert"){
+                    if($groupInsert == "insert"){
+                        $group->setId((new SequenceModel())->getGroupSequence());
+                        $storeGroup = (new GroupModel())->storeGroupData($group);
+                    }
+                    else{
+                        $group->setId($_POST["groupId"]);
+                        (new GroupModel())->updateGroupData($group);
+                        $storeGroup = true;
+                    }
+                    $contractor->setGroupId($group->getId());
                 }
 
-                $contractor->setCompanyId($company->getId());
-                $contractor->setGroupId($group->getId());
+                if($_POST["contractorCompany"] == "insert"){
+                    if($companyInsert == "insert"){
+                        $company->setId((new SequenceModel())->getCompanySequence());
+                        $storeCompany = (new CompanyModel())->storeCompanyData($company);
+                    }
+                    else{
+                        $company->setId($_POST["companyId"]);
+                        (new CompanyModel())->updateCompanyData($company);
+                        $storeCompany = true;
+                    }
+                    $contractor->setCompanyId($company->getId());
+                }
+
+
                 if($contractorInsert == "insert"){
                     $contractor->setId((new SequenceModel())->getContractorSequence());
                     $storeContractor = (new ContractorModel())->storeContractorData($contractor);
@@ -184,16 +189,7 @@ class RegistrationController extends BaseController
                     $storeContractor = true;
                 }
 
-                if($storeContractor && $storeCompany && $storeGroup){
-                    return json_encode(['msg' => "Successful", "contractor" => $contractor->getId(), "status" => 1]);
-                }
-                else{
-                    $deleteContractor = (new ContractorModel())->deleteData($contractor->getId());
-                    $deleteCompany = (new CompanyModel())->deleteData($company->getId());
-                    $deleteGroup = (new GroupModel())->deleteData($group->getId());
-
-                    return json_encode(['msg' => "Something went wrong and rollback", 'status' => 0]);
-                }
+                return json_encode(['msg' => "Successful", "contractor" => $contractor->getId(), "status" => 1]);
             }
             else{
                 return json_encode(['msg' => "Not an ajax request", 'status' => 2]);
