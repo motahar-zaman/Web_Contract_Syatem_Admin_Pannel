@@ -418,7 +418,7 @@
                                                         $filePath = "/shopFiles".DIRECTORY_SEPARATOR;
                                                         ?>
                                                             <tr>
-                                                                <td onclick="productInfoRemove(this)" id="productInfoRemove"><a href="#">削除</a></td>
+                                                                <td onclick="productInfoRemove(this)" id="productInfoRemove"><a href="javascript:void(0);">削除</a></td>
                                                                 <td id="productInfoId" ><?= $product['productId'] ?></td>
                                                                 <td id="productInfoName" ><?= $product['name'] ?></td>
                                                                 <td id="productInfoNote" ><?= $product['note'] ?></td>
@@ -494,7 +494,7 @@
                                                     foreach ($ringiDetails as $ringi) {
                                                         ?>
                                                             <tr>
-                                                                <td onclick="productInfoRemove(this)" id="ringiRemove"><a href="#">削除</a></td>
+                                                                <td onclick="productInfoRemove(this)" id="ringiRemove"><a href="javascript:void(0);">削除</a></td>
                                                                 <td id="ringiNo"><?= $ringi->getNo() ?></td>
                                                                 <td id="ringiType"><?= $ringi->getType() ?></td>
                                                                 <td id="targetArea"><?= $ringi->getTargetArea() ?></td>

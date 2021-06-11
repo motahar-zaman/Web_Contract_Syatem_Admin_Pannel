@@ -324,7 +324,7 @@ function productRegistration() {
             }
 
             let markup =
-                '<tr><td onclick="productInfoRemove(this)" id="productInfoRemove"><a href="#">削除</a></td><td id="productInfoId">' +
+                '<tr><td onclick="productInfoRemove(this)" id="productInfoRemove"><a href="javascript:void(0);">削除</a></td><td id="productInfoId">' +
                 data[0] +
                 '</td><td id="productInfoName">' +
                 data[1] +
@@ -916,7 +916,7 @@ function fillUpRingiForm(ringi){
 
 function addDiscountWithContract(){
     let tableBody = "<tr>" +
-        "<td onclick=\"productInfoRemove(this)\" id=\"ringiRemove\"><a href=\"#\">削除</a></td>" +
+        "<td onclick=\"productInfoRemove(this)\" id=\"ringiRemove\"><a href=\"javascript:void(0);\">削除</a></td>" +
         "<td id=\"ringiNo\">"+$("#ringiNo").html()+"</td>\n" +
         "<td id=\"ringiType\">"+$("#ringiType").html()+"</td>\n" +
         "<td id=\"targetArea\">"+$("#targetArea").html()+"</td>\n" +
