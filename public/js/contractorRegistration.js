@@ -257,7 +257,7 @@ function loadContractorDataTable() {
             {
                 data: "contractor_id",
                 render: function (datum, type, row) {
-                    return "<a href='#'>選択</a>";
+                    return "<a href='javascript:void(0);'>選択</a>";
                 },
             },
             { data: "contractor_id" },
@@ -395,7 +395,7 @@ function loadCompanyDataTable() {
             {
                 data: "company_id",
                 render: function (datum, type, row) {
-                    return "<a href='#'>選択</a>";
+                    return "<a href='javascript:void(0);'>選択</a>";
                 },
             },
             { data: "company_id" },
@@ -527,7 +527,7 @@ function loadGroupDataTable() {
             {
                 data: "group_id",
                 render: function (datum, type, row) {
-                    return "<a href='#'>選択</a>";
+                    return "<a href='javascript:void(0);'>選択</a>";
                 },
             },
             { data: "group_id" },

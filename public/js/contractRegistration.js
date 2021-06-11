@@ -144,7 +144,7 @@ function contractRegistration() {
     data["contractId"] = $("#contractId").val();
     data["ringis"] = ringis;
 
-    if (validateData(data)) {
+    if (validateContractData(data)) {
         $.ajax({
             url: "/contract-registration",
             type: "POST",
@@ -167,7 +167,7 @@ function contractRegistration() {
     }
 }
 
-function validateData(data) {
+function validateContractData(data) {
     let is_valid = true;
 
     /*if (fullNameCheck.value == "") {
@@ -318,7 +318,7 @@ function productRegistration() {
 
             let file = "";
             if (shopFile) {
-                file = "<a href='#'>あり</a>";
+                file = "<a href='javascript:void(0);'>あり</a>";
             } else {
                 file = "なし";
             }
@@ -386,7 +386,9 @@ function shopRegistration(shopCount) {
     formData.append("shopSite", $("#shop_site_url").val());
     formData.append("BusinessType", $("#BusinessType").val());
 
-    if (validateData(formData)) {
+    validateShopData(formData);
+
+    if (validateShopData(formData)) {
         $.ajax({
             url: "/shop-registration",
             type: "POST",
@@ -464,7 +466,7 @@ function loadProductDataTable() {
             {
                 data: "product_id",
                 render: function (datum, type, row) {
-                    return "<a href='#' style='color: #0099FF'>選択</a>";
+                    return "<a href='javascript:void(0);' style='color: #0099FF'>選択</a>";
                 },
             },
             { data: "product_id" },
@@ -610,7 +612,7 @@ function loadContractorDataTable() {
             {
                 data: "contractor_id",
                 render: function (datum, type, row) {
-                    return "<a href='#'>選択</a>";
+                    return "<a href='javascript:void(0);'>選択</a>";
                 },
             },
             { data: "contractor_id" },
@@ -736,7 +738,7 @@ function loadShopDataTable() {
             {
                 data: "shop_id",
                 render: function (datum, type, row) {
-                    return "<a href='#'>選択</a>";
+                    return "<a href='javascript:void(0);'>選択</a>";
                 },
             },
             { data: "shop_id" },
@@ -1117,4 +1119,18 @@ function clearRingiForm(){
     $("#endDate").html("");
     $("#purpose").html("");
     $("#memo").html("");
+}
+
+function validateShopData(data){
+    if(data.get("shopName") === ""){
+        alert("Please Insert Shop name");
+        return false;
+    }
+    else if(data.get("shopTel") === ""){
+        alert("Please Insert Shop Telephone no");
+        return false;
+    }
+    else{
+        return true;
+    }
 }
