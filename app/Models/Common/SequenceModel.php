@@ -96,16 +96,16 @@ class SequenceModel
     }
 
     public function getShopSequence(){
-        $prefix = "Shop_";
+        $prefix = date("Ymd");
         $increment = 1;
         $shop = $this->getShopLastSequence();
         if($shop){
-            $id = substr($shop->shop_id, -5);
+            $id = substr($shop->shop_id, -4);
         }
         else{
             $id = 0;
         }
-        $newId = sprintf("%05d", $id+$increment);
+        $newId = sprintf("%04d", $id+$increment);
         $newSequence = $prefix.$newId;
 
         return $newSequence;
