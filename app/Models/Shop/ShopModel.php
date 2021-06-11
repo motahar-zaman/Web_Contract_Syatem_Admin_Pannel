@@ -45,9 +45,11 @@ class ShopModel
     }
 
     public function getAllData(){
-        $queryString = "SELECT shop_id, shop_name, shop_name_kana, zipcode, address_01, address_02, area_id, prefecture, district_id,
-                        large_area_id, small_area_id, tel_no, fax_no, mail_address, site_url, update_date, update_user_id, insert_date,
-                        insert_user_id, delete_flag FROM mst_shop WHERE delete_flag = ? ORDER BY update_date DESC";
+        $queryString = "SELECT s.shop_id, shop_name, shop_name_kana, zipcode, address_01, address_02, area_id, prefecture, district_id,
+                        large_area_id, small_area_id, tel_no, fax_no, mail_address, site_url, s.update_date, s.update_user_id, s.insert_date,
+                        s.insert_user_id, s.delete_flag, shop_status, shop_daihyo_name, shop_daihyo_name_kana, business, notificate_file_path,
+                        pl_id, pj_id, torihikisaki_id FROM mst_shop AS s LEFT JOIN trn_shop_info AS si ON s.shop_id = si.shop_id
+                        WHERE s.delete_flag = ? ORDER BY update_date DESC";
         $queryParameter = array(1);
 
         return (new Database())->readQueryExecution($queryString, $queryParameter);
@@ -82,6 +84,7 @@ class ShopModel
                     $shop->setInsertDate($data->insert_date ?? NULL);
                     $shop->setInsertUserId($data->insert_user_id ?? NULL);
                     $shop->setDeleteFlag($data->delete_flag ?? NULL);
+                    $shop->setShopInfo($this->mapShopInfoData($data) ?? NULL);
                 }
                 array_push($mappedData, $shop);
             }
@@ -89,6 +92,32 @@ class ShopModel
         }
         else{
             return $datas;
+        }
+    }
+
+    public function mapShopInfoData($data = array()){
+
+        if(isset($data)){
+            $shopInfo = new ShopInfo();
+            $shopInfo->setId($data->shop_id ?? NULL);
+            $shopInfo->setStatus($data->shop_status ?? NULL);
+            $shopInfo->setRepresentative($data->shop_daihyo_name ?? NULL);
+            $shopInfo->setRepresentativeKana($data->shop_daihyo_name_kana ?? NULL);
+            $shopInfo->setBusiness($data->business ?? NULL);
+            $shopInfo->setNotification($data->notificate_file_path ?? NULL);
+            $shopInfo->setPlId($data->pl_id ?? NULL);
+            $shopInfo->setPjId($data->pj_id ?? NULL);
+            $shopInfo->setTorihikisakiId($data->torihikisaki_id ?? NULL);
+            $shopInfo->setUpdateDate($data->update_date ?? NULL);
+            $shopInfo->setUpdateUserId($data->update_user_id ?? NULL);
+            $shopInfo->setInsertDate($data->insert_date ?? NULL);
+            $shopInfo->setInsertUserId($data->insert_user_id ?? NULL);
+            $shopInfo->setDeleteFlag($data->delete_flag ?? NULL);
+
+            return $shopInfo;
+        }
+        else{
+            return $data;
         }
     }
 

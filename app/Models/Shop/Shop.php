@@ -351,7 +351,7 @@ class Shop
     /**
      * @return mixed
      */
-    public function getShopInfo()
+    public function getShopInfo(): ShopInfo
     {
         return $this->shopInfo;
     }
