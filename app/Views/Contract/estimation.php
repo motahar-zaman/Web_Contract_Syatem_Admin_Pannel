@@ -55,8 +55,8 @@
                                         <table class="table table-hover text-center">
                                             <thead class="">
                                             <tr>
-                                                <th>見積額（税抜） <br>Est. amount (Tax-ex)</th>
-                                                <th>消費税額等 <br> tax amount</th>
+                                                <th>見積額（税抜</th>
+                                                <th>消費税額等</th>
                                                 <th>お見積額（合計）</th>
                                             </tr>
                                             </thead>
@@ -93,7 +93,7 @@
                                         <table class="table table-hover text-center ">
                                             <thead class="k1TableTitleBG">
                                                 <tr>
-                                                    <th>税抜御請求額 <br>Tax-inc billing amount</th>
+                                                    <th>税抜御請求額</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -111,18 +111,18 @@
                     <div class="gap-2 mx-auto text-center" style="max-width: 1050px">
                         <div class="card mt-5 text-left">
                             <div class="card-header">
-                                <h3 class="card-title text-bold text-center">[契約商品] <br>Contract Product</h3>
+                                <h3 class="card-title text-bold text-center">[契約商品]</h3>
                             </div>
                             <div class="card-body">
                                 <div class="card-body table-responsive p-0">
                                     <table class="table table-hover text-center">
                                         <thead class="k1TableTitleBG">
                                             <tr>
-                                                <th style="width: 17%">商品名 <br>Product Name</th>
-                                                <th style="width: 20%">契約期間 <br>Contract period</th>
-                                                <th style="width: 11%">請求月 <br>Billing month</th>
-                                                <th>税抜価格 <br>Price Tax-ex</th>
-                                                <th>摘要 <br>Description</th>
+                                                <th style="width: 17%">商品名</th>
+                                                <th style="width: 20%">契約期間</th>
+                                                <th style="width: 11%">請求月</th>
+                                                <th style="width: 12%">税抜価格</th>
+                                                <th>摘要</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -165,10 +165,10 @@
                                     <table class="table table-hover text-center">
                                         <thead class="k1TableTitleBG">
                                             <tr>
-                                                <th>割引サービス名 <br>Discount service name</th>
-                                                <th>割引率 <br>Dis. Rate</th>
-                                                <th>割引額 <br>Discount amount</th>
-                                                <th>摘要 <br>Description</th>
+                                                <th>割引サービス名</th>
+                                                <th>割引率</th>
+                                                <th>割引額</th>
+                                                <th>摘要</th>
                                             </tr>
                                         </thead>
                                         <tbody>
