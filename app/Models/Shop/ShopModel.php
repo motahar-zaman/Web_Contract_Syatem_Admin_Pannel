@@ -161,8 +161,8 @@ class ShopModel
         }
 
         $queryString = "SELECT shop_id, shop_name, shop_name_kana, zipcode, address_01, address_02, area_id, prefecture, district_id,
-                        large_area_id, small_area_id, tel_no, fax_no, mail_address, site_url, update_date, update_user_id, insert_date,
-                        insert_user_id, delete_flag FROM mst_shop WHERE delete_flag = ? {$condition} ORDER BY update_date DESC";
+            large_area_id, small_area_id, tel_no, fax_no, mail_address, site_url, update_date, update_user_id, insert_date,
+            insert_user_id, delete_flag FROM mst_shop WHERE delete_flag = ? {$condition} ORDER BY update_date DESC";
 
         $data = (new Database())->readQueryExecution($queryString, $queryParameter);
         $jsonData = array(
