@@ -1,60 +1,52 @@
 function contractorRegistration() {
-    let data = {};
-    data["contractorId"] = $("#contractorId").val();
-    data["contractorName"] = $("#contractorName").val();
-    data["contractorKana"] = $("#contractorKana").val();
-    data["contractorPostCode"] = $("#contractorPostCode").val();
-    data["contractorAddress1"] = $("#contractorAddress1").val();
-    data["contractorAddress2"] = $("#contractorAddress2").val();
-    data["contractorPhn"] = $("#contractorPhn").val();
-    data["contractorMail"] = $("#contractorMail").val();
-    data["contractorInsert"] = $("#contractorInsert").val();
+    let data = getContractorRegistrationData();
+    let validateContractor = validateContractorData(data);
+    let validateCompany = validateCompanyData(data);
+    let validateGroup = validateGroupData(data);
 
-    data["companyId"] = $("#companyId").val();
-    data["companyName"] = $("#companyName").val();
-    data["companyKana"] = $("#companyKana").val();
-    data["companyRepresentative"] = $("#companyRepresentative").val();
-    data["companyRepresentativeKana"] = $("#companyRepresentativeKana").val();
-    data["companyPostCode"] = $("#companyPostCode").val();
-    data["companyAddress1"] = $("#companyAddress1").val();
-    data["companyAddress2"] = $("#companyAddress2").val();
-    data["companyPhn"] = $("#companyPhn").val();
-    data["companyMail"] = $("#companyMail").val();
-    data["companyInsert"] = $("#companyInsert").val();
-
-    data["groupId"] = $("#groupId").val();
-    data["groupName"] = $("#groupName").val();
-    data["groupKana"] = $("#groupKana").val();
-    data["groupRepresentative"] = $("#groupRepresentative").val();
-    data["groupRepresentativeKana"] = $("#groupRepresentativeKana").val();
-    data["groupPostCode"] = $("#groupPostCode").val();
-    data["groupAddress1"] = $("#groupAddress1").val();
-    data["groupAddress2"] = $("#groupAddress2").val();
-    data["groupPhn"] = $("#groupPhn").val();
-    data["groupMail"] = $("#groupMail").val();
-    data["groupInsert"] = $("#groupInsert").val();
-
-    if (validateData(data)) {
-        request = $.ajax({
-            url: "/contractor-registration",
-            type: "POST",
-            data: data,
-            dataType: "JSON",
-            headers: { "X-Requested-With": "XMLHttpRequest" },
-
-            success: function (data) {
-                if (data.status === 1) {
-                    let id = data.contractor;
-                    window.location.href = "/contractor-details/" + id;
-                } else if (data.status === 3) {
-                    window.location.href = "/login";
-                }
-            },
-            error: function (jqXHR, exception) {
-                alert("Error occurred");
-            },
-        });
+    if (!validateContractor) {
+        return false;
     }
+
+    if (validateCompany === "error") {
+        return false;
+    }
+    else if (validateCompany === "escape") {
+        data["contractorCompany"] = "escape";
+    }
+    else{
+        data["contractorCompany"] = "insert";
+    }
+
+    if (validateGroup === "error") {
+        return false;
+    }
+    else if (validateGroup === "escape") {
+        data["contractorGroup"] = "escape";
+    }
+    else{
+        data["contractorGroup"] = "insert";
+    }
+
+    $.ajax({
+        url: "/contractor-registration",
+        type: "POST",
+        data: data,
+        dataType: "JSON",
+        headers: { "X-Requested-With": "XMLHttpRequest" },
+
+        success: function (data) {
+            if (data.status === 1) {
+                let id = data.contractor;
+                window.location.href = "/contractor-details/" + id;
+            } else if (data.status === 3) {
+                window.location.href = "/login";
+            }
+        },
+        error: function (jqXHR, exception) {
+            alert("Error occurred");
+        },
+    });
 }
 
 function contractorAddressSearch() {
@@ -101,21 +93,36 @@ function getAddressFromZipCode(zipCode, setAddressId) {
     });
 }
 
-function validateData(data) {
+function validateContractorData(data) {
     let is_valid = true;
 
-    /*if (fullNameCheck.value == "") {
-        document.getElementById("nameerrormsg").style.display = "inline";
+    $("#contractorName").removeClass("error");
+    $("#contractorKana").removeClass("error");
+    $("#contractorPostCode").removeClass("error");
+    $("#contractorAddress1").removeClass("error");
+    $("#contractorPhn").removeClass("error");
+
+    if (data["contractorName"] === "") {
+        $("#contractorName").addClass("error");
         is_valid = false;
     }
-    if (addressCheck.value == "") {
-        document.getElementById("addrerrormsg").style.display = "inline";
+    if (data["contractorKana"] === "") {
+        $("#contractorKana").addClass("error");
         is_valid = false;
     }
-    if (quantityCheck.value == "") {
-        document.getElementById("qtyerrormsg").style.display = "inline";
+    if (data["contractorPostCode"] === "") {
+        $("#contractorPostCode").addClass("error");
         is_valid = false;
-    }*/
+    }
+
+    if (data["contractorAddress1"] === "") {
+        $("#contractorAddress1").addClass("error");
+        is_valid = false;
+    }
+    if (data["contractorPhn"] === "") {
+        $("#contractorPhn").addClass("error");
+        is_valid = false;
+    }
     return is_valid;
 }
 
@@ -649,3 +656,155 @@ $(document).ready(function () {
 
     loadGroupDataTable();
 });
+
+function getContractorRegistrationData(){
+    let data = {};
+    data["contractorId"] = $("#contractorId").val();
+    data["contractorName"] = $("#contractorName").val();
+    data["contractorKana"] = $("#contractorKana").val();
+    data["contractorPostCode"] = $("#contractorPostCode").val();
+    data["contractorAddress1"] = $("#contractorAddress1").val();
+    data["contractorAddress2"] = $("#contractorAddress2").val();
+    data["contractorPhn"] = $("#contractorPhn").val();
+    data["contractorMail"] = $("#contractorMail").val();
+    data["contractorInsert"] = $("#contractorInsert").val();
+
+    data["companyId"] = $("#companyId").val();
+    data["companyName"] = $("#companyName").val();
+    data["companyKana"] = $("#companyKana").val();
+    data["companyRepresentative"] = $("#companyRepresentative").val();
+    data["companyRepresentativeKana"] = $("#companyRepresentativeKana").val();
+    data["companyPostCode"] = $("#companyPostCode").val();
+    data["companyAddress1"] = $("#companyAddress1").val();
+    data["companyAddress2"] = $("#companyAddress2").val();
+    data["companyPhn"] = $("#companyPhn").val();
+    data["companyMail"] = $("#companyMail").val();
+    data["companyInsert"] = $("#companyInsert").val();
+
+    data["groupId"] = $("#groupId").val();
+    data["groupName"] = $("#groupName").val();
+    data["groupKana"] = $("#groupKana").val();
+    data["groupRepresentative"] = $("#groupRepresentative").val();
+    data["groupRepresentativeKana"] = $("#groupRepresentativeKana").val();
+    data["groupPostCode"] = $("#groupPostCode").val();
+    data["groupAddress1"] = $("#groupAddress1").val();
+    data["groupAddress2"] = $("#groupAddress2").val();
+    data["groupPhn"] = $("#groupPhn").val();
+    data["groupMail"] = $("#groupMail").val();
+    data["groupInsert"] = $("#groupInsert").val();
+
+    return data;
+}
+
+function validateCompanyData(data){
+    let is_valid = true;
+    let nonempty = $('.companyRegistrationData').filter(function() {
+        return this.value !== ''
+    });
+
+    if(nonempty.length > 0){
+        $("#companyName").removeClass("error");
+        $("#companyKana").removeClass("error");
+        $("#companyRepresentative").removeClass("error");
+        $("#companyRepresentativeKana").removeClass("error");
+        $("#companyPostCode").removeClass("error");
+        $("#companyAddress1").removeClass("error");
+        $("#companyPhn").removeClass("error");
+
+        if (data["companyName"] === "") {
+            $("#companyName").addClass("error");
+            is_valid = false;
+        }
+        if (data["companyKana"] === "") {
+            $("#companyKana").addClass("error");
+            is_valid = false;
+        }
+        if (data["companyRepresentative"] === "") {
+            $("#companyRepresentative").addClass("error");
+            is_valid = false;
+        }
+        if (data["companyRepresentativeKana"] === "") {
+            $("#companyRepresentativeKana").addClass("error");
+            is_valid = false;
+        }
+        if (data["companyPostCode"] === "") {
+            $("#companyPostCode").addClass("error");
+            is_valid = false;
+        }
+
+        if (data["companyAddress1"] === "") {
+            $("#companyAddress1").addClass("error");
+            is_valid = false;
+        }
+        if (data["companyPhn"] === "") {
+            $("#companyPhn").addClass("error");
+            is_valid = false;
+        }
+    }
+
+    if(nonempty.length > 0){
+        if(is_valid){
+            return "insert";
+        }
+        else{
+            return "error";
+        }
+    }
+    else{
+        return "escape";
+    }
+}
+
+function validateGroupData(data){
+    let is_valid = true;
+    let nonempty = $('.groupRegistrationData').filter(function() {
+        return this.value !== ''
+    });
+
+    if(nonempty.length > 0){
+        $("#groupName").removeClass("error");
+        $("#groupKana").removeClass("error");
+        $("#groupRepresentative").removeClass("error");
+        $("#groupPostCode").removeClass("error");
+        $("#groupAddress1").removeClass("error");
+        $("#groupPhn").removeClass("error");
+
+        if (data["groupName"] === "") {
+            $("#groupName").addClass("error");
+            is_valid = false;
+        }
+        if (data["groupKana"] === "") {
+            $("#groupKana").addClass("error");
+            is_valid = false;
+        }
+        if (data["groupRepresentative"] === "") {
+            $("#groupRepresentative").addClass("error");
+            is_valid = false;
+        }
+        if (data["groupPostCode"] === "") {
+            $("#groupPostCode").addClass("error");
+            is_valid = false;
+        }
+
+        if (data["groupAddress1"] === "") {
+            $("#groupAddress1").addClass("error");
+            is_valid = false;
+        }
+        if (data["groupPhn"] === "") {
+            $("#groupPhn").addClass("error");
+            is_valid = false;
+        }
+    }
+
+    if(nonempty.length > 0){
+        if(is_valid){
+            return "insert";
+        }
+        else{
+            return "error";
+        }
+    }
+    else{
+        return "escape";
+    }
+}
