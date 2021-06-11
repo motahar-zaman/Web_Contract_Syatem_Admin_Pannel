@@ -182,24 +182,6 @@ function contractRegistration() {
     });
 }
 
-function validateContractData(data) {
-    let is_valid = true;
-
-    /*if (fullNameCheck.value == "") {
-        document.getElementById("nameerrormsg").style.display = "inline";
-        is_valid = false;
-    }
-    if (addressCheck.value == "") {
-        document.getElementById("addrerrormsg").style.display = "inline";
-        is_valid = false;
-    }
-    if (quantityCheck.value == "") {
-        document.getElementById("qtyerrormsg").style.display = "inline";
-        is_valid = false;
-    }*/
-    return is_valid;
-}
-
 function shopAddressSearch() {
     let zipCode = $("#postCode").val();
     let setAddressId = "address1";
