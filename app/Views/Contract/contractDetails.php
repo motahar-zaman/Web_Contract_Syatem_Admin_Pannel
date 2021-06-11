@@ -321,6 +321,7 @@
                                                         $data = $products[$i];
                                                         $startDate = date("Y",strtotime($data["startDate"]))."年".date("m",strtotime($data["startDate"]))."月".date("d",strtotime($data["startDate"]))."日";
                                                         $endDate = date("Y",strtotime($data["endDate"]))."年".date("m",strtotime($data["endDate"]))."月".date("d",strtotime($data["endDate"]))."日";
+                                                        $filePath = "/shopFiles".DIRECTORY_SEPARATOR;
                                                         ?>
                                                         <tr>
                                                             <td><?= $data["productId"] ?></td>
@@ -330,7 +331,8 @@
                                                             <td>
                                                                 <?php
                                                                     if($data["shopNotification"]){
-                                                                        echo "<a href='#'>あり</a>";
+                                                                        $filePath .= $data["shopNotification"];
+                                                                        echo "<a target=\"_blank\" href='".$filePath."'>あり</a>";
                                                                     }
                                                                     else{
                                                                         echo " なし";
