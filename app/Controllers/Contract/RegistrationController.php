@@ -340,7 +340,6 @@ class RegistrationController extends BaseController
                 $shopInfo = new ShopInfo();
 
                 $notificationLetter = $_FILES["notification_letter"] ?? false;
-
                 $path = "./shopFiles";
 
                 $shop->setId((new SequenceModel())->getShopSequence());

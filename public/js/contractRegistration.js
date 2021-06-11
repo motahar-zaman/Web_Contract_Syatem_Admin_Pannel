@@ -365,28 +365,28 @@ function productRegistration() {
 }
 
 function shopRegistration(shopCount) {
-    let data = {};
 
-    data["shopName"] = $("#shop_name").val();
-    data["shopNameKana"] = $("#shop_name_kana").val();
-    data["shopArea"] = $("#area").val();
-    data["shopPrefecture"] = $("#prefecture").val();
-    data["shopDistrict"] = $("#district").val();
-    data["shopAreaSmall"] = $("#areaSmall").val();
-    data["shopAreaLarge"] = $("#areaLarge").val();
-    data["shopZip"] = $("#postCode").val();
-    data["shopAddress01"] = $("#address1").val();
-    data["shopAddress02"] = $("#address2").val();
-    data["shopTel"] = $("#phone_number").val();
-    data["shopMail"] = $("#mail_address").val();
-    data["shopRepresentative"] = $("#representative_name").val();
-    data["shopRepresentativeKana"] = $("#rep_name_kana").val();
-    data["shopSite"] = $("#shop_site_url").val();
-    data["BusinessType"] = $("#BusinessType").val();
     let formData = new FormData();
     formData.append("notification_letter", notification_letter.files[0]);
 
-    if (validateData(data)) {
+    formData.append("shopName", $("#shop_name").val());
+    formData.append("shopNameKana", $("#shop_name_kana").val());
+    formData.append("shopArea", $("#area").val());
+    formData.append("shopPrefecture", $("#prefecture").val());
+    formData.append("shopDistrict", $("#district").val());
+    formData.append("shopAreaSmall", $("#areaSmall").val());
+    formData.append("shopAreaLarge", $("#areaLarge").val());
+    formData.append("shopZip", $("#postCode").val());
+    formData.append("shopAddress01", $("#address1").val());
+    formData.append("shopAddress02", $("#address2").val());
+    formData.append("shopTel", $("#phone_number").val());
+    formData.append("shopMail", $("#mail_address").val());
+    formData.append("shopRepresentative", $("#representative_name").val());
+    formData.append("shopRepresentativeKana", $("#rep_name_kana").val());
+    formData.append("shopSite", $("#shop_site_url").val());
+    formData.append("BusinessType", $("#BusinessType").val());
+
+    if (validateData(formData)) {
         $.ajax({
             url: "/shop-registration",
             type: "POST",
