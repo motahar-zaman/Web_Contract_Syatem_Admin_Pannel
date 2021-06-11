@@ -112,14 +112,13 @@
                         </div>
                     </div>
 
-                    <div class="gap-2 mx-auto text-center" style="max-width: 950px; max-height: 500px">
+                    <div class="gap-2 mx-auto text-center" style="max-width: 950px;">
                         <div class="card mt-5 text-left">
                             <div class="card-header">
                                 <h3 class="card-title text-center">【契約一覧】</h3>
                             </div>
                             <div class="card-body">
                                 <div class="card-body table-responsive p-0">
-<!--                                    <table class="table table-hover text-center productTable productInfoTable overflow-auto" style="width: 1425px;">-->
                                     <table class="table table-hover text-center productTable productInfoTable" style="width: 1425px; height: auto;">
                                         <thead class="k1TableTitleBG">
                                             <tr>
