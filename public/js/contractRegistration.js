@@ -144,27 +144,42 @@ function contractRegistration() {
     data["contractId"] = $("#contractId").val();
     data["ringis"] = ringis;
 
-    if (validateContractData(data)) {
-        $.ajax({
-            url: "/contract-registration",
-            type: "POST",
-            data: data,
-            dataType: "JSON",
-            headers: { "X-Requested-With": "XMLHttpRequest" },
+    $("#tantou").removeClass("error");
+    $("#contractorSelectButton").removeClass("error");
+    $(".productInfoTable").removeClass("error");
 
-            success: function (data) {
-                if (data.status === 1) {
-                    let id = data.contract;
-                    window.location.href = "/contract-details/" + id;
-                } else if (data.status === 3) {
-                    window.location.href = "/login";
-                }
-            },
-            error: function (jqXHR, exception) {
-                alert("Error occurred");
-            },
-        });
+    if(data["tantou"] === "0"){
+        $("#tantou").addClass("error");
+        return false;
     }
+    else if(!data["contractorId"]){
+        $("#contractorSelectButton").addClass("error");
+        return false;
+    }
+    else if(data["productSelectId"].length <= 0){
+        $(".productInfoTable").addClass("error");
+        return false;
+    }
+
+    $.ajax({
+        url: "/contract-registration",
+        type: "POST",
+        data: data,
+        dataType: "JSON",
+        headers: { "X-Requested-With": "XMLHttpRequest" },
+
+        success: function (data) {
+            if (data.status === 1) {
+                let id = data.contract;
+                window.location.href = "/contract-details/" + id;
+            } else if (data.status === 3) {
+                window.location.href = "/login";
+            }
+        },
+        error: function (jqXHR, exception) {
+            alert("Error occurred");
+        },
+    });
 }
 
 function validateContractData(data) {
@@ -289,7 +304,22 @@ function productRegistration() {
     let shopName = "";
     let shopFile = "";
     let productCount = 0;
+    let validator = false;
     shopCount++;
+
+    if (shop == 1){
+        if($("#shop_name").val() === ""){
+            $("#shop_name").addClass("error");
+            validator = true;
+        }
+        else if($("#phone_number").val() === ""){
+            $("#phone_number").addClass("error");
+            validator = true;
+        }
+    }
+    if(validator){
+        return;
+    }
 
     $(".productSelectTable tr").each(function (i) {
         if (i == 0) {
@@ -388,39 +418,37 @@ function shopRegistration(shopCount) {
 
     validateShopData(formData);
 
-    if (validateShopData(formData)) {
-        $.ajax({
-            url: "/shop-registration",
-            type: "POST",
-            data: formData,
-            dataType: "JSON",
-            headers: { "X-Requested-With": "XMLHttpRequest" },
-            processData: false,
-            contentType: false,
+    $.ajax({
+        url: "/shop-registration",
+        type: "POST",
+        data: formData,
+        dataType: "JSON",
+        headers: { "X-Requested-With": "XMLHttpRequest" },
+        processData: false,
+        contentType: false,
 
-            success: function (data) {
-                if (data.status === 1) {
-                    let file = "";
-                    let fileName = data.shopFile;
-                    if (fileName) {
-                        file = "<a target=\"_blank\" href='/shopFiles/"+fileName+"'>あり</a>";
-                    }
-                    else {
-                        file = "なし";
-                    }
-                    $(".productInfoShopId" + shopCount).html(data.shopId);
-                    $(".productInfoShopName" + shopCount).html(data.shopName);
-                    $(".productInfoShopFile" + shopCount).html(file);
+        success: function (data) {
+            if (data.status === 1) {
+                let file = "";
+                let fileName = data.shopFile;
+                if (fileName) {
+                    file = "<a target=\"_blank\" href='/shopFiles/"+fileName+"'>あり</a>";
                 }
-                else if (data.status === 3) {
-                    window.location.href = "/login";
+                else {
+                    file = "なし";
                 }
-            },
-            error: function (jqXHR, exception) {
-                alert("Error occurred");
-            },
-        });
-    }
+                $(".productInfoShopId" + shopCount).html(data.shopId);
+                $(".productInfoShopName" + shopCount).html(data.shopName);
+                $(".productInfoShopFile" + shopCount).html(file);
+            }
+            else if (data.status === 3) {
+                window.location.href = "/login";
+            }
+        },
+        error: function (jqXHR, exception) {
+            alert("Error occurred");
+        },
+    });
 }
 
 function productInfoRemove(td) {

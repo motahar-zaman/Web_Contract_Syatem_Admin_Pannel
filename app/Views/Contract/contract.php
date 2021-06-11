@@ -79,7 +79,7 @@
                                     <div class="form-group " >
                                         <label>担当者</label>
                                         <select name="tantou" id="tantou" class="form-control">
-                                            <option value="0">担当者選択</option>
+                                            <option value="0" selected>担当者選択</option>
                                             <?php foreach ($employees as $employee) {
                                                 $tantouId = "";
                                                 $employeeId = $employee->getId();
@@ -108,7 +108,7 @@
                                             <?php
                                                 if(session()->get("user") == "employee"){
                                                     ?>
-                                                        <button type="button" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2" data-toggle="modal" data-target="#contractor-select-modal">
+                                                        <button type="button" id="contractorSelectButton" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2" data-toggle="modal" data-target="#contractor-select-modal">
                                                                 契約者選択
                                                         </button>
                                                     <?php
