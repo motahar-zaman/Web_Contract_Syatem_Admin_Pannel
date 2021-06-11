@@ -224,16 +224,28 @@ class ContractorModel
         }
 
         if ($companyInfo) {
-            $extSelect .= ", IF(ISNULL(mc.company_id), '', CONCAT(IFNULL(mc.company_id, ''), '=>', IFNULL(mc.company_name, ''), '=>', IFNULL(mc.company_name_kana, ''), '=>', IFNULL(mc.daihyousha_name, ''), '=>', IFNULL(mc.daihyousha_name_kana, ''), '=>', IFNULL(mc.zipcode, ''), '=>', IFNULL(mc.address_01, ''), '=>', IFNULL(mc.address_02, ''), '=>', IFNULL(mc.tel_no, ''), '=>', IFNULL(mc.fax_no, ''), '=>', IFNULL(mc.mail_address, ''), '=>', IFNULL(mc.site_url, ''), '=>', IFNULL(mc.update_date, ''), '=>', IFNULL(mc.update_user_id, ''), '=>', IFNULL(mc.insert_date, ''), '=>', IFNULL(mc.insert_user_id, ''), '=>', IFNULL(mc.delete_flag, ''))) AS company_data";
+            $extSelect .= ", IF(ISNULL(mc.company_id), '', CONCAT(IFNULL(mc.company_id, ''), '=>', IFNULL(mc.company_name, ''), '=>', IFNULL(mc.company_name_kana, ''),
+            '=>', IFNULL(mc.daihyousha_name, ''), '=>', IFNULL(mc.daihyousha_name_kana, ''), '=>', IFNULL(mc.zipcode, ''), '=>', IFNULL(mc.address_01, ''), '=>',
+            IFNULL(mc.address_02, ''), '=>', IFNULL(mc.tel_no, ''), '=>', IFNULL(mc.fax_no, ''), '=>', IFNULL(mc.mail_address, ''), '=>', IFNULL(mc.site_url, ''), '=>',
+            IFNULL(mc.update_date, ''), '=>', IFNULL(mc.update_user_id, ''), '=>', IFNULL(mc.insert_date, ''), '=>', IFNULL(mc.insert_user_id, ''), '=>',
+            IFNULL(mc.delete_flag, ''))) AS company_data";
             $extJoin .= " LEFT JOIN mst_company as mc ON mc.company_id = mcon.company_id";
         }
 
         if ($groupInfo) {
-            $extSelect .= ", IF(ISNULL(mgrp.group_id), '', CONCAT(IFNULL(mgrp.group_id, ''), '=>', IFNULL(mgrp.group_name, ''), '=>', IFNULL(mgrp.group_name_kana, ''), '=>', IFNULL(mgrp.daihyousha_name, ''), '=>', IFNULL(mgrp.daihyousha_name_kana, ''), '=>', IFNULL(mgrp.zipcode, ''), '=>', IFNULL(mgrp.address_01, ''), '=>', IFNULL(mgrp.address_02, ''), '=>', IFNULL(mgrp.area_id, ''), '=>', IFNULL(mgrp.prefecture, ''), '=>', IFNULL(mgrp.tel_no, ''), '=>', IFNULL(mgrp.fax_no, ''), '=>', IFNULL(mgrp.mail_address, ''), '=>', IFNULL(mgrp.update_date, ''), '=>', IFNULL(mgrp.update_user_id, ''), '=>', IFNULL(mgrp.insert_date, ''), '=>', IFNULL(mgrp.insert_user_id, ''), '=>', IFNULL(mgrp.delete_flag, ''))) AS group_data";
+            $extSelect .= ", IF(ISNULL(mgrp.group_id), '', CONCAT(IFNULL(mgrp.group_id, ''), '=>', IFNULL(mgrp.group_name, ''), '=>',
+            IFNULL(mgrp.group_name_kana, ''), '=>', IFNULL(mgrp.daihyousha_name, ''), '=>', IFNULL(mgrp.daihyousha_name_kana, ''), '=>', IFNULL(mgrp.zipcode, ''),
+            '=>', IFNULL(mgrp.address_01, ''), '=>', IFNULL(mgrp.address_02, ''), '=>', IFNULL(mgrp.area_id, ''), '=>', IFNULL(mgrp.prefecture, ''), '=>',
+            IFNULL(mgrp.tel_no, ''), '=>', IFNULL(mgrp.fax_no, ''), '=>', IFNULL(mgrp.mail_address, ''), '=>', IFNULL(mgrp.update_date, ''), '=>',
+            IFNULL(mgrp.update_user_id, ''), '=>', IFNULL(mgrp.insert_date, ''), '=>', IFNULL(mgrp.insert_user_id, ''), '=>',
+            IFNULL(mgrp.delete_flag, ''))) AS group_data";
             $extJoin .= " LEFT JOIN mst_group as mgrp ON mgrp.group_id = mcon.group_id";
         }
 
-        $queryString = "SELECT mcon.contractor_id, mcon.contractor_name, mcon.contractor_name_kana, mcon.password, mcon.zipcode, mcon.address_01, mcon.address_02, mcon.tel_no, mcon.fax_no, mcon.mail_address, mcon.company_id, mcon.group_id, mcon.temporary, mcon.type_contractor, mcon.update_date, mcon.update_user_id, mcon.insert_date, mcon.insert_user_id, mcon.delete_flag {$extSelect} FROM mst_contractor AS mcon {$extJoin} WHERE mcon.delete_flag = ? {$condition} ORDER BY mcon.update_date DESC";
+        $queryString = "SELECT mcon.contractor_id, mcon.contractor_name, mcon.contractor_name_kana, mcon.password, mcon.zipcode, mcon.address_01, mcon.address_02,
+            mcon.tel_no, mcon.fax_no, mcon.mail_address, mcon.company_id, mcon.group_id, mcon.temporary, mcon.type_contractor, mcon.update_date, mcon.update_user_id,
+            mcon.insert_date, mcon.insert_user_id, mcon.delete_flag {$extSelect} FROM mst_contractor AS mcon {$extJoin} WHERE mcon.delete_flag = ? {$condition}
+            ORDER BY mcon.update_date DESC";
 
         $data = (new Database())->readQueryExecution($queryString, $queryParameter);
         $jsonData = array(
