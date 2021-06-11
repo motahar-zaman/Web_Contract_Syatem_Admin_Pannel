@@ -206,7 +206,7 @@ class ContractorModel
         return (new Database())->readQueryExecution($queryString, $queryParameter);
     }
 
-    public function getDataTableData($companyInfo = false, $groupInfo = false) {
+    public function getDataTableData($companyInfo = false, $groupInfo = false, $userType = null, $userId = null) {
         $params['draw'] = $_REQUEST['draw'];
         $condition = "";
         $extSelect = "";
@@ -240,6 +240,10 @@ class ContractorModel
             IFNULL(mgrp.update_user_id, ''), '=>', IFNULL(mgrp.insert_date, ''), '=>', IFNULL(mgrp.insert_user_id, ''), '=>',
             IFNULL(mgrp.delete_flag, ''))) AS group_data";
             $extJoin .= " LEFT JOIN mst_group as mgrp ON mgrp.group_id = mcon.group_id";
+        }
+
+        if($userType){
+            $condition .= " AND (mcon.insert_user_id = '$userId' OR mcon.contractor_id ='$userId')";
         }
 
         $queryString = "SELECT mcon.contractor_id, mcon.contractor_name, mcon.contractor_name_kana, mcon.password, mcon.zipcode, mcon.address_01, mcon.address_02,

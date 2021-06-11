@@ -295,7 +295,12 @@ class RegistrationController extends BaseController
     }
 
     public function contractorDataTableData() {
-        $contractors = (new ContractorModel())->getDataTableData(true, true);
+        $userType = 0;
+        if(session()->get("user") == "contractor"){
+            $userType = 1;
+        }
+
+        $contractors = (new ContractorModel())->getDataTableData(true, true, $userType, session()->get("userId"));
         echo json_encode($contractors);
     }
 
