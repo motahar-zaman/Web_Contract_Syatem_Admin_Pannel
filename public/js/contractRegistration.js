@@ -771,6 +771,16 @@ function loadShopDataTable() {
                         "' type='hidden' value='" +
                         rowData.prefecture +
                         "'>" +
+                        "<input id='shopDaihyoName" +
+                        row +
+                        "' type='hidden' value='" +
+                        rowData.shop_daihyo_name +
+                        "'>" +
+                        "<input id='notificateFile" +
+                        row +
+                        "' type='hidden' value='" +
+                        rowData.notificate_file_path +
+                        "'>" +
                         "<input id='shopPhoneNumber" +
                         row +
                         "' type='hidden' value='" +
