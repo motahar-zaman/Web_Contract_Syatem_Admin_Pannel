@@ -152,10 +152,16 @@ function contractRegistration() {
     $(".productInfoTable").removeClass("error");
 
     if(data["tantou"] === "0"){
+        $('html,body').animate({
+            scrollTop: $("#contractIdSearch").offset().top},
+        'slow');
         $("#tantou").addClass("error");
         return false;
     }
     else if(!data["contractorId"]){
+        $('html,body').animate({
+            scrollTop: $("#contractIdSearch").offset().top},
+        'slow');
         $("#contractorSelectButton").addClass("error");
         return false;
     }
