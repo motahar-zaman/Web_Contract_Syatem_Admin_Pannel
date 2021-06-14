@@ -431,6 +431,7 @@ class RegistrationController extends BaseController
         if(isset($toEmail) && $toEmail != ""){
             $this->emailSending($toEmail, $subject, $body);
         }
+        return true;
     }
 
     public function emailToEmployee($employeeId, $contractorId, $contractId){
@@ -445,6 +446,6 @@ class RegistrationController extends BaseController
         if(isset($toEmail) && $toEmail != ""){
             $this->emailSending($toEmail, $subject, $body);
         }
-
+        return true;
     }
 }
