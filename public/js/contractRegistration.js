@@ -302,16 +302,22 @@ function productRegistration() {
 
     if (shop == 1){
         if($("#shop_name").val() === ""){
+            $('html,body').animate({
+                scrollTop: $("#mySelect").offset().top},
+            'slow');
             $("#shop_name").addClass("error");
             validator = true;
         }
         else if($("#phone_number").val() === ""){
+            $('html,body').animate({
+                scrollTop: $("#mySelect").offset().top},
+            'slow');
             $("#phone_number").addClass("error");
             validator = true;
         }
     }
     if(validator){
-        return;
+        return false;
     }
 
     $(".productSelectTable tr").each(function (i) {
@@ -409,8 +415,6 @@ function shopRegistration(shopCount) {
     formData.append("shopRepresentativeKana", $("#rep_name_kana").val());
     formData.append("shopSite", $("#shop_site_url").val());
     formData.append("BusinessType", $("#BusinessType").val());
-
-    validateShopData(formData);
 
     $.ajax({
         url: "/shop-registration",
@@ -1151,18 +1155,4 @@ function clearRingiForm(){
     $("#endDate").html("");
     $("#purpose").html("");
     $("#memo").html("");
-}
-
-function validateShopData(data){
-    if(data.get("shopName") === ""){
-        alert("Please Insert Shop name");
-        return false;
-    }
-    else if(data.get("shopTel") === ""){
-        alert("Please Insert Shop Telephone no");
-        return false;
-    }
-    else{
-        return true;
-    }
 }
