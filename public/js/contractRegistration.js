@@ -248,8 +248,9 @@ function checkContractAvailable() {
                     "/contract-update/" + contractId
                 );
                 $("#ContractSearchForm").submit();
-            } else if (data.status === 0) {
-                alert("No data available for this contract id");
+            }
+            else if (data.status === 0) {
+                $("#contractIdSearch").addClass("error");
             }
         },
         error: function (jqXHR, exception) {
@@ -272,8 +273,9 @@ function checkContractAvailableFromDetails() {
         success: function (data) {
             if (data.status === 1) {
                 $("#ContractSearchFromDetails").submit();
-            } else if (data.status === 0) {
-                alert("No data available for this contract id");
+            }
+            else if (data.status === 0) {
+                $("#contractIdSearch").addClass("error");
             }
         },
         error: function (jqXHR, exception) {
