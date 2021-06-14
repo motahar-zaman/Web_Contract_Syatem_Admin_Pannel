@@ -85,3 +85,8 @@ const contract_user_prefix = 'CNTR';
 const jwt_token_key = "k1_jwt_user_token";
 const jwt_token_algorithm = "HS512";
 const contract_product_tax = 10;
+
+const contract_create = 2;
+const contract_approved_by_contractor = 3;
+const contract_approved_by_employee = 6;
+const contract_edit_by_employee = 7;

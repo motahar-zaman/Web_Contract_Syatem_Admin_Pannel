@@ -119,14 +119,14 @@ class RegistrationController extends BaseController
                 if($_POST['contractType'] == 'update'){
                     $contract->setId($_POST['contractId']);
                     if(session()->get('user') == "contractor"){
-                        $contract->setStatus(3);
+                        $contract->setStatus(contract_approved_by_contractor);
                     }
                     else{
-                        $contract->setStatus(7);
+                        $contract->setStatus(contract_edit_by_employee);
                     }
                     (new contractmodel())->updateContractData($contract);
 
-                    if($contract->getStatus() == 3){
+                    if($contract->getStatus() == contract_approved_by_contractor){
                         $this->emailToEmployee($contract->getTantouId(), $contract->getContractorId(), $contract->getId());
                     }
                     else{
@@ -135,7 +135,7 @@ class RegistrationController extends BaseController
                 }
                 else{
                     $contract->setId((new SequenceModel())->getContractSequence());
-                    $contract->setStatus(2);
+                    $contract->setStatus(contract_create);
                     (new contractmodel())->storeContractData($contract);
 
                     $this->emailToContractor($contract->getContractorId(), $contract->getId());
