@@ -123,6 +123,12 @@ function validateContractorData(data) {
         $("#contractorPhn").addClass("error");
         is_valid = false;
     }
+
+    if(!is_valid){
+        $('html,body').animate({
+            scrollTop: $("#contractorId").offset().top},
+        'slow');
+    }
     return is_valid;
 }
 
@@ -747,6 +753,9 @@ function validateCompanyData(data){
             return "insert";
         }
         else{
+            $('html,body').animate({
+                scrollTop: $("#companyId").offset().top},
+            'slow');
             return "error";
         }
     }
@@ -801,6 +810,9 @@ function validateGroupData(data){
             return "insert";
         }
         else{
+            $('html,body').animate({
+                scrollTop: $("#groupId").offset().top},
+            'slow');
             return "error";
         }
     }
