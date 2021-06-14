@@ -103,8 +103,15 @@ class ContractController extends BaseController
 
     public function contractRegistrationSearch(){
         if( session() && session()->get('login') ){
+
+            $userType = 0;
+            $user = session()->get("userId");
+            if(session()->get("user") == "contractor"){
+                $userType = 1;
+            }
+
             $contractId = $_GET["contractIdSearch"];
-            $contract = (new ContractModel())->getContractById($contractId);
+            $contract = (new ContractModel())->getContractById($contractId, $userType, $user);
 
             if(isset($contract) && count($contract) > 0){
                 return json_encode(['msg' => "Successful", "contract" => $contract, "status" => 1]);
