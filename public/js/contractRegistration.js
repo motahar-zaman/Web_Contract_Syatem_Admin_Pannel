@@ -76,6 +76,7 @@ function selectedShop(data, td) {
     let shopPrefecture = $("#shopPrefecture" + data).val();
     let shopAddress = $("#shopAddress" + data).html();
     let shopPhoneNumber = $("#shopPhoneNumber" + data).val();
+    let shopFile = $("#notificateFile" + data).val();
 
     //Push Data To the product contract table
     var markup =
@@ -91,7 +92,9 @@ function selectedShop(data, td) {
         shopAddress +
         '</td><td id="shopPhoneNumber">' +
         shopPhoneNumber +
-        "</td></tr>";
+        '</td><td class="d-none" id="shopFile">' +
+        shopFile +
+        '</td></tr>';
     $(".shopSelectTable tbody").html(markup);
 
     $("#shopSelectTable td").removeClass("bg-dark-silver");
@@ -316,7 +319,7 @@ function productRegistration() {
             } else {
                 shopId = $("#shopId").html();
                 shopName = $("#shopName").html();
-                //shopFile = $("#shopFile").html();
+                shopFile = $("#shopFile").html();
             }
         }
 
@@ -329,9 +332,11 @@ function productRegistration() {
             data[4] = $(this).children("#productSelectEndDate").text();
 
             let file = "";
+            console.log(shopFile);
             if (shopFile) {
-                file = "<a href='javascript:void(0);'>あり</a>";
-            } else {
+                file = "<a target = '_blank' href='/shopFiles/"+shopFile+"'>あり</a>";
+            }
+            else {
                 file = "なし";
             }
 
@@ -414,7 +419,7 @@ function shopRegistration(shopCount) {
                 let file = "";
                 let fileName = data.shopFile;
                 if (fileName) {
-                    file = "<a target=\"_blank\" href='/shopFiles/"+fileName+"'>あり</a>";
+                    file = "<a target='_blank\' href='/shopFiles/"+fileName+"'>あり</a>";
                 }
                 else {
                     file = "なし";
