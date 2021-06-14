@@ -332,7 +332,6 @@ function productRegistration() {
             data[4] = $(this).children("#productSelectEndDate").text();
 
             let file = "";
-            console.log(shopFile);
             if (shopFile) {
                 file = "<a target = '_blank' href='/shopFiles/"+shopFile+"'>あり</a>";
             }
