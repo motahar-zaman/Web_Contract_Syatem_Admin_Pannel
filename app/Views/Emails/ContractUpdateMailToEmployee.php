@@ -6,13 +6,8 @@
     <body>
         <div>
             <div>
-                <?= $contractorName ?>様
-            </div>
-            <br><br>
-
-            <div>
-                この度は弊社商品のご契約ありがとうございます。<br>
-                下記URLより、契約内容のご確認をお願いいたします。
+                <?= $contractorName ?>様の契約（契約ID：<?= $contractId ?>）において更新がありました。<br>
+                内容の確認をしてください。
             </div>
             <br><br>
             <div>
