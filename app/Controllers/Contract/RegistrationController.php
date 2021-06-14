@@ -119,20 +119,26 @@ class RegistrationController extends BaseController
                 if($_POST['contractType'] == 'update'){
                     $contract->setId($_POST['contractId']);
                     if(session()->get('user') == "contractor"){
-                        $contract->setStatus(03);
+                        $contract->setStatus(3);
                     }
                     else{
-                        $contract->setStatus(07);
+                        $contract->setStatus(7);
                     }
                     (new contractmodel())->updateContractData($contract);
 
-                    $mess = view("Emails/ContractUpdateMail", ['user' => session()->get('userId'), 'contractId' => $contract->getId()]);
-                    $this->emailSending("motaharz95@gmail.com", "Contract Update", $mess);
+                    if($contract->getStatus() == 3){
+                        $this->emailToEmployee($contract->getTantouId(), $contract->getContractorId(), $contract->getId());
+                    }
+                    else{
+                        $this->emailToContractor($contract->getContractorId(), $contract->getId());
+                    }
                 }
                 else{
                     $contract->setId((new SequenceModel())->getContractSequence());
-                    $contract->setStatus(02);
+                    $contract->setStatus(2);
                     (new contractmodel())->storeContractData($contract);
+
+                    $this->emailToContractor($contract->getContractorId(), $contract->getId());
                 }
 
                 $products = $_POST['productSelectId'];
@@ -411,5 +417,34 @@ class RegistrationController extends BaseController
             print_r($data);
             return false;
         }
+    }
+
+    public function emailToContractor($contractorId, $contractId){
+        $contractorDetails = (new ContractorModel())->getContractorDetailsById($contractorId);
+
+        $toEmail = $contractorDetails[0]->mail_address;
+        $toName = $contractorDetails[0]->contractor_name;
+        $contractUrl = BASE_URL."/contract-details/".$contractId;
+        $body = view("Emails/ContractUpdateMailToContractor", ['contractorName' => $toName, 'contractUrl' => $contractUrl]);
+        $subject = "契約商品のご確認";
+
+        if(isset($toEmail) && $toEmail != ""){
+            $this->emailSending($toEmail, $subject, $body);
+        }
+    }
+
+    public function emailToEmployee($employeeId, $contractorId, $contractId){
+        $contractorDetails = (new ContractorModel())->getContractorDetailsById($contractorId);
+
+        $toEmail = "";
+        $contractorName = $contractorDetails[0]->contractor_name;
+        $contractUrl = BASE_URL."/contract-details/".$contractId;
+        $body = view("Emails/ContractUpdateMailToEmployee", ['contractorName' => $contractorName, 'contractUrl' => $contractUrl, 'contractId' => $contractId]);
+        $subject = "契約更新確認依頼";
+
+        if(isset($toEmail) && $toEmail != ""){
+            $this->emailSending($toEmail, $subject, $body);
+        }
+
     }
 }
