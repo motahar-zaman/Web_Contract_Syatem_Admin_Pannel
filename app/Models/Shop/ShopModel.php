@@ -162,8 +162,8 @@ class ShopModel
 
         $queryString = "SELECT ms.shop_id, ms.shop_name, ms.shop_name_kana, ms.zipcode, ms.address_01, ms.address_02, ms.area_id, ms.prefecture, ms.district_id,
             ms.large_area_id, ms.small_area_id, ms.tel_no, ms.fax_no, ms.mail_address, ms.site_url, ms.update_date, ms.update_user_id, ms.insert_date,
-            ms.insert_user_id, ms.delete_flag, si.shop_daihyo_name, si.notificate_file_path FROM mst_shop AS ms LEFT JOIN trn_shop_info AS si ON
-            si.shop_id = ms.shop_id WHERE ms.delete_flag = ? {$condition} ORDER BY ms.update_date DESC";
+            ms.insert_user_id, ms.delete_flag, si.shop_daihyo_name, ifnull(si.notificate_file_path, '') AS notificate_file_path FROM mst_shop AS ms LEFT JOIN
+            trn_shop_info AS si ON si.shop_id = ms.shop_id WHERE ms.delete_flag = ? {$condition} ORDER BY ms.update_date DESC";
         $data = (new Database())->readQueryExecution($queryString, $queryParameter);
 
         $jsonData = array(
