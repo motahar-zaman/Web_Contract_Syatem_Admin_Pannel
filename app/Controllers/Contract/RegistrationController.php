@@ -125,6 +125,9 @@ class RegistrationController extends BaseController
                         $contract->setStatus(07);
                     }
                     (new contractmodel())->updateContractData($contract);
+
+                    $mess = view("Emails/ContractUpdateMail", ['user' => session()->get('userId'), 'contractId' => $contract->getId()]);
+                    $this->emailSending("motaharz95@gmail.com", "Contract Update", $mess);
                 }
                 else{
                     $contract->setId((new SequenceModel())->getContractSequence());
@@ -388,6 +391,25 @@ class RegistrationController extends BaseController
         }
         else{
             return json_encode(['msg' => "Not Logged in user", 'status' => 3]);
+        }
+    }
+
+    public function emailSending($to, $sub, $mess){
+        $email = \Config\Services::email();
+
+        $email->setFrom('contact@benri.com.bd', 'Benri');
+        $email->setTo($to);
+
+        $email->setSubject($sub);
+        $email->setMessage($mess);
+
+        if($email->send()){
+            return true;
+        }
+        else{
+            $data = $email->printDebugger(["headers"]);
+            print_r($data);
+            return false;
         }
     }
 }
