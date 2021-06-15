@@ -436,8 +436,9 @@ class RegistrationController extends BaseController
 
     public function emailToEmployee($employeeId, $contractorId, $contractId){
         $contractorDetails = (new ContractorModel())->getContractorDetailsById($contractorId);
+        $employee = (new EmployeeModel())->getEmployeeById($employeeId)[0];
+        $toEmail = $employee->getMailAddress();
 
-        $toEmail = "";
         $contractorName = $contractorDetails[0]->contractor_name;
         $contractUrl = BASE_URL."/contract-details/".$contractId;
         $body = view("Emails/ContractUpdateMailToEmployee", ['contractorName' => $contractorName, 'contractUrl' => $contractUrl, 'contractId' => $contractId]);
