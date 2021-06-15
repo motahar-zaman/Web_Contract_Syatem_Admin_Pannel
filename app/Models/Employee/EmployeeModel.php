@@ -14,8 +14,8 @@ class EmployeeModel
     }
 
     public function getAllEmployeeData(){
-        $queryString = "SELECT employee_id, employee_name, employee_name_kana, password, update_date, update_user_id, insert_date, insert_user_id,
-                        delete_flag FROM mst_employee WHERE delete_flag = ? ORDER BY update_date DESC";
+        $queryString = "SELECT employee_id, employee_name, employee_name_kana, mail_address, password, update_date, update_user_id, insert_date,
+                        insert_user_id, delete_flag FROM mst_employee WHERE delete_flag = ? ORDER BY update_date DESC";
         $queryParameter = array(1);
 
         return (new Database())->readQueryExecution($queryString, $queryParameter);
@@ -33,6 +33,7 @@ class EmployeeModel
                     $employee->setId($data->employee_id ?? NULL);
                     $employee->setName($data->employee_name ?? NULL);
                     $employee->setNameKana($data->employee_name_kana ?? NULL);
+                    $employee->setMailAddress($data->mail_address ?? NULL);
                     $employee->setPassword($data->password ?? NULL);
                     $employee->setUpdateDate($data->update_date ?? NULL);
                     $employee->setUpdateUserId($data->update_user_id ?? NULL);
