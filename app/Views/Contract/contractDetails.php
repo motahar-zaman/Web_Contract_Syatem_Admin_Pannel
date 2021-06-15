@@ -423,16 +423,16 @@
                             <a class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3" href="/contract-estimation/<?= $contract->getId() ?>"> 見積 </a>
                             <?php
                                 if(session()->get('user') == "contractor"){
-                                    if($contract->getStatus() == 2 || $contract->getStatus() == 7){
+                                    if($contract->getStatus() == contract_create || $contract->getStatus() == contract_edit_by_employee){
                                         ?>
-                                            <a class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3" href="/contract-status-update/<?= $contract->getId() ?>/3">承認</a>
+                                            <a class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3" href="/contract-status-update/<?= $contract->getId() ?>/<?= contract_approved_by_contractor ?>">承認</a>
                                         <?php
                                     }
                                 }
                                 elseif(session()->get('user') == "employee"){
-                                    if($contract->getStatus() == 3){
+                                    if($contract->getStatus() == contract_approved_by_contractor){
                                         ?>
-                                        <a class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3" href="/contract-status-update/<?= $contract->getId() ?>/6">承認</a>
+                                        <a class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3" href="/contract-status-update/<?= $contract->getId() ?>/<?= contract_approved_by_employee ?>">承認</a>
                                         <?php
                                     }
                                 }
