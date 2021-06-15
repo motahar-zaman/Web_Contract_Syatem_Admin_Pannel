@@ -6,6 +6,7 @@ class Employee{
     private $id;
     private $name;
     private $nameKana;
+    private $mailAddress;
     private $password;
     private $updateDate;
     private $updateUserId;
@@ -59,6 +60,22 @@ class Employee{
     public function setNameKana($nameKana): void
     {
         $this->nameKana = $nameKana;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMailAddress()
+    {
+        return $this->mailAddress;
+    }
+
+    /**
+     * @param mixed $mailAddress
+     */
+    public function setMailAddress($mailAddress): void
+    {
+        $this->mailAddress = $mailAddress;
     }
 
     /**
