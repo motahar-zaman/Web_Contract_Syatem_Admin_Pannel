@@ -1162,7 +1162,7 @@ function clearRingiForm(){
     $("#memo").html("");
 }
 
-function disableButton(e){
+function disableApproveButton(e){
     $("#contractApproveEmployee").prop('disabled', true);
     $("#contractApproveContractor").prop('disabled', true);
 }
