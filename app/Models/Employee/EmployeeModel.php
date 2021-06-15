@@ -49,4 +49,17 @@ class EmployeeModel
             return $datas;
         }
     }
+
+    public function getEmployeeById($employeeId){
+        $data = $this->getEmployeeDataById($employeeId);
+        return $this->mapData($data);
+    }
+
+    public function getEmployeeDataById($employeeId){
+        $queryString = "SELECT employee_id, employee_name, employee_name_kana, mail_address, password, update_date, update_user_id, insert_date,
+                        insert_user_id, delete_flag FROM mst_employee WHERE employee_id = ? AND delete_flag = ?";
+        $queryParameter = array($employeeId, 1);
+
+        return (new Database())->readQueryExecution($queryString, $queryParameter);
+    }
 }
