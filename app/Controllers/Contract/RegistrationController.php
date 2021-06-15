@@ -5,6 +5,7 @@ namespace App\Controllers\Contract;
 
 
 use App\Controllers\BaseController;
+use App\Controllers\EmailController;
 use App\Models\Address\AddressModel;
 use App\Models\Common\SequenceModel;
 use App\Models\Contract\Contract;
@@ -127,10 +128,10 @@ class RegistrationController extends BaseController
                     (new contractmodel())->updateContractData($contract);
 
                     if($contract->getStatus() == contract_approved_by_contractor){
-                        $this->emailToEmployee($contract->getTantouId(), $contract->getContractorId(), $contract->getId());
+                        (new EmailController())->emailToEmployee($contract->getTantouId(), $contract->getContractorId(), $contract->getId());
                     }
                     else{
-                        $this->emailToContractor($contract->getContractorId(), $contract->getId());
+                        (new EmailController())->emailToContractor($contract->getContractorId(), $contract->getId());
                     }
                 }
                 else{
@@ -138,7 +139,7 @@ class RegistrationController extends BaseController
                     $contract->setStatus(contract_create);
                     (new contractmodel())->storeContractData($contract);
 
-                    $this->emailToContractor($contract->getContractorId(), $contract->getId());
+                    (new EmailController())->emailToContractor($contract->getContractorId(), $contract->getId());
                 }
 
                 $products = $_POST['productSelectId'];
@@ -398,55 +399,5 @@ class RegistrationController extends BaseController
         else{
             return json_encode(['msg' => "Not Logged in user", 'status' => 3]);
         }
-    }
-
-    public function emailSending($to, $sub, $mess){
-        $email = \Config\Services::email();
-
-        $email->setFrom('contact@benri.com.bd', 'Benri');
-        $email->setTo($to);
-
-        $email->setSubject($sub);
-        $email->setMessage($mess);
-
-        if($email->send()){
-            return true;
-        }
-        else{
-            $data = $email->printDebugger(["headers"]);
-            print_r($data);
-            return false;
-        }
-    }
-
-    public function emailToContractor($contractorId, $contractId){
-        $contractorDetails = (new ContractorModel())->getContractorDetailsById($contractorId);
-
-        $toEmail = $contractorDetails[0]->mail_address;
-        $toName = $contractorDetails[0]->contractor_name;
-        $contractUrl = BASE_URL."/contract-details/".$contractId;
-        $body = view("Emails/ContractUpdateMailToContractor", ['contractorName' => $toName, 'contractUrl' => $contractUrl]);
-        $subject = "契約商品のご確認";
-
-        if(isset($toEmail) && $toEmail != ""){
-            $this->emailSending($toEmail, $subject, $body);
-        }
-        return true;
-    }
-
-    public function emailToEmployee($employeeId, $contractorId, $contractId){
-        $contractorDetails = (new ContractorModel())->getContractorDetailsById($contractorId);
-        $employee = (new EmployeeModel())->getEmployeeById($employeeId)[0];
-        $toEmail = $employee->getMailAddress();
-
-        $contractorName = $contractorDetails[0]->contractor_name;
-        $contractUrl = BASE_URL."/contract-details/".$contractId;
-        $body = view("Emails/ContractUpdateMailToEmployee", ['contractorName' => $contractorName, 'contractUrl' => $contractUrl, 'contractId' => $contractId]);
-        $subject = "契約更新確認依頼";
-
-        if(isset($toEmail) && $toEmail != ""){
-            $this->emailSending($toEmail, $subject, $body);
-        }
-        return true;
     }
 }
