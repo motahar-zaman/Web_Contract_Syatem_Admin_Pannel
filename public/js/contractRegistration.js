@@ -111,6 +111,7 @@ function enable() {
 }
 
 function contractRegistration() {
+    $("#contractorRegistration").prop('disabled', true);
     let data = {};
     let products = Array();
     let ringis = Array();
@@ -156,6 +157,7 @@ function contractRegistration() {
             scrollTop: $("#contractIdSearch").offset().top},
         'slow');
         $("#tantou").addClass("error");
+        $("#contractorRegistration").prop('disabled', false);
         return false;
     }
     else if(!data["contractorId"]){
@@ -163,10 +165,12 @@ function contractRegistration() {
             scrollTop: $("#contractIdSearch").offset().top},
         'slow');
         $("#contractorSelectButton").addClass("error");
+        $("#contractorRegistration").prop('disabled', false);
         return false;
     }
     else if(data["productSelectId"].length <= 0){
         $(".productInfoTable").addClass("error");
+        $("#contractorRegistration").prop('disabled', false);
         return false;
     }
 
@@ -186,6 +190,7 @@ function contractRegistration() {
             }
         },
         error: function (jqXHR, exception) {
+            $("#contractorRegistration").prop('disabled', false);
             alert("Error occurred");
         },
     });
@@ -1155,4 +1160,9 @@ function clearRingiForm(){
     $("#endDate").html("");
     $("#purpose").html("");
     $("#memo").html("");
+}
+
+function disableButton(e){
+    $("#contractApproveEmployee").prop('disabled', true);
+    $("#contractApproveContractor").prop('disabled', true);
 }

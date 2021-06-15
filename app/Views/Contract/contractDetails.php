@@ -425,14 +425,18 @@
                                 if(session()->get('user') == "contractor"){
                                     if($contract->getStatus() == contract_create || $contract->getStatus() == contract_edit_by_employee){
                                         ?>
-                                            <a class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3" href="/contract-status-update/<?= $contract->getId() ?>/<?= contract_approved_by_contractor ?>">承認</a>
+                                        <a href="/contract-status-update/<?= $contract->getId() ?>/<?= contract_approved_by_contractor ?>">
+                                            <button id="contractApproveContractor" onclick="disableButton()" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3">承認</button>
+                                        </a>
                                         <?php
                                     }
                                 }
                                 elseif(session()->get('user') == "employee"){
                                     if($contract->getStatus() == contract_approved_by_contractor){
                                         ?>
-                                        <a class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3" href="/contract-status-update/<?= $contract->getId() ?>/<?= contract_approved_by_employee ?>">承認</a>
+                                        <a href="/contract-status-update/<?= $contract->getId() ?>/<?= contract_approved_by_employee ?>">
+                                            <button onclick="disableButton()" id="contractApproveEmployee" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3">承認</button>
+                                        </a>
                                         <?php
                                     }
                                 }
