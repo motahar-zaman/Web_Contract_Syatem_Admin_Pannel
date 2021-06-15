@@ -12,7 +12,7 @@ class EmailController extends BaseController
     public function emailSending($to, $sub, $mess){
         $email = \Config\Services::email();
 
-        $email->setFrom('contact@benri.com.bd', 'Benri');
+        $email->setFrom('contact@benri.com.bd', 'WEB契約');
         $email->setTo($to);
 
         $email->setSubject($sub);
