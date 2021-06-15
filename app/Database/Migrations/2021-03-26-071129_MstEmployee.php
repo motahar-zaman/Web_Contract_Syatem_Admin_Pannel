@@ -27,20 +27,34 @@ class MstEmployee extends Migration
                 'null'   => false,
                 'comment'=> '社員名カナ / Employee Name Kana',
             ],
+            'mail_address' => [
+                'type'   => 'VARCHAR',
+                'constraint'=> '500',
+                'null'      => true,
+                'comment'=> 'メールアドレス / Mail Address',
+            ],
             'password' => [
                 'type'   => 'VARCHAR',
                 'constraint'=> '200',
                 'null'   => false,
                 'comment'=> 'パスワード / password',
             ],
-            'update_date datetime NOT NULL default current_timestamp on update current_timestamp',
+            'update_date'       => [
+                'type'       => 'DATETIME',
+                'null'       => false,
+                'comment'    => '更新日 Update Date',
+            ],
             'update_user_id' => [
                 'type'   => 'VARCHAR',
                 'constraint'=> '15',
                 'null'   => false,
                 'comment'=> '更新者 / Update By',
             ],
-            'insert_date datetime NOT NULL default current_timestamp',
+            'insert_date'          => [
+                'type'           => 'DATETIME',
+                'null'           => false,
+                'comment'        => '作成日 / Create Date',
+            ],
             'insert_user_id' => [
                 'type'   => 'VARCHAR',
                 'constraint'=> '15',
