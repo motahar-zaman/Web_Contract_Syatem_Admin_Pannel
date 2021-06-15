@@ -61,16 +61,16 @@
                                                 <?php
                                                     $status = $contract->getStatus();
                                                     $text = "Not defined";
-                                                    if($status == 2){
+                                                    if($status == contract_create){
                                                         $text = "仮契約";
                                                     }
-                                                    elseif($status == 3){
+                                                    elseif($status == contract_approved_by_contractor){
                                                         $text = "内部確認01";
                                                     }
-                                                    if($status == 6){
+                                                    if($status == contract_approved_by_employee){
                                                         $text = "成約";
                                                     }
-                                                    if($status == 7){
+                                                    if($status == contract_edit_by_employee){
                                                         $text = "契約更新";
                                                     }
                                                 ?>
