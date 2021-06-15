@@ -8,13 +8,13 @@
             <div>
                 <?= $contractorName ?>様
             </div>
-            <br><br>
+            <br>
 
             <div>
                 この度は弊社商品のご契約ありがとうございます。<br>
                 下記URLより、契約内容のご確認をお願いいたします。
             </div>
-            <br><br>
+            <br>
             <div>
                 <?= $contractUrl ?>
             </div>

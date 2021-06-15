@@ -9,7 +9,7 @@
                 <?= $contractorName ?>様の契約（契約ID：<?= $contractId ?>）において更新がありました。<br>
                 内容の確認をしてください。
             </div>
-            <br><br>
+            <br>
             <div>
                 <?= $contractUrl ?>
             </div>
