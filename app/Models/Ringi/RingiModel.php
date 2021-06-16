@@ -4,6 +4,7 @@
 namespace App\Models\Ringi;
 
 
+use App\Models\Code\CodeModel;
 use App\Models\Database;
 
 class RingiModel
@@ -47,6 +48,9 @@ class RingiModel
                     $ringi->setPurpose($data->purpose ?? NULL);
                     $ringi->setMemo($data->memo ?? NULL);
                     $ringi->setDeleteFlag($data->delete_flag ?? NULL);
+                    $ringi->setTypeCodeName((new CodeModel())->getCodeByCodeValue($ringi->getType())[0]->getCodeName() ?? null);
+                    $ringi->setTargetAreaCodeName((new CodeModel())->getCodeByCodeValue($ringi->getTargetArea())[0]->getCodeName() ?? null);
+                    $ringi->setDiscountServiceTypeCodeName((new CodeModel())->getCodeByCodeValue($ringi->getDiscountServiceType())[0]->getCodeName() ?? null);
                 }
                 array_push($mappedData, $ringi);
             }
