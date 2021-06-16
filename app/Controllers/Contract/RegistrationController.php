@@ -147,6 +147,7 @@ class RegistrationController extends BaseController
 
                 $contractRingi = array();
                 $contractRingi['contract'] = $contract->getId();
+                $contractRingi['sequence'] = strtotime(date("Y-m-d H:i:s"));
                 $contractRingi['status'] = 1;
                 $contractRingi['update'] = date("Y-m-d H:i:s");
                 $contractRingi['updateUser'] = session()->get('userId');
@@ -157,7 +158,6 @@ class RegistrationController extends BaseController
                 (new ContractModel())->removeContractRingiData($contract->getId());
                 for ($i = 0; $i < count($ringis); $i++){
                     $contractRingi['ringi'] = $ringis[$i];
-                    $contractRingi['sequence'] = strtotime(date("Y-m-d H:i:s")) + $i;
                     if($contractRingi['ringi'] != "" && $contractRingi['ringi'] != null){
                         (new RingiModel())->storeContractRingiData($contractRingi);
                     }
