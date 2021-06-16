@@ -22,6 +22,9 @@ class Ringi
     private $purpose;
     private $memo;
     private $delete_flag;
+    private $typeCodeName;
+    private $targetAreaCodeName;
+    private $discountServiceTypeCodeName;
 
     /**
      * @return mixed
@@ -277,5 +280,53 @@ class Ringi
     public function setDeleteFlag($delete_flag): void
     {
         $this->delete_flag = $delete_flag;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTypeCodeName()
+    {
+        return $this->typeCodeName;
+    }
+
+    /**
+     * @param mixed $typeCodeName
+     */
+    public function setTypeCodeName($typeCodeName): void
+    {
+        $this->typeCodeName = $typeCodeName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTargetAreaCodeName()
+    {
+        return $this->targetAreaCodeName;
+    }
+
+    /**
+     * @param mixed $targetAreaCodeName
+     */
+    public function setTargetAreaCodeName($targetAreaCodeName): void
+    {
+        $this->targetAreaCodeName = $targetAreaCodeName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDiscountServiceTypeCodeName()
+    {
+        return $this->discountServiceTypeCodeName;
+    }
+
+    /**
+     * @param mixed $discountServiceTypeCodeName
+     */
+    public function setDiscountServiceTypeCodeName($discountServiceTypeCodeName): void
+    {
+        $this->discountServiceTypeCodeName = $discountServiceTypeCodeName;
     }
 }
