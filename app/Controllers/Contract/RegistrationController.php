@@ -157,8 +157,9 @@ class RegistrationController extends BaseController
                 (new ContractModel())->removeContractRingiData($contract->getId());
                 for ($i = 0; $i < count($ringis); $i++){
                     $contractRingi['ringi'] = $ringis[$i];
+                    $contractRingi['sequence'] = strtotime(date("Y-m-d H:i:s")) + $i;
                     if($contractRingi['ringi'] != "" && $contractRingi['ringi'] != null){
-                        (new ContractModel())->storeContractRingiData($contractRingi);
+                        (new RingiModel())->storeContractRingiData($contractRingi);
                     }
                 }
 

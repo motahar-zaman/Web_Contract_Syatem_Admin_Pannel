@@ -79,10 +79,20 @@ class RingiModel
     public function getRingiDataByContractId($contractId){
         $queryString = "SELECT contract_id, ri.ringi_no, applicant_name, ringi_type, target_area, target_name, discount_service_type, ringi_detail, summary_condition,
                         before_summary_price, after_summary_price, summary_period, DATE_FORMAT(start_date, '%Y/%m/%d') AS start_date, DATE_FORMAT(end_date, '%Y/%m/%d')
-                        AS end_date, purpose, memo, ri.delete_flag FROM trn_contract_ringi AS cr INNER JOIN trn_ringi_info AS ri ON ri.ringi_no = cr.ringi_no
+                        AS end_date, purpose, memo, ri.delete_flag FROM trn_contract_ringi_map AS cr INNER JOIN trn_ringi_info AS ri ON ri.ringi_no = cr.ringi_no
                         WHERE cr.contract_id = ? AND cr.delete_flag = ?";
         $queryParameter = array($contractId, 1);
 
         return (new Database())->readQueryExecution($queryString, $queryParameter);
+    }
+
+    public function storeContractRingiData($contractRingi = array()){
+        $d = $contractRingi;
+
+        $queryString = "INSERT INTO trn_contract_ringi_map (contract_id, ringi_no, seq_no, status, update_date, update_user_id, insert_date, insert_user_id, delete_flag)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $queryParameter = array($d['contract'], $d['ringi'], $d['sequence'], $d['status'], $d['update'], $d['updateUser'], $d['insert'], $d['insertUser'], $d['delete']);
+
+        return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
 }
