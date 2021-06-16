@@ -138,8 +138,9 @@ class ContractController extends BaseController
         if( session() && session()->get('login') ){
             $contract = (new ContractModel())->getContractById($contractId);
             $contractDetails = $contract[$contractId] ?? null;
+            $contractRingis = (new RingiModel())->getRingiByContractId($contractId);
 
-            return view("Contract/estimation",["title" => "Contract Estimation", "contractDetails" => $contractDetails]);
+            return view("Contract/estimation",["title" => "Contract Estimation", "contractDetails" => $contractDetails, "contractRingis" => $contractRingis]);
         }
         else{
             return redirect()->to("/login");
