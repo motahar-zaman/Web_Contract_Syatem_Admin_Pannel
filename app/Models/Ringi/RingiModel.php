@@ -95,4 +95,11 @@ class RingiModel
 
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
+
+    public function removeContractRingiData($contractId){
+        $queryString = "DELETE FROM trn_contract_ringi_map WHERE contract_id = ?";
+        $queryParameter = array($contractId);
+
+        return (new Database())->writeQueryExecution($queryString, $queryParameter);
+    }
 }

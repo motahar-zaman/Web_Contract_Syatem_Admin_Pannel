@@ -243,13 +243,6 @@ class ContractModel
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
 
-    public function removeContractRingiData($contractId){
-        $queryString = "DELETE FROM trn_contract_ringi WHERE contract_id = ?";
-        $queryParameter = array($contractId);
-
-        return (new Database())->writeQueryExecution($queryString, $queryParameter);
-    }
-
     public function updateContractStatusForContractorUpdate($contractorId, $status, $updateDate, $updateUser){
         $queryString = "UPDATE trn_web_contract_base SET status = ?, update_date = ?, update_user_id = ? WHERE contractor_id = ?";
 
