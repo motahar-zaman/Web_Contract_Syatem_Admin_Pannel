@@ -61,45 +61,27 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                                <?php
-                                                    if (isset($contractDetails)){
-                                                        $products = $contractDetails->getContractProduct();
-                                                        $count = count($products);
-                                                        $price = 0;
-                                                        $tax = 0;
-                                                        if(isset($products) && $count > 0){
-                                                            for($i = 0; $i < $count; $i++ ){
-                                                                $price += $products[$i]["price"];
-                                                            }
-                                                            $tax = $price / 100 * contract_product_tax;
-                                                        }
-                                                        ?>
-                                                            <tr>
-                                                                <td><?= $price ?></td>
-                                                                <td><?= $tax ?></td>
-                                                                <td><?= $price+$tax ?></td>
-                                                            </tr>
-                                                        <?php
+                                            <?php
+                                            if (isset($contractDetails)){
+                                                $products = $contractDetails->getContractProduct();
+                                                $count = count($products);
+                                                $price = 0;
+                                                $tax = 0;
+                                                if(isset($products) && $count > 0){
+                                                    for($i = 0; $i < $count; $i++ ){
+                                                        $price += $products[$i]["price"];
                                                     }
+                                                    $tax = $price / 100 * contract_product_tax;
+                                                }
                                                 ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 text-left">
-                                <div class="card-body" style="margin-left: -15px">
-                                    <div class="card-body table-responsive p-0" style="border: 1px solid gray; width: 35%">
-                                        <table class="table table-hover text-center ">
-                                            <thead class="k1TableTitleBG">
                                                 <tr>
-                                                    <th>税抜御請求額</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
+                                                    <td><?= $price ?></td>
+                                                    <td><?= $tax ?></td>
                                                     <td><?= $price+$tax ?></td>
                                                 </tr>
+                                                <?php
+                                            }
+                                            ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -111,18 +93,21 @@
                     <div class="gap-2 mx-auto text-center" style="max-width: 1050px">
                         <div class="card mt-5 text-left">
                             <div class="card-header">
-                                <h3 class="card-title text-bold text-center">[契約商品]</h3>
+                                <h3 class="card-title text-bold text-center">【詳細】</h3>
                             </div>
                             <div class="card-body">
                                 <div class="card-body table-responsive p-0">
                                     <table class="table table-hover text-center">
                                         <thead class="k1TableTitleBG">
                                             <tr>
-                                                <th style="width: 17%">商品名</th>
-                                                <th style="width: 20%">契約期間</th>
-                                                <th style="width: 11%">請求月</th>
-                                                <th style="width: 12%">税抜価格</th>
-                                                <th>摘要</th>
+                                                <th class="align-middle" rowspan="2">名称</th>
+                                                <th colspan="2">契約期間</th>
+                                                <th class="align-middle" rowspan="2">税抜価格</th>
+                                                <th class="align-middle" rowspan="2">摘要</th>
+                                            </tr>
+                                            <tr>
+                                                <th>開始日</th>
+                                                <th>終了日</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -133,18 +118,39 @@
                                                     if(isset($products) && $count > 0){
                                                         for($i = 0; $i < $count; $i++ ){
                                                             $product = $products[$i];
-                                                            $startDate = date("Y",strtotime($product["startDate"]))."年".date("m",strtotime($product["startDate"]))."月";
-                                                            $endDate = date("Y",strtotime($product["endDate"]))."年".date("m",strtotime($product["endDate"]))."月";
+                                                            $startDate = date("Y",strtotime($product["startDate"]))."年".date("m",strtotime($product["startDate"]))."月".date("d",strtotime($product["startDate"]))."日";
+                                                            $endDate = date("Y",strtotime($product["endDate"]))."年".date("m",strtotime($product["endDate"]))."月".date("d",strtotime($product["endDate"]))."日";
                                                             ?>
-                                                                <tr>
-                                                                    <td><?= $product["name"] ?></td>
-                                                                    <td><?= $startDate ." - ". $endDate ?></td>
-                                                                    <td>YYYY年12月</td>
-                                                                    <td><?= $product["price"] ?></td>
-                                                                    <td><?= $product["note"] ?></td>
-                                                                </tr>
+                                                            <tr>
+                                                                <td><?= $product["name"] ?></td>
+                                                                <td><?= $startDate ?></td>
+                                                                <td><?= $endDate ?></td>
+                                                                <td><?= $product["price"] ?></td>
+                                                                <td><?= $product["shopName"] ?></td>
+                                                            </tr>
                                                             <?php
                                                         }
+                                                    }
+                                                }
+
+                                                if (isset($contractRingis) && count($contractRingis) > 0){
+                                                    $count = count($contractRingis);
+                                                    for($i = 0; $i < $count; $i++ ){
+                                                        $ringi = $contractRingis[$i];
+                                                        $ringiStart = $ringi->getStartDate();
+                                                        $ringiEnd = $ringi->getEndDate();
+                                                        $startDate = date("Y",strtotime($ringiStart))."年".date("m",strtotime($ringiStart))."月".date("d",strtotime($ringiStart))."日";
+                                                        $endDate = date("Y",strtotime($ringiEnd))."年".date("m",strtotime($ringiEnd))."月".date("d",strtotime($ringiEnd))."日";
+                                                        $price = $ringi->getAfterSummaryPrice() - $ringi->getBeforeSummaryPrice();
+                                                        ?>
+                                                        <tr>
+                                                            <td>【割引】<?= $ringi->getTypeCodeName()."/".$ringi->getTargetAreaCodeName() ?></td>
+                                                            <td><?= $startDate ?></td>
+                                                            <td><?= $endDate ?></td>
+                                                            <td><?= $price ?></td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <?php
                                                     }
                                                 }
                                             ?>
@@ -154,66 +160,17 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="gap-2 mx-auto text-center" style="max-width: 1050px">
-                        <div class="card mt-5 text-left">
-                            <div class="card-header">
-                                <h3 class="card-title text-bold text-center">[適用割引サービス]</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="card-body table-responsive p-0">
-                                    <table class="table table-hover text-center">
-                                        <thead class="k1TableTitleBG">
-                                            <tr>
-                                                <th>割引サービス名</th>
-                                                <th>割引率</th>
-                                                <th>割引額</th>
-                                                <th>摘要</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>ぴゅあらば3ヶ月割</td>
-                                                <td>20%</td>
-                                                <td>10000</td>
-                                                <td>{$shopId}【デリヘル遠藤　青梅店】契約初月のみ適用</td>
-                                            </tr>
-                                            <tr>
-                                                <td>ぴゅあらば3ヶ月割</td>
-                                                <td>20%</td>
-                                                <td>10000</td>
-                                                <td>{$shopId}【デリヘル遠藤　青梅店】契約初月のみ適用</td>
-                                            </tr>
-                                            <tr>
-                                                <td>ぴゅあらば3ヶ月割</td>
-                                                <td>20%</td>
-                                                <td>10000</td>
-                                                <td>{$shopId}【デリヘル遠藤　青梅店】契約初月のみ適用</td>
-                                            </tr>
-                                            <tr>
-                                                <td>ぴゅあらば3ヶ月割</td>
-                                                <td>20%</td>
-                                                <td>10000</td>
-                                                <td>{$shopId}【デリヘル遠藤　青梅店】契約初月のみ適用</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
                 <div class="card-footer">
                     <div class="row mx-auto pb-3" style="max-width: 1050px">
                         <div class="col-md-6 pl-0">
                             <?php
-                                if(isset($_SERVER['HTTP_REFERER'])){
-                                    $url= $_SERVER['HTTP_REFERER'];
-                                }
-                                else{
-                                    $url = "/contract-details/".$contractDetails->getId();
-                                }
+                            if(isset($_SERVER['HTTP_REFERER'])){
+                                $url= $_SERVER['HTTP_REFERER'];
+                            }
+                            else{
+                                $url = "/contract-details/".$contractDetails->getId();
+                            }
                             ?>
                             <a class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3" href="<?= $url ?>">戻る</a>
                             <a class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2" href="/home">メニュー</a>
