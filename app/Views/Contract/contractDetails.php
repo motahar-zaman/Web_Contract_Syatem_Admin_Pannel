@@ -391,10 +391,10 @@
                                                         ?>
                                                             <tr>
                                                                 <td id="ringiNo"><?= $ringi->getNo() ?></td>
-                                                                <td id="ringiType"><?= $ringi->getType() ?></td>
-                                                                <td id="targetArea"><?= $ringi->getTargetArea() ?></td>
+                                                                <td id="ringiType"><?= $ringi->getTypeCodeName() ?></td>
+                                                                <td id="targetArea"><?= $ringi->getTargetAreaCodeName() ?></td>
                                                                 <td id="targetName"><?= $ringi->getTargetName() ?></td>
-                                                                <td id="discountServiceType"><?= $ringi->getDiscountServiceType() ?></td>
+                                                                <td id="discountServiceType"><?= $ringi->getDiscountServiceTypeCodeName() ?></td>
                                                                 <td id="ringiDetail"><?= $ringi->getDetail() ?></td>
                                                                 <td id="summaryCondition"><?= $ringi->getSummaryCondition() ?></td>
                                                                 <td id="beforeSummaryPrice"><?= $ringi->getBeforeSummaryPrice() ?></td>
