@@ -155,7 +155,7 @@ class RegistrationController extends BaseController
                 $contractRingi['insertUser'] = session()->get('userId');
                 $contractRingi['delete'] = 1;
 
-                (new ContractModel())->removeContractRingiData($contract->getId());
+                (new RingiModel())->removeContractRingiData($contract->getId());
                 for ($i = 0; $i < count($ringis); $i++){
                     $contractRingi['ringi'] = $ringis[$i];
                     if($contractRingi['ringi'] != "" && $contractRingi['ringi'] != null){
