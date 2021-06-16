@@ -6,33 +6,33 @@ namespace App\Models\Code;
 
 class Code
 {
-    private $function_id;
-    private $group_id;
-    private $code_id;
-    private $code_value;
-    private $function_name;
-    private $group_name;
-    private $code_name;
-    private $sort_order;
-    private $update_date;
-    private $update_user_id;
-    private $insert_date;
-    private $insert_user_id;
+    private $functionId;
+    private $groupId;
+    private $codeId;
+    private $codeValue;
+    private $functionName;
+    private $groupName;
+    private $codeName;
+    private $sortOrder;
+    private $updateDate;
+    private $updateUser;
+    private $insertDate;
+    private $insertUser;
 
     /**
      * @return mixed
      */
     public function getFunctionId()
     {
-        return $this->function_id;
+        return $this->functionId;
     }
 
     /**
-     * @param mixed $function_id
+     * @param mixed $functionId
      */
-    public function setFunctionId($function_id): void
+    public function setFunctionId($functionId): void
     {
-        $this->function_id = $function_id;
+        $this->functionId = $functionId;
     }
 
     /**
@@ -40,15 +40,15 @@ class Code
      */
     public function getGroupId()
     {
-        return $this->group_id;
+        return $this->groupId;
     }
 
     /**
-     * @param mixed $group_id
+     * @param mixed $groupId
      */
-    public function setGroupId($group_id): void
+    public function setGroupId($groupId): void
     {
-        $this->group_id = $group_id;
+        $this->groupId = $groupId;
     }
 
     /**
@@ -56,15 +56,15 @@ class Code
      */
     public function getCodeId()
     {
-        return $this->code_id;
+        return $this->codeId;
     }
 
     /**
-     * @param mixed $code_id
+     * @param mixed $codeId
      */
-    public function setCodeId($code_id): void
+    public function setCodeId($codeId): void
     {
-        $this->code_id = $code_id;
+        $this->codeId = $codeId;
     }
 
     /**
@@ -72,15 +72,15 @@ class Code
      */
     public function getCodeValue()
     {
-        return $this->code_value;
+        return $this->codeValue;
     }
 
     /**
-     * @param mixed $code_value
+     * @param mixed $codeValue
      */
-    public function setCodeValue($code_value): void
+    public function setCodeValue($codeValue): void
     {
-        $this->code_value = $code_value;
+        $this->codeValue = $codeValue;
     }
 
     /**
@@ -88,15 +88,15 @@ class Code
      */
     public function getFunctionName()
     {
-        return $this->function_name;
+        return $this->functionName;
     }
 
     /**
-     * @param mixed $function_name
+     * @param mixed $functionName
      */
-    public function setFunctionName($function_name): void
+    public function setFunctionName($functionName): void
     {
-        $this->function_name = $function_name;
+        $this->functionName = $functionName;
     }
 
     /**
@@ -104,15 +104,15 @@ class Code
      */
     public function getGroupName()
     {
-        return $this->group_name;
+        return $this->groupName;
     }
 
     /**
-     * @param mixed $group_name
+     * @param mixed $groupName
      */
-    public function setGroupName($group_name): void
+    public function setGroupName($groupName): void
     {
-        $this->group_name = $group_name;
+        $this->groupName = $groupName;
     }
 
     /**
@@ -120,15 +120,15 @@ class Code
      */
     public function getCodeName()
     {
-        return $this->code_name;
+        return $this->codeName;
     }
 
     /**
-     * @param mixed $code_name
+     * @param mixed $codeName
      */
-    public function setCodeName($code_name): void
+    public function setCodeName($codeName): void
     {
-        $this->code_name = $code_name;
+        $this->codeName = $codeName;
     }
 
     /**
@@ -136,15 +136,15 @@ class Code
      */
     public function getSortOrder()
     {
-        return $this->sort_order;
+        return $this->sortOrder;
     }
 
     /**
-     * @param mixed $sort_order
+     * @param mixed $sortOrder
      */
-    public function setSortOrder($sort_order): void
+    public function setSortOrder($sortOrder): void
     {
-        $this->sort_order = $sort_order;
+        $this->sortOrder = $sortOrder;
     }
 
     /**
@@ -152,31 +152,31 @@ class Code
      */
     public function getUpdateDate()
     {
-        return $this->update_date;
+        return $this->updateDate;
     }
 
     /**
-     * @param mixed $update_date
+     * @param mixed $updateDate
      */
-    public function setUpdateDate($update_date): void
+    public function setUpdateDate($updateDate): void
     {
-        $this->update_date = $update_date;
+        $this->updateDate = $updateDate;
     }
 
     /**
      * @return mixed
      */
-    public function getUpdateUserId()
+    public function getUpdateUser()
     {
-        return $this->update_user_id;
+        return $this->updateUser;
     }
 
     /**
-     * @param mixed $update_user_id
+     * @param mixed $updateUser
      */
-    public function setUpdateUserId($update_user_id): void
+    public function setUpdateUser($updateUser): void
     {
-        $this->update_user_id = $update_user_id;
+        $this->updateUser = $updateUser;
     }
 
     /**
@@ -184,30 +184,30 @@ class Code
      */
     public function getInsertDate()
     {
-        return $this->insert_date;
+        return $this->insertDate;
     }
 
     /**
-     * @param mixed $insert_date
+     * @param mixed $insertDate
      */
-    public function setInsertDate($insert_date): void
+    public function setInsertDate($insertDate): void
     {
-        $this->insert_date = $insert_date;
+        $this->insertDate = $insertDate;
     }
 
     /**
      * @return mixed
      */
-    public function getInsertUserId()
+    public function getInsertUser()
     {
-        return $this->insert_user_id;
+        return $this->insertUser;
     }
 
     /**
-     * @param mixed $insert_user_id
+     * @param mixed $insertUser
      */
-    public function setInsertUserId($insert_user_id): void
+    public function setInsertUser($insertUser): void
     {
-        $this->insert_user_id = $insert_user_id;
+        $this->insertUser = $insertUser;
     }
 }
