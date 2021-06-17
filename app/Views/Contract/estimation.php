@@ -61,27 +61,11 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <?php
-                                            if (isset($contractDetails)){
-                                                $products = $contractDetails->getContractProduct();
-                                                $count = count($products);
-                                                $price = 0;
-                                                $tax = 0;
-                                                if(isset($products) && $count > 0){
-                                                    for($i = 0; $i < $count; $i++ ){
-                                                        $price += $products[$i]["price"];
-                                                    }
-                                                    $tax = $price / 100 * contract_product_tax;
-                                                }
-                                                ?>
                                                 <tr>
-                                                    <td><?= $price ?></td>
-                                                    <td><?= $tax ?></td>
-                                                    <td><?= $price+$tax ?></td>
+                                                    <td id="priceExcludingTax"></td>
+                                                    <td id="totalTax"></td>
+                                                    <td id="priceIncludingTax"></td>
                                                 </tr>
-                                                <?php
-                                            }
-                                            ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -112,6 +96,8 @@
                                         </thead>
                                         <tbody>
                                             <?php
+                                                $productPrice = 0;
+                                                $tax = 0;
                                                 if (isset($contractDetails)){
                                                     $products = $contractDetails->getContractProduct();
                                                     $count = count($products);
@@ -120,6 +106,7 @@
                                                             $product = $products[$i];
                                                             $startDate = date("Y",strtotime($product["startDate"]))."年".date("m",strtotime($product["startDate"]))."月".date("d",strtotime($product["startDate"]))."日";
                                                             $endDate = date("Y",strtotime($product["endDate"]))."年".date("m",strtotime($product["endDate"]))."月".date("d",strtotime($product["endDate"]))."日";
+                                                            $productPrice += $product["price"];
                                                             ?>
                                                             <tr>
                                                                 <td><?= $product["name"] ?></td>
@@ -141,19 +128,24 @@
                                                         $ringiEnd = $ringi->getEndDate();
                                                         $startDate = date("Y",strtotime($ringiStart))."年".date("m",strtotime($ringiStart))."月".date("d",strtotime($ringiStart))."日";
                                                         $endDate = date("Y",strtotime($ringiEnd))."年".date("m",strtotime($ringiEnd))."月".date("d",strtotime($ringiEnd))."日";
-                                                        $price = $ringi->getAfterSummaryPrice() - $ringi->getBeforeSummaryPrice();
+                                                        $discount = $ringi->getAfterSummaryPrice() - $ringi->getBeforeSummaryPrice();
+                                                        $productPrice += $discount;
                                                         ?>
                                                         <tr>
                                                             <td>【割引】<?= $ringi->getTypeCodeName()."/".$ringi->getTargetAreaCodeName() ?></td>
                                                             <td><?= $startDate ?></td>
                                                             <td><?= $endDate ?></td>
-                                                            <td><?= $price ?></td>
+                                                            <td><?= $discount ?></td>
                                                             <td></td>
                                                         </tr>
                                                         <?php
                                                     }
                                                 }
+                                                $tax = $productPrice /100 * contract_product_tax;
                                             ?>
+                                            <span class="d-none" id="productPrice"><?= $productPrice ?></span>
+                                            <span class="d-none" id="tax"><?= $tax ?></span>
+                                            <span class="d-none" id="priceWithTax"><?= $productPrice + $tax ?></span>
                                         </tbody>
                                     </table>
                                 </div>
@@ -183,7 +175,7 @@
             </section>
         </div>
 
-        <script type="text/javascript" src="../../js/contractorSearch.js"></script>
+        <script type="text/javascript" src="../../js/estimation.js"></script>
         <!-- jQuery -->
         <script src="../../plugins/jquery/jquery.min.js"></script>
         <!-- Bootstrap 4 -->
