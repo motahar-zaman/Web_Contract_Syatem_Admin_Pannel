@@ -84,6 +84,14 @@ class ContractController extends BaseController
             return view("Contract/contractDetails", $data);
         }
         else{
+            if (!empty($_SERVER['QUERY_STRING'])) {
+                $uri = uri_string() . '?' . $_SERVER['QUERY_STRING'];
+            }
+            else {
+                $uri = uri_string();
+            }
+
+            session()->set('redirect', $uri);
             return redirect()->to("/login");
         }
     }

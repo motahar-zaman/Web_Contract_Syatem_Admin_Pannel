@@ -20,7 +20,7 @@ class AuthController extends BaseController{
 
     public function login(){
         if( session() && session()->get('login') ){
-            return redirect()->to("/");
+            return redirect()->back();
         }
         else{
             return view("login", ["title" => "Login"]);
@@ -54,7 +54,7 @@ class AuthController extends BaseController{
                 session()->set($session_data);
                 $token = JWT::encode($session_data, jwt_token_key, jwt_token_algorithm);
 
-                return redirect()->to('/');
+                return redirect()->to(session()->get("redirect") ?? "/");
             }
             else{
                 return redirect()->to('/login');
@@ -87,7 +87,7 @@ class AuthController extends BaseController{
                 session()->set($session_data);
                 $token = JWT::encode($session_data, jwt_token_key, jwt_token_algorithm);
 
-                return redirect()->to('/');
+                return redirect()->to(session()->get("redirect") ?? "/");
             }
             else{
                 return redirect()->to('/login');
