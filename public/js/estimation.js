@@ -3,3 +3,8 @@ $(document).ready(function () {
     $("#totalTax").html($("#tax").html());
     $("#priceIncludingTax").html($("#priceWithTax").html());
 });
+
+function disableApproveButton(e){
+    $("#menuButton").prop('disabled', true);
+    $("#contractApproveContractor").prop('disabled', true);
+}

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title><?php echo $title; ?></title>
+        <title><?= $title ?></title>
 
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet"
@@ -31,7 +31,7 @@
     <body>
         <div class="wrapper">
             <section class="content">
-                <div class="container-fluid">
+                <div class="container-fluid mb-5">
                     <div class="row">
                         <div class="row col-md-12 pt-2 pl-4">
                             <span class="pl-2">WEB契約システム</span>
@@ -167,15 +167,17 @@
                     <div class="row mx-auto pb-3" style="max-width: 1050px">
                         <div class="col-md-6 pl-0">
                             <?php
-                            if(isset($_SERVER['HTTP_REFERER'])){
-                                $url= $_SERVER['HTTP_REFERER'];
-                            }
-                            else{
-                                $url = "/contract-details/".$contractDetails->getId();
+                            if(session()->get('user') == "contractor"){
+                                if($contractDetails->getStatus() == contract_create || $contractDetails->getStatus() == contract_edit_by_employee){
+                                    ?>
+                                    <a href="/contract-status-update/<?= $contractDetails->getId() ?>/<?= contract_approved_by_contractor ?>">
+                                        <button id="contractApproveContractor" onclick="disableApproveButton()" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3">承認</button>
+                                    </a>
+                                    <?php
+                                }
                             }
                             ?>
-                            <a class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3" href="<?= $url ?>">戻る</a>
-                            <a class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2" href="/home">メニュー</a>
+                            <a id="menuButton" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2" href="/home">メニュー</a>
                         </div>
                         <div class="col-md-6 pr-0 text-right">
                             <span>アクセス日時：<?= date("Y/m/d") ?>	</span>
