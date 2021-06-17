@@ -149,7 +149,7 @@
                                                             $endDate = date("Y",strtotime($product["endDate"]))."年".date("m",strtotime($product["endDate"]))."月".date("d",strtotime($product["endDate"]))."日";
                                                             ?>
                                                                 <tr>
-                                                                    <td><a href='<?php echo base_url();?>/contract-details/<?= $contractId ?>'><?= $contractId ?></a></td>
+                                                                    <td><a href='/contract-details/<?= $contractId ?>'><?= $contractId ?></a></td>
                                                                     <td><?= $product["serviceType"] ?></td>
                                                                     <td><?= $shop->getName() ?></td>
                                                                     <td><?= $shop->getAddress01() ?></td>
