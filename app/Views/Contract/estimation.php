@@ -96,17 +96,24 @@
                                         </thead>
                                         <tbody>
                                             <?php
+                                                $today = date("Y-m-d");
                                                 $productPrice = 0;
                                                 $tax = 0;
+
                                                 if (isset($contractDetails)){
                                                     $products = $contractDetails->getContractProduct();
                                                     $count = count($products);
                                                     if(isset($products) && $count > 0){
                                                         for($i = 0; $i < $count; $i++ ){
                                                             $product = $products[$i];
-                                                            $startDate = date("Y",strtotime($product["startDate"]))."年".date("m",strtotime($product["startDate"]))."月".date("d",strtotime($product["startDate"]))."日";
-                                                            $endDate = date("Y",strtotime($product["endDate"]))."年".date("m",strtotime($product["endDate"]))."月".date("d",strtotime($product["endDate"]))."日";
-                                                            $productPrice += $product["price"];
+                                                            $start = date("Y-m-d", strtotime($product["startDate"]));
+                                                            $end = date("Y-m-d", strtotime($product["endDate"]));
+                                                            $startDate = date("Y",strtotime($start))."年".date("m",strtotime($start))."月".date("d",strtotime($start))."日";
+                                                            $endDate = date("Y",strtotime($end))."年".date("m",strtotime($end))."月".date("d",strtotime($end))."日";
+                                                            if($today >= $start && $today <= $end){
+                                                                $productPrice += $product["price"];
+                                                            }
+
                                                             ?>
                                                             <tr>
                                                                 <td><?= $product["name"] ?></td>
@@ -124,12 +131,15 @@
                                                     $count = count($contractRingis);
                                                     for($i = 0; $i < $count; $i++ ){
                                                         $ringi = $contractRingis[$i];
-                                                        $ringiStart = $ringi->getStartDate();
-                                                        $ringiEnd = $ringi->getEndDate();
+                                                        $ringiStart = date("Y-m-d", strtotime($ringi->getStartDate()));
+                                                        $ringiEnd = date("Y-m-d", strtotime($ringi->getEndDate()));
                                                         $startDate = date("Y",strtotime($ringiStart))."年".date("m",strtotime($ringiStart))."月".date("d",strtotime($ringiStart))."日";
                                                         $endDate = date("Y",strtotime($ringiEnd))."年".date("m",strtotime($ringiEnd))."月".date("d",strtotime($ringiEnd))."日";
                                                         $discount = $ringi->getAfterSummaryPrice() - $ringi->getBeforeSummaryPrice();
-                                                        $productPrice += $discount;
+                                                        if($today >= $ringiStart && $today <= $ringiEnd){
+                                                            $productPrice += $discount;
+                                                        }
+
                                                         ?>
                                                         <tr>
                                                             <td>【割引】<?= $ringi->getTypeCodeName()."/".$ringi->getTargetAreaCodeName() ?></td>
