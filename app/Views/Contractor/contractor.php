@@ -70,12 +70,12 @@
                                             <input type="hidden" name="contractorInsert" id="contractorInsert" value="<?= $store ?>">
                                         </div>
                                         <div class="form-group">
-                                            <label for="contractorName">契約者名</label>
+                                            <label for="contractorName" class="required">契約者名</label>
                                             <input class="form-control"  name="contractorName" type="text" id="contractorName" value="<?= $editContractorDetails->contractor_name ?? "" ?>">
                                             <span class="errormsg" id="contractorNameError"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="contractorPostCode">郵便番号</label>
+                                            <label for="contractorPostCode" class="required">郵便番号</label>
                                             <input class="form-control" name="contractorPostCode" type="text" id="contractorPostCode" value="<?= $editContractorDetails->zipcode ?? "" ?>">
                                             <span class="errormsg" id="contractorPostCodeError"></span>
                                         </div>
@@ -90,7 +90,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="contractorKana">契約者名カナ</label>
+                                            <label for="contractorKana" class="required">契約者名カナ</label>
                                             <input class="form-control" name="contractorKana" type="text" id="contractorKana" value="<?= $editContractorDetails->contractor_name_kana ?? "" ?>">
                                             <span class="errormsg" id="contractorKanaError"></span>
                                         </div>
@@ -103,7 +103,7 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="contractorAddress1">住所１</label>
+                                            <label for="contractorAddress1" class="required">住所１</label>
                                             <input class="form-control" name="contractorAddress1" type="text" id="contractorAddress1" value="<?= $editContractorDetails->address_01 ?? "" ?>">
                                             <span class="errormsg" id="contractorAddress1Error"></span>
                                         </div>
@@ -113,7 +113,7 @@
                                             <span class="errormsg" id="contractorAddress2Error"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="contractorPhn">電話番号</label>
+                                            <label for="contractorPhn" class="required">電話番号</label>
                                             <input class="form-control" type="number" name="contractorPhn" id="contractorPhn" value="<?= $editContractorDetails->tel_no ?? "" ?>">
                                             <span class="errormsg" id="contractorPhnError"></span>
                                         </div>
@@ -147,17 +147,17 @@
                                             <input type="hidden" name="companyInsert" id="companyInsert" value="<?= $store ?>">
                                         </div>
                                         <div class="form-group">
-                                            <label for="companyName">会社名</label>
+                                            <label for="companyName" class="required">会社名</label>
                                             <input class="form-control companyRegistrationData"  name="companyName" type="text" id="companyName" value="<?= $editContractorDetails->company_name ?? "" ?>">
                                             <span class="errormsg" id="companyNameError"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="companyRepresentative">代表者名</label>
+                                            <label for="companyRepresentative" class="required">代表者名</label>
                                             <input class="form-control companyRegistrationData"  name="companyRepresentative" type="text" id="companyRepresentative" value="<?= $editContractorDetails->companyDaihyousha ?? "" ?>">
                                             <span class="errormsg" id="companyRepresentativeError"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="companyPostCode">郵便番号</label>
+                                            <label for="companyPostCode" class="required">郵便番号</label>
                                             <input class="form-control companyRegistrationData" name="companyPostCode" type="text" id="companyPostCode" value="<?= $editContractorDetails->companyZip ?? "" ?>">
                                             <span class="errormsg" id="companyPostCodeError"></span>
                                         </div>
@@ -172,12 +172,12 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="companyKana">会社名カナ</label>
+                                            <label for="companyKana" class="required">会社名カナ</label>
                                             <input class="form-control companyRegistrationData" name="companyKana" type="text" id="companyKana" value="<?= $editContractorDetails->company_name_kana ?? "" ?>">
                                             <span class="errormsg" id="companyKanaError"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="companyRepresentativeKana">代表者名</label>
+                                            <label for="companyRepresentativeKana" class="required">代表者名</label>
                                             <input class="form-control companyRegistrationData" name="companyRepresentativeKana" type="text" id="companyRepresentativeKana" value="<?= $editContractorDetails->companyDaihyoushaKana ?? "" ?>">
                                             <span class="errormsg" id="companyRepresentativeKanaError"></span>
                                         </div>
@@ -190,7 +190,7 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="companyAddress1">住所１</label>
+                                            <label for="companyAddress1" class="required">住所１</label>
                                             <input class="form-control companyRegistrationData" name="companyAddress1" type="text" id="companyAddress1" value="<?= $editContractorDetails->companyAddress01 ?? "" ?>">
                                             <span class="errormsg" id="companyAddress1Error"></span>
                                         </div>
@@ -200,7 +200,7 @@
                                             <span class="errormsg" id="companyAddress2Error"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="companyPhn">電話番号</label>
+                                            <label for="companyPhn" class="required">電話番号</label>
                                             <input class="form-control companyRegistrationData" type="number" name="companyPhn" id="companyPhn" value="<?= $editContractorDetails->companyPhn ?? "" ?>">
                                             <span class="errormsg" id="companyPhnError"></span>
                                         </div>
@@ -234,17 +234,17 @@
                                             <input type="hidden" name="groupInsert" id="groupInsert" value="<?= $store ?>">
                                         </div>
                                         <div class="form-group">
-                                            <label for="groupName">グループ名</label>
+                                            <label for="groupName" class="required">グループ名</label>
                                             <input class="form-control groupRegistrationData"  name="groupName" type="text" id="groupName" value="<?= $editContractorDetails->group_name ?? "" ?>">
                                             <span class="errormsg" id="groupNameError"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="groupRepresentative">代表者名</label>
+                                            <label for="groupRepresentative" class="required">代表者名</label>
                                             <input class="form-control groupRegistrationData"  name="groupRepresentative" type="text" id="groupRepresentative" value="<?= $editContractorDetails->groupDaihyousha ?? "" ?>">
                                             <span class="errormsg" id="groupRepresentativeError"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="groupPostCode">郵便番号</label>
+                                            <label for="groupPostCode" class="required">郵便番号</label>
                                             <input class="form-control groupRegistrationData" name="groupPostCode" type="text" id="groupPostCode" value="<?= $editContractorDetails->groupZip ?? "" ?>">
                                             <span class="errormsg" id="groupPostCodeError"></span>
                                         </div>
@@ -259,7 +259,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="groupKana">グループ名カナ</label>
+                                            <label for="groupKana" class="required">グループ名カナ</label>
                                             <input class="form-control groupRegistrationData" name="groupKana" type="text" id="groupKana" value="<?= $editContractorDetails->group_name_kana ?? "" ?>">
                                             <span class="errormsg" id="groupKanaError"></span>
                                         </div>
@@ -277,7 +277,7 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="groupAddress1">住所１</label>
+                                            <label for="groupAddress1" class="required">住所１</label>
                                             <input class="form-control groupRegistrationData" name="groupAddress1" type="text" id="groupAddress1" value="<?= $editContractorDetails->groupAddress01 ?? "" ?>">
                                             <span class="errormsg" id="groupAddress1Error"></span>
                                         </div>
@@ -287,7 +287,7 @@
                                             <span class="errormsg" id="groupAddress2Error"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="groupPhn">電話番号</label>
+                                            <label for="groupPhn" class="required">電話番号</label>
                                             <input class="form-control groupRegistrationData" type="number" name="groupPhn" id="groupPhn" value="<?= $editContractorDetails->groupPhn ?? "" ?>">
                                             <span class="errormsg" id="groupPhnError"></span>
                                         </div>
