@@ -15,7 +15,6 @@ class AuthController extends BaseController{
         else{
             return redirect()->to("/login");
         }
-
     }
 
     public function login(){
