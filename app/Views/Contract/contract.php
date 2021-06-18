@@ -58,12 +58,12 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group" >
-                                                <label>契約ID</label>
+                                                <label for="contractIdSearch">契約ID</label>
                                                 <input type="text" class="form-control" name="contractIdSearch" id="contractIdSearch" value="<?php if(isset($contract)) echo $contract->getId(); ?>" >
                                             </div>
                                         </div>
                                         <div class="col-md-6 pt-4">
-                                            <label class="pt-4"></label>
+                                            <label for="contractorDetailsBtn" class="pt-4"></label>
                                             <button onclick="checkContractAvailable()" type="button" id="contractorDetailsBtn" class="btn btn-primary ml-2 k1Btn k1Btn2">表示</button>
                                         </div>
                                     </div>
@@ -77,7 +77,7 @@
                             <div class="card-body">
                                 <div class="col-md-6">
                                     <div class="form-group " >
-                                        <label>担当者</label>
+                                        <label  for="tantou" class="required">担当者</label>
                                         <select name="tantou" id="tantou" class="form-control">
                                             <option value="0" selected>担当者選択</option>
                                             <?php foreach ($employees as $employee) {
@@ -101,7 +101,7 @@
                     <div class="gap-2 mx-auto text-center" style="max-width: 950px">
                         <div class="card mt-5 text-left">
                             <div class="card-header">
-                                <h3 class="card-title text-center mat-1">【契約者登録】</h3>
+                                <h3 class="card-title text-center mat-1 required">【契約者登録】</h3>
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm text-left">
                                         <div class="input-group-append">
@@ -164,7 +164,7 @@
 
                         <div class="card mt-5 text-left">
                             <div class="card-header">
-                                <h3 class="card-title text-center mat-1">【商品登録】</h3>
+                                <h3 class="card-title text-center mat-1 required">【商品登録】</h3>
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm text-left">
                                         <div class="input-group-append">
@@ -194,7 +194,7 @@
                             </div>
                         </div>
 
-                        <div class="mt-5 text-left">【対象店舗登録】</div>
+                        <div class="mt-5 text-left required">【対象店舗登録】</div>
                         <div class="card mt-5 text-left">
                             <div class="card-header">
                                 <h3 class="card-title text-center mat-1">
@@ -245,12 +245,12 @@
                                     <div class="col-md-6">
                                         <div id="mySelect">
                                             <div class="form-group " >
-                                                <label for="inputEmail3">店舗名</label>
+                                                <label for="shop_name" class="required">店舗名</label>
                                                 <input type="text" class="form-control " name="shop_name" id="shop_name" value="">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmail3" >地域</label>
+                                            <label for="district" >地域</label>
                                             <select name="district" id="district" class="form-control">
                                                 <option value="0"></option>
                                                 <?php foreach ($districts as $district) { ?>
@@ -259,7 +259,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmail3" >大エリア</label>
+                                            <label for="areaLarge" >大エリア</label>
                                             <select name="areaLarge" id="areaLarge" class="form-control">
                                                 <option value="0"></option>
                                                 <?php foreach ($areaLarges as $areaLarge) { ?>
@@ -268,7 +268,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmail3">詳細エリア</label>
+                                            <label for="area">詳細エリア</label>
                                             <select name="area" id="area" class="form-control">
                                                 <option value="0"></option>
                                                 <?php foreach ($areas as $area) { ?>
@@ -279,11 +279,11 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="inputEmail3" >店舗名カナ</label>
+                                            <label for="shop_name_kana" >店舗名カナ</label>
                                             <input type="text" class="form-control" name="shop_name_kana" id="shop_name_kana" value="">
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmail3" >都道府県</label>
+                                            <label for="prefecture" >都道府県</label>
                                             <select name="prefecture" id="prefecture" class="form-control">
                                                 <option value="0"></option>
                                                 <?php foreach ($prefectures as $prefecture) { ?>
@@ -292,7 +292,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmail3" >小エリア</label>
+                                            <label for="areaSmall" >小エリア</label>
                                             <select name="areaSmall" id="areaSmall" class="form-control">
                                                 <option value="0"></option>
                                                 <?php foreach ($areaSmalls as $areaSmall) { ?>
@@ -303,7 +303,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="inputEmail3" >郵便番号</label>
+                                            <label for="postCode" >郵便番号</label>
                                             <input type="text" name="postCode" class="form-control" id="postCode" value="">
                                         </div>
                                     </div>
@@ -317,50 +317,50 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="inputEmail3" >住所０１</label>
+                                            <label for="address1">住所０１</label>
                                             <input class="form-control" name="address1" type="text" id="address1" value="">
                                             <span class="errormsg" id="Address1Error"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmail3">住所０２</label>
+                                            <label for="address2">住所０２</label>
                                             <input class="form-control" name="address2" type="text" id="address2" value="">
                                             <span class="errormsg" id="Address2Error"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmail3" >電話番号</label>
+                                            <label for="phone_number" class="required">電話番号</label>
                                             <input class="form-control" name="phone_number" type="text" id="phone_number" value="">
                                             <span class="errormsg" id="PhoneNumberError"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmail3" >メールアドレス</label>
+                                            <label for="mail_address" >メールアドレス</label>
                                             <input class="form-control" name="mail_address" type="text" id="mail_address" value="">
                                             <span class="errormsg" id="PhoneNumberError"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="inputEmail3">代表者名</label>
+                                            <label for="representative_name">代表者名</label>
                                             <input class="form-control" name="representative_name" type="text" id="representative_name" value="">
                                             <span class="errormsg" id="MailAddressError"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="inputEmail3" >代表者名カナ</label>
+                                            <label for="rep_name_kana" >代表者名カナ</label>
                                             <input class="form-control" name="rep_name_kana" type="text" id="rep_name_kana" value="">
                                             <span class="errormsg" id="MailAddressError"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="inputEmail3" >店舗サイトURL</label>
+                                            <label for="shop_site_url" >店舗サイトURL</label>
                                             <input class="form-control" name="shop_site_url" type="text" id="shop_site_url" value="">
                                             <span class="errormsg" id="MailAddressError"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="inputEmail3" >業態</label>
+                                            <label for="BusinessType" >業態</label>
                                             <select name="BusinessType" id="BusinessType" class="form-control">
                                                 <option value="0"></option>
                                                 <option value="1">option 1</option>
@@ -385,7 +385,7 @@
                     </div>
                     <div class="form-group gap-2 mx-auto" style="max-width: 950px">
                         <div class="form-group mt-5">
-                            <label for="companySelect">登録商品備考</label>
+                            <label for="product_registration_remark">登録商品備考</label>
                             <textarea class="form-control" name="product_registration_remark" type="text" id="product_registration_remark" rows="3"><?php if(isset($contract)) echo $contract->getNote() ?></textarea>
                             <span class="errormsg" id="ProductRegistrationRemarkError"></span>
                         </div>
@@ -394,7 +394,7 @@
                     <div class="gap-2 mx-auto text-center" style="max-width: 950px">
                         <div class="card mt-5 text-left">
                             <div class="card-header">
-                                <h3 class="card-title text-center">【商品情報】</h3>
+                                <h3 class="card-title text-center required">【商品情報】</h3>
                             </div>
                             <div class="card-body">
                                 <div class="card-body table-responsive p-0">
@@ -525,7 +525,7 @@
                 <div class="card-footer">
                     <div class="row mx-auto pb-3" style="max-width: 950px">
                         <div class="col-md-6 pl-0">
-                            <button onclick="contractRegistration()" id="contractorRegistration" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3">
+                            <button onclick="contractRegistration()" id="contractRegistration" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3">
                                 登録
                             </button>
                             <a class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2" href="/home">メニュー</a>
