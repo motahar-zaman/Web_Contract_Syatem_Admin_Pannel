@@ -115,24 +115,24 @@
                                         </thead>
                                         <tbody>
                                             <?php
-                                            if(isset($contractor) && count($contractor) > 0){
-                                                for($i = 0; $i < count($contractor); $i++){
-                                                    $data = $contractor[$i];
-                                                    ?>
-                                                    <tr>
-                                                        <td class="d-none" onclick="selectedContractor(<?php echo $i ?>)" id="selectedContractor<?php echo $data->getId() ?>"><a href="#">選択</a></td>
-                                                        <td id="contractorId<?php echo $i ?>"><a href='<?php echo base_url();?>/contractor-details/<?php echo $data->getId() ?>'><?php echo $data->getId() ?></a></td>
-                                                        <td id="contractorName<?php echo $i ?>"><?php echo $data->getName() ?></td>
-                                                        <td id="contractorAddress1<?php echo $i ?>"><?php echo $data->getAddress01() ?></td>
-                                                        <td id="contractorPhn<?php echo $i ?>"><?php echo $data->getTelNo() ?></td>
-                                                        <td id="contractorMail<?php echo $i ?>"><?php echo $data->getMailAddress() ?></td>
-                                                    </tr>
-                                                    <?php
+                                                if(isset($contractor) && count($contractor) > 0){
+                                                    for($i = 0; $i < count($contractor); $i++){
+                                                        $data = $contractor[$i];
+                                                        ?>
+                                                        <tr>
+                                                            <td class="d-none" onclick="selectedContractor(<?php echo $i ?>)" id="selectedContractor<?php echo $data->getId() ?>"><a href="#">選択</a></td>
+                                                            <td id="contractorId<?php echo $i ?>"><a href='<?php echo base_url();?>/contractor-details/<?php echo $data->getId() ?>'><?php echo $data->getId() ?></a></td>
+                                                            <td id="contractorName<?php echo $i ?>"><?php echo $data->getName() ?></td>
+                                                            <td id="contractorAddress1<?php echo $i ?>"><?php echo $data->getAddress01() ?></td>
+                                                            <td id="contractorPhn<?php echo $i ?>"><?php echo $data->getTelNo() ?></td>
+                                                            <td id="contractorMail<?php echo $i ?>"><?php echo $data->getMailAddress() ?></td>
+                                                        </tr>
+                                                        <?php
+                                                    }
                                                 }
-                                            }
-                                            else{
-                                                echo "<h3>データがありません！</h3>";
-                                            }
+                                                else{
+                                                    echo "<tr><td>データがありません！</td></tr>";
+                                                }
                                             ?>
                                         </tbody>
                                     </table>
