@@ -111,7 +111,7 @@ function enable() {
 }
 
 function contractRegistration() {
-    $("#contractIdSearch").removeClass("error");
+    removePreviousError();
     $("#contractRegistration").prop('disabled', true);
     let data = {};
     let products = Array();
@@ -298,6 +298,7 @@ function checkContractAvailableFromDetails() {
 
 var shopCount = 0;
 function productRegistration() {
+    removePreviousError();
     let shop = $("input[type='radio'][name='shop']:checked").val();
     let shopId = "";
     let shopName = "";
@@ -1167,4 +1168,12 @@ function clearRingiForm(){
 function disableApproveButton(e){
     $("#contractApproveEmployee").prop('disabled', true);
     $("#contractApproveContractor").prop('disabled', true);
+}
+
+function removePreviousError(){
+    let elems = document.querySelectorAll(".error");
+
+    [].forEach.call(elems, function(el) {
+        el.classList.remove("error");
+    });
 }
