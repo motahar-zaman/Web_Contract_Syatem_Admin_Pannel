@@ -111,7 +111,7 @@ function enable() {
 }
 
 function contractRegistration() {
-    removePreviousError();
+    removePreviousErrorClass();
     $("#contractRegistration").prop('disabled', true);
     let data = {};
     let products = Array();
@@ -298,7 +298,7 @@ function checkContractAvailableFromDetails() {
 
 var shopCount = 0;
 function productRegistration() {
-    removePreviousError();
+    removePreviousErrorClass();
     let shop = $("input[type='radio'][name='shop']:checked").val();
     let shopId = "";
     let shopName = "";
@@ -1170,7 +1170,7 @@ function disableApproveButton(e){
     $("#contractApproveContractor").prop('disabled', true);
 }
 
-function removePreviousError(){
+function removePreviousErrorClass(){
     let elems = document.querySelectorAll(".error");
 
     [].forEach.call(elems, function(el) {
