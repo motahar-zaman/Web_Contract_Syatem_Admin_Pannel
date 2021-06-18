@@ -118,3 +118,7 @@ input[type=text]:focus {
 .error{
     border:1px solid red;
 }
+.required:after {
+    content:" *";
+    color: red;
+}
