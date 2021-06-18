@@ -304,7 +304,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="inputEmail3" >電話番号</label>
-                                            <input class="form-control" name="phone_number" type="text" id="phone_number">
+                                            <input class="form-control" name="phone_number" type="number" id="phone_number">
                                             <span class="errormsg" id="PhoneNumberError"></span>
                                         </div>
                                         <div class="form-group">

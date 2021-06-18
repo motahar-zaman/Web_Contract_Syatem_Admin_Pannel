@@ -328,7 +328,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="phone_number" class="required">電話番号</label>
-                                            <input class="form-control" name="phone_number" type="text" id="phone_number" value="">
+                                            <input class="form-control" name="phone_number" type="number" id="phone_number" value="">
                                             <span class="errormsg" id="PhoneNumberError"></span>
                                         </div>
                                         <div class="form-group">
