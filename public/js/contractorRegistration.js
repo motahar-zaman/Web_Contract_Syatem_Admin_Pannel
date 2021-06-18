@@ -1,4 +1,5 @@
 function contractorRegistration() {
+    removePreviousErrorClass();
     let data = getContractorRegistrationData();
     let validateContractor = validateContractorData(data);
     let validateCompany = validateCompanyData(data);
@@ -95,12 +96,6 @@ function getAddressFromZipCode(zipCode, setAddressId) {
 
 function validateContractorData(data) {
     let is_valid = true;
-
-    $("#contractorName").removeClass("error");
-    $("#contractorKana").removeClass("error");
-    $("#contractorPostCode").removeClass("error");
-    $("#contractorAddress1").removeClass("error");
-    $("#contractorPhn").removeClass("error");
 
     if (data["contractorName"] === "") {
         $("#contractorName").addClass("error");
@@ -709,14 +704,6 @@ function validateCompanyData(data){
     });
 
     if(nonempty.length > 0){
-        $("#companyName").removeClass("error");
-        $("#companyKana").removeClass("error");
-        $("#companyRepresentative").removeClass("error");
-        $("#companyRepresentativeKana").removeClass("error");
-        $("#companyPostCode").removeClass("error");
-        $("#companyAddress1").removeClass("error");
-        $("#companyPhn").removeClass("error");
-
         if (data["companyName"] === "") {
             $("#companyName").addClass("error");
             is_valid = false;
@@ -771,12 +758,6 @@ function validateGroupData(data){
     });
 
     if(nonempty.length > 0){
-        $("#groupName").removeClass("error");
-        $("#groupKana").removeClass("error");
-        $("#groupRepresentative").removeClass("error");
-        $("#groupPostCode").removeClass("error");
-        $("#groupAddress1").removeClass("error");
-        $("#groupPhn").removeClass("error");
 
         if (data["groupName"] === "") {
             $("#groupName").addClass("error");
@@ -819,4 +800,12 @@ function validateGroupData(data){
     else{
         return "escape";
     }
+}
+
+function removePreviousErrorClass(){
+    let elems = document.querySelectorAll(".error");
+
+    [].forEach.call(elems, function(el) {
+        el.classList.remove("error");
+    });
 }
