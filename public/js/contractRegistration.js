@@ -111,7 +111,8 @@ function enable() {
 }
 
 function contractRegistration() {
-    $("#contractorRegistration").prop('disabled', true);
+    $("#contractIdSearch").removeClass("error");
+    $("#contractRegistration").prop('disabled', true);
     let data = {};
     let products = Array();
     let ringis = Array();
@@ -157,7 +158,7 @@ function contractRegistration() {
             scrollTop: $("#contractIdSearch").offset().top},
         'slow');
         $("#tantou").addClass("error");
-        $("#contractorRegistration").prop('disabled', false);
+        $("#contractRegistration").prop('disabled', false);
         return false;
     }
     else if(!data["contractorId"]){
@@ -165,12 +166,12 @@ function contractRegistration() {
             scrollTop: $("#contractIdSearch").offset().top},
         'slow');
         $("#contractorSelectButton").addClass("error");
-        $("#contractorRegistration").prop('disabled', false);
+        $("#contractRegistration").prop('disabled', false);
         return false;
     }
     else if(data["productSelectId"].length <= 0){
         $(".productInfoTable").addClass("error");
-        $("#contractorRegistration").prop('disabled', false);
+        $("#contractRegistration").prop('disabled', false);
         return false;
     }
 
@@ -190,7 +191,7 @@ function contractRegistration() {
             }
         },
         error: function (jqXHR, exception) {
-            $("#contractorRegistration").prop('disabled', false);
+            $("#contractRegistration").prop('disabled', false);
             alert("Error occurred");
         },
     });
@@ -335,7 +336,8 @@ function productRegistration() {
         if (i == 1) {
             if (shop == 1) {
                 shopRegistration(shopCount);
-            } else {
+            }
+            else {
                 shopId = $("#shopId").html();
                 shopName = $("#shopName").html();
                 shopFile = $("#shopFile").html();
