@@ -13,7 +13,7 @@ class Database
         }
         catch(Exception $e)
         {
-            return null;
+            return false;
         }
     }
 
@@ -24,7 +24,7 @@ class Database
         }
         catch(Exception $e)
         {
-            return null;
+            return false;
         }
     }
 }
