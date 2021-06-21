@@ -463,7 +463,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="card-body table-responsive p-0">
-                                    <table class="table table-hover text-center productDiscountTable" style="width: 230% !important;">
+                                    <table class="table table-hover text-center productDiscountTable" style="width: 250% !important;">
                                         <thead class="k1RegTableTitleBG">
                                             <tr>
                                                 <th class="align-middle" rowspan="2"></th>
