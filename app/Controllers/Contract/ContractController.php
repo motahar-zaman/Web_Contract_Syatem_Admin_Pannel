@@ -6,6 +6,7 @@ namespace App\Controllers\Contract;
 
 use App\Controllers\BaseController;
 use App\Controllers\EmailController;
+use App\Models\Code\CodeModel;
 use App\Models\Common\AddressModel;
 use App\Models\Contract\ContractModel;
 use App\Models\Contractor\ContractorModel;
@@ -167,6 +168,9 @@ class ContractController extends BaseController
 
                 $ringiInfo->start_date = date("Y", strtotime($startDate)) . "年" . date("m", strtotime($startDate)) . "月" . date("d", strtotime($startDate)) . "日";
                 $ringiInfo->end_date = date("Y", strtotime($endDate)) . "年" . date("m", strtotime($endDate)) . "月" . date("d", strtotime($endDate)) . "日";
+                $ringiInfo->ringi_type_code_name = (new CodeModel())->getCodeByCodeValue($ringiInfo->ringi_type)[0]->getCodeName() ?? null;
+                $ringiInfo->target_area_code_name = (new CodeModel())->getCodeByCodeValue($ringiInfo->target_area)[0]->getCodeName() ?? null;
+                $ringiInfo->discount_service_type_code_name = (new CodeModel())->getCodeByCodeValue($ringiInfo->discount_service_type)[0]->getCodeName() ?? null;
 
                 return json_encode(['msg' => "Successful", "ringi" => $ringiInfo, "status" => 1]);
             }

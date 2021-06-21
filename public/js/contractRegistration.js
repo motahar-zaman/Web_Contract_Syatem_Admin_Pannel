@@ -945,10 +945,10 @@ function ringiSearch(){
 function fillUpRingiForm(ringi){
     $("#ringiNo").html(ringi["ringi_no"]);
     $("#applicantName").html(ringi["applicant_name"]);
-    $("#ringiType").html(ringi["ringi_type"]);
-    $("#targetArea").html(ringi["target_area"]);
+    $("#ringiType").html(ringi["ringi_type_code_name"]);
+    $("#targetArea").html(ringi["target_area_code_name"]);
     $("#targetName").html(ringi["target_name"]);
-    $("#discountServiceType").html(ringi["discount_service_type"]);
+    $("#discountServiceType").html(ringi["discount_service_type_code_name"]);
     $("#ringiDetail").html(ringi["ringi_detail"]);
     $("#summaryCondition").html(ringi["summary_condition"]);
     $("#beforeSummaryPrice").html(ringi["before_summary_price"]);
