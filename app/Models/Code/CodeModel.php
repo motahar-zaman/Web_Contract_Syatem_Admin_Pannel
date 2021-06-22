@@ -21,6 +21,19 @@ class CodeModel
         return (new Database())->readQueryExecution($queryString, $queryParameter);
     }
 
+    public function getCodeByGroupId($groupId){
+        $data = $this->getCodeDataByGroupId($groupId);
+        return $this->mapData($data);
+    }
+
+    public function getCodeDataByGroupId($groupId){
+        $queryString = "SELECT function_id, group_id, code_id, code_value, function_name, group_name, code_name, sort_order, update_date,
+                        update_user_id, insert_date, insert_user_id FROM mst_code WHERE group_id = ?";
+        $queryParameter = array($groupId);
+
+        return (new Database())->readQueryExecution($queryString, $queryParameter);
+    }
+
     public function mapData($datas = array()){
         if(isset($datas) && is_array($datas)){
             $length = count($datas);
