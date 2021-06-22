@@ -110,7 +110,7 @@ class ContractModel
         $shopBusiness = array();
 
         $mapData["shopBusiness"] = NULL;
-        if($data->business && $data->business != 1){
+        if(isset($data->business)){
             $shopBusiness = (new CodeModel())->getCodeByCodeId($data->business);
         }
         if(count($shopBusiness) > 0){
@@ -153,7 +153,7 @@ class ContractModel
             c.insert_user_id, c.delete_flag, branch_no, p.shop_id, p.product_id, p.status AS product_status, DATE_FORMAT(mp.start_date, '%Y/%m/%d') AS start_date,
             DATE_FORMAT(mp.end_date, '%Y/%m/%d') AS end_date, mp.product_note, mp.product_name, mp.price, mp.product_note, mp.service_type, mp.product_type,
             mp.campaign_flag, mp.shop_type, s.shop_name, s.zipcode, s.address_01, s.tel_no, s.mail_address, si.shop_daihyo_name, si.notificate_file_path,
-            si.notificate_file_path FROM trn_web_contract_base AS c LEFT JOIN trn_contract_product AS p ON c.contract_id = p.contract_id LEFT JOIN mst_product AS mp ON 
+            si.business FROM trn_web_contract_base AS c LEFT JOIN trn_contract_product AS p ON c.contract_id = p.contract_id LEFT JOIN mst_product AS mp ON 
             mp.product_id = p.product_id LEFT JOIN mst_shop AS s ON s.shop_id = p.shop_id LEFT JOIN trn_shop_info AS si ON s.shop_id = si.shop_id 
             ".$where." c.contract_id = ? AND c.delete_flag = ?";
 
