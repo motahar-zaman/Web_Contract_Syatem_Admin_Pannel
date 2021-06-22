@@ -363,10 +363,9 @@
                                             <label for="BusinessType" >業態</label>
                                             <select name="BusinessType" id="BusinessType" class="form-control">
                                                 <option value="0"></option>
-                                                <option value="1">option 1</option>
-                                                <option value="2">option 2</option>
-                                                <option value="3">option 3</option>
-                                                <option value="4">option 4</option>
+                                                <?php foreach ($codes as $code) { ?>
+                                                    <option value="<?= $code->getCodeId() ?>"><?= $code->getCodeName() ?></option>
+                                                <?php } ?>
                                             </select>
                                         </div>
                                     </div>
