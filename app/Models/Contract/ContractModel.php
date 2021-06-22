@@ -237,8 +237,8 @@ class ContractModel
             c.insert_user_id, c.delete_flag, branch_no, p.product_id, p.status AS contract_product_status, p.note AS contract_product_note,
             DATE_FORMAT(mp.start_date, '%Y/%m/%d') AS start_date, DATE_FORMAT(mp.end_date, '%Y/%m/%d') AS end_date, mp.shop_type, mp.service_type,
             mp.product_type, mp.product_name, mp.product_note, s.shop_id, s.shop_name, s.zipcode, s.address_01, s.tel_no, s.mail_address,
-            si.shop_daihyo_name, si.notificate_file_path, cntr.contractor_name FROM trn_web_contract_base AS c LEFT JOIN trn_contract_product AS p
-            ON c.contract_id = p.contract_id LEFT JOIN mst_product AS mp ON mp.product_id = p.product_id LEFT JOIN mst_shop AS s ON
+            si.shop_daihyo_name, si.notificate_file_path, si.business, cntr.contractor_name FROM trn_web_contract_base AS c LEFT JOIN trn_contract_product
+            AS p ON c.contract_id = p.contract_id LEFT JOIN mst_product AS mp ON mp.product_id = p.product_id LEFT JOIN mst_shop AS s ON
             s.shop_id = p.shop_id LEFT JOIN trn_shop_info AS si ON s.shop_id = si.shop_id LEFT JOIN mst_contractor AS cntr ON
             cntr.contractor_id = c.contractor_id ".$where." c.delete_flag = ?";
         $queryParameter = array(1);
