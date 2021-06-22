@@ -7,6 +7,7 @@ namespace App\Controllers\Contract;
 use App\Controllers\BaseController;
 use App\Controllers\EmailController;
 use App\Models\Address\AddressModel;
+use App\Models\Code\CodeModel;
 use App\Models\Common\SequenceModel;
 use App\Models\Contract\Contract;
 use App\Models\Contract\ContractModel;
@@ -32,6 +33,7 @@ class RegistrationController extends BaseController
             $areaLarge = (new AddressModel())->getAreaLarge();
             $areaSmall = (new AddressModel())->getAreaSmall();
             $area = (new AddressModel())->getArea();
+            $codes = (new CodeModel())->getCodeByGroupId("SHOP_02");
 
             $data = array(
                 "title" => "Contract Registration",
@@ -44,6 +46,7 @@ class RegistrationController extends BaseController
                 "areaLarges" => $areaLarge,
                 "areaSmalls" => $areaSmall,
                 "employees" => $employee,
+                "codes" => $codes,
                 "type" => "insert"
             );
             return view("Contract/contract", $data);
@@ -80,6 +83,7 @@ class RegistrationController extends BaseController
             $areaLarge = (new AddressModel())->getAreaLarge();
             $areaSmall = (new AddressModel())->getAreaSmall();
             $area = (new AddressModel())->getArea();
+            $codes = (new CodeModel())->getCodeByGroupId("SHOP_02");
 
 
             $data = array(
@@ -93,6 +97,7 @@ class RegistrationController extends BaseController
                 "areaLarges" => $areaLarge,
                 "areaSmalls" => $areaSmall,
                 "employees" => $employee,
+                "codes" => $codes,
                 "type" => "insert"
             );
 
@@ -215,6 +220,7 @@ class RegistrationController extends BaseController
             $areaLarge = (new AddressModel())->getAreaLarge();
             $areaSmall = (new AddressModel())->getAreaSmall();
             $area = (new AddressModel())->getArea();
+            $codes = (new CodeModel())->getCodeByGroupId("SHOP_02");
 
             $contract = (new ContractModel())->getContractById($contractId)[$contractId] ?? null;
             if(isset($contract)){
@@ -237,6 +243,7 @@ class RegistrationController extends BaseController
                 "employees" => $employee,
                 "contract" => $contract,
                 "ringiDetails" => $ringiDetails,
+                "codes" => $codes,
                 "type" => "update"
             );
             return view("Contract/contract", $data);
@@ -377,7 +384,7 @@ class RegistrationController extends BaseController
                 $shopInfo->setStatus(1);
                 $shopInfo->setRepresentative($_POST['shopRepresentative'] ?? null);
                 $shopInfo->setRepresentativeKana($_POST['shopRepresentativeKana'] ?? null);
-                $shopInfo->setBusiness(1);
+                $shopInfo->setBusiness($_POST['businessType'] ?? null);
                 $shopInfo->setNotification($notificationLetter ? $this->processShopFile($notificationLetter, $shop->getId(), $path) : null);
                 $shopInfo->setPjId(null);
                 $shopInfo->setPlId(null);
