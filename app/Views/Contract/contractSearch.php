@@ -119,7 +119,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="card-body table-responsive p-0">
-                                    <table class="table table-hover text-center productTable productInfoTable" style="width: 1425px; height: auto;">
+                                    <table class="table table-hover text-center productTable productInfoTable" style="width: 200%; height: auto;">
                                         <thead class="k1TableTitleBG">
                                             <tr>
                                                 <th>契約ID</th>
@@ -155,7 +155,7 @@
                                                                     <td><?= $shop->getAddress01() ?></td>
                                                                     <td><?= $shop->getTelNo() ?></td>
                                                                     <td><?= $shop->getMailAddress() ?></td>
-                                                                    <td><?= "Business Type" ?></td>
+                                                                    <td><?= $product["shopBusiness"] ?></td>
                                                                     <td><?= $product["shopDaihyoName"] ?></td>
                                                                     <td><?= $contractDate ?></td>
                                                                     <td><?= $startDate ?></td>
