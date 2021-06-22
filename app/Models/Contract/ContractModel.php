@@ -117,6 +117,8 @@ class ContractModel
             $mapData["shopBusiness"] = $shopBusiness[0]->getCodeName() ?? NULL;
         }
 
+        $serviceTypeName = (new CodeModel())->getCodeByCodeValue($data->service_type);
+
         $mapData["branchNo"] = $data->branch_no ?? NULL;
         $mapData["productId"] = $data->product_id ?? NULL;
         $mapData["name"] = $data->product_name ?? NULL;
@@ -125,7 +127,7 @@ class ContractModel
         $mapData["shopNotification"] = $data->notificate_file_path ?? NULL;
         $mapData["status"] = $data->product_status ?? NULL;
         $mapData["price"] = $data->price ?? NULL;
-        $mapData["serviceType"] = $data->service_type ?? NULL;
+        $mapData["serviceType"] = count($serviceTypeName) > 0 ? $serviceTypeName[0]->getCodeName() : NULL;
         $mapData["productType"] = $data->product_type ?? NULL;
         $mapData["shopType"] = $data->shop_type ?? NULL;
         $mapData["startDate"] = $data->start_date ?? NULL;
