@@ -360,8 +360,8 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="BusinessType" >業態</label>
-                                            <select name="BusinessType" id="BusinessType" class="form-control">
+                                            <label for="businessType" >業態</label>
+                                            <select name="businessType" id="businessType" class="form-control">
                                                 <option value="0"></option>
                                                 <?php foreach ($codes as $code) { ?>
                                                     <option value="<?= $code->getCodeId() ?>"><?= $code->getCodeName() ?></option>

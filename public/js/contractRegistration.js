@@ -422,7 +422,7 @@ function shopRegistration(shopCount) {
     formData.append("shopRepresentative", $("#representative_name").val());
     formData.append("shopRepresentativeKana", $("#rep_name_kana").val());
     formData.append("shopSite", $("#shop_site_url").val());
-    formData.append("BusinessType", $("#BusinessType").val());
+    formData.append("businessType", $("#businessType").val());
 
     $.ajax({
         url: "/shop-registration",
