@@ -50,7 +50,7 @@ class ContractModel
     public function getAllContractData($userType, $userId){
         $where = "WHERE ";
         if($userType){
-            $where .= "c.contractor_id ='$userId' AND ";
+            $where .= "c.contractor_id = '$userId' AND ";
         }
 
         $queryString = "SELECT c.contract_id, c.contractor_id, c.tantou_id, c.status, c.note, c.update_date, c.update_user_id, c.insert_date,
@@ -146,7 +146,7 @@ class ContractModel
     public function getContractDataById($id, $userType, $userId){
         $where = "WHERE ";
         if($userType){
-            $where .= "c.contractor_id ='$userId' AND ";
+            $where .= "c.contractor_id = '$userId' AND ";
         }
 
         $queryString = "SELECT c.contract_id, c.contractor_id, c.tantou_id, c.status, c.note, c.update_date, c.update_user_id, c.insert_date,
