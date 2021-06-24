@@ -3,6 +3,7 @@
 namespace Config;
 
 use CodeIgniter\Config\BaseConfig;
+require APPPATH . "/constants/AuthConstants.php";
 
 class App extends BaseConfig
 {

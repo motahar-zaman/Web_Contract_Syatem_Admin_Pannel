@@ -44,6 +44,7 @@ class AuthController extends BaseController{
                     'userId' => $userInfo->employee_id,
                     'userName' => $userInfo->employee_name,
                     'employeeNameKana' => $userInfo->employee_name_kana,
+                    'department' => $userInfo->department,
                     'updateUserId' => $userInfo->update_user_id,
                     'insertUserId' => $userInfo->insert_user_id,
                     'time' => date("Y-m-d H:i:s"),

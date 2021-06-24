@@ -39,6 +39,12 @@ class MstEmployee extends Migration
                 'null'   => false,
                 'comment'=> 'パスワード / password',
             ],
+            'department' => [
+                'type'   => 'VARCHAR',
+                'constraint'=> '20',
+                'null'   => false,
+                'comment'=> '部署コード / Department Code',
+            ],
             'update_date'       => [
                 'type'       => 'DATETIME',
                 'null'       => false,

@@ -43,20 +43,22 @@
                                         <td><a href="/contract-search">契約検索</a></td>
                                         <td>契約情報の検索を行い、画面表示を行います
                                     </tr>
-                                    <?php if(session()->get("user") == "employee"){ ?>
-                                        <tr>
-                                            <td><a href="/contract-registration">契約登録</a></td>
-                                            <td>契約の新規登録を行います</td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="/contract-update">契約更新</a></td>
-                                            <td>契約の既存契約更新を行います</td>
-                                        </tr>
+                                    <?php if (session()->get("user") == "employee") { ?>
+                                        <?php if (session()->has("department") && session()->get("department") === user_rights_admin_sales_department) { ?>
+                                            <tr>
+                                                <td><a href="/contract-registration">契約登録</a></td>
+                                                <td>契約の新規登録を行います</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="/contract-update">契約更新</a></td>
+                                                <td>契約の既存契約更新を行います</td>
+                                            </tr>
+                                        <?php } ?>
                                         <tr>
                                             <td><a href="/temp-contract-registration">仮契約登録</a></td>
                                             <td>契約の仮登録を行います（社員のみ可能）</td>
                                         </tr>
-                                    <?php }?>
+                                    <?php } ?>
                                     </tbody>
                                 </table>
                                 <table class="table table-hover text-nowrap">

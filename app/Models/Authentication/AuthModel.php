@@ -7,7 +7,7 @@ use App\Models\Database;
 class AuthModel
 {
     public function loginEmployee($userId, $password){
-        $queryString = "SELECT employee_id, employee_name, employee_name_kana, update_date, update_user_id, insert_date, insert_user_id, delete_flag 
+        $queryString = "SELECT employee_id, employee_name, employee_name_kana, department, update_date, update_user_id, insert_date, insert_user_id, delete_flag 
                         FROM mst_employee WHERE employee_id = ? AND password = ? AND delete_flag = ? ";
         $queryParameter = array($userId, $password, 1);
 
