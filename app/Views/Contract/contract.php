@@ -51,6 +51,7 @@
                     </div>
                     <div class="underline mt-2"></div>
 
+                    <?php if (session()->has("department") && session()->get("department") === USER_RIGHTS_ADMIN_SALES_DEPARTMENT): ?>
                     <div class="gap-2 mx-auto text-center" style="max-width: 950px">
                         <div class="card mt-5 text-left">
                             <form method="get" id="ContractSearchForm">
@@ -71,6 +72,7 @@
                             </form>
                         </div>
                     </div>
+                    <?php endif; ?>
 
                     <div class="gap-2 mx-auto text-center" style="max-width: 950px">
                         <div class="card mt-5 text-left">

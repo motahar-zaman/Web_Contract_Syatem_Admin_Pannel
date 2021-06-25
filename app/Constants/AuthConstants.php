@@ -3,4 +3,6 @@
 /**
  * Constants related to user rights and authentication
  */
-const user_rights_admin_sales_department = 'GEN_EMP01_01';
+const USER_RIGHTS_ADMIN_SALES_DEPARTMENT = 'GEN_EMP01_01';
+const USER_RIGHTS_ADMIN_ACCOUNTING_DEPARTMENT = 'GEN_EMP01_02';
+const USER_RIGHTS_ADMIN_SYSTEM_DEPARTMENT = 'GEN_EMP01_03';
