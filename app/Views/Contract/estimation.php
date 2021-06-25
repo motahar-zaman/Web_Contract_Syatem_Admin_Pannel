@@ -31,7 +31,7 @@
     <body>
         <div class="wrapper">
             <section class="content">
-                <div class="container-fluid mb-5">
+                <div class="container-fluid container-fluid-min-height mb-5">
                     <div class="row">
                         <div class="row col-md-12 pt-2 pl-4">
                             <span class="pl-2">WEB契約システム</span>
@@ -51,13 +51,16 @@
                         <div class="row col-md-12">
                             <div class="col-md-6" style="margin-left: -15px">
                                 <div class="card-body" style="margin-left: -15px">
+                                    <div class="card-header">
+                                        <h3 class="card-title text-bold text-center">【合計】</h3>
+                                    </div>
                                     <div class="card-body table-responsive p-0" style="border: 1px solid gray">
                                         <table class="table table-hover text-center">
-                                            <thead class="">
+                                            <thead class="k1TableTitleBG">
                                             <tr>
-                                                <th>見積額（税抜</th>
-                                                <th>消費税額等</th>
-                                                <th>お見積額（合計）</th>
+                                                <th>税抜月額</th>
+                                                <th>税額</th>
+                                                <th>税込月額</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -75,11 +78,11 @@
                     </div>
 
                     <div class="gap-2 mx-auto text-center" style="max-width: 1050px">
-                        <div class="card mt-5 text-left">
-                            <div class="card-header">
-                                <h3 class="card-title text-bold text-center">【詳細】</h3>
-                            </div>
-                            <div class="card-body">
+                        <div class="card-header" style="border-bottom: 0px">
+                            <h3 class="card-title text-bold text-center">【詳細】</h3>
+                        </div>
+                        <div class="card text-left">
+                            <div class="card-body" style="padding: 0px">
                                 <div class="card-body table-responsive p-0">
                                     <table class="table table-hover text-center">
                                         <thead class="k1TableTitleBG">

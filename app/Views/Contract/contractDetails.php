@@ -432,7 +432,8 @@
                                     }
                                 }
                                 elseif(session()->get('user') == "employee"){
-                                    if($contract->getStatus() == contract_approved_by_contractor){
+                                    if($contract->getStatus() == contract_approved_by_contractor &&
+                                            ((session()->has("department") && (session()->get("department") === USER_RIGHTS_ADMIN_SALES_DEPARTMENT )))){
                                         ?>
                                         <a href="/contract-status-update/<?= $contract->getId() ?>/<?= contract_approved_by_employee ?>">
                                             <button onclick="disableApproveButton()" id="contractApproveEmployee" class="btn btn-primary pl-3 pr-3 k1Btn k1Btn2 mr-3">承認</button>

@@ -80,7 +80,7 @@ defined('EXIT__AUTO_MAX')      || define('EXIT__AUTO_MAX', 125); // highest auto
 define("BASE_URL", isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' . $_SERVER['HTTP_HOST'] : 'http://' . $_SERVER['HTTP_HOST']);
 
 const k1_employee_user_prefix = 'K1';
-const contractor_user_prefix = 'CONT';
+const contractor_user_prefix = 'USR';
 const contract_user_prefix = 'CNTR';
 const jwt_token_key = "k1_jwt_user_token";
 const jwt_token_algorithm = "HS512";

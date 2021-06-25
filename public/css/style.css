@@ -126,3 +126,6 @@ input[type=text]:focus {
     content:" *";
     color: red;
 }
+.container-fluid-min-height{
+    min-height: 700px;
+}
