@@ -44,7 +44,9 @@
                                         <td>契約情報の検索を行い、画面表示を行います
                                     </tr>
                                     <?php if (session()->get("user") == "employee") { ?>
-                                        <?php if (session()->has("department") && (session()->get("department") === USER_RIGHTS_ADMIN_SALES_DEPARTMENT || session()->get("department") === USER_RIGHTS_ADMIN_ACCOUNTING_DEPARTMENT || session()->get("department") === USER_RIGHTS_ADMIN_SYSTEM_DEPARTMENT)) { ?>
+                                        <?php if (session()->has("department") && (session()->get("department") === USER_RIGHTS_ADMIN_SALES_DEPARTMENT ||
+                                                        session()->get("department") === USER_RIGHTS_ADMIN_ACCOUNTING_DEPARTMENT ||
+                                                        session()->get("department") === USER_RIGHTS_ADMIN_SYSTEM_DEPARTMENT)) { ?>
                                             <tr>
                                                 <td><a href="/contract-registration">契約登録</a></td>
                                                 <td>契約の新規登録を行います</td>
@@ -54,7 +56,9 @@
                                                 <td>契約の既存契約更新を行います</td>
                                             </tr>
                                         <?php } ?>
-                                        <?php if (session()->has("department") && (session()->get("department") !== USER_RIGHTS_ADMIN_SALES_DEPARTMENT && session()->get("department") !== USER_RIGHTS_ADMIN_ACCOUNTING_DEPARTMENT && session()->get("department") !== USER_RIGHTS_ADMIN_SYSTEM_DEPARTMENT)) { ?>
+                                        <?php if (session()->has("department") && (session()->get("department") !== USER_RIGHTS_ADMIN_SALES_DEPARTMENT &&
+                                                        session()->get("department") !== USER_RIGHTS_ADMIN_ACCOUNTING_DEPARTMENT &&
+                                                        session()->get("department") !== USER_RIGHTS_ADMIN_SYSTEM_DEPARTMENT)) { ?>
                                             <tr>
                                                 <td><a href="/temp-contract-registration">仮契約登録</a></td>
                                                 <td>契約の仮登録を行います（社員のみ可能）</td>
@@ -65,30 +69,30 @@
                                 </table>
                                 <table class="table table-hover text-nowrap">
                                     <thead>
-                                    <tr class="bgWheat">
-                                        <th>契約者機能</th>
-                                        <th></th>
-                                    </tr>
+                                        <tr class="bgWheat">
+                                            <th>契約者機能</th>
+                                            <th></th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td><a href="/contractor-search">契約者検索</a></td>
-                                        <td>契約者情報の検索を行い、画面表示を行います</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="/contractor-registration">契約者登録</a></td>
-                                        <td>契約者の新規登録を行います</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="/contractor-update">契約者更新</a></td>
-                                        <td>契約者の既存契約者更新を行います</td>
-                                    </tr>
-                                    <?php if(session()->get("user") == "employee"){ ?>
                                         <tr>
-                                            <td><a href="/temp-contractor-registration">仮契約者更新</a></td>
-                                            <td>契約者の仮登録を行います（社員のみ可能）</td>
+                                            <td><a href="/contractor-search">契約者検索</a></td>
+                                            <td>契約者情報の検索を行い、画面表示を行います</td>
                                         </tr>
-                                    <?php }?>
+                                        <tr>
+                                            <td><a href="/contractor-registration">契約者登録</a></td>
+                                            <td>契約者の新規登録を行います</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="/contractor-update">契約者更新</a></td>
+                                            <td>契約者の既存契約者更新を行います</td>
+                                        </tr>
+                                        <?php if(session()->get("user") == "employee"){ ?>
+                                            <tr>
+                                                <td><a href="/temp-contractor-registration">仮契約者更新</a></td>
+                                                <td>契約者の仮登録を行います（社員のみ可能）</td>
+                                            </tr>
+                                        <?php }?>
                                     </tbody>
                                 </table>
                             </div>
