@@ -9,7 +9,7 @@ class TrnWebContractInfo extends Migration
 	public function up()
 	{
         $this->forge->addField([
-            'contractor_id'          => [
+            'contract_id'          => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '20',
                 'null'           => false,
@@ -62,7 +62,7 @@ class TrnWebContractInfo extends Migration
             ],
         ]);
         $this->forge->addKey('item_id', true);
-        $this->forge->addKey('contractor_id', true);
+        $this->forge->addKey('contract_id', true);
         $this->forge->addKey('branch_no', true);
         $this->forge->createTable('TRN_WEB_CONTRACT_INFO');
 	}
