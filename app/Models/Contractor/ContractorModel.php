@@ -37,6 +37,23 @@ class ContractorModel
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
 
+    public function storeContractorInfoData(Contractor $contractorInfo){
+        $contractorId = $contractorInfo->getId();
+        $itemId = $contractorInfo->getItemId();
+        $branchNo = $contractorInfo->getBranchNo();
+        $itemValue = $contractorInfo->getItemValue();
+        $update = $contractorInfo->getUpdateDate();
+        $updateUser = $contractorInfo->getUpdateUserId();
+        $insert = $contractorInfo->getInsertDate();
+        $insertUser = $contractorInfo->getInsertUserId();
+        $delete = $contractorInfo->getDeleteFlag();
+
+        $queryString = "INSERT INTO trn_contractor_info(contractor_id, item_id, branch_no, item_value, update_date, update_user_id, insert_date, insert_user_id, delete_flag) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $queryParameter = array($contractorId, $itemId, $branchNo, $itemValue, $update, $updateUser, $insert, $insertUser, $delete);
+
+        return (new Database())->writeQueryExecution($queryString, $queryParameter);
+    }
+
     public function updateContractorData(Contractor $contractor){
         $id = $contractor->getId();
         $name = $contractor->getName();
@@ -54,6 +71,20 @@ class ContractorModel
         $queryString = "UPDATE mst_contractor SET contractor_name = ?, contractor_name_kana = ?, zipcode = ?, address_01 = ?, address_02 = ?,
                         tel_no = ?, mail_address = ?, company_id = ?, group_id = ?, update_date = ?, update_user_id = ? WHERE contractor_id = ?";
         $queryParameter = array($name, $kana, $zip, $address1, $address2, $phn, $mail, $company, $group, $update, $updateUser, $id);
+
+        return (new Database())->writeQueryExecution($queryString, $queryParameter);
+    }
+
+    public function updateContractorInfoData(Contractor $contractorInfo) {
+        $contractorId = $contractorInfo->getId();
+        $itemId = $contractorInfo->getItemId();
+        $branchNo = $contractorInfo->getBranchNo();
+        $itemValue = $contractorInfo->getItemValue();
+        $update = $contractorInfo->getUpdateDate();
+        $updateUser = $contractorInfo->getUpdateUserId();
+
+        $queryString = "UPDATE trn_contractor_info SET item_id = ?, branch_no = ?, item_value = ?, update_date = ?, update_user_id = ? WHERE contractor_id = ?";
+        $queryParameter = array($itemId, $branchNo, $itemValue, $update, $updateUser, $contractorId);
 
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }

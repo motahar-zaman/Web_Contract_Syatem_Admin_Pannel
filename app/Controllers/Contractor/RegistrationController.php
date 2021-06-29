@@ -93,6 +93,7 @@ class RegistrationController extends BaseController
         if( session() && session()->get('login') ){
             if($this->request->isAJAX()){
                 $contractor = new Contractor();
+                $contractorInfo = new Contractor();
                 $company = new Company();
                 $group = new Group();
 
@@ -110,6 +111,15 @@ class RegistrationController extends BaseController
                 $contractor->setInsertDate(date("Y-m-d H:i:s"));
                 $contractor->setInsertUserId(session()->get('userId'));
                 $contractor->setDeleteFlag(1);
+
+                $contractorInfo->setItemId("GEN_S01_005");
+                $contractorInfo->setBranchNo(5);
+                $contractorInfo->setItemValue("駅ちか");
+                $contractorInfo->setUpdateDate(date("Y-m-d H:i:s"));
+                $contractorInfo->setUpdateUserId(session()->get('userId'));
+                $contractorInfo->setInsertDate(date("Y-m-d H:i:s"));
+                $contractorInfo->setInsertUserId(session()->get('userId'));
+                $contractorInfo->setDeleteFlag(1);
 
 
                 $company->setName($_POST["companyName"]);
@@ -176,10 +186,17 @@ class RegistrationController extends BaseController
                 if($contractorInsert == "insert"){
                     $contractor->setId((new SequenceModel())->getContractorSequence());
                     $storeContractor = (new ContractorModel())->storeContractorData($contractor);
+                    if ($storeContractor) {
+                        $contractorInfo->setId($contractor->getId());
+                        $storeContractorInfo = (new ContractorModel())->storeContractorInfoData($contractorInfo);
+                    }
                 }
                 else{
                     $contractor->setId($_POST["contractorId"]);
                     (new ContractorModel())->updateContractorData($contractor);
+
+                    $contractorInfo->setId($_POST["contractorId"]);
+                    (new ContractorModel())->updateContractorInfoData($contractorInfo);
 
                     $contractStatus = 07;
                     if(session()->get('user') == "contractor"){
