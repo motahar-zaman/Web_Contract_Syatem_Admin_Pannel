@@ -112,6 +112,8 @@ class RegistrationController extends BaseController
         if( session() && session()->get('login') ){
             if($this->request->isAJAX()){
                 $contract = new Contract();
+                $contractInfo = new Contract();
+                $contractHistory = new Contract();
 
                 $contract->setContractorId($_POST['contractorId'] ?? null);
                 $contract->setTantouId($_POST['tantou'] ?? null);
@@ -122,6 +124,22 @@ class RegistrationController extends BaseController
                 $contract->setInsertUserId(session()->get('userId'));
                 $contract->setDeleteFlag(1);
 
+                $contractInfo->setItemId("GEN_S02_008");
+                $contractInfo->setBranchNo(8);
+                $contractInfo->setItemValue("高収入ドットコム");
+                $contractInfo->setUpdateDate(date("Y-m-d H:i:s"));
+                $contractInfo->setUpdateUserId(session()->get('userId'));
+                $contractInfo->setInsertDate(date("Y-m-d H:i:s"));
+                $contractInfo->setInsertUserId(session()->get('userId'));
+                $contractInfo->setDeleteFlag(1);
+
+                $contractHistory->setBranchNo(8);
+                $contractHistory->setItemName("高収入ドットコム");
+                $contractHistory->setPrevItemValue("高収入ドットコム");
+                $contractHistory->setChangeItemValue("高収入ドットコム");
+                $contractHistory->setUpdateDate(date("Y-m-d H:i:s"));
+                $contractHistory->setUpdateUserId(session()->get('userId'));
+
                 if($_POST['contractType'] == 'update'){
                     $contract->setId($_POST['contractId']);
                     if(session()->get('user') == "contractor"){
@@ -131,6 +149,12 @@ class RegistrationController extends BaseController
                         $contract->setStatus(contract_edit_by_employee);
                     }
                     (new contractmodel())->updateContractData($contract);
+
+                    $contractInfo->setId($_POST["contractId"]);
+                    (new contractmodel())->updateContractInfoData($contractInfo);
+
+                    $contractHistory->setId($_POST["contractId"]);
+                    (new contractmodel())->updateContractHistoryData($contractHistory);
 
                     if($contract->getStatus() == contract_approved_by_contractor){
                         (new EmailController())->emailToEmployee($contract->getTantouId(), $contract->getContractorId(), $contract->getId());
@@ -143,6 +167,12 @@ class RegistrationController extends BaseController
                     $contract->setId((new SequenceModel())->getContractSequence());
                     $contract->setStatus(contract_create);
                     (new contractmodel())->storeContractData($contract);
+
+                    $contractInfo->setId($contract->getId());
+                    (new contractmodel())->storeContractInfoData($contractInfo);
+
+                    $contractHistory->setId($contract->getId());
+                    (new contractmodel())->storeContractHistoryData($contractHistory);
 
                     (new EmailController())->emailToContractor($contract->getContractorId(), $contract->getId());
                 }

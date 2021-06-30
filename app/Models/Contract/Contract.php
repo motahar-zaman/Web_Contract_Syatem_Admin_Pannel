@@ -20,6 +20,12 @@ class Contract
     private $deleteFlag;
     private $contractProduct = array();
     private $contractorDetail;
+    private $itemId;
+    private $branchNo;
+    private $itemValue;
+    private $itemName;
+    private $prevItemValue;
+    private $changeItemValue;
 
     /**
      * @return mixed
@@ -211,5 +217,101 @@ class Contract
     public function setContractorDetail(Contractor $contractorDetail): void
     {
         $this->contractorDetail = $contractorDetail;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getItemId()
+    {
+        return $this->itemId;
+    }
+
+    /**
+     * @param mixed $itemId
+     */
+    public function setItemId($itemId): void
+    {
+        $this->itemId = $itemId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBranchNo()
+    {
+        return $this->branchNo;
+    }
+
+    /**
+     * @param mixed $branchNo
+     */
+    public function setBranchNo($branchNo): void
+    {
+        $this->branchNo = $branchNo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getItemValue()
+    {
+        return $this->itemValue;
+    }
+
+    /**
+     * @param mixed $itemValue
+     */
+    public function setItemValue($itemValue): void
+    {
+        $this->itemValue = $itemValue;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getItemName()
+    {
+        return $this->itemName;
+    }
+
+    /**
+     * @param mixed $itemName
+     */
+    public function setItemName($itemName): void
+    {
+        $this->itemName = $itemName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrevItemValue()
+    {
+        return $this->prevItemValue;
+    }
+
+    /**
+     * @param mixed $prevItemValue
+     */
+    public function setPrevItemValue($prevItemValue): void
+    {
+        $this->prevItemValue = $prevItemValue;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getChangeItemValue()
+    {
+        return $this->changeItemValue;
+    }
+
+    /**
+     * @param mixed $changeItemValue
+     */
+    public function setChangeItemValue($changeItemValue): void
+    {
+        $this->changeItemValue = $changeItemValue;
     }
 }
