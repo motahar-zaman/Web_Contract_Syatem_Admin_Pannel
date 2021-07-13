@@ -21,6 +21,9 @@ class Contractor{
     private $insertDate;
     private $insertUserId;
     private $deleteFlag;
+    private $itemId;
+    private $branchNo;
+    private $itemValue;
 
     /**
      * @return mixed
@@ -308,5 +311,53 @@ class Contractor{
     public function setDeleteFlag($deleteFlag): void
     {
         $this->deleteFlag = $deleteFlag;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getItemId()
+    {
+        return $this->itemId;
+    }
+
+    /**
+     * @param mixed $itemId
+     */
+    public function setItemId($itemId): void
+    {
+        $this->itemId = $itemId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBranchNo()
+    {
+        return $this->branchNo;
+    }
+
+    /**
+     * @param mixed $branchNo
+     */
+    public function setBranchNo($branchNo): void
+    {
+        $this->branchNo = $branchNo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getItemValue()
+    {
+        return $this->itemValue;
+    }
+
+    /**
+     * @param mixed $itemValue
+     */
+    public function setItemValue($itemValue): void
+    {
+        $this->itemValue = $itemValue;
     }
 }

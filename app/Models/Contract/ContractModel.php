@@ -30,6 +30,38 @@ class ContractModel
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
 
+    public function storeContractInfoData(Contract $contractInfo){
+        $contractId = $contractInfo->getId();
+        $itemId = $contractInfo->getItemId();
+        $branchNo = $contractInfo->getBranchNo();
+        $itemValue = $contractInfo->getItemValue();
+        $update = $contractInfo->getUpdateDate();
+        $updateUser = $contractInfo->getUpdateUserId();
+        $insert = $contractInfo->getInsertDate();
+        $insertUser = $contractInfo->getInsertUserId();
+        $delete = $contractInfo->getDeleteFlag();
+
+        $queryString = "INSERT INTO trn_web_contract_info(contract_id, item_id, branch_no, item_value, update_date, update_user_id, insert_date, insert_user_id, delete_flag) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $queryParameter = array($contractId, $itemId, $branchNo, $itemValue, $update, $updateUser, $insert, $insertUser, $delete);
+
+        return (new Database())->writeQueryExecution($queryString, $queryParameter);
+    }
+
+    public function storeContractHistoryData(Contract $contractHistory){
+        $contractId = $contractHistory->getId();
+        $branchNo = $contractHistory->getBranchNo();
+        $itemName = $contractHistory->getItemName();
+        $prevItemValue = $contractHistory->getPrevItemValue();
+        $changeItemValue = $contractHistory->getChangeItemValue();
+        $update = $contractHistory->getUpdateDate();
+        $updateUser = $contractHistory->getUpdateUserId();
+
+        $queryString = "INSERT INTO trn_web_contract_history(contract_id, branch_no, item_name, prev_item_value, change_item_value, update_date, update_user_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $queryParameter = array($contractId, $branchNo, $itemName, $prevItemValue, $changeItemValue, $update, $updateUser);
+
+        return (new Database())->writeQueryExecution($queryString, $queryParameter);
+    }
+
     public function storeContractProductData($contractProduct = array()){
         $d = $contractProduct;
 
@@ -155,8 +187,8 @@ class ContractModel
             c.insert_user_id, c.delete_flag, branch_no, p.shop_id, p.product_id, p.status AS product_status, DATE_FORMAT(mp.start_date, '%Y/%m/%d') AS start_date,
             DATE_FORMAT(mp.end_date, '%Y/%m/%d') AS end_date, mp.product_note, mp.product_name, mp.price, mp.product_note, mp.service_type, mp.product_type,
             mp.campaign_flag, mp.shop_type, s.shop_name, s.zipcode, s.address_01, s.tel_no, s.mail_address, si.shop_daihyo_name, si.notificate_file_path,
-            si.business FROM trn_web_contract_base AS c LEFT JOIN trn_contract_product AS p ON c.contract_id = p.contract_id LEFT JOIN mst_product AS mp ON 
-            mp.product_id = p.product_id LEFT JOIN mst_shop AS s ON s.shop_id = p.shop_id LEFT JOIN trn_shop_info AS si ON s.shop_id = si.shop_id 
+            si.business FROM trn_web_contract_base AS c LEFT JOIN trn_contract_product AS p ON c.contract_id = p.contract_id LEFT JOIN mst_product AS mp ON
+            mp.product_id = p.product_id LEFT JOIN mst_shop AS s ON s.shop_id = p.shop_id LEFT JOIN trn_shop_info AS si ON s.shop_id = si.shop_id
             ".$where." c.contract_id = ? AND c.delete_flag = ?";
 
         $queryParameter = array($id, 1);
@@ -176,6 +208,35 @@ class ContractModel
         $queryString = "UPDATE trn_web_contract_base SET contractor_id = ?, tantou_id = ?, status = ?, note = ?,
                         update_date = ?, update_user_id = ? WHERE contract_id = ?";
         $queryParameter = array($contractor, $tantou, $status, $note, $update, $updateUser, $id);
+
+        return (new Database())->writeQueryExecution($queryString, $queryParameter);
+    }
+
+    public function updateContractInfoData(Contract $contractInfo) {
+        $contractId = $contractInfo->getId();
+        $itemId = $contractInfo->getItemId();
+        $branchNo = $contractInfo->getBranchNo();
+        $itemValue = $contractInfo->getItemValue();
+        $update = $contractInfo->getUpdateDate();
+        $updateUser = $contractInfo->getUpdateUserId();
+
+        $queryString = "UPDATE trn_web_contract_info SET item_id = ?, branch_no = ?, item_value = ?, update_date = ?, update_user_id = ? WHERE contract_id = ?";
+        $queryParameter = array($itemId, $branchNo, $itemValue, $update, $updateUser, $contractId);
+
+        return (new Database())->writeQueryExecution($queryString, $queryParameter);
+    }
+
+    public function updateContractHistoryData(Contract $contractHistory) {
+        $contractId = $contractHistory->getId();
+        $branchNo = $contractHistory->getBranchNo();
+        $itemName = $contractHistory->getItemName();
+        $prevItemValue = $contractHistory->getPrevItemValue();
+        $changeItemValue = $contractHistory->getChangeItemValue();
+        $update = $contractHistory->getUpdateDate();
+        $updateUser = $contractHistory->getUpdateUserId();
+
+        $queryString = "UPDATE trn_web_contract_history SET branch_no = ?, item_name = ?, prev_item_value = ?, change_item_value = ?, update_date = ?, update_user_id = ? WHERE contract_id = ?";
+        $queryParameter = array($branchNo, $itemName, $prevItemValue, $changeItemValue, $update, $updateUser, $contractId);
 
         return (new Database())->writeQueryExecution($queryString, $queryParameter);
     }
