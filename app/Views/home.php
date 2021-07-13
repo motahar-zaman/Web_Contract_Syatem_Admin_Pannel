@@ -41,7 +41,7 @@
                                     <tbody>
                                     <tr>
                                         <td><a href="/contract-search">契約検索</a></td>
-                                        <td>契約情報の検索を行い、画面表示を行います
+                                        <td>契約情報の検索を行い、画面表示を行います</td>
                                     </tr>
                                     <?php if (session()->get("user") == "employee") { ?>
                                         <?php if (session()->has("department") && (session()->get("department") === USER_RIGHTS_ADMIN_SALES_DEPARTMENT ||
