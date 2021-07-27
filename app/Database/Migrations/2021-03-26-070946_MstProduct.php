@@ -34,12 +34,12 @@ class MstProduct extends Migration
                 'comment'=> '価格 / Price',
             ],
             'start_date' => [
-                'type'   => 'DATETIME',
+                'type'   => 'DATE',
                 'null'   => false,
                 'comment'=> '摘要開始日 / start Date',
             ],
             'end_date' => [
-                'type'   => 'DATETIME',
+                'type'   => 'DATE',
                 'null'   => false,
                 'comment'=> '摘要終了日 / end Date',
             ],
@@ -69,7 +69,7 @@ class MstProduct extends Migration
             'product_note' => [
                 'type'   => 'VARCHAR',
                 'constraint'=> '1000',
-                'null'   => false,
+                'null'   => true,
                 'comment'=> '商品概要 / Product Summary',
             ],
             'update_date' => [

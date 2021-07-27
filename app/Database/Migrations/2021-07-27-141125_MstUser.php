@@ -98,6 +98,8 @@ class MstUser extends Migration
             ],
         ]);
         $this->forge->addKey('user_id', true);
+        $this->forge->addKey('update_user_id');
+        $this->forge->addKey('insert_user_id');
         $this->forge->createTable('mst_user');
 	}
 

@@ -50,6 +50,8 @@ class MstUser extends Migration
             ],
         ]);
         $this->forge->addKey(['user_id', 'contractor_id'], true);
+        $this->forge->addKey('update_user_id');
+        $this->forge->addKey('insert_user_id');
         $this->forge->createTable('trn_user_contractor_map');
 	}
 

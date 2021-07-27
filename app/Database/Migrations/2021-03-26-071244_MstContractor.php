@@ -27,11 +27,11 @@ class MstContractor extends Migration
                 'null'   => false,
                 'comment'=> '契約者名カナ / Contractor Name - Kana',
             ],
-            'password' => [
+            'user_id' => [
                 'type'   => 'VARCHAR',
-                'constraint'=> '200',
+                'constraint'=> '20',
                 'null'   => false,
-                'comment'=> 'パスワード / password',
+                'comment'=> 'ユーザID / User ID',
             ],
             'zipcode'          => [
                 'type'           => 'VARCHAR',
@@ -118,6 +118,9 @@ class MstContractor extends Migration
             ],
         ]);
         $this->forge->addKey('contractor_id', true);
+        $this->forge->addKey('user_id');
+        $this->forge->addKey('update_user_id');
+        $this->forge->addKey('insert_user_id');
         $this->forge->createTable('MST_CONTRACTOR');
 	}
 
